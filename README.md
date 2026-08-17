@@ -69,5 +69,7 @@ touch state/hold.flag && git add -A && git commit -m hold && git push
 DRY_RUN=true python -m src.pipeline
 ```
 
-`DRY_RUN` defaults to **true** everywhere. Only the scheduled workflow sets it
-false, so nothing publishes by accident.
+Nothing publishes until the repository variable `LIVE` is set to exactly
+`true` (Settings → Secrets and variables → Actions → Variables). Until then
+every run is a shadow run. Removing the variable pulls the plug instantly, with
+no commit and no deploy.

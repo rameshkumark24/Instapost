@@ -169,10 +169,15 @@ scorer, so don't rush it.
 
 ## Phase 4 — go live
 
-Set `DRY_RUN: 'false'` in the scheduled path of
-[`.github/workflows/build.yml`](.github/workflows/build.yml) — it is already
-wired that way, so the scheduled run publishes and manual runs stay in shadow
-mode by default.
+Go to **Settings → Secrets and variables → Actions → Variables** and add:
+
+```
+LIVE = true
+```
+
+That is the only switch. Until it is set to exactly `true`, every run —
+scheduled or manual — is a shadow run. Deleting the variable puts you straight
+back into shadow mode with no commit and no deploy.
 
 Watch it closely for the first week.
 
@@ -187,7 +192,10 @@ that sees it marks the post held and the Worker refuses to publish.
 touch state/hold.flag && git add -A && git commit -m "hold" && git push
 ```
 
-**Stop indefinitely** — disable the workflow in the Actions tab, or delete the
+**Stop publishing entirely** — delete the `LIVE` repository variable, or set it
+to anything other than `true`. Builds continue, nothing publishes.
+
+**Stop everything** — disable the workflow in the Actions tab, or delete the
 Worker's cron trigger.
 
 **Force a rebuild now** — Actions → build-nightly-post → Run workflow. Leave

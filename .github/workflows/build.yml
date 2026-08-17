@@ -40,9 +40,15 @@ jobs:
 
       - name: Build tonight's post
         env:
-          # DRY_RUN defaults to true in config.py. The scheduled run sets it
-          # to false explicitly, so shadow mode is the safe default everywhere.
-          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          # Shadow mode unless the repository variable LIVE is exactly "true".
+          # Set it at Settings -> Secrets and variables -> Actions -> Variables
+          # when you finish the phase 3 shadow run. Keeping the switch out of
+          # the code means going live -- or pulling the plug -- takes one click
+          # and no commit.
+          DRY_RUN: >-
+            ${{ github.event_name == 'workflow_dispatch'
+                && inputs.dry_run
+                || vars.LIVE != 'true' }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
