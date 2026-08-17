@@ -66,15 +66,25 @@ jobs:
           git push
 
       - name: Verify the image is publicly reachable
-        # Meta fetches the image from this URL at 19:45. If it 404s, the whole
-        # run is already lost -- better to know now than to find out silently.
+        # Meta fetches the image from this URL at 19:45. If it 404s, the run is
+        # already lost -- better to know now, while there is still time to fix
+        # it, than to find out from a failed publish.
         run: |
           URL="https://raw.githubusercontent.com/${{ github.repository }}/main/dist/card.jpg"
           for i in 1 2 3 4 5; do
             CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
-            [ "$CODE" = "200" ] && echo "reachable" && exit 0
-            echo "attempt $i: HTTP $CODE, retrying"
-            sleep 10
+            case "$CODE" in
+              200)
+                echo "reachable"; exit 0 ;;
+              429)
+                # Throttling of *this runner's* IP says nothing about whether
+                # Meta can fetch the file. Treat it as inconclusive, not as a
+                # failure -- failing here would kill an otherwise good night.
+                echo "::warning::HTTP 429 from raw.githubusercontent (runner throttled); skipping verification"
+                exit 0 ;;
+              *)
+                echo "attempt $i: HTTP $CODE, retrying"; sleep 10 ;;
+            esac
           done
           echo "::error::card.jpg not reachable at $URL"
           exit 1
