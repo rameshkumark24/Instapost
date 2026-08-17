@@ -1,0 +1,1370 @@
+<title>Instapost Nightly</title>
+<style>
+  :root {
+    --paper:      #F0EEEA;
+    --surface:    #FAF9F6;
+    --surface-2:  #E6E3DC;
+    --ink:        #1A1714;
+    --ink-soft:   #4A443C;
+    --muted:      #6E675E;
+    --rule:       #D6D2CA;
+    --rule-hard:  #B9B3A8;
+    --accent:     #B4530A;
+    --accent-dim: #8E4208;
+    --ok:         #3C6E47;
+    --warn:       #8A6A16;
+    --crit:       #93242B;
+    --ok-bg:      #E2EAE2;
+    --warn-bg:    #EFE8D2;
+    --crit-bg:    #F1E0DF;
+    --accent-bg:  #F3E5D7;
+
+    --mono: ui-monospace, "Cascadia Mono", "SF Mono", "Segoe UI Mono", Consolas, "Roboto Mono", "Liberation Mono", monospace;
+    --sans: system-ui, -apple-system, "Segoe UI Variable Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #151311;
+      --surface:    #1E1B18;
+      --surface-2:  #272320;
+      --ink:        #E9E4DB;
+      --ink-soft:   #C3BCB1;
+      --muted:      #948C81;
+      --rule:       #302B26;
+      --rule-hard:  #443D36;
+      --accent:     #E8843C;
+      --accent-dim: #C96C2B;
+      --ok:         #7FB68C;
+      --warn:       #D2AE55;
+      --crit:       #DE8189;
+      --ok-bg:      #1D2A20;
+      --warn-bg:    #2C2617;
+      --crit-bg:    #2E1D1E;
+      --accent-bg:  #2E2118;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #151311;
+    --surface:    #1E1B18;
+    --surface-2:  #272320;
+    --ink:        #E9E4DB;
+    --ink-soft:   #C3BCB1;
+    --muted:      #948C81;
+    --rule:       #302B26;
+    --rule-hard:  #443D36;
+    --accent:     #E8843C;
+    --accent-dim: #C96C2B;
+    --ok:         #7FB68C;
+    --warn:       #D2AE55;
+    --crit:       #DE8189;
+    --ok-bg:      #1D2A20;
+    --warn-bg:    #2C2617;
+    --crit-bg:    #2E1D1E;
+    --accent-bg:  #2E2118;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .prose { max-width: 68ch; }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    padding: 56px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  h1 {
+    font-family: var(--mono);
+    font-size: clamp(34px, 6vw, 54px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .spec {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 8px;
+  }
+
+  .spec div {
+    background: var(--surface);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .spec dt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .spec dd {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 17px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+
+  /* ---------- sections ---------- */
+
+  section { display: flex; flex-direction: column; gap: 20px; }
+
+  h2 {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  h2 .num {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  h3 {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  h4 {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--muted);
+  }
+
+  p { margin: 0; }
+
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .stack-lg { display: flex; flex-direction: column; gap: 32px; }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  strong { font-weight: 650; color: var(--ink); }
+
+  ul, ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 7px; }
+  li { padding-left: 2px; }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.88em;
+    background: var(--surface-2);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+
+  pre {
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    tab-size: 2;
+  }
+
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  .filename {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: -6px;
+  }
+
+  /* ---------- findings ---------- */
+
+  .finding {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 20px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--accent);
+    padding: 20px 22px;
+  }
+
+  .finding .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 3px;
+  }
+
+  .finding .body { display: flex; flex-direction: column; gap: 8px; }
+  .finding p { color: var(--ink-soft); }
+  .finding .verdict {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink);
+    border-top: 1px dashed var(--rule-hard);
+    padding-top: 8px;
+    margin-top: 2px;
+  }
+
+  /* ---------- timetable ---------- */
+
+  .tt-scroll { overflow-x: auto; border: 1px solid var(--rule); }
+
+  .timetable {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    background: var(--surface);
+    font-size: 14px;
+  }
+
+  .timetable th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--rule-hard);
+    background: var(--surface-2);
+    white-space: nowrap;
+  }
+
+  .timetable td {
+    padding: 13px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+
+  .timetable tr:last-child td { border-bottom: none; }
+
+  .timetable .t {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .timetable .t small {
+    display: block;
+    font-weight: 400;
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .timetable .stage {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .timetable .stage b { color: var(--accent); font-weight: 600; }
+
+  .timetable .where {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .timetable tr.t0 td { background: var(--accent-bg); }
+  .timetable tr.t0 .t, .timetable tr.t0 td { color: var(--ink); }
+
+  /* ---------- generic data table ---------- */
+
+  .tbl-scroll { overflow-x: auto; border: 1px solid var(--rule); }
+
+  table.data {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    background: var(--surface);
+    font-size: 13.5px;
+  }
+
+  table.data th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 11px 13px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--rule-hard);
+    white-space: nowrap;
+  }
+
+  table.data td {
+    padding: 11px 13px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+
+  table.data tr:last-child td { border-bottom: none; }
+  table.data td.k { font-family: var(--mono); font-size: 12.5px; color: var(--ink); white-space: nowrap; }
+  table.data td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  table.data tfoot td {
+    font-family: var(--mono);
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--surface-2);
+    border-top: 1px solid var(--rule-hard);
+  }
+
+  /* ---------- chips ---------- */
+
+  .chip {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .chip.lo   { background: var(--ok-bg);   color: var(--ok); }
+  .chip.med  { background: var(--warn-bg); color: var(--warn); }
+  .chip.hi   { background: var(--crit-bg); color: var(--crit); }
+  .chip.id   { background: var(--surface-2); color: var(--muted); }
+
+  /* ---------- phases ---------- */
+
+  .phases { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+
+  .phase {
+    background: var(--surface);
+    padding: 16px 18px;
+    display: grid;
+    grid-template-columns: 76px 1fr 84px;
+    gap: 18px;
+    align-items: start;
+  }
+
+  .phase .p-id {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 2px;
+  }
+
+  .phase .p-body { display: flex; flex-direction: column; gap: 6px; }
+  .phase .p-body p { font-size: 14px; color: var(--ink-soft); }
+  .phase .p-time {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    text-align: right;
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+
+  /* ---------- callout ---------- */
+
+  .note {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rule-hard);
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .note.flag { border-left-color: var(--crit); }
+  .note.good { border-left-color: var(--ok); }
+
+  .note h4 { color: var(--ink); }
+
+  .divider { height: 1px; background: var(--rule); border: none; margin: 0; }
+
+  footer {
+    border-top: 2px solid var(--ink);
+    padding-top: 18px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  @media (max-width: 620px) {
+    .finding { grid-template-columns: 1fr; gap: 10px; }
+    .phase { grid-template-columns: 1fr; gap: 8px; }
+    .phase .p-time { text-align: left; }
+    .wrap { padding: 0 18px 72px; gap: 44px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Build plan &middot; private automation &middot; zero cash outlay</p>
+    <h1>Instapost Nightly</h1>
+    <p class="standfirst">
+      An unattended pipeline that researches a tech story, renders it onto your Canva-designed
+      card, and publishes it publicly to Instagram at 19:45 every evening — built entirely on
+      free tiers, using only official APIs.
+    </p>
+    <dl class="spec">
+      <div><dt>Publish time</dt><dd>19:45 IST</dd></div>
+      <div><dt>Cron (UTC)</dt><dd>15 14 * * *</dd></div>
+      <div><dt>Cadence</dt><dd>1 / day</dd></div>
+      <div><dt>Cash cost</dt><dd>&#8377;0</dd></div>
+      <div><dt>Build effort</dt><dd>~18 h</dd></div>
+      <div><dt>Upkeep</dt><dd>~15 min/mo</dd></div>
+    </dl>
+  </header>
+
+  <section>
+    <h2><span class="num">01</span> Three findings that reshape the plan</h2>
+    <p class="prose">
+      I checked the three assumptions your outline depends on before designing around them. Two
+      of them don't hold as stated, and one adds a recurring chore nobody plans for. Everything
+      after this section is designed around these answers.
+    </p>
+
+    <div class="finding">
+      <div class="tag">Canva</div>
+      <div class="body">
+        <p>
+          Canva's Connect API can create designs, upload assets and export files on a free
+          account — but the one endpoint you actually need, <strong>Autofill</strong> (push text
+          and images into a saved template), requires both the integration developer <em>and</em>
+          the acting user to belong to a <strong>Canva Enterprise</strong> organisation. There is a
+          limited trial for paid plans during development, but nothing that survives into daily
+          unattended production on a free account.
+        </p>
+        <p class="verdict">
+          &rarr; Canva stays as your <b>design tool</b>, not your <b>runtime</b>. You design the card in
+          Canva once, then a free renderer reproduces it nightly. Section 05 covers the handoff.
+        </p>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="tag">Timing</div>
+      <div class="body">
+        <p>
+          GitHub Actions <code>schedule</code> events are explicitly best-effort. Free-plan private
+          repositories sit at the bottom of the queue, and delays of 30–60 minutes are routinely
+          reported; runs can be dropped entirely during peak load. A cron alone will not reliably
+          hit 19:45.
+        </p>
+        <p class="verdict">
+          &rarr; Split the work: build early with slack, and fire the <b>publish</b> call from a
+          <b>Cloudflare Worker cron trigger</b>, which is minute-accurate and free. Section 06.
+        </p>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="tag">Tokens</div>
+      <div class="body">
+        <p>
+          Instagram long-lived tokens last 60 days and die permanently if not refreshed inside
+          that window. Most hobby automations silently break at day 61. There is a way out: a
+          Meta <strong>Business system-user token</strong> can be issued with no expiry, which
+          removes the treadmill entirely.
+        </p>
+        <p class="verdict">
+          &rarr; Prefer the system-user token. Keep a 30-day refresh job as belt-and-braces. Section 07.
+        </p>
+      </div>
+    </div>
+
+    <div class="note good">
+      <h4>What does hold</h4>
+      <p>
+        Publishing to <em>your own</em> account needs <strong>no Meta App Review</strong>. An app in
+        Development mode, with your Instagram account added as a Tester, can publish indefinitely.
+        This is the single biggest reason the project is genuinely free — and it is exactly the
+        "private automation" case you described.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span> The nightly run, minute by minute</h2>
+    <p class="prose">
+      Times are Asia/Kolkata. The design puts 45 minutes of slack between "content is ready" and
+      "content goes live" — that gap absorbs scheduler delay, gives failed steps room to retry,
+      and hands you a real veto window on your phone before anything becomes public.
+    </p>
+
+    <div class="tt-scroll">
+      <table class="timetable">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Stage</th>
+            <th>What happens</th>
+            <th>Runs on</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="t">18:30<small>13:00 UTC</small></td>
+            <td class="stage"><b>1</b> Harvest</td>
+            <td>Pull candidate stories from Hacker News, Lobsters, Dev.to, GitHub, arXiv and 3 RSS feeds. Typically 120–200 items.</td>
+            <td class="where">GH Actions</td>
+          </tr>
+          <tr>
+            <td class="t">18:31</td>
+            <td class="stage"><b>2</b> Select</td>
+            <td>Score on recency, engagement, niche fit and novelty. Drop anything in the posted-URL ledger or on the blocklist. Take the top one.</td>
+            <td class="where">GH Actions</td>
+          </tr>
+          <tr>
+            <td class="t">18:32</td>
+            <td class="stage"><b>3</b> Compose</td>
+            <td>Generate headline, 3-line body, caption and hashtags. Deterministic template first, free-tier LLM polish second, fallback if the LLM errors.</td>
+            <td class="where">GH Actions</td>
+          </tr>
+          <tr>
+            <td class="t">18:33</td>
+            <td class="stage"><b>4</b> Render</td>
+            <td>Fill the HTML/CSS clone of your Canva template, screenshot at 1080&times;1350, encode JPEG q90.</td>
+            <td class="where">GH Actions</td>
+          </tr>
+          <tr>
+            <td class="t">18:34</td>
+            <td class="stage"><b>5</b> Stage</td>
+            <td>Commit image + <code>post.json</code> to the public repo. Verify the raw URL returns 200 before proceeding.</td>
+            <td class="where">GH Actions</td>
+          </tr>
+          <tr>
+            <td class="t">18:35</td>
+            <td class="stage"><b>6</b> Preview</td>
+            <td>Telegram message to your phone: rendered card, caption, source link, and an <em>Abort</em> button.</td>
+            <td class="where">GH Actions</td>
+          </tr>
+          <tr>
+            <td class="t">18:35<small>&rarr; 19:45</small></td>
+            <td class="stage"><b>&mdash;</b> Veto window</td>
+            <td>70 minutes in which tapping <em>Abort</em> writes a hold flag. No action needed for the post to go out.</td>
+            <td class="where">you (optional)</td>
+          </tr>
+          <tr class="t0">
+            <td class="t">19:45<small>14:15 UTC</small></td>
+            <td class="stage"><b>7</b> Publish</td>
+            <td>Read <code>post.json</code>, check the hold flag, create the media container, publish it. Post is public and live.</td>
+            <td class="where">CF Worker</td>
+          </tr>
+          <tr>
+            <td class="t">19:45</td>
+            <td class="stage"><b>8</b> Confirm</td>
+            <td>Telegram receipt with the live permalink, or the exact API error if it failed.</td>
+            <td class="where">CF Worker</td>
+          </tr>
+          <tr>
+            <td class="t">19:50</td>
+            <td class="stage"><b>9</b> Record</td>
+            <td>Append URL and media ID to the ledger so the story can never repeat.</td>
+            <td class="where">GH Actions</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <h4>On the veto window</h4>
+      <p>
+        You said you're at your desk at 19:45 anyway. The default here is still <em>publish without
+        asking</em> — you never have to tap anything. The button only exists so that the one night a
+        genuinely bad story wins the scoring, you can kill it in two seconds instead of deleting a
+        live post. If you'd rather have zero notifications, drop stages 6 and 8 and the pipeline
+        still works.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span> Stack</h2>
+    <div class="tbl-scroll">
+      <table class="data">
+        <thead>
+          <tr><th>Layer</th><th>Choice</th><th>Why this one</th><th>Free-tier ceiling</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="k">Compute</td>
+            <td>GitHub Actions</td>
+            <td>Runner has a real filesystem and can run a headless browser. Public repo = unmetered.</td>
+            <td class="n">Unlimited (public)</td>
+          </tr>
+          <tr>
+            <td class="k">Trigger</td>
+            <td>Cloudflare Worker cron</td>
+            <td>Minute-accurate, unlike Actions cron. Publishing is only two HTTPS calls.</td>
+            <td class="n">100k req/day</td>
+          </tr>
+          <tr>
+            <td class="k">Language</td>
+            <td>Python 3.12</td>
+            <td>Best feed/HTML parsing ecosystem; Playwright bindings are first-class.</td>
+            <td class="n">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="k">Renderer</td>
+            <td>Playwright &rarr; Chromium</td>
+            <td>Real CSS, web fonts, gradients, auto-fitting text. Pixel-matches a Canva design.</td>
+            <td class="n">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="k">Image host</td>
+            <td>raw.githubusercontent.com</td>
+            <td>Meta must fetch the image from a public URL. Same repo, no extra account, no card.</td>
+            <td class="n">1 GB soft</td>
+          </tr>
+          <tr>
+            <td class="k">State</td>
+            <td>JSON committed to repo</td>
+            <td>A ledger of ~400 URLs/yr needs no database. Git gives you free history and rollback.</td>
+            <td class="n">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="k">Copy</td>
+            <td>Gemini / Groq free tier</td>
+            <td>Optional polish layer. Deterministic templates are the fallback and the floor.</td>
+            <td class="n">Rate-limited, free</td>
+          </tr>
+          <tr>
+            <td class="k">Alerts</td>
+            <td>Telegram Bot API</td>
+            <td>Free forever, no per-message cost, inline buttons for the abort control.</td>
+            <td class="n">Unlimited</td>
+          </tr>
+          <tr>
+            <td class="k">Publishing</td>
+            <td>Instagram Graph API</td>
+            <td>The only ToS-compliant route. See section 09 for why this is non-negotiable.</td>
+            <td class="n">25–50 posts/day</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span> Stage 1–3 &mdash; research and copy</h2>
+
+    <div class="stack">
+      <h3>Sources</h3>
+      <p class="prose">
+        All keyless or free-keyed, all officially published endpoints — no HTML scraping, which
+        keeps you clear of both robots.txt and brittle selectors.
+      </p>
+    </div>
+
+    <div class="tbl-scroll">
+      <table class="data">
+        <thead><tr><th>Source</th><th>Endpoint</th><th>Auth</th><th>Gives you</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Hacker News</td><td class="k">hn.algolia.com/api/v1/search</td><td>none</td><td>Ranked front-page stories + points</td></tr>
+          <tr><td class="k">Lobsters</td><td class="k">lobste.rs/hottest.json</td><td>none</td><td>Higher signal-to-noise, dev-heavy</td></tr>
+          <tr><td class="k">Dev.to</td><td class="k">dev.to/api/articles?top=1</td><td>none</td><td>Practitioner tutorials</td></tr>
+          <tr><td class="k">GitHub</td><td class="k">api.github.com/search/repositories</td><td>free PAT</td><td>Repos trending this week</td></tr>
+          <tr><td class="k">arXiv</td><td class="k">export.arxiv.org/api/query</td><td>none</td><td>cs.AI / cs.LG preprints</td></tr>
+          <tr><td class="k">RSS &times;3</td><td class="k">TechCrunch, Ars Technica, The Verge</td><td>none</td><td>Mainstream tech news</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="filename">src/harvest.py</p>
+<pre><code>SOURCES = {
+    "hn":     "https://hn.algolia.com/api/v1/search?tags=story&amp;numericFilters=points&gt;120,created_at_i&gt;{since}",
+    "lobste": "https://lobste.rs/hottest.json",
+    "devto":  "https://dev.to/api/articles?top=1&amp;per_page=30",
+    "gh":     "https://api.github.com/search/repositories?q=pushed:&gt;{date}+stars:&gt;200&amp;sort=stars",
+    "arxiv":  "http://export.arxiv.org/api/query?search_query=cat:cs.AI&amp;sortBy=submittedDate&amp;max_results=25",
+}
+
+WEIGHTS = {"recency": 0.30, "engagement": 0.30, "fit": 0.25, "novelty": 0.15}
+
+def score(item, ledger):
+    if item.url in ledger or hits_blocklist(item.title):
+        return 0.0                                   # hard reject
+    hours = (now() - item.published).total_seconds() / 3600
+    return (
+        WEIGHTS["recency"]    * max(0, 1 - hours / 36)          # decays over 36h
+        + WEIGHTS["engagement"] * log_norm(item.points, item.source)
+        + WEIGHTS["fit"]        * keyword_fit(item.title, NICHE_TERMS)
+        + WEIGHTS["novelty"]    * (1 - topic_overlap(item, ledger.last(7)))
+    )</code></pre>
+
+    <div class="stack">
+      <h3>Picking a lane</h3>
+      <p class="prose">
+        "Tech" is too wide to build an audience on — the account reads as a random aggregator and
+        the scorer has nothing to optimise against. Pick one lane and set <code>NICHE_TERMS</code> to
+        match. Reasonable options: AI/ML shipping news, developer tooling, security incidents,
+        open-source releases, or systems/infrastructure. You can widen later; you cannot easily
+        un-blur a fuzzy account.
+      </p>
+    </div>
+
+    <div class="stack">
+      <h3>Composition, and the honesty constraint</h3>
+      <p class="prose">
+        The LLM never states facts. It receives the title, the source's own summary and the URL,
+        and its only jobs are to compress into a headline of ≤ 9 words and write a hook. Any claim
+        not present in the input is a bug. This matters legally as well as editorially — it is the
+        difference between an original summary and a fabrication published under your name.
+      </p>
+    </div>
+
+    <p class="filename">caption template</p>
+<pre><code>{hook_line}                        &lt;- keyword-rich, this is what search indexes
+
+{two_sentence_summary}
+
+Source: {publication} &mdash; link in bio / see comments
+{5_to_8_hashtags}</code></pre>
+
+    <div class="note">
+      <h4>Hashtags are not the lever they used to be</h4>
+      <p>
+        Instagram removed hashtag-following and has repeatedly said hashtags do little for reach;
+        caption keywords now drive in-app search. Use 5–8 genuinely relevant tags for
+        classification and put your real effort into the first line. Piling on 30 tags reads as
+        spam signal, not distribution.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span> Stage 4 &mdash; the Canva substitution</h2>
+
+    <p class="prose">
+      Your outline says "load into Canva". As established in section 01, the API that would do
+      that is Enterprise-gated. Here are the three real options, honestly ranked.
+    </p>
+
+    <div class="tbl-scroll">
+      <table class="data">
+        <thead><tr><th>Option</th><th>Automatable</th><th>Cost</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="k">Canva Enterprise&nbsp;+ Autofill API</td>
+            <td>Fully</td>
+            <td class="n">Enterprise contract</td>
+            <td>Exactly what you described, and the only thing that breaks your zero-cash rule. Requires a sales conversation, not a signup form.</td>
+          </tr>
+          <tr>
+            <td class="k">Canva free&nbsp;+ manual export</td>
+            <td>No</td>
+            <td class="n">&#8377;0</td>
+            <td>You'd hand-make a card every evening. That's the thing you're automating away.</td>
+          </tr>
+          <tr>
+            <td class="k">Canva design &rarr; HTML/CSS clone</td>
+            <td>Fully</td>
+            <td class="n">&#8377;0</td>
+            <td><strong>Recommended.</strong> Same visual result, no tier gate, no API quota, no vendor dependency in the hot path.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stack">
+      <h3>The handoff, concretely</h3>
+      <ol class="prose">
+        <li>Design the card once in Canva's free editor at <strong>1080 &times; 1350</strong> (4:5 — the tallest ratio Instagram accepts, so it occupies the most feed real estate).</li>
+        <li>Export the <em>static</em> layers — background, texture, logo lockup — as a single PNG. Delete the text layers from that export.</li>
+        <li>Note the exact geometry of each text block: x, y, width, size, weight, line-height, colour.</li>
+        <li>Rebuild those text blocks as absolutely-positioned HTML over the PNG background. This is 60–80 lines of CSS, written once.</li>
+        <li>Playwright screenshots the page at a 1080&times;1350 viewport. Output is byte-for-byte reproducible.</li>
+      </ol>
+      <p class="prose">
+        You keep Canva for what it's genuinely best at — designing the thing — and drop it from the
+        part that has to run unattended at 18:33 every night.
+      </p>
+    </div>
+
+    <div class="note flag">
+      <h4>Font licensing &mdash; the trap almost everyone hits</h4>
+      <p>
+        Fonts licensed <em>to you through Canva</em> are licensed for use <em>inside Canva</em>. Downloading
+        the font file and embedding it in your own renderer is outside that grant. Build the
+        template on an SIL Open Font License or Apache-licensed family from the start — the
+        Google Fonts catalogue is almost entirely safe — and this problem never exists.
+      </p>
+    </div>
+
+    <p class="filename">src/render.py</p>
+<pre><code>from playwright.sync_api import sync_playwright
+
+W, H = 1080, 1350                       # 4:5, the tallest feed ratio IG accepts
+
+def render(post, out="dist/card.jpg"):
+    html = TEMPLATE.render(
+        headline=post["headline"],      # &lt;= 9 words, auto-fit via CSS clamp()
+        body=post["body"],
+        source=post["publication"],
+        date=post["date"],
+    )
+    with sync_playwright() as p:
+        page = p.chromium.launch().new_page(viewport={"width": W, "height": H})
+        page.set_content(html, wait_until="networkidle")
+        page.wait_for_timeout(300)      # let webfonts settle before the shot
+        page.screenshot(path=out, type="jpeg", quality=90)
+    return out</code></pre>
+
+    <div class="note flag">
+      <h4>Encode JPEG, not PNG</h4>
+      <p>
+        The Instagram content-publishing endpoint documents JPEG for image containers. PNG uploads
+        are a common source of unexplained container failures. Render straight to JPEG at quality
+        90 and stay under the 8 MB ceiling — you'll land around 300 KB.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span> Stage 5–7 &mdash; hosting, timing, publishing</h2>
+
+    <div class="stack">
+      <h3>Why the image needs a public URL</h3>
+      <p class="prose">
+        You cannot POST image bytes to the container endpoint. You give Meta an <code>image_url</code>
+        and <em>their</em> servers fetch it. That single fact dictates the hosting design: the file
+        must be publicly readable at publish time, from Meta's network, with no auth.
+      </p>
+      <p class="prose">
+        A public GitHub repo gives you that for free at <code>raw.githubusercontent.com</code>. The
+        pipeline commits the JPEG at 18:34 and the Worker references it at 19:45 — 70 minutes is
+        ample for CDN propagation, and stage 5 verifies a <code>200</code> before it proceeds anyway.
+      </p>
+    </div>
+
+    <div class="note">
+      <h4>Public repo is a deliberate choice, not a compromise</h4>
+      <p>
+        It buys unmetered Actions minutes, better scheduler priority, and free image hosting.
+        Credentials live in encrypted GitHub Secrets and are never readable from a public repo.
+        What <em>is</em> public is your source code and your content history — for a personal tech
+        account, that's a non-issue and arguably a small portfolio asset.
+      </p>
+    </div>
+
+    <div class="stack">
+      <h3>Hitting 19:45 on the nose</h3>
+      <p class="prose">
+        The Actions cron fires at 13:00 UTC with 45 minutes of slack — if it's 40 minutes late,
+        nothing downstream notices. The Worker cron fires at <code>15 14 * * *</code> and does the
+        two API calls that make the post public. Workers cron has one-minute granularity and no
+        queue behind it.
+      </p>
+    </div>
+
+    <p class="filename">worker/src/index.js</p>
+<pre><code>export default {
+  async scheduled(event, env, ctx) {
+    const base = `https://raw.githubusercontent.com/${env.REPO}/main/dist`;
+    const post = await (await fetch(`${base}/post.json?t=${Date.now()}`)).json();
+
+    if (post.hold) return;                          // abort button was tapped
+    if (post.date !== todayIST()) {                 // build never ran &mdash; don't repost yesterday
+      return alert(env, "No fresh post for today; build job likely failed.");
+    }
+
+    const G = `https://graph.facebook.com/vXX.0/${env.IG_USER_ID}`;
+
+    const c = await post_(`${G}/media`, {
+      image_url: `${base}/card.jpg`,
+      caption:   post.caption,
+      access_token: env.IG_TOKEN,
+    });
+    if (c.error) return alert(env, `container failed: ${c.error.message}`);
+
+    const r = await post_(`${G}/media_publish`, {
+      creation_id: c.id,
+      access_token: env.IG_TOKEN,
+    });
+    if (r.error) return alert(env, `publish failed: ${r.error.message}`);
+
+    await alert(env, `Live: https://www.instagram.com/p/${r.id}`);
+  },
+};</code></pre>
+
+    <p class="filename">.github/workflows/build.yml</p>
+<pre><code>name: build-nightly-post
+on:
+  schedule:
+    - cron: "0 13 * * *"      # 18:30 IST &mdash; 75 min of slack before T-0
+  workflow_dispatch:           # manual re-run when something breaks
+
+permissions:
+  contents: write              # needed to commit the card + ledger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt &amp;&amp; playwright install --with-deps chromium
+      - run: python -m src.pipeline
+        env:
+          GH_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+          LLM_KEY:   ${{ secrets.LLM_KEY }}
+          TG_TOKEN:  ${{ secrets.TG_TOKEN }}
+          TG_CHAT:   ${{ secrets.TG_CHAT }}
+      - run: |
+          git config user.name  "instapost-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add dist/ state/
+          git commit -m "post: $(date -u +%F)" || exit 0
+          git push</code></pre>
+
+    <div class="stack">
+      <h3>Account prerequisites</h3>
+      <ul class="prose">
+        <li>Instagram account switched to <strong>Professional</strong> (Business or Creator), and <strong>public</strong> — API publishing is not available on a private account.</li>
+        <li>A Facebook Page linked to it (required by the Graph API path; the Page itself can stay empty).</li>
+        <li>A Meta app in <strong>Development</strong> mode with your IG account added under <em>Roles &rarr; Instagram Testers</em>, and the invite accepted from inside Instagram's settings.</li>
+        <li>Permissions: <code>instagram_basic</code>, <code>instagram_content_publish</code>, <code>pages_show_list</code>, <code>pages_read_engagement</code>.</li>
+        <li>Pin the Graph API version explicitly in the URL and diary the date — versions are supported roughly two years, then hard-fail.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span> Investment &mdash; money, time, attention</h2>
+
+    <h3>Cash</h3>
+    <div class="tbl-scroll">
+      <table class="data">
+        <thead><tr><th>Item</th><th>Plan</th><th>What keeps it free</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td class="k">GitHub Actions</td><td>Free</td><td>Public repo &rarr; unmetered minutes</td><td class="n">&#8377;0</td></tr>
+          <tr><td class="k">Cloudflare Workers</td><td>Free</td><td>~30 invocations/mo vs 100k/day cap; no card required</td><td class="n">&#8377;0</td></tr>
+          <tr><td class="k">Meta Graph API</td><td>Dev mode</td><td>Own-account publishing needs no App Review</td><td class="n">&#8377;0</td></tr>
+          <tr><td class="k">Canva</td><td>Free</td><td>Design-time only; never called at runtime</td><td class="n">&#8377;0</td></tr>
+          <tr><td class="k">Content APIs</td><td>Free</td><td>Keyless, or free keys well inside quota</td><td class="n">&#8377;0</td></tr>
+          <tr><td class="k">LLM</td><td>Free tier</td><td>~30 calls/mo; deterministic fallback if throttled</td><td class="n">&#8377;0</td></tr>
+          <tr><td class="k">Telegram</td><td>Free</td><td>Bot API has no paid tier</td><td class="n">&#8377;0</td></tr>
+          <tr><td class="k">Fonts</td><td>OFL / Apache</td><td>Chosen for redistribution rights, not just looks</td><td class="n">&#8377;0</td></tr>
+          <tr><td class="k">Image hosting</td><td>Free</td><td>raw.githubusercontent.com, ~300 KB/day</td><td class="n">&#8377;0</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="3">Recurring monthly</td><td class="n">&#8377;0</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <h3>Time &mdash; the investment that's actually real</h3>
+    <div class="tbl-scroll">
+      <table class="data">
+        <thead><tr><th>Category</th><th>Detail</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Initial build</td><td>Sections 08 phases 0–5, assuming you can already read Python</td><td class="n">16–20 h</td></tr>
+          <tr><td class="k">Template design</td><td>Canva card + CSS clone. The design iteration dominates, not the code</td><td class="n">3–5 h</td></tr>
+          <tr><td class="k">Steady-state ops</td><td>Glancing at a Telegram receipt each evening</td><td class="n">~1 min/day</td></tr>
+          <tr><td class="k">Maintenance</td><td>Feed shape changes, quota tweaks, dependency bumps</td><td class="n">10–20 min/mo</td></tr>
+          <tr><td class="k">Forced work</td><td>Graph API version migration, roughly every 18–24 months</td><td class="n">1–2 h/yr</td></tr>
+          <tr><td class="k">Editorial</td><td>Reviewing what the scorer picks and retuning weights</td><td class="n">30 min/mo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <h4>The non-obvious cost</h4>
+      <p>
+        Free tiers are free in cash and expensive in attention. You are the on-call engineer for
+        nine services you don't control. Budget for the fact that this system <em>will</em> break
+        two or three times in its first year, usually at 19:45.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span> Build roadmap</h2>
+    <p class="prose">
+      Ordered so that the riskiest unknown — whether Meta will publish for you at all — is settled
+      on day one, before you've invested in design or scoring. Each phase ends in something
+      testable.
+    </p>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="p-id">Phase 0</div>
+        <div class="p-body">
+          <h3>Prove publishing works</h3>
+          <p>Professional account, linked Page, Meta app in dev mode, tester role accepted, token in hand. Publish one hand-made JPEG from a hosted URL using two <code>curl</code> calls. Do not write a line of pipeline code until a post appears on your profile.</p>
+        </div>
+        <div class="p-time">2–3 h</div>
+      </div>
+      <div class="phase">
+        <div class="p-id">Phase 1</div>
+        <div class="p-body">
+          <h3>Harvest and select</h3>
+          <p>Wire the six sources, normalise into one item shape, write the scorer and the ledger. Run it for three days and read the top-5 by hand — you're validating taste, not code.</p>
+        </div>
+        <div class="p-time">3–4 h</div>
+      </div>
+      <div class="phase">
+        <div class="p-id">Phase 2</div>
+        <div class="p-body">
+          <h3>Design and render</h3>
+          <p>Canva card at 1080&times;1350 on OFL fonts, background export, CSS clone, Playwright screenshot. Test with your longest and shortest plausible headline — text overflow is where this stage fails.</p>
+        </div>
+        <div class="p-time">4–5 h</div>
+      </div>
+      <div class="phase">
+        <div class="p-id">Phase 3</div>
+        <div class="p-body">
+          <h3>Compose copy</h3>
+          <p>Deterministic caption builder first so you always have a working floor. Add the LLM polish layer behind a try/except that falls back silently.</p>
+        </div>
+        <div class="p-time">2–3 h</div>
+      </div>
+      <div class="phase">
+        <div class="p-id">Phase 4</div>
+        <div class="p-body">
+          <h3>Automate the clock</h3>
+          <p>Actions workflow, Worker cron, Telegram alerts, hold flag. Run three nights in <strong>shadow mode</strong> — everything executes except <code>media_publish</code>.</p>
+        </div>
+        <div class="p-time">2–3 h</div>
+      </div>
+      <div class="phase">
+        <div class="p-id">Phase 5</div>
+        <div class="p-body">
+          <h3>Harden, then go live</h3>
+          <p>Retries with backoff, missed-run detector, token refresh job, blocklist, ledger dedup. Flip publishing on and watch it closely for a week.</p>
+        </div>
+        <div class="p-time">3–4 h</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">09</span> Legal</h2>
+
+    <div class="note flag">
+      <h4>The one that can actually cost you the account</h4>
+      <p>
+        Automating Instagram through the <strong>official Graph API</strong> is permitted and is what
+        this design does. Automating it by driving the app or website — <code>instagrapi</code>,
+        <code>instabot</code>, Selenium against instagram.com, or any "no API key needed" library —
+        breaches the Platform Terms and is actively detected. The penalty is account restriction or
+        permanent loss. There is no version of this project worth that shortcut.
+      </p>
+    </div>
+
+    <div class="stack-lg">
+      <div class="stack">
+        <h3>Platform terms</h3>
+        <ul class="prose">
+          <li><strong>Publishing automation is fine.</strong> Engagement automation is not — no auto-follow, auto-like, auto-DM or auto-comment. Keep this system write-only to your own feed.</li>
+          <li><strong>Dev mode is a legitimate end state</strong> for a single-user app. You are not evading review; review exists for apps acting on <em>other</em> people's accounts.</li>
+          <li><strong>Respect the publishing quota</strong> (25–50 posts per rolling 24 h depending on the doc you read). At one post a day you have three orders of magnitude of headroom.</li>
+        </ul>
+      </div>
+
+      <div class="stack">
+        <h3>Copyright</h3>
+        <ul class="prose">
+          <li><strong>Facts aren't protected; expression is.</strong> "Company X shipped Y today" is free to state. The article's sentences describing it are not free to copy.</li>
+          <li><strong>Write your own summary, every time.</strong> This is the whole legal basis of the account. Never paste source paragraphs into the card or caption, and never let the LLM reproduce them verbatim.</li>
+          <li><strong>Attribute by name.</strong> Not legally sufficient on its own, but it establishes good faith, and it's what turns "scraper" into "curator" in a human reader's eyes.</li>
+          <li><strong>Never use the publisher's images.</strong> Press photos, article hero images and paywalled screenshots are the highest-risk asset you could put on a card. Your generated card sidesteps this entirely — a real advantage of the design in section 05.</li>
+          <li><strong>India (your likely jurisdiction):</strong> §52 of the Copyright Act 1957 provides <em>fair dealing</em> for reporting current events and for criticism or review. Note it is narrower than US fair use — it protects enumerated purposes, not a general balancing test. Original summary plus attribution sits comfortably inside it.</li>
+          <li><strong>US readers:</strong> 17 U.S.C. §107 fair use; a short transformative summary with attribution is a strong posture.</li>
+        </ul>
+      </div>
+
+      <div class="stack">
+        <h3>Trademarks and fonts</h3>
+        <ul class="prose">
+          <li>Naming a company to refer to that company is nominative use and is fine. Making its logo your card's dominant visual, or implying endorsement, is not.</li>
+          <li>Icon sets like Simple Icons are CC0 — but CC0 covers the <em>SVG file</em>, never the trademark it depicts. Public-domain artwork does not grant brand rights.</li>
+          <li>Font licensing is covered in section 05. It is the most commonly breached licence in exactly this kind of project.</li>
+        </ul>
+      </div>
+
+      <div class="stack">
+        <h3>AI disclosure</h3>
+        <ul class="prose">
+          <li>Meta requires labelling of realistic AI-generated media and applies automatic labels where it detects them. Text cards on a designed background are not realistic synthetic media and don't trigger this.</li>
+          <li>If you ever add AI-generated photographic imagery, label it. The EU AI Act's Article 50 transparency obligations for synthetic content became applicable in August 2026 — worth knowing about now rather than after the fact, even though a personal account has limited exposure.</li>
+          <li>An LLM writing your caption is not itself a disclosable event under any current rule. Many creators disclose anyway; that's an editorial call, not a legal one.</li>
+        </ul>
+      </div>
+
+      <div class="stack">
+        <h3>Data protection and disclosure</h3>
+        <ul class="prose">
+          <li>You process no third-party personal data — only public article metadata and your own credentials. India's DPDP Act 2023 and the GDPR are effectively out of scope.</li>
+          <li>Credentials in GitHub Secrets and Worker secrets, never in the repo. A leaked long-lived token is a full account-publishing compromise.</li>
+          <li>No sponsorship means no disclosure duty. The moment anyone pays you for a post, ASCI guidelines (India) or FTC endorsement rules (US) require clear labelling in the post itself.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <p>
+        This is an engineering read of publicly documented terms and statutes, not legal advice.
+        For a personal account posting original summaries with attribution, the risk profile is
+        genuinely low — but the analysis above is where to start if that ever changes.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span> Risk register</h2>
+
+    <div class="tbl-scroll">
+      <table class="data">
+        <thead>
+          <tr><th>ID</th><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Mitigation</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="k">R-01</td>
+            <td>Access token expires at day 60; pipeline dies silently</td>
+            <td><span class="chip hi">High</span></td>
+            <td><span class="chip hi">High</span></td>
+            <td>Business system-user token with no expiry; plus a 30-day refresh workflow and an alert 7 days before any known expiry</td>
+          </tr>
+          <tr>
+            <td class="k">R-02</td>
+            <td>Actions cron delayed 30–60 min or dropped entirely</td>
+            <td><span class="chip hi">High</span></td>
+            <td><span class="chip med">Med</span></td>
+            <td>75 min of slack; publish decoupled onto Worker cron; missed-run detector alerts if <code>post.json</code> is stale at T-0</td>
+          </tr>
+          <tr>
+            <td class="k">R-03</td>
+            <td>Auto-selected story is wrong, offensive or embarrassing</td>
+            <td><span class="chip med">Med</span></td>
+            <td><span class="chip hi">High</span></td>
+            <td>Keyword blocklist, source allowlist, minimum engagement floor, and the 70-minute abort window</td>
+          </tr>
+          <tr>
+            <td class="k">R-04</td>
+            <td>Container creation fails — Meta can't fetch the image URL</td>
+            <td><span class="chip med">Med</span></td>
+            <td><span class="chip med">Med</span></td>
+            <td>Verify HTTP 200 at stage 5; retry container creation 3&times; with backoff; alert with the raw API error</td>
+          </tr>
+          <tr>
+            <td class="k">R-05</td>
+            <td>Long headline overflows the card and ships broken</td>
+            <td><span class="chip med">Med</span></td>
+            <td><span class="chip med">Med</span></td>
+            <td>Hard character cap before render; CSS <code>clamp()</code> auto-fit; assert rendered text height in-page and fail the build rather than post it</td>
+          </tr>
+          <tr>
+            <td class="k">R-06</td>
+            <td>Duplicate story posted twice</td>
+            <td><span class="chip lo">Low</span></td>
+            <td><span class="chip med">Med</span></td>
+            <td>URL ledger committed to git, plus title-similarity check against the last 30 days</td>
+          </tr>
+          <tr>
+            <td class="k">R-07</td>
+            <td>Graph API version sunset breaks all calls at once</td>
+            <td><span class="chip med">Med</span></td>
+            <td><span class="chip hi">High</span></td>
+            <td>Version pinned in one constant; calendar reminder at the 18-month mark; migration is a 1–2 hour job if not left to the deadline</td>
+          </tr>
+          <tr>
+            <td class="k">R-08</td>
+            <td>Free tier changes or is withdrawn</td>
+            <td><span class="chip lo">Low</span></td>
+            <td><span class="chip med">Med</span></td>
+            <td>No component is load-bearing enough to be irreplaceable; each layer has a documented free substitute</td>
+          </tr>
+          <tr>
+            <td class="k">R-09</td>
+            <td>Account flagged for inauthentic or spammy behaviour</td>
+            <td><span class="chip lo">Low</span></td>
+            <td><span class="chip hi">High</span></td>
+            <td>Official API only; one post/day; varied captions; no engagement automation; no repeated hashtag blocks</td>
+          </tr>
+          <tr>
+            <td class="k">R-10</td>
+            <td>Copyright complaint from a publisher</td>
+            <td><span class="chip lo">Low</span></td>
+            <td><span class="chip med">Med</span></td>
+            <td>Original text only, own artwork, visible attribution; ledger gives you a full audit trail of what ran and when</td>
+          </tr>
+          <tr>
+            <td class="k">R-11</td>
+            <td>LLM fabricates a claim not in the source</td>
+            <td><span class="chip med">Med</span></td>
+            <td><span class="chip hi">High</span></td>
+            <td>LLM constrained to compress supplied text only; numeric and entity check against the source; deterministic fallback on any validation failure</td>
+          </tr>
+          <tr>
+            <td class="k">R-12</td>
+            <td>Leaked credentials in the public repo</td>
+            <td><span class="chip lo">Low</span></td>
+            <td><span class="chip hi">High</span></td>
+            <td>Secrets only in GitHub/Worker secret stores; enable push protection and secret scanning; never log token values</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <h4>Concentration of risk</h4>
+      <p>
+        R-01, R-02 and R-07 share a failure mode: <em>the system stops and nobody notices</em>. That's why
+        the Telegram receipt in stage 8 isn't a nice-to-have. A pipeline that reports nothing on
+        success is indistinguishable from a pipeline that has been dead for three weeks.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">11</span> Runbook</h2>
+    <div class="tbl-scroll">
+      <table class="data">
+        <thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>No Telegram receipt at 19:45</td><td>Build failed, or Worker didn't fire</td><td>Check the Actions run log, then the Worker's Cloudflare logs. Re-run via <code>workflow_dispatch</code> and publish manually.</td></tr>
+          <tr><td class="k">Error code 9</td><td>Daily publish quota reached</td><td>Query <code>GET /{ig-user-id}/content_publishing_limit</code> to confirm usage. At one post/day this means a retry loop ran away — cap retries.</td></tr>
+          <tr><td class="k">OAuthException 190</td><td>Token expired or revoked</td><td>Re-issue. If a password change caused it, the token cannot be refreshed and must be regenerated from scratch.</td></tr>
+          <tr><td>Container created, publish fails</td><td>Container older than 24 h, or aspect ratio rejected</td><td>Containers expire in 24 h — create and publish in the same run. Confirm the render is exactly 1080&times;1350.</td></tr>
+          <tr><td>Image URL fetch error</td><td>Repo turned private, or CDN not yet warm</td><td>Confirm repo visibility; curl the raw URL from outside your network.</td></tr>
+          <tr><td>Card renders with wrong font</td><td>Silent webfont fallback in headless Chromium</td><td>Embed the font as a base64 <code>@font-face</code> rather than linking it, and assert computed font-family before screenshotting.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stack">
+      <h3>Weekly and monthly</h3>
+      <ul class="prose">
+        <li><strong>Weekly:</strong> skim the last seven posts. If two feel off, retune the scorer weights rather than adding blocklist entries.</li>
+        <li><strong>Monthly:</strong> confirm the token refresh job ran; check Actions minutes if the repo is private; bump dependencies.</li>
+        <li><strong>Quarterly:</strong> check the Meta changelog for deprecations affecting the two endpoints you use.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">12</span> Decisions I need from you</h2>
+    <p class="prose">
+      Everything above is buildable as specified. These four choices change what gets written, and
+      I've defaulted them where a default is obvious — tell me only where you disagree.
+    </p>
+    <ol class="prose">
+      <li><strong>The niche lane.</strong> "Tech" is too broad for the scorer to be useful. Which slice — AI shipping news, developer tooling, security, open source, or infrastructure?</li>
+      <li><strong>Canva substitution.</strong> Section 05 recommends the HTML/CSS clone. Confirm, or tell me you want to pursue Canva Enterprise and accept the cost.</li>
+      <li><strong>Abort window.</strong> Keep the Telegram preview at 18:35, or run fully silent and only alert on failure?</li>
+      <li><strong>Repo visibility.</strong> Public (free minutes, free hosting, better cron priority) or private (2,000 min/mo, and you'd need a separate free image host)?</li>
+    </ol>
+    <p class="prose">
+      Answer those and phase 0 is a two-hour job — and phase 0 is the one that tells you whether
+      the whole thing flies, because it ends with a real post on your real profile.
+    </p>
+  </section>
+
+  <footer>
+    <div>Instapost Nightly &mdash; end-to-end build plan &middot; drafted 16 Aug 2026</div>
+    <div>All timings Asia/Kolkata (UTC+5:30) &middot; T-0 = 19:45 IST = 14:15 UTC</div>
+    <div>Verify Meta, Canva and Cloudflare limits against current docs before phase 0 &mdash; all three change without much notice.</div>
+  </footer>
+
+</div>

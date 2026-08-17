@@ -1,0 +1,8 @@
+requests>=2.32
+feedparser>=6.0.11
+Jinja2>=3.1.4
+playwright>=1.47
+
+# Windows has no system zoneinfo database, so Asia/Kolkata cannot be resolved
+# without this. Harmless on the Linux CI runner, required for local runs.
+tzdata>=2024.1

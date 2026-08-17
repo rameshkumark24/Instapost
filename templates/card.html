@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    {{ brand.ink }};
+    --paper:  {{ brand.paper }};
+    --accent: {{ brand.accent }};
+    --muted:  {{ brand.muted }};
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: {{ w }}px;
+    height: {{ h }}px;
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* A faint off-axis glow keeps the flat background from reading as a slide */
+  .bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(120% 80% at 88% -10%, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 55%),
+      radial-gradient(90% 60% at -10% 110%, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 60%);
+  }
+
+  .frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 88px 84px 76px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* --- top rail --- */
+
+  .rail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .rail .label { color: var(--accent); }
+
+  .rule {
+    height: 3px;
+    background: var(--accent);
+    width: 96px;
+    margin-top: 34px;
+  }
+
+  /* --- headline --- */
+
+  /* Bottom-aligned so the headline sits directly above its supporting line.
+     The slack collects as one deliberate band under the rail rather than as
+     two dead gaps sandwiching the type. */
+  .headline-wrap {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px 0 46px;
+    min-height: 0;
+  }
+
+  #headline {
+    font-size: 104px;              /* JS shrinks this until it fits */
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+    text-wrap: balance;
+    font-variation-settings: "opsz" 96;
+  }
+
+  /* --- body --- */
+
+  #body {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 1.52;
+    color: color-mix(in srgb, var(--paper) 74%, var(--ink));
+    border-left: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    padding-left: 26px;
+    max-width: 92%;
+  }
+
+  /* --- footer --- */
+
+  .footer {
+    margin-top: 52px;
+    padding-top: 30px;
+    border-top: 1px solid color-mix(in srgb, var(--paper) 16%, transparent);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 23px;
+    letter-spacing: 0.06em;
+  }
+
+  .footer .src { color: var(--paper); font-weight: 600; }
+  .footer .src span { color: var(--muted); font-weight: 400; }
+  .footer .handle { color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="frame">
+
+    <div class="rail">
+      <div class="label">{{ brand.label }}</div>
+      <div class="date">{{ date }}</div>
+    </div>
+    <div class="rule"></div>
+
+    <div class="headline-wrap">
+      <h1 id="headline">{{ headline }}</h1>
+    </div>
+
+    <p id="body">{{ body }}</p>
+
+    <div class="footer">
+      <div class="src"><span>via</span> {{ publication }}</div>
+      <div class="handle">{{ brand.handle }}</div>
+    </div>
+
+  </div>
+
+<script>
+  // Shrink the headline until it fits its box. Doing this in-page rather than
+  // with CSS clamp() means the renderer can assert the real outcome afterwards.
+  (function fit() {
+    const el = document.getElementById("headline");
+    const box = el.parentElement;
+    let size = 104;
+    while (size > 44) {
+      el.style.fontSize = size + "px";
+      if (el.scrollHeight <= box.clientHeight && el.scrollWidth <= box.clientWidth) break;
+      size -= 2;
+    }
+    window.__fit = { headlineSize: size };
+  })();
+</script>
+</body>
+</html>

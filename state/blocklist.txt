@@ -1,0 +1,23 @@
+# Substring match against the story title, case-insensitive.
+# Anything matching here scores zero and can never be selected.
+# This is your last line of defence on an unattended pipeline -- be generous.
+
+who is hiring
+ask hn
+tell hn
+hiring thread
+freelancer? seeking freelancer
+nsfw
+onlyfans
+gambling
+casino
+betting
+crypto giveaway
+airdrop
+pump and dump
+died
+dies at
+obituary
+shooting
+massacre
+terror

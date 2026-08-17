@@ -1,0 +1,23 @@
+name = "instapost-publisher"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+# 14:15 UTC = 19:45 Asia/Kolkata.
+# Cloudflare cron has one-minute granularity and no queue behind it, which is
+# why the publish step lives here rather than in GitHub Actions.
+#
+# NOTE: this is a fixed UTC time. India does not observe DST so it is stable,
+# but if you move to a DST-observing timezone you must shift this twice a year.
+[triggers]
+crons = ["15 14 * * *"]
+
+[vars]
+REPO = "rameshkumark24/Instapost"
+GRAPH_VERSION = "v21.0"          # pin explicitly; check Meta's changelog yearly
+
+# Secrets are set with `wrangler secret put NAME`, never in this file:
+#   IG_USER_ID   Instagram professional account id
+#   IG_TOKEN     long-lived or system-user access token
+#   TG_TOKEN     Telegram bot token
+#   TG_CHAT      Telegram chat id
+#   MANUAL_KEY   shared secret for the /run test endpoint

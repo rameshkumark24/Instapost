@@ -1,0 +1,74 @@
+name: build-nightly-post
+
+on:
+  # 13:00 UTC = 18:30 IST. Deliberately 75 minutes before the 19:45 publish:
+  # the Actions scheduler is best-effort and drifts 30-60 minutes on free tiers,
+  # so the slack absorbs the drift without moving the publish time.
+  schedule:
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Build without allowing the Worker to publish"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nightly-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Build tonight's post
+        env:
+          # DRY_RUN defaults to true in config.py. The scheduled run sets it
+          # to false explicitly, so shadow mode is the safe default everywhere.
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+        run: python -m src.pipeline
+
+      - name: Commit card and ledger
+        run: |
+          git config user.name  "instapost-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist state
+          git diff --staged --quiet && echo "nothing to commit" && exit 0
+          git commit -m "post: $(TZ=Asia/Kolkata date +%F)"
+          git push
+
+      - name: Verify the image is publicly reachable
+        # Meta fetches the image from this URL at 19:45. If it 404s, the whole
+        # run is already lost -- better to know now than to find out silently.
+        run: |
+          URL="https://raw.githubusercontent.com/${{ github.repository }}/main/dist/card.jpg"
+          for i in 1 2 3 4 5; do
+            CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+            [ "$CODE" = "200" ] && echo "reachable" && exit 0
+            echo "attempt $i: HTTP $CODE, retrying"
+            sleep 10
+          done
+          echo "::error::card.jpg not reachable at $URL"
+          exit 1
