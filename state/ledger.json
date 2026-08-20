@@ -12,5 +12,12 @@
   "url": "https://github.com/anomalyco/opencode",
   "source": "github",
   "posted_at": "2026-08-19T13:42:29+00:00"
+ },
+ {
+  "key": "github.com/ohmyzsh/ohmyzsh",
+  "title": "ohmyzsh: 🙃   A delightful community-driven (with 2,500+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community.",
+  "url": "https://github.com/ohmyzsh/ohmyzsh",
+  "source": "github",
+  "posted_at": "2026-08-20T13:40:35+00:00"
  }
 ]
