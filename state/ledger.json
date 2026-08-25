@@ -47,5 +47,12 @@
   "url": "https://fzakaria.com/2026/08/23/your-executable-is-a-sqlite-database",
   "source": "lobsters",
   "posted_at": "2026-08-24T13:45:08+00:00"
+ },
+ {
+  "key": "github.com/ollama/ollama",
+  "title": "ollama: Get up and running with Kimi-K2.6, GLM-5.2, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+  "url": "https://github.com/ollama/ollama",
+  "source": "github",
+  "posted_at": "2026-08-25T13:43:38+00:00"
  }
 ]
