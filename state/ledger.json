@@ -54,5 +54,12 @@
   "url": "https://github.com/ollama/ollama",
   "source": "github",
   "posted_at": "2026-08-25T13:43:38+00:00"
+ },
+ {
+  "key": "github.com/avelino/awesome-go",
+  "title": "awesome-go: A curated list of awesome Go frameworks, libraries and software",
+  "url": "https://github.com/avelino/awesome-go",
+  "source": "github",
+  "posted_at": "2026-08-26T13:49:09+00:00"
  }
 ]
