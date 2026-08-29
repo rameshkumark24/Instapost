@@ -75,5 +75,12 @@
   "url": "https://github.com/huggingface/transformers",
   "source": "github",
   "posted_at": "2026-08-28T22:50:25+00:00"
+ },
+ {
+  "key": "github.com/tensorflow/tensorflow",
+  "title": "tensorflow: An Open Source Machine Learning Framework for Everyone",
+  "url": "https://github.com/tensorflow/tensorflow",
+  "source": "github",
+  "posted_at": "2026-08-29T16:56:53+00:00"
  }
 ]
