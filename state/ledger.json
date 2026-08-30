@@ -82,5 +82,12 @@
   "url": "https://github.com/tensorflow/tensorflow",
   "source": "github",
   "posted_at": "2026-08-29T16:56:53+00:00"
+ },
+ {
+  "key": "github.com/microsoft/vscode",
+  "title": "vscode: Visual Studio Code",
+  "url": "https://github.com/microsoft/vscode",
+  "source": "github",
+  "posted_at": "2026-08-30T17:07:07+00:00"
  }
 ]
