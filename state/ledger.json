@@ -96,5 +96,12 @@
   "url": "https://github.com/obra/superpowers",
   "source": "github",
   "posted_at": "2026-08-31T19:20:23+00:00"
+ },
+ {
+  "key": "mvakde.github.io/blog/44-on-arc-1",
+  "title": "I trained a small transformer in 1.5hrs and it beats many LLMs",
+  "url": "https://mvakde.github.io/blog/44-on-arc-1/",
+  "source": "hn",
+  "posted_at": "2026-09-01T17:06:13+00:00"
  }
 ]
