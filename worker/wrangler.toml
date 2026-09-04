@@ -13,10 +13,12 @@ crons = ["15 14 * * *"]
 
 [vars]
 REPO = "rameshkumark24/Instapost"
+CHANNELS = "news,flirt"
 GRAPH_VERSION = "v21.0"          # pin explicitly; check Meta's changelog yearly
 
 # Secrets are set with `wrangler secret put NAME`, never in this file:
-#   IG_USER_ID   Instagram professional account id
+#   IG_USER_ID_NEWS   Instagram account id for the news channel
+#   IG_USER_ID_FLIRT  Instagram account id for the tech-metaphor channel
 #   IG_TOKEN     long-lived or system-user access token
 #   TG_TOKEN     Telegram bot token
 #   TG_CHAT      Telegram chat id

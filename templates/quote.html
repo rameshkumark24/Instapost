@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    {{ brand.ink }};
+    --paper:  {{ brand.paper }};
+    --accent: {{ accent }};
+    --muted:  {{ brand.muted }};
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: {{ w }}px; height: {{ h }}px; overflow: hidden; }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    /* Monospace throughout: the card is a line of code as much as a line of
+       writing, and the even rhythm is what makes the term drops land. */
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(100% 70% at 50% -20%, color-mix(in srgb, var(--accent) 16%, transparent) 0%, transparent 60%),
+      radial-gradient(80% 50% at 50% 120%, color-mix(in srgb, var(--accent) 9%, transparent) 0%, transparent 55%);
+  }
+
+  .frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 96px 92px 84px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .label {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.85;
+  }
+
+  /* The quote is optically centred, with slightly more room above than below
+     so it does not look like it is sliding off the bottom of the card. */
+  .quote-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 30px 0 66px;
+    min-height: 0;
+  }
+
+  #quote {
+    font-size: 62px;             /* JS shrinks this until it fits */
+    font-weight: 400;
+    line-height: 1.42;
+    letter-spacing: -0.01em;
+    color: color-mix(in srgb, var(--paper) 82%, var(--ink));
+    text-wrap: pretty;
+  }
+
+  /* The technical term is the payload. Weight and colour carry it, so the
+     card still reads at thumbnail size where the sentence does not. */
+  #quote b {
+    font-weight: 600;
+    color: var(--paper);
+    letter-spacing: 0.01em;
+    /* A term split across two lines destroys the payload -- "PRIMARY / KEY"
+       reads as two words, not as one concept. Keeping it unbreakable makes the
+       fit script shrink the type instead, which is the trade we want. */
+    white-space: nowrap;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 30px;
+    border-top: 1px solid color-mix(in srgb, var(--paper) 14%, transparent);
+  }
+
+  .handle { font-size: 26px; font-weight: 600; letter-spacing: 0.08em; color: var(--paper); }
+  .cta    { font-size: 21px; letter-spacing: 0.1em; color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="frame">
+
+    <div class="label">{{ label }}</div>
+
+    <div class="quote-wrap">
+      <div id="quote">{{ quote_html }}</div>
+    </div>
+
+    <div class="footer">
+      <div class="handle">{{ handle }}</div>
+      <div class="cta">// follow for more</div>
+    </div>
+
+  </div>
+
+<script>
+  // Same fit strategy as the news card: start at the largest size the box can
+  // hold and shrink, so a short line fills the card instead of floating in it.
+  (function fit() {
+    const el = document.getElementById("quote");
+    const box = el.parentElement;
+    let size = 78;
+    while (size > 30) {
+      el.style.fontSize = size + "px";
+      if (el.scrollHeight <= box.clientHeight && el.scrollWidth <= box.clientWidth) break;
+      size -= 2;
+    }
+    window.__fit = { quoteSize: size };
+  })();
+</script>
+</body>
+</html>

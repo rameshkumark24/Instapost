@@ -30,7 +30,8 @@ logging.basicConfig(
 log = logging.getLogger("pipeline")
 
 ROOT = Path(__file__).resolve().parent.parent
-DIST = ROOT / "dist"
+CHANNEL = cfg.CHANNELS["news"]
+DIST = ROOT / "dist" / CHANNEL["dist"]
 POST_JSON = DIST / "post.json"
 HOLD_FLAG = ROOT / "state" / "hold.flag"
 
@@ -60,11 +61,12 @@ def main() -> int:
         post = compose(winner)
 
         stage = "render"
-        image = render(post)
+        image = render(post, DIST / "card.jpg")
 
         stage = "stage"
         post.update(
             {
+                "channel": "news",
                 "date": today.strftime("%Y-%m-%d"),
                 "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                 "image": image.name,
@@ -72,6 +74,7 @@ def main() -> int:
                 "dry_run": cfg.DRY_RUN,
             }
         )
+        POST_JSON.parent.mkdir(parents=True, exist_ok=True)
         POST_JSON.write_text(json.dumps(post, indent=2, ensure_ascii=False), encoding="utf-8")
         log.info("staged %s", POST_JSON.relative_to(ROOT))
 

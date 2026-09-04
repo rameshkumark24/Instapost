@@ -31,15 +31,34 @@ export default {
   },
 };
 
+/**
+ * Publishes every configured channel. Each channel is a separate Instagram
+ * account with its own IG_USER_ID, so they never contend for the same
+ * per-account publish quota, and one failing must not stop the other.
+ */
 async function run(env) {
+  const names = (env.CHANNELS || "news").split(",").map((s) => s.trim()).filter(Boolean);
+  const results = {};
+  for (const name of names) {
+    const userId = env[`IG_USER_ID_${name.toUpperCase()}`];
+    if (!userId) {
+      results[name] = { skipped: `IG_USER_ID_${name.toUpperCase()} not set` };
+      continue;
+    }
+    results[name] = await runChannel(env, name, userId);
+  }
+  return results;
+}
+
+async function runChannel(env, channel, userId) {
   try {
-    const base = `https://raw.githubusercontent.com/${env.REPO}/main/dist`;
+    const base = `https://raw.githubusercontent.com/${env.REPO}/main/dist/${channel}`;
     const post = await loadPost(base);
 
     // --- guards ------------------------------------------------------------
 
     if (!post) {
-      await alert(env, "⚠️ No post.json — tonight's build failed or skipped.");
+      await alert(env, `⚠️ [${channel}] No post.json — build failed or skipped.`);
       return { skipped: "no post.json" };
     }
 
@@ -47,14 +66,14 @@ async function run(env) {
     if (post.date !== today) {
       await alert(
         env,
-        `⚠️ post.json is dated ${post.date}, today is ${today}. ` +
+        `⚠️ [${channel}] post.json is dated ${post.date}, today is ${today}. ` +
           `Build did not run. Nothing published.`
       );
       return { skipped: "stale post.json" };
     }
 
     if (post.hold) {
-      await alert(env, "⏸ hold.flag was set — nothing published tonight.");
+      await alert(env, `⏸ [${channel}] hold.flag was set — nothing published.`);
       return { skipped: "hold" };
     }
 
@@ -65,7 +84,7 @@ async function run(env) {
 
     // --- publish -----------------------------------------------------------
 
-    const ig = `${GRAPH}/${env.GRAPH_VERSION}/${env.IG_USER_ID}`;
+    const ig = `${GRAPH}/${env.GRAPH_VERSION}/${userId}`;
     const imageUrl = `${base}/${post.image}`;
 
     const head = await fetch(imageUrl, { method: "HEAD" });

@@ -126,6 +126,39 @@ HASHTAG_POOL = [
     "#technews", "#buildinpublic", "#computerscience",
 ]
 
+# --- channels --------------------------------------------------------------
+# Two accounts, one repo, one Meta app. Each channel renders to its own folder
+# under dist/ and is published by its own Worker cron against its own
+# IG_USER_ID. Publish limits are per-account, so they never contend.
+
+CHANNELS = {
+    "news": {
+        "template": "card.html",
+        "dist": "news",
+        "handle": "@yourhandle",          # <-- news account
+        "label": "DAILY TECH BRIEF",
+        "accent": "#FF6B35",
+    },
+    "flirt": {
+        "template": "quote.html",
+        "dist": "flirt",
+        "handle": "@yourhandle2",         # <-- tech-flirt account
+        "label": "// TECH, BUT MAKE IT PERSONAL",
+        "accent": "#F0508A",
+    },
+}
+
+# How many cards to draft per batch, and the approved-queue level below which
+# the next batch is drafted. Ten spare days is enough warning to review at
+# leisure rather than the evening it runs dry.
+FLIRT_BATCH_SIZE = 12
+FLIRT_REFILL_BELOW = 10
+
+FLIRT_HASHTAGS = [
+    "#programmerhumor", "#codinglife", "#devlife", "#sqljokes",
+    "#programming", "#softwareengineer", "#codingmemes", "#techhumor",
+]
+
 # --- behaviour -------------------------------------------------------------
 
 def _flag(name: str, default: bool) -> bool:
