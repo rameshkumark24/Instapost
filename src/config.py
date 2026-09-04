@@ -46,6 +46,21 @@ NICHE_NEGATIVE: dict[str, float] = {
 WEIGHTS = {"recency": 0.30, "engagement": 0.30, "fit": 0.25, "novelty": 0.15}
 
 RECENCY_HALFLIFE_H = 36.0           # score decays to zero over this many hours
+
+# "Fresh" means different things per source. A news story is stale in a day; a
+# repo created three weeks ago is still a new project. Without this, filtering
+# GitHub on created_at (rather than pushed_at) would zero out every repo, since
+# almost nothing gains 150 stars within 36 hours of being created.
+RECENCY_HALFLIFE_BY_SOURCE = {
+    "github": 24 * 30.0,
+    "arxiv": 24 * 5.0,
+}
+
+# No single source may quietly become the whole account. GitHub supplied 13 of
+# the first 17 picks; this pulls a dominant source back without silencing it.
+DIVERSITY_LOOKBACK = 10
+DIVERSITY_FREE_SHARE = 0.34         # share below which there is no penalty
+DIVERSITY_MAX_PENALTY = 0.35
 MIN_SCORE = 0.30                    # below this we publish nothing rather than junk
 NOVELTY_LOOKBACK_DAYS = 30          # how far back the dedup check reaches
 
@@ -63,7 +78,11 @@ ENGAGEMENT_DEFAULT = 0.45
 # --- sources ---------------------------------------------------------------
 
 HN_MIN_POINTS = 120
-GITHUB_MIN_STARS = 200
+
+# Repos must be genuinely new. Sorting all of GitHub by absolute stars just
+# returns the same famous repos every night -- see github_trending().
+GITHUB_MIN_STARS = 150
+GITHUB_MAX_AGE_D = 45
 HARVEST_WINDOW_H = 48
 
 # arXiv announces in weekday batches, so on a Monday the newest preprints are

@@ -52,6 +52,10 @@ class Ledger:
                 out.append(e.get("title", ""))
         return out
 
+    def recent_sources(self, n: int) -> list[str]:
+        """Sources of the last n picks, newest last. Feeds the diversity check."""
+        return [e.get("source", "") for e in self.entries[-n:]]
+
     def record(self, *, key: str, title: str, url: str, source: str) -> None:
         self.entries.append(
             {

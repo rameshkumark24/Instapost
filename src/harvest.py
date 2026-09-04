@@ -143,11 +143,23 @@ def _repo_title(repo: dict) -> str:
 
 
 def github_trending() -> list[Item]:
-    """Repos pushed recently that already have real traction."""
-    date = (datetime.now(timezone.utc) - timedelta(days=7)).strftime("%Y-%m-%d")
+    """Repos that are genuinely NEW and already gaining traction.
+
+    The obvious query -- most-starred repos with a recent push -- is wrong, and
+    ran in production for two weeks before the ledger made it obvious. Sorting
+    by absolute stars returns the most famous repos on GitHub, and because they
+    are pushed hourly they also score a perfect recency every night forever.
+    The account posted vscode, tensorflow, ohmyzsh and awesome-python as if
+    they were news.
+
+    Two changes fix it: filter on `created`, not `pushed`, and carry created_at
+    through as the item's date so `recency` means "this project is new" rather
+    than "somebody touched it today".
+    """
+    since = (datetime.now(timezone.utc) - timedelta(days=cfg.GITHUB_MAX_AGE_D)).strftime("%Y-%m-%d")
     url = (
         "https://api.github.com/search/repositories"
-        f"?q=pushed:>{date}+stars:>{cfg.GITHUB_MIN_STARS}"
+        f"?q=created:>{since}+stars:>{cfg.GITHUB_MIN_STARS}"
         "&sort=stars&order=desc&per_page=30"
     )
     headers = {"Accept": "application/vnd.github+json"}
@@ -156,14 +168,14 @@ def github_trending() -> list[Item]:
 
     out = []
     for r in _get(url, headers=headers).json().get("items", []):
-        pushed = datetime.fromisoformat(r["pushed_at"].replace("Z", "+00:00"))
+        created = datetime.fromisoformat(r["created_at"].replace("Z", "+00:00"))
         out.append(
             Item(
                 title=_repo_title(r),
                 url=r["html_url"],
                 source="github",
                 publication="GitHub",
-                published=pushed,
+                published=created,
                 engagement=float(r.get("stargazers_count") or 0),
                 summary=(r.get("description") or "").strip(),
             )

@@ -25,8 +25,9 @@ def _tokens(text: str) -> set[str]:
 
 
 def recency(item: Item) -> float:
+    halflife = cfg.RECENCY_HALFLIFE_BY_SOURCE.get(item.source, cfg.RECENCY_HALFLIFE_H)
     age_h = (datetime.now(timezone.utc) - item.published).total_seconds() / 3600
-    return max(0.0, 1.0 - age_h / cfg.RECENCY_HALFLIFE_H)
+    return max(0.0, 1.0 - age_h / halflife)
 
 
 def engagement(item: Item) -> float:
@@ -59,7 +60,24 @@ def novelty(item: Item, recent_titles: list[str]) -> float:
     return 1.0 - worst_overlap
 
 
-def score_item(item: Item, ledger: Ledger, recent_titles: list[str]) -> float:
+def diversity(item: Item, recent_sources: list[str]) -> float:
+    """Multiplier that pulls back a source which has been dominating.
+
+    Not a hard quota. A genuinely outstanding story from an over-represented
+    source should still win; this only stops a source taking the account by
+    default, which is what produced 13 GitHub picks out of the first 17.
+    """
+    if not recent_sources:
+        return 1.0
+    share = recent_sources.count(item.source) / len(recent_sources)
+    excess = max(0.0, share - cfg.DIVERSITY_FREE_SHARE)
+    span = 1.0 - cfg.DIVERSITY_FREE_SHARE
+    return 1.0 - cfg.DIVERSITY_MAX_PENALTY * (excess / span if span else 0.0)
+
+
+def score_item(
+    item: Item, ledger: Ledger, recent_titles: list[str], recent_sources: list[str]
+) -> float:
     if ledger.contains(item.key()):
         return 0.0
     if ledger.blocked(item.title):
@@ -72,15 +90,18 @@ def score_item(item: Item, ledger: Ledger, recent_titles: list[str]) -> float:
         "fit": niche_fit(item),
         "novelty": novelty(item, recent_titles),
     }
+    base = sum(cfg.WEIGHTS[k] * v for k, v in parts.items())
+    parts["diversity"] = diversity(item, recent_sources)
     item.score_parts = parts
-    item.score = sum(cfg.WEIGHTS[k] * v for k, v in parts.items())
+    item.score = base * parts["diversity"]
     return item.score
 
 
 def rank(items: list[Item], ledger: Ledger) -> list[Item]:
     recent_titles = ledger.recent_titles(cfg.NOVELTY_LOOKBACK_DAYS)
+    recent_sources = ledger.recent_sources(cfg.DIVERSITY_LOOKBACK)
     for it in items:
-        score_item(it, ledger, recent_titles)
+        score_item(it, ledger, recent_titles, recent_sources)
     return sorted((i for i in items if i.score > 0), key=lambda i: i.score, reverse=True)
 
 
@@ -97,8 +118,9 @@ def select(items: list[Item], ledger: Ledger) -> Item:
     for i, it in enumerate(ranked[:5], 1):
         p = it.score_parts
         log.info(
-            "%d. [%.3f] r=%.2f e=%.2f f=%.2f n=%.2f  %s",
-            i, it.score, p["recency"], p["engagement"], p["fit"], p["novelty"], it.title[:64],
+            "%d. [%.3f] r=%.2f e=%.2f f=%.2f n=%.2f d=%.2f  %s",
+            i, it.score, p["recency"], p["engagement"], p["fit"], p["novelty"],
+            p["diversity"], it.title[:60],
         )
 
     winner = ranked[0]

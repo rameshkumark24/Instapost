@@ -83,7 +83,7 @@
   }
 
   #headline {
-    font-size: 104px;              /* JS shrinks this until it fits */
+    font-size: 148px;              /* starting size; JS shrinks until it fits */
     font-weight: 800;
     line-height: 1.02;
     letter-spacing: -0.028em;
@@ -149,10 +149,15 @@
 <script>
   // Shrink the headline until it fits its box. Doing this in-page rather than
   // with CSS clamp() means the renderer can assert the real outcome afterwards.
+  //
+  // Starts at the largest size the card can hold, not at a typical size: the
+  // first version began at 104px and only ever shrank, so a short headline was
+  // rendered at 104px inside a 700px box and left the top half of the card
+  // empty. Starting large and shrinking makes the type fill the space it has.
   (function fit() {
     const el = document.getElementById("headline");
     const box = el.parentElement;
-    let size = 104;
+    let size = 148;
     while (size > 44) {
       el.style.fontSize = size + "px";
       if (el.scrollHeight <= box.clientHeight && el.scrollWidth <= box.clientWidth) break;

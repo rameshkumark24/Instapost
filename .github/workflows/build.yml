@@ -1,11 +1,18 @@
 name: build-nightly-post
 
 on:
-  # 13:00 UTC = 18:30 IST. Deliberately 75 minutes before the 19:45 publish:
-  # the Actions scheduler is best-effort and drifts 30-60 minutes on free tiers,
-  # so the slack absorbs the drift without moving the publish time.
+  # Two crons, both hours before the 14:15 UTC publish.
+  #
+  # 75 minutes of slack was not enough. Measured over the first 18 runs the
+  # scheduler drifted +26m to +590m, and 8 runs landed after the publish window
+  # -- the last six in a row. The publish time cannot move, so the build moves
+  # instead, and a second cron covers the case where the first is dropped
+  # outright (which the free tier does under load).
+  #
+  # The job is idempotent: whichever fires first builds, the other exits early.
   schedule:
-    - cron: "0 13 * * *"
+    - cron: "0 4 * * *"     # 09:30 IST, primary   -- 10h15m of slack
+    - cron: "0 9 * * *"     # 14:30 IST, backup    --  5h15m of slack
   workflow_dispatch:
     inputs:
       dry_run:
