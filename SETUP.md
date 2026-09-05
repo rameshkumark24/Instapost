@@ -46,7 +46,7 @@ before relying on it.
 
 **Route B — long-lived user token (60 days, must be refreshed).**
 Get a short-lived token from the Graph API Explorer, exchange it for a
-long-lived one, and keep `.github/workflows/refresh-token.yml` enabled. This
+long-lived one, and rely on `.github/workflows/token-health.yml` to warn you. This
 token dies permanently if it ever goes 60 days without a refresh.
 
 Get your Instagram user id:
@@ -87,8 +87,10 @@ every later phase assumes this works.
    Actions minutes, better scheduler priority, and free image hosting at
    `raw.githubusercontent.com`. Secrets stay encrypted and unreadable.
 2. Edit [`src/config.py`](src/config.py):
-   - `BRAND["handle"]` — your Instagram handle. **This is on every card.**
-   - `BRAND` colours and `label` to taste.
+   - `CHANNELS["news"]["handle"]` and `CHANNELS["flirt"]["handle"]` — the two
+     Instagram handles. **These print on every card**, and a live build now
+     refuses to run while either is still a placeholder.
+   - `CHANNELS[...]["label"]` and `["accent"]`, plus `BRAND` colours, to taste.
    - `NICHE_TERMS` / `NICHE_NEGATIVE` — the editorial lane. This is the one
      knob that decides what the account is about.
 3. Edit [`worker/wrangler.toml`](worker/wrangler.toml): set `REPO` to
@@ -105,9 +107,17 @@ playwright install chromium
 python -m src.pipeline
 ```
 
-`DRY_RUN` defaults to true, so this builds `dist/card.jpg` and `dist/post.json`
-and publishes nothing. Open the card. Iterate on
-[`templates/card.html`](templates/card.html) until you like it.
+`DRY_RUN` defaults to true, so this builds `dist/news/card.jpg` and
+`dist/news/post.json` and publishes nothing. Run `python -m src.pipeline_flirt`
+for the second account. Open both cards and iterate on
+[`templates/card.html`](templates/card.html) and
+[`templates/quote.html`](templates/quote.html) until you like them.
+
+Run the tests before you change scoring or the safety gates:
+
+```bash
+python -m unittest discover -s tests -v
+```
 
 ---
 
@@ -121,7 +131,7 @@ and publishes nothing. Open the card. Iterate on
 | `TG_CHAT` | yes | Your chat id from [@userinfobot](https://t.me/userinfobot) |
 | `GEMINI_API_KEY` | no | Free tier at [aistudio.google.com](https://aistudio.google.com) |
 | `GROQ_API_KEY` | no | Alternative to Gemini |
-| `IG_TOKEN` | only for route B | Used by the refresh workflow |
+| `IG_TOKEN` | recommended | Used by `token-health.yml` to warn before expiry |
 
 Without an LLM key the deterministic composer is used, which always works. It
 is the floor, not a degraded mode.
@@ -131,7 +141,8 @@ is the floor, not a degraded mode.
 ```bash
 cd worker
 npx wrangler login
-npx wrangler secret put IG_USER_ID
+npx wrangler secret put IG_USER_ID_NEWS
+npx wrangler secret put IG_USER_ID_FLIRT
 npx wrangler secret put IG_TOKEN
 npx wrangler secret put TG_TOKEN
 npx wrangler secret put TG_CHAT

@@ -1,0 +1,555 @@
+<title>Instapost Go-Live</title>
+<style>
+  :root {
+    --paper:     #F0EEEA;
+    --surface:   #FAF9F6;
+    --surface-2: #E6E3DC;
+    --ink:       #1A1714;
+    --ink-soft:  #4A443C;
+    --muted:     #6E675E;
+    --rule:      #D6D2CA;
+    --rule-hard: #B9B3A8;
+    --accent:    #B4530A;
+    --ok:        #3C6E47;
+    --ok-bg:     #E2EAE2;
+    --crit:      #93242B;
+    --crit-bg:   #F1E0DF;
+    --accent-bg: #F3E5D7;
+    --mono: ui-monospace, "Cascadia Mono", "SF Mono", "Segoe UI Mono", Consolas, "Roboto Mono", monospace;
+    --sans: system-ui, -apple-system, "Segoe UI Variable Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #151311; --surface: #1E1B18; --surface-2: #272320;
+      --ink: #E9E4DB; --ink-soft: #C3BCB1; --muted: #948C81;
+      --rule: #302B26; --rule-hard: #443D36;
+      --accent: #E8843C; --ok: #7FB68C; --ok-bg: #1D2A20;
+      --crit: #DE8189; --crit-bg: #2E1D1E; --accent-bg: #2E2118;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #151311; --surface: #1E1B18; --surface-2: #272320;
+    --ink: #E9E4DB; --ink-soft: #C3BCB1; --muted: #948C81;
+    --rule: #302B26; --rule-hard: #443D36;
+    --accent: #E8843C; --ok: #7FB68C; --ok-bg: #1D2A20;
+    --crit: #DE8189; --crit-bg: #2E1D1E; --accent-bg: #2E2118;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 24px 96px; display: flex; flex-direction: column; gap: 44px; }
+  .prose { max-width: 66ch; }
+
+  /* --- masthead --- */
+
+  header { padding-top: 56px; display: flex; flex-direction: column; gap: 20px; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin: 0;
+  }
+
+  h1 {
+    font-family: var(--mono); font-size: clamp(32px, 5.5vw, 48px); font-weight: 600;
+    letter-spacing: -0.02em; line-height: 1.05; margin: 0; text-wrap: balance;
+  }
+
+  .standfirst { font-size: 18px; color: var(--ink-soft); margin: 0; max-width: 62ch; }
+
+  .state {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 4px;
+  }
+  .state div { background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 3px; }
+  .state dt { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .state dd { margin: 0; font-family: var(--mono); font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .state dd.zero { color: var(--crit); }
+
+  /* --- phases --- */
+
+  .phase { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--rule); background: var(--surface); }
+
+  .phase.gate { border-color: var(--crit); border-width: 2px; }
+
+  .phase-head {
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    padding: 16px 20px; background: var(--surface-2); border-bottom: 1px solid var(--rule-hard);
+  }
+
+  .phase-id {
+    font-family: var(--mono); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+  }
+  .phase.gate .phase-id { color: var(--crit); }
+
+  .phase-name { font-family: var(--mono); font-size: 16px; font-weight: 600; margin: 0; flex: 1; min-width: 200px; }
+
+  .meta { display: flex; gap: 8px; align-items: center; }
+
+  .chip {
+    font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.09em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 2px; white-space: nowrap;
+  }
+  .chip.you    { background: var(--accent-bg); color: var(--accent); }
+  .chip.claude { background: var(--ok-bg); color: var(--ok); }
+  .chip.wait   { background: var(--surface); color: var(--muted); border: 1px solid var(--rule-hard); }
+  .chip.effort { background: transparent; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .progress {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+
+  .phase-note {
+    padding: 12px 20px; font-size: 14px; color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule); background: var(--surface);
+  }
+  .phase.gate .phase-note { background: var(--crit-bg); color: var(--ink); }
+
+  ul.tasks { list-style: none; margin: 0; padding: 0; }
+
+  ul.tasks li { border-bottom: 1px solid var(--rule); }
+  ul.tasks li:last-child { border-bottom: none; }
+
+  label.task {
+    display: grid; grid-template-columns: 22px 62px 1fr; gap: 12px;
+    padding: 13px 20px; cursor: pointer; align-items: start;
+  }
+  label.task:hover { background: var(--surface-2); }
+  label.task:focus-within { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+  label.task input { margin: 3px 0 0; width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+
+  .task-id {
+    font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--muted);
+    padding-top: 1px; font-variant-numeric: tabular-nums;
+  }
+
+  .task-body { display: flex; flex-direction: column; gap: 4px; }
+  .task-body .what { font-size: 15px; color: var(--ink); }
+  .task-body .how { font-size: 13.5px; color: var(--muted); }
+  .task-body code {
+    font-family: var(--mono); font-size: 12.5px; background: var(--surface-2);
+    padding: 1px 5px; border-radius: 2px; color: var(--ink-soft);
+  }
+
+  label.task input:checked ~ .task-body .what { color: var(--muted); text-decoration: line-through; }
+  label.task input:checked ~ .task-id { color: var(--ok); }
+
+  /* --- effort table --- */
+
+  h2 {
+    font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; margin: 0 0 4px; padding-bottom: 10px; border-bottom: 2px solid var(--ink);
+  }
+
+  .tbl { overflow-x: auto; border: 1px solid var(--rule); }
+  table { width: 100%; min-width: 520px; border-collapse: collapse; background: var(--surface); font-size: 14px; }
+  th {
+    text-align: left; font-family: var(--mono); font-size: 10px; font-weight: 600;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
+    padding: 11px 14px; background: var(--surface-2); border-bottom: 1px solid var(--rule-hard);
+  }
+  td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td.k { font-family: var(--mono); font-size: 12.5px; color: var(--ink); white-space: nowrap; }
+  td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tfoot td { font-family: var(--mono); font-weight: 600; color: var(--ink); background: var(--surface-2); border-top: 1px solid var(--rule-hard); }
+
+  .note {
+    background: var(--surface); border: 1px solid var(--rule); border-left: 3px solid var(--accent);
+    padding: 14px 18px; font-size: 14.5px; color: var(--ink-soft);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .note strong { color: var(--ink); }
+
+  footer {
+    border-top: 2px solid var(--ink); padding-top: 16px; font-family: var(--mono);
+    font-size: 11.5px; color: var(--muted); display: flex; flex-direction: column; gap: 5px;
+  }
+
+  .reset {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: none; border: 1px solid var(--rule-hard); color: var(--muted);
+    padding: 6px 12px; cursor: pointer; align-self: flex-start; border-radius: 2px;
+  }
+  .reset:hover { color: var(--ink); border-color: var(--ink); }
+  .reset:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  @media (max-width: 640px) {
+    label.task { grid-template-columns: 20px 1fr; }
+    .task-id { display: none; }
+    .wrap { padding: 0 18px 72px; gap: 34px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Instapost &middot; execution checklist</p>
+    <h1>Instapost Go-Live</h1>
+    <p class="standfirst">
+      Everything left between the code as it stands and two Instagram accounts posting
+      on their own. The code is nearly done; none of the operational setup is. Ticks
+      are saved in this browser.
+    </p>
+    <dl class="state">
+      <div><dt>Builds run</dt><dd>19</dd></div>
+      <div><dt>Ever published</dt><dd class="zero">0</dd></div>
+      <div><dt>Accounts to set up</dt><dd>2</dd></div>
+      <div><dt>Work remaining</dt><dd>~7 h</dd></div>
+    </dl>
+  </header>
+
+  <div class="note">
+    <p>
+      <strong>Read this first.</strong> Nineteen nightly builds have run and not one was
+      ever permitted to publish — every single one recorded <code>dry_run: true</code>.
+      That is the safety gate doing its job, not a fault. But it means nothing below has
+      been proven against the real Instagram API yet, and <strong>Phase A is the only
+      thing that can prove it</strong>. Do not spend time on anything else until A7 passes.
+    </p>
+  </div>
+
+  <!-- ================= PHASE A ================= -->
+  <section class="phase gate" data-phase="A">
+    <div class="phase-head">
+      <span class="phase-id">Gate A</span>
+      <h2 class="phase-name" style="border:none;padding:0;margin:0;text-transform:none;letter-spacing:0;font-size:16px;">Prove Meta will publish at all</h2>
+      <div class="meta">
+        <span class="chip you">You</span>
+        <span class="chip effort">2–3 h</span>
+        <span class="progress" data-progress="A"></span>
+      </div>
+    </div>
+    <p class="phase-note">
+      Hard gate. If this fails, the entire project is dead and everything after it is
+      wasted effort — so it goes first, before design, before content, before deployment.
+    </p>
+    <ul class="tasks">
+      <li><label class="task"><input type="checkbox" data-id="A1"><span class="task-id">A1</span><span class="task-body">
+        <span class="what">Decide both account handles and create them</span>
+        <span class="how">One for news, one for tech-metaphor. Both switched to <strong>Professional</strong> (Business or Creator) and both <strong>public</strong> — API publishing does not work on a private account.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="A2"><span class="task-id">A2</span><span class="task-body">
+        <span class="what">Create two Facebook Pages and link one to each account</span>
+        <span class="how">Required by the Graph API path. The Pages can stay completely empty — nobody will ever visit them.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="A3"><span class="task-id">A3</span><span class="task-body">
+        <span class="what">Create a Meta developer account and one app</span>
+        <span class="how">App type <em>Business</em>. Leave it in <strong>Development</strong> mode — that is the end state, not a temporary step. Publishing to your own accounts never needs App Review.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="A4"><span class="task-id">A4</span><span class="task-body">
+        <span class="what">Add both accounts as Instagram Testers, and accept the invites</span>
+        <span class="how">App dashboard → Roles → Instagram Testers. Then accept from <em>inside each Instagram account</em>: Settings → Apps and websites → Tester invites. The invite is easy to miss and nothing works until both are accepted.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="A5"><span class="task-id">A5</span><span class="task-body">
+        <span class="what">Record both Instagram user IDs</span>
+        <span class="how">You need two distinct values, one per account. These become <code>IG_USER_ID_NEWS</code> and <code>IG_USER_ID_FLIRT</code>.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="A6"><span class="task-id">A6</span><span class="task-body">
+        <span class="what">Generate an access token — prefer one that never expires</span>
+        <span class="how">In Business Settings → System Users, generate a system-user token and choose <strong>Never</strong> for expiry. That removes the 60-day refresh treadmill entirely. A long-lived user token works too, but nothing can renew it for you — <code>token-health.yml</code> only warns you 14 days out.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="A7"><span class="task-id">A7</span><span class="task-body">
+        <span class="what">Publish one hand-made JPEG to each account with two curl calls</span>
+        <span class="how"><code>POST /{ig-user-id}/media</code> with a public <code>image_url</code>, then <code>POST /{ig-user-id}/media_publish</code>. <strong>Stop here until a real post appears on both profiles.</strong> Everything downstream assumes this works.</span>
+      </span></label></li>
+    </ul>
+  </section>
+
+  <!-- ================= PHASE B ================= -->
+  <section class="phase" data-phase="B">
+    <div class="phase-head">
+      <span class="phase-id">Phase B</span>
+      <h2 class="phase-name" style="border:none;padding:0;margin:0;text-transform:none;letter-spacing:0;font-size:16px;">Credentials</h2>
+      <div class="meta"><span class="chip you">You</span><span class="chip effort">1 h</span><span class="progress" data-progress="B"></span></div>
+    </div>
+    <ul class="tasks">
+      <li><label class="task"><input type="checkbox" data-id="B1"><span class="task-id">B1</span><span class="task-body">
+        <span class="what">Create the Telegram bot</span>
+        <span class="how">Message <code>@BotFather</code> for <code>TG_TOKEN</code>. Then send your bot any message and read <code>getUpdates</code> to find your <code>TG_CHAT</code> id. This is your only window into an unattended system — without it, a dead pipeline looks exactly like a quiet one.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="B2"><span class="task-id">B2</span><span class="task-body">
+        <span class="what">Get a free LLM key</span>
+        <span class="how">Google AI Studio → <code>GEMINI_API_KEY</code>, or Groq → <code>GROQ_API_KEY</code>. <strong>Without this the tech-metaphor account drafts nothing</strong> and posts nothing, forever. Verified: it skips cleanly rather than erroring, so the failure is silent.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="B3"><span class="task-id">B3</span><span class="task-body">
+        <span class="what">Add the repository secrets</span>
+        <span class="how">Settings → Secrets and variables → Actions → Secrets: <code>GEMINI_API_KEY</code> (or <code>GROQ_API_KEY</code>), <code>TG_TOKEN</code>, <code>TG_CHAT</code>.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="B4"><span class="task-id">B4</span><span class="task-body">
+        <span class="what">Check the pinned Graph API version</span>
+        <span class="how"><code>worker/wrangler.toml</code> pins <code>v21.0</code>, which was current when written and probably is not now. Check Meta's changelog and bump it. Versions are supported roughly two years, then hard-fail all at once.</span>
+      </span></label></li>
+    </ul>
+  </section>
+
+  <!-- ================= PHASE C ================= -->
+  <section class="phase" data-phase="C">
+    <div class="phase-head">
+      <span class="phase-id">Phase C</span>
+      <h2 class="phase-name" style="border:none;padding:0;margin:0;text-transform:none;letter-spacing:0;font-size:16px;">Deploy the publisher</h2>
+      <div class="meta"><span class="chip you">You</span><span class="chip effort">45 m</span><span class="progress" data-progress="C"></span></div>
+    </div>
+    <p class="phase-note">
+      The Cloudflare Worker has never been deployed. It is the only thing that actually
+      talks to Instagram — without it, builds accumulate in the repo and nothing is posted.
+    </p>
+    <ul class="tasks">
+      <li><label class="task"><input type="checkbox" data-id="C1"><span class="task-id">C1</span><span class="task-body">
+        <span class="what">Create a Cloudflare account</span>
+        <span class="how">Free plan, no card required. Cron triggers are included and cost nothing at ~30 invocations a month.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="C2"><span class="task-id">C2</span><span class="task-body">
+        <span class="what">Install and authenticate wrangler</span>
+        <span class="how"><code>npm i -g wrangler</code> then <code>wrangler login</code>.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="C3"><span class="task-id">C3</span><span class="task-body">
+        <span class="what">Set the six Worker secrets</span>
+        <span class="how"><code>wrangler secret put</code> for each: <code>IG_TOKEN</code>, <code>IG_USER_ID_NEWS</code>, <code>IG_USER_ID_FLIRT</code>, <code>TG_TOKEN</code>, <code>TG_CHAT</code>, <code>MANUAL_KEY</code>.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="C4"><span class="task-id">C4</span><span class="task-body">
+        <span class="what">Deploy and confirm the cron registered</span>
+        <span class="how"><code>wrangler deploy</code>. Check the Cloudflare dashboard shows the <code>15 14 * * *</code> trigger. This is the punctual clock the whole design depends on.</span>
+      </span></label></li>
+    </ul>
+  </section>
+
+  <!-- ================= PHASE D ================= -->
+  <section class="phase" data-phase="D">
+    <div class="phase-head">
+      <span class="phase-id">Phase D</span>
+      <h2 class="phase-name" style="border:none;padding:0;margin:0;text-transform:none;letter-spacing:0;font-size:16px;">Code still open</h2>
+      <div class="meta"><span class="chip claude">Claude</span><span class="chip effort">30 m</span><span class="progress" data-progress="D"></span></div>
+    </div>
+    <p class="phase-note">
+      I can do all of these, but D1 needs your handles and D3 is a decision only you
+      should make. Tell me and they are done in one pass.
+    </p>
+    <ul class="tasks">
+      <li><label class="task"><input type="checkbox" data-id="D1"><span class="task-id">D1</span><span class="task-body">
+        <span class="what">Replace the placeholder handles</span>
+        <span class="how"><code>@yourhandle</code> and <code>@yourhandle2</code> appear in three places in <code>src/config.py</code> and print on <em>every card</em>. Send me both handles.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="D2"><span class="task-id">D2</span><span class="task-body">
+        <span class="what">Remove the now-redundant global handle</span>
+        <span class="how"><code>BRAND["handle"]</code> was superseded when channels got their own. Leaving two sources of truth for the same value invites the wrong one being edited.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="D3"><span class="task-id">D3</span><span class="task-body">
+        <span class="what">Decide the news-card body fix</span>
+        <span class="how">Hacker News supplies no summary, so those cards read <em>"616 points on Hacker News in the last 4h."</em> The fix is reading each article's <code>og:description</code> — the publisher's own summary, written to be shared. It adds outbound fetches to third-party sites, which is why it is your call.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="D4"><span class="task-id">D4</span><span class="task-body">
+        <span class="what">Note what the token-health workflow can and cannot do</span>
+        <span class="how">The old <code>refresh-token.yml</code> called the wrong endpoint for our token type and discarded the token it fetched, so it renewed nothing while appearing to. It is replaced by <code>token-health.yml</code>, which checks validity and alerts 14 days before expiry but cannot renew anything. Take the never-expiring token in A6 and this stays a formality.</span>
+      </span></label></li>
+    </ul>
+  </section>
+
+  <!-- ================= PHASE E ================= -->
+  <section class="phase" data-phase="E">
+    <div class="phase-head">
+      <span class="phase-id">Phase E</span>
+      <h2 class="phase-name" style="border:none;padding:0;margin:0;text-transform:none;letter-spacing:0;font-size:16px;">Dry validation</h2>
+      <div class="meta"><span class="chip you">You</span><span class="chip claude">Claude</span><span class="chip effort">1 h</span><span class="progress" data-progress="E"></span></div>
+    </div>
+    <p class="phase-note">
+      Every step here runs with publishing still disabled. The point is to exercise the
+      whole path — including the parts that have never once run — while it is still safe.
+    </p>
+    <ul class="tasks">
+      <li><label class="task"><input type="checkbox" data-id="E1"><span class="task-id">E1</span><span class="task-body">
+        <span class="what">Trigger a manual build and confirm both cards appear</span>
+        <span class="how">Actions → Run workflow, <code>dry_run: true</code>. Expect <code>dist/news/card.jpg</code> and <code>dist/flirt/card.jpg</code> committed.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="E2"><span class="task-id">E2</span><span class="task-body">
+        <span class="what">Confirm Telegram receipts arrive</span>
+        <span class="how">Two messages, one per channel. If nothing arrives, <code>TG_CHAT</code> is wrong — the pipeline will not tell you.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="E3"><span class="task-id">E3</span><span class="task-body">
+        <span class="what">Confirm the review Issue is created</span>
+        <span class="how">A GitHub Issue titled "Approve queued cards" with tappable checkboxes. <strong>This flow has never run</strong> — it needs the LLM key from B2 and could not be tested locally.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="E4"><span class="task-id">E4</span><span class="task-body">
+        <span class="what">Tick a few boxes, re-run, confirm they were picked up</span>
+        <span class="how">Approved entries should flip from <code>pending</code> to <code>approved</code> in <code>state/flirt_queue.json</code>. This is the human gate; verify it actually gates.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="E5"><span class="task-id">E5</span><span class="task-body">
+        <span class="what">Test the Worker by hand</span>
+        <span class="how"><code>curl -H "x-key: $MANUAL_KEY" https://&lt;worker&gt;/run</code>. It should report shadow mode for both channels and publish nothing. That proves it can read the files and reach Meta without risking a post.</span>
+      </span></label></li>
+    </ul>
+  </section>
+
+  <!-- ================= PHASE F ================= -->
+  <section class="phase" data-phase="F">
+    <div class="phase-head">
+      <span class="phase-id">Phase F</span>
+      <h2 class="phase-name" style="border:none;padding:0;margin:0;text-transform:none;letter-spacing:0;font-size:16px;">Shadow run &mdash; three nights</h2>
+      <div class="meta"><span class="chip wait">Passive</span><span class="chip effort">3 days</span><span class="progress" data-progress="F"></span></div>
+    </div>
+    <ul class="tasks">
+      <li><label class="task"><input type="checkbox" data-id="F1"><span class="task-id">F1</span><span class="task-body">
+        <span class="what">Confirm builds now land before the publish window</span>
+        <span class="how">The old schedule drifted up to <strong>+590 minutes</strong> and missed 8 of 18 nights. The new crons run at 04:00 and 09:00 UTC against a 14:15 UTC publish. Check <code>built_at</code> in <code>post.json</code> each morning.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="F2"><span class="task-id">F2</span><span class="task-body">
+        <span class="what">Read all six cards as a stranger would</span>
+        <span class="how">Three news, three metaphor. You are judging whether you would follow this account — not whether the code ran.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="F3"><span class="task-id">F3</span><span class="task-body">
+        <span class="what">Confirm nothing repeated and the queue is draining</span>
+        <span class="how">Check <code>state/ledger.json</code> and <code>state/flirt_queue.json</code>. Entries should move to <code>posted</code> one per night.</span>
+      </span></label></li>
+    </ul>
+  </section>
+
+  <!-- ================= PHASE G ================= -->
+  <section class="phase" data-phase="G">
+    <div class="phase-head">
+      <span class="phase-id">Phase G</span>
+      <h2 class="phase-name" style="border:none;padding:0;margin:0;text-transform:none;letter-spacing:0;font-size:16px;">Go live</h2>
+      <div class="meta"><span class="chip you">You</span><span class="chip effort">5 m</span><span class="progress" data-progress="G"></span></div>
+    </div>
+    <ul class="tasks">
+      <li><label class="task"><input type="checkbox" data-id="G1"><span class="task-id">G1</span><span class="task-body">
+        <span class="what">Set the LIVE repository variable</span>
+        <span class="how">Settings → Secrets and variables → Actions → <strong>Variables</strong> → <code>LIVE = true</code>. This one switch is the whole go-live. Deleting it puts you back in shadow mode instantly, with no commit and no deploy.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="G2"><span class="task-id">G2</span><span class="task-body">
+        <span class="what">Watch the first live night end to end</span>
+        <span class="how">Expect two Telegram messages carrying real permalinks at about 19:45 IST.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="G3"><span class="task-id">G3</span><span class="task-body">
+        <span class="what">Open both profiles and confirm the posts are public</span>
+        <span class="how">From a logged-out browser, not your own app. That is the actual end result.</span>
+      </span></label></li>
+    </ul>
+  </section>
+
+  <!-- ================= PHASE H ================= -->
+  <section class="phase" data-phase="H">
+    <div class="phase-head">
+      <span class="phase-id">Phase H</span>
+      <h2 class="phase-name" style="border:none;padding:0;margin:0;text-transform:none;letter-spacing:0;font-size:16px;">Keeping it alive</h2>
+      <div class="meta"><span class="chip you">You</span><span class="chip effort">~15 m/mo</span><span class="progress" data-progress="H"></span></div>
+    </div>
+    <ul class="tasks">
+      <li><label class="task"><input type="checkbox" data-id="H1"><span class="task-id">H1</span><span class="task-body">
+        <span class="what">Diary the Graph API migration now</span>
+        <span class="how">Set a calendar reminder 18 months out. Version sunsets break every call at once, and this is a one-to-two hour job if you are not doing it under a deadline.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="H2"><span class="task-id">H2</span><span class="task-body">
+        <span class="what">Monthly: tick the queue, confirm the token still lives</span>
+        <span class="how">Roughly ten minutes. The queue refills itself when approved entries drop below ten, so you get warning before it runs dry.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="H3"><span class="task-id">H3</span><span class="task-body">
+        <span class="what">Top up the concept bank before day 64</span>
+        <span class="how">64 concepts are seeded, one consumed per night. <code>state/concepts.json</code> is where the account's voice actually lives — this is the most valuable ten minutes you will spend on it.</span>
+      </span></label></li>
+      <li><label class="task"><input type="checkbox" data-id="H4"><span class="task-id">H4</span><span class="task-body">
+        <span class="what">At 30 days, decide whether the news account earns its keep</span>
+        <span class="how">It is the weaker of the two products and carries most of the remaining risk. If the metaphor account is outgrowing it, retiring news removes the harvester, the scorer, the ledger and the scheduler pressure in one move.</span>
+      </span></label></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Where the time goes</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Phase</th><th>Who</th><th>Effort</th><th>Blocks what</th></tr></thead>
+        <tbody>
+          <tr><td class="k">A &mdash; Meta publishing</td><td>You</td><td class="n">2–3 h</td><td>Everything. Nothing else matters until it passes.</td></tr>
+          <tr><td class="k">B &mdash; Credentials</td><td>You</td><td class="n">1 h</td><td>The metaphor account entirely; all alerting.</td></tr>
+          <tr><td class="k">C &mdash; Deploy Worker</td><td>You</td><td class="n">45 m</td><td>All publishing. Builds pile up without it.</td></tr>
+          <tr><td class="k">D &mdash; Code left</td><td>Claude</td><td class="n">30 m</td><td>Card branding; needs your handles.</td></tr>
+          <tr><td class="k">E &mdash; Dry validation</td><td>Both</td><td class="n">1 h</td><td>Nothing, but it is where untested paths break.</td></tr>
+          <tr><td class="k">F &mdash; Shadow run</td><td>Passive</td><td class="n">3 days</td><td>Nothing. Wall-clock, not work.</td></tr>
+          <tr><td class="k">G &mdash; Go live</td><td>You</td><td class="n">5 m</td><td>—</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="2">Hands-on work remaining</td><td class="n">~7 h</td><td>plus 3 days of waiting</td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <div class="note">
+    <p>
+      <strong>The one thing worth doing tonight.</strong> Phase A is two to three hours and
+      it answers the only question that matters: will Meta let you publish at all? Everything
+      else — the scorer, the cards, the queue, the gates — is already written and waiting.
+      If A7 fails, you will have lost an evening instead of a month.
+    </p>
+  </div>
+
+  <button class="reset" id="reset">Clear all ticks</button>
+
+  <footer>
+    <div>Instapost &mdash; execution checklist &middot; 4 Sep 2026</div>
+    <div>Ticks are stored in this browser only &middot; times Asia/Kolkata (UTC+5:30)</div>
+    <div>Verify Meta, Cloudflare and free-tier limits against current docs &mdash; all three move without notice.</div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var KEY = "instapost-golive-v1";
+
+    function read() {
+      try { return JSON.parse(localStorage.getItem(KEY) || "{}"); }
+      catch (e) { return {}; }
+    }
+    function write(state) {
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode */ }
+    }
+
+    var boxes = Array.prototype.slice.call(document.querySelectorAll("input[type=checkbox][data-id]"));
+    var state = read();
+
+    function paintProgress() {
+      document.querySelectorAll("[data-progress]").forEach(function (el) {
+        var phase = el.getAttribute("data-progress");
+        var inPhase = boxes.filter(function (b) {
+          return b.closest("[data-phase]").getAttribute("data-phase") === phase;
+        });
+        var done = inPhase.filter(function (b) { return b.checked; }).length;
+        el.textContent = done + "/" + inPhase.length;
+        el.style.color = (done === inPhase.length && done > 0)
+          ? "var(--ok)" : "var(--muted)";
+      });
+    }
+
+    boxes.forEach(function (b) {
+      b.checked = !!state[b.getAttribute("data-id")];
+      b.addEventListener("change", function () {
+        state[b.getAttribute("data-id")] = b.checked;
+        write(state);
+        paintProgress();
+      });
+    });
+
+    document.getElementById("reset").addEventListener("click", function () {
+      state = {};
+      write(state);
+      boxes.forEach(function (b) { b.checked = false; });
+      paintProgress();
+    });
+
+    paintProgress();
+  })();
+</script>

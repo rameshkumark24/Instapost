@@ -1,0 +1,33 @@
+name: tests
+
+# The nightly build runs unattended and publishes publicly. A regression that
+# reaches it is seen by an audience before it is seen by us, so the tests run
+# on every push rather than only before a release.
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "dist/**"        # the bot's own nightly commits change nothing testable
+      - "state/**"
+      - "*.html"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # No browser needed: the tests cover logic, not rendering.
+      - run: pip install -r requirements.txt
+
+      - run: python -m unittest discover -s tests -v

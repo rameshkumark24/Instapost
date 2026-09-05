@@ -23,6 +23,7 @@ from datetime import datetime, timezone
 import requests
 
 from . import config as cfg
+from .enrich import description as fetch_description
 from .harvest import Item
 
 log = logging.getLogger(__name__)
@@ -153,6 +154,13 @@ def _body_from(item: Item, headline: str, truncated: bool) -> str:
     truer, and always reads cleanly.
     """
     src = _clean(item.summary)
+
+    # Sources like HN and Lobsters hand over a bare title. Ask the publisher
+    # for their own summary before settling for a line about vote counts.
+    if len(src) < 40:
+        if fetched := fetch_description(item.url):
+            log.info("enriched body from source page")
+            src = _clean(fetched)
 
     if truncated and src.lower().startswith(headline.rstrip(" .…").lower()[:40]):
         return _metadata_body(item)

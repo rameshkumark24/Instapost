@@ -41,6 +41,7 @@ def main() -> int:
     try:
         today = datetime.now(cfg.TZ)
         log.info("build for %s (dry_run=%s)", today.date(), cfg.DRY_RUN)
+        cfg.assert_branding_ready(CHANNEL)
 
         stage = "harvest"
         items = harvest_all()

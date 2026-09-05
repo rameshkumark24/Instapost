@@ -106,14 +106,35 @@ CARD_QUALITY = 90                   # JPEG. PNG containers fail on Meta's endpoi
 HEADLINE_MAX_CHARS = 78             # hard gate; longer headlines abort the run
 BODY_MAX_CHARS = 240
 
+# Shared palette only. Handle, label and accent belong to the channel -- two
+# sources of truth for the same visible string is how a card ships with the
+# wrong account name on it.
 BRAND = {
-    "handle": "@yourhandle",        # <-- set this
-    "label": "DAILY TECH BRIEF",
     "ink": "#0E1116",
     "paper": "#F4F1EB",
     "accent": "#FF6B35",
     "muted": "#8A93A0",
 }
+
+PLACEHOLDER_HANDLES = {"@yourhandle", "@yourhandle2"}
+
+
+def assert_branding_ready(channel: dict) -> None:
+    """Refuse to publish a card carrying a placeholder handle.
+
+    The handle is printed on every card. Shipping "@yourhandle" publicly is
+    both embarrassing and invisible to the pipeline, which has no idea the
+    string is wrong -- so this is the one thing worth hard-failing over.
+    Shadow builds are allowed through so the whole path stays testable.
+    """
+    if DRY_RUN:
+        return
+    if channel.get("handle") in PLACEHOLDER_HANDLES:
+        raise RuntimeError(
+            f"channel handle is still the placeholder {channel['handle']!r}. "
+            f"Set it in CHANNELS before going live."
+        )
+
 
 # --- caption ---------------------------------------------------------------
 
@@ -173,6 +194,11 @@ DRY_RUN = _flag("DRY_RUN", True)
 # Send a Telegram receipt on success as well as failure. With nobody watching
 # the pipeline, silence on success is indistinguishable from a dead pipeline.
 NOTIFY_ON_SUCCESS = _flag("NOTIFY_ON_SUCCESS", True)
+
+# Fetch the publisher's own og:description when a source gives us only a title.
+# This is the one place the pipeline touches an arbitrary third-party URL; set
+# it False to keep every outbound request inside the known source APIs.
+ENRICH_FROM_SOURCE = _flag("ENRICH_FROM_SOURCE", True)
 
 USER_AGENT = "instapost-nightly/1.0 (+https://github.com/)"
 HTTP_TIMEOUT = 20
