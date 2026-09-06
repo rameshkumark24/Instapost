@@ -131,5 +131,12 @@
   "url": "https://www.wired.com/story/nobody-is-saying-why-openai-and-anthropic-had-outages-today/",
   "source": "hn",
   "posted_at": "2026-09-05T02:35:28+00:00"
+ },
+ {
+  "key": "dev.to/wiseai/i-built-a-version-bump-tool-in-rust-that-is-10000x-faster-than-its-python-counterparts-i6b",
+  "title": "I Built a Version Bump Tool in Rust That Is 10,000x Faster Than Its Python Counterparts.",
+  "url": "https://dev.to/wiseai/i-built-a-version-bump-tool-in-rust-that-is-10000x-faster-than-its-python-counterparts-i6b",
+  "source": "devto",
+  "posted_at": "2026-09-06T08:24:25+00:00"
  }
 ]
