@@ -152,5 +152,12 @@
   "url": "https://lambdaland.org/posts/2026-09-06-bedrock-v2/",
   "source": "lobsters",
   "posted_at": "2026-09-08T08:39:05+00:00"
+ },
+ {
+  "key": "dev.to/remdore/i-let-a-model-suggest-postgres-indexes-then-made-the-database-mark-its-work-2a4c",
+  "title": "I let a model suggest Postgres indexes, then made the database mark its work",
+  "url": "https://dev.to/remdore/i-let-a-model-suggest-postgres-indexes-then-made-the-database-mark-its-work-2a4c",
+  "source": "devto",
+  "posted_at": "2026-09-09T08:42:15+00:00"
  }
 ]
