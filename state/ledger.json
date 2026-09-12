@@ -173,5 +173,12 @@
   "url": "https://arxiv.org/abs/2609.11864v1",
   "source": "arxiv",
   "posted_at": "2026-09-11T08:38:19+00:00"
+ },
+ {
+  "key": "rubyhack.ai",
+  "title": "OpenAI agents carried out an undisclosed attack on RubyGems",
+  "url": "https://www.rubyhack.ai/",
+  "source": "hn",
+  "posted_at": "2026-09-12T08:24:24+00:00"
  }
 ]
