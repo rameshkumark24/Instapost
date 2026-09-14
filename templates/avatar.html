@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    {{ brand.ink }};
+    --paper:  {{ brand.paper }};
+    --accent: {{ accent }};
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: {{ size }}px; height: {{ size }}px; overflow: hidden; }
+
+  body {
+    background: var(--ink);
+    display: grid;
+    place-items: center;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  .glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(58% 58% at 50% 46%, color-mix(in srgb, var(--accent) 34%, transparent) 0%, transparent 72%);
+  }
+
+  /* Instagram crops avatars to a circle and shows them as small as 40px, so
+     the mark is two characters, drawn heavy, sitting well inside that circle.
+     render_avatar() asserts it rather than trusting this CSS. */
+  #mark {
+    position: relative;
+    font-size: 400px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.06em;
+    color: var(--paper);
+  }
+
+  #mark b { font-weight: 600; color: var(--accent); }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div id="mark" style="transform: translateY({{ offset_em }}em)">{{ mark }}<b>{{ mark_accent }}</b></div>
+</body>
+</html>

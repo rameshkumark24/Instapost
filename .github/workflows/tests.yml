@@ -27,7 +27,11 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      # No browser needed: the tests cover logic, not rendering.
-      - run: pip install -r requirements.txt
+      # Chromium is installed because rendering is tested too: a card whose
+      # text was fitted to the fallback font overflowed its margin once the
+      # real font loaded, and only a rendered card shows that.
+      - run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
 
       - run: python -m unittest discover -s tests -v

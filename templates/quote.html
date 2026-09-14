@@ -116,7 +116,10 @@
 <script>
   // Same fit strategy as the news card: start at the largest size the box can
   // hold and shrink, so a short line fills the card instead of floating in it.
-  (function fit() {
+  // Called by the renderer once the webfonts have loaded, never at parse
+  // time. Run while the page was still loading, it measured the fallback
+  // face, and the real, wider one then overflowed the card's margin.
+  function fit() {
     const el = document.getElementById("quote");
     const box = el.parentElement;
     let size = 78;
@@ -126,7 +129,7 @@
       size -= 2;
     }
     window.__fit = { quoteSize: size };
-  })();
+  }
 </script>
 </body>
 </html>

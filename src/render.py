@@ -43,7 +43,7 @@ class RenderError(RuntimeError):
     """Raised when the card cannot be produced to publishable quality."""
 
 
-def render(post: dict, out: Path | None = None) -> Path:
+def render(post: dict, out: Path | None = None, channel: dict | None = None) -> Path:
     out = out or DIST / "card.jpg"
     out.parent.mkdir(parents=True, exist_ok=True)
     _assert_within_contract(post)
@@ -52,8 +52,8 @@ def render(post: dict, out: Path | None = None) -> Path:
         headline=post["headline"],
         body=post["body"],
         publication=post["publication"],
-        date=datetime.now(cfg.TZ).strftime("%d %b %Y").upper(),
-        brand={**cfg.BRAND, **cfg.CHANNELS["news"]},
+        date=post.get("date_label") or datetime.now(cfg.TZ).strftime("%d %b %Y").upper(),
+        brand={**cfg.BRAND, **(channel or cfg.CHANNELS["news"])},
         w=cfg.CARD_W,
         h=cfg.CARD_H,
     )
@@ -71,6 +71,7 @@ def render(post: dict, out: Path | None = None) -> Path:
         page.wait_for_function("document.fonts.ready.then(() => true)")
         page.wait_for_timeout(250)
         _assert_font_loaded(page, ['700 100px "Bricolage Grotesque"', '400 27px "IBM Plex Mono"'])
+        page.evaluate("fit()")
 
         fit = page.evaluate("window.__fit")
         if not fit or fit["headlineSize"] < MIN_HEADLINE_PX:
@@ -86,6 +87,49 @@ def render(post: dict, out: Path | None = None) -> Path:
 
     _assert_file_sane(out)
     log.info("rendered %s (%.0f KB, headline %dpx)", out.name, out.stat().st_size / 1024, fit["headlineSize"])
+    return out
+
+
+AVATAR_PX = 1080
+
+
+def render_avatar(
+    mark: str, mark_accent: str, channel: dict, out: Path, offset_em: float = 0.0
+) -> Path:
+    """Profile picture: two heavy glyphs inside the circle Instagram crops to.
+
+    Instagram shows avatars as small as 40px and crops them round, so the mark
+    is asserted to sit well inside that circle rather than trusted to.
+    """
+    out.parent.mkdir(parents=True, exist_ok=True)
+    html = _env.get_template("avatar.html").render(
+        mark=mark,
+        mark_accent=mark_accent,
+        accent=channel["accent"],
+        brand=cfg.BRAND,
+        size=AVATAR_PX,
+        offset_em=offset_em,
+    )
+    with sync_playwright() as p:
+        browser = p.chromium.launch(args=["--font-render-hinting=none"])
+        page = browser.new_page(viewport={"width": AVATAR_PX, "height": AVATAR_PX}, device_scale_factor=1)
+        page.set_content(html, wait_until="networkidle")
+        page.wait_for_function("document.fonts.ready.then(() => true)")
+        page.wait_for_timeout(250)
+        _assert_font_loaded(page, ['600 400px "IBM Plex Mono"'])
+        inside = page.evaluate(
+            """() => {
+                const r = document.getElementById('mark').getBoundingClientRect();
+                const c = window.innerWidth / 2, limit = c * 0.8;
+                return [[r.left, r.top], [r.right, r.top], [r.left, r.bottom], [r.right, r.bottom]]
+                    .every(([x, y]) => Math.hypot(x - c, y - c) <= limit);
+            }"""
+        )
+        if not inside:
+            raise RenderError("avatar mark reaches outside the circle Instagram crops to")
+        page.screenshot(path=str(out), type="jpeg", quality=cfg.CARD_QUALITY)
+        browser.close()
+    log.info("rendered %s (%.0f KB)", out.name, out.stat().st_size / 1024)
     return out
 
 
@@ -167,6 +211,7 @@ def render_quote(entry: dict, channel: dict, out: Path | None = None) -> Path:
         page.wait_for_function("document.fonts.ready.then(() => true)")
         page.wait_for_timeout(250)
         _assert_font_loaded(page, ['600 40px "IBM Plex Mono"', '400 40px "IBM Plex Mono"'])
+        page.evaluate("fit()")
 
         fit = page.evaluate("window.__fit")
         if not fit or fit["quoteSize"] < MIN_QUOTE_PX:
@@ -185,15 +230,21 @@ def render_quote(entry: dict, channel: dict, out: Path | None = None) -> Path:
 
 
 def _assert_no_overflow(page, selector: str = "#headline, #body, .footer, .rail") -> None:
-    """Nothing may spill outside the 1080x1350 canvas."""
+    """Nothing may cross the card's margins -- inside the canvas is not enough."""
     overflow = page.evaluate(
         """(sel) => {
+            const frame = document.querySelector('.frame');
+            const f = frame.getBoundingClientRect();
+            const style = getComputedStyle(frame);
+            const left = f.left + parseFloat(style.paddingLeft);
+            const right = f.right - parseFloat(style.paddingRight);
             const bad = [];
             for (const el of document.querySelectorAll(sel)) {
                 const r = el.getBoundingClientRect();
-                if (r.bottom > window.innerHeight + 1 || r.right > window.innerWidth + 1 || r.top < -1) {
-                    bad.push(el.id || el.className);
-                }
+                const spills = r.top < -1 || r.bottom > window.innerHeight + 1
+                    || r.left < left - 1 || r.right > right + 1
+                    || el.scrollWidth > el.clientWidth + 1;
+                if (spills) bad.push(el.id || el.className);
             }
             return bad;
         }""",

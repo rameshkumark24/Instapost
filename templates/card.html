@@ -140,7 +140,7 @@
     <p id="body">{{ body }}</p>
 
     <div class="footer">
-      <div class="src"><span>via</span> {{ publication }}</div>
+      <div class="src">{% if publication %}<span>via</span> {{ publication }}{% endif %}</div>
       <div class="handle">{{ brand.handle }}</div>
     </div>
 
@@ -154,7 +154,10 @@
   // first version began at 104px and only ever shrank, so a short headline was
   // rendered at 104px inside a 700px box and left the top half of the card
   // empty. Starting large and shrinking makes the type fill the space it has.
-  (function fit() {
+  // Called by the renderer once the webfonts have loaded, never at parse
+  // time. Run while the page was still loading, it measured the fallback
+  // face, and the real, wider one then overflowed the card's margin.
+  function fit() {
     const el = document.getElementById("headline");
     const box = el.parentElement;
     let size = 148;
@@ -164,7 +167,7 @@
       size -= 2;
     }
     window.__fit = { headlineSize: size };
-  })();
+  }
 </script>
 </body>
 </html>

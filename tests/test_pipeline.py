@@ -813,5 +813,86 @@ class GraphVersion(unittest.TestCase):
         self.assertIn(f'GRAPH_VERSION = "{token_health.DEFAULT_VERSION}"', wrangler)
 
 
+class ProfileKit(unittest.TestCase):
+    """Each account must be sign-up ready: limits Instagram enforces, no placeholders."""
+
+    def setUp(self):
+        from src import brand
+        self.brand = brand
+
+    def test_every_account_has_a_kit(self):
+        self.assertEqual(set(self.brand.PROFILES), set(cfg.CHANNELS))
+
+    def test_profiles_fit_instagram_limits(self):
+        self.assertEqual(self.brand.check_profiles(), [])
+
+    def test_the_two_accounts_do_not_share_an_identity(self):
+        news, flirt = self.brand.PROFILES["news"], self.brand.PROFILES["flirt"]
+        self.assertFalse(set(news["handle_ideas"]) & set(flirt["handle_ideas"]))
+        self.assertFalse(set(news["display_names"]) & set(flirt["display_names"]))
+        self.assertNotEqual(news["mark"], flirt["mark"])
+
+    def test_a_placeholder_handle_is_never_printed_on_the_kit(self):
+        for name in self.brand.PROFILES:
+            with self.subTest(account=name):
+                handle = self.brand._channel_for_kit(name)["handle"]
+                self.assertFalse(cfg._PLACEHOLDER.fullmatch(handle or "_"))
+
+    def test_the_news_pinned_post_fits_the_card_contract(self):
+        intro = self.brand.PROFILES["news"]["intro"]
+        self.assertLessEqual(len(intro["headline"]), cfg.HEADLINE_MAX_CHARS)
+        self.assertLessEqual(len(intro["body"]), cfg.BODY_MAX_CHARS)
+
+
+class Rendering(unittest.TestCase):
+    """Regression: text was fitted before the webfont loaded, then overflowed the margin.
+
+    Needs Chromium and network access for the webfonts; CI installs both.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        import tempfile
+        cls.out = Path(tempfile.mkdtemp())
+
+    def test_the_overflow_check_catches_text_past_the_margin(self):
+        from playwright.sync_api import sync_playwright
+        from src import render
+        html = (
+            '<div class="frame" style="width:1080px;padding:0 92px;box-sizing:border-box">'
+            '<div id="quote" style="white-space:nowrap;font:600 80px monospace;display:inline-block">'
+            "real programming concept, explained</div></div>"
+        )
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page(viewport={"width": 1080, "height": 1350})
+            page.set_content(html)
+            with self.assertRaises(render.RenderError):
+                render._assert_no_overflow(page, "#quote")
+            browser.close()
+
+    def test_a_long_unbreakable_term_is_shrunk_inside_the_margin(self):
+        from src import render
+        entry = {
+            "text": "Every card here is a real programming concept, explained through a relationship. "
+                    "If the joke lands, you just learned what the term means.",
+            "terms": ["real programming concept"],
+        }
+        channel = {**cfg.CHANNELS["flirt"], "handle": ""}
+        self.assertTrue(render.render_quote(entry, channel, self.out / "quote.jpg").exists())
+
+    def test_the_longest_term_in_the_bank_fits_a_card(self):
+        from src import flirt, render
+        term = max((c["term"] for c in flirt.load_concepts()), key=len)
+        entry = {"text": f"We had it all, until you became my {term} and everything went down with you.", "terms": [term]}
+        channel = {**cfg.CHANNELS["flirt"], "handle": ""}
+        self.assertTrue(render.render_quote(entry, channel, self.out / "long-term.jpg").exists())
+
+    def test_news_card_renders_inside_its_margins(self):
+        from src import brand, render
+        channel = {**cfg.CHANNELS["news"], "handle": ""}
+        self.assertTrue(render.render(brand.PROFILES["news"]["intro"], self.out / "news.jpg", channel=channel).exists())
+
+
 if __name__ == "__main__":
     unittest.main()
