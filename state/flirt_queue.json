@@ -1,1 +1,134 @@
-[]
+[
+ {
+  "concept": "merge-conflict",
+  "term": "MERGE CONFLICT",
+  "domain": "git",
+  "text": "We both had a vision for our future, then independently started making changes to the same core path. It's a MERGE CONFLICT.",
+  "terms": [
+   "MERGE CONFLICT"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "git-stash",
+  "term": "STASH",
+  "domain": "git",
+  "text": "I decided to STASH my midlife crisis to finish this sprint. Now I'm terrified to restore my uncommitted changes.",
+  "terms": [
+   "STASH"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "packet-loss",
+  "term": "PACKET LOSS",
+  "domain": "networking",
+  "text": "Ghosting implies delivery. What happened to my text was PACKET LOSS: sent with hope, never acknowledged, and quietly dropped in transit.",
+  "terms": [
+   "PACKET LOSS"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "detached-head",
+  "term": "DETACHED HEAD",
+  "domain": "git",
+  "text": "Our casual dating was a DETACHED HEAD. A lot of effort, easily lost if we never branched.",
+  "terms": [
+   "DETACHED HEAD"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "null",
+  "term": "NULL",
+  "domain": "sql",
+  "text": "We both confessed we didn't know what we wanted. But even in logic, one NULL is never equal to another.",
+  "terms": [
+   "NULL"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "git-merge",
+  "term": "MERGE",
+  "domain": "git",
+  "text": "Our lives were separate branches, each with a unique history. Then we decided to MERGE, creating a combined story.",
+  "terms": [
+   "MERGE"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "tech-debt",
+  "term": "TECHNICAL DEBT",
+  "domain": "code",
+  "text": "Saying 'it's fine' to avoid a talk is emotional TECHNICAL DEBT. Years later, a dirty dish triggers a complete refactor of your relationship.",
+  "terms": [
+   "TECHNICAL DEBT"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "404",
+  "term": "404 NOT FOUND",
+  "domain": "networking",
+  "text": "I searched my heart for what you asked me to feel. It understood the request, but returned 404 NOT FOUND.",
+  "terms": [
+   "404 NOT FOUND"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "orphan-row",
+  "term": "ORPHAN ROW",
+  "domain": "sql",
+  "text": "You deleted your profile, but my routine still references your ID. I am just an ORPHAN ROW, pointing at nothing.",
+  "terms": [
+   "ORPHAN ROW"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "firewall",
+  "term": "FIREWALL",
+  "domain": "networking",
+  "text": "I don't have emotional walls, I have a FIREWALL. Block all inbound traffic by default; allow only explicitly approved connections.",
+  "terms": [
+   "FIREWALL"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "handshake",
+  "term": "TCP HANDSHAKE",
+  "domain": "networking",
+  "text": "Before you can truly open up, there's always a bit of a TCP HANDSHAKE. Gotta confirm both sides are ready.",
+  "terms": [
+   "TCP HANDSHAKE"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "foreign-key",
+  "term": "FOREIGN KEY",
+  "domain": "sql",
+  "text": "As a plus-one, I was just a FOREIGN KEY. My validity depended entirely on pointing to your primary key.",
+  "terms": [
+   "FOREIGN KEY"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-14T07:46:57+00:00"
+ }
+]
