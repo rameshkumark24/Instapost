@@ -30,9 +30,8 @@ import re
 import textwrap
 from datetime import datetime, timezone
 
-import requests
-
 from . import config as cfg
+from . import llm
 from .enrich import Enriched
 from .enrich import fetch as fetch_enrichment
 from .harvest import Item
@@ -290,39 +289,11 @@ Return strict JSON, no markdown fence:
 
 
 def _call_llm(prompt: str) -> str | None:
-    """Whichever free-tier provider has a key configured. None on any failure."""
-    try:
-        if key := os.environ.get("GEMINI_API_KEY"):
-            r = requests.post(
-                "https://generativelanguage.googleapis.com/v1beta/models/"
-                "gemini-2.0-flash:generateContent",
-                params={"key": key},
-                json={
-                    "contents": [{"parts": [{"text": prompt}]}],
-                    "generationConfig": {"temperature": 0.4, "maxOutputTokens": 300},
-                },
-                timeout=cfg.HTTP_TIMEOUT,
-            )
-            r.raise_for_status()
-            return r.json()["candidates"][0]["content"]["parts"][0]["text"]
-
-        if key := os.environ.get("GROQ_API_KEY"):
-            r = requests.post(
-                "https://api.groq.com/openai/v1/chat/completions",
-                headers={"Authorization": f"Bearer {key}"},
-                json={
-                    "model": "llama-3.3-70b-versatile",
-                    "messages": [{"role": "user", "content": prompt}],
-                    "temperature": 0.4,
-                    "max_tokens": 300,
-                },
-                timeout=cfg.HTTP_TIMEOUT,
-            )
-            r.raise_for_status()
-            return r.json()["choices"][0]["message"]["content"]
-    except Exception as exc:
-        log.warning("llm call failed, using deterministic copy: %s", exc)
-    return None
+    """The polish model's reply, or None. The deterministic copy is the floor."""
+    reply = llm.complete(prompt, temperature=0.4)
+    if reply.error:
+        log.warning("llm unavailable, keeping deterministic copy: %s", reply.error)
+    return reply.text
 
 
 def _words(text: str) -> list[str]:

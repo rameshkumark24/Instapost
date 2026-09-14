@@ -16,14 +16,12 @@ from __future__ import annotations
 
 import json
 import logging
-import os
 import random
 import re
 from pathlib import Path
 
-import requests
-
 from . import config as cfg
+from . import llm
 
 log = logging.getLogger(__name__)
 
@@ -52,6 +50,15 @@ MAX_LINES = 4
 
 class Rejected(ValueError):
     """A candidate that failed a gate. Never a crash -- just a discarded draft."""
+
+
+class LLMUnavailable(Rejected):
+    """The model could not be reached at all, as opposed to a line failing a gate.
+
+    Kept distinct so a batch stops at the first one. Retrying the same dead
+    model once per concept costs a timeout each, and 64 of them outlast the
+    build job's 15-minute limit -- cancelling the news card along with it.
+    """
 
 
 def load_concepts() -> list[dict]:
@@ -88,42 +95,6 @@ Return strict JSON, no markdown fence:
 """
 
 
-def _call_llm(prompt: str, temperature: float = 0.9) -> str | None:
-    """Whichever free-tier provider has a key set. None on any failure."""
-    try:
-        if key := os.environ.get("GEMINI_API_KEY"):
-            r = requests.post(
-                "https://generativelanguage.googleapis.com/v1beta/models/"
-                "gemini-2.0-flash:generateContent",
-                params={"key": key},
-                json={
-                    "contents": [{"parts": [{"text": prompt}]}],
-                    "generationConfig": {"temperature": temperature, "maxOutputTokens": 300},
-                },
-                timeout=cfg.HTTP_TIMEOUT,
-            )
-            r.raise_for_status()
-            return r.json()["candidates"][0]["content"]["parts"][0]["text"]
-
-        if key := os.environ.get("GROQ_API_KEY"):
-            r = requests.post(
-                "https://api.groq.com/openai/v1/chat/completions",
-                headers={"Authorization": f"Bearer {key}"},
-                json={
-                    "model": "llama-3.3-70b-versatile",
-                    "messages": [{"role": "user", "content": prompt}],
-                    "temperature": temperature,
-                    "max_tokens": 300,
-                },
-                timeout=cfg.HTTP_TIMEOUT,
-            )
-            r.raise_for_status()
-            return r.json()["choices"][0]["message"]["content"]
-    except Exception as exc:
-        log.warning("llm call failed: %s", exc)
-    return None
-
-
 def validate(text: str, concept: dict) -> str:
     """Every gate a candidate must clear. Raises Rejected with the reason."""
     text = re.sub(r"\s+", " ", text or "").strip().strip('"').strip()
@@ -153,10 +124,10 @@ def generate(concept: dict, attempts: int = 3) -> dict:
     reasons = []
 
     for i in range(attempts):
-        raw = _call_llm(prompt, temperature=0.85 + 0.05 * i)
-        if not raw:
-            reasons.append("llm unavailable")
-            break
+        reply = llm.complete(prompt, temperature=0.85 + 0.05 * i)
+        if not reply.text:
+            raise LLMUnavailable(f"{concept['id']}: llm unavailable: {reply.error}")
+        raw = reply.text
         body = raw.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
         try:
             parsed = json.loads(body)
@@ -194,6 +165,10 @@ def generate_batch(used_ids: set[str], size: int) -> tuple[list[dict], list[str]
             break
         try:
             out.append(generate(concept))
+        except LLMUnavailable as exc:
+            # The same model would fail every remaining concept the same way.
+            rejects.append(str(exc))
+            break
         except Rejected as exc:
             rejects.append(str(exc))
 

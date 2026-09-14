@@ -601,5 +601,89 @@ class TokenHealth(unittest.TestCase):
         self.assertNotIn(app_secret, sent[0])
 
 
+GEMINI_OK = {"candidates": [{"content": {"parts": [{"text": "hello"}]}}]}
+
+
+def http(status: int, payload: dict | None = None, text: str = ""):
+    response = mock.MagicMock()
+    response.status_code = status
+    response.text = text
+    response.json.return_value = payload
+    return response
+
+
+class LanguageModel(unittest.TestCase):
+    """Regression: every LLM call targeted gemini-2.0-flash after its shutdown."""
+
+    def setUp(self):
+        from src import llm
+        self.llm = llm
+
+    def run_with(self, env: dict, **post):
+        with mock.patch.object(self.llm.requests, "post", **post) as fake, mock.patch.dict(os.environ, env):
+            return self.llm.complete("p", temperature=0.4), fake
+
+    def test_shut_down_model_is_not_configured(self):
+        self.assertNotIn("gemini-2.0-flash", cfg.GEMINI_MODELS)
+
+    def test_retired_model_falls_through_to_the_next(self):
+        replies = iter([http(404, text="models/x is not found"), http(200, GEMINI_OK)])
+        reply, fake = self.run_with({"GEMINI_API_KEY": "k", "GROQ_API_KEY": ""}, side_effect=lambda *a, **k: next(replies))
+        self.assertEqual(reply.text, "hello")
+        self.assertEqual(fake.call_count, 2)
+        self.assertIn(cfg.GEMINI_MODELS[1], fake.call_args_list[1].args[0])
+
+    def test_rejected_key_stops_the_chain(self):
+        reply, fake = self.run_with(
+            {"GEMINI_API_KEY": "bad", "GROQ_API_KEY": ""},
+            return_value=http(400, text="API key not valid. Please pass a valid API key."),
+        )
+        self.assertIsNone(reply.text)
+        self.assertEqual(fake.call_count, 1)
+        self.assertIn("key rejected", reply.error)
+
+    def test_failure_reason_is_reported_not_swallowed(self):
+        reply, _ = self.run_with({"GEMINI_API_KEY": "k", "GROQ_API_KEY": ""}, return_value=http(404, text="not found"))
+        self.assertIsNone(reply.text)
+        self.assertIn("model not found", reply.error)
+
+    def test_no_key_makes_no_request(self):
+        reply, fake = self.run_with({"GEMINI_API_KEY": "", "GROQ_API_KEY": ""})
+        fake.assert_not_called()
+        self.assertEqual(reply.error, "no LLM key configured")
+
+    def test_api_key_travels_in_a_header_never_the_url(self):
+        _, fake = self.run_with({"GEMINI_API_KEY": "AIzaSecretKey123", "GROQ_API_KEY": ""}, return_value=http(200, GEMINI_OK))
+        self.assertNotIn("AIzaSecretKey123", fake.call_args.args[0])
+        self.assertNotIn("params", fake.call_args.kwargs)
+        self.assertEqual(fake.call_args.kwargs["headers"]["x-goog-api-key"], "AIzaSecretKey123")
+
+    def test_gemini_output_budget_leaves_room_for_thinking(self):
+        _, fake = self.run_with({"GEMINI_API_KEY": "k", "GROQ_API_KEY": ""}, return_value=http(200, GEMINI_OK))
+        budget = fake.call_args.kwargs["json"]["generationConfig"]["maxOutputTokens"]
+        self.assertGreaterEqual(budget, 2048)
+
+
+class FlirtDrafting(unittest.TestCase):
+    def test_batch_stops_at_the_first_unreachable_model(self):
+        from src import flirt
+        dead = flirt.llm.Reply(None, "gemini-3.8-flash: model not found (HTTP 404)")
+        with mock.patch.object(flirt.llm, "complete", return_value=dead) as complete:
+            drafts, rejects = flirt.generate_batch(set(), size=12)
+        self.assertEqual(drafts, [])
+        self.assertEqual(complete.call_count, 1)        # not once per concept in the bank
+        self.assertIn("llm unavailable", rejects[0])
+
+    def test_a_refill_that_drafts_nothing_says_why(self):
+        from src import pipeline_flirt
+        with mock.patch.object(pipeline_flirt, "generate_batch",
+                               return_value=([], ["fk: llm unavailable: no LLM key configured"])), \
+                mock.patch.object(pipeline_flirt.notify, "skipped") as skipped:
+            pipeline_flirt._refill_if_low([])
+        skipped.assert_called_once()
+        self.assertIn("drafted nothing", skipped.call_args.args[0])
+        self.assertIn("no LLM key configured", skipped.call_args.args[0])
+
+
 if __name__ == "__main__":
     unittest.main()

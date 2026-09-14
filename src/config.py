@@ -193,6 +193,15 @@ FLIRT_HASHTAGS = [
     "#programming", "#softwareengineer", "#codingmemes", "#techhumor",
 ]
 
+# --- language model -----------------------------------------------------------
+# Tried in order. A model that answers "not found" has been retired, so the
+# next one is tried; a rejected key stops the chain, since no other model on
+# that provider will take it. gemini-2.0-flash sat here until Google shut it
+# down on 1 June 2026, and nothing noticed because every copy of the call
+# swallowed the error. When a model is announced for retirement, drop it.
+GEMINI_MODELS = ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-2.5-flash"]
+GROQ_MODELS = ["llama-3.3-70b-versatile"]
+
 # --- behaviour -------------------------------------------------------------
 
 def _flag(name: str, default: bool) -> bool:

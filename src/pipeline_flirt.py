@@ -129,6 +129,9 @@ def _refill_if_low(entries: list[dict]) -> None:
         return
 
     if not drafts:
+        # Say why. An empty queue with no message is how a retired model could
+        # go unnoticed: every concept failed and nothing was ever reported.
+        notify.skipped(f"flirt drafted nothing this run: {rejects[0] if rejects else 'no candidates'}")
         return
 
     queue.add(entries, drafts)
