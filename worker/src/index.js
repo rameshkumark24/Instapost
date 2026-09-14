@@ -31,7 +31,10 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname !== "/run") return new Response("instapost", { status: 200 });
-    if (!env.MANUAL_KEY || request.headers.get("x-key") !== env.MANUAL_KEY) {
+    // Trimmed: a key piped into `wrangler secret put` can carry a trailing
+    // newline, which would turn every test call into a silent "forbidden".
+    const key = (env.MANUAL_KEY || "").trim();
+    if (!key || (request.headers.get("x-key") || "").trim() !== key) {
       return new Response("forbidden", { status: 403 });
     }
     const result = await run(env);

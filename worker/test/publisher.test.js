@@ -4,7 +4,7 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { run, holdState, redact, istDate, timing } from "../src/index.js";
+import worker, { run, holdState, redact, istDate, timing } from "../src/index.js";
 
 timing.sleep = async () => {};
 
@@ -222,6 +222,17 @@ test("a failed permalink lookup does not fail a successful post", async () => {
   const result = await run(ENV);
   assert.equal(result.news.published, "media-111");
   assert.ok(net.telegram.some((t) => t.startsWith("✅ [news] Live")));
+});
+
+test("the manual test call accepts a key stored with a trailing newline", async () => {
+  network({ posts: { news: card("news", { dry_run: true }), flirt: card("flirt", { dry_run: true }) } });
+  const env = { ...ENV, MANUAL_KEY: "test-key-123456\n" };
+  const ok = await worker.fetch(new Request("https://publisher.example/run", { headers: { "x-key": "test-key-123456" } }), env);
+  assert.equal(ok.status, 200);
+  const denied = await worker.fetch(new Request("https://publisher.example/run", { headers: { "x-key": "wrong" } }), env);
+  assert.equal(denied.status, 403);
+  const noKeyConfigured = await worker.fetch(new Request("https://publisher.example/run", { headers: { "x-key": "" } }), ENV);
+  assert.equal(noKeyConfigured.status, 403);
 });
 
 test("redact removes every known secret and any token-shaped string", () => {

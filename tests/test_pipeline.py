@@ -1103,5 +1103,69 @@ class SkipMarker(unittest.TestCase):
                 self.assertIn(f'"date": "{date}"', text)
 
 
+class ConceptBank(unittest.TestCase):
+    """The tech-metaphor account's runway: every concept usable, unique and reviewable."""
+
+    def setUp(self):
+        from src import flirt
+        self.flirt = flirt
+        self.concepts = flirt.load_concepts()
+
+    def test_the_bank_lasts_months(self):
+        self.assertGreaterEqual(len(self.concepts), 200)
+
+    def test_ids_and_terms_are_unique(self):
+        ids = [c["id"] for c in self.concepts]
+        terms = [c["term"].lower() for c in self.concepts]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertEqual(len(terms), len(set(terms)))
+
+    def test_ids_can_be_ticked_on_the_review_issue(self):
+        # The queue reads approvals back only for ids of lowercase letters,
+        # digits and hyphens; any other id could never be approved.
+        for concept in self.concepts:
+            with self.subTest(id=concept["id"]):
+                self.assertRegex(concept["id"], r"^[a-z0-9-]+$")
+
+    def test_no_term_trips_the_safety_gate(self):
+        # Every line must contain its term, so a term holding a banned word
+        # would get every draft rejected. KILL -9 was left out for exactly this.
+        for concept in self.concepts:
+            with self.subTest(term=concept["term"]):
+                self.assertIsNone(self.flirt.BANNED.search(concept["term"]))
+
+    def test_every_concept_has_a_meaning_to_teach(self):
+        for concept in self.concepts:
+            with self.subTest(id=concept["id"]):
+                self.assertGreaterEqual(len(concept["meaning"]), 20)
+                self.assertTrue(concept["domain"])
+
+
+class DeployAssistant(unittest.TestCase):
+    """The deploy script must store every secret the publisher reads, and never post."""
+
+    def setUp(self):
+        self.worker = (ROOT / "worker" / "src" / "index.js").read_text(encoding="utf-8")
+        self.wrangler = (ROOT / "worker" / "wrangler.toml").read_text(encoding="utf-8")
+        self.script = (ROOT / "worker" / "deploy.ps1").read_text(encoding="utf-8")
+
+    def test_every_secret_the_publisher_reads_is_stored(self):
+        import re
+        read = set(re.findall(r"env\.([A-Z][A-Z0-9_]+)", self.worker))
+        read |= {f"IG_USER_ID_{channel.upper()}" for channel in cfg.CHANNELS}
+        vars_block = self.wrangler.split("[vars]", 1)[1].split("\n[", 1)[0]
+        plain_vars = set(re.findall(r"^([A-Z][A-Z0-9_]+)\s*=", vars_block, re.MULTILINE))
+        secrets = read - plain_vars
+        self.assertTrue(secrets)
+        for secret in sorted(secrets):
+            with self.subTest(secret=secret):
+                self.assertIn(secret, self.script)
+
+    def test_the_test_call_is_guarded_against_posting(self):
+        guard = self.script.index("dry_run")
+        call = self.script.index("/run")
+        self.assertLess(guard, call, "the publish check must come before the publisher is called")
+
+
 if __name__ == "__main__":
     unittest.main()
