@@ -1027,5 +1027,81 @@ class GateAssistant(unittest.TestCase):
         self.assertNotIn(self.TOKEN, payload["reason"])
 
 
+class Preflight(unittest.TestCase):
+    """Meta's documented limits, checked when the card is built instead of at 19:45."""
+
+    def setUp(self):
+        import tempfile
+        from src import preflight
+        self.pre = preflight
+        self.card = ROOT / "brand" / "news" / "pinned-post.jpg"
+        self.tmp = Path(tempfile.mkdtemp())
+
+    def fake_jpeg(self, width: int, height: int) -> Path:
+        # SOI, then a baseline frame header: length, precision, height, width, components.
+        header = (b"\xff\xd8\xff\xc0\x00\x11\x08" + height.to_bytes(2, "big")
+                  + width.to_bytes(2, "big") + b"\x03" + b"\x00" * 9)
+        path = self.tmp / f"{width}x{height}.jpg"
+        path.write_bytes(header)
+        return path
+
+    def test_a_real_card_passes(self):
+        self.assertEqual(self.pre.check({"caption": "A short caption #tech"}, self.card), [])
+
+    def test_jpeg_dimensions_are_read_from_the_file(self):
+        self.assertEqual(self.pre.jpeg_size(self.card.read_bytes()), (1080, 1350))
+
+    def test_a_caption_over_the_limit(self):
+        self.assertTrue(any("2200" in p for p in self.pre.check({"caption": "x" * 2201}, self.card)))
+
+    def test_too_many_hashtags(self):
+        caption = " ".join(f"#tag{i}" for i in range(31))
+        self.assertTrue(any("hashtags" in p for p in self.pre.check({"caption": caption}, self.card)))
+
+    def test_too_many_mentions(self):
+        caption = " ".join(f"@user{i}" for i in range(21))
+        self.assertTrue(any("mentions" in p for p in self.pre.check({"caption": caption}, self.card)))
+
+    def test_emails_and_url_fragments_are_not_counted(self):
+        caption = "Write to a@b.com or see page.html#intro " * 40
+        self.assertEqual(self.pre.check({"caption": caption[:2000]}, self.card), [])
+
+    def test_a_shape_meta_refuses(self):
+        problems = self.pre.check({"caption": ""}, self.fake_jpeg(1080, 2000))
+        self.assertTrue(any("ratio" in p for p in problems))
+
+    def test_both_edges_of_the_allowed_range_pass(self):
+        for width, height in ((1080, 1350), (1910, 1000)):
+            with self.subTest(size=f"{width}x{height}"):
+                self.assertEqual(self.pre.check({"caption": ""}, self.fake_jpeg(width, height)), [])
+
+    def test_a_png_is_refused(self):
+        path = self.tmp / "card.png"
+        path.write_bytes(b"\x89PNG\r\n\x1a\n" + b"\x00" * 64)
+        self.assertTrue(any("JPEG" in p for p in self.pre.check({"caption": ""}, path)))
+
+
+class SkipMarker(unittest.TestCase):
+    """Regression: a deliberate skip reached the publisher as a failed build."""
+
+    def test_both_pipelines_leave_a_dated_skip_marker(self):
+        import json
+        import tempfile
+        from src import pipeline, pipeline_flirt
+        today = datetime.now(cfg.TZ)
+        date = today.strftime("%Y-%m-%d")
+        for module in (pipeline, pipeline_flirt):
+            with self.subTest(pipeline=module.__name__):
+                target = Path(tempfile.mkdtemp()) / "post.json"
+                with mock.patch.object(module, "POST_JSON", target):
+                    module._mark_skipped(today, "nothing worth posting")
+                text = target.read_text(encoding="utf-8")
+                marker = json.loads(text)
+                self.assertEqual(marker["date"], date)
+                self.assertEqual(marker["skip"], "nothing worth posting")
+                # build.yml's "already built today" guard greps for exactly this.
+                self.assertIn(f'"date": "{date}"', text)
+
+
 if __name__ == "__main__":
     unittest.main()

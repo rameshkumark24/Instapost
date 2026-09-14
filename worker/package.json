@@ -1,0 +1,8 @@
+{
+  "name": "instapost-publisher",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

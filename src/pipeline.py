@@ -15,7 +15,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import config as cfg
-from . import notify
+from . import notify, preflight
 from .compose import compose
 from .harvest import harvest_all
 from .ledger import Ledger
@@ -55,7 +55,7 @@ def main() -> int:
             # Not an error. Publishing nothing beats publishing filler.
             log.warning("no post tonight: %s", exc)
             notify.skipped(str(exc))
-            _clear_post()
+            _mark_skipped(today, str(exc))
             return 0
 
         stage = "compose"
@@ -75,6 +75,13 @@ def main() -> int:
                 "dry_run": cfg.DRY_RUN,
             }
         )
+        # Checked before anything is committed: a card Meta would refuse is
+        # caught at 09:30, with hours to fix it, rather than at 19:45.
+        stage = "preflight"
+        if problems := preflight.check(post, image):
+            raise RuntimeError("Meta would refuse this post: " + "; ".join(problems))
+
+        stage = "stage"
         POST_JSON.parent.mkdir(parents=True, exist_ok=True)
         POST_JSON.write_text(json.dumps(post, indent=2, ensure_ascii=False), encoding="utf-8")
         log.info("staged %s", POST_JSON.relative_to(ROOT))
@@ -101,10 +108,22 @@ def main() -> int:
         return 1
 
 
-def _clear_post() -> None:
-    """Stale post.json would let the Worker republish yesterday's card."""
-    if POST_JSON.exists():
-        POST_JSON.unlink()
+def _mark_skipped(today: datetime, reason: str) -> None:
+    """Record a deliberate skip for today in place of a card.
+
+    Deleting post.json made the publisher report a chosen skip as a failed
+    build at 19:45 -- a second, misleading message after the morning's honest
+    one. A dated marker says the skip was deliberate; a missing or stale file
+    still means the build really did not run.
+    """
+    POST_JSON.parent.mkdir(parents=True, exist_ok=True)
+    marker = {
+        "channel": "news",
+        "date": today.strftime("%Y-%m-%d"),
+        "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "skip": reason,
+    }
+    POST_JSON.write_text(json.dumps(marker, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 if __name__ == "__main__":

@@ -35,3 +35,16 @@ jobs:
           playwright install --with-deps chromium
 
       - run: python -m unittest discover -s tests -v
+
+  # The publisher is the one component that talks to Instagram. Its tests
+  # script every network call, so they need nothing but Node.
+  publisher:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Test the publisher
+        working-directory: worker
+        run: node --test

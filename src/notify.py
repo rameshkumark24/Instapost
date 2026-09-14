@@ -46,7 +46,7 @@ def _post(method: str, data: dict, files: dict | None = None) -> None:
 
 
 def receipt(post: dict, image: Path) -> None:
-    mode = "SHADOW - will not publish" if post["dry_run"] else f"publishes {cfg.PUBLISH_AT_LOCAL}"
+    mode = "SHADOW - will not publish" if post["dry_run"] else f"publishes {cfg.PUBLISH_AT_LOCAL} - reply hold to skip tonight"
     caption = (
         f"<b>{_esc(post['headline'])}</b>\n"
         f"<i>{_esc(post['publication'])}</i> · score {post['score']:.3f}"
