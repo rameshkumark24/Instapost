@@ -6,6 +6,18 @@ whether Meta will publish for you at all — before you invest in anything else.
 
 Times are Asia/Kolkata. T-0 is 19:45 IST = 14:15 UTC.
 
+## The fast path
+
+Most manual steps below now have a helper. Use these first; the detailed
+sections remain for when something has to be done by hand.
+
+| Step | Helper |
+|---|---|
+| Name, bio, profile picture and pinned post for each account | `brand/PROFILES.md` (regenerate with `python -m src.brand`) |
+| Gate A: token, permissions, both account IDs, a post prepared but not published | `python -m src.gate_a` (add `--publish` to post the pinned cards) |
+| Phase C: deploy the publisher, store its secrets, test without posting | `powershell -ExecutionPolicy Bypass -File worker/deploy.ps1` |
+| Hold tonight's post from your phone | reply `hold`, `hold news` or `hold tech` to the bot; `resume` undoes it |
+
 ---
 
 ## Phase 0 — prove publishing works (2–3 h)
@@ -199,7 +211,10 @@ Watch it closely for the first week.
 
 ## Controls
 
-**Stop tonight's post** — create `state/hold.flag`, commit, push. Any build
+**Stop tonight's post from your phone** — reply `hold` to the bot, or `hold news` /
+`hold tech` for one account. `resume` undoes it; the latest message that day wins.
+
+**Stop tonight's post from the repo** — create `state/hold.flag`, commit, push. Any build
 that sees it marks the post held and the Worker refuses to publish.
 
 ```bash

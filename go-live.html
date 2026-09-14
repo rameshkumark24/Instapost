@@ -262,7 +262,7 @@
       <div><dt>Posts published</dt><dd class="bad">0</dd></div>
       <div><dt>Accounts live</dt><dd class="bad">0 / 2</dd></div>
       <div><dt>Secrets set</dt><dd class="mid">3 / 6</dd></div>
-      <div><dt>Your time left</dt><dd>~4 h</dd></div>
+      <div><dt>Your time left</dt><dd>~2 h</dd></div>
     </dl>
   </header>
 
@@ -280,7 +280,7 @@
       </li>
       <li>
         <span class="n">3</span><span class="name">Harden</span><span class="chip done">Done</span>
-        <span class="detail">Fixed all 15 code-review findings and every problem the real runs surfaced; 94 automated tests run on each change.</span>
+        <span class="detail">Fixed all 15 code-review findings and every problem the real runs surfaced; 137 Python and 18 publisher tests run on each change.</span>
       </li>
       <li>
         <span class="n">4</span><span class="name">Your credentials</span><span class="chip doing">3 of 6</span>
@@ -292,7 +292,7 @@
       </li>
       <li>
         <span class="n">6</span><span class="name">Deploy the publisher</span><span class="chip todo">Not started</span>
-        <span class="detail">The small program that posts at 19:45 IST. Written and tested, never deployed.</span>
+        <span class="detail">The small program that posts at 19:45 IST. Tested, rehearsed against the real card files, and deployable in one command.</span>
       </li>
       <li>
         <span class="n">7</span><span class="name">Shadow run</span><span class="chip todo">Waiting</span>
@@ -352,7 +352,7 @@
           <li>Tick cards on the review issue when a <strong>New cards to review</strong> message arrives &mdash; about five minutes, whenever fewer than ten are waiting.</li>
           <li>Glance at the 19:45 confirmation.</li>
           <li>Forward any message marked failed.</li>
-          <li>Top up the concept bank roughly every two months.</li>
+          <li>Top up the concept bank every seven months or so.</li>
         </ul>
       </div>
       <div>
@@ -401,6 +401,7 @@
             <tr><td class="k">✅ Live, with a link</td><td>Posted.</td><td>Nothing</td></tr>
             <tr><td class="k">⚠️ post.json is dated …</td><td>Today's build never ran, so nothing posted.</td><td>Re-run the build in Actions</td></tr>
             <tr><td class="k">❌ Publish failed</td><td>Meta refused the post.</td><td>Forward it to me</td></tr>
+            <tr><td class="k">⏸ Held by your message</td><td>You replied hold today, so that account skips tonight.</td><td>Reply resume to undo</td></tr>
             <tr><td class="k">🔑 Instagram token …</td><td>Health check, every ten days.</td><td>Act only if it says BROKEN or gives days left</td></tr>
           </tbody>
         </table>
@@ -409,7 +410,7 @@
 
     <div class="note">
       <p>
-        <strong>Controls.</strong> Hold one night by adding <code>state/hold.flag</code> to the repo.
+        <strong>Controls.</strong> Hold one night by replying <code>hold</code> to the bot &mdash; or <code>hold news</code>, <code>hold tech</code> &mdash; and undo it with <code>resume</code>.
         Stop posting entirely by deleting the <code>LIVE</code> variable &mdash; builds keep running, nothing publishes.
         Stop everything by disabling the workflow in the Actions tab.
       </p>
@@ -424,19 +425,23 @@
         <thead><tr><th>Part</th><th>What it does</th><th>Proven by</th></tr></thead>
         <tbody>
           <tr><td class="k">News engine</td><td>Six sources, scoring for freshness, traction, topic and variety; safe fetching of the publisher's summary; an AI summary checked for invented numbers and copied wording; a 1080&times;1350 card.</td><td>36 builds; today's summary traced back to the source tweet</td></tr>
-          <tr><td class="k">Tech-metaphor engine</td><td>64 concepts, AI drafts through safety checks, approval from your phone, 7-day expiry, a 5-minute cap on drafting.</td><td>12 drafts in <a href="https://github.com/rameshkumark24/Instapost/issues/1">issue #1</a>, none rejected</td></tr>
-          <tr><td class="k">Publisher</td><td>Posts to both accounts at 19:45 IST; refuses stale, held or shadow cards.</td><td>Written and tested; not deployed</td></tr>
+          <tr><td class="k">Tech-metaphor engine</td><td>226 concepts across ten areas of computing, AI drafts through safety checks, approval from your phone, 7-day expiry, a 5-minute cap on drafting.</td><td>12 drafts in <a href="https://github.com/rameshkumark24/Instapost/issues/1">issue #1</a>, none rejected</td></tr>
+          <tr><td class="k">Publisher</td><td>Posts to both accounts at 19:45 IST; refuses stale, held or shadow cards; takes a hold from Telegram; never forwards a secret.</td><td>18 automated tests; rehearsed against the real card files</td></tr>
+          <tr><td class="k">Account kit</td><td>Names, bios, profile pictures and a pinned first post for each account.</td><td><code>brand/PROFILES.md</code>; avatars checked against Instagram's circle crop</td></tr>
+          <tr><td class="k">Gate A assistant</td><td>Checks your Meta token, permissions and both accounts, then has Meta prepare a post without publishing it.</td><td>12 tests; run against Meta's live API</td></tr>
+          <tr><td class="k">Deploy assistant</td><td>Deploys the publisher, stores its secrets and tests it, refusing any test that could post.</td><td>Checked to store every secret the publisher reads</td></tr>
+          <tr><td class="k">Meta preflight</td><td>Checks each card against Meta's image and caption limits when it is built, not at 19:45.</td><td>Automated tests</td></tr>
           <tr><td class="k">Schedule</td><td>Two build times, 5 to 10 hours before posting.</td><td>Changed after the old schedule missed 8 of 18 nights</td></tr>
           <tr><td class="k">Alerts</td><td>Telegram receipts, review requests, skips and failures.</td><td>Three messages delivered today</td></tr>
           <tr><td class="k">Safety</td><td>The <code>LIVE</code> switch, a block on placeholder handles, protection against hostile links, secrets never echoed.</td><td>Automated tests</td></tr>
           <tr><td class="k">Token health</td><td>Checks the Instagram token every ten days.</td><td>Run against Meta's live API</td></tr>
-          <tr><td class="k">Quality</td><td>94 automated tests on every change.</td><td>Passing on GitHub</td></tr>
+          <tr><td class="k">Quality</td><td>137 Python and 18 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
         </tbody>
       </table>
     </div>
     <div class="note">
       <p>
-        <strong>Shipped today, from your screenshot and the Meta changelog.</strong>
+        <strong>Also fixed today.</strong>
         AI calls now get 45 seconds instead of 20 &mdash; the first batch spent about 53 seconds a card with nothing rejected, which points at slow calls being abandoned and retried &mdash; and each attempt is logged with its time.
         "12 new cards drafted" now arrives as <strong>New cards to review</strong> rather than under "skipped tonight".
         The Meta API version moved from v21.0, which stops working on 21 January 2027, to v26.0.
@@ -481,13 +486,13 @@
       <div class="phase-head">
         <span class="phase-id">Gate A</span>
         <span class="phase-name">Get Instagram to publish</span>
-        <div class="meta"><span class="chip you">You</span><span class="chip effort">2&ndash;3 h</span><span class="progress" data-progress="A"></span></div>
+        <div class="meta"><span class="chip you">You</span><span class="chip effort">1&ndash;2 h</span><span class="progress" data-progress="A"></span></div>
       </div>
-      <p class="phase-note">The step that decides whether the project works at all. Stop at A7 until a test post appears on both profiles. Screenshots of any error help me help you &mdash; with no token visible.</p>
+      <p class="phase-note">The step that decides whether the project works at all. Stop at A6 until the assistant says Gate A passed. Screenshots of any error help me help you &mdash; with no token visible.</p>
       <ul class="tasks">
         <li><label class="task" for="task-A1"><input type="checkbox" id="task-A1" data-id="A1"><span class="task-id">A1</span><span class="task-body">
           <span class="what">Create both Instagram accounts, switch each to Professional, keep both public</span>
-          <span class="how">One for news, one for tech-metaphor. Posting through the API does not work on private accounts.</span>
+          <span class="how">One for news, one for tech-metaphor. Posting through the API does not work on private accounts. Names, bios, profile pictures and pinned posts are ready in <code>brand/PROFILES.md</code>.</span>
         </span></label></li>
         <li><label class="task" for="task-A2"><input type="checkbox" id="task-A2" data-id="A2"><span class="task-id">A2</span><span class="task-body">
           <span class="what">Create two Facebook Pages and link one to each account</span>
@@ -506,12 +511,12 @@
           <span class="how">Meta Business settings &rarr; System users. Permissions: <code>instagram_basic</code>, <code>instagram_content_publish</code>, <code>pages_show_list</code>, <code>pages_read_engagement</code>.</span>
         </span></label></li>
         <li><label class="task" for="task-A6"><input type="checkbox" id="task-A6" data-id="A6"><span class="task-id">A6</span><span class="task-body">
-          <span class="what">Find both Instagram user IDs</span>
-          <span class="how">Two lookup commands in <code>SETUP.md</code>, section 0.2.</span>
+          <span class="what">Run the Gate A assistant</span>
+          <span class="how">In the repo folder: <code>.venv/Scripts/python -m src.gate_a</code>. Paste the token when asked. It checks the permissions and both accounts, prints both Instagram IDs, and has Meta prepare a post without publishing it.</span>
         </span></label></li>
         <li><label class="task" for="task-A7"><input type="checkbox" id="task-A7" data-id="A7"><span class="task-id">A7</span><span class="task-body">
-          <span class="what">Publish one test image to each account</span>
-          <span class="how">Two calls per account, in <code>SETUP.md</code> section 0.3. Delete the test posts afterwards.</span>
+          <span class="what">Post each account's pinned intro card</span>
+          <span class="how">Run the assistant again with <code>--publish</code>. The test post you need anyway becomes each account's first real post; pin it from the post's menu.</span>
         </span></label></li>
       </ul>
     </div>
@@ -552,7 +557,7 @@
       <div class="phase-head">
         <span class="phase-id">Phase C</span>
         <span class="phase-name">Deploy the publisher</span>
-        <div class="meta"><span class="chip you">You</span><span class="chip effort">45 min</span><span class="progress" data-progress="C"></span></div>
+        <div class="meta"><span class="chip you">You</span><span class="chip effort">15 min</span><span class="progress" data-progress="C"></span></div>
       </div>
       <ul class="tasks">
         <li><label class="task" for="task-C1"><input type="checkbox" id="task-C1" data-id="C1"><span class="task-id">C1</span><span class="task-body">
@@ -560,20 +565,12 @@
           <span class="how">No card needed.</span>
         </span></label></li>
         <li><label class="task" for="task-C2"><input type="checkbox" id="task-C2" data-id="C2"><span class="task-id">C2</span><span class="task-body">
-          <span class="what">Install and sign in to wrangler</span>
-          <span class="how"><code>npm i -g wrangler</code>, then <code>wrangler login</code>.</span>
+          <span class="what">Run the deploy assistant</span>
+          <span class="how">In the repo folder: <code>powershell -ExecutionPolicy Bypass -File worker/deploy.ps1</code>. It runs the publisher's tests, signs you in to Cloudflare, deploys, asks for five secrets with hidden typing, and calls the publisher once. It refuses that test if any card could really post.</span>
         </span></label></li>
         <li><label class="task" for="task-C3"><input type="checkbox" id="task-C3" data-id="C3"><span class="task-id">C3</span><span class="task-body">
-          <span class="what">Set the six publisher secrets</span>
-          <span class="how"><code>wrangler secret put</code> for <code>IG_TOKEN</code>, <code>IG_USER_ID_NEWS</code>, <code>IG_USER_ID_FLIRT</code>, <code>TG_TOKEN</code>, <code>TG_CHAT</code>, <code>MANUAL_KEY</code>.</span>
-        </span></label></li>
-        <li><label class="task" for="task-C4"><input type="checkbox" id="task-C4" data-id="C4"><span class="task-id">C4</span><span class="task-body">
-          <span class="what">Deploy from the <code>worker</code> folder</span>
-          <span class="how"><code>wrangler deploy</code>. Confirm the dashboard shows the <code>15 14 * * *</code> trigger &mdash; that is 19:45 IST.</span>
-        </span></label></li>
-        <li><label class="task" for="task-C5"><input type="checkbox" id="task-C5" data-id="C5"><span class="task-id">C5</span><span class="task-body">
-          <span class="what">Test it without posting</span>
-          <span class="how">Call its <code>/run</code> address with your <code>MANUAL_KEY</code>. Expect "Shadow mode" for both accounts.</span>
+          <span class="what">Check the test result</span>
+          <span class="how">Expect "shadow mode" or "skipped" for both accounts in the script's output, and a matching message on Telegram.</span>
         </span></label></li>
       </ul>
     </div>
@@ -625,7 +622,7 @@
         </span></label></li>
         <li><label class="task" for="task-K2"><input type="checkbox" id="task-K2" data-id="K2"><span class="task-id">K2</span><span class="task-body">
           <span class="what">Top up the concept bank before it runs out</span>
-          <span class="how">64 concepts is about two months of posts. Tell me and I'll add more.</span>
+          <span class="how">226 concepts is about seven months of posts. Tell me when it runs low and I'll add more.</span>
         </span></label></li>
         <li><label class="task" for="task-K3"><input type="checkbox" id="task-K3" data-id="K3"><span class="task-id">K3</span><span class="task-body">
           <span class="what">At day 30, decide whether the news account earns its place</span>
@@ -689,7 +686,7 @@
           <tr><td class="k">Quiet nights</td><td>News skips when no story is good enough; tech-metaphor skips when nothing is approved. Both tell you.</td></tr>
           <tr><td class="k">First live night</td><td>Meta may reject something no dry run could test. Expect to forward me one error, and it's usually a quick fix.</td></tr>
           <tr><td class="k">Growth</td><td>The system guarantees you post consistently, not that people follow. Treat the first 30 days as a test of the two formats.</td></tr>
-          <tr><td class="k">Upkeep</td><td>The concept bank lasts about two months; Meta retires API versions roughly every two years.</td></tr>
+          <tr><td class="k">Upkeep</td><td>The concept bank lasts about seven months; Meta retires API versions roughly every two years.</td></tr>
         </tbody>
       </table>
     </div>
