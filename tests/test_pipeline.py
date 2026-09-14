@@ -678,11 +678,13 @@ class FlirtDrafting(unittest.TestCase):
         from src import pipeline_flirt
         with mock.patch.object(pipeline_flirt, "generate_batch",
                                return_value=([], ["fk: llm unavailable: no LLM key configured"])), \
-                mock.patch.object(pipeline_flirt.notify, "skipped") as skipped:
+                mock.patch.object(pipeline_flirt.notify, "notice") as notice:
             pipeline_flirt._refill_if_low([])
-        skipped.assert_called_once()
-        self.assertIn("drafted nothing", skipped.call_args.args[0])
-        self.assertIn("no LLM key configured", skipped.call_args.args[0])
+        notice.assert_called_once()
+        title, text = notice.call_args.args
+        self.assertEqual(title, "Drafting failed")
+        self.assertIn("drafted nothing", text)
+        self.assertIn("no LLM key configured", text)
 
 
 class QueueStock(unittest.TestCase):
@@ -706,7 +708,7 @@ class QueueStock(unittest.TestCase):
 
     def test_refill_runs_when_approved_and_pending_are_low(self):
         with mock.patch.object(self.pipeline, "generate_batch", return_value=([], ["x: no usable line"])) as batch, \
-                mock.patch.object(self.pipeline.notify, "skipped"):
+                mock.patch.object(self.pipeline.notify, "notice"):
             self.pipeline._refill_if_low(self.rows(pending=3, approved=4))
         batch.assert_called_once()
         self.assertEqual(batch.call_args.kwargs["budget_s"], cfg.FLIRT_DRAFT_BUDGET_S)
@@ -752,6 +754,63 @@ class DraftingBudget(unittest.TestCase):
         text = "I tried. You left. I called. You blocked. I waited for a TIMEOUT that never came."
         with self.assertRaises(Rejected):
             validate(text, self.concept)
+
+
+class Notices(unittest.TestCase):
+    """Regression: an informational "12 new cards drafted" arrived titled "skipped tonight"."""
+
+    def test_new_drafts_are_announced_as_cards_to_review(self):
+        from src import pipeline_flirt
+        drafts = [{"concept": "fk", "term": "FOREIGN KEY", "domain": "sql", "text": "x", "terms": []}]
+        with mock.patch.object(pipeline_flirt, "generate_batch", return_value=(drafts, [])), \
+                mock.patch.object(pipeline_flirt.queue, "publish_issue", return_value=1), \
+                mock.patch.object(pipeline_flirt.notify, "notice") as notice, \
+                mock.patch.object(pipeline_flirt.notify, "skipped") as skipped:
+            pipeline_flirt._refill_if_low([])
+        skipped.assert_not_called()
+        self.assertEqual(notice.call_args.args[0], "New cards to review")
+
+
+class Timeouts(unittest.TestCase):
+    """Regression: model calls shared the 20s limit meant for ordinary requests."""
+
+    def test_model_calls_get_a_longer_limit_than_ordinary_requests(self):
+        from src import llm
+        with mock.patch.object(llm.requests, "post", return_value=http(200, GEMINI_OK)) as post, \
+                mock.patch.dict(os.environ, {"GEMINI_API_KEY": "k", "GROQ_API_KEY": ""}):
+            llm.complete("p", temperature=0.4)
+        _, read = post.call_args.kwargs["timeout"]
+        self.assertGreaterEqual(read, 45)
+        self.assertGreater(read, cfg.HTTP_TIMEOUT)
+
+    def test_worst_case_run_fits_inside_the_job_limit(self):
+        workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "build.yml").read_text(encoding="utf-8"))
+        job_s = workflow["jobs"]["build"]["timeout-minutes"] * 60
+        chain = (cfg.LLM_CONNECT_TIMEOUT_S + cfg.LLM_TIMEOUT_S) * len(cfg.GEMINI_MODELS)
+        # install + news build with one timed-out chain + drafting budget
+        # overrun by one more chain + commit and verify
+        worst = 180 + (120 + chain) + (cfg.FLIRT_DRAFT_BUDGET_S + chain) + 60
+        self.assertLess(worst, job_s)
+
+
+class GraphVersion(unittest.TestCase):
+    """v21.0 stops working on 21 January 2027; nothing may still pin it."""
+
+    def test_no_file_pins_an_expiring_graph_version(self):
+        # Checks the pins themselves, not any mention: wrangler.toml records
+        # in a comment that v21.0 was pinned before and when it expires.
+        pins = {
+            "src/token_health.py": 'DEFAULT_VERSION = "v21.0"',
+            "worker/wrangler.toml": 'GRAPH_VERSION = "v21.0"',
+            "SETUP.md": "graph.facebook.com/v21.0/",
+        }
+        for rel, pin in pins.items():
+            with self.subTest(file=rel):
+                self.assertNotIn(pin, (ROOT / rel).read_text(encoding="utf-8"))
+
+    def test_publisher_and_token_check_use_the_same_version(self):
+        wrangler = (ROOT / "worker" / "wrangler.toml").read_text(encoding="utf-8")
+        self.assertIn(f'GRAPH_VERSION = "{token_health.DEFAULT_VERSION}"', wrangler)
 
 
 if __name__ == "__main__":

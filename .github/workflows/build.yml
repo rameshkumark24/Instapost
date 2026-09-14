@@ -31,7 +31,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20      # room for slow model calls; the worst case is checked in tests
 
     steps:
       - uses: actions/checkout@v4

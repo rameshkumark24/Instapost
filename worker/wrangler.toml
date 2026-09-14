@@ -14,7 +14,7 @@ crons = ["15 14 * * *"]
 [vars]
 REPO = "rameshkumark24/Instapost"
 CHANNELS = "news,flirt"
-GRAPH_VERSION = "v21.0"          # pin explicitly; check Meta's changelog yearly
+GRAPH_VERSION = "v26.0"          # released 29 Jul 2026; v21.0, pinned before, expires 21 Jan 2027
 
 # Secrets are set with `wrangler secret put NAME`, never in this file:
 #   IG_USER_ID_NEWS   Instagram account id for the news channel

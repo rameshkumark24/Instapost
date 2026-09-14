@@ -237,3 +237,12 @@ ENRICH_SOURCES = {"hn", "lobsters"}
 
 USER_AGENT = "instapost-nightly/1.0 (+https://github.com/)"
 HTTP_TIMEOUT = 20
+
+# Language-model calls get their own, longer limit. Current Flash models think
+# before answering, and a non-streaming reply arrives only once they finish, so
+# a 20s limit abandons slow-but-working calls and retries them on the next
+# model. The first real batch took 636s for 12 cards (~53s each) while no line
+# failed a gate. The worst case -- every model timing out -- is checked against
+# the build job's time limit in tests/test_pipeline.py.
+LLM_CONNECT_TIMEOUT_S = 10
+LLM_TIMEOUT_S = 45

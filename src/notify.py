@@ -74,10 +74,20 @@ def failure(stage: str, exc: BaseException) -> None:
 
 
 def skipped(reason: str) -> None:
+    notice("Instapost skipped tonight", reason)
+
+
+def notice(title: str, text: str) -> None:
+    """A titled message.
+
+    "Skipped tonight" is kept for nights with nothing to post. An informational
+    update such as "12 new cards drafted" arriving under that title read like a
+    failure.
+    """
     _post(
         "sendMessage",
         {
-            "text": f"<b>Instapost skipped tonight</b>\n{_esc(reason)}",
+            "text": f"<b>{_esc(title)}</b>\n{_esc(text)}",
             "parse_mode": "HTML",
         },
     )

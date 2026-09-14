@@ -39,7 +39,7 @@ import urllib.parse
 import urllib.request
 
 GRAPH = "https://graph.facebook.com"
-DEFAULT_VERSION = "v21.0"
+DEFAULT_VERSION = "v26.0"
 WARN_DAYS = 14
 ATTEMPTS = 3
 

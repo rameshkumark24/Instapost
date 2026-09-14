@@ -140,22 +140,23 @@ def _refill_if_low(entries: list[dict]) -> None:
         )
     except Rejected as exc:
         log.warning("could not draft: %s", exc)
-        notify.skipped(f"flirt refill failed: {exc}")
+        notify.notice("Drafting failed", f"flirt refill failed: {exc}")
         return
     took = _duration(time.monotonic() - started)
 
     if not drafts:
         # Say why. An empty queue with no message is how a retired model could
         # go unnoticed: every concept failed and nothing was ever reported.
-        notify.skipped(f"flirt drafted nothing in {took}: {rejects[0] if rejects else 'no candidates'}")
+        notify.notice("Drafting failed", f"flirt drafted nothing in {took}: {rejects[0] if rejects else 'no candidates'}")
         return
 
     queue.add(entries, drafts)
     try:
         number = queue.publish_issue(entries)
-        notify.skipped(
-            f"{len(drafts)} new cards drafted in {took} "
-            f"({len(rejects)} concepts gave no usable line). Review issue #{number}."
+        notify.notice(
+            "New cards to review",
+            f"{len(drafts)} drafted in {took} ({len(rejects)} concepts gave no usable line). "
+            f"Tick the ones worth posting on issue #{number}.",
         )
     except Exception as exc:
         log.warning("could not update review issue: %s", exc)

@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import logging
 import os
+import time
 from dataclasses import dataclass
 
 import requests
@@ -63,14 +64,21 @@ def complete(prompt: str, temperature: float, max_tokens: int = 300) -> Reply:
     errors: list[str] = []
     for call, key, models in providers:
         for model in models:
+            started = time.monotonic()
             text, kind, detail = call(model, key, prompt, temperature, max_tokens)
+            took = time.monotonic() - started
             if kind == _OK:
+                log.info("%s answered in %.1fs", model, took)
                 return Reply(text)
             errors.append(f"{model}: {detail}")
             if kind == _RETIRED:
                 log.warning("%s looks retired (%s); trying the next model", model, detail)
             elif kind == _AUTH:
                 break
+            else:
+                # Logged so a slow or flaky model shows up in the Actions log
+                # instead of silently costing time on every card.
+                log.info("%s failed after %.1fs (%s); trying the next model", model, took, detail)
     return Reply(None, "; ".join(errors) or "no model configured")
 
 
@@ -96,7 +104,7 @@ def _gemini(model: str, key: str, prompt: str, temperature: float, max_tokens: i
                     "maxOutputTokens": max(max_tokens, GEMINI_MIN_OUTPUT_TOKENS),
                 },
             },
-            timeout=cfg.HTTP_TIMEOUT,
+            timeout=(cfg.LLM_CONNECT_TIMEOUT_S, cfg.LLM_TIMEOUT_S),
         )
     except requests.RequestException as exc:
         return None, _OTHER, f"network error ({type(exc).__name__})"
@@ -124,7 +132,7 @@ def _groq(model: str, key: str, prompt: str, temperature: float, max_tokens: int
                 "temperature": temperature,
                 "max_tokens": max_tokens,
             },
-            timeout=cfg.HTTP_TIMEOUT,
+            timeout=(cfg.LLM_CONNECT_TIMEOUT_S, cfg.LLM_TIMEOUT_S),
         )
     except requests.RequestException as exc:
         return None, _OTHER, f"network error ({type(exc).__name__})"

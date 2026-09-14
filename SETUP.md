@@ -52,9 +52,9 @@ token dies permanently if it ever goes 60 days without a refresh.
 Get your Instagram user id:
 
 ```bash
-curl -s "https://graph.facebook.com/v21.0/me/accounts?access_token=$TOKEN"
+curl -s "https://graph.facebook.com/v26.0/me/accounts?access_token=$TOKEN"
 # then, with the page id from above:
-curl -s "https://graph.facebook.com/v21.0/<PAGE_ID>?fields=instagram_business_account&access_token=$TOKEN"
+curl -s "https://graph.facebook.com/v26.0/<PAGE_ID>?fields=instagram_business_account&access_token=$TOKEN"
 ```
 
 ### 0.3 The two calls that prove it
@@ -63,14 +63,14 @@ Host any JPEG at a public URL, then:
 
 ```bash
 # 1. create the container
-curl -s -X POST "https://graph.facebook.com/v21.0/$IG_USER_ID/media" \
+curl -s -X POST "https://graph.facebook.com/v26.0/$IG_USER_ID/media" \
   -d "image_url=https://example.com/test.jpg" \
   -d "caption=setup test" \
   -d "access_token=$TOKEN"
 # -> {"id":"1789..."}
 
 # 2. publish it
-curl -s -X POST "https://graph.facebook.com/v21.0/$IG_USER_ID/media_publish" \
+curl -s -X POST "https://graph.facebook.com/v26.0/$IG_USER_ID/media_publish" \
   -d "creation_id=1789..." \
   -d "access_token=$TOKEN"
 ```
