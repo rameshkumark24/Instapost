@@ -18,6 +18,7 @@ import json
 import logging
 import random
 import re
+import time
 from pathlib import Path
 
 from . import config as cfg
@@ -47,6 +48,11 @@ PERSONAL = re.compile(r"\b(she|he|they|her|him|them|you|your|my|me|i|we|us)\b", 
 MIN_CHARS, MAX_CHARS = 60, 190
 MAX_LINES = 4
 
+# A sentence ends at terminal punctuation followed by a space or the end of the
+# line. Counting full stops instead read "...", ".gitignore" and "v1.5" as
+# several sentences and threw good lines away, each costing another model call.
+_SENTENCE_END = re.compile(r"[.!?\u2026]+(?=\s|$)")
+
 
 class Rejected(ValueError):
     """A candidate that failed a gate. Never a crash -- just a discarded draft."""
@@ -59,6 +65,10 @@ class LLMUnavailable(Rejected):
     model once per concept costs a timeout each, and 64 of them outlast the
     build job's 15-minute limit -- cancelling the news card along with it.
     """
+
+
+class BudgetSpent(Exception):
+    """The drafting time budget ran out. Not a rejection: the concept was never tried."""
 
 
 def load_concepts() -> list[dict]:
@@ -109,7 +119,7 @@ def validate(text: str, concept: dict) -> str:
         raise Rejected(f"does not use the term {concept['term']!r}")
     if not PERSONAL.search(text):
         raise Rejected("reads as documentation, not as a metaphor about a person")
-    if text.count(".") + text.count("!") + text.count("?") > MAX_LINES:
+    if len(_SENTENCE_END.findall(text)) > MAX_LINES:
         raise Rejected("too many sentences for the card")
     if re.search(r"[\U0001F000-\U0001FAFF\U00002600-\U000027BF]", text):
         raise Rejected("contains emoji")
@@ -118,12 +128,14 @@ def validate(text: str, concept: dict) -> str:
     return text
 
 
-def generate(concept: dict, attempts: int = 3) -> dict:
-    """One validated candidate for a concept, or raise Rejected."""
+def generate(concept: dict, attempts: int = 3, deadline: float | None = None) -> dict:
+    """One validated candidate for a concept. Raises Rejected, or BudgetSpent past `deadline`."""
     prompt = _PROMPT.format(term=concept["term"], meaning=concept["meaning"])
     reasons = []
 
     for i in range(attempts):
+        if deadline is not None and time.monotonic() >= deadline:
+            raise BudgetSpent()
         reply = llm.complete(prompt, temperature=0.85 + 0.05 * i)
         if not reply.text:
             raise LLMUnavailable(f"{concept['id']}: llm unavailable: {reply.error}")
@@ -152,19 +164,32 @@ def generate(concept: dict, attempts: int = 3) -> dict:
     raise Rejected(f"{concept['id']}: {'; '.join(reasons) or 'no candidate'}")
 
 
-def generate_batch(used_ids: set[str], size: int) -> tuple[list[dict], list[str]]:
-    """Draft `size` candidates from concepts not yet used. Returns (ok, rejects)."""
+def generate_batch(
+    used_ids: set[str], size: int, budget_s: float | None = None
+) -> tuple[list[dict], list[str]]:
+    """Draft up to `size` candidates from unused concepts. Returns (drafts, rejects).
+
+    `budget_s` caps the wall-clock time spent. A thinking model can take many
+    seconds per call and the gates discard a share of what comes back, so an
+    unbounded batch took 10m36s in its first real run -- most of a 15-minute
+    job. Whatever is drafted when the budget runs out is kept, and the queue
+    tops itself up on the next run.
+    """
     pool = unused_concepts(used_ids)
     if not pool:
         raise Rejected("concept bank exhausted -- add more to state/concepts.json")
 
+    deadline = time.monotonic() + budget_s if budget_s is not None else None
     random.shuffle(pool)
     out, rejects = [], []
     for concept in pool:
         if len(out) >= size:
             break
         try:
-            out.append(generate(concept))
+            out.append(generate(concept, deadline=deadline))
+        except BudgetSpent:
+            log.info("drafting budget of %ss spent after %d drafts", budget_s, len(out))
+            break
         except LLMUnavailable as exc:
             # The same model would fail every remaining concept the same way.
             rejects.append(str(exc))
@@ -172,7 +197,7 @@ def generate_batch(used_ids: set[str], size: int) -> tuple[list[dict], list[str]
         except Rejected as exc:
             rejects.append(str(exc))
 
-    log.info("drafted %d candidates, %d rejected by gates", len(out), len(rejects))
+    log.info("drafted %d candidates, %d concepts gave no usable line", len(out), len(rejects))
     return out, rejects
 
 

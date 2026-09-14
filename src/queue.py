@@ -9,7 +9,7 @@ have not read.
 A GitHub Issue is the whole review UI: checkboxes are tappable on mobile, the
 state lives in the issue body, and it costs nothing to run.
 
-Statuses: pending -> approved | rejected -> posted
+Statuses: pending -> approved -> posted, or pending -> expired
 """
 from __future__ import annotations
 
@@ -17,10 +17,12 @@ import json
 import logging
 import os
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
+
+from . import config as cfg
 
 log = logging.getLogger(__name__)
 
@@ -47,8 +49,34 @@ def save(entries: list[dict]) -> None:
 
 
 def used_concept_ids(entries: list[dict]) -> set[str]:
-    """Every concept already drafted, in any status -- never draft it twice."""
-    return {e["concept"] for e in entries}
+    """Concepts already drafted and still live, so none is drafted twice.
+
+    Expired drafts give their concept back: a line nobody reviewed is not a
+    verdict on the concept, and the bank holds only 64.
+    """
+    return {e["concept"] for e in entries if e["status"] != "expired"}
+
+
+def expire_stale(entries: list[dict], days: float) -> int:
+    """Expire drafts that have waited longer than `days` for review.
+
+    Without this, a batch nobody ticks blocks refills for good -- there is no
+    other way to say "none of these". Called after approvals are synced, so a
+    box ticked on the last day still counts.
+    """
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    expired = 0
+    for e in entries:
+        if e["status"] != "pending":
+            continue
+        try:
+            drafted = datetime.fromisoformat(e["drafted_at"])
+        except (KeyError, ValueError):
+            continue
+        if drafted < cutoff:
+            e["status"] = "expired"
+            expired += 1
+    return expired
 
 
 def counts(entries: list[dict]) -> dict[str, int]:
@@ -115,8 +143,8 @@ def render_issue_body(entries: list[dict]) -> str:
         MARKER,
         "### Approve tonight's queue",
         "",
-        "Tick the ones worth posting, then leave the rest. Anything still",
-        "unticked when the next batch is drafted is dropped automatically.",
+        "Tick the ones worth posting and leave the rest. Unticked cards expire",
+        f"after {cfg.FLIRT_PENDING_EXPIRE_DAYS} days and their concepts go back into the pool.",
         "",
         f"_{len(pending)} awaiting review_",
         "",

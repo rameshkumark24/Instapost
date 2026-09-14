@@ -685,5 +685,74 @@ class FlirtDrafting(unittest.TestCase):
         self.assertIn("no LLM key configured", skipped.call_args.args[0])
 
 
+class QueueStock(unittest.TestCase):
+    """Regression: every run drafted twelve more while the first twelve sat unreviewed."""
+
+    def setUp(self):
+        from src import pipeline_flirt, queue
+        self.pipeline, self.queue = pipeline_flirt, queue
+
+    @staticmethod
+    def rows(pending: int = 0, approved: int = 0) -> list[dict]:
+        now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        out = [{"concept": f"p{i}", "status": "pending", "text": "x", "drafted_at": now} for i in range(pending)]
+        out += [{"concept": f"a{i}", "status": "approved", "text": "y", "drafted_at": now} for i in range(approved)]
+        return out
+
+    def test_unreviewed_drafts_count_toward_the_stock(self):
+        with mock.patch.object(self.pipeline, "generate_batch") as batch:
+            self.pipeline._refill_if_low(self.rows(pending=12))
+        batch.assert_not_called()
+
+    def test_refill_runs_when_approved_and_pending_are_low(self):
+        with mock.patch.object(self.pipeline, "generate_batch", return_value=([], ["x: no usable line"])) as batch, \
+                mock.patch.object(self.pipeline.notify, "skipped"):
+            self.pipeline._refill_if_low(self.rows(pending=3, approved=4))
+        batch.assert_called_once()
+        self.assertEqual(batch.call_args.kwargs["budget_s"], cfg.FLIRT_DRAFT_BUDGET_S)
+
+    def test_stale_pending_drafts_expire_and_nothing_else_does(self):
+        old = (datetime.now(timezone.utc) - timedelta(days=cfg.FLIRT_PENDING_EXPIRE_DAYS + 1)).isoformat()
+        new = datetime.now(timezone.utc).isoformat()
+        rows = [
+            {"concept": "stale", "status": "pending", "drafted_at": old},
+            {"concept": "fresh", "status": "pending", "drafted_at": new},
+            {"concept": "kept", "status": "approved", "drafted_at": old},
+        ]
+        self.assertEqual(self.queue.expire_stale(rows, cfg.FLIRT_PENDING_EXPIRE_DAYS), 1)
+        self.assertEqual([r["status"] for r in rows], ["expired", "pending", "approved"])
+
+    def test_expired_concepts_return_to_the_pool(self):
+        rows = [{"concept": "gone", "status": "expired"}, {"concept": "live", "status": "pending"}]
+        self.assertEqual(self.queue.used_concept_ids(rows), {"live"})
+
+    def test_issue_text_matches_what_the_code_does(self):
+        body = self.queue.render_issue_body([{"concept": "a", "status": "pending", "text": "x"}])
+        self.assertNotIn("dropped automatically", body)
+        self.assertIn("expire", body)
+
+
+class DraftingBudget(unittest.TestCase):
+    """Regression: the first real batch took 10m36s of a 15-minute job."""
+
+    concept = {"term": "TIMEOUT", "meaning": "x", "id": "t", "domain": "networking"}
+
+    def test_no_model_calls_once_the_budget_is_spent(self):
+        from src import flirt
+        with mock.patch.object(flirt.llm, "complete") as complete:
+            drafts, _ = flirt.generate_batch(set(), size=12, budget_s=0)
+        complete.assert_not_called()
+        self.assertEqual(drafts, [])
+
+    def test_an_ellipsis_is_not_several_sentences(self):
+        text = "I waited for your reply... and waited. Then my heart hit its TIMEOUT and stopped listening."
+        self.assertEqual(validate(text, self.concept), text)
+
+    def test_too_many_real_sentences_are_still_rejected(self):
+        text = "I tried. You left. I called. You blocked. I waited for a TIMEOUT that never came."
+        with self.assertRaises(Rejected):
+            validate(text, self.concept)
+
+
 if __name__ == "__main__":
     unittest.main()

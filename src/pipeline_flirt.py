@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import logging
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -54,6 +55,10 @@ def main() -> int:
             # A GitHub API blip must not stop us posting something already
             # approved and sitting in the queue.
             log.warning("approval sync failed, continuing on local state: %s", exc)
+
+        stage = "expire"
+        if expired := queue.expire_stale(entries, cfg.FLIRT_PENDING_EXPIRE_DAYS):
+            log.info("%d unreviewed drafts expired; their concepts return to the pool", expired)
 
         stage = "refill"
         _refill_if_low(entries)
@@ -113,36 +118,52 @@ def main() -> int:
 
 
 def _refill_if_low(entries: list[dict]) -> None:
-    """Draft a new batch when the approved queue is running down."""
-    approved = queue.counts(entries).get("approved", 0)
-    if approved >= cfg.FLIRT_REFILL_BELOW:
+    """Draft more only when the stock -- approved plus awaiting review -- runs low.
+
+    Counting approved cards alone meant every nightly run drafted another
+    twelve while the first twelve sat unreviewed: the review issue grew by a
+    dozen a night, the 64-concept bank would be spent within a week, and each
+    run gave ten minutes of a fifteen-minute job to drafting.
+    """
+    counts = queue.counts(entries)
+    stocked = counts.get("approved", 0) + counts.get("pending", 0)
+    if stocked >= cfg.FLIRT_REFILL_BELOW:
         return
 
-    log.info("approved queue at %d, drafting a new batch", approved)
+    log.info("queue stock at %d (approved + awaiting review), drafting more", stocked)
+    started = time.monotonic()
     try:
         drafts, rejects = generate_batch(
-            queue.used_concept_ids(entries), cfg.FLIRT_BATCH_SIZE
+            queue.used_concept_ids(entries),
+            cfg.FLIRT_BATCH_SIZE,
+            budget_s=cfg.FLIRT_DRAFT_BUDGET_S,
         )
     except Rejected as exc:
         log.warning("could not draft: %s", exc)
         notify.skipped(f"flirt refill failed: {exc}")
         return
+    took = _duration(time.monotonic() - started)
 
     if not drafts:
         # Say why. An empty queue with no message is how a retired model could
         # go unnoticed: every concept failed and nothing was ever reported.
-        notify.skipped(f"flirt drafted nothing this run: {rejects[0] if rejects else 'no candidates'}")
+        notify.skipped(f"flirt drafted nothing in {took}: {rejects[0] if rejects else 'no candidates'}")
         return
 
     queue.add(entries, drafts)
     try:
         number = queue.publish_issue(entries)
         notify.skipped(
-            f"{len(drafts)} new cards drafted ({len(rejects)} rejected by gates). "
-            f"Review issue #{number}."
+            f"{len(drafts)} new cards drafted in {took} "
+            f"({len(rejects)} concepts gave no usable line). Review issue #{number}."
         )
     except Exception as exc:
         log.warning("could not update review issue: %s", exc)
+
+
+def _duration(seconds: float) -> str:
+    minutes, secs = divmod(int(seconds), 60)
+    return f"{minutes}m{secs:02d}s" if minutes else f"{secs}s"
 
 
 def _clear_post() -> None:
