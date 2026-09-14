@@ -894,5 +894,138 @@ class Rendering(unittest.TestCase):
         self.assertTrue(render.render(brand.PROFILES["news"]["intro"], self.out / "news.jpg", channel=channel).exists())
 
 
+class FakeGraph:
+    """Scripted Meta responses for the Gate A assistant."""
+
+    def __init__(self, respond):
+        self.respond = respond
+        self.calls: list[tuple[str, str]] = []
+
+    def call(self, method, path, **params):
+        self.calls.append((method, path))
+        return self.respond(method, path, params)
+
+
+def gate_graph(accounts=2, token="ok", media="ok"):
+    from src import gate_a
+
+    def respond(method, path, params):
+        if path == "me":
+            if token == "ok":
+                return token_health.OK, {"id": "1", "name": "Instapost system user"}
+            return token_health.BROKEN, {"reason": "token rejected (190): Malformed access token [redacted]"}
+        if path == "me/permissions":
+            return token_health.OK, {"data": [{"permission": p, "status": "granted"} for p in gate_a.REQUIRED_PERMISSIONS]}
+        if path == "me/accounts":
+            return token_health.OK, {"data": [
+                {"name": f"Page {i}", "instagram_business_account": {"id": f"1784{i}", "username": f"acct{i}"}}
+                for i in range(accounts)
+            ]}
+        if path.endswith("/content_publishing_limit"):
+            return token_health.OK, {"data": [{"quota_usage": 0, "config": {"quota_total": 50}}]}
+        if method == "POST" and path.endswith("/media"):
+            if media == "ok":
+                return token_health.OK, {"id": "c-" + path.split("/")[0]}
+            return token_health.BROKEN, {"reason": "token lacks permission (10): Application does not have permission"}
+        if path.startswith("c-"):
+            return token_health.OK, {"status_code": "FINISHED"}
+        if path.endswith("/media_publish"):
+            return token_health.OK, {"id": "m-1"}
+        raise AssertionError(f"unexpected call {method} {path}")
+
+    return FakeGraph(respond)
+
+
+class GateAssistant(unittest.TestCase):
+    """Gate A decides whether the project works; the assistant must be exact and never leak the token."""
+
+    TOKEN = "EAAsecret_token_that_must_never_print_123456"
+
+    def setUp(self):
+        from src import gate_a
+        self.gate = gate_a
+
+    def run_gate(self, graph, publish=False):
+        out = io.StringIO()
+        pick = lambda accounts: {"news": accounts[0], "flirt": accounts[1]}  # noqa: E731
+        with mock.patch.object(self.gate.requests, "head", return_value=mock.MagicMock(status_code=200)), \
+                mock.patch.object(sys, "stdout", out):
+            code = self.gate.run(graph, self.gate.Report(), publish=publish, choose=pick,
+                                 captions={"news": "n", "flirt": "f"})
+        return code, out.getvalue()
+
+    def test_missing_permissions_are_named(self):
+        payload = {"data": [
+            {"permission": "instagram_basic", "status": "granted"},
+            {"permission": "instagram_content_publish", "status": "declined"},
+        ]}
+        self.assertEqual(self.gate.missing_permissions(payload),
+                         ["instagram_content_publish", "pages_show_list", "pages_read_engagement"])
+
+    def test_pages_without_an_instagram_account_are_skipped(self):
+        payload = {"data": [{"name": "Empty page"}, {"name": "P", "instagram_business_account": {"id": "9", "username": "x"}}]}
+        self.assertEqual([a.ig_id for a in self.gate.linked_accounts(payload)], ["9"])
+
+    def test_container_states(self):
+        self.assertEqual(self.gate.container_state({"status_code": "FINISHED"})[0], "ready")
+        self.assertEqual(self.gate.container_state({"status_code": "IN_PROGRESS"})[0], "waiting")
+        self.assertEqual(self.gate.container_state({"status_code": "ERROR", "status": "bad image"})[0], "failed")
+
+    def test_accounts_are_matched_by_handle_case_insensitively(self):
+        a, b = self.gate.Account("P1", "1", "DailyTechBrief"), self.gate.Account("P2", "2", "commitissues")
+        self.assertEqual(self.gate.assign([a, b], {"news": "@dailytechbrief", "flirt": "@CommitIssues"}), {"news": a, "flirt": b})
+        self.assertIsNone(self.gate.assign([a, b], {"news": "@someoneelse", "flirt": "@commitissues"}))
+
+    def test_card_image_address_comes_from_the_publisher_config(self):
+        self.assertTrue(self.gate.card_url("news").endswith("/rameshkumark24/Instapost/main/brand/news/pinned-post.jpg"))
+
+    def test_a_full_pass_prints_both_ids_and_publishes_nothing(self):
+        graph = gate_graph()
+        code, output = self.run_gate(graph)
+        self.assertEqual(code, 0)
+        self.assertIn("Gate A passed", output)
+        self.assertIn("IG_USER_ID_NEWS", output)
+        self.assertIn("17840", output)
+        self.assertIn("17841", output)
+        self.assertFalse(any(path.endswith("media_publish") for _, path in graph.calls))
+
+    def test_the_token_never_appears_in_the_output(self):
+        for graph in (gate_graph(), gate_graph(token="broken"), gate_graph(media="broken")):
+            with self.subTest():
+                _, output = self.run_gate(graph)
+                self.assertNotIn(self.TOKEN, output)
+
+    def test_a_rejected_token_stops_at_the_first_step(self):
+        graph = gate_graph(token="broken")
+        code, output = self.run_gate(graph)
+        self.assertEqual(code, 1)
+        self.assertEqual(graph.calls, [("GET", "me")])
+        self.assertIn("system-user token", output)
+
+    def test_one_linked_account_is_not_enough(self):
+        code, output = self.run_gate(gate_graph(accounts=1))
+        self.assertEqual(code, 1)
+        self.assertIn("this project needs 2", output)
+
+    def test_an_unaccepted_tester_invite_is_explained(self):
+        code, output = self.run_gate(gate_graph(media="broken"))
+        self.assertEqual(code, 1)
+        self.assertIn("Instagram Tester", output)
+
+    def test_publish_mode_publishes_each_account_once(self):
+        graph = gate_graph()
+        code, _ = self.run_gate(graph, publish=True)
+        self.assertEqual(code, 0)
+        self.assertEqual(sum(path.endswith("media_publish") for _, path in graph.calls), 2)
+
+    def test_network_errors_never_show_the_request_url(self):
+        graph = self.gate.Graph(self.TOKEN)
+        boom = self.gate.requests.ConnectionError(f"https://graph.facebook.com/me?access_token={self.TOKEN}")
+        with mock.patch.object(self.gate.requests, "get", side_effect=boom):
+            outcome, payload = graph.call("GET", "me")
+        self.assertNotEqual(outcome, token_health.OK)
+        self.assertNotIn(self.TOKEN, payload["reason"])
+
+
 if __name__ == "__main__":
     unittest.main()
