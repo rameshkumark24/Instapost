@@ -54,6 +54,23 @@ MAX_LINES = 4
 _SENTENCE_END = re.compile(r"[.!?\u2026]+(?=\s|$)")
 
 
+def term_pattern(term: str) -> re.Pattern:
+    """The term as a model may space it: "TRY / CATCH" also matches "TRY/CATCH".
+
+    Requiring the bank's exact spacing threw a good line away -- on every
+    attempt, each a model call -- whenever the model wrote the usual spelling.
+    Words stay apart; only the space around punctuation is optional.
+    """
+    pattern, previous_is_word = "", False
+    for part in re.findall(r"\w+|[^\w\s]", term):
+        is_word = bool(re.match(r"\w", part))
+        if pattern:
+            pattern += r"\s+" if is_word and previous_is_word else r"\s*"
+        pattern += re.escape(part)
+        previous_is_word = is_word
+    return re.compile(pattern, re.IGNORECASE)
+
+
 class Rejected(ValueError):
     """A candidate that failed a gate. Never a crash -- just a discarded draft."""
 
@@ -115,9 +132,12 @@ def validate(text: str, concept: dict) -> str:
         raise Rejected(f"length {len(text)} outside {MIN_CHARS}-{MAX_CHARS}")
     if hit := BANNED.search(text):
         raise Rejected(f"banned term {hit.group(0)!r}")
-    if concept["term"].lower() not in text.lower():
+    term = term_pattern(concept["term"])
+    if not term.search(text):
         raise Rejected(f"does not use the term {concept['term']!r}")
-    if not PERSONAL.search(text):
+    # The term's own words do not count: WORKS ON MY MACHINE holds "my", and would
+    # otherwise wave through any dry definition that merely names it.
+    if not PERSONAL.search(term.sub(" ", text)):
         raise Rejected("reads as documentation, not as a metaphor about a person")
     if len(_SENTENCE_END.findall(text)) > MAX_LINES:
         raise Rejected("too many sentences for the card")
@@ -152,13 +172,15 @@ def generate(concept: dict, attempts: int = 3, deadline: float | None = None) ->
             reasons.append(str(exc))
             continue
 
+        # The card bolds the term as this line spells it, which can differ from the bank.
+        spelled = term_pattern(concept["term"]).search(text).group(0)
         terms = [t for t in parsed.get("terms", []) if t and t.lower() in text.lower()]
         return {
             "concept": concept["id"],
             "term": concept["term"],
             "domain": concept["domain"],
             "text": text,
-            "terms": terms or [concept["term"]],
+            "terms": terms or [spelled],
         }
 
     raise Rejected(f"{concept['id']}: {'; '.join(reasons) or 'no candidate'}")

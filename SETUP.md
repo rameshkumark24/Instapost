@@ -11,11 +11,16 @@ Times are Asia/Kolkata. T-0 is 19:45 IST = 14:15 UTC.
 Most manual steps below now have a helper. Use these first; the detailed
 sections remain for when something has to be done by hand.
 
+The Python helpers run from the repo's virtual environment. Create it once
+with the four commands under [Local dry run](#local-dry-run) in Phase 1, then
+run them as shown (on macOS or Linux, `.venv/bin/python`). The deploy script
+needs only Node.js 22 or newer; it installs its own pinned wrangler.
+
 | Step | Helper |
 |---|---|
-| Name, bio, profile picture and pinned post for each account | `brand/PROFILES.md` (regenerate with `python -m src.brand`) |
-| Gate A: token, permissions, both account IDs, a post prepared but not published | `python -m src.gate_a` (add `--publish` to post the pinned cards) |
-| Phase C: deploy the publisher, store its secrets, test without posting | `powershell -ExecutionPolicy Bypass -File worker/deploy.ps1` |
+| Name, bio, profile picture and pinned post for each account | `brand/PROFILES.md` (regenerate with `.venv/Scripts/python -m src.brand`) |
+| Gate A: token, permissions, both account IDs, then a real post on each account | `.venv/Scripts/python -m src.gate_a`, then again with `--publish`. Gate A passes only once Meta publishes. |
+| Phase C: deploy the publisher, store its secrets, test without posting | `powershell -ExecutionPolicy Bypass -File worker/deploy.ps1`. It ends with `Test passed. Nothing was posted.` or stops at the problem. |
 | Hold tonight's post from your phone | reply `hold`, `hold news` or `hold tech` to the bot; `resume` undoes it |
 
 ---
@@ -151,18 +156,19 @@ python -m unittest discover -s tests -v
 Without an LLM key the deterministic composer is used, which always works. It
 is the floor, not a degraded mode.
 
-**Cloudflare Worker:**
+**Cloudflare Worker.** `worker/deploy.ps1` does all of this. By hand:
 
 ```bash
 cd worker
+npm ci                                 # the wrangler version pinned in package.json
 npx wrangler login
+npx wrangler deploy
 npx wrangler secret put IG_USER_ID_NEWS
 npx wrangler secret put IG_USER_ID_FLIRT
 npx wrangler secret put IG_TOKEN
 npx wrangler secret put TG_TOKEN
 npx wrangler secret put TG_CHAT
 npx wrangler secret put MANUAL_KEY     # any random string
-npx wrangler deploy
 ```
 
 Test the Worker without waiting for its cron:
@@ -171,8 +177,10 @@ Test the Worker without waiting for its cron:
 curl -H "x-key: $MANUAL_KEY" https://instapost-publisher.<subdomain>.workers.dev/run
 ```
 
-While `post.json` still says `dry_run: true`, this reports what it *would*
-have published and posts nothing.
+This address only ever tests. It checks that the token reaches each account,
+reads today's cards and the holds, sends a "Publisher test" message on
+Telegram, and reports what 19:45 would do. It posts nothing, whatever the cards
+say: publishing happens on the schedule and nowhere else.
 
 ---
 
@@ -214,8 +222,9 @@ Watch it closely for the first week.
 **Stop tonight's post from your phone** — reply `hold` to the bot, or `hold news` /
 `hold tech` for one account. `resume` undoes it; the latest message that day wins.
 
-**Stop tonight's post from the repo** — create `state/hold.flag`, commit, push. Any build
-that sees it marks the post held and the Worker refuses to publish.
+**Stop posting from the repo** — create `state/hold.flag`, commit, push. The
+publisher checks for it at 19:45, so it works after the morning build and while
+Telegram is down. It holds both accounts every night until you delete the file.
 
 ```bash
 touch state/hold.flag && git add -A && git commit -m "hold" && git push
@@ -240,7 +249,8 @@ Worker's cron trigger.
 | Symptom | Cause | Fix |
 |---|---|---|
 | No Telegram message at all | Build failed or run dropped | Check the Actions log; re-run via workflow_dispatch |
-| `⚠️ post.json is dated …` | Build didn't run today | The Worker correctly refused to repost yesterday. Re-run the build. |
+| `⚠️ The newest card is dated …` | Build didn't run today | The Worker correctly refused to repost yesterday. Re-run the build. |
+| `⚠️ Could not read your messages to the bot` | Telegram unreachable, or a webhook set on the bot | A hold sent on Telegram cannot be seen, so posts go ahead. Commit `state/hold.flag` to hold; remove any webhook with Telegram's `deleteWebhook`. |
 | `OAuthException 190` | Token expired or revoked | Re-issue. A password change makes a token unrecoverable. |
 | Error code `9` | Daily publish quota hit | You post once a day, so this means a retry loop ran away. |
 | `container ERROR` / `EXPIRED` | Image unreachable, or container older than 24 h | Containers expire in 24 h — create and publish in the same run. |

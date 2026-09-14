@@ -14,7 +14,9 @@ problems usually show up:
 Step 5 stops short of publishing. Meta builds a post container, and an unused
 container is discarded after 24 hours, so nothing appears on either profile.
 Pass --publish to post each account's pinned intro card for real instead -- the
-test post you have to make anyway, made useful.
+test post you have to make anyway, made useful. Gate A passes only then: some
+refusals come at the publish call itself, and go-live night is too late to meet
+them.
 
 Run:  .venv/Scripts/python -m src.gate_a
 """
@@ -186,7 +188,7 @@ def run(graph: Graph, report: Report, *, publish: bool, choose, captions: dict[s
     if outcome != OK:
         report.fail(f"could not list Facebook Pages ({pages['reason']})",
                     "The token needs pages_show_list, and both Pages must be assigned to the system user.")
-        return _summary(report, {})
+        return _summary(report, {}, published=False)
     accounts = linked_accounts(pages)
     for account in accounts:
         report.ok(f"@{account.username} (Instagram ID {account.ig_id}), linked to Page '{account.page}'")
@@ -196,7 +198,7 @@ def run(graph: Graph, report: Report, *, publish: bool, choose, captions: dict[s
             "Each account must be Professional and linked to its own Page, and both Pages "
             "assigned to the system user (go-live steps A1, A2, A5).",
         )
-        return _summary(report, {})
+        return _summary(report, {}, published=False)
 
     handles = {ch: c["handle"] for ch, c in cfg.CHANNELS.items() if not cfg._PLACEHOLDER.fullmatch(c["handle"])}
     mapping = assign(accounts, handles) or choose(accounts)
@@ -219,7 +221,7 @@ def run(graph: Graph, report: Report, *, publish: bool, choose, captions: dict[s
     for channel, account in mapping.items():
         _prepare(graph, report, channel, account, publish, captions.get(channel, ""))
 
-    return _summary(report, mapping)
+    return _summary(report, mapping, published=publish)
 
 
 def _prepare(graph: Graph, report: Report, channel: str, account: Account, publish: bool, caption: str) -> None:
@@ -270,11 +272,15 @@ def _prepare(graph: Graph, report: Report, channel: str, account: Account, publi
     report.ok(f"@{account.username}: published the pinned intro card (media {published.get('id')}); pin it from the post's menu")
 
 
-def _summary(report: Report, mapping: dict[str, Account]) -> int:
+def _summary(report: Report, mapping: dict[str, Account], *, published: bool) -> int:
     print("\nResult")
     if report.failures:
         print(f"   Gate A is not passed yet: {report.failures} problem(s) above. Fix them and run this again.")
         return 1
+    if not published:
+        print("   Every check passed. Gate A is passed only once Meta publishes a post on each account:")
+        print("   run this again with --publish to post each account's pinned intro card.")
+        return 0
     print("   Gate A passed. Add these as repository secrets (go-live step B4):")
     print("     IG_TOKEN           the token you pasted (never shown here)")
     for channel, account in mapping.items():

@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import io
 import os
+import shutil
 import socket
 import sys
 import time
@@ -686,6 +687,16 @@ class FlirtDrafting(unittest.TestCase):
         self.assertIn("drafted nothing", text)
         self.assertIn("no LLM key configured", text)
 
+    def test_a_draft_bolds_the_term_as_its_line_spells_it(self):
+        from src import flirt
+        concept = {"id": "try-catch", "term": "TRY / CATCH", "meaning": "x", "domain": "code"}
+        line = "You were my TRY/CATCH: every time I fell, you caught me and said it was fine."
+        reply = flirt.llm.Reply(f'{{"text": "{line}", "terms": ["TRY / CATCH"]}}', None)
+        with mock.patch.object(flirt.llm, "complete", return_value=reply):
+            draft = flirt.generate(concept)
+        self.assertEqual(draft["terms"], ["TRY/CATCH"])
+        self.assertIn("<b>TRY/CATCH</b>", str(_highlight(draft["text"], draft["terms"])))
+
 
 class QueueStock(unittest.TestCase):
     """Regression: every run drafted twelve more while the first twelve sat unreviewed."""
@@ -906,7 +917,7 @@ class FakeGraph:
         return self.respond(method, path, params)
 
 
-def gate_graph(accounts=2, token="ok", media="ok"):
+def gate_graph(accounts=2, token="ok", media="ok", publish="ok"):
     from src import gate_a
 
     def respond(method, path, params):
@@ -930,7 +941,9 @@ def gate_graph(accounts=2, token="ok", media="ok"):
         if path.startswith("c-"):
             return token_health.OK, {"status_code": "FINISHED"}
         if path.endswith("/media_publish"):
-            return token_health.OK, {"id": "m-1"}
+            if publish == "ok":
+                return token_health.OK, {"id": "m-1"}
+            return token_health.BROKEN, {"reason": "not allowed (10): Application does not have permission for this action"}
         raise AssertionError(f"unexpected call {method} {path}")
 
     return FakeGraph(respond)
@@ -979,12 +992,14 @@ class GateAssistant(unittest.TestCase):
     def test_card_image_address_comes_from_the_publisher_config(self):
         self.assertTrue(self.gate.card_url("news").endswith("/rameshkumark24/Instapost/main/brand/news/pinned-post.jpg"))
 
-    def test_a_full_pass_prints_both_ids_and_publishes_nothing(self):
+    def test_checks_alone_do_not_pass_gate_a(self):
+        # Regression: without --publish nothing is published, yet it said "Gate A
+        # passed" -- and some refusals only come at the publish call itself.
         graph = gate_graph()
         code, output = self.run_gate(graph)
         self.assertEqual(code, 0)
-        self.assertIn("Gate A passed", output)
-        self.assertIn("IG_USER_ID_NEWS", output)
+        self.assertNotIn("Gate A passed", output)
+        self.assertIn("--publish", output)
         self.assertIn("17840", output)
         self.assertIn("17841", output)
         self.assertFalse(any(path.endswith("media_publish") for _, path in graph.calls))
@@ -1012,11 +1027,19 @@ class GateAssistant(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("Instagram Tester", output)
 
-    def test_publish_mode_publishes_each_account_once(self):
+    def test_gate_a_passes_once_meta_publishes_on_each_account(self):
         graph = gate_graph()
-        code, _ = self.run_gate(graph, publish=True)
+        code, output = self.run_gate(graph, publish=True)
         self.assertEqual(code, 0)
         self.assertEqual(sum(path.endswith("media_publish") for _, path in graph.calls), 2)
+        self.assertIn("Gate A passed", output)
+        self.assertIn("IG_USER_ID_NEWS", output)
+
+    def test_a_refused_publish_does_not_pass_gate_a(self):
+        code, output = self.run_gate(gate_graph(publish="broken"), publish=True)
+        self.assertEqual(code, 1)
+        self.assertNotIn("Gate A passed", output)
+        self.assertIn("publishing failed", output)
 
     def test_network_errors_never_show_the_request_url(self):
         graph = self.gate.Graph(self.TOKEN)
@@ -1140,31 +1163,174 @@ class ConceptBank(unittest.TestCase):
                 self.assertGreaterEqual(len(concept["meaning"]), 20)
                 self.assertTrue(concept["domain"])
 
+    def test_a_term_cannot_pass_the_personal_line_gate_by_itself(self):
+        # Regression: WORKS ON MY MACHINE holds "my", so a dry definition that
+        # merely named it passed as a line about a person and reached review.
+        for concept in self.concepts:
+            line = f"{concept['term']} is a common idea that shows up in real systems and codebases."
+            with self.subTest(term=concept["term"]):
+                with self.assertRaisesRegex(Rejected, "documentation"):
+                    validate(line, concept)
 
+    def test_every_term_is_recognised_however_its_punctuation_is_spaced(self):
+        # Regression: a model writing TRY/CATCH for the bank's TRY / CATCH lost
+        # the line on every attempt, each one a model call.
+        import re
+        for concept in self.concepts:
+            term = concept["term"]
+            spellings = {
+                term,
+                re.sub(r"\s*([^\w\s])\s*", r"\1", term),
+                " ".join(re.sub(r"([^\w\s])", r" \1 ", term).split()),
+            }
+            for spelling in sorted(spellings):
+                line = f"She said I was her {spelling}, and honestly that explains a lot about us."
+                with self.subTest(spelling=spelling):
+                    self.assertEqual(validate(line, concept), line)
+
+
+@unittest.skipUnless(shutil.which("pwsh") or shutil.which("powershell"), "PowerShell is not installed")
 class DeployAssistant(unittest.TestCase):
-    """The deploy script must store every secret the publisher reads, and never post."""
+    """Regression: the deploy test could post a live card, and a failed test still printed Done.
 
-    def setUp(self):
-        self.worker = (ROOT / "worker" / "src" / "index.js").read_text(encoding="utf-8")
-        self.wrangler = (ROOT / "worker" / "wrangler.toml").read_text(encoding="utf-8")
-        self.script = (ROOT / "worker" / "deploy.ps1").read_text(encoding="utf-8")
+    Each test runs worker/deploy.ps1 itself against stand-ins for node, npm,
+    wrangler and the publisher (tests/deploy_harness.ps1), and judges it by what
+    it ran and how it exited -- not by the words in its source.
+    """
+
+    PASSING = {
+        "mode": "test",
+        "posted": False,
+        "telegram": "sent",
+        "notes": [],
+        "channels": {
+            "news": {"account": "@dailytechbrief", "tonight": 'shadow mode, would publish "A headline"'},
+            "flirt": {"account": "@commitissues", "tonight": "skips (nothing approved)"},
+        },
+    }
+
+    def deploy(self, *, reply=None, deploy="ok", tests="ok", skip_secrets=False, channels=None):
+        """Runs a copy of the script. Returns (exit code, output, commands it ran)."""
+        import json
+        import re
+        import subprocess
+        import tempfile
+
+        work = Path(tempfile.mkdtemp())
+        for name in ("deploy.ps1", "wrangler.toml", "package.json"):
+            shutil.copy(ROOT / "worker" / name, work / name)
+        if channels:
+            toml = work / "wrangler.toml"
+            text, count = re.subn(r'(?m)^CHANNELS\s*=\s*"[^"]*"', f'CHANNELS = "{channels}"',
+                                  toml.read_text(encoding="utf-8"))
+            self.assertEqual(count, 1)
+            toml.write_text(text, encoding="utf-8")
+        log = work / "commands.log"
+        env = {
+            **os.environ,
+            "HARNESS_SCRIPT": str(work / "deploy.ps1"),
+            "HARNESS_LOG": str(log),
+            "HARNESS_ARGS": "-SkipSecrets" if skip_secrets else "none",
+            "HARNESS_TESTS": tests,
+            "HARNESS_DEPLOY": deploy,
+            "HARNESS_RUN": reply if isinstance(reply, str) else json.dumps(reply or self.PASSING),
+        }
+        shell = shutil.which("pwsh") or shutil.which("powershell")
+        done = subprocess.run(
+            [shell, "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass",
+             "-File", str(ROOT / "tests" / "deploy_harness.ps1")],
+            capture_output=True, text=True, encoding="utf-8", errors="replace", env=env, timeout=180,
+        )
+        commands = log.read_text(encoding="utf-8", errors="replace").splitlines() if log.exists() else []
+        return done.returncode, done.stdout + done.stderr, commands
+
+    def test_a_passing_test_exits_0_and_says_nothing_was_posted(self):
+        code, output, commands = self.deploy()
+        self.assertEqual(code, 0, output)
+        self.assertIn("Test passed. Nothing was posted.", output)
+        self.assertIn("GET https://instapost-publisher.example.workers.dev/run", commands)
 
     def test_every_secret_the_publisher_reads_is_stored(self):
         import re
-        read = set(re.findall(r"env\.([A-Z][A-Z0-9_]+)", self.worker))
-        read |= {f"IG_USER_ID_{channel.upper()}" for channel in cfg.CHANNELS}
-        vars_block = self.wrangler.split("[vars]", 1)[1].split("\n[", 1)[0]
-        plain_vars = set(re.findall(r"^([A-Z][A-Z0-9_]+)\s*=", vars_block, re.MULTILINE))
-        secrets = read - plain_vars
-        self.assertTrue(secrets)
-        for secret in sorted(secrets):
-            with self.subTest(secret=secret):
-                self.assertIn(secret, self.script)
+        worker = (ROOT / "worker" / "src" / "index.js").read_text(encoding="utf-8")
+        wrangler = (ROOT / "worker" / "wrangler.toml").read_text(encoding="utf-8")
+        vars_block = wrangler.split("[vars]", 1)[1].split("\n[", 1)[0]
+        plain = set(re.findall(r"^([A-Z][A-Z0-9_]+)\s*=", vars_block, re.MULTILINE))
+        channels = re.search(r'^CHANNELS\s*=\s*"([^"]*)"', wrangler, re.MULTILINE).group(1).split(",")
+        needed = set(re.findall(r"env\.([A-Z][A-Z0-9_]+)", worker))
+        needed |= {f"IG_USER_ID_{channel.strip().upper()}" for channel in channels}
+        needed -= plain
 
-    def test_the_test_call_is_guarded_against_posting(self):
-        guard = self.script.index("dry_run")
-        call = self.script.index("/run")
-        self.assertLess(guard, call, "the publish check must come before the publisher is called")
+        code, output, commands = self.deploy()
+        stored = set(re.findall(r"wrangler secret put (\S+)", "\n".join(commands)))
+        self.assertEqual(code, 0, output)
+        self.assertTrue(needed)
+        self.assertEqual(needed - stored, set())
+
+    def test_skip_secrets_stores_only_the_new_test_key(self):
+        import re
+        code, output, commands = self.deploy(skip_secrets=True)
+        self.assertEqual(code, 0, output)
+        self.assertEqual(re.findall(r"wrangler secret put (\S+)", "\n".join(commands)), ["MANUAL_KEY"])
+
+    def test_any_problem_the_test_finds_fails_the_run(self):
+        channels = self.PASSING["channels"]
+        refused = {"error": "Meta refused the account check: OAuthException 190: Invalid token", "tonight": "held"}
+        cases = {
+            "an account Meta refuses": {**self.PASSING, "channels": {**channels, "flirt": refused}},
+            "an account with no result": {**self.PASSING, "channels": {"news": channels["news"]}},
+            "Telegram refusing the message": {**self.PASSING, "telegram": "refused by Telegram (400: Bad Request: chat not found)"},
+            "a reply that is not from the test address": {"news": {"published": "17890"}, "flirt": {"skipped": "dry_run"}},
+            "a publisher that cannot be reached": "unreachable",
+        }
+        for name, reply in cases.items():
+            with self.subTest(name):
+                code, output, _ = self.deploy(reply=reply)
+                self.assertEqual(code, 1, output)
+                self.assertNotIn("Test passed", output)
+
+    def test_failing_publisher_tests_stop_the_deploy(self):
+        code, output, commands = self.deploy(tests="fail")
+        self.assertEqual(code, 1, output)
+        self.assertEqual([c for c in commands if "wrangler" in c], [])
+
+    def test_a_new_cloudflare_account_gets_to_choose_its_workers_dev_address(self):
+        # Regression: captured output cannot answer wrangler's question, so the
+        # first deploy on a brand-new account failed outright.
+        code, output, commands = self.deploy(deploy="needs-subdomain")
+        self.assertEqual(code, 0, output)
+        self.assertEqual(commands.count("npx --no wrangler deploy"), 3)
+
+    def test_an_account_added_to_wrangler_toml_is_asked_for_and_tested(self):
+        code, output, commands = self.deploy(channels="news,flirt,quotes")
+        self.assertIn("npx --no wrangler secret put IG_USER_ID_QUOTES", commands)
+        self.assertEqual(code, 1, output)          # the passing reply has no result for it
+        self.assertIn("quotes: the publisher returned no result", output)
+
+    def test_wrangler_is_the_pinned_local_copy(self):
+        import json
+        pinned = json.loads((ROOT / "worker" / "package.json").read_text(encoding="utf-8"))["devDependencies"]["wrangler"]
+        self.assertRegex(pinned, r"^\d+\.\d+\.\d+$")              # an exact version, never a range
+        lock = json.loads((ROOT / "worker" / "package-lock.json").read_text(encoding="utf-8"))
+        self.assertEqual(lock["packages"]["node_modules/wrangler"]["version"], pinned)
+        _, _, commands = self.deploy()
+        calls = [c for c in commands if "wrangler" in c]
+        self.assertTrue(calls)
+        for call in calls:
+            with self.subTest(call=call):
+                self.assertTrue(call.startswith("npx --no wrangler "), call)
+
+    def test_the_go_live_page_quotes_what_the_script_really_prints(self):
+        import html
+        import re
+        page = (ROOT / "go-live.html").read_text(encoding="utf-8")
+        task = re.search(r'id="task-C3".*?</li>', page, re.DOTALL).group(0)
+        quoted = [html.unescape(q) for q in re.findall(r"<code>(.*?)</code>", task)]
+        self.assertTrue(quoted)
+        code, output, _ = self.deploy()
+        for phrase in quoted:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, output)
 
 
 if __name__ == "__main__":

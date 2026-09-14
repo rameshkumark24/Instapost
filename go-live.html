@@ -261,7 +261,7 @@
       <div><dt>Builds run</dt><dd>36</dd></div>
       <div><dt>Posts published</dt><dd class="bad">0</dd></div>
       <div><dt>Accounts live</dt><dd class="bad">0 / 2</dd></div>
-      <div><dt>Secrets set</dt><dd class="mid">3 / 6</dd></div>
+      <div><dt>Credentials ready</dt><dd class="mid">3 / 6</dd></div>
       <div><dt>Your time left</dt><dd>~2 h</dd></div>
     </dl>
   </header>
@@ -280,7 +280,7 @@
       </li>
       <li>
         <span class="n">3</span><span class="name">Harden</span><span class="chip done">Done</span>
-        <span class="detail">Fixed all 15 code-review findings and every problem the real runs surfaced; 137 Python and 18 publisher tests run on each change.</span>
+        <span class="detail">Fixed the findings of two code reviews and every problem the real runs surfaced; 148 Python and 24 publisher tests run on each change.</span>
       </li>
       <li>
         <span class="n">4</span><span class="name">Your credentials</span><span class="chip doing">3 of 6</span>
@@ -399,9 +399,11 @@
             <tr><td class="k">Drafting failed</td><td>The AI model or key isn't working; the reason is in the message.</td><td>Forward it to me</td></tr>
             <tr><td class="k">Instapost failed</td><td>A build step broke.</td><td>Forward it to me</td></tr>
             <tr><td class="k">✅ Live, with a link</td><td>Posted.</td><td>Nothing</td></tr>
-            <tr><td class="k">⚠️ post.json is dated …</td><td>Today's build never ran, so nothing posted.</td><td>Re-run the build in Actions</td></tr>
+            <tr><td class="k">⚠️ The newest card is dated …</td><td>Today's build never ran, so nothing posted.</td><td>Re-run the build in Actions</td></tr>
             <tr><td class="k">❌ Publish failed</td><td>Meta refused the post.</td><td>Forward it to me</td></tr>
             <tr><td class="k">⏸ Held by your message</td><td>You replied hold today, so that account skips tonight.</td><td>Reply resume to undo</td></tr>
+            <tr><td class="k">⚠️ Could not read your messages to the bot</td><td>A hold sent on Telegram today cannot be seen, so posts go ahead.</td><td>To hold tonight, commit <code>state/hold.flag</code></td></tr>
+            <tr><td class="k">🧪 Publisher test</td><td>The deploy assistant checked the publisher. Nothing was posted.</td><td>Nothing, unless a line shows ❌</td></tr>
             <tr><td class="k">🔑 Instagram token …</td><td>Health check, every ten days.</td><td>Act only if it says BROKEN or gives days left</td></tr>
           </tbody>
         </table>
@@ -411,6 +413,7 @@
     <div class="note">
       <p>
         <strong>Controls.</strong> Hold one night by replying <code>hold</code> to the bot &mdash; or <code>hold news</code>, <code>hold tech</code> &mdash; and undo it with <code>resume</code>.
+        If Telegram is down, commit <code>state/hold.flag</code> to the repo instead: the publisher checks for it at 19:45, and it holds both accounts every night until you delete it.
         Stop posting entirely by deleting the <code>LIVE</code> variable &mdash; builds keep running, nothing publishes.
         Stop everything by disabling the workflow in the Actions tab.
       </p>
@@ -426,16 +429,16 @@
         <tbody>
           <tr><td class="k">News engine</td><td>Six sources, scoring for freshness, traction, topic and variety; safe fetching of the publisher's summary; an AI summary checked for invented numbers and copied wording; a 1080&times;1350 card.</td><td>36 builds; today's summary traced back to the source tweet</td></tr>
           <tr><td class="k">Tech-metaphor engine</td><td>226 concepts across ten areas of computing, AI drafts through safety checks, approval from your phone, 7-day expiry, a 5-minute cap on drafting.</td><td>12 drafts in <a href="https://github.com/rameshkumark24/Instapost/issues/1">issue #1</a>, none rejected</td></tr>
-          <tr><td class="k">Publisher</td><td>Posts to both accounts at 19:45 IST; refuses stale, held or shadow cards; takes a hold from Telegram; never forwards a secret.</td><td>18 automated tests; rehearsed against the real card files</td></tr>
+          <tr><td class="k">Publisher</td><td>Posts to both accounts at 19:45 IST; refuses stale, held or shadow cards; takes a hold from Telegram or the repo; its test address can never post; never forwards a secret.</td><td>24 automated tests; rehearsed against the real card files</td></tr>
           <tr><td class="k">Account kit</td><td>Names, bios, profile pictures and a pinned first post for each account.</td><td><code>brand/PROFILES.md</code>; avatars checked against Instagram's circle crop</td></tr>
-          <tr><td class="k">Gate A assistant</td><td>Checks your Meta token, permissions and both accounts, then has Meta prepare a post without publishing it.</td><td>12 tests; run against Meta's live API</td></tr>
-          <tr><td class="k">Deploy assistant</td><td>Deploys the publisher, stores its secrets and tests it, refusing any test that could post.</td><td>Checked to store every secret the publisher reads</td></tr>
+          <tr><td class="k">Gate A assistant</td><td>Checks your Meta token, permissions and both accounts, has Meta prepare a post, and passes Gate A only once Meta publishes each account's intro card.</td><td>13 tests; run against Meta's live API</td></tr>
+          <tr><td class="k">Deploy assistant</td><td>Installs the pinned wrangler, deploys the publisher, stores its secrets, and tests it through an address that can never post. Any problem ends it with a failure, never with &ldquo;passed&rdquo;.</td><td>9 tests that run the script itself against a scripted Cloudflare and publisher</td></tr>
           <tr><td class="k">Meta preflight</td><td>Checks each card against Meta's image and caption limits when it is built, not at 19:45.</td><td>Automated tests</td></tr>
           <tr><td class="k">Schedule</td><td>Two build times, 5 to 10 hours before posting.</td><td>Changed after the old schedule missed 8 of 18 nights</td></tr>
           <tr><td class="k">Alerts</td><td>Telegram receipts, review requests, skips and failures.</td><td>Three messages delivered today</td></tr>
           <tr><td class="k">Safety</td><td>The <code>LIVE</code> switch, a block on placeholder handles, protection against hostile links, secrets never echoed.</td><td>Automated tests</td></tr>
           <tr><td class="k">Token health</td><td>Checks the Instagram token every ten days.</td><td>Run against Meta's live API</td></tr>
-          <tr><td class="k">Quality</td><td>137 Python and 18 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
+          <tr><td class="k">Quality</td><td>148 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
         </tbody>
       </table>
     </div>
@@ -445,6 +448,7 @@
         AI calls now get 45 seconds instead of 20 &mdash; the first batch spent about 53 seconds a card with nothing rejected, which points at slow calls being abandoned and retried &mdash; and each attempt is logged with its time.
         "12 new cards drafted" now arrives as <strong>New cards to review</strong> rather than under "skipped tonight".
         The Meta API version moved from v21.0, which stops working on 21 January 2027, to v26.0.
+        A second review closed a way the deploy test could have posted a live card: the publisher's test address now never posts, and Gate A now passes only on a real post.
       </p>
     </div>
   </section>
@@ -488,7 +492,7 @@
         <span class="phase-name">Get Instagram to publish</span>
         <div class="meta"><span class="chip you">You</span><span class="chip effort">1&ndash;2 h</span><span class="progress" data-progress="A"></span></div>
       </div>
-      <p class="phase-note">The step that decides whether the project works at all. Stop at A6 until the assistant says Gate A passed. Screenshots of any error help me help you &mdash; with no token visible.</p>
+      <p class="phase-note">The step that decides whether the project works at all. Stop at A7 until the assistant says Gate A passed &mdash; it says so only once Meta has published a post on each account. Screenshots of any error help me help you &mdash; with no token visible.</p>
       <ul class="tasks">
         <li><label class="task" for="task-A1"><input type="checkbox" id="task-A1" data-id="A1"><span class="task-id">A1</span><span class="task-body">
           <span class="what">Create both Instagram accounts, switch each to Professional, keep both public</span>
@@ -512,11 +516,11 @@
         </span></label></li>
         <li><label class="task" for="task-A6"><input type="checkbox" id="task-A6" data-id="A6"><span class="task-id">A6</span><span class="task-body">
           <span class="what">Run the Gate A assistant</span>
-          <span class="how">In the repo folder: <code>.venv/Scripts/python -m src.gate_a</code>. Paste the token when asked. It checks the permissions and both accounts, prints both Instagram IDs, and has Meta prepare a post without publishing it.</span>
+          <span class="how">In the repo folder: <code>.venv/Scripts/python -m src.gate_a</code>. Paste the token when asked. It checks the permissions and both accounts, prints both Instagram IDs, and has Meta prepare a post without publishing it. It then tells you to run it again with <code>--publish</code>.</span>
         </span></label></li>
         <li><label class="task" for="task-A7"><input type="checkbox" id="task-A7" data-id="A7"><span class="task-id">A7</span><span class="task-body">
           <span class="what">Post each account's pinned intro card</span>
-          <span class="how">Run the assistant again with <code>--publish</code>. The test post you need anyway becomes each account's first real post; pin it from the post's menu.</span>
+          <span class="how">Run the assistant again with <code>--publish</code> and type <code>PUBLISH</code> when asked. Gate A passes when Meta publishes; the test post you need anyway becomes each account's first real post. Pin it from the post's menu.</span>
         </span></label></li>
       </ul>
     </div>
@@ -566,11 +570,11 @@
         </span></label></li>
         <li><label class="task" for="task-C2"><input type="checkbox" id="task-C2" data-id="C2"><span class="task-id">C2</span><span class="task-body">
           <span class="what">Run the deploy assistant</span>
-          <span class="how">In the repo folder: <code>powershell -ExecutionPolicy Bypass -File worker/deploy.ps1</code>. It runs the publisher's tests, signs you in to Cloudflare, deploys, asks for five secrets with hidden typing, and calls the publisher once. It refuses that test if any card could really post.</span>
+          <span class="how">In the repo folder: <code>powershell -ExecutionPolicy Bypass -File worker/deploy.ps1</code>. It installs its own copy of wrangler, runs the publisher's tests, signs you in to Cloudflare, deploys, asks for five secrets with hidden typing, and calls the publisher's test address, which checks both accounts, today's cards and Telegram and can never post. On a new Cloudflare account, wrangler first asks to register a workers.dev name: answer yes and pick any name.</span>
         </span></label></li>
         <li><label class="task" for="task-C3"><input type="checkbox" id="task-C3" data-id="C3"><span class="task-id">C3</span><span class="task-body">
           <span class="what">Check the test result</span>
-          <span class="how">Expect "shadow mode" or "skipped" for both accounts in the script's output, and a matching message on Telegram.</span>
+          <span class="how">Expect <code>[ok]</code> beside both accounts and Telegram, then <code>Test passed. Nothing was posted.</code> &mdash; and a &ldquo;Publisher test&rdquo; message on Telegram. Any line marked FAIL says what to fix, and the script then stops without passing.</span>
         </span></label></li>
       </ul>
     </div>
@@ -702,7 +706,8 @@
 
 <script>
   (function () {
-    var KEY = "instapost-golive-v2";
+    // Bumped whenever a task ID changes meaning, so old ticks never mark new tasks done.
+    var KEY = "instapost-golive-v3";
 
     function read() {
       try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { return {}; }

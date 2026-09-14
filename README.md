@@ -62,7 +62,7 @@ either way.
 ## Controls
 
 ```bash
-# skip tonight
+# hold every post until the file is deleted (checked at 19:45)
 touch state/hold.flag && git add -A && git commit -m hold && git push
 
 # build now, publish nothing

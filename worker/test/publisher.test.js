@@ -4,12 +4,13 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import worker, { run, holdState, redact, istDate, timing } from "../src/index.js";
+import worker, { run, holdState, redact, istDate, timing, cleanEnv } from "../src/index.js";
 
 timing.sleep = async () => {};
 
 const TOKEN = "EAAsecretPublisherToken1234567890";
 const TG = "123456:telegram-bot-token-abcdef";
+const KEY = "test-key-123456";
 const ENV = {
   REPO: "me/repo",
   CHANNELS: "news,flirt",
@@ -44,8 +45,12 @@ function message(text, { chat = 42, date = now() } = {}) {
   return { update_id: date, message: { chat: { id: chat }, date, text } };
 }
 
-/** Scripts every fetch the publisher makes and records it for assertions. */
-function network({ posts = {}, updates = [], graph = [], head = 200 } = {}) {
+/**
+ * Scripts every fetch the publisher makes and records it for assertions.
+ * `inbox` and `delivery` replace Telegram's getUpdates and sendMessage replies;
+ * `holdFlag` says whether state/hold.flag exists in the repo.
+ */
+function network({ posts = {}, updates = [], graph = [], head = 200, holdFlag = false, inbox = null, delivery = null } = {}) {
   const calls = [];
   const telegram = [];
   globalThis.fetch = async (input, init = {}) => {
@@ -55,10 +60,14 @@ function network({ posts = {}, updates = [], graph = [], head = 200 } = {}) {
 
     if (url.includes("api.telegram.org") && url.includes("/sendMessage")) {
       telegram.push(JSON.parse(init.body).text);
-      return json({ ok: true });
+      return delivery ? delivery() : json({ ok: true });
     }
     if (url.includes("api.telegram.org") && url.includes("/getUpdates")) {
-      return json({ ok: true, result: updates });
+      return inbox ? inbox() : json({ ok: true, result: updates });
+    }
+
+    if (url.includes("/state/hold.flag")) {
+      return holdFlag ? new Response("", { status: 200 }) : new Response("not found", { status: 404 });
     }
 
     const postFor = url.match(/dist\/(\w+)\/post\.json/);
@@ -74,6 +83,10 @@ function network({ posts = {}, updates = [], graph = [], head = 200 } = {}) {
       for (const [matches, reply] of graph) {
         if (matches(url, method)) return reply(url, method);
       }
+      if (url.includes("fields=username")) {
+        const id = new URL(url).pathname.split("/").at(-1);
+        return json({ id, username: `acct${id}` });
+      }
       if (method === "POST" && url.endsWith("/media")) return json({ id: `container-${url.split("/").at(-2)}` });
       if (url.includes("/container-")) return json({ status_code: "FINISHED" });
       if (method === "POST" && url.endsWith("/media_publish")) return json({ id: `media-${url.split("/").at(-2)}` });
@@ -83,6 +96,14 @@ function network({ posts = {}, updates = [], graph = [], head = 200 } = {}) {
   };
   const graphCalls = () => calls.filter((c) => c.url.includes("graph.facebook.com"));
   return { calls, telegram, graphCalls };
+}
+
+/** Calls the /run address the way the deploy assistant does. */
+async function callTestAddress(env = ENV) {
+  const request = new Request("https://publisher.example/run", { headers: { "x-key": KEY } });
+  const response = await worker.fetch(request, { ...env, MANUAL_KEY: KEY });
+  const text = await response.text();
+  return { status: response.status, text, report: JSON.parse(text) };
 }
 
 test("publishes both accounts and tags each confirmation with its account", async () => {
@@ -167,6 +188,27 @@ test("tech and metaphor both mean the tech-metaphor account", () => {
   assert.deepEqual(holdState([message("/hold metaphor")], "42", today), { flirt: true });
 });
 
+test("a hold committed to the repo holds every account, even after the morning build", async () => {
+  // The card says hold: false -- it was built before the flag was committed.
+  const net = network({ posts: { news: card("news"), flirt: card("flirt") }, holdFlag: true });
+  const result = await run(ENV);
+  assert.equal(result.news.skipped, "hold");
+  assert.equal(result.flirt.skipped, "hold");
+  assert.equal(net.graphCalls().length, 0);
+  assert.ok(net.telegram.some((t) => t.includes("Held by state/hold.flag")));
+});
+
+test("an inbox the publisher cannot read is reported, and the posts go ahead", async () => {
+  const net = network({
+    posts: { news: card("news"), flirt: card("flirt") },
+    inbox: () => json({ ok: false, error_code: 409, description: "Conflict: can't use getUpdates method while webhook is active" }, 409),
+  });
+  const result = await run(ENV);
+  assert.equal(result.news.published, "media-111");
+  assert.equal(result.flirt.published, "media-222");
+  assert.ok(net.telegram.some((t) => t.includes("Could not read your messages to the bot") && t.includes("state/hold.flag")));
+});
+
 test("GitHub throttling the image check does not stop the post", async () => {
   network({ posts: { news: card("news"), flirt: card("flirt") }, head: 429 });
   const result = await run(ENV);
@@ -224,15 +266,64 @@ test("a failed permalink lookup does not fail a successful post", async () => {
   assert.ok(net.telegram.some((t) => t.startsWith("✅ [news] Live")));
 });
 
-test("the manual test call accepts a key stored with a trailing newline", async () => {
+// --- the test address --------------------------------------------------------
+
+test("the test address checks every account and never publishes, even a live card", async () => {
+  const net = network({ posts: { news: card("news"), flirt: card("flirt") } });
+  const { status, report } = await callTestAddress();
+  assert.equal(status, 200);
+  assert.equal(report.mode, "test");
+  assert.equal(report.posted, false);
+  assert.equal(report.channels.news.account, "@acct111");
+  assert.equal(report.channels.flirt.account, "@acct222");
+  assert.match(report.channels.news.tonight, /^publishes "news headline"/);
+  assert.ok(!net.calls.some((c) => c.method !== "GET"  && c.url.includes("graph.facebook.com")), "the test made a publishing call");
+  assert.ok(!net.calls.some((c) => c.method === "HEAD"), "the test checked an image it had no reason to fetch");
+  assert.equal(report.telegram, "sent");
+  assert.ok(net.telegram.some((t) => t.startsWith("🧪 Publisher test. Nothing was posted.")));
+});
+
+test("the test address reports an account Meta refuses, without the token", async () => {
+  const refuses = [
+    (url) => url.includes("/222?") && url.includes("fields=username"),
+    () => json({ error: { type: "OAuthException", code: 190, message: `Invalid OAuth access token ${TOKEN}` } }, 400),
+  ];
+  network({ posts: { news: card("news"), flirt: card("flirt") }, graph: [refuses] });
+  const { report, text } = await callTestAddress();
+  assert.match(report.channels.flirt.error, /190/);
+  assert.equal(report.channels.news.account, "@acct111");
+  assert.ok(!text.includes(TOKEN), "the token reached the test report");
+});
+
+test("the test address reports a missing account ID and a chat Telegram refuses", async () => {
+  network({
+    posts: { news: card("news", { dry_run: true }), flirt: card("flirt", { dry_run: true }) },
+    delivery: () => json({ ok: false, error_code: 400, description: "Bad Request: chat not found" }, 400),
+  });
+  const { IG_USER_ID_FLIRT, ...partial } = ENV;
+  const { report } = await callTestAddress(partial);
+  assert.equal(report.channels.flirt.error, "IG_USER_ID_FLIRT is not set");
+  assert.match(report.channels.news.tonight, /^shadow mode/);
+  assert.match(report.telegram, /chat not found/);
+});
+
+test("the test address accepts a key stored with a trailing newline, and only the right key", async () => {
   network({ posts: { news: card("news", { dry_run: true }), flirt: card("flirt", { dry_run: true }) } });
-  const env = { ...ENV, MANUAL_KEY: "test-key-123456\n" };
-  const ok = await worker.fetch(new Request("https://publisher.example/run", { headers: { "x-key": "test-key-123456" } }), env);
+  const env = { ...ENV, MANUAL_KEY: `${KEY}\n` };
+  const ok = await worker.fetch(new Request("https://publisher.example/run", { headers: { "x-key": KEY } }), env);
   assert.equal(ok.status, 200);
   const denied = await worker.fetch(new Request("https://publisher.example/run", { headers: { "x-key": "wrong" } }), env);
   assert.equal(denied.status, 403);
   const noKeyConfigured = await worker.fetch(new Request("https://publisher.example/run", { headers: { "x-key": "" } }), ENV);
   assert.equal(noKeyConfigured.status, 403);
+});
+
+test("secrets stored with a trailing newline are used trimmed and still redacted", () => {
+  const env = cleanEnv({ ...ENV, MANUAL_KEY: `${KEY}\r\n`, IG_TOKEN: `${TOKEN}\n` });
+  assert.equal(env.MANUAL_KEY, KEY);
+  assert.equal(env.IG_TOKEN, TOKEN);
+  // Even given the untrimmed value, redaction matches the secret as it appears in text.
+  assert.ok(!redact(`echoed ${KEY} back`, { MANUAL_KEY: `${KEY}\r\n` }).includes(KEY));
 });
 
 test("redact removes every known secret and any token-shaped string", () => {
