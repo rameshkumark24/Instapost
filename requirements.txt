@@ -7,3 +7,4 @@ playwright>=1.47
 # without this. Harmless on the Linux CI runner, required for local runs.
 tzdata>=2024.1
 markupsafe==3.0.2
+PyYAML==6.0.2

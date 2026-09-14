@@ -6,12 +6,22 @@ was given*; it is forbidden from introducing facts, and anything it returns is
 validated against the source before it is allowed through. On any doubt we fall
 back to the deterministic output.
 
-That constraint is editorial and legal at once: an original summary is what
-keeps this account on the right side of copyright, and a fabricated claim
+Whose words reach the card, and who is credited for them, is decided here:
+
+  * An LLM body is our own summary. It is checked against the source for
+    invented numbers and for runs of copied wording before it is used.
+  * A deterministic body built from a publisher's share text is *their* words,
+    so it is printed as a quotation and credited to them by name -- the way a
+    link preview presents it -- never passed off as ours.
+  * A metadata line ("616 points on Hacker News") is a fact about the story.
+
+Credit goes to whoever wrote the words the reader sees, with the aggregator
+noted as where the story was found. A fabricated or misattributed line
 published unattended under your name is the worst failure mode in the system.
 """
 from __future__ import annotations
 
+import dataclasses
 import html
 import json
 import logging
@@ -23,7 +33,8 @@ from datetime import datetime, timezone
 import requests
 
 from . import config as cfg
-from .enrich import description as fetch_description
+from .enrich import Enriched
+from .enrich import fetch as fetch_enrichment
 from .harvest import Item
 
 log = logging.getLogger(__name__)
@@ -31,6 +42,7 @@ log = logging.getLogger(__name__)
 _TAG_RE = re.compile(r"<[^>]+>")
 _WS_RE = re.compile(r"\s+")
 _NUM_RE = re.compile(r"\d+(?:\.\d+)?")
+_WORD_RE = re.compile(r"[a-z0-9']+")
 
 # GitHub descriptions and RSS titles are full of emoji and pictographs. They
 # render badly on the card (wrong baseline, wrong weight, colour clash with the
@@ -46,6 +58,11 @@ _EMOJI_RE = re.compile(
     "]+",
     flags=re.UNICODE,
 )
+
+# An LLM body sharing this many consecutive words with the source is copying,
+# not summarising. Short enough to catch a lifted clause, long enough that
+# ordinary phrasing ("one of the most popular") does not trip it.
+_COPIED_RUN_WORDS = 8
 
 
 def _clean(text: str) -> str:
@@ -145,42 +162,91 @@ def _metadata_body(item: Item) -> str:
     return f"Reported by {item.publication} {age_h}h ago."
 
 
-def _body_from(item: Item, headline: str, truncated: bool) -> str:
+def _trim_to(text: str, limit: int) -> str:
+    """The longest run of whole sentences that fits, else a word-boundary cut.
+
+    This is the only place body text is shortened. Anything upstream that cut
+    to length first would hand this function text already under the limit, and
+    a mid-word fragment would reach the card untouched.
+    """
+    if len(text) <= limit:
+        return text
+    out = ""
+    for sentence in re.split(r"(?<=[.!?])\s+", text):
+        if len(out) + len(sentence) + 1 > limit:
+            break
+        out = f"{out} {sentence}".strip()
+    return out or textwrap.shorten(text, width=limit, placeholder="…")
+
+
+def _nest_quotes(text: str) -> str:
+    """Turn double quotation marks inside a quotation into single ones.
+
+    The card wraps a publisher's words in “…”, so a “…” already inside them
+    prints as a quotation that appears to end halfway through. Same length in,
+    same length out, so trimming is unaffected.
+    """
+    text = text.replace("“", "‘").replace("”", "’")
+    out, opening = [], True
+    for ch in text:
+        if ch == '"':
+            out.append("‘" if opening else "’")
+            opening = not opening
+        else:
+            out.append(ch)
+    return "".join(out)
+
+
+def _body_from(item: Item, headline: str, truncated: bool, quoted: bool = False) -> str:
     """Supporting detail, never a fragment of the headline.
 
     Many sources (GitHub especially) use one string as both title and summary,
     so when the headline is complete its words are stripped off the front. When
     the headline was truncated we never continue from it -- metadata is shorter,
     truer, and always reads cleanly.
+
+    `quoted` marks the summary as a publisher's own words. Those are never
+    edited into a fragment: they are trimmed only at sentence boundaries and
+    printed inside quotation marks.
     """
     src = _clean(item.summary)
+    stem = headline.rstrip(" .…").lower()
 
-    # Sources like HN and Lobsters hand over a bare title. Ask the publisher
-    # for their own summary before settling for a line about vote counts.
-    if len(src) < 40:
-        if fetched := fetch_description(item.url):
-            log.info("enriched body from source page")
-            src = _clean(fetched)
+    if quoted:
+        # A quotation that only repeats the headline adds nothing, and cutting
+        # the repeated words off the front would misquote the publisher.
+        if len(src) < 40 or (stem and src.lower().startswith(stem)):
+            return _metadata_body(item)
+        return f"“{_nest_quotes(_trim_to(src, cfg.BODY_MAX_CHARS - 2))}”"
 
-    if truncated and src.lower().startswith(headline.rstrip(" .…").lower()[:40]):
+    if truncated and src.lower().startswith(stem[:40]):
         return _metadata_body(item)
 
-    stem = headline.rstrip(" .…").lower()
     if stem and src.lower().startswith(stem):
         src = src[len(stem):].lstrip(" ,;:—-.")
 
     if len(src) < 40:
         return _metadata_body(item)
 
-    if len(src) <= cfg.BODY_MAX_CHARS:
-        return src
+    return _trim_to(src, cfg.BODY_MAX_CHARS)
 
-    out = ""
-    for sentence in re.split(r"(?<=[.!?])\s+", src):
-        if len(out) + len(sentence) + 1 > cfg.BODY_MAX_CHARS:
-            break
-        out = f"{out} {sentence}".strip()
-    return out or textwrap.shorten(src, width=cfg.BODY_MAX_CHARS, placeholder="…")
+
+def _enrich(item: Item) -> tuple[Item, Enriched | None]:
+    """Fetch the publisher's share text for sources that send no summary.
+
+    Runs once, before either composition path, so the LLM is given the same
+    source text the deterministic body would have used and is validated
+    against it. Scoped by source rather than by summary length: a GitHub repo
+    with a terse description would otherwise "enrich" into GitHub's own page
+    boilerplate.
+    """
+    if item.source not in cfg.ENRICH_SOURCES or len(_clean(item.summary)) >= 40:
+        return item, None
+    got = fetch_enrichment(item.url)
+    if got is None:
+        return item, None
+    log.info("enriched from %s", got.site_name)
+    return dataclasses.replace(item, summary=got.description), got
 
 
 def _hashtags(item: Item) -> str:
@@ -192,11 +258,11 @@ def _hashtags(item: Item) -> str:
     return " ".join(ranked[: cfg.HASHTAG_COUNT])
 
 
-def _caption(item: Item, headline: str, body: str) -> str:
+def _caption(item: Item, headline: str, body: str, credit: str) -> str:
     caption = (
         f"{headline}\n\n"
         f"{body}\n\n"
-        f"Source: {item.publication}\n"
+        f"Source: {credit}\n"
         f"{item.url}\n\n"
         f"{_hashtags(item)}"
     )
@@ -259,6 +325,20 @@ def _call_llm(prompt: str) -> str | None:
     return None
 
 
+def _words(text: str) -> list[str]:
+    return _WORD_RE.findall(text.lower().replace("’", "'"))
+
+
+def _copied_run(source: str, body: str, n: int = _COPIED_RUN_WORDS) -> bool:
+    """True if `body` repeats any n consecutive words of `source`."""
+    src = _words(source)
+    haystack = f" {' '.join(_words(body))} "
+    return any(
+        f" {' '.join(src[i:i + n])} " in haystack
+        for i in range(len(src) - n + 1)
+    )
+
+
 def _validate(candidate: dict, item: Item) -> bool:
     """Reject anything that invented facts, ran long, or parroted the source."""
     headline = candidate.get("headline", "").strip()
@@ -278,21 +358,20 @@ def _validate(candidate: dict, item: Item) -> bool:
             log.warning("llm introduced number %r absent from source, rejecting", n)
             return False
 
-    # Guard against verbatim lifting of a long run of source text.
-    for sentence in re.split(r"(?<=[.!?])\s+", _clean(item.summary)):
-        if len(sentence) > 60 and sentence.lower() in body.lower():
-            log.warning("llm reproduced source sentence verbatim, rejecting")
-            return False
+    # An accepted LLM body is published as our own words, so it must be.
+    if _copied_run(_clean(item.summary), body):
+        log.warning("llm reproduced a run of source wording, rejecting")
+        return False
 
     return True
 
 
-def _polish(item: Item) -> dict | None:
+def _polish(item: Item, publication: str) -> dict | None:
     raw = _call_llm(
         _PROMPT.format(
             title=_clean(item.title),
             summary=_clean(item.summary) or "(none supplied)",
-            publication=item.publication,
+            publication=publication,
         )
     )
     if not raw or "INSUFFICIENT" in raw:
@@ -312,12 +391,20 @@ def _polish(item: Item) -> dict | None:
 
 
 def compose(item: Item) -> dict:
+    found_via = item.publication
+    item, enriched = _enrich(item)
+
+    # When the words came from a publisher's page, the publisher is the source
+    # and the aggregator is only where the story was found.
+    publication = enriched.site_name if enriched else found_via
+    credit = f"{publication} (found via {found_via})" if enriched else found_via
+
     headline, truncated = _trim_headline(item.title)
-    body = _body_from(item, headline, truncated)
+    body = _body_from(item, headline, truncated, quoted=enriched is not None)
     polished = False
 
     if os.environ.get("GEMINI_API_KEY") or os.environ.get("GROQ_API_KEY"):
-        if candidate := _polish(item):
+        if candidate := _polish(item, publication):
             headline, body, polished = candidate["headline"], candidate["body"], True
             log.info("llm polish accepted")
         else:
@@ -329,12 +416,14 @@ def compose(item: Item) -> dict:
     return {
         "headline": headline,
         "body": body,
-        "caption": _caption(item, headline, body),
-        "publication": item.publication,
+        "caption": _caption(item, headline, body, credit),
+        "publication": publication,
+        "found_via": found_via,
         "url": item.url,
         "source": item.source,
         "title": item.title,
         "key": item.key(),
         "score": round(item.score, 4),
         "llm_polished": polished,
+        "enriched": enriched is not None,
     }

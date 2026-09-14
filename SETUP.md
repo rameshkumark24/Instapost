@@ -131,7 +131,10 @@ python -m unittest discover -s tests -v
 | `TG_CHAT` | yes | Your chat id from [@userinfobot](https://t.me/userinfobot) |
 | `GEMINI_API_KEY` | no | Free tier at [aistudio.google.com](https://aistudio.google.com) |
 | `GROQ_API_KEY` | no | Alternative to Gemini |
-| `IG_TOKEN` | recommended | Used by `token-health.yml` to warn before expiry |
+| `IG_TOKEN` | recommended | Lets `token-health.yml` confirm the token still works |
+| `META_APP_ID` | optional | With the next secret, lets the health check see the token's expiry date |
+| `META_APP_SECRET` | optional | Meta only reveals expiry to an app token; without these two the check cannot warn you before expiry |
+| `IG_USER_ID_NEWS`, `IG_USER_ID_FLIRT` | optional | Lets the health check confirm the token can still reach each account |
 
 Without an LLM key the deterministic composer is used, which always works. It
 is the floor, not a degraded mode.

@@ -289,7 +289,7 @@
       </span></label></li>
       <li><label class="task"><input type="checkbox" data-id="B3"><span class="task-id">B3</span><span class="task-body">
         <span class="what">Add the repository secrets</span>
-        <span class="how">Settings → Secrets and variables → Actions → Secrets: <code>GEMINI_API_KEY</code> (or <code>GROQ_API_KEY</code>), <code>TG_TOKEN</code>, <code>TG_CHAT</code>.</span>
+        <span class="how">Settings → Secrets and variables → Actions → Secrets: <code>GEMINI_API_KEY</code> (or <code>GROQ_API_KEY</code>), <code>TG_TOKEN</code>, <code>TG_CHAT</code>. Optional, for token monitoring: <code>IG_TOKEN</code>, <code>META_APP_ID</code>, <code>META_APP_SECRET</code>, <code>IG_USER_ID_NEWS</code>, <code>IG_USER_ID_FLIRT</code>.</span>
       </span></label></li>
       <li><label class="task"><input type="checkbox" data-id="B4"><span class="task-id">B4</span><span class="task-body">
         <span class="what">Check the pinned Graph API version</span>
@@ -343,7 +343,7 @@
     <ul class="tasks">
       <li><label class="task"><input type="checkbox" data-id="D1"><span class="task-id">D1</span><span class="task-body">
         <span class="what">Replace the placeholder handles</span>
-        <span class="how"><code>@yourhandle</code> and <code>@yourhandle2</code> appear in three places in <code>src/config.py</code> and print on <em>every card</em>. Send me both handles.</span>
+        <span class="how"><code>@__news_handle__</code> and <code>@__flirt_handle__</code> are the two placeholders in <code>src/config.py</code>, and they print on <em>every card</em>. A live build of either account refuses to run until its handle is set; the other account is unaffected. Send me both handles.</span>
       </span></label></li>
       <li><label class="task"><input type="checkbox" data-id="D2"><span class="task-id">D2</span><span class="task-body">
         <span class="what">Remove the now-redundant global handle</span>
@@ -355,7 +355,7 @@
       </span></label></li>
       <li><label class="task"><input type="checkbox" data-id="D4"><span class="task-id">D4</span><span class="task-body">
         <span class="what">Note what the token-health workflow can and cannot do</span>
-        <span class="how">The old <code>refresh-token.yml</code> called the wrong endpoint for our token type and discarded the token it fetched, so it renewed nothing while appearing to. It is replaced by <code>token-health.yml</code>, which checks validity and alerts 14 days before expiry but cannot renew anything. Take the never-expiring token in A6 and this stays a formality.</span>
+        <span class="how">The old <code>refresh-token.yml</code> called the wrong endpoint for our token type and discarded the token it fetched, so it renewed nothing while appearing to. It is replaced by <code>token-health.yml</code>, which checks validity and alerts 14 days before expiry but cannot renew anything. It can only see the expiry date if <code>META_APP_ID</code> and <code>META_APP_SECRET</code> are also set as secrets; without them it confirms the token works, nothing more. Take the never-expiring token in A6 and this stays a formality.</span>
       </span></label></li>
     </ul>
   </section>

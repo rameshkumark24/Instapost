@@ -6,6 +6,7 @@ NICHE_TERMS is how you change lanes without touching any other module.
 from __future__ import annotations
 
 import os
+import re
 from zoneinfo import ZoneInfo
 
 # --- clock -----------------------------------------------------------------
@@ -116,23 +117,35 @@ BRAND = {
     "muted": "#8A93A0",
 }
 
-PLACEHOLDER_HANDLES = {"@yourhandle", "@yourhandle2"}
+# Instagram handles: letters, digits, periods and underscores, 30 at most.
+_HANDLE = re.compile(r"@[A-Za-z0-9._]{1,30}")
+
+# Placeholders are recognised by their shape, never by repeating their literal
+# text here. A find-and-replace on a copied literal rewrites this check at the
+# same time -- disabling it, or blocking the real handle that replaced it.
+_PLACEHOLDER = re.compile(r"@__[A-Za-z0-9_]+__")
 
 
 def assert_branding_ready(channel: dict) -> None:
-    """Refuse to publish a card carrying a placeholder handle.
+    """Refuse to publish a card carrying a placeholder or malformed handle.
 
-    The handle is printed on every card. Shipping "@yourhandle" publicly is
-    both embarrassing and invisible to the pipeline, which has no idea the
-    string is wrong -- so this is the one thing worth hard-failing over.
-    Shadow builds are allowed through so the whole path stays testable.
+    The handle is printed on every card, and nothing downstream can tell that
+    the string is wrong. Shadow builds pass so the whole path stays testable.
+    Each channel is checked on its own: one account not being ready must never
+    stop the other from posting (see the commit step in build.yml).
     """
     if DRY_RUN:
         return
-    if channel.get("handle") in PLACEHOLDER_HANDLES:
+    handle = (channel.get("handle") or "").strip()
+    if _PLACEHOLDER.fullmatch(handle):
         raise RuntimeError(
-            f"channel handle is still the placeholder {channel['handle']!r}. "
+            f"channel handle is still a placeholder ({handle}). "
             f"Set it in CHANNELS before going live."
+        )
+    if not _HANDLE.fullmatch(handle):
+        raise RuntimeError(
+            f"channel handle {handle!r} is not a valid Instagram handle; "
+            f"expected '@' followed by letters, digits, '.' or '_'."
         )
 
 
@@ -156,14 +169,14 @@ CHANNELS = {
     "news": {
         "template": "card.html",
         "dist": "news",
-        "handle": "@yourhandle",          # <-- news account
+        "handle": "@__news_handle__",       # <-- replace with the news account's handle
         "label": "DAILY TECH BRIEF",
         "accent": "#FF6B35",
     },
     "flirt": {
         "template": "quote.html",
         "dist": "flirt",
-        "handle": "@yourhandle2",         # <-- tech-flirt account
+        "handle": "@__flirt_handle__",      # <-- replace with the tech-metaphor account's handle
         "label": "// TECH, BUT MAKE IT PERSONAL",
         "accent": "#F0508A",
     },
@@ -199,6 +212,11 @@ NOTIFY_ON_SUCCESS = _flag("NOTIFY_ON_SUCCESS", True)
 # This is the one place the pipeline touches an arbitrary third-party URL; set
 # it False to keep every outbound request inside the known source APIs.
 ENRICH_FROM_SOURCE = _flag("ENRICH_FROM_SOURCE", True)
+
+# Only sources that send no summary of their own. Anything else "enriches" into
+# page boilerplate -- a GitHub repo with a terse description would become
+# "Contribute to owner/repo development by creating an account on GitHub."
+ENRICH_SOURCES = {"hn", "lobsters"}
 
 USER_AGENT = "instapost-nightly/1.0 (+https://github.com/)"
 HTTP_TIMEOUT = 20

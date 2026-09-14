@@ -96,7 +96,13 @@ jobs:
           TG_CHAT: ${{ secrets.TG_CHAT }}
         run: python -m src.pipeline_flirt
 
+      # Runs even if a build step failed. The two accounts are independent: a
+      # flirt build that refuses to run (say, its handle is not set yet) must
+      # not throw away a news card that built fine. Each pipeline writes
+      # post.json only after its card has rendered, so a failed step leaves
+      # nothing half-made to commit.
       - name: Commit card and ledger
+        if: ${{ !cancelled() }}
         run: |
           git config user.name  "instapost-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -106,6 +112,7 @@ jobs:
           git push
 
       - name: Verify the image is publicly reachable
+        if: ${{ !cancelled() }}
         # Meta fetches the image from this URL at 19:45. If it 404s, the run is
         # already lost -- better to know now, while there is still time to fix
         # it, than to find out from a failed publish.
