@@ -201,5 +201,12 @@
   "url": "https://www.macrumors.com/2026/09/14/siri-can-be-swapped-out-for-chatgpt-claude/",
   "source": "hn",
   "posted_at": "2026-09-15T09:15:09+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2609.17475v1",
+  "title": "JustFit: 200K-Token LLM Serving on a 24 GiB Laptop with Just-in-Time State Management",
+  "url": "https://arxiv.org/abs/2609.17475v1",
+  "source": "arxiv",
+  "posted_at": "2026-09-16T09:07:56+00:00"
  }
 ]
