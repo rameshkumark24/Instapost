@@ -215,5 +215,12 @@
   "url": "https://arxiv.org/abs/2609.18909v1",
   "source": "arxiv",
   "posted_at": "2026-09-17T09:15:43+00:00"
+ },
+ {
+  "key": "hacktron.ai/blog/hacking-openai",
+  "title": "A heap overflow and SSO misconfiguration to compromise OpenAI internal repos",
+  "url": "https://www.hacktron.ai/blog/hacking-openai",
+  "source": "hn",
+  "posted_at": "2026-09-18T08:50:03+00:00"
  }
 ]
