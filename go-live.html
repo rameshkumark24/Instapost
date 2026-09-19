@@ -249,7 +249,7 @@
 <div class="wrap">
 
   <header>
-    <p class="eyebrow">Instapost &middot; status and plan &middot; 14 Sep 2026</p>
+    <p class="eyebrow">Instapost &middot; status and plan &middot; 19 Sep 2026</p>
     <h1>Instapost Go-Live</h1>
     <p class="standfirst">
       Two Instagram accounts that post on their own at 19:45 IST: a daily tech news card, and a
@@ -258,7 +258,7 @@
       can set up.
     </p>
     <dl class="state">
-      <div><dt>Builds run</dt><dd>36</dd></div>
+      <div><dt>Builds run</dt><dd>48</dd></div>
       <div><dt>Posts published</dt><dd class="bad">0</dd></div>
       <div><dt>Accounts live</dt><dd class="bad">0 / 2</dd></div>
       <div><dt>Credentials ready</dt><dd class="mid">3 / 6</dd></div>
@@ -280,7 +280,7 @@
       </li>
       <li>
         <span class="n">3</span><span class="name">Harden</span><span class="chip done">Done</span>
-        <span class="detail">Fixed the findings of two code reviews and every problem the real runs surfaced; 148 Python and 24 publisher tests run on each change.</span>
+        <span class="detail">Fixed the findings of two code reviews and every problem the real runs surfaced; 150 Python and 24 publisher tests run on each change.</span>
       </li>
       <li>
         <span class="n">4</span><span class="name">Your credentials</span><span class="chip doing">3 of 6</span>
@@ -427,7 +427,7 @@
       <table>
         <thead><tr><th>Part</th><th>What it does</th><th>Proven by</th></tr></thead>
         <tbody>
-          <tr><td class="k">News engine</td><td>Six sources, scoring for freshness, traction, topic and variety; safe fetching of the publisher's summary; an AI summary checked for invented numbers and copied wording; a 1080&times;1350 card.</td><td>36 builds; today's summary traced back to the source tweet</td></tr>
+          <tr><td class="k">News engine</td><td>Six sources, scoring for freshness, traction, topic and variety; safe fetching of the publisher's summary; an AI summary checked for invented numbers and copied wording; a 1080&times;1350 card.</td><td>48 builds; a summary traced back to its source tweet</td></tr>
           <tr><td class="k">Tech-metaphor engine</td><td>226 concepts across ten areas of computing, AI drafts through safety checks, approval from your phone, 7-day expiry, a 5-minute cap on drafting.</td><td>12 drafts in <a href="https://github.com/rameshkumark24/Instapost/issues/1">issue #1</a>, none rejected</td></tr>
           <tr><td class="k">Publisher</td><td>Posts to both accounts at 19:45 IST; refuses stale, held or shadow cards; takes a hold from Telegram or the repo; its test address can never post; never forwards a secret.</td><td>24 automated tests; rehearsed against the real card files</td></tr>
           <tr><td class="k">Account kit</td><td>Names, bios, profile pictures and a pinned first post for each account.</td><td><code>brand/PROFILES.md</code>; avatars checked against Instagram's circle crop</td></tr>
@@ -438,17 +438,18 @@
           <tr><td class="k">Alerts</td><td>Telegram receipts, review requests, skips and failures.</td><td>Three messages delivered today</td></tr>
           <tr><td class="k">Safety</td><td>The <code>LIVE</code> switch, a block on placeholder handles, protection against hostile links, secrets never echoed.</td><td>Automated tests</td></tr>
           <tr><td class="k">Token health</td><td>Checks the Instagram token every ten days.</td><td>Run against Meta's live API</td></tr>
-          <tr><td class="k">Quality</td><td>148 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
+          <tr><td class="k">Quality</td><td>150 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
         </tbody>
       </table>
     </div>
     <div class="note">
       <p>
-        <strong>Also fixed today.</strong>
+        <strong>Recent fixes.</strong>
         AI calls now get 45 seconds instead of 20 &mdash; the first batch spent about 53 seconds a card with nothing rejected, which points at slow calls being abandoned and retried &mdash; and each attempt is logged with its time.
         "12 new cards drafted" now arrives as <strong>New cards to review</strong> rather than under "skipped tonight".
         The Meta API version moved from v21.0, which stops working on 21 January 2027, to v26.0.
         A second review closed a way the deploy test could have posted a live card: the publisher's test address now never posts, and Gate A now passes only on a real post.
+        Ticks on a closed review issue now count, and new cards reopen it &mdash; issue #1 had been closed with all twelve cards on it.
       </p>
     </div>
   </section>
@@ -467,7 +468,7 @@
       <ul class="tasks">
         <li><label class="task" for="task-R1"><input type="checkbox" id="task-R1" data-id="R1"><span class="task-id">R1</span><span class="task-body">
           <span class="what">Tick the cards worth posting on <a href="https://github.com/rameshkumark24/Instapost/issues/1">issue #1</a></span>
-          <span class="how">Strongest: PACKET LOSS, 404 NOT FOUND, ORPHAN ROW, FOREIGN KEY, TECHNICAL DEBT, NULL, MERGE CONFLICT. I'd skip MERGE, TCP HANDSHAKE and DETACHED HEAD. Ticking publishes nothing yet.</span>
+          <span class="how">Tick before 13:00 IST on Saturday 21 Sep; after that the twelve expire and a fresh batch is drafted. The issue shows as closed, which is fine: ticks on it still count. Strongest: PACKET LOSS, 404 NOT FOUND, ORPHAN ROW, FOREIGN KEY, TECHNICAL DEBT, NULL, MERGE CONFLICT. I'd skip MERGE, TCP HANDSHAKE and DETACHED HEAD. Ticking publishes nothing yet.</span>
         </span></label></li>
       </ul>
     </div>
@@ -661,7 +662,7 @@
       </div>
       <div>
         <strong>Nothing goes public by default.</strong>
-        <p>36 builds have run and none could post. Publishing takes one deliberate switch, and removing it stops everything at once.</p>
+        <p>48 builds have run and none could post. Publishing takes one deliberate switch, and removing it stops everything at once.</p>
       </div>
       <div>
         <strong>You approve the jokes; code checks the facts.</strong>
@@ -697,7 +698,7 @@
   </section>
 
   <footer>
-    <div>Instapost Go-Live &middot; status as of 14 Sep 2026</div>
+    <div>Instapost Go-Live &middot; status as of 19 Sep 2026</div>
     <div>Times are Asia/Kolkata (UTC+5:30) &middot; ticks are stored in this browser only</div>
     <div><a href="https://github.com/rameshkumark24/Instapost">github.com/rameshkumark24/Instapost</a></div>
   </footer>

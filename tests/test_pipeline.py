@@ -169,6 +169,39 @@ class ApprovalQueue(unittest.TestCase):
         self.assertEqual(entries[0]["status"], "posted")
         self.assertEqual(self.queue.next_approved(entries)["concept"], "b")
 
+    @staticmethod
+    def github_with(issue):
+        """A stand-in for GitHub that, like GitHub, lists a closed issue only when asked for closed ones."""
+        calls = []
+
+        def call(method, path, **kw):
+            calls.append((method, path, kw.get("json")))
+            if method != "GET":
+                return {}
+            return [] if issue["state"] == "closed" and "state=open" in path else [issue]
+
+        return call, calls
+
+    def test_ticks_on_a_closed_review_issue_still_count(self):
+        # Regression: only open issues were read, and issue #1 was closed with
+        # all twelve cards still on it, so no tick on it could ever count.
+        entries = [{"concept": "packet-loss", "status": "pending", "text": "line"}]
+        body = self.queue.render_issue_body(entries).replace("- [ ] `packet-loss`", "- [x] `packet-loss`")
+        github, _ = self.github_with({"number": 1, "state": "closed", "body": body})
+        with mock.patch.object(self.queue, "_gh", side_effect=github), \
+                mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "me/repo"}):
+            self.queue.sync_approvals(entries)
+        self.assertEqual(entries[0]["status"], "approved")
+
+    def test_new_cards_reopen_a_closed_review_issue(self):
+        github, calls = self.github_with({"number": 1, "state": "closed", "body": self.queue.MARKER})
+        with mock.patch.object(self.queue, "_gh", side_effect=github), \
+                mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "me/repo"}):
+            number = self.queue.publish_issue([{"concept": "null", "status": "pending", "text": "line"}])
+        self.assertEqual(number, 1)
+        self.assertIn(("PATCH", "open"), [(method, (sent or {}).get("state")) for method, _, sent in calls])
+        self.assertNotIn("POST", [method for method, _, _ in calls])
+
 
 class Escaping(unittest.TestCase):
     """Quote text is LLM-written and goes into HTML. It is never trusted."""

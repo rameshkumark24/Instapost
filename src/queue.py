@@ -157,7 +157,13 @@ def render_issue_body(entries: list[dict]) -> str:
 
 
 def find_issue() -> dict | None:
-    issues = _gh("GET", f"/repos/{_repo()}/issues?state=open&labels=queue&per_page=10")
+    """The newest review issue, open or closed.
+
+    Closing it is a natural way to say "done reviewing", and the ticks on it
+    must still count. Reading only open issues cut the queue off from a closed
+    one without a word: issue #1 was closed with all twelve cards still on it.
+    """
+    issues = _gh("GET", f"/repos/{_repo()}/issues?state=all&labels=queue&sort=created&direction=desc&per_page=10")
     for issue in issues:
         if MARKER in (issue.get("body") or ""):
             return issue
@@ -169,7 +175,8 @@ def publish_issue(entries: list[dict]) -> int:
     body = render_issue_body(entries)
     existing = find_issue()
     if existing:
-        _gh("PATCH", f"/repos/{_repo()}/issues/{existing['number']}", json={"body": body})
+        # Reopened as well: new cards on a closed issue would never be seen.
+        _gh("PATCH", f"/repos/{_repo()}/issues/{existing['number']}", json={"body": body, "state": "open"})
         log.info("updated review issue #%d", existing["number"])
         return existing["number"]
 
