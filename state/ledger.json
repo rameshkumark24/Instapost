@@ -222,5 +222,12 @@
   "url": "https://www.hacktron.ai/blog/hacking-openai",
   "source": "hn",
   "posted_at": "2026-09-18T08:50:03+00:00"
+ },
+ {
+  "key": "code.claude.com/docs/en/changelog",
+  "title": "Claude Code now reads AGENTS.md if there is no Claude.md",
+  "url": "https://code.claude.com/docs/en/changelog",
+  "source": "hn",
+  "posted_at": "2026-09-19T08:35:17+00:00"
  }
 ]
