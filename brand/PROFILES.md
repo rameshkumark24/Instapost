@@ -8,7 +8,7 @@ whether one is free.
 
 **Display name** (pick one): Daily Tech Brief · One Tech Story · The 7:45 Brief
 
-**Handle ideas:** `@dailytechbrief` · `@techbrief.daily` · `@onetechstory` · `@the745brief`
+**Handle:** `@daily.techforyou`
 
 **Bio** (copy exactly):
 
@@ -19,17 +19,15 @@ Summarised in plain words, source credited in the caption.
 
 **Profile picture:** `brand/news/avatar.jpg`
 
-**Pinned first post:** `brand/news/pinned-post.jpg` - post it by hand before
-the first automated post, then pin it from the post's menu.
-
-> The handle slot on the pinned post is blank because the real handle is not
-> set yet. Once it is, re-run `python -m src.brand` to add it.
+**Pinned first post:** `brand/news/pinned-post.jpg`. The Gate A assistant
+publishes it for you (`.venv/Scripts/python -m src.gate_a --publish`, go-live
+step A7), which is also Meta's proof that posting works. Pin it from the post's menu.
 
 ## Tech-metaphor account
 
 **Display name** (pick one): Commit Issues · Tech, But Personal · Primary Key Feelings
 
-**Handle ideas:** `@commitissues` · `@tech.but.personal` · `@foreignkeyfeelings` · `@mergeconflicts.daily`
+**Handle:** `@genphile.meme`
 
 **Bio** (copy exactly):
 
@@ -40,8 +38,6 @@ One card a day, 7:45 PM IST. // tech, but make it personal
 
 **Profile picture:** `brand/flirt/avatar.jpg`
 
-**Pinned first post:** `brand/flirt/pinned-post.jpg` - post it by hand before
-the first automated post, then pin it from the post's menu.
-
-> The handle slot on the pinned post is blank because the real handle is not
-> set yet. Once it is, re-run `python -m src.brand` to add it.
+**Pinned first post:** `brand/flirt/pinned-post.jpg`. The Gate A assistant
+publishes it for you (`.venv/Scripts/python -m src.gate_a --publish`, go-live
+step A7), which is also Meta's proof that posting works. Pin it from the post's menu.

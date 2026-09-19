@@ -169,14 +169,14 @@ CHANNELS = {
     "news": {
         "template": "card.html",
         "dist": "news",
-        "handle": "@__news_handle__",       # <-- replace with the news account's handle
+        "handle": "@daily.techforyou",
         "label": "DAILY TECH BRIEF",
         "accent": "#FF6B35",
     },
     "flirt": {
         "template": "quote.html",
         "dist": "flirt",
-        "handle": "@__flirt_handle__",      # <-- replace with the tech-metaphor account's handle
+        "handle": "@genphile.meme",         # an existing meme page: these cards join its own posts
         "label": "// TECH, BUT MAKE IT PERSONAL",
         "accent": "#F0508A",
     },

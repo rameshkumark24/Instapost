@@ -508,12 +508,18 @@ class BrandingGuard(unittest.TestCase):
     def tearDown(self):
         cfg.DRY_RUN = self._dry
 
-    def test_every_shipped_placeholder_is_blocked_live(self):
+    def test_placeholder_handles_are_blocked_live(self):
+        cfg.DRY_RUN = False
+        for placeholder in ("@__news_handle__", "@__flirt_handle__"):
+            with self.subTest(handle=placeholder):
+                with self.assertRaises(RuntimeError):
+                    cfg.assert_branding_ready({"handle": placeholder})
+
+    def test_the_configured_handles_are_ready_to_go_live(self):
         cfg.DRY_RUN = False
         for name, channel in cfg.CHANNELS.items():
             with self.subTest(channel=name):
-                with self.assertRaises(RuntimeError):
-                    cfg.assert_branding_ready(channel)
+                cfg.assert_branding_ready(channel)      # raises on a placeholder or a malformed handle
 
     def test_placeholders_are_not_substrings_of_each_other(self):  # review 6
         handles = [c["handle"] for c in cfg.CHANNELS.values()]

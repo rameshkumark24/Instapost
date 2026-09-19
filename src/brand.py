@@ -117,7 +117,7 @@ def build() -> dict[str, dict[str, Path]]:
             pinned = render(profile["intro"], out / "pinned-post.jpg", channel=channel)
         else:
             pinned = render_quote(profile["intro"], channel, out / "pinned-post.jpg")
-        written[name] = {"avatar": avatar, "pinned": pinned, "handle_set": bool(channel["handle"])}
+        written[name] = {"avatar": avatar, "pinned": pinned, "handle": channel["handle"], "handle_set": bool(channel["handle"])}
     return written
 
 
@@ -138,7 +138,8 @@ def write_profiles_md(written: dict[str, dict]) -> Path:
             "",
             "**Display name** (pick one): " + " · ".join(profile["display_names"]),
             "",
-            "**Handle ideas:** " + " · ".join(f"`{h}`" for h in profile["handle_ideas"]),
+            f"**Handle:** `{files['handle']}`" if files["handle_set"]
+            else "**Handle ideas:** " + " · ".join(f"`{h}`" for h in profile["handle_ideas"]),
             "",
             "**Bio** (copy exactly):",
             "",
@@ -148,8 +149,9 @@ def write_profiles_md(written: dict[str, dict]) -> Path:
             "",
             f"**Profile picture:** `brand/{name}/avatar.jpg`",
             "",
-            f"**Pinned first post:** `brand/{name}/pinned-post.jpg` - post it by hand before",
-            "the first automated post, then pin it from the post's menu.",
+            f"**Pinned first post:** `brand/{name}/pinned-post.jpg`. The Gate A assistant",
+            "publishes it for you (`.venv/Scripts/python -m src.gate_a --publish`, go-live",
+            "step A7), which is also Meta's proof that posting works. Pin it from the post's menu.",
             "",
         ]
         if not files["handle_set"]:

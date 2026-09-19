@@ -280,7 +280,7 @@
       </li>
       <li>
         <span class="n">3</span><span class="name">Harden</span><span class="chip done">Done</span>
-        <span class="detail">Fixed the findings of two code reviews and every problem the real runs surfaced; 150 Python and 24 publisher tests run on each change.</span>
+        <span class="detail">Fixed the findings of two code reviews and every problem the real runs surfaced; 151 Python and 24 publisher tests run on each change.</span>
       </li>
       <li>
         <span class="n">4</span><span class="name">Your credentials</span><span class="chip doing">3 of 6</span>
@@ -438,7 +438,7 @@
           <tr><td class="k">Alerts</td><td>Telegram receipts, review requests, skips and failures.</td><td>Three messages delivered today</td></tr>
           <tr><td class="k">Safety</td><td>The <code>LIVE</code> switch, a block on placeholder handles, protection against hostile links, secrets never echoed.</td><td>Automated tests</td></tr>
           <tr><td class="k">Token health</td><td>Checks the Instagram token every ten days.</td><td>Run against Meta's live API</td></tr>
-          <tr><td class="k">Quality</td><td>150 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
+          <tr><td class="k">Quality</td><td>151 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
         </tbody>
       </table>
     </div>
@@ -461,15 +461,12 @@
 
     <div class="phase" data-phase="R">
       <div class="phase-head">
-        <span class="phase-id">Now</span>
+        <span class="phase-id">Done</span>
         <span class="phase-name">Review the first cards</span>
-        <div class="meta"><span class="chip you">You</span><span class="chip effort">5 min</span><span class="progress" data-progress="R"></span></div>
+        <div class="meta"><span class="chip done">Complete</span></div>
       </div>
       <ul class="tasks">
-        <li><label class="task" for="task-R1"><input type="checkbox" id="task-R1" data-id="R1"><span class="task-id">R1</span><span class="task-body">
-          <span class="what">Tick the cards worth posting on <a href="https://github.com/rameshkumark24/Instapost/issues/1">issue #1</a></span>
-          <span class="how">Tick before 13:00 IST on Saturday 21 Sep; after that the twelve expire and a fresh batch is drafted. The issue shows as closed, which is fine: ticks on it still count. Strongest: PACKET LOSS, 404 NOT FOUND, ORPHAN ROW, FOREIGN KEY, TECHNICAL DEBT, NULL, MERGE CONFLICT. I'd skip MERGE, TCP HANDSHAKE and DETACHED HEAD. Ticking publishes nothing yet.</span>
-        </span></label></li>
+        <li><div class="task is-done"><span class="tick">✓</span><span class="task-id">R1</span><span class="task-body"><span class="what">7 cards approved on <a href="https://github.com/rameshkumark24/Instapost/issues/1">issue #1</a>, about a week of tech-metaphor cards</span></span></div></li>
       </ul>
     </div>
 
@@ -497,7 +494,7 @@
       <ul class="tasks">
         <li><label class="task" for="task-A1"><input type="checkbox" id="task-A1" data-id="A1"><span class="task-id">A1</span><span class="task-body">
           <span class="what">Create both Instagram accounts, switch each to Professional, keep both public</span>
-          <span class="how">One for news, one for tech-metaphor. Posting through the API does not work on private accounts. Names, bios, profile pictures and pinned posts are ready in <code>brand/PROFILES.md</code>.</span>
+          <span class="how">Both exist: <code>@daily.techforyou</code>, and your existing <code>@genphile.meme</code>. Check each is set to Professional (Creator or Business) and is public: posting through the API does not work on personal or private accounts.</span>
         </span></label></li>
         <li><label class="task" for="task-A2"><input type="checkbox" id="task-A2" data-id="A2"><span class="task-id">A2</span><span class="task-body">
           <span class="what">Create two Facebook Pages and link one to each account</span>
@@ -521,7 +518,7 @@
         </span></label></li>
         <li><label class="task" for="task-A7"><input type="checkbox" id="task-A7" data-id="A7"><span class="task-id">A7</span><span class="task-body">
           <span class="what">Post each account's pinned intro card</span>
-          <span class="how">Run the assistant again with <code>--publish</code> and type <code>PUBLISH</code> when asked. Gate A passes when Meta publishes; the test post you need anyway becomes each account's first real post. Pin it from the post's menu.</span>
+          <span class="how">Run the assistant again with <code>--publish</code> and type <code>PUBLISH</code> when asked. Gate A passes when Meta publishes each account's intro card, and this copy carries your handle. You already posted the intro by hand, so afterwards delete whichever copy you like less and pin the other.</span>
         </span></label></li>
       </ul>
     </div>
@@ -546,15 +543,12 @@
 
     <div class="phase" data-phase="H">
       <div class="phase-head">
-        <span class="phase-id">Handles</span>
-        <span class="phase-name">Tell me the account names</span>
-        <div class="meta"><span class="chip you">You</span><span class="chip effort">1 min</span><span class="progress" data-progress="H"></span></div>
+        <span class="phase-id">Done</span>
+        <span class="phase-name">Account handles</span>
+        <div class="meta"><span class="chip done">Complete</span></div>
       </div>
       <ul class="tasks">
-        <li><label class="task" for="task-H1"><input type="checkbox" id="task-H1" data-id="H1"><span class="task-id">H1</span><span class="task-body">
-          <span class="what">Send me both handles</span>
-          <span class="how">They print on every card. A live build refuses to run until they're set.</span>
-        </span></label></li>
+        <li><div class="task is-done"><span class="tick">✓</span><span class="task-id">H1</span><span class="task-body"><span class="what">News: <code>@daily.techforyou</code>. Tech-metaphor: <code>@genphile.meme</code>, your existing meme page, where these cards join your own posts. Both handles now print on every card.</span></span></div></li>
       </ul>
     </div>
 
@@ -643,7 +637,7 @@
   <section>
     <h2>Where I come in</h2>
     <ul class="claude-list">
-      <li><span class="when">When you send the handles</span><span>I set them and run a dry build so you can check both cards.</span></li>
+      <li><span class="when">Handles</span><span>Done: both set, and today's cards rendered with them to check the fit.</span></li>
       <li><span class="when">During Gate A</span><span>Send screenshots of any Meta error and I'll tell you what it means and what to change.</span></li>
       <li><span class="when">After Gate A</span><span>We test the publisher with your token in shadow mode before anything goes public.</span></li>
       <li><span class="when">During the shadow run</span><span>I review the cards and logs, and tune the news topics, scoring and blocklist.</span></li>
