@@ -1,28 +1,29 @@
 # Instapost Nightly
 
-An unattended pipeline that researches a tech story, renders it onto a designed
-card, and publishes it publicly to Instagram at **19:45 IST** every evening.
+A pipeline that researches a tech story, writes it up, renders it onto a
+designed card, and sends the card and its caption to your phone. You post it.
 
 Runs entirely on free tiers, using only official APIs.
 
 ```
-18:30  harvest    6 sources -> ~160 candidates          GitHub Actions
-18:31  select     score, dedup, blocklist -> 1 story
-18:32  compose    headline, body, caption, hashtags
-18:33  render     1080x1350 JPEG via headless Chromium
-18:34  stage      commit to repo, verify public URL
-18:35  notify     Telegram receipt
+daily  harvest    6 sources -> ~160 candidates          GitHub Actions
+       select     score, dedup, blocklist -> 1 story
+       compose    headline, body, caption, hashtags
+       render     1080x1350 JPEG via headless Chromium
+       stage      commit to repo
+       hand off   Telegram: the card as a file, then the caption alone
 
-19:45  publish    create container -> media_publish      Cloudflare Worker
-19:45  confirm    Telegram receipt with permalink
+you    post       save, copy, publish on Instagram      about 2 minutes
 ```
 
-The build runs 75 minutes early on purpose: the Actions scheduler is
-best-effort and drifts 30–60 minutes on free tiers. The publish call lives on a
-Cloudflare cron trigger instead, which is minute-accurate.
+A second card is built the same way for the tech-metaphor account: lines are
+drafted in batches from a bank of 226 programming concepts, and the oldest one
+that has not gone out yet becomes the day's card.
 
-**Start with [SETUP.md](SETUP.md).** Phase 0 settles whether Meta will publish
-for you at all, and takes two hours. Nothing else matters until it passes.
+**Publishing by API is built and tested but switched off.** Instagram only
+allows it through Meta's developer stack, which cost an hour of broken screens,
+so [`worker/`](worker/) and [`src/gate_a.py`](src/gate_a.py) sit ready for the
+day that is worth doing. Nothing in this repo can post on its own.
 
 ## Layout
 
@@ -49,11 +50,10 @@ result, no tier gate, no vendor in the hot path.
 **It refuses rather than degrades.** With nobody watching at 19:45, every stage
 fails loudly instead of shipping something broken:
 
-- weak candidate field → posts nothing that night, and says so
+- weak candidate field → builds nothing that day, and says so
 - headline too long, fonts missing, content overflowing → render aborts
 - LLM invents a number not in the source → output rejected, deterministic copy used
-- `post.json` stale or dated yesterday → Worker refuses to republish
-- image URL not reachable → build fails before 19:45, while there's still time
+- a card Instagram would refuse (size, ratio, caption length) → build fails, not your post
 
 **Silence is the alarm.** A pipeline that reports nothing on success is
 indistinguishable from one that died three weeks ago, so it sends a receipt
@@ -62,14 +62,13 @@ either way.
 ## Controls
 
 ```bash
-# hold every post until the file is deleted (checked at 19:45)
-touch state/hold.flag && git add -A && git commit -m hold && git push
-
-# build now, publish nothing
-DRY_RUN=true python -m src.pipeline
+# build now and send it to Telegram
+python -m src.pipeline          # news card
+python -m src.pipeline_flirt    # tech-metaphor card
 ```
 
-Nothing publishes until the repository variable `LIVE` is set to exactly
-`true` (Settings → Secrets and variables → Actions → Variables). Until then
-every run is a shadow run. Removing the variable pulls the plug instantly, with
-no commit and no deploy.
+Nothing here can publish to Instagram. The Cloudflare publisher is not
+deployed, and it would refuse anyway until the repository variable `LIVE` is
+set to exactly `true`.
+
+Don't like a card? Don't post it. Nothing else has to happen.

@@ -1,100 +1,26 @@
 # Setup
 
-Work through these in order. Phase 0 exists to settle the riskiest unknown —
-whether Meta will publish for you at all — before you invest in anything else.
-**Do not skip it.**
+The cards are built for you and delivered to Telegram. You post them by hand,
+so there is no Meta app, no token and no deploy to get working.
 
-Times are Asia/Kolkata. T-0 is 19:45 IST = 14:15 UTC.
+Times are Asia/Kolkata.
 
-## The fast path
+## The daily loop
 
-Most manual steps below now have a helper. Use these first; the detailed
-sections remain for when something has to be done by hand.
+| When | What |
+|---|---|
+| Early afternoon | GitHub Actions builds both cards and Telegram sends each one: the image as a file, then the caption as its own message |
+| Whenever suits you | Save the image, hold the caption to copy it, post on Instagram |
+| Every couple of weeks | A batch of tech-metaphor cards is drafted; you see each one on the day it goes out |
 
-The Python helpers run from the repo's virtual environment. Create it once
-with the four commands under [Local dry run](#local-dry-run) in Phase 1, then
-run them as shown (on macOS or Linux, `.venv/bin/python`). The deploy script
-needs only Node.js 22 or newer; it installs its own pinned wrangler.
+Nothing in the repo can post to Instagram on its own.
+
+## Helpers
 
 | Step | Helper |
 |---|---|
-| Name, bio, profile picture and pinned post for each account | `brand/PROFILES.md` (regenerate with `.venv/Scripts/python -m src.brand`) |
-| Gate A: token, permissions, both account IDs, then a real post on each account | `.venv/Scripts/python -m src.gate_a`, then again with `--publish`. Gate A passes only once Meta publishes. |
-| Phase C: deploy the publisher, store its secrets, test without posting | `powershell -ExecutionPolicy Bypass -File worker/deploy.ps1`. It ends with `Test passed. Nothing was posted.` or stops at the problem. |
-| Hold tonight's post from your phone | reply `hold`, `hold news` or `hold tech` to the bot; `resume` undoes it |
-
----
-
-## Phase 0 — prove publishing works (2–3 h)
-
-Nothing in this repo matters until a post appears on your profile by API.
-
-### 0.1 Accounts
-
-1. Switch your Instagram account to **Professional** (Business or Creator),
-   in Settings → Account type. It must also be **public** — API publishing is
-   not available on private accounts.
-2. Create a Facebook Page and link it to the Instagram account. The Page can
-   stay completely empty; the Graph API path just requires it to exist.
-3. At [developers.facebook.com](https://developers.facebook.com) create an app.
-   Type: **Business**. Leave it in **Development** mode.
-4. Add the *Instagram* product to the app.
-5. Under **Roles → Instagram Testers**, add your Instagram account, then accept
-   the invite from inside the Instagram app
-   (Settings → Apps and websites → Tester invites).
-
-> Publishing to your own account needs **no App Review**. Review only applies
-> to apps acting on other people's accounts. Development mode is a legitimate
-> permanent end state here.
-
-### 0.2 Token
-
-Two routes. Take the first if you can — it removes the single most common way
-this kind of project dies.
-
-**Route A — system-user token (recommended, no expiry).**
-In [Meta Business Settings](https://business.facebook.com/settings) → Users →
-System Users, create a system user, assign it your app and Page, then generate
-a token with `instagram_basic`, `instagram_content_publish`,
-`pages_show_list`, `pages_read_engagement`. Choose **Never** for expiry if the
-option is offered. Verify the expiry in the
-[Access Token Debugger](https://developers.facebook.com/tools/debug/accesstoken/)
-before relying on it.
-
-**Route B — long-lived user token (60 days, must be refreshed).**
-Get a short-lived token from the Graph API Explorer, exchange it for a
-long-lived one, and rely on `.github/workflows/token-health.yml` to warn you. This
-token dies permanently if it ever goes 60 days without a refresh.
-
-Get your Instagram user id:
-
-```bash
-curl -s "https://graph.facebook.com/v26.0/me/accounts?access_token=$TOKEN"
-# then, with the page id from above:
-curl -s "https://graph.facebook.com/v26.0/<PAGE_ID>?fields=instagram_business_account&access_token=$TOKEN"
-```
-
-### 0.3 The two calls that prove it
-
-Host any JPEG at a public URL, then:
-
-```bash
-# 1. create the container
-curl -s -X POST "https://graph.facebook.com/v26.0/$IG_USER_ID/media" \
-  -d "image_url=https://example.com/test.jpg" \
-  -d "caption=setup test" \
-  -d "access_token=$TOKEN"
-# -> {"id":"1789..."}
-
-# 2. publish it
-curl -s -X POST "https://graph.facebook.com/v26.0/$IG_USER_ID/media_publish" \
-  -d "creation_id=1789..." \
-  -d "access_token=$TOKEN"
-```
-
-**If a post appeared on your profile, the project is viable.** Delete the test
-post and continue. If it did not, stop and fix this before going further —
-every later phase assumes this works.
+| Rebuild the profile kit (avatars, pinned cards) | `.venv/Scripts/python -m src.brand` |
+| Build a card now and send it | `.venv/Scripts/python -m src.pipeline` or `-m src.pipeline_flirt` |
 
 ---
 
@@ -138,7 +64,7 @@ python -m unittest discover -s tests -v
 
 ---
 
-## Phase 2 — secrets (20 min)
+## Phase 2 — secrets (10 min)
 
 **GitHub → Settings → Secrets and variables → Actions:**
 
@@ -148,99 +74,39 @@ python -m unittest discover -s tests -v
 | `TG_CHAT` | yes | Your chat id from [@userinfobot](https://t.me/userinfobot) |
 | `GEMINI_API_KEY` | no | Free tier at [aistudio.google.com](https://aistudio.google.com) |
 | `GROQ_API_KEY` | no | Alternative to Gemini |
-| `IG_TOKEN` | recommended | Lets `token-health.yml` confirm the token still works |
-| `META_APP_ID` | optional | With the next secret, lets the health check see the token's expiry date |
-| `META_APP_SECRET` | optional | Meta only reveals expiry to an app token; without these two the check cannot warn you before expiry |
-| `IG_USER_ID_NEWS`, `IG_USER_ID_FLIRT` | optional | Lets the health check confirm the token can still reach each account |
 
 Without an LLM key the deterministic composer is used, which always works. It
 is the floor, not a degraded mode.
 
-**Cloudflare Worker.** `worker/deploy.ps1` does all of this. By hand:
-
-```bash
-cd worker
-npm ci                                 # the wrangler version pinned in package.json
-npx wrangler login
-npx wrangler deploy
-npx wrangler secret put IG_USER_ID_NEWS
-npx wrangler secret put IG_USER_ID_FLIRT
-npx wrangler secret put IG_TOKEN
-npx wrangler secret put TG_TOKEN
-npx wrangler secret put TG_CHAT
-npx wrangler secret put MANUAL_KEY     # any random string
-```
-
-Test the Worker without waiting for its cron:
-
-```bash
-curl -H "x-key: $MANUAL_KEY" https://instapost-publisher.<subdomain>.workers.dev/run
-```
-
-This address only ever tests. It checks that the token reaches each account,
-reads today's cards and the holds, sends a "Publisher test" message on
-Telegram, and reports what 19:45 would do. It posts nothing, whatever the cards
-say: publishing happens on the schedule and nowhere else.
+Nothing else is needed. `IG_TOKEN` and the Instagram account ids only matter if
+you ever switch on the publisher in [`worker/`](worker/), which is documented in
+its own files and in git history.
 
 ---
 
-## Phase 3 — shadow run (3 nights)
+## Phase 3 — watch a few days
 
-Let the scheduled build run for three nights with publishing still disabled.
-
-Each morning, check:
-
-- A Telegram receipt arrived. **No message is the alarm** — it means the build
-  failed or the scheduler dropped the run.
-- The card looks right for that story.
-- The chosen story is one you'd have been happy to post.
+Let the build run for a few days and read each card as a stranger would. The
+question is whether you would post it, not whether the code ran.
 
 Tune `WEIGHTS`, `NICHE_TERMS` and `state/blocklist.txt` based on what you see.
-This is the only phase where you are training your own judgement into the
-scorer, so don't rush it.
-
----
-
-## Phase 4 — go live
-
-Go to **Settings → Secrets and variables → Actions → Variables** and add:
-
-```
-LIVE = true
-```
-
-That is the only switch. Until it is set to exactly `true`, every run —
-scheduled or manual — is a shadow run. Deleting the variable puts you straight
-back into shadow mode with no commit and no deploy.
-
-Watch it closely for the first week.
 
 ---
 
 ## Controls
 
-**Stop tonight's post from your phone** — reply `hold` to the bot, or `hold news` /
-`hold tech` for one account. `resume` undoes it; the latest message that day wins.
+**Skip a day** — don't post the card. Nothing else happens.
 
-**Stop posting from the repo** — create `state/hold.flag`, commit, push. The
-publisher checks for it at 19:45, so it works after the morning build and while
-Telegram is down. It holds both accounts every night until you delete the file.
+**Stop the builds** — disable the workflow in the Actions tab.
 
-```bash
-touch state/hold.flag && git add -A && git commit -m "hold" && git push
-```
-
-**Stop publishing entirely** — delete the `LIVE` repository variable, or set it
-to anything other than `true`. Builds continue, nothing publishes.
-
-**Stop everything** — disable the workflow in the Actions tab, or delete the
-Worker's cron trigger.
-
-**Force a rebuild now** — Actions → build-nightly-post → Run workflow. Leave
-`dry_run` checked unless you mean it.
+**Force a build now** — Actions → build-nightly-post → Run workflow. The card
+arrives on Telegram a few minutes later.
 
 **Re-allow a story the ledger has burned** — delete its entry from
 `state/ledger.json`.
+
+**Send a tech-metaphor card again** — set its entry in `state/flirt_queue.json`
+back to `"status": "pending"`.
 
 ---
 
@@ -248,21 +114,17 @@ Worker's cron trigger.
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| No Telegram message at all | Build failed or run dropped | Check the Actions log; re-run via workflow_dispatch |
-| `⚠️ The newest card is dated …` | Build didn't run today | The Worker correctly refused to repost yesterday. Re-run the build. |
-| `⚠️ Could not read your messages to the bot` | Telegram unreachable, or a webhook set on the bot | A hold sent on Telegram cannot be seen, so posts go ahead. Commit `state/hold.flag` to hold; remove any webhook with Telegram's `deleteWebhook`. |
-| `OAuthException 190` | Token expired or revoked | Re-issue. A password change makes a token unrecoverable. |
-| Error code `9` | Daily publish quota hit | You post once a day, so this means a retry loop ran away. |
-| `container ERROR` / `EXPIRED` | Image unreachable, or container older than 24 h | Containers expire in 24 h — create and publish in the same run. |
+| No Telegram message at all | Build failed or the run was dropped | Check the Actions log; re-run via Run workflow |
+| `Instapost skipped tonight` | No story cleared the bar, or the card queue is empty | Normal on a thin news day. If it repeats, tune the scoring. |
+| `Drafting failed` | The AI model or key is not working | The message names the reason |
 | `webfonts did not load` | Google Fonts unreachable in CI | Re-run. If it recurs, vendor the fonts into `templates/` as base64 `@font-face`. |
 | `headline is N chars, over the limit` | Compose produced over-long copy | Working as designed — it refused rather than ship a bad card. |
 
 ### Calendar
 
-- **Monthly** — confirm the token refresh ran (route B only); bump dependencies.
-- **Quarterly** — check Meta's changelog for deprecations on `/media` and
-  `/media_publish`.
-- **~18 months** — migrate `GRAPH_VERSION`. Don't leave this to the deadline.
+- **Every seven months or so** — top up `state/concepts.json`; 226 concepts is
+  about that much runway at one card a day.
+- **Occasionally** — bump dependencies.
 
 ---
 
