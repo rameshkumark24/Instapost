@@ -25,6 +25,10 @@ allows it through Meta's developer stack, which cost an hour of broken screens,
 so [`worker/`](worker/) and [`src/gate_a.py`](src/gate_a.py) sit ready for the
 day that is worth doing. Nothing in this repo can post on its own.
 
+**Lost your files, or on a new machine?** Nothing needs doing — the build runs on
+GitHub. [RECOVER.md](RECOVER.md) has the clone-and-go steps, where each key comes
+from, and a briefing block for a fresh assistant session.
+
 ## Layout
 
 | Path | What it does |

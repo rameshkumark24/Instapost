@@ -5,6 +5,10 @@ so there is no Meta app, no token and no deploy to get working.
 
 Times are Asia/Kolkata.
 
+If the local files are gone, or you are on a different machine, go to
+[RECOVER.md](RECOVER.md) instead — the build keeps running without this
+laptop, and that file is the clone-and-go guide.
+
 ## The daily loop
 
 | When | What |
