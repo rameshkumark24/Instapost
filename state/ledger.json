@@ -229,5 +229,12 @@
   "url": "https://code.claude.com/docs/en/changelog",
   "source": "hn",
   "posted_at": "2026-09-19T08:35:17+00:00"
+ },
+ {
+  "key": "github.com/tamaratran/fast-jev-compaction",
+  "title": "fast-jev-compaction: Claude Code plugin that replaces the compaction summary with Jev decisions: every tool call and result is scored in one fast request, stale ones are dropped or truncated, everything kept stays verbatim.",
+  "url": "https://github.com/tamaratran/fast-jev-compaction",
+  "source": "github",
+  "posted_at": "2026-09-20T07:39:03+00:00"
  }
 ]

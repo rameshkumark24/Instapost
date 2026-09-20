@@ -1,6 +1,12 @@
 {
   "channel": "flirt",
-  "date": "2026-09-19",
-  "built_at": "2026-09-19T08:35:20+00:00",
-  "skip": "nothing approved to post. queue: {'pending': 12}. Tick some boxes on the review issue."
+  "concept": "merge-conflict",
+  "term": "MERGE CONFLICT",
+  "headline": "We both had a vision for our future, then independently started making changes to the same core path. It's a MERGE CONFLICT.",
+  "caption": "We both had a vision for our future, then independently started making changes to the same core path. It's a MERGE CONFLICT.\n\n—\nMERGE CONFLICT: two branches changed the same lines and git refuses to choose.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-09-20",
+  "built_at": "2026-09-20T07:39:08+00:00",
+  "image": "card.jpg",
+  "hold": false,
+  "dry_run": true
 }
