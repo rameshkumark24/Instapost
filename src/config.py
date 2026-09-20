@@ -169,7 +169,7 @@ CHANNELS = {
     "news": {
         "template": "card.html",
         "dist": "news",
-        "handle": "@daily.techforyou",
+        "handle": "@genphile.meme",          # one account takes both kinds of card
         "label": "DAILY TECH BRIEF",
         "accent": "#FF6B35",
     },
@@ -182,19 +182,14 @@ CHANNELS = {
     },
 }
 
-# Cards drafted per batch, and the stock level -- approved plus still awaiting
-# review -- below which another batch is drafted. Unreviewed drafts count, or a
-# queue nobody has looked at yet would be refilled every night.
+# Cards drafted per batch, and the number still waiting to go out below which
+# another batch is drafted. One card goes out a day, so twelve is a fortnight.
 FLIRT_BATCH_SIZE = 12
 FLIRT_REFILL_BELOW = 10
 
 # Wall-clock cap on drafting per run. The first real batch took 10m36s of a
 # 15-minute job; whatever is drafted in time is kept and topped up next run.
 FLIRT_DRAFT_BUDGET_S = 300
-
-# Unreviewed drafts expire after this long and their concepts return to the
-# pool. Otherwise a batch nobody ticks would block refills for good.
-FLIRT_PENDING_EXPIRE_DAYS = 7
 
 FLIRT_HASHTAGS = [
     "#programmerhumor", "#codinglife", "#devlife", "#sqljokes",

@@ -8,7 +8,7 @@ whether one is free.
 
 **Display name** (pick one): Daily Tech Brief · One Tech Story · The 7:45 Brief
 
-**Handle:** `@daily.techforyou`
+**Handle:** `@genphile.meme`
 
 **Bio** (copy exactly):
 
@@ -19,9 +19,9 @@ Summarised in plain words, source credited in the caption.
 
 **Profile picture:** `brand/news/avatar.jpg`
 
-**Pinned first post:** `brand/news/pinned-post.jpg`. The Gate A assistant
-publishes it for you (`.venv/Scripts/python -m src.gate_a --publish`, go-live
-step A7), which is also Meta's proof that posting works. Pin it from the post's menu.
+**Pinned first post:** `brand/news/pinned-post.jpg`. Post it by hand and pin
+it from the post's menu, so the grid opens on something that says what the
+account is.
 
 ## Tech-metaphor account
 
@@ -38,6 +38,6 @@ One card a day, 7:45 PM IST. // tech, but make it personal
 
 **Profile picture:** `brand/flirt/avatar.jpg`
 
-**Pinned first post:** `brand/flirt/pinned-post.jpg`. The Gate A assistant
-publishes it for you (`.venv/Scripts/python -m src.gate_a --publish`, go-live
-step A7), which is also Meta's proof that posting works. Pin it from the post's menu.
+**Pinned first post:** `brand/flirt/pinned-post.jpg`. Post it by hand and pin
+it from the post's menu, so the grid opens on something that says what the
+account is.

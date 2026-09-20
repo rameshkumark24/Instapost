@@ -22,7 +22,6 @@ on:
 
 permissions:
   contents: write
-  issues: write
 
 concurrency:
   group: nightly-build
@@ -88,8 +87,6 @@ jobs:
             ${{ github.event_name == 'workflow_dispatch'
                 && inputs.dry_run
                 || vars.LIVE != 'true' }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TG_TOKEN: ${{ secrets.TG_TOKEN }}

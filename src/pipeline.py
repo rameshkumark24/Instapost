@@ -97,7 +97,7 @@ def main() -> int:
 
         stage = "notify"
         if cfg.NOTIFY_ON_SUCCESS:
-            notify.receipt(post, image)
+            notify.handoff(post, image)
 
         log.info("done")
         return 0

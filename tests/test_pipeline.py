@@ -135,72 +135,50 @@ class Diversity(unittest.TestCase):
         self.assertGreater(score.diversity(item(source="github"), ["github"] * 10), 0.6)
 
 
-class ApprovalQueue(unittest.TestCase):
-    """The human gate must not be bypassable, in either direction."""
+class CardQueue(unittest.TestCase):
+    """The queue you post from: each card goes out once, in the order drafted."""
 
     def setUp(self):
         from src import queue
         self.queue = queue
 
-    def test_only_approved_entries_are_postable(self):
+    def test_the_oldest_waiting_card_goes_next(self):
+        entries = [
+            {"concept": "a", "status": "sent", "text": "x"},
+            {"concept": "b", "status": "pending", "text": "y"},
+            {"concept": "c", "status": "pending", "text": "z"},
+        ]
+        self.assertEqual(self.queue.next_card(entries)["concept"], "b")
+
+    def test_nothing_waiting_once_every_card_has_gone_out(self):
+        self.assertIsNone(self.queue.next_card([{"concept": "a", "status": "sent", "text": "x"}]))
+
+    def test_a_card_is_never_sent_twice(self):
         entries = [
             {"concept": "a", "status": "pending", "text": "x"},
-            {"concept": "b", "status": "approved", "text": "y"},
+            {"concept": "b", "status": "pending", "text": "y"},
         ]
-        self.assertEqual(self.queue.next_approved(entries)["concept"], "b")
+        self.queue.mark_sent(entries, "a")
+        self.assertEqual(entries[0]["status"], "sent")
+        self.assertEqual(self.queue.next_card(entries)["concept"], "b")
+        self.queue.mark_sent(entries, "a")          # a re-run must not resend it
+        self.assertEqual([e["status"] for e in entries], ["sent", "pending"])
 
-    def test_nothing_postable_when_all_pending(self):
-        self.assertIsNone(self.queue.next_approved([{"concept": "a", "status": "pending", "text": "x"}]))
+    def test_cards_from_the_old_approval_queue_are_not_stranded(self):
+        # The live queue was written while ticking was still required.
+        entries = [{"concept": "old", "status": "approved", "text": "x"}]
+        self.assertEqual(self.queue.next_card(entries)["concept"], "old")
+        self.queue.mark_sent(entries, "old")
+        self.assertEqual(entries[0]["status"], "sent")
 
-    def test_issue_body_lists_only_pending(self):
-        body = self.queue.render_issue_body([
-            {"concept": "a", "status": "pending", "text": "line a"},
-            {"concept": "b", "status": "posted", "text": "line b"},
-        ])
-        self.assertIn("`a`", body)
-        self.assertNotIn("`b`", body)
-
-    def test_posted_entries_drain_in_order(self):
+    def test_waiting_counts_only_the_cards_still_to_come(self):
         entries = [
-            {"concept": "a", "status": "approved", "text": "x"},
-            {"concept": "b", "status": "approved", "text": "y"},
+            {"concept": "a", "status": "pending"},
+            {"concept": "b", "status": "approved"},
+            {"concept": "c", "status": "sent"},
+            {"concept": "d", "status": "expired"},
         ]
-        self.queue.mark_posted(entries, "a")
-        self.assertEqual(entries[0]["status"], "posted")
-        self.assertEqual(self.queue.next_approved(entries)["concept"], "b")
-
-    @staticmethod
-    def github_with(issue):
-        """A stand-in for GitHub that, like GitHub, lists a closed issue only when asked for closed ones."""
-        calls = []
-
-        def call(method, path, **kw):
-            calls.append((method, path, kw.get("json")))
-            if method != "GET":
-                return {}
-            return [] if issue["state"] == "closed" and "state=open" in path else [issue]
-
-        return call, calls
-
-    def test_ticks_on_a_closed_review_issue_still_count(self):
-        # Regression: only open issues were read, and issue #1 was closed with
-        # all twelve cards still on it, so no tick on it could ever count.
-        entries = [{"concept": "packet-loss", "status": "pending", "text": "line"}]
-        body = self.queue.render_issue_body(entries).replace("- [ ] `packet-loss`", "- [x] `packet-loss`")
-        github, _ = self.github_with({"number": 1, "state": "closed", "body": body})
-        with mock.patch.object(self.queue, "_gh", side_effect=github), \
-                mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "me/repo"}):
-            self.queue.sync_approvals(entries)
-        self.assertEqual(entries[0]["status"], "approved")
-
-    def test_new_cards_reopen_a_closed_review_issue(self):
-        github, calls = self.github_with({"number": 1, "state": "closed", "body": self.queue.MARKER})
-        with mock.patch.object(self.queue, "_gh", side_effect=github), \
-                mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "me/repo"}):
-            number = self.queue.publish_issue([{"concept": "null", "status": "pending", "text": "line"}])
-        self.assertEqual(number, 1)
-        self.assertIn(("PATCH", "open"), [(method, (sent or {}).get("state")) for method, _, sent in calls])
-        self.assertNotIn("POST", [method for method, _, _ in calls])
+        self.assertEqual(self.queue.waiting(entries), 2)
 
 
 class Escaping(unittest.TestCase):
@@ -738,50 +716,37 @@ class FlirtDrafting(unittest.TestCase):
 
 
 class QueueStock(unittest.TestCase):
-    """Regression: every run drafted twelve more while the first twelve sat unreviewed."""
+    """Regression: every run drafted twelve more while the first twelve sat unsent."""
 
     def setUp(self):
         from src import pipeline_flirt, queue
         self.pipeline, self.queue = pipeline_flirt, queue
 
     @staticmethod
-    def rows(pending: int = 0, approved: int = 0) -> list[dict]:
+    def rows(pending: int = 0, sent: int = 0) -> list[dict]:
         now = datetime.now(timezone.utc).isoformat(timespec="seconds")
         out = [{"concept": f"p{i}", "status": "pending", "text": "x", "drafted_at": now} for i in range(pending)]
-        out += [{"concept": f"a{i}", "status": "approved", "text": "y", "drafted_at": now} for i in range(approved)]
+        out += [{"concept": f"s{i}", "status": "sent", "text": "y", "drafted_at": now} for i in range(sent)]
         return out
 
-    def test_unreviewed_drafts_count_toward_the_stock(self):
+    def test_cards_waiting_to_go_out_hold_off_a_refill(self):
         with mock.patch.object(self.pipeline, "generate_batch") as batch:
             self.pipeline._refill_if_low(self.rows(pending=12))
         batch.assert_not_called()
 
-    def test_refill_runs_when_approved_and_pending_are_low(self):
+    def test_cards_already_sent_do_not_count_as_stock(self):
         with mock.patch.object(self.pipeline, "generate_batch", return_value=([], ["x: no usable line"])) as batch, \
                 mock.patch.object(self.pipeline.notify, "notice"):
-            self.pipeline._refill_if_low(self.rows(pending=3, approved=4))
+            self.pipeline._refill_if_low(self.rows(pending=3, sent=9))
         batch.assert_called_once()
         self.assertEqual(batch.call_args.kwargs["budget_s"], cfg.FLIRT_DRAFT_BUDGET_S)
-
-    def test_stale_pending_drafts_expire_and_nothing_else_does(self):
-        old = (datetime.now(timezone.utc) - timedelta(days=cfg.FLIRT_PENDING_EXPIRE_DAYS + 1)).isoformat()
-        new = datetime.now(timezone.utc).isoformat()
-        rows = [
-            {"concept": "stale", "status": "pending", "drafted_at": old},
-            {"concept": "fresh", "status": "pending", "drafted_at": new},
-            {"concept": "kept", "status": "approved", "drafted_at": old},
-        ]
-        self.assertEqual(self.queue.expire_stale(rows, cfg.FLIRT_PENDING_EXPIRE_DAYS), 1)
-        self.assertEqual([r["status"] for r in rows], ["expired", "pending", "approved"])
 
     def test_expired_concepts_return_to_the_pool(self):
         rows = [{"concept": "gone", "status": "expired"}, {"concept": "live", "status": "pending"}]
         self.assertEqual(self.queue.used_concept_ids(rows), {"live"})
 
-    def test_issue_text_matches_what_the_code_does(self):
-        body = self.queue.render_issue_body([{"concept": "a", "status": "pending", "text": "x"}])
-        self.assertNotIn("dropped automatically", body)
-        self.assertIn("expire", body)
+    def test_a_concept_already_sent_is_never_drafted_again(self):
+        self.assertEqual(self.queue.used_concept_ids([{"concept": "used", "status": "sent"}]), {"used"})
 
 
 class DraftingBudget(unittest.TestCase):
@@ -809,16 +774,56 @@ class DraftingBudget(unittest.TestCase):
 class Notices(unittest.TestCase):
     """Regression: an informational "12 new cards drafted" arrived titled "skipped tonight"."""
 
-    def test_new_drafts_are_announced_as_cards_to_review(self):
+    def test_new_drafts_are_announced_as_drafts_not_as_a_skip(self):
         from src import pipeline_flirt
         drafts = [{"concept": "fk", "term": "FOREIGN KEY", "domain": "sql", "text": "x", "terms": []}]
         with mock.patch.object(pipeline_flirt, "generate_batch", return_value=(drafts, [])), \
-                mock.patch.object(pipeline_flirt.queue, "publish_issue", return_value=1), \
                 mock.patch.object(pipeline_flirt.notify, "notice") as notice, \
                 mock.patch.object(pipeline_flirt.notify, "skipped") as skipped:
             pipeline_flirt._refill_if_low([])
         skipped.assert_not_called()
-        self.assertEqual(notice.call_args.args[0], "New cards to review")
+        self.assertEqual(notice.call_args.args[0], "New cards drafted")
+
+
+class Handoff(unittest.TestCase):
+    """What lands on your phone has to be postable without editing anything."""
+
+    post = {
+        "channel": "flirt",
+        "headline": "She was my FOREIGN KEY.",
+        "caption": "She was my FOREIGN KEY.\n\n-\nFOREIGN KEY: a column that points at another table.\n\n#programmerhumor #devlife",
+    }
+
+    def sent(self, post):
+        from src import notify
+        image = ROOT / "brand" / "flirt" / "pinned-post.jpg"
+        with mock.patch.object(notify, "_post") as post_call, \
+                mock.patch.dict(os.environ, {"TG_TOKEN": "t", "TG_CHAT": "1"}):
+            notify.handoff(post, image)
+        return post_call.call_args_list
+
+    def test_the_card_goes_as_a_file_so_telegram_does_not_recompress_it(self):
+        method, _, files = self.sent(self.post)[0].args
+        self.assertEqual(method, "sendDocument")
+        self.assertIn("document", files)
+
+    def test_the_caption_arrives_on_its_own_and_unchanged(self):
+        call = self.sent(self.post)[1]
+        self.assertEqual(call.args[0], "sendMessage")
+        self.assertEqual(call.args[1]["text"], self.post["caption"])
+        # No parse_mode: what you copy is exactly what Instagram receives.
+        self.assertNotIn("parse_mode", call.args[1])
+
+    def test_the_card_says_which_account_to_post_it_on(self):
+        _, data, _ = self.sent(self.post)[0].args
+        self.assertIn(cfg.CHANNELS["flirt"]["handle"], data["caption"])
+
+    def test_a_news_card_carries_its_source(self):
+        post = {**self.post, "channel": "news", "publication": "Hacker News",
+                "url": "https://example.com/a", "score": 0.51, "llm_polished": True}
+        _, data, _ = self.sent(post)[0].args
+        self.assertIn("Hacker News", data["caption"])
+        self.assertIn("https://example.com/a", data["caption"])
 
 
 class Timeouts(unittest.TestCase):

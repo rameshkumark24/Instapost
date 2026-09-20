@@ -149,9 +149,9 @@ def write_profiles_md(written: dict[str, dict]) -> Path:
             "",
             f"**Profile picture:** `brand/{name}/avatar.jpg`",
             "",
-            f"**Pinned first post:** `brand/{name}/pinned-post.jpg`. The Gate A assistant",
-            "publishes it for you (`.venv/Scripts/python -m src.gate_a --publish`, go-live",
-            "step A7), which is also Meta's proof that posting works. Pin it from the post's menu.",
+            f"**Pinned first post:** `brand/{name}/pinned-post.jpg`. Post it by hand and pin",
+            "it from the post's menu, so the grid opens on something that says what the",
+            "account is.",
             "",
         ]
         if not files["handle_set"]:

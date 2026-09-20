@@ -1,11 +1,11 @@
-"""Nightly build for the tech-metaphor account.
+"""Daily build for the tech-metaphor card.
 
-Unlike the news pipeline there is no harvesting and no scoring: the editorial
-decision was made when you ticked the box. This job only syncs your approvals,
-tops the queue up when it runs low, and renders the oldest approved card.
+Unlike the news pipeline there is no harvesting and no scoring: candidates were
+drafted in advance, and this renders the oldest one that has not gone out yet.
+Telegram then delivers the card and its caption, and you post it.
 
-That is deliberate. Nothing an LLM writes reaches Instagram on the same night
-it was written -- the queue is the gap in which a human looked at it.
+You are the editor at the moment you post, which is why nothing here waits to
+be approved first.
 
 Exit codes: 0 built, 0 deliberately skipped, 1 failed.
 """
@@ -41,37 +41,22 @@ def main() -> int:
     stage = "startup"
     try:
         today = datetime.now(cfg.TZ)
-        log.info("flirt build for %s (dry_run=%s)", today.date(), cfg.DRY_RUN)
+        log.info("flirt build for %s", today.date())
         cfg.assert_branding_ready(CHANNEL)
 
         stage = "queue"
         entries = queue.load()
-
-        # Approvals first: a box ticked this morning should be postable tonight.
-        stage = "sync approvals"
-        try:
-            queue.sync_approvals(entries)
-        except Exception as exc:
-            # A GitHub API blip must not stop us posting something already
-            # approved and sitting in the queue.
-            log.warning("approval sync failed, continuing on local state: %s", exc)
-
-        stage = "expire"
-        if expired := queue.expire_stale(entries, cfg.FLIRT_PENDING_EXPIRE_DAYS):
-            log.info("%d unreviewed drafts expired; their concepts return to the pool", expired)
 
         stage = "refill"
         _refill_if_low(entries)
         queue.save(entries)
 
         stage = "select"
-        entry = queue.next_approved(entries)
+        entry = queue.next_card(entries)
         if entry is None:
-            counts = queue.counts(entries)
-            reason = (
-                f"nothing approved to post. queue: {counts}. "
-                f"Tick some boxes on the review issue."
-            )
+            # Only reachable when drafting has failed for days on end; the
+            # refill above keeps a fortnight of cards in hand.
+            reason = f"no cards left in the queue: {queue.counts(entries)}"
             log.warning(reason)
             notify.skipped(reason)
             _mark_skipped(today, reason)
@@ -93,27 +78,27 @@ def main() -> int:
             "hold": HOLD_FLAG.exists(),
             "dry_run": cfg.DRY_RUN,
         }
-        # Checked before anything is committed: a card Meta would refuse is
-        # caught at 09:30, with hours to fix it, rather than at 19:45.
+        # Instagram's own limits, checked while there is still time to fix the
+        # card -- and still true when you post it by hand.
         stage = "preflight"
         if problems := preflight.check(post, image):
-            raise RuntimeError("Meta would refuse this post: " + "; ".join(problems))
+            raise RuntimeError("Instagram would refuse this post: " + "; ".join(problems))
 
         stage = "stage"
         POST_JSON.parent.mkdir(parents=True, exist_ok=True)
         POST_JSON.write_text(json.dumps(post, indent=2, ensure_ascii=False), encoding="utf-8")
         log.info("staged %s", POST_JSON.relative_to(ROOT))
 
-        # Marked posted at build time for the same reason the news ledger is:
-        # the Worker cannot write back to git, and repeating a card is worse
-        # than losing one. Flip it back to "approved" by hand if a publish fails.
+        # Marked before the card is sent: the build is the only thing that can
+        # write to the queue, and the same card arriving twice is worse than
+        # one lost.
         stage = "record"
-        queue.mark_posted(entries, entry["concept"])
+        queue.mark_sent(entries, entry["concept"])
         queue.save(entries)
 
         stage = "notify"
         if cfg.NOTIFY_ON_SUCCESS:
-            notify.receipt(post, image)
+            notify.handoff(post, image)
 
         log.info("done: %s", entry["text"][:70])
         return 0
@@ -125,19 +110,17 @@ def main() -> int:
 
 
 def _refill_if_low(entries: list[dict]) -> None:
-    """Draft more only when the stock -- approved plus awaiting review -- runs low.
+    """Draft more only when the cards waiting to go out run low.
 
-    Counting approved cards alone meant every nightly run drafted another
-    twelve while the first twelve sat unreviewed: the review issue grew by a
-    dozen a night, the 64-concept bank would be spent within a week, and each
-    run gave ten minutes of a fifteen-minute job to drafting.
+    One card goes out a day, so a batch of twelve is about a fortnight. Drafting
+    every night instead would spend the concept bank in a week and hand ten
+    minutes of a fifteen-minute job to the model.
     """
-    counts = queue.counts(entries)
-    stocked = counts.get("approved", 0) + counts.get("pending", 0)
+    stocked = queue.waiting(entries)
     if stocked >= cfg.FLIRT_REFILL_BELOW:
         return
 
-    log.info("queue stock at %d (approved + awaiting review), drafting more", stocked)
+    log.info("%d cards waiting, drafting more", stocked)
     started = time.monotonic()
     try:
         drafts, rejects = generate_batch(
@@ -158,15 +141,11 @@ def _refill_if_low(entries: list[dict]) -> None:
         return
 
     queue.add(entries, drafts)
-    try:
-        number = queue.publish_issue(entries)
-        notify.notice(
-            "New cards to review",
-            f"{len(drafts)} drafted in {took} ({len(rejects)} concepts gave no usable line). "
-            f"Tick the ones worth posting on issue #{number}.",
-        )
-    except Exception as exc:
-        log.warning("could not update review issue: %s", exc)
+    notify.notice(
+        "New cards drafted",
+        f"{len(drafts)} drafted in {took} ({len(rejects)} concepts gave no usable line). "
+        f"One arrives each day, and you see it before anyone else does.",
+    )
 
 
 def _duration(seconds: float) -> str:
@@ -177,10 +156,8 @@ def _duration(seconds: float) -> str:
 def _mark_skipped(today: datetime, reason: str) -> None:
     """Record a deliberate skip for today in place of a card.
 
-    Deleting post.json made the publisher report a chosen skip as a failed
-    build at 19:45 -- a second, misleading message after the morning's honest
-    one. A dated marker says the skip was deliberate; a missing or stale file
-    still means the build really did not run.
+    A dated marker says the skip was deliberate; a missing or stale file still
+    means the build really did not run.
     """
     POST_JSON.parent.mkdir(parents=True, exist_ok=True)
     marker = {

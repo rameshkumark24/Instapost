@@ -45,17 +45,27 @@ def _post(method: str, data: dict, files: dict | None = None) -> None:
         log.warning("telegram %s failed: %s", method, exc)
 
 
-def receipt(post: dict, image: Path) -> None:
-    mode = "SHADOW - will not publish" if post["dry_run"] else f"publishes {cfg.PUBLISH_AT_LOCAL} - reply hold to skip tonight"
-    caption = (
-        f"<b>{_esc(post['headline'])}</b>\n"
-        f"<i>{_esc(post['publication'])}</i> · score {post['score']:.3f}"
-        f"{' · llm' if post['llm_polished'] else ' · template'}\n\n"
-        f"{_esc(post['url'])}\n\n"
-        f"<code>{mode}</code>"
-    )
+def handoff(post: dict, image: Path) -> None:
+    """Today's card, ready to post by hand: the file first, then its caption alone.
+
+    The card goes as a document, not a photo: Telegram re-compresses photos, and
+    Instagram compresses again on the way in. The caption is a message of its
+    own so that one long-press copies exactly what Instagram needs, with no
+    headline or score mixed into it.
+    """
+    handle = cfg.CHANNELS.get(post.get("channel", ""), {}).get("handle", "")
+    lines = [f"<b>{_esc(post['headline'])}</b>"]
+    if post.get("publication"):
+        lines.append(f"<i>{_esc(post['publication'])}</i> · score {post.get('score', 0):.3f}"
+                     f"{' · llm' if post.get('llm_polished') else ' · template'}")
+    if post.get("url"):
+        lines.append(_esc(post["url"]))
+    lines.append(f"<code>Post on {_esc(handle)} at {cfg.PUBLISH_AT_LOCAL}. Caption below, hold to copy.</code>")
+
     with image.open("rb") as fh:
-        _post("sendPhoto", {"caption": caption, "parse_mode": "HTML"}, {"photo": fh})
+        _post("sendDocument", {"caption": "\n\n".join(lines), "parse_mode": "HTML"}, {"document": fh})
+    # No parse_mode: what arrives is exactly what goes into Instagram.
+    _post("sendMessage", {"text": post["caption"], "disable_web_page_preview": "true"})
 
 
 def failure(stage: str, exc: BaseException) -> None:

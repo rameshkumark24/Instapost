@@ -10,9 +10,11 @@ name: instagram-token-health
 # telling you to re-authorise a working token because the network blipped is
 # how an alert learns to be ignored.
 
+# The schedule is off while the cards are posted by hand: there is no token to
+# watch, and a check that says "IG_TOKEN is not set" every ten days is how an
+# alert teaches you to ignore it. Restore the cron below if the publisher is
+# ever switched on.
 on:
-  schedule:
-    - cron: "0 6 */10 * *"     # days 1, 11, 21 and 31: never more than 11 days apart
   workflow_dispatch:
 
 permissions:
