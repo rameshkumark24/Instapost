@@ -1364,18 +1364,6 @@ class DeployAssistant(unittest.TestCase):
             with self.subTest(call=call):
                 self.assertTrue(call.startswith("npx --no wrangler "), call)
 
-    def test_the_go_live_page_quotes_what_the_script_really_prints(self):
-        import html
-        import re
-        page = (ROOT / "go-live.html").read_text(encoding="utf-8")
-        task = re.search(r'id="task-C3".*?</li>', page, re.DOTALL).group(0)
-        quoted = [html.unescape(q) for q in re.findall(r"<code>(.*?)</code>", task)]
-        self.assertTrue(quoted)
-        code, output, _ = self.deploy()
-        for phrase in quoted:
-            with self.subTest(phrase=phrase):
-                self.assertIn(phrase, output)
-
 
 if __name__ == "__main__":
     unittest.main()
