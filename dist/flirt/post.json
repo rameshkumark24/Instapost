@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "merge-conflict",
-  "term": "MERGE CONFLICT",
-  "headline": "We both had a vision for our future, then independently started making changes to the same core path. It's a MERGE CONFLICT.",
-  "caption": "We both had a vision for our future, then independently started making changes to the same core path. It's a MERGE CONFLICT.\n\n—\nMERGE CONFLICT: two branches changed the same lines and git refuses to choose.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-09-20",
-  "built_at": "2026-09-20T07:39:08+00:00",
+  "concept": "git-stash",
+  "term": "STASH",
+  "headline": "I decided to STASH my midlife crisis to finish this sprint. Now I'm terrified to restore my uncommitted changes.",
+  "caption": "I decided to STASH my midlife crisis to finish this sprint. Now I'm terrified to restore my uncommitted changes.\n\n—\nSTASH: shelves unfinished changes to come back to later.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-09-21",
+  "built_at": "2026-09-21T09:39:50+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
