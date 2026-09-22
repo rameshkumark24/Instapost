@@ -31,8 +31,9 @@
   "terms": [
    "PACKET LOSS"
   ],
-  "status": "pending",
-  "drafted_at": "2026-09-14T07:46:57+00:00"
+  "status": "sent",
+  "drafted_at": "2026-09-14T07:46:57+00:00",
+  "sent_at": "2026-09-22T09:04:47+00:00"
  },
  {
   "concept": "detached-head",

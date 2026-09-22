@@ -243,5 +243,12 @@
   "url": "https://github.com/zai-org/ZCode",
   "source": "github",
   "posted_at": "2026-09-21T09:39:45+00:00"
+ },
+ {
+  "key": "github.com/mizorewww/laya-mlx",
+  "title": "laya-mlx: Native MLX runtime for Laya typed decision models — 7–14 ms short decisions on M3 Max. No text generation, PyTorch, or cloud API.",
+  "url": "https://github.com/mizorewww/laya-mlx",
+  "source": "github",
+  "posted_at": "2026-09-22T09:04:43+00:00"
  }
 ]
