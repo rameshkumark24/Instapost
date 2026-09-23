@@ -43,8 +43,9 @@
   "terms": [
    "DETACHED HEAD"
   ],
-  "status": "pending",
-  "drafted_at": "2026-09-14T07:46:57+00:00"
+  "status": "sent",
+  "drafted_at": "2026-09-14T07:46:57+00:00",
+  "sent_at": "2026-09-23T09:11:18+00:00"
  },
  {
   "concept": "null",
@@ -133,5 +134,60 @@
   ],
   "status": "pending",
   "drafted_at": "2026-09-14T07:46:57+00:00"
+ },
+ {
+  "concept": "reboot",
+  "term": "REBOOT",
+  "domain": "systems",
+  "text": "My life was full of glitches. Time to REBOOT, clear the cache, and load a new operating system.",
+  "terms": [
+   "REBOOT"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-23T09:11:16+00:00"
+ },
+ {
+  "concept": "distinct",
+  "term": "DISTINCT",
+  "domain": "sql",
+  "text": "I kept making the same old mistakes. A little DISTINCT, and now I just have one lesson learned.",
+  "terms": [
+   "DISTINCT"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-23T09:11:16+00:00"
+ },
+ {
+  "concept": "big-o",
+  "term": "BIG O",
+  "domain": "algorithms",
+  "text": "Planning dinner for two is easy. Add six friends with different schedules, and you learn what terrible BIG O looks like in real life.",
+  "terms": [
+   "BIG O"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-23T09:11:16+00:00"
+ },
+ {
+  "concept": "rollback",
+  "term": "ROLLBACK",
+  "domain": "sql",
+  "text": "Some days, after a major screw-up, you just want to hit ROLLBACK and pretend it never happened.",
+  "terms": [
+   "ROLLBACK"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-23T09:11:16+00:00"
+ },
+ {
+  "concept": "dependency-hell",
+  "term": "DEPENDENCY HELL",
+  "domain": "code",
+  "text": "My weekend plans hit DEPENDENCY HELL. Each activity needed a conflicting version of my time.",
+  "terms": [
+   "DEPENDENCY HELL"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-23T09:11:16+00:00"
  }
 ]
