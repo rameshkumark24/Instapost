@@ -257,5 +257,12 @@
   "url": "https://arxiv.org/abs/2609.26777v1",
   "source": "arxiv",
   "posted_at": "2026-09-23T09:07:48+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2609.28395v1",
+  "title": "Fine-Tuning LLMs for Translation: General Forgetting Mitigation Does Not Preserve MT-Specific Instruction Following",
+  "url": "https://arxiv.org/abs/2609.28395v1",
+  "source": "arxiv",
+  "posted_at": "2026-09-24T09:02:36+00:00"
  }
 ]

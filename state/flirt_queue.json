@@ -55,8 +55,9 @@
   "terms": [
    "NULL"
   ],
-  "status": "pending",
-  "drafted_at": "2026-09-14T07:46:57+00:00"
+  "status": "sent",
+  "drafted_at": "2026-09-14T07:46:57+00:00",
+  "sent_at": "2026-09-24T09:02:40+00:00"
  },
  {
   "concept": "git-merge",
