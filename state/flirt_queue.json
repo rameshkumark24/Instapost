@@ -79,8 +79,9 @@
   "terms": [
    "TECHNICAL DEBT"
   ],
-  "status": "pending",
-  "drafted_at": "2026-09-14T07:46:57+00:00"
+  "status": "sent",
+  "drafted_at": "2026-09-14T07:46:57+00:00",
+  "sent_at": "2026-09-26T09:11:32+00:00"
  },
  {
   "concept": "404",

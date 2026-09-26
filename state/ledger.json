@@ -271,5 +271,12 @@
   "url": "https://dev.to/nikolas_dimitroulakis_d23/we-described-our-api-twice-once-for-humans-once-for-agents-4e4g",
   "source": "devto",
   "posted_at": "2026-09-25T09:25:41+00:00"
+ },
+ {
+  "key": "swarmtraces.org",
+  "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
+  "url": "https://swarmtraces.org/",
+  "source": "hn",
+  "posted_at": "2026-09-26T09:11:28+00:00"
  }
 ]

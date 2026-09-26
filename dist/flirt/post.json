@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "git-merge",
-  "term": "MERGE",
-  "headline": "Our lives were separate branches, each with a unique history. Then we decided to MERGE, creating a combined story.",
-  "caption": "Our lives were separate branches, each with a unique history. Then we decided to MERGE, creating a combined story.\n\n—\nMERGE: combines two branches, keeping both histories.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-09-25",
-  "built_at": "2026-09-25T09:25:45+00:00",
+  "concept": "tech-debt",
+  "term": "TECHNICAL DEBT",
+  "headline": "Saying 'it's fine' to avoid a talk is emotional TECHNICAL DEBT. Years later, a dirty dish triggers a complete refactor of your relationship.",
+  "caption": "Saying 'it's fine' to avoid a talk is emotional TECHNICAL DEBT. Years later, a dirty dish triggers a complete refactor of your relationship.\n\n—\nTECHNICAL DEBT: a shortcut taken now that costs more the longer it is left.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-09-26",
+  "built_at": "2026-09-26T09:11:32+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
