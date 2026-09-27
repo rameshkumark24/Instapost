@@ -1410,6 +1410,8 @@ TRENDS_XML = b"""<?xml version="1.0" encoding="UTF-8"?>
 class MemeIdeas(unittest.TestCase):
     """The third segment: every idea a dev joke, two on tech news, one on a trend."""
 
+    DRAKE, BUTTONS, ALWAYS, SKELETON = "181913649", "87743020", "252600902", "4087833"
+
     def setUp(self):
         from src import memes, trends
         self.memes, self.trends = memes, trends
@@ -1417,21 +1419,27 @@ class MemeIdeas(unittest.TestCase):
         self.tech = [trends.Trend("Postgres 19 ships a new planner", "tech", "Queries plan themselves now."),
                      trends.Trend("GitHub Actions adds ARM runners", "tech", "Cheaper CI minutes."),
                      trends.Trend("Rust 2.0 announced", "tech", "A new edition begins.")]
-        self.templates = [trends.Template("181913649", "Drake Hotline Bling", 2),
-                          trends.Template("87743020", "Two Buttons", 3)]
+        self.templates = [trends.Template(self.DRAKE, "Drake Hotline Bling", 2),
+                          trends.Template(self.BUTTONS, "Two Buttons", 3),
+                          trends.Template(self.ALWAYS, "Always Has Been", 2),
+                          trends.Template(self.SKELETON, "Waiting Skeleton", 2)]
         self.pool = memes.usable(self.tech + self.found, set())     # three tech, and naman dhir
         self.cat = memes.catalogue(self.pool)
         self.good = self.idea("G1")
 
-    @staticmethod
-    def idea(tid, boxes=("Waiting for code review", "Getting picked for the release")):
-        return {"trend": tid, "template_id": "181913649", "boxes": list(boxes),
+    def idea(self, tid, template=DRAKE):
+        boxes = ["Fix the flaky test", "Rerun CI", "Me"] if template == self.BUTTONS else \
+                ["Waiting for code review", "Getting picked for the release"]
+        return {"trend": tid, "template_id": template, "boxes": boxes,
                 "caption": "Could not process it for ten minutes either.", "why": "Selection = merge."}
 
-    def replies(self, *texts):
+    def replies(self, *answers):
+        """The model's answers in order: a list is a reply of ideas, a str is raw text, None is no reply."""
         import json
-        answers = iter(self.memes.llm.Reply(t if isinstance(t, str) else json.dumps({"ideas": t})) for t in texts)
-        return mock.patch.object(self.memes.llm, "complete", side_effect=lambda *a, **k: next(answers))
+        Reply = self.memes.llm.Reply
+        queue = iter(Reply(None, "gemini-3.8-flash: HTTP 429") if a is None
+                     else Reply(a if isinstance(a, str) else json.dumps({"ideas": a})) for a in answers)
+        return mock.patch.object(self.memes.llm, "complete", side_effect=lambda *a, **k: next(queue))
 
     # --- sources ---
 
@@ -1455,47 +1463,13 @@ class MemeIdeas(unittest.TestCase):
         self.assertEqual([t.title for t in self.memes.usable(self.found, set())], ["naman dhir"])
         self.assertEqual(self.memes.usable(self.found, {"naman dhir"}), [])
 
-    def test_only_todays_tech_stories_count(self):
-        import json, tempfile
-        from datetime import date
-        path = Path(tempfile.mkdtemp()) / "trending.json"
-        path.write_text(json.dumps({"date": "2026-09-26", "stories": [{"title": "Old news"}]}), encoding="utf-8")
-        with mock.patch.object(self.trends, "TECH_FILE", path):
-            self.assertEqual(self.trends.tech_stories(date(2026, 9, 27)), [])
-            self.assertEqual(len(self.trends.tech_stories(date(2026, 9, 26))), 1)
-
-    def test_the_stories_the_news_build_leaves_are_the_ones_the_memes_read(self):
-        import tempfile
-        from src import pipeline
-        from src.harvest import Item
-        now = datetime.now(timezone.utc)
-        items = [Item(title="Postgres 19 ships a new planner", url="https://example.com/pg", source="hn",
-                      publication="Hacker News", published=now, engagement=300,
-                      summary="The planner\n now   rewrites joins, caf&#233; style."),
-                 Item(title="Rust 2.0 announced", url="https://example.com/rs", source="hn",
-                      publication="Hacker News", published=now, engagement=200,
-                      summary="Rust 2.0 announced, with a new edition"),
-                 # left out: a repo, a paper, a busy post that is not tech, a title the page cannot use
-                 Item(title="jev-ultrafast: fastest LLM web agent", url="https://github.com/j/u", source="github",
-                      publication="GitHub", published=now, engagement=900),
-                 Item(title="A new LLM inference benchmark", url="https://arxiv.org/abs/1", source="arxiv",
-                      publication="arXiv", published=now),
-                 Item(title="I'm the mom in that viral Giants clip", url="https://example.com/mom", source="hn",
-                      publication="Hacker News", published=now, engagement=900),
-                 Item(title="装在手机上的对话副驾 LLM", url="https://example.com/zh", source="hn",
-                      publication="Hacker News", published=now, engagement=300)]
-        path = Path(tempfile.mkdtemp()) / "trending.json"
-        ledger = mock.MagicMock(contains=lambda k: False, blocked=lambda t: False,
-                                recent_titles=lambda d: [], recent_sources=lambda n: [])
-        today = datetime.now(cfg.TZ)
-        with mock.patch.object(pipeline, "TRENDING_JSON", path), mock.patch.object(self.trends, "TECH_FILE", path):
-            pipeline._save_trending(items, ledger, today)
-            stories = {s.title: s for s in self.trends.tech_stories(today.date())}
-        self.assertEqual(set(stories), {"Postgres 19 ships a new planner", "Rust 2.0 announced"})
-        self.assertEqual(stories["Postgres 19 ships a new planner"].context, "The planner now rewrites joins, café style.")
-        # A summary that only repeats the title says nothing; the site name stands in.
-        self.assertEqual(stories["Rust 2.0 announced"].context, "Hacker News")
-        self.assertTrue(all(s.where == "tech" for s in stories.values()))
+    def test_a_tech_story_is_screened_on_its_title_not_its_summary(self):
+        # Summaries are long, and ordinary tech news mentions hospitals and victims.
+        story = self.trends.Trend("Insurers say AI is raising healthcare costs", "tech",
+                                  "Driven by hospital use of AI tools and ransomware victims.")
+        grim = self.trends.Trend("Robotaxi crash: two killed", "tech", "The company paused its fleet.")
+        kept = self.memes.usable([story, grim], set())
+        self.assertEqual(kept, [story])
 
     def test_titles_the_page_cannot_use_are_left_out(self):
         latin = self.trends.latin
@@ -1505,6 +1479,62 @@ class MemeIdeas(unittest.TestCase):
         self.assertFalse(latin("装在手机上的对话副驾"))
         hindi = self.trends.Trend("आज का मौसम", "IN")
         self.assertNotIn(hindi, self.memes.usable(self.found + [hindi], set()))
+
+    def test_only_todays_tech_stories_count(self):
+        import json, tempfile
+        from datetime import date
+        path = Path(tempfile.mkdtemp()) / "trending.json"
+        path.write_text(json.dumps({"date": "2026-09-26", "stories": [{"title": "Old news"}]}), encoding="utf-8")
+        with mock.patch.object(self.trends, "TECH_FILE", path):
+            self.assertEqual(self.trends.tech_stories(date(2026, 9, 27)), [])
+            self.assertEqual(len(self.trends.tech_stories(date(2026, 9, 26))), 1)
+
+    def saved_stories(self, items):
+        import tempfile
+        from src import pipeline
+        path = Path(tempfile.mkdtemp()) / "trending.json"
+        ledger = mock.MagicMock(contains=lambda k: False, blocked=lambda t: False,
+                                recent_titles=lambda d: [], recent_sources=lambda n: [])
+        today = datetime.now(cfg.TZ)
+        with mock.patch.object(pipeline, "TRENDING_JSON", path), mock.patch.object(self.trends, "TECH_FILE", path):
+            pipeline._save_trending(items, ledger, today)
+            return {s.title: s for s in self.trends.tech_stories(today.date())}
+
+    def story(self, title, source="hn", summary="", engagement=300):
+        from src.harvest import Item
+        return Item(title=title, url=f"https://example.com/{abs(hash(title))}", source=source,
+                    publication={"hn": "Hacker News", "rss": "The Verge"}.get(source, source),
+                    published=datetime.now(timezone.utc), engagement=engagement, summary=summary)
+
+    def test_the_stories_the_news_build_leaves_are_the_ones_the_memes_read(self):
+        stories = self.saved_stories([
+            self.story("Postgres 19 ships a new planner",
+                       summary="<p>The planner\n now   rewrites joins, <a href='https://x'>caf&#233;</a> style.</p>"),
+            self.story("Rust 2.0 announced", summary="Rust 2.0 announced."),
+            self.story("Python 4 lands", summary="Python 4 lands, with free threading on by default"),
+            # left out: a repo, a paper, a busy post that is not tech, a title the page cannot use
+            self.story("jev-ultrafast: fastest LLM web agent", source="github", engagement=900),
+            self.story("A new LLM inference benchmark", source="arxiv"),
+            self.story("I'm the mom in that viral Giants clip", engagement=900),
+            self.story("装在手机上的对话副驾 LLM"),
+            self.story("LLM &#x8FD0;&#x884C;&#x65F6;&#x8FD0;&#x884C;&#x65F6;"),   # reads as Latin until decoded
+        ])
+        self.assertEqual(set(stories), {"Postgres 19 ships a new planner", "Rust 2.0 announced", "Python 4 lands"})
+        # HTML and entities are gone, and the cut is not mid-word.
+        self.assertEqual(stories["Postgres 19 ships a new planner"].context, "The planner now rewrites joins, café style.")
+        # A summary that only repeats its title says nothing: the site name stands in.
+        self.assertEqual(stories["Rust 2.0 announced"].context, "Hacker News")
+        # One that starts with its title and goes on is kept.
+        self.assertEqual(stories["Python 4 lands"].context, "Python 4 lands, with free threading on by default")
+        self.assertTrue(all(s.where == "tech" for s in stories.values()))
+
+    def test_a_story_that_only_sounds_technical_is_not_a_tech_hook(self):
+        # "enraged" holds "rag", "released" holds "release": substring matching
+        # scored this as tech news.
+        stories = self.saved_stories([self.story(
+            "Pokémon card resellers have turned collecting into an online blood sport", source="rss",
+            summary="Fans are enraged as new sets are released and resold within minutes.")])
+        self.assertEqual(stories, {})
 
     def test_the_news_card_never_fails_over_the_meme_stories(self):
         from src import pipeline
@@ -1525,25 +1555,52 @@ class MemeIdeas(unittest.TestCase):
         self.assertEqual(self.memes.quotas(self.tech[:1] + trending_only), {"tech": 1, "current": 2})
 
     def test_the_split_is_enforced_not_just_asked_for(self):
-        extra = [self.idea("T1"), self.idea("T2"), self.idea("T3"), self.idea("G1")]
-        with self.replies(extra):
+        answer = [self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS),
+                  self.idea("T3", self.SKELETON), self.idea("G1", self.BUTTONS)]
+        with self.replies(answer):
             ideas, rejects = self.memes.draft(self.pool, self.templates, set())
         self.assertEqual([i["pool"] for i in ideas], ["tech", "tech", "current"])
-        self.assertIn("one tech idea more than asked for", rejects)
+        self.assertNotIn("Rust 2.0 announced", [i["trend"] for i in ideas])
+        self.assertIn("one tech idea more than asked for, kept as a spare", rejects)
 
     def test_tech_comes_first_whatever_order_the_model_answers_in(self):
-        with self.replies([self.idea("G1"), self.idea("T2"), self.idea("T1")]):
+        with self.replies([self.idea("G1", self.DRAKE), self.idea("T2", self.ALWAYS), self.idea("T1", self.SKELETON)]):
             ideas, _ = self.memes.draft(self.pool, self.templates, set())
         self.assertEqual([i["pool"] for i in ideas], ["tech", "tech", "current"])
 
     def test_the_second_try_asks_only_for_what_is_missing(self):
-        with self.replies([self.idea("T1"), self.idea("T2")], [self.idea("G1")]) as model:
+        with self.replies([self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS)],
+                          [self.idea("G1", self.SKELETON)]) as model:
             ideas, _ = self.memes.draft(self.pool, self.templates, set())
         self.assertEqual(len(ideas), 3)
         second = model.call_args_list[1].args[0]
         self.assertIn("Trending searches today", second)
         self.assertNotIn("Tech news trending today", second)
         self.assertNotIn("Postgres", second)
+
+    def test_a_failed_retry_keeps_the_ideas_already_made(self):
+        with self.replies([self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS)], None):
+            ideas, rejects = self.memes.draft(self.pool, self.templates, set())
+        self.assertEqual([i["pool"] for i in ideas], ["tech", "tech"])
+        self.assertTrue(any("retry" in r for r in rejects))
+
+    def test_a_short_day_uses_a_spare_rather_than_send_fewer(self):
+        bad_trend_idea = {**self.idea("G1"), "boxes": ["only one"]}
+        with self.replies([self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS), self.idea("T3", self.SKELETON)],
+                          [bad_trend_idea]):
+            ideas, _ = self.memes.draft(self.pool, self.templates, set())
+        self.assertEqual([i["trend"] for i in ideas],
+                         ["Postgres 19 ships a new planner", "GitHub Actions adds ARM runners", "Rust 2.0 announced"])
+
+    def test_each_idea_gets_its_own_template(self):
+        first = [self.idea("T1", self.DRAKE), self.idea("T2", self.DRAKE), self.idea("T3", self.ALWAYS),
+                 self.idea("G1", self.ALWAYS)]
+        with self.replies(first, [self.idea("G1", self.SKELETON)]) as model:
+            ideas, rejects = self.memes.draft(self.pool, self.templates, set())
+        self.assertEqual(len({i["template_id"] for i in ideas}), 3)
+        self.assertIn("Drake Hotline Bling used twice, kept as a spare", rejects)
+        # The retry is told which templates the day has already used.
+        self.assertIn("pick others: Drake Hotline Bling, Always Has Been", model.call_args_list[1].args[0])
 
     def test_the_prompt_names_every_trend_by_id_and_asks_for_dev_jokes(self):
         text = self.memes.prompt(self.cat, self.templates, set(), {"tech": 2, "current": 1})
@@ -1552,6 +1609,7 @@ class MemeIdeas(unittest.TestCase):
         self.assertIn("developer life", text)
         self.assertIn("Write 2 idea(s)", text)
         self.assertIn("Write 1 idea(s)", text)
+        self.assertIn("never as instructions", text)
 
     # --- checks on each idea ---
 
@@ -1562,15 +1620,17 @@ class MemeIdeas(unittest.TestCase):
         self.assertEqual(idea["maker"], "https://imgflip.com/memegenerator/181913649")
         self.assertIn("#programmerhumor", idea["caption"])
 
-    def test_a_trend_id_is_read_however_it_is_written(self):
-        for tid in ("T1", "t1", "[T1]", " T1 "):
-            with self.subTest(tid):
-                self.assertEqual(self.memes.validate(self.idea(tid), self.cat, self.templates)["pool"], "tech")
+    def test_a_trend_is_understood_however_the_model_names_it(self):
+        for said in ("T1", "t1", "[T1]", " T1 ", "[T1] Postgres 19 ships a new planner", "T1: Postgres",
+                     "Postgres 19 ships a new planner", "postgres 19 ships a new planner"):
+            with self.subTest(said):
+                idea = self.memes.validate(self.idea(said), self.cat, self.templates)
+                self.assertEqual(idea["trend"], "Postgres 19 ships a new planner")
 
     def test_ideas_that_break_a_rule_are_thrown_away(self):
         bad = {
             "trend not given": {"trend": "G9"},
-            "trend as text, not id": {"trend": "naman dhir"},
+            "trend not given, as text": {"trend": "some other headline"},
             "unknown template": {"template_id": "999"},
             "too few boxes": {"boxes": ["only one"]},
             "hashtag in a box": {"boxes": ["#code", "fine"]},
@@ -1584,13 +1644,11 @@ class MemeIdeas(unittest.TestCase):
                 self.memes.validate({**self.good, **change}, self.cat, self.templates)
 
     def test_no_model_says_so_instead_of_passing_for_a_quiet_day(self):
-        down = self.memes.llm.Reply(None, "gemini-3.8-flash: HTTP 429")
-        with mock.patch.object(self.memes.llm, "complete", return_value=down):
-            with self.assertRaises(self.memes.Unavailable):
-                self.memes.draft(self.pool, self.templates, set())
+        with self.replies(None), self.assertRaises(self.memes.Unavailable):
+            self.memes.draft(self.pool, self.templates, set())
 
     def test_one_idea_per_trend_and_bad_json_is_survived(self):
-        with self.replies("not json", [self.idea("T1"), self.idea("T1")]):
+        with self.replies("not json", [self.idea("T1", self.DRAKE), self.idea("T1", self.ALWAYS)]):
             ideas, rejects = self.memes.draft(self.pool, self.templates, set())
         self.assertEqual(len(ideas), 1)
         self.assertTrue(any("JSON" in r for r in rejects))
@@ -1630,11 +1688,10 @@ class MemeIdeas(unittest.TestCase):
         import json, tempfile
         from src import pipeline_memes
         tmp = Path(tempfile.mkdtemp())
-        down = self.memes.llm.Reply(None, "no LLM key configured")
         with mock.patch.object(pipeline_memes.trends, "gather", return_value=(self.pool, self.templates, [])), \
                 mock.patch.object(pipeline_memes, "IDEAS_JSON", tmp / "ideas.json"), \
                 mock.patch.object(self.memes, "LOG_FILE", tmp / "log.json"), \
-                mock.patch.object(self.memes.llm, "complete", return_value=down), \
+                self.replies(None), \
                 mock.patch.object(pipeline_memes.notify, "notice") as notice:
             self.assertEqual(pipeline_memes.main(), 0)
         title, text = notice.call_args.args
@@ -1646,10 +1703,11 @@ class MemeIdeas(unittest.TestCase):
         import json, tempfile
         from src import pipeline_memes
         tmp = Path(tempfile.mkdtemp())
+        answer = [self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS), self.idea("G1", self.SKELETON)]
         with mock.patch.object(pipeline_memes.trends, "gather", return_value=(self.pool, self.templates, [])), \
                 mock.patch.object(pipeline_memes, "IDEAS_JSON", tmp / "ideas.json"), \
                 mock.patch.object(self.memes, "LOG_FILE", tmp / "log.json"), \
-                self.replies([self.idea("T1"), self.idea("T2"), self.idea("G1")]), \
+                self.replies(answer), \
                 mock.patch.object(pipeline_memes.notify, "_post") as post:
             self.assertEqual(pipeline_memes.main(), 0)
         saved = json.loads((tmp / "ideas.json").read_text(encoding="utf-8"))
@@ -1658,6 +1716,29 @@ class MemeIdeas(unittest.TestCase):
         self.assertEqual({e["trend"] for e in logged},
                          {"Postgres 19 ships a new planner", "GitHub Actions adds ARM runners", "naman dhir"})
         self.assertEqual(post.call_count, 4)          # the trends, then three ideas
+
+
+class NicheFit(unittest.TestCase):
+    """A niche term has to start a word, on both the positive and negative side."""
+
+    def fit(self, title, summary=""):
+        from src.harvest import Item
+        return score.niche_fit(Item(title=title, url="https://example.com", source="hn", publication="HN",
+                                    published=datetime.now(timezone.utc), summary=summary))
+
+    def test_terms_inside_other_words_do_not_count(self):
+        self.assertEqual(self.fit("Fans enraged about storage and relationships", "trust, average, frustrated"), 0.0)
+
+    def test_terms_that_start_a_word_still_count(self):
+        self.assertGreater(self.fit("RAG pipelines in Rust"), 0.6)
+        self.assertGreater(self.fit("Rust's borrow checker, released"), 0.3)
+        self.assertGreater(self.fit("LLMs are getting cheaper"), 0.4)
+        self.assertGreater(self.fit("ChatGPT gets a new memory mode"), 0.3)
+
+    def test_a_negative_term_inside_another_word_costs_nothing(self):
+        # "elon" in "belong", "ipo" in "tripod" used to pull tech stories down.
+        self.assertEqual(self.fit("Where Postgres extensions belong"), self.fit("Where Postgres extensions live"))
+        self.assertLess(self.fit("Postgres maker files for an IPO"), self.fit("Postgres maker ships a release"))
 
 
 if __name__ == "__main__":

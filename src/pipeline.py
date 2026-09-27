@@ -8,7 +8,6 @@ Exit codes: 0 built, 0 deliberately skipped, 1 failed.
 """
 from __future__ import annotations
 
-import html
 import json
 import logging
 import sys
@@ -17,7 +16,7 @@ from pathlib import Path
 
 from . import config as cfg
 from . import notify, preflight
-from .compose import compose
+from .compose import _clean, _trim_to, compose
 from .harvest import harvest_all
 from .ledger import Ledger
 from .render import render
@@ -36,6 +35,7 @@ CHANNEL = cfg.CHANNELS["news"]
 DIST = ROOT / "dist" / CHANNEL["dist"]
 POST_JSON = DIST / "post.json"
 TRENDING_JSON = DIST / "trending.json"
+MEME_SUMMARY_MAX = 200                # enough to say what a story is; the prompt carries eight
 HOLD_FLAG = ROOT / "state" / "hold.flag"
 
 
@@ -119,16 +119,23 @@ def _save_trending(items, ledger: Ledger, today: datetime) -> None:
     never allowed to fail the build: the meme step manages without them.
     """
     try:
-        top = [i for i in rank(items, ledger)
-               if i.source in cfg.MEME_TECH_SOURCES and i.score_parts.get("fit", 0) > 0 and latin(i.title)]
         stories = []
-        for i in top[: cfg.MEME_TECH_STORIES]:
-            # Feeds send "Pok&#233;mon"; the model and the message want "Pokémon".
-            title = " ".join(html.unescape(i.title).split())
-            summary = " ".join(html.unescape(i.summary or "").split())[:200]
+        for i in rank(items, ledger):
+            if i.source not in cfg.MEME_TECH_SOURCES or i.score_parts.get("fit", 0) < cfg.MEME_MIN_FIT:
+                continue
+            # Cleaned first, then judged: feeds send HTML and entities
+            # ("<p>", "Pok&#233;mon"), and "&#x8FD0;" reads as Latin letters.
+            title = _clean(i.title)
+            if not latin(title):
+                continue
+            summary = _trim_to(_clean(i.summary or ""), MEME_SUMMARY_MAX)
             if summary.casefold().startswith(title.casefold()):
-                summary = ""            # a summary that only repeats the title says nothing
+                rest = summary[len(title):].strip(" ,.;:-–—|")
+                if len(rest.split()) < 3:
+                    summary = ""        # it only repeats the title
             stories.append({"title": title, "publication": i.publication, "summary": summary})
+            if len(stories) >= cfg.MEME_TECH_STORIES:
+                break
         TRENDING_JSON.parent.mkdir(parents=True, exist_ok=True)
         TRENDING_JSON.write_text(json.dumps({
             "date": today.strftime("%Y-%m-%d"),

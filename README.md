@@ -21,8 +21,9 @@ drafted in batches from a bank of 226 programming concepts, and the oldest one
 that has not gone out yet becomes the day's card.
 
 The third segment is ideas, not a card: three memes about developer life. Two
-hang on today's tech news -- the Hacker News, Lobsters and DEV stories the news
-build has already scored -- and one on a search trending in India or the US,
+hang on today's tech news -- the Hacker News, Lobsters, DEV, TechCrunch, Ars
+Technica and The Verge stories the news build has already scored -- and one on
+a search trending in India or the US,
 turned into a dev joke. Each is checked in code: a trend it was given, the
 2-to-1 split, a real Imgflip template with exactly its number of text boxes,
 and nothing about death, disaster, crime, politics or religion. Each arrives

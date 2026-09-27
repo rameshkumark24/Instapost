@@ -92,7 +92,7 @@ def meme_ideas(ideas: list[dict], trends: list, day, problems: list[str]) -> Non
         parts = [
             f"<b>{n}. {_esc(idea['template'])}</b>",
             f"on <i>{_esc(idea['trend'])}</i> "
-            f"({'tech news' if idea['where'] == 'tech' else 'trending in ' + _esc(_WHERE.get(idea['where'], idea['where']))})",
+            f"({'tech news' if idea['pool'] == 'tech' else 'trending in ' + _esc(_WHERE.get(idea['where'], idea['where']))})",
             "",
             *(f"Box {i}: <code>{_esc(b)}</code>" for i, b in enumerate(idea["boxes"], 1)),
         ]

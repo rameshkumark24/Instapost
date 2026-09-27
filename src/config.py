@@ -21,7 +21,7 @@ PUBLISH_AT_LOCAL = "19:45"          # informational; the Worker cron is authorit
 
 NICHE_TERMS: dict[str, float] = {
     # AI / ML shipping news
-    "llm": 0.45, "gpt": 0.35, "claude": 0.40, "gemini": 0.35, "openai": 0.40,
+    "llm": 0.45, "gpt": 0.35, "chatgpt": 0.35, "claude": 0.40, "gemini": 0.35, "openai": 0.40,
     "anthropic": 0.40, "transformer": 0.35, "inference": 0.35, "fine-tun": 0.35,
     "diffusion": 0.30, "embedding": 0.30, "rag": 0.30, "agent": 0.30,
     "open-weight": 0.40, "open source model": 0.45, "benchmark": 0.25,
@@ -213,11 +213,15 @@ MEME_IDEAS = sum(MEME_MIX.values())
 MEME_TREND_GEOS = ["IN", "US"]
 MEME_TRENDS_PER_GEO = 10            # the daily feed carries about ten
 MEME_TECH_STORIES = 8               # top-scored stories the news build leaves behind
-# Where tech meme hooks come from. GitHub repos and arXiv papers score well as
-# news but make poor hooks: a repo name means nothing to someone scrolling.
-# A story must also hit NICHE_TERMS -- a viral human-interest post on Hacker
-# News is busy, not tech.
+# Where tech meme hooks come from: Hacker News, Lobsters, DEV, and the tech
+# sites in RSS_FEEDS. GitHub repos and arXiv papers score well as news but make
+# poor hooks: a repo name means nothing to someone scrolling. A story must also
+# hit NICHE_TERMS -- a viral human-interest post on Hacker News is busy, not tech.
 MEME_TECH_SOURCES = {"hn", "lobsters", "devto", "rss"}
+# At least one topic term. The news verbs ("release", "ships", "launches",
+# 0.20 and under) lift a story that is already on topic; alone they let
+# "cards are released and resold" pass for tech news.
+MEME_MIN_FIT = 0.25
 MEME_ATTEMPTS = 2                   # model calls a day before giving up
 MEME_TEMPLATE_POOL = 40             # Imgflip's most-captioned templates on offer
 MEME_MAX_BOXES = 3                  # past three text boxes the joke gets lost

@@ -38,11 +38,16 @@ def engagement(item: Item) -> float:
     return min(1.0, math.log1p(item.engagement) / math.log1p(scale))
 
 
+def _hits(terms: dict[str, float], haystack: str) -> float:
+    # A term has to start a word. Plain substring matching found "rag" in
+    # "enraged" and "storage", "rust" in "trust", "ships" in "relationships"
+    # -- and the negative "elon" in "belong", "ipo" in "tripod".
+    return sum(w for term, w in terms.items() if re.search(r"(?<![a-z0-9])" + re.escape(term), haystack))
+
+
 def niche_fit(item: Item) -> float:
     haystack = f"{item.title} {item.summary}".lower()
-    positive = sum(w for term, w in cfg.NICHE_TERMS.items() if term in haystack)
-    negative = sum(w for term, w in cfg.NICHE_NEGATIVE.items() if term in haystack)
-    return max(0.0, min(1.0, positive - negative))
+    return max(0.0, min(1.0, _hits(cfg.NICHE_TERMS, haystack) - _hits(cfg.NICHE_NEGATIVE, haystack)))
 
 
 def novelty(item: Item, recent_titles: list[str]) -> float:

@@ -39,7 +39,7 @@ def main() -> int:
         entries = memes.load_log()
         fresh = memes.usable(found, memes.recent(entries, "trend", cfg.MEME_TREND_COOLDOWN_DAYS, today))
         if not fresh or not templates:
-            why = "; ".join(problems) or "every trend today was sensitive or already used this week"
+            why = "; ".join(problems) or "no trend today was usable: each was off-limits, not in English, or used this week"
             return _skip(today, f"no meme ideas today: {why}")
 
         stage = "draft"
