@@ -63,7 +63,7 @@ Open `dist/news/card.jpg` and `dist/flirt/card.jpg`. If they look right, the
 clone is complete and correct.
 
 Run the tests before changing anything:
-`.venv/Scripts/python -m unittest discover -s tests` (152 tests). The publisher's
+`.venv/Scripts/python -m unittest discover -s tests` (154 tests). The publisher's
 own 24 tests need Node 22+: `cd worker` then `node --test`.
 
 **A local run only messages Telegram if you give it the keys.** Without
@@ -158,7 +158,7 @@ State: state/concepts.json holds 226 concepts (~7 months); state/flirt_queue.jso
 tracks which have gone out; state/ledger.json burns used stories. The bot pushes
 dist/ and state/ to main daily, so pull before working.
 
-Tests: 152 Python (python -m unittest discover -s tests) and 24 publisher
+Tests: 154 Python (python -m unittest discover -s tests) and 24 publisher
 (cd worker, then node --test, Node 22+).
 
 Windows notes: never pipe a commit message into git (PowerShell 5.1 adds a BOM)

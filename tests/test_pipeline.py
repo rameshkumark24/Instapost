@@ -643,6 +643,7 @@ class LanguageModel(unittest.TestCase):
 
     def test_shut_down_model_is_not_configured(self):
         self.assertNotIn("gemini-2.0-flash", cfg.GEMINI_MODELS)
+        self.assertNotIn("llama-3.3-70b-versatile", cfg.GROQ_MODELS)    # shut down 16 Aug 2026
 
     def test_retired_model_falls_through_to_the_next(self):
         replies = iter([http(404, text="models/x is not found"), http(200, GEMINI_OK)])
@@ -680,6 +681,26 @@ class LanguageModel(unittest.TestCase):
         _, fake = self.run_with({"GEMINI_API_KEY": "k", "GROQ_API_KEY": ""}, return_value=http(200, GEMINI_OK))
         budget = fake.call_args.kwargs["json"]["generationConfig"]["maxOutputTokens"]
         self.assertGreaterEqual(budget, 2048)
+
+    def test_groq_reasoning_model_keeps_room_for_the_answer(self):
+        # gpt-oss reasons before it answers, and the reasoning is charged to
+        # the same cap. At the old 300 tokens it could spend the lot thinking.
+        groq_ok = {"choices": [{"message": {"content": "hello"}}]}
+        reply, fake = self.run_with({"GEMINI_API_KEY": "", "GROQ_API_KEY": "k"}, return_value=http(200, groq_ok))
+        self.assertEqual(reply.text, "hello")
+        body = fake.call_args.kwargs["json"]
+        self.assertEqual(body["model"], cfg.GROQ_MODELS[0])
+        self.assertGreaterEqual(body["max_completion_tokens"], 2048)
+        self.assertEqual(body["reasoning_effort"], "low")
+        self.assertNotIn("max_tokens", body)
+
+    def test_gemini_falls_back_to_groq(self):
+        replies = iter([http(429, text="quota")] * len(cfg.GEMINI_MODELS)
+                       + [http(200, {"choices": [{"message": {"content": "from groq"}}]})])
+        reply, fake = self.run_with({"GEMINI_API_KEY": "k", "GROQ_API_KEY": "k"},
+                                    side_effect=lambda *a, **k: next(replies))
+        self.assertEqual(reply.text, "from groq")
+        self.assertEqual(fake.call_count, len(cfg.GEMINI_MODELS) + 1)
 
 
 class FlirtDrafting(unittest.TestCase):
@@ -841,7 +862,10 @@ class Timeouts(unittest.TestCase):
     def test_worst_case_run_fits_inside_the_job_limit(self):
         workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "build.yml").read_text(encoding="utf-8"))
         job_s = workflow["jobs"]["build"]["timeout-minutes"] * 60
-        chain = (cfg.LLM_CONNECT_TIMEOUT_S + cfg.LLM_TIMEOUT_S) * len(cfg.GEMINI_MODELS)
+        # With both keys set, one call can wait on every Gemini model and then
+        # every Groq model before it gives up.
+        models = len(cfg.GEMINI_MODELS) + len(cfg.GROQ_MODELS)
+        chain = (cfg.LLM_CONNECT_TIMEOUT_S + cfg.LLM_TIMEOUT_S) * models
         # install + news build with one timed-out chain + drafting budget
         # overrun by one more chain + commit and verify
         worst = 180 + (120 + chain) + (cfg.FLIRT_DRAFT_BUDGET_S + chain) + 60

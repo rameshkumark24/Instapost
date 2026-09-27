@@ -39,6 +39,11 @@ GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 # written, which comes back as a reply with no text at all.
 GEMINI_MIN_OUTPUT_TOKENS = 2048
 
+# Groq's gpt-oss models reason before answering, and the reasoning counts
+# against max_completion_tokens exactly as Gemini's thinking does. Low effort
+# is plenty for a caption, and leaves the budget for the answer.
+GROQ_MIN_OUTPUT_TOKENS = 2048
+
 _OK, _RETIRED, _AUTH, _OTHER = "ok", "retired", "auth", "other"
 
 
@@ -130,7 +135,8 @@ def _groq(model: str, key: str, prompt: str, temperature: float, max_tokens: int
                 "model": model,
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": temperature,
-                "max_tokens": max_tokens,
+                "max_completion_tokens": max(max_tokens, GROQ_MIN_OUTPUT_TOKENS),
+                **({"reasoning_effort": "low"} if model.startswith("openai/gpt-oss") else {}),
             },
             timeout=(cfg.LLM_CONNECT_TIMEOUT_S, cfg.LLM_TIMEOUT_S),
         )
