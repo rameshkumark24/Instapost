@@ -64,7 +64,7 @@ Open `dist/news/card.jpg` and `dist/flirt/card.jpg`. If they look right, the
 clone is complete and correct.
 
 Run the tests before changing anything:
-`.venv/Scripts/python -m unittest discover -s tests` (169 tests). The publisher's
+`.venv/Scripts/python -m unittest discover -s tests` (179 tests). The publisher's
 own 24 tests need Node 22+: `cd worker` then `node --test`.
 
 **A local run only messages Telegram if you give it the keys.** Without
@@ -144,8 +144,9 @@ Read RECOVER.md, README.md and SETUP.md first.
 Current mode: hand-posting. GitHub Actions builds two 1080x1350 cards a day
 (news + tech-as-romance) and Telegram sends each as a file plus the caption as
 a separate message. I post them myself on @genphile.meme, about 2 minutes a day.
-A third segment sends three meme ideas built from Google Trends (IN, US) and
-the day's top tech stories on Imgflip templates; I make and post the ones I like.
+A third segment sends three meme ideas, all dev jokes: two on the day's tech
+news, one on a Google trend (IN, US), on Imgflip templates. I make and post the
+ones I like. The 2-to-1 split is MEME_MIX in src/config.py.
 
 Deliberate decisions, do not undo without asking me:
 - No Instagram API publishing. Meta's setup wasted an hour and I abandoned it.
@@ -162,7 +163,7 @@ tracks which have gone out; state/ledger.json burns used stories;
 state/meme_log.json keeps a trend to one meme a week. The bot pushes
 dist/ and state/ to main daily, so pull before working.
 
-Tests: 169 Python (python -m unittest discover -s tests) and 24 publisher
+Tests: 179 Python (python -m unittest discover -s tests) and 24 publisher
 (cd worker, then node --test, Node 22+).
 
 Windows notes: never pipe a commit message into git (PowerShell 5.1 adds a BOM)

@@ -15,7 +15,7 @@ laptop, and that file is the clone-and-go guide.
 |---|---|
 | Early afternoon | GitHub Actions builds both cards and Telegram sends each one: the image as a file, then the caption as its own message |
 | Whenever suits you | Save the image, hold the caption to copy it, post on Instagram |
-| Right after | Three meme ideas built on today's trends, each with its text ready to copy and a link that opens the template in Imgflip |
+| Right after | Three meme ideas about developer life: two on today's tech news, one on a trending search. Each has its text ready to copy and a link that opens the template in Imgflip |
 | When one makes you laugh | Open its link, type the boxes, download, post it with the caption |
 | Every couple of weeks | A batch of tech-metaphor cards is drafted; you see each one on the day it goes out |
 
@@ -116,8 +116,8 @@ arrives on Telegram a few minutes later.
 from `state/meme_log.json`. A trend gets one meme a week and a template rests
 for three days; both are set in [`src/config.py`](src/config.py).
 
-**Change the countries or the off-limits subjects** — `MEME_TREND_GEOS` and
-`MEME_SENSITIVE` in [`src/config.py`](src/config.py).
+**Change the split, the countries or the off-limits subjects** — `MEME_MIX`,
+`MEME_TREND_GEOS` and `MEME_SENSITIVE` in [`src/config.py`](src/config.py).
 
 **Send a tech-metaphor card again** — set its entry in `state/flirt_queue.json`
 back to `"status": "pending"`.

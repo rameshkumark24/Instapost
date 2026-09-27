@@ -81,7 +81,7 @@ def meme_ideas(ideas: list[dict], trends: list, day, problems: list[str]) -> Non
     """
     lines = [f"<b>Meme ideas · {day:%a %d %b}</b>"]
     for where, label in _WHERE.items():
-        titles = [t.title for t in trends if t.where == where][:6]
+        titles = [_short(t.title) for t in trends if t.where == where][: 4 if where == "tech" else 6]
         if titles:
             lines.append(f"<i>{label}:</i> {_esc(' · '.join(titles))}")
     if problems:
@@ -91,7 +91,8 @@ def meme_ideas(ideas: list[dict], trends: list, day, problems: list[str]) -> Non
     for n, idea in enumerate(ideas, 1):
         parts = [
             f"<b>{n}. {_esc(idea['template'])}</b>",
-            f"on <i>{_esc(idea['trend'])}</i> ({_esc(_WHERE.get(idea['where'], idea['where']))})",
+            f"on <i>{_esc(idea['trend'])}</i> "
+            f"({'tech news' if idea['where'] == 'tech' else 'trending in ' + _esc(_WHERE.get(idea['where'], idea['where']))})",
             "",
             *(f"Box {i}: <code>{_esc(b)}</code>" for i, b in enumerate(idea["boxes"], 1)),
         ]
@@ -134,6 +135,10 @@ def notice(title: str, text: str) -> None:
             "parse_mode": "HTML",
         },
     )
+
+
+def _short(text: str, limit: int = 48) -> str:
+    return text if len(text) <= limit else text[: limit - 1].rstrip() + "…"
 
 
 def _esc(text: str) -> str:

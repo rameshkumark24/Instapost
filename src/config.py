@@ -197,16 +197,27 @@ FLIRT_HASHTAGS = [
 ]
 
 # --- meme ideas -------------------------------------------------------------
-# The third segment: ideas, not cards. Each day the build reads what is
-# trending and suggests memes on templates people already recognise; you make
-# the one you like in Imgflip and post it yourself.
+# The third segment: ideas, not cards. Every idea is a joke about developer
+# life, hung on something people are talking about today, on a template they
+# already recognise. You make the one you like in Imgflip and post it yourself.
+
+# How many ideas come from each pool: today's tech news (the stories the news
+# build scored), and searches trending outside tech, turned into a dev joke.
+# When a pool is empty on the day -- Google unreachable, say -- the other one
+# makes up the total.
+MEME_MIX = {"tech": 2, "current": 1}
+MEME_IDEAS = sum(MEME_MIX.values())
 
 # Google Trends countries. India is home; the US sets most of the internet's
 # meme agenda.
 MEME_TREND_GEOS = ["IN", "US"]
 MEME_TRENDS_PER_GEO = 10            # the daily feed carries about ten
 MEME_TECH_STORIES = 8               # top-scored stories the news build leaves behind
-MEME_IDEAS = 3
+# Where tech meme hooks come from. GitHub repos and arXiv papers score well as
+# news but make poor hooks: a repo name means nothing to someone scrolling.
+# A story must also hit NICHE_TERMS -- a viral human-interest post on Hacker
+# News is busy, not tech.
+MEME_TECH_SOURCES = {"hn", "lobsters", "devto", "rss"}
 MEME_ATTEMPTS = 2                   # model calls a day before giving up
 MEME_TEMPLATE_POOL = 40             # Imgflip's most-captioned templates on offer
 MEME_MAX_BOXES = 3                  # past three text boxes the joke gets lost

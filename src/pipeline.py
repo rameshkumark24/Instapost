@@ -8,6 +8,7 @@ Exit codes: 0 built, 0 deliberately skipped, 1 failed.
 """
 from __future__ import annotations
 
+import html
 import json
 import logging
 import sys
@@ -21,6 +22,7 @@ from .harvest import harvest_all
 from .ledger import Ledger
 from .render import render
 from .score import rank, select
+from .trends import latin
 
 logging.basicConfig(
     level=logging.INFO,
@@ -117,11 +119,20 @@ def _save_trending(items, ledger: Ledger, today: datetime) -> None:
     never allowed to fail the build: the meme step manages without them.
     """
     try:
-        top = rank(items, ledger)[: cfg.MEME_TECH_STORIES]
+        top = [i for i in rank(items, ledger)
+               if i.source in cfg.MEME_TECH_SOURCES and i.score_parts.get("fit", 0) > 0 and latin(i.title)]
+        stories = []
+        for i in top[: cfg.MEME_TECH_STORIES]:
+            # Feeds send "Pok&#233;mon"; the model and the message want "Pokémon".
+            title = " ".join(html.unescape(i.title).split())
+            summary = " ".join(html.unescape(i.summary or "").split())[:200]
+            if summary.casefold().startswith(title.casefold()):
+                summary = ""            # a summary that only repeats the title says nothing
+            stories.append({"title": title, "publication": i.publication, "summary": summary})
         TRENDING_JSON.parent.mkdir(parents=True, exist_ok=True)
         TRENDING_JSON.write_text(json.dumps({
             "date": today.strftime("%Y-%m-%d"),
-            "stories": [{"title": i.title, "publication": i.publication} for i in top],
+            "stories": stories,
         }, indent=2, ensure_ascii=False), encoding="utf-8")
     except Exception as exc:
         log.warning("could not save today's tech stories for the meme ideas: %s", exc)

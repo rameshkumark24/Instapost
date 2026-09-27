@@ -1,10 +1,15 @@
-"""Meme ideas from today's trends: the third daily segment.
+"""Meme ideas for developers: the third daily segment.
 
-The model gets today's trends and Imgflip's most-used templates, and suggests a
-few memes a programmer would share. It writes the joke. Everything it could get
-wrong in a way that matters is checked here rather than trusted:
+Every idea is a joke about developer life. Two hang on today's tech news --
+the stories the news build has already scored -- and one on a search trending
+outside tech, turned into a programming joke (MEME_MIX). If one pool is empty
+on the day, the other makes up the three.
 
-  * the trend must be one it was given, word for word, so it cannot invent news;
+The model writes the joke. Everything it could get wrong in a way that matters
+is checked here rather than trusted:
+
+  * the trend must be one it was given, named by its id, so it cannot invent
+    news -- and the split between tech and trending is enforced, not asked for;
   * the template must be one it was given, filled with exactly its number of
     text boxes, so the link it comes with opens the right picture;
   * nothing about deaths, disasters, crime, politics or religion, however it
@@ -23,7 +28,7 @@ from pathlib import Path
 
 from . import config as cfg
 from . import llm
-from .trends import Template, Trend
+from .trends import Template, Trend, latin
 
 log = logging.getLogger(__name__)
 
@@ -32,6 +37,8 @@ LOG_FILE = ROOT / "state" / "meme_log.json"
 
 _EMOJI = re.compile(r"[\U0001F000-\U0001FAFF\U00002600-\U000027BF]")
 _URL = re.compile(r"https?://|www\.", re.I)
+
+TECH, CURRENT = "tech", "current"
 
 
 class Rejected(ValueError):
@@ -42,19 +49,43 @@ class Unavailable(RuntimeError):
     """No model answered at all."""
 
 
-_PROMPT = """You write memes for @genphile.meme, an Instagram meme page for programmers and tech people.
+def pool(trend: Trend) -> str:
+    return TECH if trend.where == "tech" else CURRENT
 
-Today's trends. Pick from these only, and copy the trend text exactly:
-{trends}
 
-Meme templates. Pick from these only, give the id, and fill exactly the number of boxes shown:
+def quotas(trends: list[Trend]) -> dict[str, int]:
+    """Ideas each pool gives today: MEME_MIX, with a short pool's share moved to the other."""
+    size = {TECH: sum(1 for t in trends if pool(t) == TECH)}
+    size[CURRENT] = len(trends) - size[TECH]
+    q = {p: min(cfg.MEME_MIX[p], size[p]) for p in (TECH, CURRENT)}
+    short = cfg.MEME_IDEAS - sum(q.values())
+    for p in (TECH, CURRENT):
+        extra = min(short, size[p] - q[p])
+        q[p] += extra
+        short -= extra
+    return q
+
+
+def catalogue(trends: list[Trend]) -> dict[str, Trend]:
+    """Short ids for the model to answer with. A tech headline is too long to
+    expect back word for word, and a near-miss would throw a good idea away."""
+    out: dict[str, Trend] = {}
+    tech = [t for t in trends if pool(t) == TECH]
+    current = [t for t in trends if pool(t) == CURRENT]
+    out.update({f"T{i}": t for i, t in enumerate(tech, 1)})
+    out.update({f"G{i}": t for i, t in enumerate(current, 1)})
+    return out
+
+
+_PROMPT = """You write memes for @genphile.meme, an Instagram meme page for programmers.
+Every meme is about developer life: code, bugs, deadlines, standups, code review, interviews,
+AI tools, production outages, the job itself.
+{sections}
+Meme templates. Give the id, and fill exactly the number of boxes shown:
 {templates}
 {avoid}
-Write {n} meme ideas. Each uses a different trend and ties it to programming or tech life: code,
-bugs, deadlines, standups, interviews, AI tools, production outages, the job itself. The joke must
-work for someone who writes code but missed the trend, and land harder for someone who saw it.
-
 Rules:
+- Each idea uses a different trend, named by its id in brackets.
 - A real person may appear only in a neutral or admiring comparison, never as the butt of the joke.
 - Skip any trend about death, injury, disaster, crime, politics or religion.
 - Box text is short and plain: no hashtags, no emoji, at most {box_max} characters per box.
@@ -62,22 +93,31 @@ Rules:
 - why: one line saying where the joke is.
 
 Reply with JSON only, no prose:
-{{"ideas": [{{"trend": "...", "template_id": "...", "boxes": ["...", "..."], "caption": "...", "why": "..."}}]}}"""
+{{"ideas": [{{"trend": "T1", "template_id": "...", "boxes": ["...", "..."], "caption": "...", "why": "..."}}]}}"""
+
+_SECTION = {
+    TECH: "\nTech news trending today. Write {n} idea(s), each on a different one of these:\n{lines}\n",
+    CURRENT: "\nTrending searches today, outside tech. Write {n} idea(s), each on a different one of these,\n"
+             "turned into a joke about developer life:\n{lines}\n",
+}
 
 
-def _trend_line(t: Trend) -> str:
-    where = {"tech": "tech news"}.get(t.where, f"trending in {t.where}")
+def _line(tid: str, t: Trend) -> str:
+    where = "" if t.where == "tech" else f" (trending in {t.where})"
     extra = f" -- {t.context}" if t.context else ""
-    return f'- "{t.title}" ({where}){extra}'
+    return f'[{tid}] "{t.title}"{where}{extra}'
 
 
-def prompt(trends: list[Trend], templates: list[Template], avoid: set[str], n: int) -> str:
+def prompt(cat: dict[str, Trend], templates: list[Template], avoid: set[str], need: dict[str, int]) -> str:
+    sections = "".join(
+        _SECTION[p].format(n=need[p], lines="\n".join(_line(i, t) for i, t in cat.items() if pool(t) == p))
+        for p in (TECH, CURRENT) if need.get(p)
+    )
     avoid_names = [t.name for t in templates if t.id in avoid]
     return _PROMPT.format(
-        trends="\n".join(_trend_line(t) for t in trends),
+        sections=sections,
         templates="\n".join(f"- id {t.id}: {t.name} ({t.boxes} boxes)" for t in templates),
         avoid=f"\nUsed in the last few days, so pick others: {', '.join(avoid_names)}\n" if avoid_names else "",
-        n=n,
         box_max=cfg.MEME_BOX_MAX,
     )
 
@@ -87,11 +127,11 @@ def sensitive(trend: Trend) -> bool:
 
 
 def usable(trends: list[Trend], recent: set[str]) -> list[Trend]:
-    """Trends worth offering: not sensitive, not memed this week, not repeated."""
+    """Trends worth offering: readable, not sensitive, not memed this week, not repeated."""
     out, seen = [], set()
     for t in trends:
         key = t.title.casefold()
-        if key in seen or key in recent:
+        if key in seen or key in recent or not latin(t.title):
             continue
         if sensitive(t):
             log.info("left out a sensitive trend: %s", t.title[:60])
@@ -101,14 +141,14 @@ def usable(trends: list[Trend], recent: set[str]) -> list[Trend]:
     return out
 
 
-def validate(idea: dict, trends: list[Trend], templates: list[Template]) -> dict:
+def validate(idea: dict, cat: dict[str, Trend], templates: list[Template]) -> dict:
     """The idea in its final shape, or Rejected with the reason."""
     if not isinstance(idea, dict):
         raise Rejected("not an object")
-    by_title = {t.title.casefold(): t for t in trends}
-    trend = by_title.get(str(idea.get("trend", "")).strip().casefold())
+    tid = str(idea.get("trend", "")).strip().strip("[]").upper()
+    trend = cat.get(tid)
     if trend is None:
-        raise Rejected(f"trend not in today's list: {str(idea.get('trend'))[:60]!r}")
+        raise Rejected(f"trend {str(idea.get('trend'))[:40]!r} is not one it was given")
 
     template = next((t for t in templates if t.id == str(idea.get("template_id", "")).strip()), None)
     if template is None:
@@ -139,6 +179,7 @@ def validate(idea: dict, trends: list[Trend], templates: list[Template]) -> dict
     return {
         "trend": trend.title,
         "where": trend.where,
+        "pool": pool(trend),
         "context": trend.context,
         "template_id": template.id,
         "template": template.name,
@@ -164,20 +205,24 @@ def _parse(raw: str) -> list:
 
 
 def draft(trends: list[Trend], templates: list[Template], avoid: set[str]) -> tuple[list[dict], list[str]]:
-    """Up to MEME_IDEAS checked ideas, and why the rest were thrown away.
+    """Checked ideas in the MEME_MIX split -- tech first -- and why the rest were thrown away.
 
     Raises Unavailable when no model answers, so the day can say so instead
     of passing off an outage as a quiet day.
     """
+    target = quotas(trends)
     ideas: list[dict] = []
     rejects: list[str] = []
     for attempt in range(cfg.MEME_ATTEMPTS):
-        wanted = cfg.MEME_IDEAS - len(ideas)
+        have = {p: sum(1 for i in ideas if i["pool"] == p) for p in target}
+        need = {p: target[p] - have[p] for p in target}
         used = {i["trend"].casefold() for i in ideas}
-        left = [t for t in trends if t.title.casefold() not in used]
-        if wanted <= 0 or not left:
+        cat = catalogue([t for t in trends if t.title.casefold() not in used
+                         and need[pool(t)] > 0])
+        if not cat:
             break
-        reply = llm.complete(prompt(left, templates, avoid, wanted), temperature=0.9 + 0.05 * attempt, max_tokens=1200)
+        reply = llm.complete(prompt(cat, templates, avoid, need),
+                             temperature=0.9 + 0.05 * attempt, max_tokens=1200)
         if not reply.text:
             raise Unavailable(reply.error or "no reply")
         try:
@@ -187,17 +232,20 @@ def draft(trends: list[Trend], templates: list[Template], avoid: set[str]) -> tu
             continue
         for c in candidates:
             try:
-                idea = validate(c, left, templates)
+                idea = validate(c, cat, templates)
             except Rejected as exc:
                 rejects.append(str(exc))
                 continue
             if idea["trend"].casefold() in used:
                 rejects.append("second idea on the same trend")
                 continue
+            if need[idea["pool"]] <= 0:
+                rejects.append(f"one {idea['pool']} idea more than asked for")
+                continue
+            need[idea["pool"]] -= 1
             used.add(idea["trend"].casefold())
             ideas.append(idea)
-            if len(ideas) >= cfg.MEME_IDEAS:
-                break
+    ideas.sort(key=lambda i: i["pool"] != TECH)      # tech first, stable within a pool
     return ideas, rejects
 
 

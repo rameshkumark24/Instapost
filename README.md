@@ -20,12 +20,13 @@ A second card is built the same way for the tech-metaphor account: lines are
 drafted in batches from a bank of 226 programming concepts, and the oldest one
 that has not gone out yet becomes the day's card.
 
-The third segment is ideas, not a card. Google Trends for India and the US and
-the day's top tech stories go to the model with Imgflip's most-used templates,
-and three meme ideas come back, each checked in code: a real trend, a real
-template with exactly its number of text boxes, and nothing about death,
-disaster, crime, politics or religion. Each arrives with its text ready to copy
-and a link that opens the template in Imgflip.
+The third segment is ideas, not a card: three memes about developer life. Two
+hang on today's tech news -- the Hacker News, Lobsters and DEV stories the news
+build has already scored -- and one on a search trending in India or the US,
+turned into a dev joke. Each is checked in code: a trend it was given, the
+2-to-1 split, a real Imgflip template with exactly its number of text boxes,
+and nothing about death, disaster, crime, politics or religion. Each arrives
+with its text ready to copy and a link that opens the template in Imgflip.
 
 **Publishing by API is built and tested but switched off.** Instagram only
 allows it through Meta's developer stack, which cost an hour of broken screens,

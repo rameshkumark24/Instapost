@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import json
 import logging
+import unicodedata
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from datetime import date
@@ -52,6 +53,14 @@ class Template:
     def maker(self) -> str:
         """Imgflip's editor with this template loaded: type the boxes, download."""
         return f"https://imgflip.com/memegenerator/{self.id}"
+
+
+def latin(text: str) -> bool:
+    """Mostly Latin script. The page is in English, and a joke hung on a title
+    the reader cannot read is no joke. Accented letters still count."""
+    letters = [c for c in text if c.isalpha()]
+    latin_letters = sum(unicodedata.name(c, "").startswith("LATIN") for c in letters)
+    return bool(letters) and latin_letters / len(letters) >= 0.8
 
 
 def _get(url: str) -> requests.Response:
@@ -98,8 +107,9 @@ def tech_stories(today: date) -> list[Trend]:
         return []
     if data.get("date") != today.isoformat():
         return []           # yesterday's stories are not today's talk
+    # The summary tells the model what the story is; the site name alone rarely does.
     return [
-        Trend(title=s["title"], where="tech", context=s.get("publication", ""))
+        Trend(title=s["title"], where="tech", context=s.get("summary") or s.get("publication", ""))
         for s in data.get("stories", [])[: cfg.MEME_TECH_STORIES]
         if s.get("title")
     ]
