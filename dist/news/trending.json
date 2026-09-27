@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-27",
+  "stories": [
+    {
+      "title": "OpenAI Feared \"Optics\" of what might appear on Hacker News",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Valve Introduces Pyrowave Video Codec In Beta For Low Latency Streaming",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "Rusty thoughts on \"Parse, don't validate\"",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "AI Agents Push Humans Out of the Loop",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "How to keep enjoying programming in a world of LLMs",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Drawgent: Coding agent on a live Excalidraw canvas",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Chain-of-Thought Faithfulness: Toggling 'Reasoning Mode' Made One Model 5x More Likely to Follow Its Own Mistakes",
+      "publication": "DEV",
+      "summary": "This is a submission for the Kaggle Benchmarking Challenge What I Benchmarked A while..."
+    },
+    {
+      "title": "Your AI Coding Agent Says “Tests Pass.” But Did It Actually Run Them?",
+      "publication": "DEV",
+      "summary": "AI coding agents are getting very good at finishing tasks. They modify files. Fix errors. Write..."
+    }
+  ]
+}

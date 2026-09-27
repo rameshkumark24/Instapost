@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "tech-debt",
-  "term": "TECHNICAL DEBT",
-  "headline": "Saying 'it's fine' to avoid a talk is emotional TECHNICAL DEBT. Years later, a dirty dish triggers a complete refactor of your relationship.",
-  "caption": "Saying 'it's fine' to avoid a talk is emotional TECHNICAL DEBT. Years later, a dirty dish triggers a complete refactor of your relationship.\n\n—\nTECHNICAL DEBT: a shortcut taken now that costs more the longer it is left.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-09-26",
-  "built_at": "2026-09-26T09:11:32+00:00",
+  "concept": "404",
+  "term": "404 NOT FOUND",
+  "headline": "I searched my heart for what you asked me to feel. It understood the request, but returned 404 NOT FOUND.",
+  "caption": "I searched my heart for what you asked me to feel. It understood the request, but returned 404 NOT FOUND.\n\n—\n404 NOT FOUND: the server understood the request but the thing does not exist.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-09-27",
+  "built_at": "2026-09-27T09:51:56+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

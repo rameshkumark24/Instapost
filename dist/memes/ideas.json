@@ -1,0 +1,151 @@
+{
+  "date": "2026-09-27",
+  "built_at": "2026-09-27T09:52:01+00:00",
+  "ideas": [
+    {
+      "trend": "OpenAI Feared \"Optics\" of what might appear on Hacker News",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Hacker News",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
+      "boxes": [
+        "OpenAI worrying about Hacker News optics",
+        "Dev watching the same thing on Slack"
+      ],
+      "caption": "When the AI team is scared of headlines but the dev team just sees another PR comment.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Drake meme contrasts fear of publicity with everyday developer annoyance."
+    },
+    {
+      "trend": "AI Agents Push Humans Out of the Loop",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Lobsters",
+      "template_id": "87743020",
+      "template": "Two Buttons",
+      "maker": "https://imgflip.com/memegenerator/87743020",
+      "boxes": [
+        "Let AI agents handle the production incident",
+        "Manually rollback on prod at 3 am",
+        "Pretend you never saw the alert"
+      ],
+      "caption": "Choosing between trusting the AI or doing the classic midnight rollback.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Two‑Buttons meme highlights the dilemma of AI‑driven ops vs. old‑school panic fixes."
+    },
+    {
+      "trend": "andrey rublev",
+      "where": "US",
+      "pool": "current",
+      "context": "Medvedev wins in Hangzhou: 'My level was pretty good'",
+      "template_id": "102156234",
+      "template": "Mocking Spongebob",
+      "maker": "https://imgflip.com/memegenerator/102156234",
+      "boxes": [
+        "When the test suite finally passes",
+        "And the CI says “flaky”"
+      ],
+      "caption": "Your code runs like a champion, but the CI still calls it a ‘flaky’ match.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Mocking SpongeBob mocks the optimism of a green build versus CI’s skepticism."
+    }
+  ],
+  "trends": [
+    {
+      "title": "jack edwards",
+      "where": "IN"
+    },
+    {
+      "title": "england cricket team vs sri lanka national cricket team match scorecard",
+      "where": "IN"
+    },
+    {
+      "title": "nitish kumar reddy",
+      "where": "IN"
+    },
+    {
+      "title": "icc",
+      "where": "IN"
+    },
+    {
+      "title": "india match",
+      "where": "IN"
+    },
+    {
+      "title": "jiohotstar",
+      "where": "IN"
+    },
+    {
+      "title": "leylah fernandez",
+      "where": "US"
+    },
+    {
+      "title": "snack",
+      "where": "US"
+    },
+    {
+      "title": "andrey rublev",
+      "where": "US"
+    },
+    {
+      "title": "eng vs sl",
+      "where": "US"
+    },
+    {
+      "title": "lottery powerball jackpot",
+      "where": "US"
+    },
+    {
+      "title": "noah ark",
+      "where": "US"
+    },
+    {
+      "title": "berlin marathon 2026",
+      "where": "US"
+    },
+    {
+      "title": "civilian detained macdill air force base",
+      "where": "US"
+    },
+    {
+      "title": "mr olympia winners",
+      "where": "US"
+    },
+    {
+      "title": "nrl",
+      "where": "US"
+    },
+    {
+      "title": "OpenAI Feared \"Optics\" of what might appear on Hacker News",
+      "where": "tech"
+    },
+    {
+      "title": "Valve Introduces Pyrowave Video Codec In Beta For Low Latency Streaming",
+      "where": "tech"
+    },
+    {
+      "title": "Rusty thoughts on \"Parse, don't validate\"",
+      "where": "tech"
+    },
+    {
+      "title": "AI Agents Push Humans Out of the Loop",
+      "where": "tech"
+    },
+    {
+      "title": "How to keep enjoying programming in a world of LLMs",
+      "where": "tech"
+    },
+    {
+      "title": "Drawgent: Coding agent on a live Excalidraw canvas",
+      "where": "tech"
+    },
+    {
+      "title": "Chain-of-Thought Faithfulness: Toggling 'Reasoning Mode' Made One Model 5x More Likely to Follow Its Own Mistakes",
+      "where": "tech"
+    },
+    {
+      "title": "Your AI Coding Agent Says “Tests Pass.” But Did It Actually Run Them?",
+      "where": "tech"
+    }
+  ],
+  "problems": []
+}
