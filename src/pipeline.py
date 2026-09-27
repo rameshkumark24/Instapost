@@ -20,7 +20,7 @@ from .compose import compose
 from .harvest import harvest_all
 from .ledger import Ledger
 from .render import render
-from .score import select
+from .score import rank, select
 
 logging.basicConfig(
     level=logging.INFO,
@@ -33,6 +33,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CHANNEL = cfg.CHANNELS["news"]
 DIST = ROOT / "dist" / CHANNEL["dist"]
 POST_JSON = DIST / "post.json"
+TRENDING_JSON = DIST / "trending.json"
 HOLD_FLAG = ROOT / "state" / "hold.flag"
 
 
@@ -49,6 +50,7 @@ def main() -> int:
 
         stage = "select"
         ledger = Ledger()
+        _save_trending(items, ledger, today)
         try:
             winner = select(items, ledger)
         except LookupError as exc:
@@ -106,6 +108,23 @@ def main() -> int:
         log.exception("failed during %s", stage)
         notify.failure(stage, exc)
         return 1
+
+
+def _save_trending(items, ledger: Ledger, today: datetime) -> None:
+    """Today's top tech stories, for the meme ideas built after this card.
+
+    Written before selection, so a night with no card still leaves them, and
+    never allowed to fail the build: the meme step manages without them.
+    """
+    try:
+        top = rank(items, ledger)[: cfg.MEME_TECH_STORIES]
+        TRENDING_JSON.parent.mkdir(parents=True, exist_ok=True)
+        TRENDING_JSON.write_text(json.dumps({
+            "date": today.strftime("%Y-%m-%d"),
+            "stories": [{"title": i.title, "publication": i.publication} for i in top],
+        }, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception as exc:
+        log.warning("could not save today's tech stories for the meme ideas: %s", exc)
 
 
 def _mark_skipped(today: datetime, reason: str) -> None:

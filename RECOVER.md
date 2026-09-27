@@ -57,13 +57,14 @@ Check it works — this builds real cards into `dist/` and sends nothing:
 ```bash
 .venv/Scripts/python -m src.pipeline          # news card
 .venv/Scripts/python -m src.pipeline_flirt    # tech-metaphor card
+.venv/Scripts/python -m src.pipeline_memes    # meme ideas
 ```
 
 Open `dist/news/card.jpg` and `dist/flirt/card.jpg`. If they look right, the
 clone is complete and correct.
 
 Run the tests before changing anything:
-`.venv/Scripts/python -m unittest discover -s tests` (154 tests). The publisher's
+`.venv/Scripts/python -m unittest discover -s tests` (169 tests). The publisher's
 own 24 tests need Node 22+: `cd worker` then `node --test`.
 
 **A local run only messages Telegram if you give it the keys.** Without
@@ -85,8 +86,8 @@ what you want while experimenting. Never commit them.
    `git push -u origin main`.
 3. Add the secrets (next section).
 4. Actions tab, enable workflows if GitHub asks.
-5. Actions, `build-nightly-post`, **Run workflow**. Two cards should reach
-   Telegram within a few minutes.
+5. Actions, `build-nightly-post`, **Run workflow**. Two cards and three meme
+   ideas should reach Telegram within a few minutes.
 6. Leave the repository variable `LIVE` **unset**. It is the lock that keeps the
    parked publisher from ever posting. Nothing in the hand-posting flow needs it.
 
@@ -143,6 +144,8 @@ Read RECOVER.md, README.md and SETUP.md first.
 Current mode: hand-posting. GitHub Actions builds two 1080x1350 cards a day
 (news + tech-as-romance) and Telegram sends each as a file plus the caption as
 a separate message. I post them myself on @genphile.meme, about 2 minutes a day.
+A third segment sends three meme ideas built from Google Trends (IN, US) and
+the day's top tech stories on Imgflip templates; I make and post the ones I like.
 
 Deliberate decisions, do not undo without asking me:
 - No Instagram API publishing. Meta's setup wasted an hour and I abandoned it.
@@ -155,10 +158,11 @@ Deliberate decisions, do not undo without asking me:
   screenshot, or a commit.
 
 State: state/concepts.json holds 226 concepts (~7 months); state/flirt_queue.json
-tracks which have gone out; state/ledger.json burns used stories. The bot pushes
+tracks which have gone out; state/ledger.json burns used stories;
+state/meme_log.json keeps a trend to one meme a week. The bot pushes
 dist/ and state/ to main daily, so pull before working.
 
-Tests: 154 Python (python -m unittest discover -s tests) and 24 publisher
+Tests: 169 Python (python -m unittest discover -s tests) and 24 publisher
 (cd worker, then node --test, Node 22+).
 
 Windows notes: never pipe a commit message into git (PowerShell 5.1 adds a BOM)

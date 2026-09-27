@@ -249,16 +249,18 @@
 <div class="wrap">
 
   <header>
-    <p class="eyebrow">Instapost &middot; how it runs &middot; 20 Sep 2026</p>
+    <p class="eyebrow">Instapost &middot; how it runs &middot; 27 Sep 2026</p>
     <h1>Instapost Daily</h1>
     <p class="standfirst">
       Every day this researches a tech story, writes it up, draws two finished Instagram cards, and
-      sends them to your phone with the caption ready to copy. You post them on
-      <strong>@genphile.meme</strong>. Nothing reaches Instagram without you.
+      sends them to your phone with the caption ready to copy, then three meme ideas built on
+      what the internet is searching for today. You post on <strong>@genphile.meme</strong>.
+      Nothing reaches Instagram without you.
     </p>
     <dl class="state">
-      <div><dt>Builds run</dt><dd>48</dd></div>
+      <div><dt>Builds run</dt><dd>63</dd></div>
       <div><dt>Cards a day</dt><dd>2</dd></div>
+      <div><dt>Meme ideas</dt><dd>3</dd></div>
       <div><dt>Your time</dt><dd>~2 min</dd></div>
       <div><dt>Setup left</dt><dd>None</dd></div>
       <div><dt>Cost</dt><dd>&#8377;0</dd></div>
@@ -278,12 +280,16 @@
         <span class="detail">Two 1080&times;1350 cards in your design, carrying your handle: the news story, and a programming concept told as a relationship. A card that would overflow its margins, or that Instagram would refuse, is thrown away rather than sent.</span>
       </li>
       <li>
-        <span class="n">3</span><span class="name">Deliver to your phone</span><span class="chip done">Automatic</span>
+        <span class="n">3</span><span class="name">Suggest memes</span><span class="chip done">Automatic</span>
+        <span class="detail">Google Trends for India and the US, and the day's top tech stories, turned into three meme ideas on Imgflip's most-used templates. Anything about death, disaster, crime, politics or religion is left out before the model writes and checked again after.</span>
+      </li>
+      <li>
+        <span class="n">4</span><span class="name">Deliver to your phone</span><span class="chip done">Automatic</span>
         <span class="detail">Telegram sends each card as a file, so it is not squashed on the way, then the caption as a message of its own. Hold it, copy, done.</span>
       </li>
       <li>
-        <span class="n">4</span><span class="name">You post</span><span class="chip you">You</span>
-        <span class="detail">Save the image, paste the caption, publish. About two minutes. Skip any card you don't like &mdash; nothing else happens, and the story never comes back.</span>
+        <span class="n">5</span><span class="name">You post</span><span class="chip you">You</span>
+        <span class="detail">Save the image, paste the caption, publish. About two minutes. For a meme, open the idea's link, type the boxes, download. Skip any card you don't like &mdash; nothing else happens, and the story never comes back.</span>
       </li>
     </ol>
     <div class="note">
@@ -301,6 +307,8 @@
         <thead><tr><th>Message</th><th>What it means</th><th>You do</th></tr></thead>
         <tbody>
           <tr><td class="k">A card file, then a caption</td><td>Today's card is ready to post.</td><td>Post it, or skip it</td></tr>
+          <tr><td class="k">Meme ideas, then three ideas</td><td>Today's trends, then each idea with its boxes to copy, a caption, and a link that opens the template.</td><td>Make the one you like</td></tr>
+          <tr><td class="k">Meme ideas failed</td><td>No model answered, or every idea failed a check. The trends are still listed.</td><td>Make one yourself, or nothing</td></tr>
           <tr><td class="k">Instapost skipped tonight</td><td>No story cleared the bar, or the card queue ran dry.</td><td>Nothing</td></tr>
           <tr><td class="k">New cards drafted</td><td>A fresh batch of tech-metaphor lines was written, about a fortnight of cards.</td><td>Nothing</td></tr>
           <tr><td class="k">Drafting failed</td><td>The AI key or model isn't working; the reason is in the message.</td><td>Forward it to me</td></tr>
@@ -322,10 +330,11 @@
         <tbody>
           <tr><td class="k">News engine</td><td>Six sources, scoring for freshness, traction, topic and variety; safe fetching of the publisher's own summary; an AI summary checked for invented numbers and copied wording.</td><td>48 builds; a summary traced back to its source tweet</td></tr>
           <tr><td class="k">Tech-metaphor engine</td><td>226 concepts across ten areas of computing. Lines are drafted in batches, and the oldest one that hasn't gone out becomes the day's card.</td><td>12 drafted, delivered in order</td></tr>
+          <tr><td class="k">Meme ideas</td><td>Google Trends (India, US), today's top tech stories and Imgflip's 40 most-used templates. Every idea is checked in code: a real trend, a real template with its exact number of boxes, no off-limits subject, and a week before a trend comes round again.</td><td>Run against live trends; automated tests</td></tr>
           <tr><td class="k">Card design</td><td>Your template rebuilt in code: real webfonts, your handle, the technical term bolded inside the line.</td><td>Every card is measured against its own margins before it is sent</td></tr>
           <tr><td class="k">Delivery</td><td>The card as an uncompressed file, then the caption alone so one long-press copies exactly what Instagram needs.</td><td>Automated tests</td></tr>
           <tr><td class="k">Safety</td><td>Instagram's size, ratio, caption and hashtag limits checked before you ever see the card; AI text escaped, never trusted as markup; secrets never printed.</td><td>Automated tests</td></tr>
-          <tr><td class="k">Quality</td><td>154 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
+          <tr><td class="k">Quality</td><td>169 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
           <tr><td class="k">Auto-posting</td><td>A publisher, a Meta setup assistant and a one-command deploy.</td><td>Built and tested, deliberately switched off</td></tr>
         </tbody>
       </table>
@@ -340,6 +349,7 @@
         <strong>Every day</strong>
         <ul>
           <li>Post the card you like. Two minutes.</li>
+          <li>If a meme idea makes you laugh, open its link, fill the boxes, post it.</li>
           <li>Skip the ones you don't. There is no penalty and nothing to clean up.</li>
         </ul>
       </div>
@@ -376,7 +386,7 @@
     <div class="tbl expect">
       <table>
         <tbody>
-          <tr><td class="k">Posts</td><td>Up to two a day, finished and ready: one news card, one tech-metaphor card.</td></tr>
+          <tr><td class="k">Posts</td><td>Up to two finished cards a day, one news and one tech-metaphor, plus three meme ideas to make yourself.</td></tr>
           <tr><td class="k">Your time</td><td>About two minutes a day, and nothing else.</td></tr>
           <tr><td class="k">Cost</td><td>&#8377;0. Free tiers throughout.</td></tr>
           <tr><td class="k">Quiet days</td><td>Some days nothing is good enough. The bot says so rather than filling the slot.</td></tr>
@@ -388,7 +398,7 @@
   </section>
 
   <footer>
-    <div>Instapost Daily &middot; status as of 20 Sep 2026</div>
+    <div>Instapost Daily &middot; status as of 27 Sep 2026</div>
     <div>Times are Asia/Kolkata (UTC+5:30)</div>
     <div><a href="https://github.com/rameshkumark24/Instapost">github.com/rameshkumark24/Instapost</a></div>
   </footer>

@@ -15,6 +15,8 @@ laptop, and that file is the clone-and-go guide.
 |---|---|
 | Early afternoon | GitHub Actions builds both cards and Telegram sends each one: the image as a file, then the caption as its own message |
 | Whenever suits you | Save the image, hold the caption to copy it, post on Instagram |
+| Right after | Three meme ideas built on today's trends, each with its text ready to copy and a link that opens the template in Imgflip |
+| When one makes you laugh | Open its link, type the boxes, download, post it with the caption |
 | Every couple of weeks | A batch of tech-metaphor cards is drafted; you see each one on the day it goes out |
 
 Nothing in the repo can post to Instagram on its own.
@@ -25,6 +27,7 @@ Nothing in the repo can post to Instagram on its own.
 |---|---|
 | Rebuild the profile kit (avatars, pinned cards) | `.venv/Scripts/python -m src.brand` |
 | Build a card now and send it | `.venv/Scripts/python -m src.pipeline` or `-m src.pipeline_flirt` |
+| Get today's meme ideas now | `.venv/Scripts/python -m src.pipeline_memes` |
 
 ---
 
@@ -109,6 +112,13 @@ arrives on Telegram a few minutes later.
 **Re-allow a story the ledger has burned** — delete its entry from
 `state/ledger.json`.
 
+**Allow a trend or template again before its cooldown** — delete its line
+from `state/meme_log.json`. A trend gets one meme a week and a template rests
+for three days; both are set in [`src/config.py`](src/config.py).
+
+**Change the countries or the off-limits subjects** — `MEME_TREND_GEOS` and
+`MEME_SENSITIVE` in [`src/config.py`](src/config.py).
+
 **Send a tech-metaphor card again** — set its entry in `state/flirt_queue.json`
 back to `"status": "pending"`.
 
@@ -121,6 +131,8 @@ back to `"status": "pending"`.
 | No Telegram message at all | Build failed or the run was dropped | Check the Actions log; re-run via Run workflow |
 | `Instapost skipped tonight` | No story cleared the bar, or the card queue is empty | Normal on a thin news day. If it repeats, tune the scoring. |
 | `Drafting failed` | The AI model or key is not working | The message names the reason |
+| `Meme ideas failed` | No model answered, or every idea failed a check | The message still lists today's trends, so you can make one yourself |
+| `Meme ideas skipped` | Google Trends and Imgflip both unreachable, or every trend was off-limits | Nothing; tomorrow is a new list |
 | `webfonts did not load` | Google Fonts unreachable in CI | Re-run. If it recurs, vendor the fonts into `templates/` as base64 `@font-face`. |
 | `headline is N chars, over the limit` | Compose produced over-long copy | Working as designed — it refused rather than ship a bad card. |
 

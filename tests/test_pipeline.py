@@ -542,6 +542,12 @@ class BuildWorkflow(unittest.TestCase):
     def test_flirt_build_runs_even_if_news_failed(self):
         self.assertIn("!cancelled()", str(self.steps["Build tech-metaphor card"].get("if", "")))
 
+    def test_meme_ideas_run_after_both_cards_whatever_happened(self):
+        names = list(self.steps)
+        self.assertLess(names.index("Build tech-metaphor card"), names.index("Build meme ideas"))
+        self.assertLess(names.index("Build meme ideas"), names.index("Commit card and ledger"))
+        self.assertIn("!cancelled()", str(self.steps["Build meme ideas"].get("if", "")))
+
 
 class TokenHealth(unittest.TestCase):
     """Broken and inconclusive must never be confused."""
@@ -867,8 +873,10 @@ class Timeouts(unittest.TestCase):
         models = len(cfg.GEMINI_MODELS) + len(cfg.GROQ_MODELS)
         chain = (cfg.LLM_CONNECT_TIMEOUT_S + cfg.LLM_TIMEOUT_S) * models
         # install + news build with one timed-out chain + drafting budget
-        # overrun by one more chain + commit and verify
-        worst = 180 + (120 + chain) + (cfg.FLIRT_DRAFT_BUDGET_S + chain) + 60
+        # overrun by one more chain + every meme source timing out and every
+        # meme attempt waiting on the whole chain + commit and verify
+        memes = (len(cfg.MEME_TREND_GEOS) + 1) * cfg.HTTP_TIMEOUT + cfg.MEME_ATTEMPTS * chain
+        worst = 180 + (120 + chain) + (cfg.FLIRT_DRAFT_BUDGET_S + chain) + memes + 60
         self.assertLess(worst, job_s)
 
 
@@ -1387,6 +1395,153 @@ class DeployAssistant(unittest.TestCase):
         for call in calls:
             with self.subTest(call=call):
                 self.assertTrue(call.startswith("npx --no wrangler "), call)
+
+
+TRENDS_XML = b"""<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:ht="https://trends.google.com/trending/rss" version="2.0"><channel>
+<item><title>naman dhir</title><ht:approx_traffic>500+</ht:approx_traffic>
+  <ht:news_item><ht:news_item_title>Naman Dhir picked for the ODI squad</ht:news_item_title></ht:news_item>
+  <ht:news_item><ht:news_item_title>second headline</ht:news_item_title></ht:news_item></item>
+<item><title>dog</title><ht:approx_traffic>200+</ht:approx_traffic>
+  <ht:news_item><ht:news_item_title>Bear mauls couple, with tragic consequences</ht:news_item_title></ht:news_item></item>
+</channel></rss>"""
+
+
+class MemeIdeas(unittest.TestCase):
+    """The third segment: trends in, checked meme ideas out."""
+
+    def setUp(self):
+        from src import memes, trends
+        self.memes, self.trends = memes, trends
+        self.found = trends.parse_trends(TRENDS_XML, "IN")
+        self.templates = [trends.Template("181913649", "Drake Hotline Bling", 2),
+                          trends.Template("87743020", "Two Buttons", 3)]
+        self.good = {"trend": "naman dhir", "template_id": "181913649",
+                     "boxes": ["Waiting for code review", "Getting picked for the release"],
+                     "caption": "Could not process it for ten minutes either.", "why": "Selection = merge."}
+
+    def test_a_trend_carries_its_first_headline(self):
+        self.assertEqual([t.title for t in self.found], ["naman dhir", "dog"])
+        self.assertEqual(self.found[0].context, "Naman Dhir picked for the ODI squad")
+        self.assertEqual(self.found[0].traffic, "500+")
+
+    def test_a_feed_that_declares_a_dtd_is_refused(self):
+        bomb = b'<?xml version="1.0"?><!DOCTYPE r [<!ENTITY a "aaaa">]><rss><channel></channel></rss>'
+        with self.assertRaises(ValueError):
+            self.trends.parse_trends(bomb, "IN")
+
+    def test_only_two_and_three_box_templates_are_offered(self):
+        payload = {"success": True, "data": {"memes": [
+            {"id": 1, "name": "One", "box_count": 1}, {"id": 2, "name": "Two", "box_count": 2},
+            {"id": 3, "name": "Three", "box_count": 3}, {"id": 5, "name": "Five", "box_count": 5}]}}
+        self.assertEqual([t.name for t in self.trends.parse_templates(payload)], ["Two", "Three"])
+
+    def test_sensitive_and_recently_used_trends_are_left_out(self):
+        self.assertEqual([t.title for t in self.memes.usable(self.found, set())], ["naman dhir"])
+        self.assertEqual(self.memes.usable(self.found, {"naman dhir"}), [])
+
+    def test_a_good_idea_comes_back_ready_to_make_and_post(self):
+        idea = self.memes.validate(self.good, self.found, self.templates)
+        self.assertEqual(idea["template"], "Drake Hotline Bling")
+        self.assertEqual(idea["maker"], "https://imgflip.com/memegenerator/181913649")
+        self.assertIn("#programmerhumor", idea["caption"])
+        self.assertEqual(idea["where"], "IN")
+
+    def test_ideas_that_break_a_rule_are_thrown_away(self):
+        bad = {
+            "invented trend": {"trend": "something else"},
+            "unknown template": {"template_id": "999"},
+            "too few boxes": {"boxes": ["only one"]},
+            "hashtag in a box": {"boxes": ["#code", "fine"]},
+            "emoji in a box": {"boxes": ["fine \U0001F602", "fine"]},
+            "overlong box": {"boxes": ["x" * 71, "fine"]},
+            "hashtag in caption": {"caption": "nice #memes"},
+            "sensitive words": {"caption": "Like a train crash, but in prod."},
+        }
+        for why, change in bad.items():
+            with self.subTest(why), self.assertRaises(self.memes.Rejected):
+                self.memes.validate({**self.good, **change}, self.found, self.templates)
+
+    def test_no_model_says_so_instead_of_passing_for_a_quiet_day(self):
+        down = self.memes.llm.Reply(None, "gemini-3.8-flash: HTTP 429")
+        with mock.patch.object(self.memes.llm, "complete", return_value=down):
+            with self.assertRaises(self.memes.Unavailable):
+                self.memes.draft(self.found, self.templates, set())
+
+    def test_one_idea_per_trend_and_bad_json_is_survived(self):
+        import json
+        twice = json.dumps({"ideas": [self.good, self.good]})
+        replies = iter([self.memes.llm.Reply("not json"), self.memes.llm.Reply(twice)])
+        with mock.patch.object(self.memes.llm, "complete", side_effect=lambda *a, **k: next(replies)):
+            ideas, rejects = self.memes.draft(self.found, self.templates, set())
+        self.assertEqual(len(ideas), 1)
+        self.assertTrue(any("JSON" in r for r in rejects))
+
+    def test_only_todays_tech_stories_count(self):
+        import json, tempfile
+        from datetime import date
+        path = Path(tempfile.mkdtemp()) / "trending.json"
+        path.write_text(json.dumps({"date": "2026-09-26", "stories": [{"title": "Old news"}]}), encoding="utf-8")
+        with mock.patch.object(self.trends, "TECH_FILE", path):
+            self.assertEqual(self.trends.tech_stories(date(2026, 9, 27)), [])
+            self.assertEqual(len(self.trends.tech_stories(date(2026, 9, 26))), 1)
+
+    def test_the_log_forgets_after_a_month_and_remembers_the_week(self):
+        from datetime import date
+        old = [{"date": "2026-08-01", "trend": "ancient", "template_id": "1"},
+               {"date": "2026-09-25", "trend": "Naman Dhir", "template_id": "181913649"}]
+        kept = self.memes.record(old, [], date(2026, 9, 27))
+        self.assertEqual([e["trend"] for e in kept], ["Naman Dhir"])
+        self.assertEqual(self.memes.recent(kept, "trend", 7, date(2026, 9, 27)), {"naman dhir"})
+
+    def test_everything_in_the_message_is_escaped(self):
+        from datetime import date
+        from src import notify
+        idea = self.memes.validate({**self.good, "boxes": ["<b>x</b> & y", "fine"]}, self.found, self.templates)
+        with mock.patch.object(notify, "_post") as post:
+            notify.meme_ideas([idea], self.found, date(2026, 9, 27), [])
+        text = post.call_args_list[1].args[1]["text"]
+        self.assertIn("&lt;b&gt;x&lt;/b&gt; &amp; y", text)
+        self.assertIn("https://imgflip.com/memegenerator/181913649", text)
+        self.assertEqual(post.call_count, 2)          # the trends, then one per idea
+
+    def test_a_model_outage_still_sends_the_trends(self):
+        import json, tempfile
+        from src import pipeline_memes
+        tmp = Path(tempfile.mkdtemp())
+        down = self.memes.llm.Reply(None, "no LLM key configured")
+        with mock.patch.object(pipeline_memes.trends, "gather", return_value=(self.found, self.templates, [])), \
+                mock.patch.object(pipeline_memes, "IDEAS_JSON", tmp / "ideas.json"), \
+                mock.patch.object(self.memes, "LOG_FILE", tmp / "log.json"), \
+                mock.patch.object(self.memes.llm, "complete", return_value=down), \
+                mock.patch.object(pipeline_memes.notify, "notice") as notice:
+            self.assertEqual(pipeline_memes.main(), 0)
+        title, text = notice.call_args.args
+        self.assertEqual(title, "Meme ideas failed")
+        self.assertIn("naman dhir", text)
+        self.assertIn("skip", json.loads((tmp / "ideas.json").read_text(encoding="utf-8")))
+
+    def test_the_stories_the_news_build_leaves_are_the_ones_the_memes_read(self):
+        import tempfile
+        from src import pipeline
+        from src.harvest import Item
+        now = datetime.now(timezone.utc)
+        items = [Item(title="Postgres 19 ships a new planner", url="https://example.com/pg", source="hn",
+                      publication="Hacker News", published=now, engagement=300)]
+        path = Path(tempfile.mkdtemp()) / "trending.json"
+        ledger = mock.MagicMock(contains=lambda k: False, blocked=lambda t: False,
+                                recent_titles=lambda d: [], recent_sources=lambda n: [])
+        today = datetime.now(cfg.TZ)
+        with mock.patch.object(pipeline, "TRENDING_JSON", path), mock.patch.object(self.trends, "TECH_FILE", path):
+            pipeline._save_trending(items, ledger, today)
+            stories = self.trends.tech_stories(today.date())
+        self.assertEqual([(s.title, s.where, s.context) for s in stories],
+                         [("Postgres 19 ships a new planner", "tech", "Hacker News")])
+
+    def test_the_news_card_never_fails_over_the_meme_stories(self):
+        from src import pipeline
+        with mock.patch.object(pipeline, "rank", side_effect=RuntimeError("boom")):
+            pipeline._save_trending([], None, datetime.now(cfg.TZ))     # logs, does not raise
 
 
 if __name__ == "__main__":

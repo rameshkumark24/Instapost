@@ -196,6 +196,42 @@ FLIRT_HASHTAGS = [
     "#programming", "#softwareengineer", "#codingmemes", "#techhumor",
 ]
 
+# --- meme ideas -------------------------------------------------------------
+# The third segment: ideas, not cards. Each day the build reads what is
+# trending and suggests memes on templates people already recognise; you make
+# the one you like in Imgflip and post it yourself.
+
+# Google Trends countries. India is home; the US sets most of the internet's
+# meme agenda.
+MEME_TREND_GEOS = ["IN", "US"]
+MEME_TRENDS_PER_GEO = 10            # the daily feed carries about ten
+MEME_TECH_STORIES = 8               # top-scored stories the news build leaves behind
+MEME_IDEAS = 3
+MEME_ATTEMPTS = 2                   # model calls a day before giving up
+MEME_TEMPLATE_POOL = 40             # Imgflip's most-captioned templates on offer
+MEME_MAX_BOXES = 3                  # past three text boxes the joke gets lost
+MEME_BOX_MAX = 70                   # characters per text box
+MEME_CAPTION_MAX = 300              # before hashtags
+MEME_TREND_COOLDOWN_DAYS = 7        # a trend that runs all week gets one meme
+MEME_TEMPLATE_COOLDOWN_DAYS = 3
+MEME_LOG_DAYS = 30
+
+MEME_HASHTAGS = ["#programmerhumor", "#techmemes", "#codingmemes", "#devlife", "#memes"]
+
+# What a meme page never jokes about, however the model frames it. Checked
+# against each trend, its headline, and every word of every idea. Tech's own
+# vocabulary is left alone on purpose: "dead code", "kill -9" and "prod
+# crashed" are the page's bread and butter.
+MEME_SENSITIVE = re.compile(
+    r"\b(dies|died|death|deaths|killed|murder\w*|suicide|rape\w*|accident\w*|"
+    r"(plane|car|bus|train|helicopter) crash\w*|shooting|gunman|gunfire|stabb\w*|"
+    r"terror\w*|bomb\w*|blast|war|earthquake|flood\w*|cyclone|tsunami|disaster|"
+    r"victims?|funeral|obituary|rip|hospital\w*|cancer|arrest\w*|abuse\w*|"
+    r"tragic|tragedy|injur\w*|maul\w*|damage\w*|"
+    r"elections?|minister|parliament|religio\w*|temple|mosque|church|riots?|protest\w*)\b",
+    re.I,
+)
+
 # --- language model -----------------------------------------------------------
 # Tried in order. A model that answers "not found" has been retired, so the
 # next one is tried; a rejected key stops the chain, since no other model on

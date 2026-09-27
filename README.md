@@ -20,6 +20,13 @@ A second card is built the same way for the tech-metaphor account: lines are
 drafted in batches from a bank of 226 programming concepts, and the oldest one
 that has not gone out yet becomes the day's card.
 
+The third segment is ideas, not a card. Google Trends for India and the US and
+the day's top tech stories go to the model with Imgflip's most-used templates,
+and three meme ideas come back, each checked in code: a real trend, a real
+template with exactly its number of text boxes, and nothing about death,
+disaster, crime, politics or religion. Each arrives with its text ready to copy
+and a link that opens the template in Imgflip.
+
 **Publishing by API is built and tested but switched off.** Instagram only
 allows it through Meta's developer stack, which cost an hour of broken screens,
 so [`worker/`](worker/) and [`src/gate_a.py`](src/gate_a.py) sit ready for the
@@ -40,6 +47,9 @@ from, and a briefing block for a fresh assistant session.
 | [`src/render.py`](src/render.py) | Jinja2 + Playwright → JPEG, with the safety gates |
 | [`src/ledger.py`](src/ledger.py) | Posted-URL memory, committed to git |
 | [`src/pipeline.py`](src/pipeline.py) | Orchestrates the build |
+| [`src/trends.py`](src/trends.py) | Google Trends, Imgflip templates, today's tech stories |
+| [`src/memes.py`](src/memes.py) | Meme ideas: the prompt, and every check on what comes back |
+| [`src/pipeline_memes.py`](src/pipeline_memes.py) | Orchestrates the meme ideas |
 | [`templates/card.html`](templates/card.html) | The card design |
 | [`worker/src/index.js`](worker/src/index.js) | The punctual publisher |
 
@@ -69,6 +79,7 @@ either way.
 # build now and send it to Telegram
 python -m src.pipeline          # news card
 python -m src.pipeline_flirt    # tech-metaphor card
+python -m src.pipeline_memes    # meme ideas
 ```
 
 Nothing here can publish to Instagram. The Cloudflare publisher is not

@@ -68,6 +68,39 @@ def handoff(post: dict, image: Path) -> None:
     _post("sendMessage", {"text": post["caption"], "disable_web_page_preview": "true"})
 
 
+_WHERE = {"IN": "India", "US": "US", "tech": "Tech"}
+
+
+def meme_ideas(ideas: list[dict], trends: list, day, problems: list[str]) -> None:
+    """Today's trends in one message, then one message per idea.
+
+    Everything in these messages came from a trend feed or a model, so all of
+    it is escaped. Box text is in <code>, which Telegram copies on a tap; the
+    caption is a <pre> block, which gets a copy button. The Imgflip link is
+    left to preview, so the template's picture shows under the idea.
+    """
+    lines = [f"<b>Meme ideas · {day:%a %d %b}</b>"]
+    for where, label in _WHERE.items():
+        titles = [t.title for t in trends if t.where == where][:6]
+        if titles:
+            lines.append(f"<i>{label}:</i> {_esc(' · '.join(titles))}")
+    if problems:
+        lines.append(f"<i>Missing today:</i> {_esc('; '.join(problems))}")
+    _post("sendMessage", {"text": "\n".join(lines), "parse_mode": "HTML", "disable_web_page_preview": "true"})
+
+    for n, idea in enumerate(ideas, 1):
+        parts = [
+            f"<b>{n}. {_esc(idea['template'])}</b>",
+            f"on <i>{_esc(idea['trend'])}</i> ({_esc(_WHERE.get(idea['where'], idea['where']))})",
+            "",
+            *(f"Box {i}: <code>{_esc(b)}</code>" for i, b in enumerate(idea["boxes"], 1)),
+        ]
+        if idea.get("why"):
+            parts += ["", f"<i>{_esc(idea['why'])}</i>"]
+        parts += ["", "Caption:", f"<pre>{_esc(idea['caption'])}</pre>", f"Make it: {_esc(idea['maker'])}"]
+        _post("sendMessage", {"text": "\n".join(parts), "parse_mode": "HTML"})
+
+
 def failure(stage: str, exc: BaseException) -> None:
     _post(
         "sendMessage",
