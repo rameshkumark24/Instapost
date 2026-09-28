@@ -1,45 +1,45 @@
 {
-  "date": "2026-09-27",
+  "date": "2026-09-28",
   "stories": [
     {
-      "title": "OpenAI Feared \"Optics\" of what might appear on Hacker News",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Valve Introduces Pyrowave Video Codec In Beta For Low Latency Streaming",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Rusty thoughts on \"Parse, don't validate\"",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "AI Agents Push Humans Out of the Loop",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "How to keep enjoying programming in a world of LLMs",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Drawgent: Coding agent on a live Excalidraw canvas",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Chain-of-Thought Faithfulness: Toggling 'Reasoning Mode' Made One Model 5x More Likely to Follow Its Own Mistakes",
+      "title": "7 Best AI Project Management Tools for Software Development Teams in 2026",
       "publication": "DEV",
-      "summary": "This is a submission for the Kaggle Benchmarking Challenge What I Benchmarked A while..."
+      "summary": "How AI is changing project management, from traditional task tracking to workflows where AI agents..."
     },
     {
-      "title": "Your AI Coding Agent Says “Tests Pass.” But Did It Actually Run Them?",
+      "title": "ToolTrap: “tool results are data” wasn’t enough",
       "publication": "DEV",
-      "summary": "AI coding agents are getting very good at finishing tasks. They modify files. Fix errors. Write..."
+      "summary": "Prepared for the Kaggle Benchmarking Challenge. What I Benchmarked I build agents for..."
+    },
+    {
+      "title": "Can Muse overcome Meta’s trust issues?",
+      "publication": "TechCrunch",
+      "summary": "On Equity, we discussed how Meta's AI announcement managed to steal the spotlight from OpenAI and Anthropic."
+    },
+    {
+      "title": "The 7 Walls JavaScript Hits — and How WebAssembly Gets Past Them",
+      "publication": "DEV",
+      "summary": "Every time Figma renders a complex design instantly, or Google Sheets recalculates a huge spreadsheet..."
+    },
+    {
+      "title": "SNL Weekend Update: Anthropic CEO Dario Amodei on A.I.'S Threat to Humanity [video]",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "There are no \"rogue\" AI agents",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Syncing Rust GCC backend or how to test Murphy's law",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "AI Can Fix the Bug Before You Understand It — That’s More Dangerous Than It Sounds",
+      "publication": "DEV",
+      "summary": "A bug appears. You paste the error into your AI coding agent. Thirty seconds later: “Fixed..."
     }
   ]
 }

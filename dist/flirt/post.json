@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "404",
-  "term": "404 NOT FOUND",
-  "headline": "I searched my heart for what you asked me to feel. It understood the request, but returned 404 NOT FOUND.",
-  "caption": "I searched my heart for what you asked me to feel. It understood the request, but returned 404 NOT FOUND.\n\n—\n404 NOT FOUND: the server understood the request but the thing does not exist.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-09-27",
-  "built_at": "2026-09-27T09:51:56+00:00",
+  "concept": "orphan-row",
+  "term": "ORPHAN ROW",
+  "headline": "You deleted your profile, but my routine still references your ID. I am just an ORPHAN ROW, pointing at nothing.",
+  "caption": "You deleted your profile, but my routine still references your ID. I am just an ORPHAN ROW, pointing at nothing.\n\n—\nORPHAN ROW: a row whose foreign key points at something that no longer exists.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-09-28",
+  "built_at": "2026-09-28T10:44:50+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

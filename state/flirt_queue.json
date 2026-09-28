@@ -103,8 +103,9 @@
   "terms": [
    "ORPHAN ROW"
   ],
-  "status": "pending",
-  "drafted_at": "2026-09-14T07:46:57+00:00"
+  "status": "sent",
+  "drafted_at": "2026-09-14T07:46:57+00:00",
+  "sent_at": "2026-09-28T10:44:50+00:00"
  },
  {
   "concept": "firewall",
@@ -193,5 +194,82 @@
   ],
   "status": "pending",
   "drafted_at": "2026-09-23T09:11:16+00:00"
+ },
+ {
+  "concept": "bandwidth",
+  "term": "BANDWIDTH",
+  "domain": "networking",
+  "text": "Our friendship hits a limit when we try to stream thoughts faster than our mental BANDWIDTH can handle.",
+  "terms": [
+   "BANDWIDTH"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-28T10:44:48+00:00"
+ },
+ {
+  "concept": "select-star",
+  "term": "SELECT *",
+  "domain": "sql",
+  "text": "You asked how I was doing. I accidentally ran SELECT * on my entire life history.",
+  "terms": [
+   "SELECT *"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-28T10:44:48+00:00"
+ },
+ {
+  "concept": "interrupt",
+  "term": "INTERRUPT",
+  "domain": "systems",
+  "text": "You called it a quick question, but it was an INTERRUPT. I dropped everything, handled the urgent signal, and never quite restored my previous state.",
+  "terms": [
+   "INTERRUPT"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-28T10:44:48+00:00"
+ },
+ {
+  "concept": "binary-search",
+  "term": "BINARY SEARCH",
+  "domain": "algorithms",
+  "text": "Finding a home in my budget is a BINARY SEARCH. I check the median price, realize I can't afford it, and eliminate the top half.",
+  "terms": [
+   "BINARY SEARCH"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-28T10:44:48+00:00"
+ },
+ {
+  "concept": "cycle",
+  "term": "CYCLE",
+  "domain": "algorithms",
+  "text": "Our arguments keep forming a CYCLE: we start at love, traverse misunderstandings, and end up back where we began, ready to debug again.",
+  "terms": [
+   "CYCLE"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-28T10:44:48+00:00"
+ },
+ {
+  "concept": "ip-address",
+  "term": "IP ADDRESS",
+  "domain": "networking",
+  "text": "Some friends are a static IP ADDRESS. No matter how long you have been offline, you always know where to reach them.",
+  "terms": [
+   "IP ADDRESS"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-28T10:44:48+00:00"
+ },
+ {
+  "concept": "linked-list",
+  "term": "LINKED LIST",
+  "domain": "algorithms",
+  "text": "Our friendship is a LINKED LIST: I only know who comes after me, and if one node is lost, the whole chain breaks.",
+  "terms": [
+   "LINKED LIST"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-09-28T10:44:48+00:00"
  }
 ]

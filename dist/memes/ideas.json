@@ -1,149 +1,117 @@
 {
-  "date": "2026-09-27",
-  "built_at": "2026-09-27T09:52:01+00:00",
+  "date": "2026-09-28",
+  "built_at": "2026-09-28T10:45:32+00:00",
   "ideas": [
     {
-      "trend": "OpenAI Feared \"Optics\" of what might appear on Hacker News",
+      "trend": "7 Best AI Project Management Tools for Software Development Teams in 2026",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
+      "context": "How AI is changing project management, from traditional task tracking to workflows where AI agents...",
       "template_id": "181913649",
       "template": "Drake Hotline Bling",
       "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "OpenAI worrying about Hacker News optics",
-        "Dev watching the same thing on Slack"
+        "Manual sprint planning with sticky notes",
+        "AI agent auto‑assigns tasks from commit history"
       ],
-      "caption": "When the AI team is scared of headlines but the dev team just sees another PR comment.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Drake meme contrasts fear of publicity with everyday developer annoyance."
+      "caption": "When the PM hands you a spreadsheet and the AI hands you a roadmap.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Drake meme contrasts old‑school planning vs AI‑driven task assignment."
     },
     {
-      "trend": "AI Agents Push Humans Out of the Loop",
+      "trend": "AI Can Fix the Bug Before You Understand It — That’s More Dangerous Than It Sounds",
       "where": "tech",
       "pool": "tech",
-      "context": "Lobsters",
+      "context": "A bug appears. You paste the error into your AI coding agent. Thirty seconds later: “Fixed...",
       "template_id": "87743020",
       "template": "Two Buttons",
       "maker": "https://imgflip.com/memegenerator/87743020",
       "boxes": [
-        "Let AI agents handle the production incident",
-        "Manually rollback on prod at 3 am",
-        "Pretend you never saw the alert"
+        "Bug shows up in production at 3 AM",
+        "Let the AI auto‑fix it in 30 seconds",
+        "Spend an hour tracing the stack trace yourself"
       ],
-      "caption": "Choosing between trusting the AI or doing the classic midnight rollback.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Two‑Buttons meme highlights the dilemma of AI‑driven ops vs. old‑school panic fixes."
+      "caption": "Press the button that saves you sleep… or the one that keeps you awake.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Two Buttons meme highlights the tempting but risky AI quick‑fix."
     },
     {
-      "trend": "andrey rublev",
+      "trend": "fat bear",
       "where": "US",
       "pool": "current",
-      "context": "Medvedev wins in Hangzhou: 'My level was pretty good'",
+      "context": "Fat Bear Week Is Back. Meet Some of Our Favorite Contenders.",
       "template_id": "102156234",
       "template": "Mocking Spongebob",
       "maker": "https://imgflip.com/memegenerator/102156234",
       "boxes": [
-        "When the test suite finally passes",
-        "And the CI says “flaky”"
+        "Fat Bear week: bears gorge on berries all day",
+        "Codebase after adding one new npm package"
       ],
-      "caption": "Your code runs like a champion, but the CI still calls it a ‘flaky’ match.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Mocking SpongeBob mocks the optimism of a green build versus CI’s skepticism."
+      "caption": "Add a dependency and watch the size explode.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Mocking SpongeBob mimics a developer’s reaction to bloated packages."
     }
   ],
   "trends": [
     {
-      "title": "jack edwards",
+      "title": "south korea vs uruguay",
       "where": "IN"
     },
     {
-      "title": "england cricket team vs sri lanka national cricket team match scorecard",
-      "where": "IN"
-    },
-    {
-      "title": "nitish kumar reddy",
-      "where": "IN"
-    },
-    {
-      "title": "icc",
-      "where": "IN"
-    },
-    {
-      "title": "india match",
-      "where": "IN"
-    },
-    {
-      "title": "jiohotstar",
-      "where": "IN"
-    },
-    {
-      "title": "leylah fernandez",
+      "title": "atlantic city",
       "where": "US"
     },
     {
-      "title": "snack",
+      "title": "trial",
       "where": "US"
     },
     {
-      "title": "andrey rublev",
+      "title": "temperature",
       "where": "US"
     },
     {
-      "title": "eng vs sl",
+      "title": "tsla stock",
       "where": "US"
     },
     {
-      "title": "lottery powerball jackpot",
+      "title": "fat bear",
       "where": "US"
     },
     {
-      "title": "noah ark",
+      "title": "mortgage rates today",
       "where": "US"
     },
     {
-      "title": "berlin marathon 2026",
+      "title": "stock market today",
       "where": "US"
     },
     {
-      "title": "civilian detained macdill air force base",
-      "where": "US"
-    },
-    {
-      "title": "mr olympia winners",
-      "where": "US"
-    },
-    {
-      "title": "nrl",
-      "where": "US"
-    },
-    {
-      "title": "OpenAI Feared \"Optics\" of what might appear on Hacker News",
+      "title": "7 Best AI Project Management Tools for Software Development Teams in 2026",
       "where": "tech"
     },
     {
-      "title": "Valve Introduces Pyrowave Video Codec In Beta For Low Latency Streaming",
+      "title": "ToolTrap: “tool results are data” wasn’t enough",
       "where": "tech"
     },
     {
-      "title": "Rusty thoughts on \"Parse, don't validate\"",
+      "title": "Can Muse overcome Meta’s trust issues?",
       "where": "tech"
     },
     {
-      "title": "AI Agents Push Humans Out of the Loop",
+      "title": "The 7 Walls JavaScript Hits — and How WebAssembly Gets Past Them",
       "where": "tech"
     },
     {
-      "title": "How to keep enjoying programming in a world of LLMs",
+      "title": "SNL Weekend Update: Anthropic CEO Dario Amodei on A.I.'S Threat to Humanity [video]",
       "where": "tech"
     },
     {
-      "title": "Drawgent: Coding agent on a live Excalidraw canvas",
+      "title": "There are no \"rogue\" AI agents",
       "where": "tech"
     },
     {
-      "title": "Chain-of-Thought Faithfulness: Toggling 'Reasoning Mode' Made One Model 5x More Likely to Follow Its Own Mistakes",
+      "title": "Syncing Rust GCC backend or how to test Murphy's law",
       "where": "tech"
     },
     {
-      "title": "Your AI Coding Agent Says “Tests Pass.” But Did It Actually Run Them?",
+      "title": "AI Can Fix the Bug Before You Understand It — That’s More Dangerous Than It Sounds",
       "where": "tech"
     }
   ],
