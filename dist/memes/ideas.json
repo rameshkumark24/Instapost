@@ -1,117 +1,125 @@
 {
-  "date": "2026-09-28",
-  "built_at": "2026-09-28T10:45:32+00:00",
+  "date": "2026-09-29",
+  "built_at": "2026-09-29T10:28:08+00:00",
   "ideas": [
     {
-      "trend": "7 Best AI Project Management Tools for Software Development Teams in 2026",
+      "trend": "MicroLLM Lab – Try 7 tiny LLM's in the browser",
       "where": "tech",
       "pool": "tech",
-      "context": "How AI is changing project management, from traditional task tracking to workflows where AI agents...",
+      "context": "Hacker News",
       "template_id": "181913649",
       "template": "Drake Hotline Bling",
       "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Manual sprint planning with sticky notes",
-        "AI agent auto‑assigns tasks from commit history"
+        "Run a tiny LLM in the browser",
+        "Wait for the cloud API to spin up"
       ],
-      "caption": "When the PM hands you a spreadsheet and the AI hands you a roadmap.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Drake meme contrasts old‑school planning vs AI‑driven task assignment."
+      "caption": "When you just want a quick autocomplete but the tiny model feels like a full‑stack dev.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Contrasts local micro‑LLM with the usual cloud‑only approach."
     },
     {
-      "trend": "AI Can Fix the Bug Before You Understand It — That’s More Dangerous Than It Sounds",
+      "trend": "OpenAI’s AI agents need to catch up",
       "where": "tech",
       "pool": "tech",
-      "context": "A bug appears. You paste the error into your AI coding agent. Thirty seconds later: “Fixed...",
+      "context": "OpenAI popularized the modern generative AI chatbot, but as its 2026 DevDay event approaches, it's fallen behind in one of the industry's hottest categories: continuously running, consumer-facing AI…",
       "template_id": "87743020",
       "template": "Two Buttons",
       "maker": "https://imgflip.com/memegenerator/87743020",
       "boxes": [
-        "Bug shows up in production at 3 AM",
-        "Let the AI auto‑fix it in 30 seconds",
-        "Spend an hour tracing the stack trace yourself"
+        "Deploy an AI agent that runs 24/7",
+        "Ship a chatbot that answers once",
+        "Me sweating over which hype to chase"
       ],
-      "caption": "Press the button that saves you sleep… or the one that keeps you awake.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Two Buttons meme highlights the tempting but risky AI quick‑fix."
+      "caption": "OpenAI’s agents promise the future, but my sprint board still has “keep it alive” as a task.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Highlights the gap between promised continuous agents and real‑world reliability needs."
     },
     {
-      "trend": "fat bear",
-      "where": "US",
+      "trend": "asian games athletics",
+      "where": "IN",
       "pool": "current",
-      "context": "Fat Bear Week Is Back. Meet Some of Our Favorite Contenders.",
+      "context": "PM congratulates Vithya Ramraj on winning Bronze in Women’s 400m hurdles at Asian Games",
       "template_id": "102156234",
       "template": "Mocking Spongebob",
       "maker": "https://imgflip.com/memegenerator/102156234",
       "boxes": [
-        "Fat Bear week: bears gorge on berries all day",
-        "Codebase after adding one new npm package"
+        "When the sprint review says “We need faster CI”",
+        "But the test suite is 10k lines of flaky code"
       ],
-      "caption": "Add a dependency and watch the size explode.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Mocking SpongeBob mimics a developer’s reaction to bloated packages."
+      "caption": "Running a full suite feels like sprinting with a rubber band.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Compares the pressure of speeding up CI to an athlete’s race."
     }
   ],
   "trends": [
     {
-      "title": "south korea vs uruguay",
+      "title": "former ias divya mittal politics",
       "where": "IN"
     },
     {
-      "title": "atlantic city",
+      "title": "asian games athletics",
+      "where": "IN"
+    },
+    {
+      "title": "australia vs brazil",
+      "where": "IN"
+    },
+    {
+      "title": "brett favre",
       "where": "US"
     },
     {
-      "title": "trial",
+      "title": "lawyer",
       "where": "US"
     },
     {
-      "title": "temperature",
+      "title": "snap benefit changes october 1",
       "where": "US"
     },
     {
-      "title": "tsla stock",
+      "title": "seela sella",
       "where": "US"
     },
     {
-      "title": "fat bear",
+      "title": "30 year mortgage rate",
       "where": "US"
     },
     {
-      "title": "mortgage rates today",
+      "title": "taylor swift music",
       "where": "US"
     },
     {
-      "title": "stock market today",
+      "title": "australia - brasil",
       "where": "US"
     },
     {
-      "title": "7 Best AI Project Management Tools for Software Development Teams in 2026",
+      "title": "MicroLLM Lab – Try 7 tiny LLM's in the browser",
       "where": "tech"
     },
     {
-      "title": "ToolTrap: “tool results are data” wasn’t enough",
+      "title": "Claude e Obsidian - Como uma QA utiliza essas ferramentas no dia-a-dia",
       "where": "tech"
     },
     {
-      "title": "Can Muse overcome Meta’s trust issues?",
+      "title": "OpenAI’s AI agents need to catch up",
       "where": "tech"
     },
     {
-      "title": "The 7 Walls JavaScript Hits — and How WebAssembly Gets Past Them",
+      "title": "Ex-Tesla team raises $12.5M to put supply chains on autopilot",
       "where": "tech"
     },
     {
-      "title": "SNL Weekend Update: Anthropic CEO Dario Amodei on A.I.'S Threat to Humanity [video]",
+      "title": "Pausing an agent mid-task and resuming it four minutes later, with its memory intact",
       "where": "tech"
     },
     {
-      "title": "There are no \"rogue\" AI agents",
+      "title": "I Gave ChatGPT My Full Codebase. The Results Scared Me — But Not for the Reason You Think.",
       "where": "tech"
     },
     {
-      "title": "Syncing Rust GCC backend or how to test Murphy's law",
+      "title": "Anthropic’s prospectus details losses, growth, and, yes, a warning that its AI could end humanity",
       "where": "tech"
     },
     {
-      "title": "AI Can Fix the Bug Before You Understand It — That’s More Dangerous Than It Sounds",
+      "title": "Who's Accountable When the AI Was Just Following Instructions?",
       "where": "tech"
     }
   ],

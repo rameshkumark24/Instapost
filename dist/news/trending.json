@@ -1,45 +1,45 @@
 {
-  "date": "2026-09-28",
+  "date": "2026-09-29",
   "stories": [
     {
-      "title": "7 Best AI Project Management Tools for Software Development Teams in 2026",
-      "publication": "DEV",
-      "summary": "How AI is changing project management, from traditional task tracking to workflows where AI agents..."
+      "title": "MicroLLM Lab – Try 7 tiny LLM's in the browser",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
-      "title": "ToolTrap: “tool results are data” wasn’t enough",
+      "title": "Claude e Obsidian - Como uma QA utiliza essas ferramentas no dia-a-dia",
       "publication": "DEV",
-      "summary": "Prepared for the Kaggle Benchmarking Challenge. What I Benchmarked I build agents for..."
+      "summary": "You can also read the English version of this article on AWS Community Builders. Ser QA nessa..."
     },
     {
-      "title": "Can Muse overcome Meta’s trust issues?",
+      "title": "OpenAI’s AI agents need to catch up",
+      "publication": "The Verge",
+      "summary": "OpenAI popularized the modern generative AI chatbot, but as its 2026 DevDay event approaches, it's fallen behind in one of the industry's hottest categories: continuously running, consumer-facing AI…"
+    },
+    {
+      "title": "Ex-Tesla team raises $12.5M to put supply chains on autopilot",
       "publication": "TechCrunch",
-      "summary": "On Equity, we discussed how Meta's AI announcement managed to steal the spotlight from OpenAI and Anthropic."
+      "summary": "Atomic's agentic supply chain software is now being used by companies like DoorDash and HelloFresh."
     },
     {
-      "title": "The 7 Walls JavaScript Hits — and How WebAssembly Gets Past Them",
+      "title": "Pausing an agent mid-task and resuming it four minutes later, with its memory intact",
       "publication": "DEV",
-      "summary": "Every time Figma renders a complex design instantly, or Google Sheets recalculates a huge spreadsheet..."
+      "summary": "DigitalOcean's Managed Agents claims a paused session keeps its processes and memory. I put a counter in a shell variable, paused for 4m28s, and it came back at 48. Forking was stranger."
     },
     {
-      "title": "SNL Weekend Update: Anthropic CEO Dario Amodei on A.I.'S Threat to Humanity [video]",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "There are no \"rogue\" AI agents",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Syncing Rust GCC backend or how to test Murphy's law",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "AI Can Fix the Bug Before You Understand It — That’s More Dangerous Than It Sounds",
+      "title": "I Gave ChatGPT My Full Codebase. The Results Scared Me — But Not for the Reason You Think.",
       "publication": "DEV",
-      "summary": "A bug appears. You paste the error into your AI coding agent. Thirty seconds later: “Fixed..."
+      "summary": "So I did the thing everyone tells you not to do. I took the whole codebase. Every route, the..."
+    },
+    {
+      "title": "Anthropic’s prospectus details losses, growth, and, yes, a warning that its AI could end humanity",
+      "publication": "TechCrunch",
+      "summary": "In its prospectus, Anthropic just told investors it's losing tens of billions of dollars a year, but also growing like crazy, and — oh yeah — its own AI might pose an existential risk to humanity."
+    },
+    {
+      "title": "Who's Accountable When the AI Was Just Following Instructions?",
+      "publication": "DEV",
+      "summary": "Earlier this year, a company's AI agent quietly leaked internal data for three weeks before anyone..."
     }
   ]
 }

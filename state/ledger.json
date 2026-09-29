@@ -292,5 +292,12 @@
   "url": "https://github.com/browser-use/jev-ultrafast",
   "source": "github",
   "posted_at": "2026-09-28T10:39:43+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2609.35750v1",
+  "title": "KV-streams for Efficient Compaction in Agentic Reinforcement Learning",
+  "url": "https://arxiv.org/abs/2609.35750v1",
+  "source": "arxiv",
+  "posted_at": "2026-09-29T10:27:20+00:00"
  }
 ]

@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "orphan-row",
-  "term": "ORPHAN ROW",
-  "headline": "You deleted your profile, but my routine still references your ID. I am just an ORPHAN ROW, pointing at nothing.",
-  "caption": "You deleted your profile, but my routine still references your ID. I am just an ORPHAN ROW, pointing at nothing.\n\n—\nORPHAN ROW: a row whose foreign key points at something that no longer exists.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-09-28",
-  "built_at": "2026-09-28T10:44:50+00:00",
+  "concept": "firewall",
+  "term": "FIREWALL",
+  "headline": "I don't have emotional walls, I have a FIREWALL. Block all inbound traffic by default; allow only explicitly approved connections.",
+  "caption": "I don't have emotional walls, I have a FIREWALL. Block all inbound traffic by default; allow only explicitly approved connections.\n\n—\nFIREWALL: blocks everything except what is explicitly allowed through.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-09-29",
+  "built_at": "2026-09-29T10:27:25+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

@@ -115,8 +115,9 @@
   "terms": [
    "FIREWALL"
   ],
-  "status": "pending",
-  "drafted_at": "2026-09-14T07:46:57+00:00"
+  "status": "sent",
+  "drafted_at": "2026-09-14T07:46:57+00:00",
+  "sent_at": "2026-09-29T10:27:25+00:00"
  },
  {
   "concept": "handshake",
