@@ -43,5 +43,20 @@
     "date": "2026-09-29",
     "trend": "asian games athletics",
     "template_id": "102156234"
+  },
+  {
+    "date": "2026-09-30",
+    "trend": "How to speed up the Rust compiler in September 2026",
+    "template_id": "181913649"
+  },
+  {
+    "date": "2026-09-30",
+    "trend": "OpenBSD's ports tree keeps GPL coreutils and rejects uutils (Rust rewrite)",
+    "template_id": "217743513"
+  },
+  {
+    "date": "2026-09-30",
+    "trend": "live cricket score",
+    "template_id": "102156234"
   }
 ]

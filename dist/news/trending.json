@@ -1,45 +1,45 @@
 {
-  "date": "2026-09-29",
+  "date": "2026-09-30",
   "stories": [
     {
-      "title": "MicroLLM Lab – Try 7 tiny LLM's in the browser",
+      "title": "How to speed up the Rust compiler in September 2026",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "OpenBSD's ports tree keeps GPL coreutils and rejects uutils (Rust rewrite)",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "Deser: Rethinking Rust Serialization",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "OpenAI’s latest features take direct aim at the app store model",
+      "publication": "TechCrunch",
+      "summary": "OpenAI is building out the pieces of an alternative to the traditional app store model, turning ChatGPT into a place where software can be discovered and used by people and AI agents alike."
+    },
+    {
+      "title": "OpenAI launches Dots, its Muse competitor",
+      "publication": "The Verge",
+      "summary": "OpenAI is responding to Meta's buzzy Muse AI with agentic helpers of its own: Dots."
+    },
+    {
+      "title": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Claude e Obsidian - Como uma QA utiliza essas ferramentas no dia-a-dia",
-      "publication": "DEV",
-      "summary": "You can also read the English version of this article on AWS Community Builders. Ser QA nessa..."
-    },
-    {
-      "title": "OpenAI’s AI agents need to catch up",
-      "publication": "The Verge",
-      "summary": "OpenAI popularized the modern generative AI chatbot, but as its 2026 DevDay event approaches, it's fallen behind in one of the industry's hottest categories: continuously running, consumer-facing AI…"
-    },
-    {
-      "title": "Ex-Tesla team raises $12.5M to put supply chains on autopilot",
+      "title": "OpenAI launches GPT-6.1 Sol, says it nearly matches GPT-6 Astra and costs less",
       "publication": "TechCrunch",
-      "summary": "Atomic's agentic supply chain software is now being used by companies like DoorDash and HelloFresh."
+      "summary": "OpenAI says GPT-6.1 Sol delivers significant improvements over GPT-6 Sol across complex professional tasks, including code writing and debugging, document understanding, and executing multistep…"
     },
     {
-      "title": "Pausing an agent mid-task and resuming it four minutes later, with its memory intact",
-      "publication": "DEV",
-      "summary": "DigitalOcean's Managed Agents claims a paused session keeps its processes and memory. I put a counter in a shell variable, paused for 4m28s, and it came back at 48. Forking was stranger."
-    },
-    {
-      "title": "I Gave ChatGPT My Full Codebase. The Results Scared Me — But Not for the Reason You Think.",
-      "publication": "DEV",
-      "summary": "So I did the thing everyone tells you not to do. I took the whole codebase. Every route, the..."
-    },
-    {
-      "title": "Anthropic’s prospectus details losses, growth, and, yes, a warning that its AI could end humanity",
-      "publication": "TechCrunch",
-      "summary": "In its prospectus, Anthropic just told investors it's losing tens of billions of dollars a year, but also growing like crazy, and — oh yeah — its own AI might pose an existential risk to humanity."
-    },
-    {
-      "title": "Who's Accountable When the AI Was Just Following Instructions?",
-      "publication": "DEV",
-      "summary": "Earlier this year, a company's AI agent quietly leaked internal data for three weeks before anyone..."
+      "title": "Pining for Arc Downcasting in Rust",
+      "publication": "Lobsters",
+      "summary": ""
     }
   ]
 }

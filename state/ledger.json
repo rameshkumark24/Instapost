@@ -299,5 +299,12 @@
   "url": "https://arxiv.org/abs/2609.35750v1",
   "source": "arxiv",
   "posted_at": "2026-09-29T10:27:20+00:00"
+ },
+ {
+  "key": "nnethercote.github.io/2026/09/30/how-to-speed-up-the-rust-compiler-in-september-2026.html",
+  "title": "How to speed up the Rust compiler in September 2026",
+  "url": "https://nnethercote.github.io/2026/09/30/how-to-speed-up-the-rust-compiler-in-september-2026.html",
+  "source": "lobsters",
+  "posted_at": "2026-09-30T10:19:00+00:00"
  }
 ]

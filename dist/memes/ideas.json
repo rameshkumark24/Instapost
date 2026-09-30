@@ -1,125 +1,144 @@
 {
-  "date": "2026-09-29",
-  "built_at": "2026-09-29T10:28:08+00:00",
+  "date": "2026-09-30",
+  "built_at": "2026-09-30T10:19:31+00:00",
   "ideas": [
     {
-      "trend": "MicroLLM Lab – Try 7 tiny LLM's in the browser",
+      "trend": "How to speed up the Rust compiler in September 2026",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
+      "context": "Lobsters",
       "template_id": "181913649",
       "template": "Drake Hotline Bling",
       "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Run a tiny LLM in the browser",
-        "Wait for the cloud API to spin up"
+        "Spend hours waiting for rustc to finish",
+        "Add `RUSTC_WRAPPER=...` cache and nightly incremental builds"
       ],
-      "caption": "When you just want a quick autocomplete but the tiny model feels like a full‑stack dev.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Contrasts local micro‑LLM with the usual cloud‑only approach."
+      "caption": "When you finally find the secret sauce to speed up the Rust compiler.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Drake meme contrasts slow compile vs fast cache tricks."
     },
     {
-      "trend": "OpenAI’s AI agents need to catch up",
+      "trend": "OpenBSD's ports tree keeps GPL coreutils and rejects uutils (Rust rewrite)",
       "where": "tech",
       "pool": "tech",
-      "context": "OpenAI popularized the modern generative AI chatbot, but as its 2026 DevDay event approaches, it's fallen behind in one of the industry's hottest categories: continuously running, consumer-facing AI…",
-      "template_id": "87743020",
-      "template": "Two Buttons",
-      "maker": "https://imgflip.com/memegenerator/87743020",
+      "context": "Lobsters",
+      "template_id": "217743513",
+      "template": "UNO Draw 25 Cards",
+      "maker": "https://imgflip.com/memegenerator/217743513",
       "boxes": [
-        "Deploy an AI agent that runs 24/7",
-        "Ship a chatbot that answers once",
-        "Me sweating over which hype to chase"
+        "Adopt the Rust rewrite of coreutils or draw 25",
+        "OpenBSD maintainers"
       ],
-      "caption": "OpenAI’s agents promise the future, but my sprint board still has “keep it alive” as a task.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Highlights the gap between promised continuous agents and real‑world reliability needs."
+      "caption": "OpenBSD has spent decades purging GPL code, but the moment cargo tries to enter ports, suddenly GPL doesn't look so bad.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "OpenBSD famously despises GPL licensing, but they hate Rust toolchain dependencies and compile times even more."
     },
     {
-      "trend": "asian games athletics",
+      "trend": "live cricket score",
       "where": "IN",
       "pool": "current",
-      "context": "PM congratulates Vithya Ramraj on winning Bronze in Women’s 400m hurdles at Asian Games",
+      "context": "Ball by Ball Commentary & Live Score - IND-A vs AUS-A, 2nd unofficial Test",
       "template_id": "102156234",
       "template": "Mocking Spongebob",
       "maker": "https://imgflip.com/memegenerator/102156234",
       "boxes": [
-        "When the sprint review says “We need faster CI”",
-        "But the test suite is 10k lines of flaky code"
+        "Live cricket score updates",
+        "CI pipeline failing on every commit"
       ],
-      "caption": "Running a full suite feels like sprinting with a rubber band.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Compares the pressure of speeding up CI to an athlete’s race."
+      "caption": "When the build is slower than a test match.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Mocking SpongeBob mocks the endless wait of both cricket scores and CI."
     }
   ],
   "trends": [
     {
-      "title": "former ias divya mittal politics",
+      "title": "amir jangoo",
       "where": "IN"
     },
     {
-      "title": "asian games athletics",
+      "title": "live cricket score",
       "where": "IN"
     },
     {
-      "title": "australia vs brazil",
+      "title": "tanya mishra",
       "where": "IN"
     },
     {
-      "title": "brett favre",
+      "title": "shai hope",
+      "where": "IN"
+    },
+    {
+      "title": "cricbuzz",
+      "where": "IN"
+    },
+    {
+      "title": "swimming facility",
       "where": "US"
     },
     {
-      "title": "lawyer",
+      "title": "alex karp swedish forest purchase",
       "where": "US"
     },
     {
-      "title": "snap benefit changes october 1",
+      "title": "ken griffin",
       "where": "US"
     },
     {
-      "title": "seela sella",
+      "title": "bond",
       "where": "US"
     },
     {
-      "title": "30 year mortgage rate",
+      "title": "wssc",
       "where": "US"
     },
     {
-      "title": "taylor swift music",
+      "title": "west indies vs zimbabwe",
       "where": "US"
     },
     {
-      "title": "australia - brasil",
+      "title": "warehouse",
       "where": "US"
     },
     {
-      "title": "MicroLLM Lab – Try 7 tiny LLM's in the browser",
+      "title": "housing development",
+      "where": "US"
+    },
+    {
+      "title": "kickboxing",
+      "where": "US"
+    },
+    {
+      "title": "swimming competition",
+      "where": "US"
+    },
+    {
+      "title": "How to speed up the Rust compiler in September 2026",
       "where": "tech"
     },
     {
-      "title": "Claude e Obsidian - Como uma QA utiliza essas ferramentas no dia-a-dia",
+      "title": "OpenBSD's ports tree keeps GPL coreutils and rejects uutils (Rust rewrite)",
       "where": "tech"
     },
     {
-      "title": "OpenAI’s AI agents need to catch up",
+      "title": "Deser: Rethinking Rust Serialization",
       "where": "tech"
     },
     {
-      "title": "Ex-Tesla team raises $12.5M to put supply chains on autopilot",
+      "title": "OpenAI’s latest features take direct aim at the app store model",
       "where": "tech"
     },
     {
-      "title": "Pausing an agent mid-task and resuming it four minutes later, with its memory intact",
+      "title": "OpenAI launches Dots, its Muse competitor",
       "where": "tech"
     },
     {
-      "title": "I Gave ChatGPT My Full Codebase. The Results Scared Me — But Not for the Reason You Think.",
+      "title": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
       "where": "tech"
     },
     {
-      "title": "Anthropic’s prospectus details losses, growth, and, yes, a warning that its AI could end humanity",
+      "title": "OpenAI launches GPT-6.1 Sol, says it nearly matches GPT-6 Astra and costs less",
       "where": "tech"
     },
     {
-      "title": "Who's Accountable When the AI Was Just Following Instructions?",
+      "title": "Pining for Arc Downcasting in Rust",
       "where": "tech"
     }
   ],
