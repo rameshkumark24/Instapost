@@ -1,45 +1,45 @@
 {
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "stories": [
     {
-      "title": "How to speed up the Rust compiler in September 2026",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "OpenBSD's ports tree keeps GPL coreutils and rejects uutils (Rust rewrite)",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Deser: Rethinking Rust Serialization",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "OpenAI’s latest features take direct aim at the app store model",
-      "publication": "TechCrunch",
-      "summary": "OpenAI is building out the pieces of an alternative to the traditional app store model, turning ChatGPT into a place where software can be discovered and used by people and AI agents alike."
-    },
-    {
-      "title": "OpenAI launches Dots, its Muse competitor",
-      "publication": "The Verge",
-      "summary": "OpenAI is responding to Meta's buzzy Muse AI with agentic helpers of its own: Dots."
-    },
-    {
-      "title": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
+      "title": "Launch HN: Magnitude (YC S25) – Self-optimizing inference engine for agents",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "OpenAI launches GPT-6.1 Sol, says it nearly matches GPT-6 Astra and costs less",
-      "publication": "TechCrunch",
-      "summary": "OpenAI says GPT-6.1 Sol delivers significant improvements over GPT-6 Sol across complex professional tasks, including code writing and debugging, document understanding, and executing multistep…"
+      "title": "Gemini 4 Argon",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
-      "title": "Pining for Arc Downcasting in Rust",
+      "title": "EDG C/C++ Compiler Project",
       "publication": "Lobsters",
       "summary": ""
+    },
+    {
+      "title": "Rust to WGSL transpiler `wgsl-rs` released",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "TypeScript Compiler API: Preserving Child Node Narrowing in Reusable Type Guards",
+      "publication": "DEV",
+      "summary": "Hoi hoi! I'm @nyaomaru, a frontend engineer exploring new possibilities with Jev (I'm also..."
+    },
+    {
+      "title": "The People of Utah vs. Kevin O’Leary",
+      "publication": "The Verge",
+      "summary": "On the morning of May 11th, the celebrity investor Kevin O’Leary appeared on Fox Business and announced that he was under attack by Chinese agents."
+    },
+    {
+      "title": "Google releases Gemini 4 Argon, called its most powerful model yet",
+      "publication": "TechCrunch",
+      "summary": "Google has released its latest Gemini model, marketing it as a workhorse for coding and cybersecurity work."
+    },
+    {
+      "title": "SQLite 3.53's SET NOT NULL replaces a full table rebuild with six writes",
+      "publication": "DEV",
+      "summary": "Adding NOT NULL to an 8M-row SQLite table used to mean rebuilding it; 3.53's ALTER COLUMN SET NOT NULL does it in 6 writes instead of 69,843."
     }
   ]
 }

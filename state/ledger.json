@@ -306,5 +306,12 @@
   "url": "https://nnethercote.github.io/2026/09/30/how-to-speed-up-the-rust-compiler-in-september-2026.html",
   "source": "lobsters",
   "posted_at": "2026-09-30T10:19:00+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2609.40335v1",
+  "title": "Is Weight Tying Still Beneficial for Decoder-Only LLMs in Private Settings Under DP-SGD?",
+  "url": "https://arxiv.org/abs/2609.40335v1",
+  "source": "arxiv",
+  "posted_at": "2026-10-01T10:46:19+00:00"
  }
 ]

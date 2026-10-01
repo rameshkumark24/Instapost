@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "handshake",
-  "term": "TCP HANDSHAKE",
-  "headline": "Before you can truly open up, there's always a bit of a TCP HANDSHAKE. Gotta confirm both sides are ready.",
-  "caption": "Before you can truly open up, there's always a bit of a TCP HANDSHAKE. Gotta confirm both sides are ready.\n\n—\nTCP HANDSHAKE: three messages both sides must exchange before any data flows.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-09-30",
-  "built_at": "2026-09-30T10:19:04+00:00",
+  "concept": "foreign-key",
+  "term": "FOREIGN KEY",
+  "headline": "As a plus-one, I was just a FOREIGN KEY. My validity depended entirely on pointing to your primary key.",
+  "caption": "As a plus-one, I was just a FOREIGN KEY. My validity depended entirely on pointing to your primary key.\n\n—\nFOREIGN KEY: a column pointing at another table's primary key.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-01",
+  "built_at": "2026-10-01T10:46:23+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
