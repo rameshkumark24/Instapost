@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-01",
+  "date": "2026-10-02",
   "stories": [
     {
-      "title": "Launch HN: Magnitude (YC S25) – Self-optimizing inference engine for agents",
+      "title": "Clef: Open-weight decision models, and new RL fine-tuning platform",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Gemini 4 Argon",
+      "title": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "EDG C/C++ Compiler Project",
+      "title": "RIP, vector database",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Announcing Rust 1.99.0",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Rust to WGSL transpiler `wgsl-rs` released",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "TypeScript Compiler API: Preserving Child Node Narrowing in Reusable Type Guards",
-      "publication": "DEV",
-      "summary": "Hoi hoi! I'm @nyaomaru, a frontend engineer exploring new possibilities with Jev (I'm also..."
-    },
-    {
-      "title": "The People of Utah vs. Kevin O’Leary",
-      "publication": "The Verge",
-      "summary": "On the morning of May 11th, the celebrity investor Kevin O’Leary appeared on Fox Business and announced that he was under attack by Chinese agents."
-    },
-    {
-      "title": "Google releases Gemini 4 Argon, called its most powerful model yet",
+      "title": "ChatGPT can now virtually try on clothes for you",
       "publication": "TechCrunch",
-      "summary": "Google has released its latest Gemini model, marketing it as a workhorse for coding and cybersecurity work."
+      "summary": "OpenAI is rolling out new shopping features for ChatGPT that let users virtually try on clothing and accessories using their own photos and save products they like to a Favorites library."
     },
     {
-      "title": "SQLite 3.53's SET NOT NULL replaces a full table rebuild with six writes",
-      "publication": "DEV",
-      "summary": "Adding NOT NULL to an 8M-row SQLite table used to mean rebuilding it; 3.53's ALTER COLUMN SET NOT NULL does it in 6 writes instead of 69,843."
+      "title": "Claude-shaped science",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "GPT-Synopsys: Frontier Intelligence to Revolutionize Chip Design",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Is sandboxing sufficient to contain rogue agents?",
+      "publication": "Lobsters",
+      "summary": ""
     }
   ]
 }

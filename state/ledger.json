@@ -313,5 +313,12 @@
   "url": "https://arxiv.org/abs/2609.40335v1",
   "source": "arxiv",
   "posted_at": "2026-10-01T10:46:19+00:00"
+ },
+ {
+  "key": "github.com/Niko1221/Strata",
+  "title": "Strata: Qwen3.8-Flash-Next on any consumer hardware: one-click install for Windows / Linux. Strata inference engine, OpenAI/Anthropic API on localhost, optional image input.",
+  "url": "https://github.com/Niko1221/Strata",
+  "source": "github",
+  "posted_at": "2026-10-02T10:21:19+00:00"
  }
 ]

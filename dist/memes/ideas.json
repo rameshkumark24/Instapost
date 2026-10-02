@@ -1,134 +1,118 @@
 {
-  "date": "2026-10-01",
-  "built_at": "2026-10-01T10:47:24+00:00",
+  "date": "2026-10-02",
+  "built_at": "2026-10-02T10:22:18+00:00",
   "ideas": [
     {
-      "trend": "SQLite 3.53's SET NOT NULL replaces a full table rebuild with six writes",
+      "trend": "ChatGPT can now virtually try on clothes for you",
       "where": "tech",
       "pool": "tech",
-      "context": "Adding NOT NULL to an 8M-row SQLite table used to mean rebuilding it; 3.53's ALTER COLUMN SET NOT NULL does it in 6 writes instead of 69,843.",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
-      "boxes": [
-        "Rebuilding an 8M row table just to add NOT NULL",
-        "SQLite 3.53 making 6 writes and calling it a day"
-      ],
-      "caption": "SQLite engineers continue to operate on a completely different plane of wizardry.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Highlights SQLite 3.53 optimizing ALTER COLUMN SET NOT NULL from 69k disk writes down to just 6."
-    },
-    {
-      "trend": "Google releases Gemini 4 Argon, called its most powerful model yet",
-      "where": "tech",
-      "pool": "tech",
-      "context": "Google has released its latest Gemini model, marketing it as a workhorse for coding and cybersecurity work.",
+      "context": "OpenAI is rolling out new shopping features for ChatGPT that let users virtually try on clothing and accessories using their own photos and save products they like to a Favorites library.",
       "template_id": "112126428",
       "template": "Distracted Boyfriend",
       "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "Developers",
-        "The AI tool they set up last Tuesday",
-        "Gemini 4 Argon"
+        "ChatGPT trying on clothes with your photo",
+        "Me, debugging a UI that keeps breaking layout",
+        "My code that finally renders correctly on every screen size"
       ],
-      "caption": "Time to update all system prompts for the third time this month.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about developers instantly ditching their current LLM setup every time a brand new benchmark-topping model releases."
+      "caption": "AI can dress you up, but it still can’t fix that responsive bug.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Contrast AI fashion feature with classic front‑end nightmare using Distracted Boyfriend."
     },
     {
-      "trend": "paramount+ hbo max streaming combination",
-      "where": "US",
-      "pool": "current",
-      "context": "Paramount’s Streaming Chief Leaves Ahead of Warner Bros. Deal",
-      "template_id": "135256802",
-      "template": "Epic Handshake",
-      "maker": "https://imgflip.com/memegenerator/135256802",
+      "trend": "Clef: Open-weight decision models, and new RL fine-tuning platform",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Hacker News",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Streaming apps merging back into one giant bundle",
-        "Dev teams merging 40 microservices back into a monolith",
-        "Reinventing what we started with"
+        "Open‑weight decision models",
+        "Just another 2‑hour CI job"
       ],
-      "caption": "The cycle of tech architecture and media bundles is identical.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Compares streaming apps combining back into cable packages with dev teams abandoning microservices to return to monoliths."
+      "caption": "When the new RL platform sounds fancy but your pipeline still takes all night.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Drake meme contrasting hype vs reality for developers."
+    },
+    {
+      "trend": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Hacker News",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
+      "boxes": [
+        "FTC investigating AI risks",
+        "My code after a production outage",
+        "Me, calmly adding more logs"
+      ],
+      "caption": "Regulators on the hunt while you’re just trying to find the bug that crashed everything.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Distracted Boyfriend shows developer’s focus on debugging."
     }
   ],
   "trends": [
     {
-      "title": "d a news",
+      "title": "captain smit machchhar",
       "where": "IN"
     },
     {
-      "title": "japan vs ecuador",
+      "title": "samsung galaxy s27 ultra design leaks",
       "where": "IN"
     },
     {
-      "title": "premier league football",
-      "where": "IN"
-    },
-    {
-      "title": "alycia parks",
+      "title": "index",
       "where": "US"
     },
     {
-      "title": "the west wing",
+      "title": "did the phillies win",
       "where": "US"
     },
     {
-      "title": "ecuador vs japon",
+      "title": "motor1.com",
       "where": "US"
     },
     {
-      "title": "japón ecuador",
+      "title": "hbo station eleven sci fi series",
       "where": "US"
     },
     {
-      "title": "paramount+ hbo max streaming combination",
+      "title": "frances tiafoe",
       "where": "US"
     },
     {
-      "title": "brett rypien",
+      "title": "arthur fils",
       "where": "US"
     },
     {
-      "title": "chicago p.d.",
+      "title": "china open",
       "where": "US"
     },
     {
-      "title": "larry krasner",
-      "where": "US"
-    },
-    {
-      "title": "casa encantada 130 million sale",
-      "where": "US"
-    },
-    {
-      "title": "Launch HN: Magnitude (YC S25) – Self-optimizing inference engine for agents",
+      "title": "Clef: Open-weight decision models, and new RL fine-tuning platform",
       "where": "tech"
     },
     {
-      "title": "Gemini 4 Argon",
+      "title": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
       "where": "tech"
     },
     {
-      "title": "EDG C/C++ Compiler Project",
+      "title": "Announcing Rust 1.99.0",
       "where": "tech"
     },
     {
-      "title": "Rust to WGSL transpiler `wgsl-rs` released",
+      "title": "ChatGPT can now virtually try on clothes for you",
       "where": "tech"
     },
     {
-      "title": "TypeScript Compiler API: Preserving Child Node Narrowing in Reusable Type Guards",
+      "title": "Claude-shaped science",
       "where": "tech"
     },
     {
-      "title": "The People of Utah vs. Kevin O’Leary",
+      "title": "GPT-Synopsys: Frontier Intelligence to Revolutionize Chip Design",
       "where": "tech"
     },
     {
-      "title": "Google releases Gemini 4 Argon, called its most powerful model yet",
-      "where": "tech"
-    },
-    {
-      "title": "SQLite 3.53's SET NOT NULL replaces a full table rebuild with six writes",
+      "title": "Is sandboxing sufficient to contain rogue agents?",
       "where": "tech"
     }
   ],
