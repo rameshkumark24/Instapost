@@ -1,44 +1,44 @@
 {
-  "date": "2026-10-02",
+  "date": "2026-10-03",
   "stories": [
+    {
+      "title": "From the creator of Redis; run LLM locally with ds4",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "The Four Horsemen of Agentic Coding",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "API deprecation for AI models: what breaks when a model is retired",
+      "publication": "DEV",
+      "summary": "API deprecation for AI models: how OpenAI and Anthropic retire models, the notice you get, what breaks in your code, and why only open weights survive."
+    },
+    {
+      "title": "It’s not AI anymore, it’s ‘super intelligence’ (according to the White House)",
+      "publication": "TechCrunch",
+      "summary": "This week, the White House got nearly every major tech CEO in one room — Zuckerberg, Bezos, Musk, and Anthropic’s Dario Amodei among them — to sign an AI safety pledge that President Donald Trump…"
+    },
     {
       "title": "Clef: Open-weight decision models, and new RL fine-tuning platform",
       "publication": "Hacker News",
       "summary": ""
     },
     {
+      "title": "OpenAI’s Dot agent is enterprise software that can also order your dinner",
+      "publication": "The Verge",
+      "summary": "It's a tale as old as last week: OpenAI's new agent platform, called Dots, is full of cute little guys who can do your bidding."
+    },
+    {
+      "title": "Upstream Rust maintenance report",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
       "title": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
       "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "RIP, vector database",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Announcing Rust 1.99.0",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "ChatGPT can now virtually try on clothes for you",
-      "publication": "TechCrunch",
-      "summary": "OpenAI is rolling out new shopping features for ChatGPT that let users virtually try on clothing and accessories using their own photos and save products they like to a Favorites library."
-    },
-    {
-      "title": "Claude-shaped science",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "GPT-Synopsys: Frontier Intelligence to Revolutionize Chip Design",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Is sandboxing sufficient to contain rogue agents?",
-      "publication": "Lobsters",
       "summary": ""
     }
   ]
