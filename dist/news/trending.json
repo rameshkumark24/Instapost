@@ -1,43 +1,43 @@
 {
-  "date": "2026-10-03",
+  "date": "2026-10-04",
   "stories": [
     {
-      "title": "From the creator of Redis; run LLM locally with ds4",
+      "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "The Four Horsemen of Agentic Coding",
+      "title": "Rust's derive often implies inline",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "API deprecation for AI models: what breaks when a model is retired",
+      "title": "Getting the most out of Opus 5.5 in Claude and Claude Code",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Rust for CPython (Python Language Summit 2026)",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "A service mesh costs 0.16ms at one connection and 86% of your throughput at 32",
       "publication": "DEV",
-      "summary": "API deprecation for AI models: how OpenAI and Anthropic retire models, the notice you get, what breaks in your code, and why only open weights survive."
+      "summary": "The per-hop latency figure every mesh benchmark quotes is honest and nearly useless."
     },
     {
-      "title": "It’s not AI anymore, it’s ‘super intelligence’ (according to the White House)",
-      "publication": "TechCrunch",
-      "summary": "This week, the White House got nearly every major tech CEO in one room — Zuckerberg, Bezos, Musk, and Anthropic’s Dario Amodei among them — to sign an AI safety pledge that President Donald Trump…"
-    },
-    {
-      "title": "Clef: Open-weight decision models, and new RL fine-tuning platform",
+      "title": "I quit OpenAI because its culture is broken",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "OpenAI’s Dot agent is enterprise software that can also order your dinner",
-      "publication": "The Verge",
-      "summary": "It's a tale as old as last week: OpenAI's new agent platform, called Dots, is full of cute little guys who can do your bidding."
-    },
-    {
-      "title": "Upstream Rust maintenance report",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
+      "title": "Kolibri: A Sovereign Open-Weight Model",
       "publication": "Hacker News",
       "summary": ""
     }

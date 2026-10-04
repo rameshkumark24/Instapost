@@ -175,8 +175,9 @@
   "terms": [
    "BIG O"
   ],
-  "status": "pending",
-  "drafted_at": "2026-09-23T09:11:16+00:00"
+  "status": "sent",
+  "drafted_at": "2026-09-23T09:11:16+00:00",
+  "sent_at": "2026-10-04T10:26:41+00:00"
  },
  {
   "concept": "rollback",
