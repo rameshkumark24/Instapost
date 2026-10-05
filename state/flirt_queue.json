@@ -187,8 +187,9 @@
   "terms": [
    "ROLLBACK"
   ],
-  "status": "pending",
-  "drafted_at": "2026-09-23T09:11:16+00:00"
+  "status": "sent",
+  "drafted_at": "2026-09-23T09:11:16+00:00",
+  "sent_at": "2026-10-05T11:17:54+00:00"
  },
  {
   "concept": "dependency-hell",
@@ -277,5 +278,137 @@
   ],
   "status": "pending",
   "drafted_at": "2026-09-28T10:44:48+00:00"
+ },
+ {
+  "concept": "git-rebase",
+  "term": "REBASE",
+  "domain": "git",
+  "text": "We agreed to REBASE our relationship onto a fresh start. It sounded clean, until we had to manually resolve every single past conflict.",
+  "terms": [
+   "REBASE"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "daemon",
+  "term": "DAEMON",
+  "domain": "systems",
+  "text": "You logged off months ago. Still, you run like a DAEMON in the background, quietly consuming all my memory.",
+  "terms": [
+   "DAEMON"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "cache-hit",
+  "term": "CACHE HIT",
+  "domain": "web",
+  "text": "Finding my coffee in the kitchen was a CACHE HIT—no trek to the shop, just instant gratification.",
+  "terms": [
+   "CACHE HIT"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "debugging",
+  "term": "DEBUGGING",
+  "domain": "code",
+  "text": "Our love is like DEBUGGING: we peel back assumptions one by one until we finally find the missing semicolon in our expectations.",
+  "terms": [
+   "DEBUGGING"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "compile-error",
+  "term": "COMPILE ERROR",
+  "domain": "code",
+  "text": "Our plans hit a COMPILE ERROR the moment we tried to schedule a weekend without checking each other's calendars.",
+  "terms": [
+   "COMPILE ERROR"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "503",
+  "term": "503 UNAVAILABLE",
+  "domain": "web",
+  "text": "When I'm exhausted, I return 503 UNAVAILABLE – my brain's overloaded and needs maintenance before it can process any more requests.",
+  "terms": [
+   "503 UNAVAILABLE"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "rate-limit",
+  "term": "RATE LIMIT",
+  "domain": "networking",
+  "text": "I'm not ignoring you. You just sent five texts in thirty seconds and hit my personal RATE LIMIT. Please retry in an hour.",
+  "terms": [
+   "RATE LIMIT"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "websocket",
+  "term": "WEBSOCKET",
+  "domain": "web",
+  "text": "The best friendships don't poll for updates. You just keep the WEBSOCKET open and push random thoughts the second they happen.",
+  "terms": [
+   "WEBSOCKET"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "revoked-token",
+  "term": "REVOKED TOKEN",
+  "domain": "security",
+  "text": "Our friendship was a valid token, but after that argument it became a REVOKED TOKEN—no more doors open for me.",
+  "terms": [
+   "REVOKED TOKEN"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "base-case",
+  "term": "BASE CASE",
+  "domain": "algorithms",
+  "text": "We kept arguing about the argument about the argument. 'Let's just get dinner' was our only BASE CASE.",
+  "terms": [
+   "BASE CASE"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "deep-copy",
+  "term": "DEEP COPY",
+  "domain": "algorithms",
+  "text": "We didn't drift apart; we just became a DEEP COPY. You changed your entire life, and none of it modified mine.",
+  "terms": [
+   "DEEP COPY"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "hash-collision",
+  "term": "HASH COLLISION",
+  "domain": "algorithms",
+  "text": "We had completely different intentions, yet we produced the exact same misunderstanding. A textbook HASH COLLISION.",
+  "terms": [
+   "HASH COLLISION"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-05T11:17:52+00:00"
  }
 ]

@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "big-o",
-  "term": "BIG O",
-  "headline": "Planning dinner for two is easy. Add six friends with different schedules, and you learn what terrible BIG O looks like in real life.",
-  "caption": "Planning dinner for two is easy. Add six friends with different schedules, and you learn what terrible BIG O looks like in real life.\n\n—\nBIG O: describes how the cost grows as the input grows.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-04",
-  "built_at": "2026-10-04T10:26:41+00:00",
+  "concept": "rollback",
+  "term": "ROLLBACK",
+  "headline": "Some days, after a major screw-up, you just want to hit ROLLBACK and pretend it never happened.",
+  "caption": "Some days, after a major screw-up, you just want to hit ROLLBACK and pretend it never happened.\n\n—\nROLLBACK: undoes every change made inside a transaction.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-05",
+  "built_at": "2026-10-05T11:17:54+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

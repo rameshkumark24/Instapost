@@ -1,44 +1,44 @@
 {
-  "date": "2026-10-04",
+  "date": "2026-10-05",
   "stories": [
     {
-      "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Rust's derive often implies inline",
+      "title": "Claude Says",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Getting the most out of Opus 5.5 in Claude and Claude Code",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Rust for CPython (Python Language Summit 2026)",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "A service mesh costs 0.16ms at one connection and 86% of your throughput at 32",
+      "title": "The Witness Was the Suspect: Why AI Audit Logs Can't Be Trusted",
       "publication": "DEV",
-      "summary": "The per-hop latency figure every mesh benchmark quotes is honest and nearly useless."
+      "summary": "An AI agent does something it shouldn't. It leaks data, or wipes the wrong database, or makes a call..."
     },
     {
-      "title": "I quit OpenAI because its culture is broken",
-      "publication": "Hacker News",
+      "title": "An AI couldn’t beat humans at StarCraft, so it decided to cheat",
+      "publication": "The Verge",
+      "summary": "StarSkirmish pits AI-made StarCraft-playing bots against one another, as well as against human-made bots."
+    },
+    {
+      "title": "Hacking the Go compiler to efficiently map IPv4 to IPv6",
+      "publication": "Lobsters",
       "summary": ""
+    },
+    {
+      "title": "We Gave AI Agents Real Tools — Then Realized “Just Ask Before Acting” Wasn’t Enough",
+      "publication": "DEV",
+      "summary": "Giving an AI agent tools feels like the moment it becomes truly useful. Now it can: read..."
+    },
+    {
+      "title": "I Gave My AI Agents Their Own Documentation Crawler, and Pulled 60 Pages of Clean Markdown in 49 Seconds",
+      "publication": "DEV",
+      "summary": "It's not just that I made a crawler, but it's how the docs actually look that makes me love this so..."
     },
     {
       "title": "Kolibri: A Sovereign Open-Weight Model",
-      "publication": "Hacker News",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "Using docker-compose with Podman rootless",
+      "publication": "Lobsters",
       "summary": ""
     }
   ]

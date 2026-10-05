@@ -1,5 +1,143 @@
 {
-  "date": "2026-10-04",
-  "built_at": "2026-10-04T10:27:04+00:00",
-  "skip": "every idea failed a check"
+  "date": "2026-10-05",
+  "built_at": "2026-10-05T11:18:50+00:00",
+  "ideas": [
+    {
+      "trend": "Claude Says",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Lobsters",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
+      "boxes": [
+        "Claude: \"I love debugging, it's like solving a puzzle\"",
+        "Claude: \"Also loves lobsters, because they’re shell‑scripted\""
+      ],
+      "caption": "When the LLM tries to be a chef and a dev at the same time.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Drake meme contrasts Claude's claim with a silly lobster pun."
+    },
+    {
+      "trend": "We Gave AI Agents Real Tools — Then Realized “Just Ask Before Acting” Wasn’t Enough",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Giving an AI agent tools feels like the moment it becomes truly useful. Now it can: read...",
+      "template_id": "87743020",
+      "template": "Two Buttons",
+      "maker": "https://imgflip.com/memegenerator/87743020",
+      "boxes": [
+        "Give AI agent the ability to edit production config",
+        "Add a ‘just ask before acting’ safety check",
+        "Let it run unattended because it ‘knows best’"
+      ],
+      "caption": "Pressing the right button feels like progress, until the cluster restarts at 3 am.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Two‑Buttons meme shows the dilemma of granting tools vs. trusting the AI."
+    },
+    {
+      "trend": "monsoon",
+      "where": "IN",
+      "pool": "current",
+      "context": "Ten months before rains fall, an Indian scientist is trying to see the monsoon coming",
+      "template_id": "55311130",
+      "template": "This Is Fine",
+      "maker": "https://imgflip.com/memegenerator/55311130",
+      "boxes": [
+        "Monsoon season: \"I’ll be here in a few weeks\"",
+        "Developer: \"Bug fix in production?\""
+      ],
+      "caption": "Waiting for the monsoon is like waiting for that “quick fix” to land in prod.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "This‑Is‑Fine meme compares unpredictable weather delays to release anxiety."
+    }
+  ],
+  "trends": [
+    {
+      "title": "bse sensex",
+      "where": "IN"
+    },
+    {
+      "title": "japan vs new zealand",
+      "where": "IN"
+    },
+    {
+      "title": "zimbabwe vs west indies",
+      "where": "IN"
+    },
+    {
+      "title": "zimw vs wi-w",
+      "where": "IN"
+    },
+    {
+      "title": "monsoon",
+      "where": "IN"
+    },
+    {
+      "title": "fitness",
+      "where": "US"
+    },
+    {
+      "title": "el niño",
+      "where": "US"
+    },
+    {
+      "title": "china open",
+      "where": "US"
+    },
+    {
+      "title": "iheart",
+      "where": "US"
+    },
+    {
+      "title": "beijing open",
+      "where": "US"
+    },
+    {
+      "title": "gasoline",
+      "where": "US"
+    },
+    {
+      "title": "william, prince of wales",
+      "where": "US"
+    },
+    {
+      "title": "time change",
+      "where": "US"
+    },
+    {
+      "title": "temperature",
+      "where": "US"
+    },
+    {
+      "title": "Claude Says",
+      "where": "tech"
+    },
+    {
+      "title": "The Witness Was the Suspect: Why AI Audit Logs Can't Be Trusted",
+      "where": "tech"
+    },
+    {
+      "title": "An AI couldn’t beat humans at StarCraft, so it decided to cheat",
+      "where": "tech"
+    },
+    {
+      "title": "Hacking the Go compiler to efficiently map IPv4 to IPv6",
+      "where": "tech"
+    },
+    {
+      "title": "We Gave AI Agents Real Tools — Then Realized “Just Ask Before Acting” Wasn’t Enough",
+      "where": "tech"
+    },
+    {
+      "title": "I Gave My AI Agents Their Own Documentation Crawler, and Pulled 60 Pages of Clean Markdown in 49 Seconds",
+      "where": "tech"
+    },
+    {
+      "title": "Kolibri: A Sovereign Open-Weight Model",
+      "where": "tech"
+    },
+    {
+      "title": "Using docker-compose with Podman rootless",
+      "where": "tech"
+    }
+  ],
+  "problems": []
 }
