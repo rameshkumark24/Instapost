@@ -341,5 +341,12 @@
   "url": "https://ohhfishal.net/Posts/claude",
   "source": "lobsters",
   "posted_at": "2026-10-05T11:14:19+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2610.06830v1",
+  "title": "MemPilot: Orchestrating On-Demand Multimodal Memory Curation for LLM Agents",
+  "url": "https://arxiv.org/abs/2610.06830v1",
+  "source": "arxiv",
+  "posted_at": "2026-10-06T11:03:33+00:00"
  }
 ]

@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "rollback",
-  "term": "ROLLBACK",
-  "headline": "Some days, after a major screw-up, you just want to hit ROLLBACK and pretend it never happened.",
-  "caption": "Some days, after a major screw-up, you just want to hit ROLLBACK and pretend it never happened.\n\n—\nROLLBACK: undoes every change made inside a transaction.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-05",
-  "built_at": "2026-10-05T11:17:54+00:00",
+  "concept": "dependency-hell",
+  "term": "DEPENDENCY HELL",
+  "headline": "My weekend plans hit DEPENDENCY HELL. Each activity needed a conflicting version of my time.",
+  "caption": "My weekend plans hit DEPENDENCY HELL. Each activity needed a conflicting version of my time.\n\n—\nDEPENDENCY HELL: each thing you need requires a different version of something else you need.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-06",
+  "built_at": "2026-10-06T11:03:37+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

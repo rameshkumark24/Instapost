@@ -103,5 +103,20 @@
     "date": "2026-10-05",
     "trend": "monsoon",
     "template_id": "55311130"
+  },
+  {
+    "date": "2026-10-06",
+    "trend": "OpenAI \"rogue\" agent activities found on Wikimedia projects",
+    "template_id": "181913649"
+  },
+  {
+    "date": "2026-10-06",
+    "trend": "Async Rust: Where does the scheduler live?",
+    "template_id": "87743020"
+  },
+  {
+    "date": "2026-10-06",
+    "trend": "nfl power rankings week 5",
+    "template_id": "55311130"
   }
 ]

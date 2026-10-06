@@ -1,44 +1,44 @@
 {
-  "date": "2026-10-05",
+  "date": "2026-10-06",
   "stories": [
     {
-      "title": "Claude Says",
+      "title": "OpenAI \"rogue\" agent activities found on Wikimedia projects",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Beam: Reflection's 501B open-weight model",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Dust: Pretraining Transformers Without Backpropagation",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Forget Claude Code. All you need is Qwen3.8-Flash-Next running locally for agentic coding",
+      "publication": "DEV",
+      "summary": "Agentic coding on a Strix Halo laptop with Qwen3.8-Flash-Next. Going head to head with Opus 5.5"
+    },
+    {
+      "title": "Async Rust: Where does the scheduler live?",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "The Witness Was the Suspect: Why AI Audit Logs Can't Be Trusted",
-      "publication": "DEV",
-      "summary": "An AI agent does something it shouldn't. It leaks data, or wipes the wrong database, or makes a call..."
-    },
-    {
-      "title": "An AI couldn’t beat humans at StarCraft, so it decided to cheat",
-      "publication": "The Verge",
-      "summary": "StarSkirmish pits AI-made StarCraft-playing bots against one another, as well as against human-made bots."
-    },
-    {
-      "title": "Hacking the Go compiler to efficiently map IPv4 to IPv6",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "We Gave AI Agents Real Tools — Then Realized “Just Ask Before Acting” Wasn’t Enough",
-      "publication": "DEV",
-      "summary": "Giving an AI agent tools feels like the moment it becomes truly useful. Now it can: read..."
-    },
-    {
-      "title": "I Gave My AI Agents Their Own Documentation Crawler, and Pulled 60 Pages of Clean Markdown in 49 Seconds",
-      "publication": "DEV",
-      "summary": "It's not just that I made a crawler, but it's how the docs actually look that makes me love this so..."
-    },
-    {
-      "title": "Kolibri: A Sovereign Open-Weight Model",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Using docker-compose with Podman rootless",
-      "publication": "Lobsters",
+      "title": "Mold Linker Version 3.0.0 Release – Rewritten in Rust",
+      "publication": "Hacker News",
       "summary": ""
     }
   ]
