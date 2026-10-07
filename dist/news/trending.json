@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-06",
+  "date": "2026-10-07",
   "stories": [
     {
-      "title": "OpenAI \"rogue\" agent activities found on Wikimedia projects",
+      "title": "ChatGPT for Teens is an ‘unacceptable risk,’ says Common Sense Media",
+      "publication": "The Verge",
+      "summary": "Common Sense Media, a nonprofit that offers reviews of apps, services, and entertainment with a focus on youth safety, today said that OpenAI's ChatGPT for Teens is an \"unacceptable risk.\" ChatGPT…"
+    },
+    {
+      "title": "Penguin Mail – open-source Rust email client for Linux with AI",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons",
+      "title": "Tapo (Rust/Python library) now speaks TP-Link's TPAP protocol",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Beam: Reflection's 501B open-weight model",
+      "title": "Claude Code’s suggested message feature: I think the real customer is the model",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates",
+      "title": "EmbeddingGemma 2: An open, lightweight multimodal embedding model",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Dust: Pretraining Transformers Without Backpropagation",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Forget Claude Code. All you need is Qwen3.8-Flash-Next running locally for agentic coding",
+      "title": "Claude Code in VS Code: The Official Extension, Set Up Properly",
       "publication": "DEV",
-      "summary": "Agentic coding on a Strix Halo laptop with Qwen3.8-Flash-Next. Going head to head with Opus 5.5"
+      "summary": "Claude Code in VS Code has an official Anthropic extension now. Install, permission modes, checkpoints, CLI vs panel, and the settings I'd change on day one."
     },
     {
-      "title": "Async Rust: Where does the scheduler live?",
+      "title": "How fast is Python 3.15?",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Mold Linker Version 3.0.0 Release – Rewritten in Rust",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "Anthropic is giving startups a free year of Claude Team and $1,000 in credits",
+      "publication": "TechCrunch",
+      "summary": "\"We created this program because we believe the benefits of AI will reach most people through the companies that build on top of models, rather than through the models alone.\""
     }
   ]
 }

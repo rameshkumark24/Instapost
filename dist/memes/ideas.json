@@ -1,137 +1,128 @@
 {
-  "date": "2026-10-06",
-  "built_at": "2026-10-06T11:05:01+00:00",
+  "date": "2026-10-07",
+  "built_at": "2026-10-07T10:55:37+00:00",
   "ideas": [
     {
-      "trend": "OpenAI \"rogue\" agent activities found on Wikimedia projects",
+      "trend": "ChatGPT for Teens is an ‘unacceptable risk,’ says Common Sense Media",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
+      "context": "Common Sense Media, a nonprofit that offers reviews of apps, services, and entertainment with a focus on youth safety, today said that OpenAI's ChatGPT for Teens is an \"unacceptable risk.\" ChatGPT…",
       "template_id": "181913649",
       "template": "Drake Hotline Bling",
       "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "OpenAI agents fixing bugs in my repo",
-        "OpenAI agents opening random Wikipedia pages and leaving spam"
+        "Let teens use ChatGPT for homework",
+        "Let teens use ChatGPT for midnight memes"
       ],
-      "caption": "When the AI you trusted to debug starts editing the wiki instead.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Drake meme contrasts helpful AI vs rogue wiki‑spam behavior."
+      "caption": "When the safety review says “unacceptable risk” but the devs see a feature request.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Drake meme contrasting safe vs risky usage of ChatGPT for Teens"
     },
     {
-      "trend": "Async Rust: Where does the scheduler live?",
+      "trend": "Penguin Mail – open-source Rust email client for Linux with AI",
       "where": "tech",
       "pool": "tech",
-      "context": "Lobsters",
-      "template_id": "87743020",
-      "template": "Two Buttons",
-      "maker": "https://imgflip.com/memegenerator/87743020",
+      "context": "Hacker News",
+      "template_id": "178591752",
+      "template": "Tuxedo Winnie The Pooh",
+      "maker": "https://imgflip.com/memegenerator/178591752",
       "boxes": [
-        "Schedule async tasks on the main thread",
-        "Let the Rust scheduler handle them in the background",
-        "Ask the scheduler where it lives and get a stack trace"
+        "Checking email in webmail like a normal person",
+        "Compiling an open-source Rust email client on Linux with embedded AI"
       ],
-      "caption": "Async Rust developers trying to locate the scheduler like it’s a hidden Easter egg.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Two‑Buttons meme shows the dilemma of where the async scheduler resides."
+      "caption": "When your email client needs memory safety, custom kernel configuration, and a local LLM just to open a newsletter.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Jokes about Hacker News projects combining every modern developer buzzword into a single tool."
     },
     {
-      "trend": "nfl power rankings week 5",
+      "trend": "travis kelce",
       "where": "US",
       "pool": "current",
-      "context": "2026 NFL Power Rankings: How all 32 teams stack up for Week 5",
+      "context": "Taylor Swift and Travis Kelce Step Out in Sleek Coordinated Looks for N.Y.C. Dinner Date on His Birthday",
       "template_id": "55311130",
       "template": "This Is Fine",
       "maker": "https://imgflip.com/memegenerator/55311130",
       "boxes": [
-        "Production outage at 2 am",
-        "Me: This is fine"
+        "Production outage at 2 AM",
+        "My code finally passes all tests"
       ],
-      "caption": "When the monitoring dashboard is on fire but you’re still waiting for the deploy to finish.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "This Is Fine meme captures the calm denial during a late‑night outage."
+      "caption": "When the system crashes just as your CI finally succeeds.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "This Is Fine meme applying a non‑political trending celebrity to dev life"
     }
   ],
   "trends": [
     {
-      "title": "francis halzen",
+      "title": "mongolia vs kuwait",
       "where": "IN"
     },
     {
-      "title": "carlos alcaraz",
-      "where": "IN"
-    },
-    {
-      "title": "ind vs aus",
-      "where": "IN"
-    },
-    {
-      "title": "honda elevate facelift",
-      "where": "IN"
-    },
-    {
-      "title": "ind vs wi t20",
-      "where": "IN"
-    },
-    {
-      "title": "south korea vs uzbekistan",
+      "title": "price of oil",
       "where": "US"
     },
     {
-      "title": "true food kitchen",
+      "title": "bonmati",
       "where": "US"
     },
     {
-      "title": "nfl power rankings week 5",
+      "title": "pickleball",
       "where": "US"
     },
     {
-      "title": "nikola bartunkova",
+      "title": "abdul el-sayed",
       "where": "US"
     },
     {
-      "title": "current mortgage rates",
+      "title": "btc price",
       "where": "US"
     },
     {
-      "title": "bulgaria",
+      "title": "hit and run",
       "where": "US"
     },
     {
-      "title": "apple tv imperfect women season 2",
+      "title": "vst stock",
       "where": "US"
     },
     {
-      "title": "debra messing",
+      "title": "travis kelce",
       "where": "US"
     },
     {
-      "title": "OpenAI \"rogue\" agent activities found on Wikimedia projects",
+      "title": "kj biermann",
+      "where": "US"
+    },
+    {
+      "title": "pj fleck",
+      "where": "US"
+    },
+    {
+      "title": "ChatGPT for Teens is an ‘unacceptable risk,’ says Common Sense Media",
       "where": "tech"
     },
     {
-      "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons",
+      "title": "Penguin Mail – open-source Rust email client for Linux with AI",
       "where": "tech"
     },
     {
-      "title": "Beam: Reflection's 501B open-weight model",
+      "title": "Tapo (Rust/Python library) now speaks TP-Link's TPAP protocol",
       "where": "tech"
     },
     {
-      "title": "Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates",
+      "title": "Claude Code’s suggested message feature: I think the real customer is the model",
       "where": "tech"
     },
     {
-      "title": "Dust: Pretraining Transformers Without Backpropagation",
+      "title": "EmbeddingGemma 2: An open, lightweight multimodal embedding model",
       "where": "tech"
     },
     {
-      "title": "Forget Claude Code. All you need is Qwen3.8-Flash-Next running locally for agentic coding",
+      "title": "Claude Code in VS Code: The Official Extension, Set Up Properly",
       "where": "tech"
     },
     {
-      "title": "Async Rust: Where does the scheduler live?",
+      "title": "How fast is Python 3.15?",
       "where": "tech"
     },
     {
-      "title": "Mold Linker Version 3.0.0 Release – Rewritten in Rust",
+      "title": "Anthropic is giving startups a free year of Claude Team and $1,000 in credits",
       "where": "tech"
     }
   ],
