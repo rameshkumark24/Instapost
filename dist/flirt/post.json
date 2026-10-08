@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "bandwidth",
-  "term": "BANDWIDTH",
-  "headline": "Our friendship hits a limit when we try to stream thoughts faster than our mental BANDWIDTH can handle.",
-  "caption": "Our friendship hits a limit when we try to stream thoughts faster than our mental BANDWIDTH can handle.\n\n—\nBANDWIDTH: how much can travel through a connection at once.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-07",
-  "built_at": "2026-10-07T10:53:42+00:00",
+  "concept": "select-star",
+  "term": "SELECT *",
+  "headline": "You asked how I was doing. I accidentally ran SELECT * on my entire life history.",
+  "caption": "You asked how I was doing. I accidentally ran SELECT * on my entire life history.\n\n—\nSELECT *: asks for every column, whether it is needed or not.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-08",
+  "built_at": "2026-10-08T11:19:34+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

@@ -1,128 +1,137 @@
 {
-  "date": "2026-10-07",
-  "built_at": "2026-10-07T10:55:37+00:00",
+  "date": "2026-10-08",
+  "built_at": "2026-10-08T11:20:51+00:00",
   "ideas": [
     {
-      "trend": "ChatGPT for Teens is an ‘unacceptable risk,’ says Common Sense Media",
+      "trend": "Docker Agent",
       "where": "tech",
       "pool": "tech",
-      "context": "Common Sense Media, a nonprofit that offers reviews of apps, services, and entertainment with a focus on youth safety, today said that OpenAI's ChatGPT for Teens is an \"unacceptable risk.\" ChatGPT…",
+      "context": "Hacker News",
       "template_id": "181913649",
       "template": "Drake Hotline Bling",
       "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Let teens use ChatGPT for homework",
-        "Let teens use ChatGPT for midnight memes"
+        "Docker Agent: \"Just run it locally, I have no CI\"",
+        "Docker Agent: \"Runs fine on my machine, production says nope\""
       ],
-      "caption": "When the safety review says “unacceptable risk” but the devs see a feature request.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Drake meme contrasting safe vs risky usage of ChatGPT for Teens"
+      "caption": "When the new Docker Agent promises zero‑config builds but your pipeline still crashes.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developer frustration with over‑promised Docker tooling."
     },
     {
-      "trend": "Penguin Mail – open-source Rust email client for Linux with AI",
+      "trend": "C for Rust Programmers",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
+      "context": "Lobsters",
+      "template_id": "87743020",
+      "template": "Two Buttons",
+      "maker": "https://imgflip.com/memegenerator/87743020",
       "boxes": [
-        "Checking email in webmail like a normal person",
-        "Compiling an open-source Rust email client on Linux with embedded AI"
+        "Write C‑style pointer arithmetic",
+        "Use Rust's safe references",
+        "Spend the whole day debugging unsafe blocks"
       ],
-      "caption": "When your email client needs memory safety, custom kernel configuration, and a local LLM just to open a newsletter.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about Hacker News projects combining every modern developer buzzword into a single tool."
+      "caption": "Rust programmers trying to remember why they left C behind.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Contrast between C habits and Rust safety features."
     },
     {
-      "trend": "travis kelce",
+      "trend": "winning powerball numbers",
       "where": "US",
       "pool": "current",
-      "context": "Taylor Swift and Travis Kelce Step Out in Sleek Coordinated Looks for N.Y.C. Dinner Date on His Birthday",
+      "context": "Powerball Jackpot Crosses $500 Million—Here’s What The Winner Could Take Home",
       "template_id": "55311130",
       "template": "This Is Fine",
       "maker": "https://imgflip.com/memegenerator/55311130",
       "boxes": [
-        "Production outage at 2 AM",
+        "Powerball jackpot hits $500M",
         "My code finally passes all tests"
       ],
-      "caption": "When the system crashes just as your CI finally succeeds.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "This Is Fine meme applying a non‑political trending celebrity to dev life"
+      "caption": "Both feel like winning the lottery, until the next bug shows up.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developer humor comparing rare jackpots to rare test passes."
     }
   ],
   "trends": [
     {
-      "title": "mongolia vs kuwait",
+      "title": "mohammed shami",
       "where": "IN"
     },
     {
-      "title": "price of oil",
+      "title": "11 labs",
+      "where": "IN"
+    },
+    {
+      "title": "artificial andrew garfield",
+      "where": "IN"
+    },
+    {
+      "title": "shefali bagga",
+      "where": "IN"
+    },
+    {
+      "title": "bodoland lottery result",
+      "where": "IN"
+    },
+    {
+      "title": "yunchaokete bu",
       "where": "US"
     },
     {
-      "title": "bonmati",
+      "title": "atalanta",
       "where": "US"
     },
     {
-      "title": "pickleball",
+      "title": "secuestro",
       "where": "US"
     },
     {
-      "title": "abdul el-sayed",
+      "title": "winning powerball numbers",
       "where": "US"
     },
     {
-      "title": "btc price",
+      "title": "cnbc",
       "where": "US"
     },
     {
-      "title": "hit and run",
+      "title": "bribery",
       "where": "US"
     },
     {
-      "title": "vst stock",
+      "title": "s&p 500 futures",
       "where": "US"
     },
     {
-      "title": "travis kelce",
+      "title": "jamaal williams",
       "where": "US"
     },
     {
-      "title": "kj biermann",
-      "where": "US"
-    },
-    {
-      "title": "pj fleck",
-      "where": "US"
-    },
-    {
-      "title": "ChatGPT for Teens is an ‘unacceptable risk,’ says Common Sense Media",
+      "title": "Docker Agent",
       "where": "tech"
     },
     {
-      "title": "Penguin Mail – open-source Rust email client for Linux with AI",
+      "title": "Meta and Microsoft take steps to reduce employee usage of Claude AI",
       "where": "tech"
     },
     {
-      "title": "Tapo (Rust/Python library) now speaks TP-Link's TPAP protocol",
+      "title": "ChatGPT’s ‘Intelligent UI’ update fills its responses with pictures, charts, and buttons",
       "where": "tech"
     },
     {
-      "title": "Claude Code’s suggested message feature: I think the real customer is the model",
+      "title": "GPT‑6 and Intelligent UI for everyone",
       "where": "tech"
     },
     {
-      "title": "EmbeddingGemma 2: An open, lightweight multimodal embedding model",
+      "title": "Claude Haiku 5.5",
       "where": "tech"
     },
     {
-      "title": "Claude Code in VS Code: The Official Extension, Set Up Properly",
+      "title": "C for Rust Programmers",
       "where": "tech"
     },
     {
-      "title": "How fast is Python 3.15?",
+      "title": "To Retry or Not to Retry? That Is the Question.",
       "where": "tech"
     },
     {
-      "title": "Anthropic is giving startups a free year of Claude Team and $1,000 in credits",
+      "title": "ChatGPT is getting a lot more visual, with the launch of a new interface",
       "where": "tech"
     }
   ],
