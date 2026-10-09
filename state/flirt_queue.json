@@ -235,8 +235,9 @@
   "terms": [
    "INTERRUPT"
   ],
-  "status": "pending",
-  "drafted_at": "2026-09-28T10:44:48+00:00"
+  "status": "sent",
+  "drafted_at": "2026-09-28T10:44:48+00:00",
+  "sent_at": "2026-10-09T11:09:52+00:00"
  },
  {
   "concept": "binary-search",

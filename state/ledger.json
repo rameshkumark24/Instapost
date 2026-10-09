@@ -362,5 +362,12 @@
   "url": "https://arxiv.org/abs/2610.10444v1",
   "source": "arxiv",
   "posted_at": "2026-10-08T11:19:29+00:00"
+ },
+ {
+  "key": "github.com/storytold/filmcraft",
+  "title": "filmcraft: An open-source, clean-room reimplementation of Adobe Premiere Pro built in pure Rust.",
+  "url": "https://github.com/storytold/filmcraft",
+  "source": "github",
+  "posted_at": "2026-10-09T11:09:48+00:00"
  }
 ]

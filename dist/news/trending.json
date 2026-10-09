@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-09",
   "stories": [
     {
-      "title": "Docker Agent",
+      "title": "Docker just shipped the agent wall I wanted. It's off by default.",
+      "publication": "DEV",
+      "summary": "docker-agent comes preinstalled with Docker Desktop 4.63 — declarative YAML agents, MCP toolsets, and a VM sandbox with default-deny egress you have to opt into. A source read."
+    },
+    {
+      "title": "OpenAI annualised revenues $20B less than previously signalled",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Meta and Microsoft take steps to reduce employee usage of Claude AI",
+      "title": "OpenAI, the Partition Principle, and Mathematics",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "ChatGPT’s ‘Intelligent UI’ update fills its responses with pictures, charts, and buttons",
+      "title": "OpenAI doubles down on decision to fire three AI safety researchers",
       "publication": "The Verge",
-      "summary": "OpenAI is launching a new Intelligent UI feature in ChatGPT that allows the chatbot to answer your questions with interactive visuals."
+      "summary": "OpenAI is standing firm on its decision to fire three safety researchers after an investigation found they committed \"a significant breach of trust.\" In a post on X on Friday, the company said…"
     },
     {
-      "title": "GPT‑6 and Intelligent UI for everyone",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "The YAML Norway problem and cron's day-of-month trap: two config formats that lie to you",
+      "publication": "DEV",
+      "summary": "Feed four innocent lines to PyYAML, Python's everyday YAML library: python3 -c 'import yaml;..."
     },
     {
-      "title": "Claude Haiku 5.5",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "C for Rust Programmers",
+      "title": "The Missing Piece in Rust Error Handling",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "To Retry or Not to Retry? That Is the Question.",
+      "title": "AI coding agents and Theo's Rust TypeScript compiler: the caveats",
       "publication": "DEV",
-      "summary": "This is a submission for the Kaggle Benchmarking Challenge Those who read my articles know that a..."
+      "summary": "AI coding agents produced Theo's Rust TypeScript port. Its project benchmarks are promising; version matching and maintenance still need review."
     },
     {
-      "title": "ChatGPT is getting a lot more visual, with the launch of a new interface",
-      "publication": "TechCrunch",
-      "summary": "OpenAI is launching a new user interface that will bring interactive visuals to ChatGPT."
+      "title": "LLMs Pass the Data-Science Quiz, Then Give Different Advice: A Kaggle Benchmark of 36 Measured Judgment Calls",
+      "publication": "DEV",
+      "summary": "This is a submission for the Kaggle Benchmarking Challenge. What I Benchmarked I spend a..."
     }
   ]
 }
