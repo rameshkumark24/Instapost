@@ -188,5 +188,20 @@
     "date": "2026-10-10",
     "trend": "snapdragon stadium",
     "template_id": "110163934"
+  },
+  {
+    "date": "2026-10-10",
+    "trend": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
+    "template_id": "438680"
+  },
+  {
+    "date": "2026-10-10",
+    "trend": "Why Are Coding Agents So Dumb?",
+    "template_id": "188390779"
+  },
+  {
+    "date": "2026-10-10",
+    "trend": "tyson fury",
+    "template_id": "177682295"
   }
 ]

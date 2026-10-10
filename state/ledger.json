@@ -369,5 +369,12 @@
   "url": "https://github.com/storytold/filmcraft",
   "source": "github",
   "posted_at": "2026-10-09T11:09:48+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2610.12463v1",
+  "title": "From Reactive Containment to Proactive Assurance: Lessons from OpenAI, Anthropic, and Google Agent Security Incidents",
+  "url": "https://arxiv.org/abs/2610.12463v1",
+  "source": "arxiv",
+  "posted_at": "2026-10-10T10:28:24+00:00"
  }
 ]

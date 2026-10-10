@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-10",
   "stories": [
     {
-      "title": "Docker just shipped the agent wall I wanted. It's off by default.",
+      "title": "EcoEcho: The Offline Voice-Driven AI Wilderness Companion (Built for Touch Grass)",
       "publication": "DEV",
-      "summary": "docker-agent comes preinstalled with Docker Desktop 4.63 — declarative YAML agents, MCP toolsets, and a VM sandbox with default-deny egress you have to opt into. A source read."
+      "summary": "How I built a 100% offline, privacy-first AI agent using open-weight models to save lives in the wilderness with zero cloud connectivity."
     },
     {
-      "title": "OpenAI annualised revenues $20B less than previously signalled",
+      "title": "Anthropic AI model submits false tip on unsolved Philly murder, police say",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "OpenAI, the Partition Principle, and Mathematics",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
+      "publication": "TechCrunch",
+      "summary": "Anthropic said it \"turned off live internet access\" for \"all our internal evaluations\" until further notice."
     },
     {
-      "title": "OpenAI doubles down on decision to fire three AI safety researchers",
-      "publication": "The Verge",
-      "summary": "OpenAI is standing firm on its decision to fire three safety researchers after an investigation found they committed \"a significant breach of trust.\" In a post on X on Friday, the company said…"
-    },
-    {
-      "title": "The YAML Norway problem and cron's day-of-month trap: two config formats that lie to you",
-      "publication": "DEV",
-      "summary": "Feed four innocent lines to PyYAML, Python's everyday YAML library: python3 -c 'import yaml;..."
-    },
-    {
-      "title": "The Missing Piece in Rust Error Handling",
+      "title": "Adding Go's defer to the TypeScript Compiler",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "AI coding agents and Theo's Rust TypeScript compiler: the caveats",
+      "title": "Does Your LLM Know the Boundary? I Left the Doors Open and 6 of 10 AI Agents Crowned Themselves",
       "publication": "DEV",
-      "summary": "AI coding agents produced Theo's Rust TypeScript port. Its project benchmarks are promising; version matching and maintenance still need review."
+      "summary": "I put ten AI agents on trial inside a fake company, hid the rules where real rules live, and let the..."
     },
     {
-      "title": "LLMs Pass the Data-Science Quiz, Then Give Different Advice: A Kaggle Benchmark of 36 Measured Judgment Calls",
-      "publication": "DEV",
-      "summary": "This is a submission for the Kaggle Benchmarking Challenge. What I Benchmarked I spend a..."
+      "title": "Python 3.15",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Voxlocal: a minimal voice agent written in Rust",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "Why Are Coding Agents So Dumb?",
+      "publication": "Lobsters",
+      "summary": ""
     }
   ]
 }

@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "interrupt",
-  "term": "INTERRUPT",
-  "headline": "You called it a quick question, but it was an INTERRUPT. I dropped everything, handled the urgent signal, and never quite restored my previous state.",
-  "caption": "You called it a quick question, but it was an INTERRUPT. I dropped everything, handled the urgent signal, and never quite restored my previous state.\n\n—\nINTERRUPT: a signal that makes the processor drop what it is doing to deal with something urgent.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-09",
-  "built_at": "2026-10-09T11:09:52+00:00",
+  "concept": "binary-search",
+  "term": "BINARY SEARCH",
+  "headline": "Finding a home in my budget is a BINARY SEARCH. I check the median price, realize I can't afford it, and eliminate the top half.",
+  "caption": "Finding a home in my budget is a BINARY SEARCH. I check the median price, realize I can't afford it, and eliminate the top half.\n\n—\nBINARY SEARCH: finds something in a sorted list by halving the search each time.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-10",
+  "built_at": "2026-10-10T10:28:28+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

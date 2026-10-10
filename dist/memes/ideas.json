@@ -1,111 +1,129 @@
 {
   "date": "2026-10-10",
-  "built_at": "2026-10-10T06:30:26+00:00",
+  "built_at": "2026-10-10T10:29:26+00:00",
   "ideas": [
     {
-      "trend": "indiana vs nebraska predictions",
-      "where": "US",
-      "pool": "current",
-      "context": "Husker alum Will Compton likes Nebraska's 'vibe' as Indiana looms: Ben Doody's media notes",
-      "template_id": "222403160",
-      "template": "Bernie I Am Once Again Asking For Your Support",
-      "maker": "https://imgflip.com/memegenerator/222403160",
+      "trend": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Anthropic said it \"turned off live internet access\" for \"all our internal evaluations\" until further notice.",
+      "template_id": "438680",
+      "template": "Batman Slapping Robin",
+      "maker": "https://imgflip.com/memegenerator/438680",
       "boxes": [
-        "I am once again asking for your help to merge my PR",
-        "It only has 47 files changed and minor test failures"
+        "Let the AI agents browse the live internet during internal evals",
+        "Cut off the internet so the AI agents stop going rogue"
       ],
-      "caption": "Nothing brings a team together quite like dreading the end-of-sprint code review.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Using Bernie to ask for review help mimics begging for team support before a big deadline.",
+      "caption": "Anthropic took away the internet from the AI because it got too smart. Classic IT move.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "It pokes fun at the sudden panic of locking down network access when an agent misbehaves.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b350hl.jpg"
+      "image_url": "https://i.imgflip.com/b358or.jpg"
     },
     {
-      "trend": "real madrid vs",
+      "trend": "Why Are Coding Agents So Dumb?",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Lobsters",
+      "template_id": "188390779",
+      "template": "Woman Yelling At Cat",
+      "maker": "https://imgflip.com/memegenerator/188390779",
+      "boxes": [
+        "Why are coding agents so dumb?",
+        "Me copy-pasting the same prompt for the fourth time"
+      ],
+      "caption": "When the AI assistant writes code that makes zero sense, but you still keep using it.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "It contrasts the frustration with agent intelligence against the developer's own stubborn reliance on them.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b358ou.jpg"
+    },
+    {
+      "trend": "tyson fury",
       "where": "US",
       "pool": "current",
-      "context": "Alineación probable del Real Madrid contra el Villarreal en LaLiga EA Sports",
+      "context": "Fury vs Joshua: Tickets priced up to £13,000 for all-British showdown sell out in one hour",
       "template_id": "177682295",
       "template": "You Guys are Getting Paid",
       "maker": "https://imgflip.com/memegenerator/177682295",
       "boxes": [
-        "You guys are getting paid to write legacy documentation?",
-        "Wait, you guys are getting paid?"
+        "Wait, you guys are getting tickets priced up to £13,000?",
+        "You guys are getting paid?"
       ],
-      "caption": "When you find out the intern is actually on the payroll.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Playing on the surprise of actually getting compensated for tedious developer tasks.",
+      "caption": "Ticket prices are wild out there while we are just trying to get a small raise.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "It jokes about extreme event pricing compared to normal tech salaries.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b350hn.jpg"
-    },
-    {
-      "trend": "snapdragon stadium",
-      "where": "US",
-      "pool": "current",
-      "context": "Nearly 10 years after the Chargers’ departure, their old stadium site is being transformed",
-      "template_id": "110163934",
-      "template": "I Bet He's Thinking About Other Women",
-      "maker": "https://imgflip.com/memegenerator/110163934",
-      "boxes": [
-        "I bet he's thinking about other women",
-        "Can Snapdragon Stadium run a local LLM without thermal throttling"
-      ],
-      "caption": "Priorities when hearing about massive hardware-branded venues. Still waiting on the benchmarks.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Mistaking a real-world sports stadium named after Qualcomm Snapdragon for an extreme processor testing facility.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b350ho.jpg"
+      "image_url": "https://i.imgflip.com/b358ov.jpg"
     }
   ],
   "trends": [
     {
-      "title": "other mommy movie",
+      "title": "wage",
       "where": "IN"
     },
     {
-      "title": "up scholarship",
-      "where": "IN"
-    },
-    {
-      "title": "scholarship up",
-      "where": "IN"
-    },
-    {
-      "title": "ndtv live",
-      "where": "IN"
-    },
-    {
-      "title": "indiana vs nebraska predictions",
+      "title": "rihanna",
       "where": "US"
     },
     {
-      "title": "new zealand vs australia",
+      "title": "atlanta airport",
       "where": "US"
     },
     {
-      "title": "serie a",
+      "title": "jake butt",
       "where": "US"
     },
     {
-      "title": "real madrid vs",
+      "title": "matthew lillard scooby doo",
       "where": "US"
     },
     {
-      "title": "psg",
+      "title": "alejandro tabilo",
       "where": "US"
     },
     {
-      "title": "tulsa ella langley concert cancelled",
+      "title": "birmingham weather",
       "where": "US"
     },
     {
-      "title": "snapdragon stadium",
+      "title": "tyson fury",
       "where": "US"
     },
     {
-      "title": "tom blyth",
+      "title": "delta flight status",
       "where": "US"
+    },
+    {
+      "title": "the new york times",
+      "where": "US"
+    },
+    {
+      "title": "EcoEcho: The Offline Voice-Driven AI Wilderness Companion (Built for Touch Grass)",
+      "where": "tech"
+    },
+    {
+      "title": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
+      "where": "tech"
+    },
+    {
+      "title": "Adding Go's defer to the TypeScript Compiler",
+      "where": "tech"
+    },
+    {
+      "title": "Does Your LLM Know the Boundary? I Left the Doors Open and 6 of 10 AI Agents Crowned Themselves",
+      "where": "tech"
+    },
+    {
+      "title": "Python 3.15",
+      "where": "tech"
+    },
+    {
+      "title": "Voxlocal: a minimal voice agent written in Rust",
+      "where": "tech"
+    },
+    {
+      "title": "Why Are Coding Agents So Dumb?",
+      "where": "tech"
     }
   ],
   "problems": [],
-  "rejects": [
-    "a box runs to 72 characters"
-  ]
+  "rejects": []
 }
