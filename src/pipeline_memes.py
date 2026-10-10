@@ -56,7 +56,7 @@ def main() -> int:
             notify.notice("Meme ideas failed",
                           f"All {len(rejects)} ideas failed a check, first: {rejects[0] if rejects else '-'}. "
                           f"Trending today: {_titles(fresh)}")
-            return _skip(today, "every idea failed a check", notified=True)
+            return _skip(today, "every idea failed a check", notified=True, rejects=rejects)
         if rejects:
             log.info("%d ideas thrown away: %s", len(rejects), "; ".join(rejects)[:300])
 
@@ -71,6 +71,7 @@ def main() -> int:
             "ideas": ideas,
             "trends": [{"title": t.title, "where": t.where} for t in fresh],
             "problems": problems,
+            "rejects": rejects,
         }, indent=2, ensure_ascii=False), encoding="utf-8")
         memes.save_log(memes.record(entries, ideas, today))
 
@@ -118,9 +119,15 @@ def _titles(found: list[trends.Trend], n: int = 8) -> str:
     return ", ".join(t.title for t in found[:n]) or "none"
 
 
-def _skip(today, reason: str, notified: bool = False) -> int:
-    """Say why there are no ideas today, and leave a dated marker saying so."""
+def _skip(today, reason: str, notified: bool = False, rejects: list[str] | None = None) -> int:
+    """Say why there are no ideas today, and leave a dated marker saying so.
+
+    The marker keeps every reason an idea was thrown away. Three days went
+    by with "every idea failed a check" and nothing on record to say which.
+    """
     log.warning(reason)
+    for r in rejects or []:
+        log.warning("  thrown away: %s", r)
     if not notified:
         notify.notice("Meme ideas skipped", reason)
     IDEAS_JSON.parent.mkdir(parents=True, exist_ok=True)
@@ -128,6 +135,7 @@ def _skip(today, reason: str, notified: bool = False) -> int:
         "date": today.isoformat(),
         "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "skip": reason,
+        "rejects": rejects or [],
     }, indent=2, ensure_ascii=False), encoding="utf-8")
     return 0
 

@@ -255,7 +255,10 @@ def draft(trends: list[Trend], templates: list[Template], avoid: set[str]) -> tu
         try:
             candidates = _parse(reply.text)
         except (ValueError, AttributeError) as exc:
-            rejects.append(f"reply was not the JSON asked for ({type(exc).__name__})")
+            # How long it was and how it ended tell a reply cut off mid-answer
+            # from one that was prose all along.
+            rejects.append(f"reply was not the JSON asked for ({type(exc).__name__}; "
+                           f"{len(reply.text)} characters, ending {reply.text.strip()[-60:]!r})")
             continue
         for c in candidates:
             try:
