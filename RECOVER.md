@@ -150,6 +150,9 @@ news, one on a Google trend (IN, US), on Imgflip templates. I make and post the
 ones I like. The 2-to-1 split is MEME_MIX in src/config.py. If the secret
 IMGFLIP_API_KEY is set, each idea also arrives as a finished image drawn by
 Imgflip (src/imgflip.py); without it, or when a drawing fails, as text.
+To run only the meme step: Actions -> meme-ideas-now, or change
+.github/run-memes in a commit and push, which needs no GitHub login beyond git.
+dist/memes/ideas.json keeps what was drawn, where, and why any idea was thrown away.
 
 Deliberate decisions, do not undo without asking me:
 - No Instagram API publishing. Meta's setup wasted an hour and I abandoned it.

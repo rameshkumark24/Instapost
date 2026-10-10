@@ -113,7 +113,17 @@ arrives on Telegram a few minutes later.
 **Get another three memes now** — Actions → meme-ideas-now → Run workflow.
 Only the meme step runs, so no news story or tech-metaphor card is spent.
 Before the day's build has run, all three hang on search trends; after it,
-the usual two on tech news and one on a trend.
+the usual two on tech news and one on a trend. Changing
+[`.github/run-memes`](.github/run-memes) in a commit and pushing starts the same run.
+
+**See why an idea was thrown away, or look at a drawing again** —
+[`dist/memes/ideas.json`](dist/memes/ideas.json) keeps the day's ideas, each
+drawing's address on Imgflip, and every reason a candidate was rejected.
+
+**Offer another three-box template** — draw it once, look at which box landed
+where, and add its order to `MEME_BOX_ROLES` in [`src/config.py`](src/config.py).
+Until then only two-box templates and the ones listed there are used, because
+labels on the wrong people turn the joke around.
 
 **Re-allow a story the ledger has burned** — delete its entry from
 `state/ledger.json`.
