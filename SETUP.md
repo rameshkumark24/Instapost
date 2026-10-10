@@ -110,6 +110,11 @@ Tune `WEIGHTS`, `NICHE_TERMS` and `state/blocklist.txt` based on what you see.
 **Force a build now** — Actions → build-nightly-post → Run workflow. The card
 arrives on Telegram a few minutes later.
 
+**Get another three memes now** — Actions → meme-ideas-now → Run workflow.
+Only the meme step runs, so no news story or tech-metaphor card is spent.
+Before the day's build has run, all three hang on search trends; after it,
+the usual two on tech news and one on a trend.
+
 **Re-allow a story the ledger has burned** — delete its entry from
 `state/ledger.json`.
 

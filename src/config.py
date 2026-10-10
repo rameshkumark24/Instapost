@@ -255,14 +255,19 @@ MEME_SENSITIVE = re.compile(
 # down on 1 June 2026, and nothing noticed because every copy of the call
 # swallowed the error. When a model is announced for retirement, drop it.
 #
-# Checked against Google's pricing page and Groq's deprecations page on
-# 27 Sep 2026. All three Gemini models are free, and each has its own daily
-# quota (about 20 requests), so a flirt refill that exhausts one moves on to
-# the next. gemini-2.5-flash left the list because Google now serves it only
-# to keys that used it before. Groq shut llama-3.3-70b-versatile down on
-# 16 Aug 2026; gpt-oss-120b is its named replacement. Three plus one is the
+# Checked against Google's pricing and deprecations pages and Groq's free-plan
+# table on 10 Oct 2026. All three Gemini models are "Free of charge" on the
+# free tier, and each has its own daily quota (about 20 requests), so a flirt
+# refill that exhausts one moves on to the next. gemini-3.7-flash left the
+# list because Google now routes it to 3.8: the same model and the same quota
+# make no fallback. gemini-2.5-flash is served only to keys that used it
+# before. Groq shut llama-3.3-70b-versatile down on 16 Aug 2026; gpt-oss-120b
+# is its named replacement, and is on Groq's free plan. Three plus one is the
 # most the job's time limit allows -- see Timeouts in the tests.
-GEMINI_MODELS = ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash"]
+#
+# Changing either list means checking the pricing page first: the tests hold
+# these to the models last confirmed free (FreeToRun).
+GEMINI_MODELS = ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite"]
 GROQ_MODELS = ["openai/gpt-oss-120b"]
 
 # --- behaviour -------------------------------------------------------------

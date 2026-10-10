@@ -1,0 +1,65 @@
+name: meme-ideas-now
+
+# The meme step on its own: a fresh batch without building the two cards again.
+# The daily build (build.yml) already runs it once a day; this is for "send me
+# another three" and for checking a new Imgflip key without spending a news
+# story and a tech-metaphor card to do it.
+#
+# Two ways to start it:
+#   - Actions tab -> meme-ideas-now -> Run workflow;
+#   - change .github/run-memes in a commit and push. That way exists so it can
+#     be started with nothing but a git push.
+#
+# Run before the day's build, all three ideas hang on search trends: today's
+# tech stories are left behind by that build. After it, the usual two and one.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/run-memes"]
+
+permissions:
+  contents: write
+
+# The daily build's own lock. Both commit state/meme_log.json and
+# dist/memes/ideas.json to main, so they must never run at the same time.
+concurrency:
+  group: nightly-build
+  cancel-in-progress: false
+
+jobs:
+  memes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # No browser: nothing here renders a card.
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build meme ideas
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          IMGFLIP_API_KEY: ${{ secrets.IMGFLIP_API_KEY }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+        run: python -m src.pipeline_memes
+
+      - name: Commit ideas and log
+        run: |
+          git config user.name  "instapost-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/memes state/meme_log.json
+          git diff --staged --quiet && echo "nothing to commit" && exit 0
+          git commit -m "memes: $(TZ=Asia/Kolkata date +%F)"
+          git pull --rebase origin main
+          git push

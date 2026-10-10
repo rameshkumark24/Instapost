@@ -64,8 +64,10 @@ def _form(idea: dict) -> dict[str, str]:
     return form
 
 
-def render(idea: dict) -> tuple[bytes, str]:
-    """(image bytes, "jpg" or "png") for a checked idea, or Failed with the reason."""
+def render(idea: dict) -> tuple[bytes, str, str]:
+    """(image bytes, "jpg" or "png", where Imgflip keeps it) for a checked idea,
+    or Failed with the reason. The address is for looking at a drawing later,
+    while Imgflip still has it; nothing is ever fetched from it again."""
     try:
         r = requests.post(
             API,
@@ -105,7 +107,7 @@ def render(idea: dict) -> tuple[bytes, str]:
         raise Failed(f"image cannot be read ({exc})") from None
     if not preflight.ratio_ok(width, height):
         raise Failed(f"image is {width}x{height}, a shape Instagram would crop")
-    return data, ext
+    return data, ext, url
 
 
 def _download(url: str) -> bytes:

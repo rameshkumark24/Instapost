@@ -64,7 +64,7 @@ Open `dist/news/card.jpg` and `dist/flirt/card.jpg`. If they look right, the
 clone is complete and correct.
 
 Run the tests before changing anything:
-`.venv/Scripts/python -m unittest discover -s tests` (206 tests). The publisher's
+`.venv/Scripts/python -m unittest discover -s tests` (217 tests). The publisher's
 own 24 tests need Node 22+: `cd worker` then `node --test`.
 
 **A local run only messages Telegram if you give it the keys.** Without
@@ -160,13 +160,15 @@ Deliberate decisions, do not undo without asking me:
 - Both content types go on the one account, @genphile.meme.
 - Secrets only ever go in GitHub repository secrets. Never in chat, a
   screenshot, or a commit.
+- Everything stays free: no paid tier, no card on file anywhere. README "What
+  it costs" lists each service, and the FreeToRun tests hold the code to them.
 
 State: state/concepts.json holds 226 concepts (~7 months); state/flirt_queue.json
 tracks which have gone out; state/ledger.json burns used stories;
 state/meme_log.json keeps a trend to one meme a week. The bot pushes
 dist/ and state/ to main daily, so pull before working.
 
-Tests: 206 Python (python -m unittest discover -s tests) and 24 publisher
+Tests: 217 Python (python -m unittest discover -s tests) and 24 publisher
 (cd worker, then node --test, Node 22+).
 
 Windows notes: never pipe a commit message into git (PowerShell 5.1 adds a BOM)
@@ -183,3 +185,5 @@ Windows notes: never pipe a commit message into git (PowerShell 5.1 adds a BOM)
 - **`state/ledger.json` and `state/flirt_queue.json` are memory, not clutter.**
   Deleting them makes the bot repeat stories and cards it has already used.
 - **The repo stays public.** Private flips Actions onto a metered quota.
+- **No card anywhere.** Not on Imgflip, not on Groq, and no billing on the
+  Google project behind the Gemini key. Each is free until one is added.

@@ -1833,8 +1833,8 @@ class MemeImages(unittest.TestCase):
 
     # --- what comes back ---
 
-    def test_a_good_image_comes_back_with_its_type(self):
-        self.assertEqual(self.ask(), (jpeg_bytes(1200, 1200), "jpg"))
+    def test_a_good_image_comes_back_with_its_type_and_where_imgflip_keeps_it(self):
+        self.assertEqual(self.ask(), (jpeg_bytes(1200, 1200), "jpg", "https://i.imgflip.com/abc123.jpg"))
         self.assertEqual(self.ask(image=png_bytes(1024, 1024))[1], "png")
 
     def test_the_image_is_fetched_without_following_redirects(self):
@@ -1876,19 +1876,25 @@ class MemeImages(unittest.TestCase):
 
     # --- the day ---
 
+    OK = (jpeg_bytes(1200, 1200), "jpg", "https://i.imgflip.com/abc123.jpg")
+
     def drawn(self, results):
         problems = []
+        self.ideas = [dict(self.idea) for _ in range(3)]
         with mock.patch.dict(os.environ, {"IMGFLIP_API_KEY": self.KEY}), \
                 mock.patch.object(self.imgflip, "render", side_effect=results) as render:
-            images = self.pipeline._render([dict(self.idea) for _ in range(3)], problems)
+            images = self.pipeline._render(self.ideas, problems)
         return images, problems, render
 
     def test_one_idea_that_cannot_be_drawn_does_not_cost_the_others(self):
-        ok = (jpeg_bytes(1200, 1200), "jpg")
-        images, problems, _ = self.drawn([ok, self.imgflip.Failed("template gone"), ok])
+        images, problems, _ = self.drawn([self.OK, self.imgflip.Failed("template gone"), self.OK])
         self.assertEqual(sorted(images), [1, 3])
         self.assertEqual(problems, ["Imgflip could not draw idea 2 (template gone)"])
-        self.assertEqual(images[1].read_bytes(), ok[0])
+        self.assertEqual(images[1].read_bytes(), self.OK[0])
+        # What was drawn is on record, with where to look at it; what was not, is not.
+        self.assertEqual([i.get("drawn", False) for i in self.ideas], [True, False, True])
+        self.assertEqual(self.ideas[0]["image_url"], "https://i.imgflip.com/abc123.jpg")
+        self.assertNotIn("image_url", self.ideas[1])
 
     def test_a_bad_key_is_tried_once_not_three_times(self):
         images, problems, render = self.drawn([self.imgflip.Failed("Invalid API key", fatal=True)])
@@ -1897,7 +1903,7 @@ class MemeImages(unittest.TestCase):
         self.assertEqual(problems, ["Imgflip drew nothing (Invalid API key)"])
 
     def test_images_stay_out_of_the_repository(self):
-        images, _, _ = self.drawn([(jpeg_bytes(1200, 1200), "jpg")] * 3)
+        images, _, _ = self.drawn([self.OK] * 3)
         for path in images.values():
             self.assertNotIn(ROOT, path.resolve().parents)
 
@@ -1959,6 +1965,129 @@ class MemeImages(unittest.TestCase):
         from src import preflight
         self.assertEqual(preflight.image_size(png_bytes(1024, 768)), (1024, 768))
         self.assertEqual(preflight.image_size(jpeg_bytes(1200, 900)), (1200, 900))
+
+
+WORKFLOWS = ROOT / ".github" / "workflows"
+
+
+def workflow(name: str) -> dict:
+    return yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))
+
+
+def steps_of(name: str, job: str) -> dict:
+    return {s["name"]: s for s in workflow(name)["jobs"][job]["steps"] if s.get("name")}
+
+
+class MemesOnTheirOwn(unittest.TestCase):
+    """meme-ideas-now: the meme step without the two cards, safe beside the daily build."""
+
+    def test_it_starts_from_the_actions_tab_or_from_a_commit(self):
+        triggers = workflow("memes.yml").get("on") or workflow("memes.yml").get(True)   # yaml reads `on` as true
+        self.assertIn("workflow_dispatch", triggers)
+        self.assertEqual(triggers["push"]["paths"], [".github/run-memes"])
+        self.assertTrue((ROOT / ".github" / "run-memes").is_file())
+
+    def test_it_never_runs_at_the_same_time_as_the_daily_build(self):
+        # Both commit the meme log and the day's ideas to main.
+        self.assertEqual(workflow("memes.yml")["concurrency"]["group"], workflow("build.yml")["concurrency"]["group"])
+        self.assertIs(workflow("memes.yml")["concurrency"]["cancel-in-progress"], False)
+
+    def test_it_runs_the_meme_step_exactly_as_the_daily_build_does(self):
+        alone, daily = steps_of("memes.yml", "memes")["Build meme ideas"], steps_of("build.yml", "build")["Build meme ideas"]
+        self.assertEqual(alone["run"], daily["run"])
+        self.assertEqual(alone["env"], daily["env"])
+
+    def test_it_commits_the_ideas_and_nothing_of_the_cards(self):
+        commit = steps_of("memes.yml", "memes")["Commit ideas and log"]["run"]
+        self.assertIn("git add dist/memes state/meme_log.json", commit)
+        self.assertNotIn("git add dist state", commit)
+
+    def test_both_builds_pick_up_main_before_they_push(self):
+        # A push that lands mid-run must not cost the run its saved state.
+        for name, job, step in (("build.yml", "build", "Commit card and ledger"),
+                                ("memes.yml", "memes", "Commit ideas and log")):
+            with self.subTest(name):
+                run = steps_of(name, job)[step]["run"]
+                self.assertLess(run.index("git pull --rebase origin main"), run.index("git push"))
+
+    def test_asking_for_memes_does_not_run_the_test_suite(self):
+        triggers = workflow("tests.yml").get("on") or workflow("tests.yml").get(True)
+        self.assertIn(".github/run-memes", triggers["push"]["paths-ignore"])
+
+
+class FreeToRun(unittest.TestCase):
+    """Nothing in this project may cost money.
+
+    These hold it to services and models last confirmed free, so that adding
+    a paid one, or drifting onto a paid tier, is a failing test before it is
+    a bill. Passing them is not a price check: when a list below changes, the
+    provider's pricing page is read first.
+    """
+
+    # Every host the running code names, and why it costs nothing.
+    FREE_SERVICES = {
+        "generativelanguage.googleapis.com": "Gemini API free tier; models held to FREE_GEMINI",
+        "api.groq.com": "Groq free plan, no card; optional; models held to FREE_GROQ",
+        "api.imgflip.com": "top templates and plain captions are free; the paid features are barred below",
+        "imgflip.com": "a link to Imgflip's editor",
+        "api.telegram.org": "Telegram Bot API",
+        "trends.google.com": "public daily RSS feed",
+        "hn.algolia.com": "public Hacker News search",
+        "lobste.rs": "public JSON",
+        "dev.to": "public API",
+        "export.arxiv.org": "public API",
+        "techcrunch.com": "public RSS",
+        "feeds.arstechnica.com": "public RSS",
+        "www.theverge.com": "public RSS",
+        "api.github.com": "GitHub search with the job's own token",
+        "github.com": "the address in the user-agent",
+        "raw.githubusercontent.com": "this public repository's own files",
+        "fonts.googleapis.com": "Google Fonts",
+        "fonts.gstatic.com": "Google Fonts",
+        "graph.facebook.com": "Meta's Graph API, for the publisher that is parked and never run",
+    }
+    # Confirmed "Free of charge" on ai.google.dev/gemini-api/docs/pricing, 10 Oct 2026.
+    FREE_GEMINI = {"gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite"}
+    # On the Free Plan table at console.groq.com/docs/rate-limits, 10 Oct 2026.
+    FREE_GROQ = {"openai/gpt-oss-120b"}
+    # What Imgflip bills for (imgflip.com/api): Premium endpoints and options.
+    PAID_IMGFLIP = r"no_watermark|watermark_text|search_memes|caption_gif|automeme|ai_meme|get_meme\b"
+
+    def running_code(self):
+        return [*sorted((ROOT / "src").glob("*.py")), *sorted((ROOT / "templates").glob("*.html")),
+                *sorted(WORKFLOWS.glob("*.yml"))]
+
+    def test_every_service_the_code_reaches_is_a_known_free_one(self):
+        import re
+        for path in self.running_code():
+            for host in set(re.findall(r"https?://([A-Za-z0-9.-]+)", path.read_text(encoding="utf-8"))):
+                with self.subTest(file=path.name, host=host):
+                    self.assertIn(host.rstrip("."), self.FREE_SERVICES,
+                                  "a new service: confirm it is free, then list it in FREE_SERVICES with the reason")
+
+    def test_only_models_confirmed_free_are_asked(self):
+        self.assertLessEqual(set(cfg.GEMINI_MODELS), self.FREE_GEMINI)
+        self.assertLessEqual(set(cfg.GROQ_MODELS), self.FREE_GROQ)
+
+    def test_nothing_imgflip_charges_for_is_ever_named(self):
+        import re
+        for path in sorted((ROOT / "src").glob("*.py")):
+            with self.subTest(file=path.name):
+                self.assertIsNone(re.search(self.PAID_IMGFLIP, path.read_text(encoding="utf-8")))
+
+    def test_imgflip_is_sent_the_template_and_the_text_and_nothing_else(self):
+        from src import imgflip
+        for boxes in (["a", "b"], ["a", "b", "c"]):
+            fields = set(imgflip._form({"template_id": "1", "boxes": boxes}))
+            self.assertTrue(all(f == "template_id" or f in ("text0", "text1") or f.endswith("][text]") for f in fields), fields)
+        self.assertTrue(imgflip.API.endswith("/caption_image"))
+
+    def test_every_job_runs_on_the_free_standard_runner(self):
+        # Standard runners are free on a public repository; larger ones never are.
+        for path in sorted(WORKFLOWS.glob("*.yml")):
+            for job, spec in workflow(path.name)["jobs"].items():
+                with self.subTest(workflow=path.name, job=job):
+                    self.assertEqual(spec["runs-on"], "ubuntu-latest")
 
 
 if __name__ == "__main__":

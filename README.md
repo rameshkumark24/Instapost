@@ -45,6 +45,35 @@ day that is worth doing. Nothing in this repo can post on its own.
 GitHub. [RECOVER.md](RECOVER.md) has the clone-and-go steps, where each key comes
 from, and a briefing block for a fresh assistant session.
 
+## What it costs
+
+Nothing, and the tests hold it there (`FreeToRun` in
+[`tests/test_pipeline.py`](tests/test_pipeline.py)): every host the code
+reaches is a listed free service, every model is one confirmed free, nothing
+Imgflip bills for is ever requested, and every job runs on the standard runner.
+
+| Service | Used for | Why it is free |
+|---|---|---|
+| GitHub Actions | The daily build and the tests | Standard runners on a public repository are not metered |
+| Gemini API | Writing the summary, the cards' lines and the memes | Free tier; `gemini-3.8-flash`, `gemini-3.6-flash` and `gemini-3.5-flash-lite` are "Free of charge" there |
+| Groq (optional) | A second model provider | Free plan, no card |
+| Imgflip (optional) | The template list; drawing a meme | Both are free calls. The image carries Imgflip's small mark |
+| Telegram | Delivery | The Bot API is free |
+| Google Trends, Hacker News, Lobsters, DEV, arXiv, GitHub search, three RSS feeds | Research | Public feeds and APIs |
+| Google Fonts | The cards' typefaces | Free |
+
+Three things would start a bill, and each is something only you can do:
+
+- **Turning on billing for the Google project behind the Gemini key.** The
+  free tier ends where Cloud Billing begins. Google AI Studio's API keys page
+  shows which plan a key is on; it should say free.
+- **Adding a card, or Premium, on Imgflip or Groq.** With no card on file
+  there is nothing for either to charge.
+- **Making the repository private.** Actions minutes are then counted against
+  a monthly allowance.
+
+The Cloudflare publisher in `worker/` is not deployed, so it costs nothing either.
+
 ## Layout
 
 | Path | What it does |

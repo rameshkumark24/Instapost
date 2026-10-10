@@ -11,6 +11,7 @@ on:
       - "dist/**"        # the bot's own nightly commits change nothing testable
       - "state/**"
       - "*.html"
+      - ".github/run-memes"   # only asks for a batch of memes
   pull_request:
   workflow_dispatch:
 

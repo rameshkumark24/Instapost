@@ -120,6 +120,10 @@ jobs:
           git add dist state
           git diff --staged --quiet && echo "nothing to commit" && exit 0
           git commit -m "post: $(TZ=Asia/Kolkata date +%F)"
+          # Anything pushed to main while this job ran -- a code change, or a
+          # line in .github/run-memes -- would otherwise make the push fail and
+          # lose the ledger and the queue for cards that have already gone out.
+          git pull --rebase origin main
           git push
 
       - name: Verify the image is publicly reachable

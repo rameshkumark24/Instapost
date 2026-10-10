@@ -99,7 +99,7 @@ def _render(ideas: list[dict], problems: list[str]) -> dict[int, Path]:
     images: dict[int, Path] = {}
     for n, idea in enumerate(ideas, 1):
         try:
-            data, ext = imgflip.render(idea)
+            data, ext, url = imgflip.render(idea)
         except imgflip.Failed as exc:
             log.warning("idea %d not drawn: %s", n, exc)
             if exc.fatal:
@@ -110,6 +110,7 @@ def _render(ideas: list[dict], problems: list[str]) -> dict[int, Path]:
         images[n] = folder / f"meme-{n}.{ext}"
         images[n].write_bytes(data)
         idea["drawn"] = True
+        idea["image_url"] = url
     return images
 
 
