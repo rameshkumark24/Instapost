@@ -1,8 +1,9 @@
 """Daily meme ideas: trends in, three checked ideas out to Telegram.
 
-Runs after the two cards. Nothing here draws an image or touches Instagram:
-each idea arrives with its text ready to copy and a link that opens the
-template in Imgflip, and you make and post the one you like.
+Runs after the two cards, and never touches Instagram. With an Imgflip key
+each idea arrives as a finished image with its caption; without one, or for
+an idea Imgflip could not draw, it arrives as text with a link that opens the
+template in Imgflip. Either way you post the one you like.
 
 Exit codes: 0 sent, 0 deliberately skipped (and said so), 1 failed.
 """
@@ -11,11 +12,12 @@ from __future__ import annotations
 import json
 import logging
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
 from . import config as cfg
-from . import memes, notify, trends
+from . import imgflip, memes, notify, trends
 
 logging.basicConfig(
     level=logging.INFO,
@@ -58,6 +60,9 @@ def main() -> int:
         if rejects:
             log.info("%d ideas thrown away: %s", len(rejects), "; ".join(rejects)[:300])
 
+        stage = "render"
+        images = _render(ideas, problems)
+
         stage = "stage"
         IDEAS_JSON.parent.mkdir(parents=True, exist_ok=True)
         IDEAS_JSON.write_text(json.dumps({
@@ -70,14 +75,42 @@ def main() -> int:
         memes.save_log(memes.record(entries, ideas, today))
 
         stage = "notify"
-        notify.meme_ideas(ideas, fresh, today, problems)
-        log.info("done: %d ideas", len(ideas))
+        notify.meme_ideas(ideas, fresh, today, problems, images)
+        log.info("done: %d ideas, %d drawn", len(ideas), len(images))
         return 0
 
     except Exception as exc:
         log.exception("failed during %s", stage)
         notify.failure(f"memes/{stage}", exc)
         return 1
+
+
+def _render(ideas: list[dict], problems: list[str]) -> dict[int, Path]:
+    """Finished images by idea number, for the ideas Imgflip could draw.
+
+    Kept out of dist/: the images go to Telegram and nowhere else, and three a
+    day committed to git would grow the repo for nothing. Any idea that cannot
+    be drawn still goes out as text, and the day's message says why.
+    """
+    if not imgflip.enabled():
+        log.info("no IMGFLIP_API_KEY: ideas go out as text")
+        return {}
+    folder = Path(tempfile.mkdtemp(prefix="instapost-memes-"))
+    images: dict[int, Path] = {}
+    for n, idea in enumerate(ideas, 1):
+        try:
+            data, ext = imgflip.render(idea)
+        except imgflip.Failed as exc:
+            log.warning("idea %d not drawn: %s", n, exc)
+            if exc.fatal:
+                problems.append(f"Imgflip drew nothing ({exc})")
+                break
+            problems.append(f"Imgflip could not draw idea {n} ({exc})")
+            continue
+        images[n] = folder / f"meme-{n}.{ext}"
+        images[n].write_bytes(data)
+        idea["drawn"] = True
+    return images
 
 
 def _titles(found: list[trends.Trend], n: int = 8) -> str:

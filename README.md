@@ -29,6 +29,13 @@ turned into a dev joke. Each is checked in code: a trend it was given, the
 and nothing about death, disaster, crime, politics or religion. Each arrives
 with its text ready to copy and a link that opens the template in Imgflip.
 
+With an Imgflip API key set, each idea is also drawn: Imgflip's caption API
+puts the text on the template where its own editor would, and the finished
+image arrives as a file with its caption, like the cards. Only templates
+Instagram shows whole are offered, the image is fetched from Imgflip's image
+host and nowhere else, and an idea that cannot be drawn still arrives as text.
+Free Imgflip accounts carry a small "imgflip.com" mark.
+
 **Publishing by API is built and tested but switched off.** Instagram only
 allows it through Meta's developer stack, which cost an hour of broken screens,
 so [`worker/`](worker/) and [`src/gate_a.py`](src/gate_a.py) sit ready for the
@@ -51,6 +58,7 @@ from, and a briefing block for a fresh assistant session.
 | [`src/pipeline.py`](src/pipeline.py) | Orchestrates the build |
 | [`src/trends.py`](src/trends.py) | Google Trends, Imgflip templates, today's tech stories |
 | [`src/memes.py`](src/memes.py) | Meme ideas: the prompt, and every check on what comes back |
+| [`src/imgflip.py`](src/imgflip.py) | Finished memes: asks Imgflip to draw an idea, and checks what comes back |
 | [`src/pipeline_memes.py`](src/pipeline_memes.py) | Orchestrates the meme ideas |
 | [`templates/card.html`](templates/card.html) | The card design |
 | [`worker/src/index.js`](worker/src/index.js) | The punctual publisher |

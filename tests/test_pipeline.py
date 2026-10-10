@@ -874,8 +874,10 @@ class Timeouts(unittest.TestCase):
         chain = (cfg.LLM_CONNECT_TIMEOUT_S + cfg.LLM_TIMEOUT_S) * models
         # install + news build with one timed-out chain + drafting budget
         # overrun by one more chain + every meme source timing out and every
-        # meme attempt waiting on the whole chain + commit and verify
+        # meme attempt waiting on the whole chain + every meme image timing
+        # out twice, once asking Imgflip and once fetching + commit and verify
         memes = (len(cfg.MEME_TREND_GEOS) + 1) * cfg.HTTP_TIMEOUT + cfg.MEME_ATTEMPTS * chain
+        memes += cfg.MEME_IDEAS * 2 * cfg.HTTP_TIMEOUT
         worst = 180 + (120 + chain) + (cfg.FLIRT_DRAFT_BUDGET_S + chain) + memes + 60
         self.assertLess(worst, job_s)
 
@@ -1454,10 +1456,25 @@ class MemeIdeas(unittest.TestCase):
             self.trends.parse_trends(bomb, "IN")
 
     def test_only_two_and_three_box_templates_are_offered(self):
+        square = {"width": 1200, "height": 1200}
         payload = {"success": True, "data": {"memes": [
-            {"id": 1, "name": "One", "box_count": 1}, {"id": 2, "name": "Two", "box_count": 2},
-            {"id": 3, "name": "Three", "box_count": 3}, {"id": 5, "name": "Five", "box_count": 5}]}}
+            {"id": 1, "name": "One", "box_count": 1, **square}, {"id": 2, "name": "Two", "box_count": 2, **square},
+            {"id": 3, "name": "Three", "box_count": 3, **square}, {"id": 5, "name": "Five", "box_count": 5, **square}]}}
         self.assertEqual([t.name for t in self.trends.parse_templates(payload)], ["Two", "Three"])
+
+    def test_only_templates_instagram_shows_whole_are_offered(self):
+        def meme(name, width, height):
+            return {"id": name, "name": name, "box_count": 2, "width": width, "height": height}
+        payload = {"success": True, "data": {"memes": [
+            meme("Drake Hotline Bling", 1200, 1200),
+            meme("Two Buttons", 600, 908),               # too tall: Instagram would crop it
+            meme("This Is Fine", 580, 282),              # too wide
+            meme("Look At Me", 300, 300),                # too small to scale up cleanly
+            meme("George Bush 9/11", 1200, 1200),        # not a subject for a meme page
+            meme("Hide the Pain Harold", 480, 601),      # 0.799: Instagram's own tolerance lets it through
+        ]}}
+        self.assertEqual([t.name for t in self.trends.parse_templates(payload)],
+                         ["Drake Hotline Bling", "Hide the Pain Harold"])
 
     def test_sensitive_and_recently_used_trends_are_left_out(self):
         self.assertEqual([t.title for t in self.memes.usable(self.found, set())], ["naman dhir"])
@@ -1739,6 +1756,209 @@ class NicheFit(unittest.TestCase):
         # "elon" in "belong", "ipo" in "tripod" used to pull tech stories down.
         self.assertEqual(self.fit("Where Postgres extensions belong"), self.fit("Where Postgres extensions live"))
         self.assertLess(self.fit("Postgres maker files for an IPO"), self.fit("Postgres maker ships a release"))
+
+
+def jpeg_bytes(width: int, height: int) -> bytes:
+    # SOI, then a baseline frame header: length, precision, height, width, components.
+    return (b"\xff\xd8\xff\xc0\x00\x11\x08" + height.to_bytes(2, "big")
+            + width.to_bytes(2, "big") + b"\x03" + b"\x00" * 9)
+
+
+def png_bytes(width: int, height: int) -> bytes:
+    return (b"\x89PNG\r\n\x1a\n" + (13).to_bytes(4, "big") + b"IHDR"
+            + width.to_bytes(4, "big") + height.to_bytes(4, "big") + b"\x08\x02\x00\x00\x00")
+
+
+class MemeImages(unittest.TestCase):
+    """Finished memes from Imgflip: optional, checked, and never a reason to lose an idea."""
+
+    KEY = "imgflip-secret-key-123"
+
+    def setUp(self):
+        from src import imgflip, pipeline_memes
+        self.imgflip, self.pipeline = imgflip, pipeline_memes
+        self.idea = {"trend": "Postgres 19 ships a new planner", "where": "tech", "pool": "tech", "context": "",
+                     "template_id": "181913649", "template": "Drake Hotline Bling",
+                     "maker": "https://imgflip.com/memegenerator/181913649",
+                     "boxes": ["Reading the query plan", "Adding an index and hoping"],
+                     "caption": "Every DBA, eventually.\n\n#programmerhumor #devlife", "why": "We all do it."}
+
+    def ask(self, reply=None, image=None, key=KEY):
+        """Run render() against a scripted Imgflip: the API's JSON, then the image bytes."""
+        reply = {"success": True, "data": {"url": "https://i.imgflip.com/abc123.jpg"}} if reply is None else reply
+        download = mock.MagicMock(status_code=200)
+        download.__enter__.return_value = download
+        download.iter_content.return_value = [jpeg_bytes(1200, 1200) if image is None else image]
+        api = mock.MagicMock()
+        api.json.return_value = reply
+        self.post = mock.patch.object(self.imgflip.requests, "post", return_value=api).start()
+        self.get = mock.patch.object(self.imgflip.requests, "get", return_value=download).start()
+        self.addCleanup(mock.patch.stopall)
+        with mock.patch.dict(os.environ, {"IMGFLIP_API_KEY": key}):
+            return self.imgflip.render(self.idea)
+
+    # --- off unless asked for ---
+
+    def test_without_a_key_nothing_is_drawn_and_nothing_is_asked(self):
+        problems = []
+        with mock.patch.dict(os.environ, {"IMGFLIP_API_KEY": ""}), \
+                mock.patch.object(self.imgflip.requests, "post") as post:
+            self.assertFalse(self.imgflip.enabled())
+            self.assertEqual(self.pipeline._render([self.idea], problems), {})
+        post.assert_not_called()
+        self.assertEqual(problems, [])              # not a fault: the feature is simply off
+
+    def test_the_build_gives_the_key_to_the_meme_step_and_no_other(self):
+        workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "build.yml").read_text(encoding="utf-8"))
+        holders = [s["name"] for s in workflow["jobs"]["build"]["steps"] if "IMGFLIP_API_KEY" in (s.get("env") or {})]
+        self.assertEqual(holders, ["Build meme ideas"])
+
+    # --- the request ---
+
+    def test_the_key_travels_in_a_header_and_nowhere_else(self):
+        self.ask()
+        url, kwargs = self.post.call_args.args[0], self.post.call_args.kwargs
+        self.assertEqual(kwargs["headers"]["Authorization"], f"Bearer {self.KEY}")
+        self.assertNotIn(self.KEY, url)
+        self.assertNotIn(self.KEY, str(kwargs["data"]))
+        self.assertNotIn("params", kwargs)
+
+    def test_two_boxes_are_top_and_bottom_and_three_go_as_boxes(self):
+        self.assertEqual(self.imgflip._form(self.idea),
+                         {"template_id": "181913649", "text0": "Reading the query plan",
+                          "text1": "Adding an index and hoping"})
+        three = self.imgflip._form({**self.idea, "boxes": ["a", "b", "c"]})
+        self.assertEqual(three, {"template_id": "181913649", "boxes[0][text]": "a",
+                                 "boxes[1][text]": "b", "boxes[2][text]": "c"})
+
+    # --- what comes back ---
+
+    def test_a_good_image_comes_back_with_its_type(self):
+        self.assertEqual(self.ask(), (jpeg_bytes(1200, 1200), "jpg"))
+        self.assertEqual(self.ask(image=png_bytes(1024, 1024))[1], "png")
+
+    def test_the_image_is_fetched_without_following_redirects(self):
+        self.ask()
+        self.assertEqual(self.get.call_args.args[0], "https://i.imgflip.com/abc123.jpg")
+        self.assertIs(self.get.call_args.kwargs["allow_redirects"], False)
+
+    def test_an_image_address_anywhere_but_imgflips_host_is_refused(self):
+        for url in ("https://evil.example/x.jpg", "http://i.imgflip.com/x.jpg",
+                    "https://i.imgflip.com.evil.example/x.jpg", "https://i.imgflip.com@evil.example/x.jpg",
+                    "file:///etc/passwd", ""):
+            with self.subTest(url), self.assertRaises(self.imgflip.Failed):
+                self.ask(reply={"success": True, "data": {"url": url}})
+            self.get.assert_not_called()
+
+    def test_what_is_not_a_usable_image_is_refused(self):
+        bad = {
+            "a web page": b"<html>not found</html>",
+            "a shape Instagram would crop": jpeg_bytes(600, 908),
+            "a jpeg with no frame": b"\xff\xd8\xff\xe0\x00\x02",
+        }
+        for why, data in bad.items():
+            with self.subTest(why), self.assertRaises(self.imgflip.Failed):
+                self.ask(image=data)
+
+    def test_an_oversized_image_stops_downloading(self):
+        with mock.patch.object(self.imgflip.preflight, "IMAGE_MAX_BYTES", 10), self.assertRaises(self.imgflip.Failed):
+            self.ask()
+
+    def test_a_refusal_carries_imgflips_reason_and_never_the_key(self):
+        with self.assertRaises(self.imgflip.Failed) as caught:
+            self.ask(reply={"success": False, "error_message": "Invalid API key"})
+        self.assertEqual(str(caught.exception), "Invalid API key")
+        self.assertTrue(caught.exception.fatal)
+        self.assertNotIn(self.KEY, str(caught.exception))
+        with self.assertRaises(self.imgflip.Failed) as caught:
+            self.ask(reply={"success": False, "error_message": "No texts specified"})
+        self.assertFalse(caught.exception.fatal)
+
+    # --- the day ---
+
+    def drawn(self, results):
+        problems = []
+        with mock.patch.dict(os.environ, {"IMGFLIP_API_KEY": self.KEY}), \
+                mock.patch.object(self.imgflip, "render", side_effect=results) as render:
+            images = self.pipeline._render([dict(self.idea) for _ in range(3)], problems)
+        return images, problems, render
+
+    def test_one_idea_that_cannot_be_drawn_does_not_cost_the_others(self):
+        ok = (jpeg_bytes(1200, 1200), "jpg")
+        images, problems, _ = self.drawn([ok, self.imgflip.Failed("template gone"), ok])
+        self.assertEqual(sorted(images), [1, 3])
+        self.assertEqual(problems, ["Imgflip could not draw idea 2 (template gone)"])
+        self.assertEqual(images[1].read_bytes(), ok[0])
+
+    def test_a_bad_key_is_tried_once_not_three_times(self):
+        images, problems, render = self.drawn([self.imgflip.Failed("Invalid API key", fatal=True)])
+        self.assertEqual(images, {})
+        self.assertEqual(render.call_count, 1)
+        self.assertEqual(problems, ["Imgflip drew nothing (Invalid API key)"])
+
+    def test_images_stay_out_of_the_repository(self):
+        images, _, _ = self.drawn([(jpeg_bytes(1200, 1200), "jpg")] * 3)
+        for path in images.values():
+            self.assertNotIn(ROOT, path.resolve().parents)
+
+    # --- what arrives ---
+
+    def sent(self, images, refuse=()):
+        from datetime import date
+        from src import notify
+        ideas = [dict(self.idea), {**self.idea, "template": "Always Has Been"}]
+        with mock.patch.object(notify, "_post", side_effect=lambda m, d, f=None: m not in refuse) as post:
+            notify.meme_ideas(ideas, [], date(2026, 10, 10), [], images)
+        return [(c.args[0], c.args[1]) for c in post.call_args_list]
+
+    def image_file(self):
+        import tempfile
+        path = Path(tempfile.mkdtemp()) / "meme-1.jpg"
+        path.write_bytes(jpeg_bytes(1200, 1200))
+        return path
+
+    def test_a_drawn_meme_arrives_as_a_file_then_its_caption_alone(self):
+        calls = self.sent({1: self.image_file()})
+        self.assertEqual([m for m, _ in calls], ["sendMessage", "sendDocument", "sendMessage", "sendMessage"])
+        _, doc = calls[1]
+        self.assertIn("Reading the query plan", doc["caption"])        # the boxes stay, to remake it
+        self.assertIn("https://imgflip.com/memegenerator/181913649", doc["caption"])
+        self.assertLessEqual(len(doc["caption"]), 1024)
+        _, caption = calls[2]
+        self.assertEqual(caption["text"], self.idea["caption"])
+        self.assertNotIn("parse_mode", caption)                         # what you copy is what Instagram gets
+        # The second idea had no image, and arrives as text as before.
+        self.assertIn("<pre>", calls[3][1]["text"])
+        self.assertIn("Always Has Been", calls[3][1]["text"])
+
+    def test_a_file_telegram_refuses_falls_back_to_the_idea_as_text(self):
+        calls = self.sent({1: self.image_file()}, refuse=("sendDocument",))
+        self.assertEqual([m for m, _ in calls], ["sendMessage", "sendDocument", "sendMessage", "sendMessage"])
+        self.assertIn("<pre>", calls[2][1]["text"])                     # idea 1, as text
+        self.assertIn("Reading the query plan", calls[2][1]["text"])
+
+    def test_a_long_idea_still_fits_a_file_caption(self):
+        from src import notify
+        long_idea = {**self.idea, "trend": "t" * 300, "boxes": ["b" * 70] * 3, "why": "w" * 200}
+        with mock.patch.object(notify, "_post", return_value=True) as post:
+            notify._send_meme(1, long_idea, self.image_file())
+        self.assertLessEqual(len(post.call_args_list[0].args[1]["caption"]), 1024)
+
+    # --- text fit for a picture ---
+
+    def test_box_text_gets_punctuation_a_meme_font_can_draw(self):
+        from src import memes, trends
+        cat = {"T1": trends.Trend("Docker ships an agent wall", "tech")}
+        templates = [trends.Template("181913649", "Drake Hotline Bling", 2)]
+        idea = memes.validate({"trend": "T1", "template_id": "181913649",
+                               "boxes": ["Docker pre‑installed", "It’s “fine”…  really"],
+                               "caption": "A caption.", "why": "w"}, cat, templates)
+        self.assertEqual(idea["boxes"], ["Docker pre-installed", "It's \"fine\"... really"])
+
+    def test_png_dimensions_are_read_too(self):
+        from src import preflight
+        self.assertEqual(preflight.image_size(png_bytes(1024, 768)), (1024, 768))
+        self.assertEqual(preflight.image_size(jpeg_bytes(1200, 900)), (1200, 900))
 
 
 if __name__ == "__main__":

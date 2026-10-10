@@ -64,7 +64,7 @@ Open `dist/news/card.jpg` and `dist/flirt/card.jpg`. If they look right, the
 clone is complete and correct.
 
 Run the tests before changing anything:
-`.venv/Scripts/python -m unittest discover -s tests` (187 tests). The publisher's
+`.venv/Scripts/python -m unittest discover -s tests` (206 tests). The publisher's
 own 24 tests need Node 22+: `cd worker` then `node --test`.
 
 **A local run only messages Telegram if you give it the keys.** Without
@@ -105,6 +105,7 @@ else — never into a chat window, a screenshot, a file, or a commit.
 | `TG_CHAT` | Yes | Telegram, [@userinfobot](https://t.me/userinfobot) — send it anything and it replies with your id |
 | `GEMINI_API_KEY` | Optional | [aistudio.google.com](https://aistudio.google.com), Get API key (free tier) |
 | `GROQ_API_KEY` | Optional | [console.groq.com](https://console.groq.com) — an alternative to Gemini |
+| `IMGFLIP_API_KEY` | Optional | [imgflip.com/api-settings](https://imgflip.com/api-settings) — create a new key; the old one cannot be read back. Without it, memes arrive as ideas in text |
 
 Without any AI key the cards are still written, by the built-in composer. That
 is the floor, not a broken state: the build never fails for want of a key.
@@ -146,7 +147,9 @@ Current mode: hand-posting. GitHub Actions builds two 1080x1350 cards a day
 a separate message. I post them myself on @genphile.meme, about 2 minutes a day.
 A third segment sends three meme ideas, all dev jokes: two on the day's tech
 news, one on a Google trend (IN, US), on Imgflip templates. I make and post the
-ones I like. The 2-to-1 split is MEME_MIX in src/config.py.
+ones I like. The 2-to-1 split is MEME_MIX in src/config.py. If the secret
+IMGFLIP_API_KEY is set, each idea also arrives as a finished image drawn by
+Imgflip (src/imgflip.py); without it, or when a drawing fails, as text.
 
 Deliberate decisions, do not undo without asking me:
 - No Instagram API publishing. Meta's setup wasted an hour and I abandoned it.
@@ -163,7 +166,7 @@ tracks which have gone out; state/ledger.json burns used stories;
 state/meme_log.json keeps a trend to one meme a week. The bot pushes
 dist/ and state/ to main daily, so pull before working.
 
-Tests: 187 Python (python -m unittest discover -s tests) and 24 publisher
+Tests: 206 Python (python -m unittest discover -s tests) and 24 publisher
 (cd worker, then node --test, Node 22+).
 
 Windows notes: never pipe a commit message into git (PowerShell 5.1 adds a BOM)

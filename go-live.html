@@ -249,7 +249,7 @@
 <div class="wrap">
 
   <header>
-    <p class="eyebrow">Instapost &middot; how it runs &middot; 27 Sep 2026</p>
+    <p class="eyebrow">Instapost &middot; how it runs &middot; 10 Oct 2026</p>
     <h1>Instapost Daily</h1>
     <p class="standfirst">
       Every day this researches a tech story, writes it up, draws two finished Instagram cards, and
@@ -289,7 +289,7 @@
       </li>
       <li>
         <span class="n">5</span><span class="name">You post</span><span class="chip you">You</span>
-        <span class="detail">Save the image, paste the caption, publish. About two minutes. For a meme, open the idea's link, type the boxes, download. Skip any card you don't like &mdash; nothing else happens, and the story never comes back.</span>
+        <span class="detail">Save the image, paste the caption, publish. About two minutes. For a meme, save the finished image and post it; if it came as text, open its link, type the boxes, download. Skip any card you don't like &mdash; nothing else happens, and the story never comes back.</span>
       </li>
     </ol>
     <div class="note">
@@ -307,7 +307,8 @@
         <thead><tr><th>Message</th><th>What it means</th><th>You do</th></tr></thead>
         <tbody>
           <tr><td class="k">A card file, then a caption</td><td>Today's card is ready to post.</td><td>Post it, or skip it</td></tr>
-          <tr><td class="k">Meme ideas, then three ideas</td><td>Today's trends, then each idea with its boxes to copy, a caption, and a link that opens the template.</td><td>Make the one you like</td></tr>
+          <tr><td class="k">Meme ideas, then three ideas</td><td>Today's trends, then each idea. With an Imgflip key: the finished meme as a file, then its caption. Without: the boxes to copy, a caption, and a link that opens the template.</td><td>Post the one you like</td></tr>
+          <tr><td class="k">Missing today: Imgflip &hellip;</td><td>Imgflip refused the key or could not draw an idea. That idea still arrives as text.</td><td>Nothing, unless it says &ldquo;Invalid API key&rdquo;</td></tr>
           <tr><td class="k">Meme ideas failed</td><td>No model answered, or every idea failed a check. The trends are still listed.</td><td>Make one yourself, or nothing</td></tr>
           <tr><td class="k">Instapost skipped tonight</td><td>No story cleared the bar, or the card queue ran dry.</td><td>Nothing</td></tr>
           <tr><td class="k">New cards drafted</td><td>A fresh batch of tech-metaphor lines was written, about a fortnight of cards.</td><td>Nothing</td></tr>
@@ -331,10 +332,11 @@
           <tr><td class="k">News engine</td><td>Six sources, scoring for freshness, traction, topic and variety; safe fetching of the publisher's own summary; an AI summary checked for invented numbers and copied wording.</td><td>48 builds; a summary traced back to its source tweet</td></tr>
           <tr><td class="k">Tech-metaphor engine</td><td>226 concepts across ten areas of computing. Lines are drafted in batches, and the oldest one that hasn't gone out becomes the day's card.</td><td>12 drafted, delivered in order</td></tr>
           <tr><td class="k">Meme ideas</td><td>Every idea a dev joke: two on today's tech news from Hacker News, Lobsters, DEV, TechCrunch, Ars Technica and The Verge, one on a Google trend (India, US), on Imgflip's 40 most-used templates. Checked in code: a trend it was given, the two-to-one split, a real template with its exact number of boxes, no off-limits subject, and a week before a trend comes round again.</td><td>All three steps run in order on live sources; automated tests</td></tr>
+          <tr><td class="k">Finished memes</td><td>Optional, on with one free Imgflip key. Imgflip draws each idea on its template; the image is checked for type, size and a shape Instagram shows whole, and any idea it cannot draw still arrives as text. Free accounts carry a small &ldquo;imgflip.com&rdquo; mark.</td><td>Automated tests; refusal path run against the real service</td></tr>
           <tr><td class="k">Card design</td><td>Your template rebuilt in code: real webfonts, your handle, the technical term bolded inside the line.</td><td>Every card is measured against its own margins before it is sent</td></tr>
           <tr><td class="k">Delivery</td><td>The card as an uncompressed file, then the caption alone so one long-press copies exactly what Instagram needs.</td><td>Automated tests</td></tr>
           <tr><td class="k">Safety</td><td>Instagram's size, ratio, caption and hashtag limits checked before you ever see the card; AI text escaped, never trusted as markup; secrets never printed.</td><td>Automated tests</td></tr>
-          <tr><td class="k">Quality</td><td>187 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
+          <tr><td class="k">Quality</td><td>206 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
           <tr><td class="k">Auto-posting</td><td>A publisher, a Meta setup assistant and a one-command deploy.</td><td>Built and tested, deliberately switched off</td></tr>
         </tbody>
       </table>
@@ -349,7 +351,7 @@
         <strong>Every day</strong>
         <ul>
           <li>Post the card you like. Two minutes.</li>
-          <li>If a meme idea makes you laugh, open its link, fill the boxes, post it.</li>
+          <li>If a meme makes you laugh, post it. If it came as text, open its link and fill the boxes first.</li>
           <li>Skip the ones you don't. There is no penalty and nothing to clean up.</li>
         </ul>
       </div>
@@ -398,7 +400,7 @@
   </section>
 
   <footer>
-    <div>Instapost Daily &middot; status as of 27 Sep 2026</div>
+    <div>Instapost Daily &middot; status as of 10 Oct 2026</div>
     <div>Times are Asia/Kolkata (UTC+5:30)</div>
     <div><a href="https://github.com/rameshkumark24/Instapost">github.com/rameshkumark24/Instapost</a></div>
   </footer>

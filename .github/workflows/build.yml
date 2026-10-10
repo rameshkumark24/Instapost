@@ -93,14 +93,16 @@ jobs:
           TG_CHAT: ${{ secrets.TG_CHAT }}
         run: python -m src.pipeline_flirt
 
-      # Ideas, not a card: today's trends turned into three memes to make in
-      # Imgflip. Runs whatever happened above -- it reads the tech stories the
-      # news step left, and manages on Google Trends alone when there are none.
+      # Today's trends turned into three memes. Runs whatever happened above --
+      # it reads the tech stories the news step left, and manages on Google
+      # Trends alone when there are none. With IMGFLIP_API_KEY set each idea
+      # arrives as a finished image; without it, as text to make in Imgflip.
       - name: Build meme ideas
         if: steps.guard.outputs.skip != 'true' && !cancelled()
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          IMGFLIP_API_KEY: ${{ secrets.IMGFLIP_API_KEY }}
           TG_TOKEN: ${{ secrets.TG_TOKEN }}
           TG_CHAT: ${{ secrets.TG_CHAT }}
         run: python -m src.pipeline_memes

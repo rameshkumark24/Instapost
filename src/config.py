@@ -225,6 +225,7 @@ MEME_MIN_FIT = 0.25
 MEME_ATTEMPTS = 2                   # model calls a day before giving up
 MEME_TEMPLATE_POOL = 40             # Imgflip's most-captioned templates on offer
 MEME_MAX_BOXES = 3                  # past three text boxes the joke gets lost
+MEME_MIN_WIDTH = 400                # narrower templates blur when Instagram scales them up
 MEME_BOX_MAX = 70                   # characters per text box
 MEME_CAPTION_MAX = 300              # before hashtags
 MEME_TREND_COOLDOWN_DAYS = 7        # a trend that runs all week gets one meme
@@ -242,7 +243,7 @@ MEME_SENSITIVE = re.compile(
     r"(plane|car|bus|train|helicopter) crash\w*|shooting|gunman|gunfire|stabb\w*|"
     r"terror\w*|bomb\w*|blast|war|earthquake|flood\w*|cyclone|tsunami|disaster|"
     r"victims?|funeral|obituary|rip|hospital\w*|cancer|arrest\w*|abuse\w*|"
-    r"tragic|tragedy|injur\w*|maul\w*|damage\w*|"
+    r"tragic|tragedy|injur\w*|maul\w*|damage\w*|9/11|"
     r"elections?|minister|parliament|religio\w*|temple|mosque|church|riots?|protest\w*)\b",
     re.I,
 )

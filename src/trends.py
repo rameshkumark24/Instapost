@@ -24,6 +24,7 @@ from pathlib import Path
 import requests
 
 from . import config as cfg
+from . import preflight
 
 log = logging.getLogger(__name__)
 
@@ -93,9 +94,18 @@ def parse_templates(payload: dict) -> list[Template]:
         raise ValueError("imgflip answered without success")
     out = []
     for m in payload["data"]["memes"]:
-        boxes = int(m.get("box_count", 0))
-        if 2 <= boxes <= cfg.MEME_MAX_BOXES:
-            out.append(Template(id=str(m["id"]), name=str(m["name"]).strip(), boxes=boxes))
+        boxes, name = int(m.get("box_count", 0)), str(m["name"]).strip()
+        width, height = int(m.get("width", 0)), int(m.get("height", 0))
+        if not 2 <= boxes <= cfg.MEME_MAX_BOXES:
+            continue
+        # The meme comes out the size of its template. One Instagram would
+        # crop, or stretch from 300 pixels, is not a finished meme -- whether
+        # Imgflip draws it or you do.
+        if width < cfg.MEME_MIN_WIDTH or not preflight.ratio_ok(width, height):
+            continue
+        if cfg.MEME_SENSITIVE.search(name):
+            continue
+        out.append(Template(id=str(m["id"]), name=name, boxes=boxes))
     return out[: cfg.MEME_TEMPLATE_POOL]
 
 

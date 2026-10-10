@@ -53,6 +53,19 @@ def jpeg_size(data: bytes) -> tuple[int, int]:
     raise ValueError("no frame header found")
 
 
+def image_size(data: bytes) -> tuple[int, int]:
+    """(width, height) of a JPEG or a PNG. The cards are always JPEG; a meme
+    drawn on someone else's template is whichever the template was."""
+    if data[:8] == b"\x89PNG\r\n\x1a\n" and data[12:16] == b"IHDR":
+        return int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
+    return jpeg_size(data)
+
+
+def ratio_ok(width: int, height: int) -> bool:
+    """Whether Instagram shows this shape whole, or crops it."""
+    return height > 0 and ASPECT_MIN - 0.005 <= width / height <= ASPECT_MAX + 0.005
+
+
 def check(post: dict, image: Path) -> list[str]:
     """Everything Meta would refuse about this post. Empty means it can go."""
     problems: list[str] = []
@@ -74,7 +87,7 @@ def check(post: dict, image: Path) -> list[str]:
         problems.append(f"image cannot be used ({exc}); Meta accepts JPEG only")
         return problems
 
-    ratio = width / height
-    if not ASPECT_MIN - 0.005 <= ratio <= ASPECT_MAX + 0.005:
+    if not ratio_ok(width, height):
+        ratio = width / height if height else 0
         problems.append(f"image is {width}x{height} (ratio {ratio:.2f}); Meta accepts 0.80 to 1.91")
     return problems

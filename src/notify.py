@@ -27,10 +27,12 @@ def _creds() -> tuple[str, str] | None:
     return token, chat
 
 
-def _post(method: str, data: dict, files: dict | None = None) -> None:
+def _post(method: str, data: dict, files: dict | None = None) -> bool:
+    """Whether Telegram took it. Most callers have nothing better to do on a
+    refusal; a caller with a fallback uses the answer."""
     creds = _creds()
     if not creds:
-        return
+        return False
     token, chat = creds
     try:
         r = requests.post(
@@ -40,9 +42,11 @@ def _post(method: str, data: dict, files: dict | None = None) -> None:
             timeout=cfg.HTTP_TIMEOUT,
         )
         r.raise_for_status()
+        return True
     except Exception as exc:
         # Never let a failed notification take down the run it was reporting on.
         log.warning("telegram %s failed: %s", method, exc)
+        return False
 
 
 def handoff(post: dict, image: Path) -> None:
@@ -71,14 +75,16 @@ def handoff(post: dict, image: Path) -> None:
 _WHERE = {"IN": "India", "US": "US", "tech": "Tech"}
 
 
-def meme_ideas(ideas: list[dict], trends: list, day, problems: list[str]) -> None:
-    """Today's trends in one message, then one message per idea.
+def meme_ideas(ideas: list[dict], trends: list, day, problems: list[str],
+               images: dict[int, Path] | None = None) -> None:
+    """Today's trends in one message, then each idea: drawn if it has an image, as text if not.
 
     Everything in these messages came from a trend feed or a model, so all of
-    it is escaped. Box text is in <code>, which Telegram copies on a tap; the
-    caption is a <pre> block, which gets a copy button. The Imgflip link is
-    left to preview, so the template's picture shows under the idea.
+    it is escaped. Box text is in <code>, which Telegram copies on a tap. A
+    text idea carries its caption in a <pre> block, which gets a copy button,
+    and leaves the Imgflip link to preview so the template shows under it.
     """
+    images = images or {}
     lines = [f"<b>Meme ideas · {day:%a %d %b}</b>"]
     for where, label in _WHERE.items():
         titles = [_short(t.title) for t in trends if t.where == where][: 4 if where == "tech" else 6]
@@ -89,17 +95,43 @@ def meme_ideas(ideas: list[dict], trends: list, day, problems: list[str]) -> Non
     _post("sendMessage", {"text": "\n".join(lines), "parse_mode": "HTML", "disable_web_page_preview": "true"})
 
     for n, idea in enumerate(ideas, 1):
-        parts = [
-            f"<b>{n}. {_esc(idea['template'])}</b>",
-            f"on <i>{_esc(idea['trend'])}</i> "
-            f"({'tech news' if idea['pool'] == 'tech' else 'trending in ' + _esc(_WHERE.get(idea['where'], idea['where']))})",
-            "",
-            *(f"Box {i}: <code>{_esc(b)}</code>" for i, b in enumerate(idea["boxes"], 1)),
-        ]
-        if idea.get("why"):
-            parts += ["", f"<i>{_esc(idea['why'])}</i>"]
-        parts += ["", "Caption:", f"<pre>{_esc(idea['caption'])}</pre>", f"Make it: {_esc(idea['maker'])}"]
+        if n in images and _send_meme(n, idea, images[n]):
+            continue
+        parts = _idea_lines(n, idea) + ["", "Caption:", f"<pre>{_esc(idea['caption'])}</pre>",
+                                        f"Make it: {_esc(idea['maker'])}"]
         _post("sendMessage", {"text": "\n".join(parts), "parse_mode": "HTML"})
+
+
+def _idea_lines(n: int, idea: dict, with_why: bool = True) -> list[str]:
+    lines = [
+        f"<b>{n}. {_esc(idea['template'])}</b>",
+        f"on <i>{_esc(idea['trend'])}</i> "
+        f"({'tech news' if idea['pool'] == 'tech' else 'trending in ' + _esc(_WHERE.get(idea['where'], idea['where']))})",
+        "",
+        *(f"Box {i}: <code>{_esc(b)}</code>" for i, b in enumerate(idea["boxes"], 1)),
+    ]
+    if with_why and idea.get("why"):
+        lines += ["", f"<i>{_esc(idea['why'])}</i>"]
+    return lines
+
+
+def _send_meme(n: int, idea: dict, image: Path) -> bool:
+    """A finished meme, the way the cards arrive: the file, then its caption alone.
+
+    A file, not a photo, so Telegram does not recompress it. The boxes stay in
+    the message in case you would rather remake it. False means Telegram
+    refused the file, and the caller sends the idea as text instead.
+    """
+    tail = ["", f"<code>Caption below, hold to copy.</code> Remake it: {_esc(idea['maker'])}"]
+    text = "\n".join(_idea_lines(n, idea) + tail)
+    if len(text) > 1000:                # Telegram allows a file 1024 characters of caption
+        text = "\n".join(_idea_lines(n, idea, with_why=False) + tail)
+    with image.open("rb") as fh:
+        if not _post("sendDocument", {"caption": text, "parse_mode": "HTML"}, {"document": fh}):
+            return False
+    # No parse_mode: what arrives is exactly what goes into Instagram.
+    _post("sendMessage", {"text": idea["caption"], "disable_web_page_preview": "true"})
+    return True
 
 
 def failure(stage: str, exc: BaseException) -> None:

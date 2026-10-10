@@ -39,6 +39,14 @@ _EMOJI = re.compile(r"[\U0001F000-\U0001FAFF\U00002600-\U000027BF]")
 _URL = re.compile(r"https?://|www\.", re.I)
 _TREND_ID = re.compile(r"\b([TG])(\d+)\b", re.I)
 
+# Models write typographic punctuation; a meme font often has no glyph for it
+# and draws an empty box. The picture gets the keyboard's version.
+_PLAIN = str.maketrans({
+    "‐": "-", "‑": "-", "‒": "-", "–": "-", "—": "-", "−": "-",
+    "‘": "'", "’": "'", "“": '"', "”": '"',
+    "…": "...", " ": " ", " ": " ",
+})
+
 TECH, CURRENT = "tech", "current"
 
 
@@ -173,7 +181,7 @@ def validate(idea: dict, cat: dict[str, Trend], templates: list[Template]) -> di
     boxes = idea.get("boxes")
     if not isinstance(boxes, list) or not all(isinstance(b, str) for b in boxes):
         raise Rejected("boxes is not a list of text")
-    boxes = [b.strip() for b in boxes]
+    boxes = [" ".join(b.translate(_PLAIN).split()) for b in boxes]
     if len(boxes) != template.boxes or not all(boxes):
         raise Rejected(f"{template.name} takes {template.boxes} boxes, got {len(boxes)}")
     for b in boxes:
