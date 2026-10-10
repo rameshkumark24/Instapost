@@ -1,44 +1,64 @@
 {
   "date": "2026-10-10",
-  "built_at": "2026-10-10T06:22:19+00:00",
+  "built_at": "2026-10-10T06:30:26+00:00",
   "ideas": [
     {
-      "trend": "quarterly variable pay tcs",
-      "where": "IN",
-      "pool": "current",
-      "context": "India's TCS senior staff will miss out on variable pay for September quarter, memo shows",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
-      "boxes": [
-        "Getting a bonus for launching on time",
-        "TCS senior staff missing out on Q2 variable pay"
-      ],
-      "caption": "When the project hits every milestone, but finance discovers a creative way to redefine your quarter.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Compares expected performance bonuses with the reality of missing variable pay for senior staff.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b35085.jpg"
-    },
-    {
-      "trend": "mrbeast",
+      "trend": "indiana vs nebraska predictions",
       "where": "US",
       "pool": "current",
-      "context": "MrBeast turns struggling Raleigh mall into viral playground with new video",
-      "template_id": "112126428",
-      "template": "Distracted Boyfriend",
-      "maker": "https://imgflip.com/memegenerator/112126428",
+      "context": "Husker alum Will Compton likes Nebraska's 'vibe' as Indiana looms: Ben Doody's media notes",
+      "template_id": "222403160",
+      "template": "Bernie I Am Once Again Asking For Your Support",
+      "maker": "https://imgflip.com/memegenerator/222403160",
       "boxes": [
-        "Junior devs",
-        "Legacy enterprise monolith code",
-        "MrBeast turning a struggling mall into a viral playground"
+        "I am once again asking for your help to merge my PR",
+        "It only has 47 files changed and minor test failures"
       ],
-      "caption": "Sometimes you just need a massive budget and extreme optimism to make an old system fun again.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Contrasts the chaotic attempt to modernize legacy systems with a massive viral transformation project.",
+      "caption": "Nothing brings a team together quite like dreading the end-of-sprint code review.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Using Bernie to ask for review help mimics begging for team support before a big deadline.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b35088.jpg"
+      "image_url": "https://i.imgflip.com/b350hl.jpg"
+    },
+    {
+      "trend": "real madrid vs",
+      "where": "US",
+      "pool": "current",
+      "context": "Alineación probable del Real Madrid contra el Villarreal en LaLiga EA Sports",
+      "template_id": "177682295",
+      "template": "You Guys are Getting Paid",
+      "maker": "https://imgflip.com/memegenerator/177682295",
+      "boxes": [
+        "You guys are getting paid to write legacy documentation?",
+        "Wait, you guys are getting paid?"
+      ],
+      "caption": "When you find out the intern is actually on the payroll.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Playing on the surprise of actually getting compensated for tedious developer tasks.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b350hn.jpg"
+    },
+    {
+      "trend": "snapdragon stadium",
+      "where": "US",
+      "pool": "current",
+      "context": "Nearly 10 years after the Chargers’ departure, their old stadium site is being transformed",
+      "template_id": "110163934",
+      "template": "I Bet He's Thinking About Other Women",
+      "maker": "https://imgflip.com/memegenerator/110163934",
+      "boxes": [
+        "I bet he's thinking about other women",
+        "Can Snapdragon Stadium run a local LLM without thermal throttling"
+      ],
+      "caption": "Priorities when hearing about massive hardware-branded venues. Still waiting on the benchmarks.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Mistaking a real-world sports stadium named after Qualcomm Snapdragon for an extreme processor testing facility.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b350ho.jpg"
     }
   ],
   "trends": [
+    {
+      "title": "other mommy movie",
+      "where": "IN"
+    },
     {
       "title": "up scholarship",
       "where": "IN"
@@ -52,8 +72,8 @@
       "where": "IN"
     },
     {
-      "title": "quarterly variable pay tcs",
-      "where": "IN"
+      "title": "indiana vs nebraska predictions",
+      "where": "US"
     },
     {
       "title": "new zealand vs australia",
@@ -64,11 +84,15 @@
       "where": "US"
     },
     {
+      "title": "real madrid vs",
+      "where": "US"
+    },
+    {
       "title": "psg",
       "where": "US"
     },
     {
-      "title": "mrbeast",
+      "title": "tulsa ella langley concert cancelled",
       "where": "US"
     },
     {
@@ -78,23 +102,10 @@
     {
       "title": "tom blyth",
       "where": "US"
-    },
-    {
-      "title": "cameron douglas",
-      "where": "US"
-    },
-    {
-      "title": "felix auger aliassime",
-      "where": "US"
-    },
-    {
-      "title": "brendan allen",
-      "where": "US"
     }
   ],
   "problems": [],
   "rejects": [
-    "reply was not the JSON asked for (JSONDecodeError; 316 characters, ending 'fferent when the payout email arrives. At least the LinkedIn')",
-    "Bernie I Am Once Again Asking For Your Support takes 2 boxes, got 1"
+    "a box runs to 72 characters"
   ]
 }
