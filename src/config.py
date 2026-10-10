@@ -225,6 +225,20 @@ MEME_MIN_FIT = 0.25
 MEME_ATTEMPTS = 2                   # model calls a day before giving up
 MEME_TEMPLATE_POOL = 40             # Imgflip's most-captioned templates on offer
 MEME_MAX_BOXES = 3                  # past three text boxes the joke gets lost
+# A two-box template reads top then bottom, or first panel then second, and a
+# model gets that right. A three-box one labels people or things, and Imgflip
+# puts the labels on in an order the model cannot see: the first real drawing
+# of Distracted Boyfriend had "Junior devs" on the woman in red and the joke
+# backwards. So a three-box template is offered only once its order has been
+# read off a real drawing, and the prompt spells that order out.
+# Add one by drawing it, looking, and writing down what each box landed on.
+MEME_BOX_ROLES = {
+    "112126428": (                  # Distracted Boyfriend, checked 10 Oct 2026
+        "the tempting new thing (the woman in red, on the left)",
+        "who is being tempted (the boyfriend, in the middle)",
+        "what is being neglected (the girlfriend, on the right)",
+    ),
+}
 MEME_MIN_WIDTH = 400                # narrower templates blur when Instagram scales them up
 MEME_BOX_MAX = 70                   # characters per text box
 MEME_CAPTION_MAX = 300              # before hashtags

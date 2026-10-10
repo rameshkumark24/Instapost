@@ -34,15 +34,25 @@ log = logging.getLogger(__name__)
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
-# Current Flash models spend "thinking" tokens from the same output budget as
-# the answer. A 300-token cap can be exhausted before a word of the answer is
-# written, which comes back as a reply with no text at all.
-GEMINI_MIN_OUTPUT_TOKENS = 2048
+# Current Flash models spend "thinking" tokens from the same output limit as
+# the answer, and the limit is a hard cutoff: it does not make the model think
+# less, it only stops the answer. At 300 a reply could come back with no text
+# at all. At 2,048 a reply for three memes arrived 316 characters long,
+# mid-sentence, and three days ended with no meme ideas. Google's advice is
+# not to set a small limit at all; this is only a ceiling on a runaway reply.
+GEMINI_MIN_OUTPUT_TOKENS = 16384
 
 # Groq's gpt-oss models reason before answering, and the reasoning counts
 # against max_completion_tokens exactly as Gemini's thinking does. Low effort
-# is plenty for a caption, and leaves the budget for the answer.
+# is plenty for a caption, and leaves the budget for the answer. The ceiling
+# keeps a request inside the free plan's 8,000 tokens a minute for this model.
 GROQ_MIN_OUTPUT_TOKENS = 2048
+GROQ_MAX_OUTPUT_TOKENS = 4096
+
+# An answer that hit the limit is not an answer: half a JSON object, or a
+# summary that stops mid-sentence. It is reported as a failure, so the next
+# model gets the question instead of the caller getting the fragment.
+_CUT_OFF = "answer cut off at the output limit"
 
 _OK, _RETIRED, _AUTH, _OTHER = "ok", "retired", "auth", "other"
 
@@ -118,10 +128,14 @@ def _gemini(model: str, key: str, prompt: str, temperature: float, max_tokens: i
         kind, detail = _classify(r.status_code, r.text)
         return None, kind, detail
     try:
-        text = r.json()["candidates"][0]["content"]["parts"][0]["text"]
-    except (ValueError, KeyError, IndexError, TypeError):
+        candidate = r.json()["candidates"][0]
+        if candidate.get("finishReason") == "MAX_TOKENS":
+            return None, _OTHER, _CUT_OFF
+        # The answer can arrive in more than one part; a thought is not part of it.
+        text = "".join(p.get("text", "") for p in candidate["content"]["parts"] if not p.get("thought"))
+    except (ValueError, KeyError, IndexError, TypeError, AttributeError):
         return None, _OTHER, "no text in reply (output budget spent, or a safety block)"
-    if not text or not text.strip():
+    if not text.strip():
         return None, _OTHER, "empty reply"
     return text, _OK, ""
 
@@ -135,7 +149,7 @@ def _groq(model: str, key: str, prompt: str, temperature: float, max_tokens: int
                 "model": model,
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": temperature,
-                "max_completion_tokens": max(max_tokens, GROQ_MIN_OUTPUT_TOKENS),
+                "max_completion_tokens": min(max(max_tokens, GROQ_MIN_OUTPUT_TOKENS), GROQ_MAX_OUTPUT_TOKENS),
                 **({"reasoning_effort": "low"} if model.startswith("openai/gpt-oss") else {}),
             },
             timeout=(cfg.LLM_CONNECT_TIMEOUT_S, cfg.LLM_TIMEOUT_S),
@@ -147,8 +161,11 @@ def _groq(model: str, key: str, prompt: str, temperature: float, max_tokens: int
         kind, detail = _classify(r.status_code, r.text)
         return None, kind, detail
     try:
-        text = r.json()["choices"][0]["message"]["content"]
-    except (ValueError, KeyError, IndexError, TypeError):
+        choice = r.json()["choices"][0]
+        if choice.get("finish_reason") == "length":
+            return None, _OTHER, _CUT_OFF
+        text = choice["message"]["content"]
+    except (ValueError, KeyError, IndexError, TypeError, AttributeError):
         return None, _OTHER, "no text in reply"
     if not text or not text.strip():
         return None, _OTHER, "empty reply"

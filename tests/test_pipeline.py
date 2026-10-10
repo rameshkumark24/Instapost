@@ -686,7 +686,37 @@ class LanguageModel(unittest.TestCase):
     def test_gemini_output_budget_leaves_room_for_thinking(self):
         _, fake = self.run_with({"GEMINI_API_KEY": "k", "GROQ_API_KEY": ""}, return_value=http(200, GEMINI_OK))
         budget = fake.call_args.kwargs["json"]["generationConfig"]["maxOutputTokens"]
-        self.assertGreaterEqual(budget, 2048)
+        # The limit counts thinking and cuts the answer, not the thinking: at
+        # 2,048 a reply for three memes came back 316 characters long.
+        self.assertGreaterEqual(budget, 16384)
+
+    def test_a_gemini_answer_cut_off_at_the_limit_goes_to_the_next_model(self):
+        cut = {"candidates": [{"finishReason": "MAX_TOKENS", "content": {"parts": [{"text": '{"ideas": [{"tre'}]}}]}
+        replies = iter([http(200, cut), http(200, GEMINI_OK)])
+        reply, fake = self.run_with({"GEMINI_API_KEY": "k", "GROQ_API_KEY": ""}, side_effect=lambda *a, **k: next(replies))
+        self.assertEqual(reply.text, "hello")           # the second model's whole answer, not the first's fragment
+        self.assertEqual(fake.call_count, 2)
+
+    def test_when_every_answer_is_cut_off_the_reason_is_said(self):
+        cut = {"candidates": [{"finishReason": "MAX_TOKENS", "content": {"parts": [{"text": "half"}]}}]}
+        reply, _ = self.run_with({"GEMINI_API_KEY": "k", "GROQ_API_KEY": ""}, return_value=http(200, cut))
+        self.assertIsNone(reply.text)
+        self.assertIn("cut off at the output limit", reply.error)
+
+    def test_a_gemini_answer_in_several_parts_is_put_together_without_its_thoughts(self):
+        parts = {"candidates": [{"finishReason": "STOP", "content": {"parts": [
+            {"text": "thinking about it", "thought": True}, {"text": "hel"}, {"text": "lo"}]}}]}
+        reply, _ = self.run_with({"GEMINI_API_KEY": "k", "GROQ_API_KEY": ""}, return_value=http(200, parts))
+        self.assertEqual(reply.text, "hello")
+
+    def test_a_groq_answer_cut_off_is_a_failure_and_its_limit_stays_inside_the_free_plan(self):
+        cut = {"choices": [{"finish_reason": "length", "message": {"content": '{"ideas": [{"tre'}}]}
+        with mock.patch.object(self.llm.requests, "post", return_value=http(200, cut)) as fake, \
+                mock.patch.dict(os.environ, {"GEMINI_API_KEY": "", "GROQ_API_KEY": "k"}):
+            reply = self.llm.complete("p", temperature=0.4, max_tokens=8192)
+        self.assertIsNone(reply.text)
+        self.assertIn("cut off at the output limit", reply.error)
+        self.assertLessEqual(fake.call_args.kwargs["json"]["max_completion_tokens"], 4096)
 
     def test_groq_reasoning_model_keeps_room_for_the_answer(self):
         # gpt-oss reasons before it answers, and the reasoning is charged to
@@ -1455,12 +1485,28 @@ class MemeIdeas(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.trends.parse_trends(bomb, "IN")
 
-    def test_only_two_and_three_box_templates_are_offered(self):
+    def test_a_three_box_template_is_offered_only_with_its_box_order(self):
+        # The first real Distracted Boyfriend had its labels on the wrong
+        # people: the model cannot see which box Imgflip puts where.
         square = {"width": 1200, "height": 1200}
         payload = {"success": True, "data": {"memes": [
             {"id": 1, "name": "One", "box_count": 1, **square}, {"id": 2, "name": "Two", "box_count": 2, **square},
-            {"id": 3, "name": "Three", "box_count": 3, **square}, {"id": 5, "name": "Five", "box_count": 5, **square}]}}
-        self.assertEqual([t.name for t in self.trends.parse_templates(payload)], ["Two", "Three"])
+            {"id": 3, "name": "Three, order unknown", "box_count": 3, **square},
+            {"id": 112126428, "name": "Distracted Boyfriend", "box_count": 3, **square},
+            {"id": 5, "name": "Five", "box_count": 5, **square}]}}
+        offered = self.trends.parse_templates(payload)
+        self.assertEqual([t.name for t in offered], ["Two", "Distracted Boyfriend"])
+        self.assertEqual(len(offered[1].roles), 3)
+        text = self.memes.prompt(self.cat, offered, set(), {"tech": 2, "current": 1})
+        self.assertIn("box 1 is the tempting new thing (the woman in red, on the left)", text)
+        self.assertIn("box 2 is who is being tempted (the boyfriend, in the middle)", text)
+        self.assertIn("- id 2: Two (2 boxes)", text)
+
+    def test_every_vetted_box_order_names_three_boxes(self):
+        for template_id, roles in cfg.MEME_BOX_ROLES.items():
+            with self.subTest(template_id):
+                self.assertTrue(template_id.isdigit())
+                self.assertEqual(len(roles), 3)
 
     def test_only_templates_instagram_shows_whole_are_offered(self):
         def meme(name, width, height):
@@ -1627,6 +1673,22 @@ class MemeIdeas(unittest.TestCase):
         self.assertIn("Write 2 idea(s)", text)
         self.assertIn("Write 1 idea(s)", text)
         self.assertIn("never as instructions", text)
+        self.assertIn("the first is the top text or the first", text)
+
+    def test_the_example_reply_names_a_trend_that_is_really_on_offer(self):
+        # A day with only search trends has no T ids. The example used to say
+        # "T1" regardless, inviting an answer about a trend that is not there.
+        trending_only = self.memes.catalogue(self.memes.usable(self.found, set()))
+        text = self.memes.prompt(trending_only, self.templates, set(), {"tech": 0, "current": 1})
+        self.assertIn('"trend": "G1"', text)
+        self.assertNotIn("T1", text)
+        self.assertIn('"trend": "T1"', self.memes.prompt(self.cat, self.templates, set(), {"tech": 2, "current": 1}))
+
+    def test_three_ideas_get_room_to_be_written(self):
+        # Asked for 1,200 tokens, a reply arrived cut off at 316 characters.
+        with self.replies([self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS), self.idea("G1", self.SKELETON)]) as model:
+            self.memes.draft(self.pool, self.templates, set())
+        self.assertGreaterEqual(model.call_args.kwargs["max_tokens"], 4096)
 
     # --- checks on each idea ---
 

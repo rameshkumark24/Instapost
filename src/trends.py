@@ -49,6 +49,7 @@ class Template:
     id: str
     name: str
     boxes: int
+    roles: tuple[str, ...] = ()     # what each box lands on, where the order is not obvious
 
     @property
     def maker(self) -> str:
@@ -105,7 +106,11 @@ def parse_templates(payload: dict) -> list[Template]:
             continue
         if cfg.MEME_SENSITIVE.search(name):
             continue
-        out.append(Template(id=str(m["id"]), name=name, boxes=boxes))
+        # Past two boxes, only templates whose box order has been checked.
+        roles = cfg.MEME_BOX_ROLES.get(str(m["id"]), ())
+        if boxes > 2 and len(roles) != boxes:
+            continue
+        out.append(Template(id=str(m["id"]), name=name, boxes=boxes, roles=roles))
     return out[: cfg.MEME_TEMPLATE_POOL]
 
 
