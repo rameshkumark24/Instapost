@@ -1,5 +1,100 @@
 {
   "date": "2026-10-10",
-  "built_at": "2026-10-10T06:17:40+00:00",
-  "skip": "every idea failed a check"
+  "built_at": "2026-10-10T06:22:19+00:00",
+  "ideas": [
+    {
+      "trend": "quarterly variable pay tcs",
+      "where": "IN",
+      "pool": "current",
+      "context": "India's TCS senior staff will miss out on variable pay for September quarter, memo shows",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
+      "boxes": [
+        "Getting a bonus for launching on time",
+        "TCS senior staff missing out on Q2 variable pay"
+      ],
+      "caption": "When the project hits every milestone, but finance discovers a creative way to redefine your quarter.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Compares expected performance bonuses with the reality of missing variable pay for senior staff.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b35085.jpg"
+    },
+    {
+      "trend": "mrbeast",
+      "where": "US",
+      "pool": "current",
+      "context": "MrBeast turns struggling Raleigh mall into viral playground with new video",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
+      "boxes": [
+        "Junior devs",
+        "Legacy enterprise monolith code",
+        "MrBeast turning a struggling mall into a viral playground"
+      ],
+      "caption": "Sometimes you just need a massive budget and extreme optimism to make an old system fun again.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Contrasts the chaotic attempt to modernize legacy systems with a massive viral transformation project.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b35088.jpg"
+    }
+  ],
+  "trends": [
+    {
+      "title": "up scholarship",
+      "where": "IN"
+    },
+    {
+      "title": "scholarship up",
+      "where": "IN"
+    },
+    {
+      "title": "ndtv live",
+      "where": "IN"
+    },
+    {
+      "title": "quarterly variable pay tcs",
+      "where": "IN"
+    },
+    {
+      "title": "new zealand vs australia",
+      "where": "US"
+    },
+    {
+      "title": "serie a",
+      "where": "US"
+    },
+    {
+      "title": "psg",
+      "where": "US"
+    },
+    {
+      "title": "mrbeast",
+      "where": "US"
+    },
+    {
+      "title": "snapdragon stadium",
+      "where": "US"
+    },
+    {
+      "title": "tom blyth",
+      "where": "US"
+    },
+    {
+      "title": "cameron douglas",
+      "where": "US"
+    },
+    {
+      "title": "felix auger aliassime",
+      "where": "US"
+    },
+    {
+      "title": "brendan allen",
+      "where": "US"
+    }
+  ],
+  "problems": [],
+  "rejects": [
+    "reply was not the JSON asked for (JSONDecodeError; 316 characters, ending 'fferent when the payout email arrives. At least the LinkedIn')",
+    "Bernie I Am Once Again Asking For Your Support takes 2 boxes, got 1"
+  ]
 }
