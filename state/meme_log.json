@@ -203,5 +203,20 @@
     "date": "2026-10-10",
     "trend": "tyson fury",
     "template_id": "177682295"
+  },
+  {
+    "date": "2026-10-11",
+    "trend": "Anthropic is cutting off its internal evaluations from the internet",
+    "template_id": "252600902"
+  },
+  {
+    "date": "2026-10-11",
+    "trend": "What LLMs 'Know' That You Don't Know They Know: Stop Inventing Prompt DSLs and Ride 50 Years of Unix Pre-Training Gravity",
+    "template_id": "178591752"
+  },
+  {
+    "date": "2026-10-11",
+    "trend": "netflix new releases",
+    "template_id": "217743513"
   }
 ]

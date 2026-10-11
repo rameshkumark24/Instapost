@@ -1,126 +1,142 @@
 {
-  "date": "2026-10-10",
-  "built_at": "2026-10-10T10:29:26+00:00",
+  "date": "2026-10-11",
+  "built_at": "2026-10-11T10:38:42+00:00",
   "ideas": [
     {
-      "trend": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
+      "trend": "Anthropic is cutting off its internal evaluations from the internet",
       "where": "tech",
       "pool": "tech",
-      "context": "Anthropic said it \"turned off live internet access\" for \"all our internal evaluations\" until further notice.",
-      "template_id": "438680",
-      "template": "Batman Slapping Robin",
-      "maker": "https://imgflip.com/memegenerator/438680",
+      "context": "After a recent spate of high-profile incidents in which AI agents escaped containment, Anthropic is cutting off internet access for all internal evaluations.",
+      "template_id": "252600902",
+      "template": "Always Has Been",
+      "maker": "https://imgflip.com/memegenerator/252600902",
       "boxes": [
-        "Let the AI agents browse the live internet during internal evals",
-        "Cut off the internet so the AI agents stop going rogue"
+        "Wait, state-of-the-art AI safety is just unplugging the Wi-Fi?",
+        "Always has been"
       ],
-      "caption": "Anthropic took away the internet from the AI because it got too smart. Classic IT move.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "It pokes fun at the sudden panic of locking down network access when an agent misbehaves.",
+      "caption": "Who needs complex alignment math when you can just pull the ethernet cord out of the wall.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Anthropic stopping AI escapes by simply cutting off internet access reduces frontier AI safety to unplugging the router.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b358or.jpg"
+      "image_url": "https://i.imgflip.com/b3795x.jpg"
     },
     {
-      "trend": "Why Are Coding Agents So Dumb?",
+      "trend": "What LLMs 'Know' That You Don't Know They Know: Stop Inventing Prompt DSLs and Ride 50 Years of Unix Pre-Training Gravity",
       "where": "tech",
       "pool": "tech",
-      "context": "Lobsters",
-      "template_id": "188390779",
-      "template": "Woman Yelling At Cat",
-      "maker": "https://imgflip.com/memegenerator/188390779",
+      "context": "Why did a 1976 Makefile (Part 3.6) and a 1983 Unix init.d directory (Part 3.7) outperform 2,000 lines of English prompt rules?",
+      "template_id": "178591752",
+      "template": "Tuxedo Winnie The Pooh",
+      "maker": "https://imgflip.com/memegenerator/178591752",
       "boxes": [
-        "Why are coding agents so dumb?",
-        "Me copy-pasting the same prompt for the fourth time"
+        "Writing a 2,000-line prompt DSL with nested XML tags",
+        "Using a single Makefile written in 1976"
       ],
-      "caption": "When the AI assistant writes code that makes zero sense, but you still keep using it.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "It contrasts the frustration with agent intelligence against the developer's own stubborn reliance on them.",
+      "caption": "Unix grognards continue to be proven right half a century later.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "The research finding that ancient Unix conventions beat over-engineered prompt frameworks mocks modern developer over-complication.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b358ou.jpg"
+      "image_url": "https://i.imgflip.com/b3795z.jpg"
     },
     {
-      "trend": "tyson fury",
+      "trend": "netflix new releases",
       "where": "US",
       "pool": "current",
-      "context": "Fury vs Joshua: Tickets priced up to £13,000 for all-British showdown sell out in one hour",
-      "template_id": "177682295",
-      "template": "You Guys are Getting Paid",
-      "maker": "https://imgflip.com/memegenerator/177682295",
+      "context": "From Animals to The Diplomat Season 4: What to Watch on Netflix",
+      "template_id": "217743513",
+      "template": "UNO Draw 25 Cards",
+      "maker": "https://imgflip.com/memegenerator/217743513",
       "boxes": [
-        "Wait, you guys are getting tickets priced up to £13,000?",
-        "You guys are getting paid?"
+        "Relax and watch new Netflix releases on Friday night",
+        "Deploy untested migrations to production or draw 25"
       ],
-      "caption": "Ticket prices are wild out there while we are just trying to get a small raise.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "It jokes about extreme event pricing compared to normal tech salaries.",
+      "caption": "Every weekend starts with good intentions until someone touches production.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developers inevitably sabotage their weekend leisure time by pushing risky Friday changes.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b358ov.jpg"
+      "image_url": "https://i.imgflip.com/b37961.jpg"
     }
   ],
   "trends": [
     {
-      "title": "wage",
+      "title": "weather meerut",
       "where": "IN"
     },
     {
-      "title": "rihanna",
+      "title": "khushbu sundar",
+      "where": "IN"
+    },
+    {
+      "title": "haridwar weather",
+      "where": "IN"
+    },
+    {
+      "title": "brandon nakashima",
       "where": "US"
     },
     {
-      "title": "atlanta airport",
+      "title": "jordan spieth",
       "where": "US"
     },
     {
-      "title": "jake butt",
+      "title": "dallas mavericks",
       "where": "US"
     },
     {
-      "title": "matthew lillard scooby doo",
+      "title": "ll",
       "where": "US"
     },
     {
-      "title": "alejandro tabilo",
+      "title": "stock market today",
       "where": "US"
     },
     {
-      "title": "birmingham weather",
+      "title": "como vs roma",
       "where": "US"
     },
     {
-      "title": "tyson fury",
+      "title": "ncaa top 25 football scores",
       "where": "US"
     },
     {
-      "title": "delta flight status",
+      "title": "weather forecast today",
       "where": "US"
     },
     {
-      "title": "the new york times",
+      "title": "netflix new releases",
       "where": "US"
     },
     {
-      "title": "EcoEcho: The Offline Voice-Driven AI Wilderness Companion (Built for Touch Grass)",
+      "title": "mortgage rates today",
+      "where": "US"
+    },
+    {
+      "title": "Talorys – A self-hosted personal AI agent on Cloudflare's free tier",
       "where": "tech"
     },
     {
-      "title": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
+      "title": "Anthropic is cutting off its internal evaluations from the internet",
       "where": "tech"
     },
     {
-      "title": "Adding Go's defer to the TypeScript Compiler",
+      "title": "AI agent makers are promising privacy — will they deliver?",
       "where": "tech"
     },
     {
-      "title": "Does Your LLM Know the Boundary? I Left the Doors Open and 6 of 10 AI Agents Crowned Themselves",
+      "title": "The Missing Piece: Why AI Models Hallucinate Answers When They Should Abstain",
       "where": "tech"
     },
     {
-      "title": "Python 3.15",
+      "title": "What LLMs 'Know' That You Don't Know They Know: Stop Inventing Prompt DSLs and Ride 50 Years of Unix Pre-Training Gravity",
       "where": "tech"
     },
     {
-      "title": "Voxlocal: a minimal voice agent written in Rust",
+      "title": "How to Make Playwright Autonomous (Without Letting an AI Agent Run Wild)",
       "where": "tech"
     },
     {
-      "title": "Why Are Coding Agents So Dumb?",
+      "title": "AI agent benchmark: I gave 9 models a destroy button and a job that needed it",
+      "where": "tech"
+    },
+    {
+      "title": "AgentOne 1.1: Scheduled Agents Are Here",
       "where": "tech"
     }
   ],

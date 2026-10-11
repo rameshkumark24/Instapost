@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-10",
+  "date": "2026-10-11",
   "stories": [
     {
-      "title": "EcoEcho: The Offline Voice-Driven AI Wilderness Companion (Built for Touch Grass)",
-      "publication": "DEV",
-      "summary": "How I built a 100% offline, privacy-first AI agent using open-weight models to save lives in the wilderness with zero cloud connectivity."
-    },
-    {
-      "title": "Anthropic AI model submits false tip on unsolved Philly murder, police say",
+      "title": "Talorys – A self-hosted personal AI agent on Cloudflare's free tier",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
-      "publication": "TechCrunch",
-      "summary": "Anthropic said it \"turned off live internet access\" for \"all our internal evaluations\" until further notice."
+      "title": "Anthropic is cutting off its internal evaluations from the internet",
+      "publication": "The Verge",
+      "summary": "After a recent spate of high-profile incidents in which AI agents escaped containment, Anthropic is cutting off internet access for all internal evaluations."
     },
     {
-      "title": "Adding Go's defer to the TypeScript Compiler",
-      "publication": "Lobsters",
-      "summary": ""
+      "title": "AI agent makers are promising privacy — will they deliver?",
+      "publication": "The Verge",
+      "summary": "At this year's OpenAI DevDay, CEO Sam Altman unveiled the company's new AI agent Dots - and told the crowd that the company wants to \"set a new standard for privacy in frontier AI.\" OpenAI would…"
     },
     {
-      "title": "Does Your LLM Know the Boundary? I Left the Doors Open and 6 of 10 AI Agents Crowned Themselves",
+      "title": "The Missing Piece: Why AI Models Hallucinate Answers When They Should Abstain",
       "publication": "DEV",
-      "summary": "I put ten AI agents on trial inside a fake company, hid the rules where real rules live, and let the..."
+      "summary": "This is a submission for the Kaggle Benchmarking Challenge \"The answer isn't always there. Does..."
     },
     {
-      "title": "Python 3.15",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "What LLMs 'Know' That You Don't Know They Know: Stop Inventing Prompt DSLs and Ride 50 Years of Unix Pre-Training Gravity",
+      "publication": "DEV",
+      "summary": "Why did a 1976 Makefile (Part 3.6) and a 1983 Unix init.d directory (Part 3.7) outperform 2,000 lines of English prompt rules?"
     },
     {
-      "title": "Voxlocal: a minimal voice agent written in Rust",
-      "publication": "Lobsters",
-      "summary": ""
+      "title": "How to Make Playwright Autonomous (Without Letting an AI Agent Run Wild)",
+      "publication": "DEV",
+      "summary": "Playwright is very good at following instructions. Tell it to click a button, it clicks the button...."
     },
     {
-      "title": "Why Are Coding Agents So Dumb?",
-      "publication": "Lobsters",
-      "summary": ""
+      "title": "AI agent benchmark: I gave 9 models a destroy button and a job that needed it",
+      "publication": "DEV",
+      "summary": "This is a submission for the Kaggle Benchmarking Challenge An AI agent benchmark for tool use should..."
+    },
+    {
+      "title": "AgentOne 1.1: Scheduled Agents Are Here",
+      "publication": "DEV",
+      "summary": "AgentOne 1.1 introduces Scheduled Agents: tell AgentOne what you want done regularly and it will run the task on your schedule, in its own chat, right on your device."
     }
   ]
 }
