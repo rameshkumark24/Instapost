@@ -1,126 +1,111 @@
 {
-  "date": "2026-10-12",
-  "built_at": "2026-10-12T11:42:26+00:00",
+  "date": "2026-10-13",
+  "built_at": "2026-10-12T18:49:26+00:00",
   "ideas": [
     {
-      "trend": "Highlights from \"I spent 6 years developing a game in Rust and it just shipped, AMA\" (2024)",
+      "trend": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Microsoft is announcing its third-generation Maia in-house AI chip today, designed to be the \"primary AI inference system\" for Microsoft's products and services.",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
+      "boxes": [
+        "Renting Nvidia H100s in the cloud",
+        "Building your third-gen Maia chip to run everything"
+      ],
+      "caption": "When you finally get tired of AWS billing destroying your entire quarterly budget.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Comparing renting expensive GPUs versus making your own custom silicon.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b3aowg.jpg"
+    },
+    {
+      "trend": "Parsing JSON at tens of gigabytes per second… in Python",
       "where": "tech",
       "pool": "tech",
       "context": "Lobsters",
-      "template_id": "247113703",
-      "template": "A train hitting a school bus",
-      "maker": "https://imgflip.com/memegenerator/247113703",
+      "template_id": "129242436",
+      "template": "Change My Mind",
+      "maker": "https://imgflip.com/memegenerator/129242436",
       "boxes": [
-        "I will finish this indie game in Rust in a few months",
-        "6 years of fighting the borrow checker"
+        "Parsing JSON at tens of gigabytes per second in Python is impossible",
+        "C extensions and zero-copy parsing exist Change My Mind"
       ],
-      "caption": "At least there are zero memory leaks. See you all in 2032 for the sequel.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Pokes fun at Rust's strict compiler and borrow checker turning what should be a simple game project into a multi-year ordeal.",
+      "caption": "Python is slow until you let the C under the hood do all the heavy lifting.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Challenging the assumption that Python can never handle high-speed data parsing.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b39ntk.jpg"
+      "image_url": "https://i.imgflip.com/b3aowj.jpg"
     },
     {
-      "trend": "If You Never Do Anything Else to Fix Your Prompts, Do This One Thing",
-      "where": "tech",
-      "pool": "tech",
-      "context": "Why do LLMs confidently invent APIs that have never existed in the history of the universe? It is not a memory defect.",
-      "template_id": "77045868",
-      "template": "Pawn Stars Best I Can Do",
-      "maker": "https://imgflip.com/memegenerator/77045868",
-      "boxes": [
-        "Can I get the real method from the official library?",
-        "Best I can do is a fake API delivered with 100% confidence"
-      ],
-      "caption": "It sounded so convincing that I spent twenty minutes looking for it in node_modules.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "LLMs notoriously hallucinate methods and APIs with total confidence, sending developers on wild goose chases.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b39ntl.jpg"
-    },
-    {
-      "trend": "daylight savings",
-      "where": "US",
+      "trend": "al-nassr vs neftchi fergana",
+      "where": "IN",
       "pool": "current",
-      "context": "Permanent daylight saving time could leave students commuting in the dark, data shows",
-      "template_id": "224514655",
-      "template": "Anime Girl Hiding from Terminator",
-      "maker": "https://imgflip.com/memegenerator/224514655",
+      "context": "Al Nassr vs Neftchi Fergana LIVE streaming info, AFC Champions League Elite: When and where to watch, will Ronaldo play?",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "Daylight saving time",
-        "My backend cron jobs scheduled for 2:30 AM"
+        "Refactoring legacy spaghetti code",
+        "Junior developer trying to understand the codebase",
+        "The core feature that actually needs to be built"
       ],
-      "caption": "May your servers stay in UTC and your scheduled tasks not run twice tonight.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Daylight saving time is a classic nightmare for developers whose scheduled tasks unexpectedly skip or duplicate.",
+      "caption": "Will the junior survive the legacy codebase tournament?\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Compares getting lost in old code to a high-stakes tournament.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b39ntq.jpg"
+      "image_url": "https://i.imgflip.com/b3aowo.jpg"
     }
   ],
   "trends": [
     {
-      "title": "form 6 voter registration changes",
+      "title": "diddy",
       "where": "IN"
     },
     {
-      "title": "jorge jesus",
+      "title": "coventry vs newcastle",
       "where": "IN"
     },
     {
-      "title": "iphone 17 pro amazon flipkart comparison",
+      "title": "levante vs sevilla",
       "where": "IN"
     },
     {
-      "title": "australia champions vs west indies",
+      "title": "al-quwa al-jawiya vs al ain",
       "where": "IN"
     },
     {
-      "title": "fusion cx gmp",
+      "title": "al-nassr vs neftchi fergana",
       "where": "IN"
     },
     {
-      "title": "australia vs south africa",
+      "title": "max caster",
       "where": "US"
     },
     {
-      "title": "daylight savings",
+      "title": "prince harry family photo story",
       "where": "US"
     },
     {
-      "title": "melody morris big brother 28",
+      "title": "torino vs udinese",
       "where": "US"
     },
     {
-      "title": "marche des enfants rouges",
+      "title": "levante - sevilla",
       "where": "US"
     },
     {
-      "title": "jeff bezos views on housing costs",
+      "title": "servicio de control de inmigración y aduanas",
       "where": "US"
     },
     {
-      "title": "xenophobia",
+      "title": "afc champions league",
       "where": "US"
     },
     {
-      "title": "darline graham",
+      "title": "what's on netflix",
       "where": "US"
     },
     {
-      "title": "la knight post match reaction wwe",
-      "where": "US"
-    },
-    {
-      "title": "james mcavoy",
-      "where": "US"
-    },
-    {
-      "title": "mu stock price",
-      "where": "US"
-    },
-    {
-      "title": "The gap in shared understanding of LLM capability is widening",
-      "where": "tech"
-    },
-    {
-      "title": "5 Best AI Gateways",
+      "title": "Meta releases its first frontier model, Muse Wonder",
       "where": "tech"
     },
     {
@@ -128,23 +113,23 @@
       "where": "tech"
     },
     {
-      "title": "Highlights from \"I spent 6 years developing a game in Rust and it just shipped, AMA\" (2024)",
+      "title": "Meta Muse Wonder: Benchmarks, Pricing, API, and How to Use It",
       "where": "tech"
     },
     {
-      "title": "If You Never Do Anything Else to Fix Your Prompts, Do This One Thing",
+      "title": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
       "where": "tech"
     },
     {
-      "title": "Where Did My Data Go? Benchmarking LLMs as Data Pipeline Detectives",
+      "title": "Postgres isn't slow, your storage is",
       "where": "tech"
     },
     {
-      "title": "When LLM Decompilers Recompile More and Preserve Less",
+      "title": "Parsing JSON at tens of gigabytes per second… in Python",
       "where": "tech"
     },
     {
-      "title": "Georgian Language Benchmark: Two Biggest AI Labs Clash in a Language That Doesn't Play by Anyone's Rules",
+      "title": "You’re a Real Python Developer Only If...",
       "where": "tech"
     }
   ],

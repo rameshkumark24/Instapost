@@ -1,15 +1,10 @@
 {
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "stories": [
     {
-      "title": "The gap in shared understanding of LLM capability is widening",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "5 Best AI Gateways",
-      "publication": "DEV",
-      "summary": "Choosing between the best AI gateways is not just about getting a way to call an LLM. In real..."
+      "title": "Meta releases its first frontier model, Muse Wonder",
+      "publication": "TechCrunch",
+      "summary": "Where Muse Spark aimed to be a lightweight model that could perform at low latency, the Wonder models are larger and said to be more capable, with higher benchmark scores and better results on…"
     },
     {
       "title": "Linus Torvalds Working On A Hefty Linux Kernel Improvement With Claude Code",
@@ -17,29 +12,34 @@
       "summary": ""
     },
     {
-      "title": "Highlights from \"I spent 6 years developing a game in Rust and it just shipped, AMA\" (2024)",
+      "title": "Meta Muse Wonder: Benchmarks, Pricing, API, and How to Use It",
+      "publication": "DEV",
+      "summary": "Meta Muse Wonder benchmarks, $4/$20 API pricing, how it compares to Claude and GPT-6, Wonder vs Wonder Full, and how to start using it today."
+    },
+    {
+      "title": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
+      "publication": "The Verge",
+      "summary": "Microsoft is announcing its third-generation Maia in-house AI chip today, designed to be the \"primary AI inference system\" for Microsoft's products and services."
+    },
+    {
+      "title": "Postgres isn't slow, your storage is",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Parsing JSON at tens of gigabytes per second… in Python",
       "publication": "Lobsters",
       "summary": ""
+    },
+    {
+      "title": "You’re a Real Python Developer Only If...",
+      "publication": "DEV",
+      "summary": "A few months ago, I published You're a Real JavaScript Developer Only If... It was supposed to be a..."
     },
     {
       "title": "If You Never Do Anything Else to Fix Your Prompts, Do This One Thing",
       "publication": "DEV",
       "summary": "Why do LLMs confidently invent APIs that have never existed in the history of the universe? It is not a memory defect."
-    },
-    {
-      "title": "Where Did My Data Go? Benchmarking LLMs as Data Pipeline Detectives",
-      "publication": "DEV",
-      "summary": "This is a submission for the Kaggle Benchmarking Challenge What I Benchmarked Every data..."
-    },
-    {
-      "title": "When LLM Decompilers Recompile More and Preserve Less",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Georgian Language Benchmark: Two Biggest AI Labs Clash in a Language That Doesn't Play by Anyone's Rules",
-      "publication": "DEV",
-      "summary": "This is a submission for the Kaggle Benchmarking Challenge Table of Contents One Eye,..."
     }
   ]
 }
