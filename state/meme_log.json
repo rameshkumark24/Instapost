@@ -218,5 +218,20 @@
     "date": "2026-10-11",
     "trend": "netflix new releases",
     "template_id": "217743513"
+  },
+  {
+    "date": "2026-10-12",
+    "trend": "Highlights from \"I spent 6 years developing a game in Rust and it just shipped, AMA\" (2024)",
+    "template_id": "247113703"
+  },
+  {
+    "date": "2026-10-12",
+    "trend": "If You Never Do Anything Else to Fix Your Prompts, Do This One Thing",
+    "template_id": "77045868"
+  },
+  {
+    "date": "2026-10-12",
+    "trend": "daylight savings",
+    "template_id": "224514655"
   }
 ]

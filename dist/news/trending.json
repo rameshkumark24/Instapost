@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-11",
+  "date": "2026-10-12",
   "stories": [
     {
-      "title": "Talorys – A self-hosted personal AI agent on Cloudflare's free tier",
+      "title": "The gap in shared understanding of LLM capability is widening",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Anthropic is cutting off its internal evaluations from the internet",
-      "publication": "The Verge",
-      "summary": "After a recent spate of high-profile incidents in which AI agents escaped containment, Anthropic is cutting off internet access for all internal evaluations."
-    },
-    {
-      "title": "AI agent makers are promising privacy — will they deliver?",
-      "publication": "The Verge",
-      "summary": "At this year's OpenAI DevDay, CEO Sam Altman unveiled the company's new AI agent Dots - and told the crowd that the company wants to \"set a new standard for privacy in frontier AI.\" OpenAI would…"
-    },
-    {
-      "title": "The Missing Piece: Why AI Models Hallucinate Answers When They Should Abstain",
+      "title": "5 Best AI Gateways",
       "publication": "DEV",
-      "summary": "This is a submission for the Kaggle Benchmarking Challenge \"The answer isn't always there. Does..."
+      "summary": "Choosing between the best AI gateways is not just about getting a way to call an LLM. In real..."
     },
     {
-      "title": "What LLMs 'Know' That You Don't Know They Know: Stop Inventing Prompt DSLs and Ride 50 Years of Unix Pre-Training Gravity",
-      "publication": "DEV",
-      "summary": "Why did a 1976 Makefile (Part 3.6) and a 1983 Unix init.d directory (Part 3.7) outperform 2,000 lines of English prompt rules?"
+      "title": "Linus Torvalds Working On A Hefty Linux Kernel Improvement With Claude Code",
+      "publication": "Lobsters",
+      "summary": ""
     },
     {
-      "title": "How to Make Playwright Autonomous (Without Letting an AI Agent Run Wild)",
-      "publication": "DEV",
-      "summary": "Playwright is very good at following instructions. Tell it to click a button, it clicks the button...."
+      "title": "Highlights from \"I spent 6 years developing a game in Rust and it just shipped, AMA\" (2024)",
+      "publication": "Lobsters",
+      "summary": ""
     },
     {
-      "title": "AI agent benchmark: I gave 9 models a destroy button and a job that needed it",
+      "title": "If You Never Do Anything Else to Fix Your Prompts, Do This One Thing",
       "publication": "DEV",
-      "summary": "This is a submission for the Kaggle Benchmarking Challenge An AI agent benchmark for tool use should..."
+      "summary": "Why do LLMs confidently invent APIs that have never existed in the history of the universe? It is not a memory defect."
     },
     {
-      "title": "AgentOne 1.1: Scheduled Agents Are Here",
+      "title": "Where Did My Data Go? Benchmarking LLMs as Data Pipeline Detectives",
       "publication": "DEV",
-      "summary": "AgentOne 1.1 introduces Scheduled Agents: tell AgentOne what you want done regularly and it will run the task on your schedule, in its own chat, right on your device."
+      "summary": "This is a submission for the Kaggle Benchmarking Challenge What I Benchmarked Every data..."
+    },
+    {
+      "title": "When LLM Decompilers Recompile More and Preserve Less",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "Georgian Language Benchmark: Two Biggest AI Labs Clash in a Language That Doesn't Play by Anyone's Rules",
+      "publication": "DEV",
+      "summary": "This is a submission for the Kaggle Benchmarking Challenge Table of Contents One Eye,..."
     }
   ]
 }

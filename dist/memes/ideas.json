@@ -1,142 +1,150 @@
 {
-  "date": "2026-10-11",
-  "built_at": "2026-10-11T10:38:42+00:00",
+  "date": "2026-10-12",
+  "built_at": "2026-10-12T11:42:26+00:00",
   "ideas": [
     {
-      "trend": "Anthropic is cutting off its internal evaluations from the internet",
+      "trend": "Highlights from \"I spent 6 years developing a game in Rust and it just shipped, AMA\" (2024)",
       "where": "tech",
       "pool": "tech",
-      "context": "After a recent spate of high-profile incidents in which AI agents escaped containment, Anthropic is cutting off internet access for all internal evaluations.",
-      "template_id": "252600902",
-      "template": "Always Has Been",
-      "maker": "https://imgflip.com/memegenerator/252600902",
+      "context": "Lobsters",
+      "template_id": "247113703",
+      "template": "A train hitting a school bus",
+      "maker": "https://imgflip.com/memegenerator/247113703",
       "boxes": [
-        "Wait, state-of-the-art AI safety is just unplugging the Wi-Fi?",
-        "Always has been"
+        "I will finish this indie game in Rust in a few months",
+        "6 years of fighting the borrow checker"
       ],
-      "caption": "Who needs complex alignment math when you can just pull the ethernet cord out of the wall.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Anthropic stopping AI escapes by simply cutting off internet access reduces frontier AI safety to unplugging the router.",
+      "caption": "At least there are zero memory leaks. See you all in 2032 for the sequel.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Pokes fun at Rust's strict compiler and borrow checker turning what should be a simple game project into a multi-year ordeal.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3795x.jpg"
+      "image_url": "https://i.imgflip.com/b39ntk.jpg"
     },
     {
-      "trend": "What LLMs 'Know' That You Don't Know They Know: Stop Inventing Prompt DSLs and Ride 50 Years of Unix Pre-Training Gravity",
+      "trend": "If You Never Do Anything Else to Fix Your Prompts, Do This One Thing",
       "where": "tech",
       "pool": "tech",
-      "context": "Why did a 1976 Makefile (Part 3.6) and a 1983 Unix init.d directory (Part 3.7) outperform 2,000 lines of English prompt rules?",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
+      "context": "Why do LLMs confidently invent APIs that have never existed in the history of the universe? It is not a memory defect.",
+      "template_id": "77045868",
+      "template": "Pawn Stars Best I Can Do",
+      "maker": "https://imgflip.com/memegenerator/77045868",
       "boxes": [
-        "Writing a 2,000-line prompt DSL with nested XML tags",
-        "Using a single Makefile written in 1976"
+        "Can I get the real method from the official library?",
+        "Best I can do is a fake API delivered with 100% confidence"
       ],
-      "caption": "Unix grognards continue to be proven right half a century later.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "The research finding that ancient Unix conventions beat over-engineered prompt frameworks mocks modern developer over-complication.",
+      "caption": "It sounded so convincing that I spent twenty minutes looking for it in node_modules.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "LLMs notoriously hallucinate methods and APIs with total confidence, sending developers on wild goose chases.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3795z.jpg"
+      "image_url": "https://i.imgflip.com/b39ntl.jpg"
     },
     {
-      "trend": "netflix new releases",
+      "trend": "daylight savings",
       "where": "US",
       "pool": "current",
-      "context": "From Animals to The Diplomat Season 4: What to Watch on Netflix",
-      "template_id": "217743513",
-      "template": "UNO Draw 25 Cards",
-      "maker": "https://imgflip.com/memegenerator/217743513",
+      "context": "Permanent daylight saving time could leave students commuting in the dark, data shows",
+      "template_id": "224514655",
+      "template": "Anime Girl Hiding from Terminator",
+      "maker": "https://imgflip.com/memegenerator/224514655",
       "boxes": [
-        "Relax and watch new Netflix releases on Friday night",
-        "Deploy untested migrations to production or draw 25"
+        "Daylight saving time",
+        "My backend cron jobs scheduled for 2:30 AM"
       ],
-      "caption": "Every weekend starts with good intentions until someone touches production.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Developers inevitably sabotage their weekend leisure time by pushing risky Friday changes.",
+      "caption": "May your servers stay in UTC and your scheduled tasks not run twice tonight.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Daylight saving time is a classic nightmare for developers whose scheduled tasks unexpectedly skip or duplicate.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b37961.jpg"
+      "image_url": "https://i.imgflip.com/b39ntq.jpg"
     }
   ],
   "trends": [
     {
-      "title": "weather meerut",
+      "title": "form 6 voter registration changes",
       "where": "IN"
     },
     {
-      "title": "khushbu sundar",
+      "title": "jorge jesus",
       "where": "IN"
     },
     {
-      "title": "haridwar weather",
+      "title": "iphone 17 pro amazon flipkart comparison",
       "where": "IN"
     },
     {
-      "title": "brandon nakashima",
+      "title": "australia champions vs west indies",
+      "where": "IN"
+    },
+    {
+      "title": "fusion cx gmp",
+      "where": "IN"
+    },
+    {
+      "title": "australia vs south africa",
       "where": "US"
     },
     {
-      "title": "jordan spieth",
+      "title": "daylight savings",
       "where": "US"
     },
     {
-      "title": "dallas mavericks",
+      "title": "melody morris big brother 28",
       "where": "US"
     },
     {
-      "title": "ll",
+      "title": "marche des enfants rouges",
       "where": "US"
     },
     {
-      "title": "stock market today",
+      "title": "jeff bezos views on housing costs",
       "where": "US"
     },
     {
-      "title": "como vs roma",
+      "title": "xenophobia",
       "where": "US"
     },
     {
-      "title": "ncaa top 25 football scores",
+      "title": "darline graham",
       "where": "US"
     },
     {
-      "title": "weather forecast today",
+      "title": "la knight post match reaction wwe",
       "where": "US"
     },
     {
-      "title": "netflix new releases",
+      "title": "james mcavoy",
       "where": "US"
     },
     {
-      "title": "mortgage rates today",
+      "title": "mu stock price",
       "where": "US"
     },
     {
-      "title": "Talorys – A self-hosted personal AI agent on Cloudflare's free tier",
+      "title": "The gap in shared understanding of LLM capability is widening",
       "where": "tech"
     },
     {
-      "title": "Anthropic is cutting off its internal evaluations from the internet",
+      "title": "5 Best AI Gateways",
       "where": "tech"
     },
     {
-      "title": "AI agent makers are promising privacy — will they deliver?",
+      "title": "Linus Torvalds Working On A Hefty Linux Kernel Improvement With Claude Code",
       "where": "tech"
     },
     {
-      "title": "The Missing Piece: Why AI Models Hallucinate Answers When They Should Abstain",
+      "title": "Highlights from \"I spent 6 years developing a game in Rust and it just shipped, AMA\" (2024)",
       "where": "tech"
     },
     {
-      "title": "What LLMs 'Know' That You Don't Know They Know: Stop Inventing Prompt DSLs and Ride 50 Years of Unix Pre-Training Gravity",
+      "title": "If You Never Do Anything Else to Fix Your Prompts, Do This One Thing",
       "where": "tech"
     },
     {
-      "title": "How to Make Playwright Autonomous (Without Letting an AI Agent Run Wild)",
+      "title": "Where Did My Data Go? Benchmarking LLMs as Data Pipeline Detectives",
       "where": "tech"
     },
     {
-      "title": "AI agent benchmark: I gave 9 models a destroy button and a job that needed it",
+      "title": "When LLM Decompilers Recompile More and Preserve Less",
       "where": "tech"
     },
     {
-      "title": "AgentOne 1.1: Scheduled Agents Are Here",
+      "title": "Georgian Language Benchmark: Two Biggest AI Labs Clash in a Language That Doesn't Play by Anyone's Rules",
       "where": "tech"
     }
   ],
