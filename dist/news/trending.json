@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-13",
+  "date": "2026-10-14",
   "stories": [
     {
-      "title": "Meta releases its first frontier model, Muse Wonder",
-      "publication": "TechCrunch",
-      "summary": "Where Muse Spark aimed to be a lightweight model that could perform at low latency, the Wonder models are larger and said to be more capable, with higher benchmark scores and better results on…"
-    },
-    {
-      "title": "Linus Torvalds Working On A Hefty Linux Kernel Improvement With Claude Code",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Meta Muse Wonder: Benchmarks, Pricing, API, and How to Use It",
-      "publication": "DEV",
-      "summary": "Meta Muse Wonder benchmarks, $4/$20 API pricing, how it compares to Claude and GPT-6, Wonder vs Wonder Full, and how to start using it today."
-    },
-    {
-      "title": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
-      "publication": "The Verge",
-      "summary": "Microsoft is announcing its third-generation Maia in-house AI chip today, designed to be the \"primary AI inference system\" for Microsoft's products and services."
-    },
-    {
-      "title": "Postgres isn't slow, your storage is",
+      "title": "OpenAI engineer arrested in bugging of executive conference room",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Parsing JSON at tens of gigabytes per second… in Python",
+      "title": "Redesigning source control at Anthropic",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Gemini 4 Argon",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "AIR-LLM: Broadcasting AI Weights over Radio for Memory-Free Edge LLM Inference via RF Computing",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "You’re a Real Python Developer Only If...",
-      "publication": "DEV",
-      "summary": "A few months ago, I published You're a Real JavaScript Developer Only If... It was supposed to be a..."
+      "title": "Gemini 4 Argon for Robotics",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
-      "title": "If You Never Do Anything Else to Fix Your Prompts, Do This One Thing",
-      "publication": "DEV",
-      "summary": "Why do LLMs confidently invent APIs that have never existed in the history of the universe? It is not a memory defect."
+      "title": "11 year old unsoundness bugs found in Rust borrow checker",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "We turned EmbeddingGemma 2 into a speech-to-text model",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Compiler bootstrapping depends on more than you might think",
+      "publication": "Lobsters",
+      "summary": ""
     }
   ]
 }

@@ -1,138 +1,123 @@
 {
-  "date": "2026-10-13",
-  "built_at": "2026-10-12T18:49:26+00:00",
+  "date": "2026-10-14",
+  "built_at": "2026-10-14T09:20:52+00:00",
   "ideas": [
     {
-      "trend": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
+      "trend": "11 year old unsoundness bugs found in Rust borrow checker",
       "where": "tech",
       "pool": "tech",
-      "context": "Microsoft is announcing its third-generation Maia in-house AI chip today, designed to be the \"primary AI inference system\" for Microsoft's products and services.",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
+      "context": "Hacker News",
+      "template_id": "252600902",
+      "template": "Always Has Been",
+      "maker": "https://imgflip.com/memegenerator/252600902",
       "boxes": [
-        "Renting Nvidia H100s in the cloud",
-        "Building your third-gen Maia chip to run everything"
+        "Wait, the borrow checker had unsoundness bugs for 11 years?",
+        "Always has been."
       ],
-      "caption": "When you finally get tired of AWS billing destroying your entire quarterly budget.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Comparing renting expensive GPUs versus making your own custom silicon.",
+      "caption": "Rust developers in shambles after learning the compiler is also written by mortal humans.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Rust's entire reputation is zero memory bugs, so an 11-year-old soundness bug in the borrow checker ruins the mythos.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3aowg.jpg"
+      "image_url": "https://i.imgflip.com/b3f8yk.jpg"
     },
     {
-      "trend": "Parsing JSON at tens of gigabytes per second… in Python",
+      "trend": "Redesigning source control at Anthropic",
       "where": "tech",
       "pool": "tech",
-      "context": "Lobsters",
-      "template_id": "129242436",
-      "template": "Change My Mind",
-      "maker": "https://imgflip.com/memegenerator/129242436",
+      "context": "Hacker News",
+      "template_id": "217743513",
+      "template": "UNO Draw 25 Cards",
+      "maker": "https://imgflip.com/memegenerator/217743513",
       "boxes": [
-        "Parsing JSON at tens of gigabytes per second in Python is impossible",
-        "C extensions and zero-copy parsing exist Change My Mind"
+        "Learn how git rebase actually works",
+        "Invent an entirely new source control system"
       ],
-      "caption": "Python is slow until you let the C under the hood do all the heavy lifting.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Challenging the assumption that Python can never handle high-speed data parsing.",
+      "caption": "AI researchers will literally build a brand new version control system from scratch before reading git documentation.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Engineers would rather redesign source control entirely than deal with obscure Git commands and merge conflicts.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3aowj.jpg"
-    },
-    {
-      "trend": "al-nassr vs neftchi fergana",
-      "where": "IN",
-      "pool": "current",
-      "context": "Al Nassr vs Neftchi Fergana LIVE streaming info, AFC Champions League Elite: When and where to watch, will Ronaldo play?",
-      "template_id": "112126428",
-      "template": "Distracted Boyfriend",
-      "maker": "https://imgflip.com/memegenerator/112126428",
-      "boxes": [
-        "Refactoring legacy spaghetti code",
-        "Junior developer trying to understand the codebase",
-        "The core feature that actually needs to be built"
-      ],
-      "caption": "Will the junior survive the legacy codebase tournament?\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Compares getting lost in old code to a high-stakes tournament.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b3aowo.jpg"
+      "image_url": "https://i.imgflip.com/b3f8yn.jpg"
     }
   ],
   "trends": [
     {
-      "title": "diddy",
+      "title": "court",
       "where": "IN"
     },
     {
-      "title": "coventry vs newcastle",
+      "title": "jessica pegula",
       "where": "IN"
     },
     {
-      "title": "levante vs sevilla",
-      "where": "IN"
-    },
-    {
-      "title": "al-quwa al-jawiya vs al ain",
-      "where": "IN"
-    },
-    {
-      "title": "al-nassr vs neftchi fergana",
-      "where": "IN"
-    },
-    {
-      "title": "max caster",
+      "title": "alex cooper",
       "where": "US"
     },
     {
-      "title": "prince harry family photo story",
+      "title": "nba standings",
       "where": "US"
     },
     {
-      "title": "torino vs udinese",
+      "title": "cvs",
       "where": "US"
     },
     {
-      "title": "levante - sevilla",
+      "title": "jessica tisch",
       "where": "US"
     },
     {
-      "title": "servicio de control de inmigración y aduanas",
+      "title": "freeze watch",
       "where": "US"
     },
     {
-      "title": "afc champions league",
+      "title": "harrison ford",
       "where": "US"
     },
     {
-      "title": "what's on netflix",
+      "title": "danny trejo",
       "where": "US"
     },
     {
-      "title": "Meta releases its first frontier model, Muse Wonder",
+      "title": "browns depth chart",
+      "where": "US"
+    },
+    {
+      "title": "spectrum outage",
+      "where": "US"
+    },
+    {
+      "title": "wta wuhan",
+      "where": "US"
+    },
+    {
+      "title": "Redesigning source control at Anthropic",
       "where": "tech"
     },
     {
-      "title": "Linus Torvalds Working On A Hefty Linux Kernel Improvement With Claude Code",
+      "title": "Gemini 4 Argon",
       "where": "tech"
     },
     {
-      "title": "Meta Muse Wonder: Benchmarks, Pricing, API, and How to Use It",
+      "title": "AIR-LLM: Broadcasting AI Weights over Radio for Memory-Free Edge LLM Inference via RF Computing",
       "where": "tech"
     },
     {
-      "title": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
+      "title": "Gemini 4 Argon for Robotics",
       "where": "tech"
     },
     {
-      "title": "Postgres isn't slow, your storage is",
+      "title": "11 year old unsoundness bugs found in Rust borrow checker",
       "where": "tech"
     },
     {
-      "title": "Parsing JSON at tens of gigabytes per second… in Python",
+      "title": "We turned EmbeddingGemma 2 into a speech-to-text model",
       "where": "tech"
     },
     {
-      "title": "You’re a Real Python Developer Only If...",
+      "title": "Compiler bootstrapping depends on more than you might think",
       "where": "tech"
     }
   ],
   "problems": [],
-  "rejects": []
+  "rejects": [
+    "touches a subject the page never jokes about",
+    "a box runs to 83 characters"
+  ]
 }

@@ -248,5 +248,15 @@
     "date": "2026-10-13",
     "trend": "al-nassr vs neftchi fergana",
     "template_id": "112126428"
+  },
+  {
+    "date": "2026-10-14",
+    "trend": "11 year old unsoundness bugs found in Rust borrow checker",
+    "template_id": "252600902"
+  },
+  {
+    "date": "2026-10-14",
+    "trend": "Redesigning source control at Anthropic",
+    "template_id": "217743513"
   }
 ]

@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "linked-list",
-  "term": "LINKED LIST",
-  "headline": "Our friendship is a LINKED LIST: I only know who comes after me, and if one node is lost, the whole chain breaks.",
-  "caption": "Our friendship is a LINKED LIST: I only know who comes after me, and if one node is lost, the whole chain breaks.\n\n—\nLINKED LIST: each element only knows where the next one is.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-13",
-  "built_at": "2026-10-12T18:48:11+00:00",
+  "concept": "git-rebase",
+  "term": "REBASE",
+  "headline": "We agreed to REBASE our relationship onto a fresh start. It sounded clean, until we had to manually resolve every single past conflict.",
+  "caption": "We agreed to REBASE our relationship onto a fresh start. It sounded clean, until we had to manually resolve every single past conflict.\n\n—\nREBASE: rewrites your commits onto a new base, changing history.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-14",
+  "built_at": "2026-10-14T09:20:19+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
