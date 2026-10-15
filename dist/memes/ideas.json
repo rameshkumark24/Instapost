@@ -1,123 +1,133 @@
 {
-  "date": "2026-10-14",
-  "built_at": "2026-10-14T09:20:52+00:00",
+  "date": "2026-10-15",
+  "built_at": "2026-10-15T08:55:57+00:00",
   "ideas": [
     {
-      "trend": "11 year old unsoundness bugs found in Rust borrow checker",
+      "trend": "Better HTTP/1 connection reuse in Go 1.27",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "252600902",
-      "template": "Always Has Been",
-      "maker": "https://imgflip.com/memegenerator/252600902",
+      "template_id": "178591752",
+      "template": "Tuxedo Winnie The Pooh",
+      "maker": "https://imgflip.com/memegenerator/178591752",
       "boxes": [
-        "Wait, the borrow checker had unsoundness bugs for 11 years?",
-        "Always has been."
+        "Migrating the entire stack to HTTP/3 and gRPC",
+        "Waiting for Go 1.27 so HTTP/1.1 connections get reused better"
       ],
-      "caption": "Rust developers in shambles after learning the compiler is also written by mortal humans.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Rust's entire reputation is zero memory bugs, so an 11-year-old soundness bug in the borrow checker ruins the mythos.",
+      "caption": "Why rebuild your entire networking architecture when the Go compiler can just squeeze extra life out of a protocol from 1997.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developers would rather wait for minor runtime optimizations on legacy protocols than migrate to modern ones.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3f8yk.jpg"
+      "image_url": "https://i.imgflip.com/b3i8a5.jpg"
     },
     {
-      "trend": "Redesigning source control at Anthropic",
+      "trend": "CedarDB wants one database to handle both transactions and analytics, as AI agents raise the stakes",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "217743513",
-      "template": "UNO Draw 25 Cards",
-      "maker": "https://imgflip.com/memegenerator/217743513",
+      "context": "Databases have traditionally been designed either for analytical data or for operational data.",
+      "template_id": "77045868",
+      "template": "Pawn Stars Best I Can Do",
+      "maker": "https://imgflip.com/memegenerator/77045868",
       "boxes": [
-        "Learn how git rebase actually works",
-        "Invent an entirely new source control system"
+        "We built a unified database for both transactions and analytics",
+        "Best I can do is a bloated Postgres query with no WHERE clause"
       ],
-      "caption": "AI researchers will literally build a brand new version control system from scratch before reading git documentation.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Engineers would rather redesign source control entirely than deal with obscure Git commands and merge conflicts.",
+      "caption": "Database architects spend years perfecting unified engines just for us to dump everything into Postgres anyway.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "No matter how many specialized unified databases launch, developers still default to running heavy analytics on raw production Postgres.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3f8yn.jpg"
+      "image_url": "https://i.imgflip.com/b3i8a9.jpg"
+    },
+    {
+      "trend": "fitness",
+      "where": "US",
+      "pool": "current",
+      "context": "Fitness specialist Jill Strandberg helps seniors ‘move and feel strong’ at Elmhurst retirement community",
+      "template_id": "354700819",
+      "template": "Two guys on a bus",
+      "maker": "https://imgflip.com/memegenerator/354700819",
+      "boxes": [
+        "Walking 10,000 steps a day for developer fitness",
+        "Sprinting to hit git revert when prod fails at 4:59 PM"
+      ],
+      "caption": "Cardio is optional until you see five consecutive alerts fire in the on-call channel right before the weekend.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developers neglect everyday fitness routines until an emergency production outage suddenly gets their heart rate up.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b3i8ac.jpg"
     }
   ],
   "trends": [
     {
-      "title": "court",
+      "title": "yes bank news",
       "where": "IN"
     },
     {
-      "title": "jessica pegula",
+      "title": "hang seng",
       "where": "IN"
     },
     {
-      "title": "alex cooper",
+      "title": "leylah fernandez",
+      "where": "IN"
+    },
+    {
+      "title": "fortnite servers",
       "where": "US"
     },
     {
-      "title": "nba standings",
+      "title": "fortnite",
       "where": "US"
     },
     {
-      "title": "cvs",
+      "title": "jelena ostapenko",
       "where": "US"
     },
     {
-      "title": "jessica tisch",
+      "title": "antigravity",
       "where": "US"
     },
     {
-      "title": "freeze watch",
+      "title": "jeļena ostapenko",
       "where": "US"
     },
     {
-      "title": "harrison ford",
+      "title": "league of legends",
       "where": "US"
     },
     {
-      "title": "danny trejo",
+      "title": "fitness",
       "where": "US"
     },
     {
-      "title": "browns depth chart",
-      "where": "US"
-    },
-    {
-      "title": "spectrum outage",
-      "where": "US"
-    },
-    {
-      "title": "wta wuhan",
-      "where": "US"
-    },
-    {
-      "title": "Redesigning source control at Anthropic",
+      "title": "Anthropic's Scion is heavily inspired by Mononoke",
       "where": "tech"
     },
     {
-      "title": "Gemini 4 Argon",
+      "title": "LFM2.5-24B-A2B: Built for fast on-device agents",
       "where": "tech"
     },
     {
-      "title": "AIR-LLM: Broadcasting AI Weights over Radio for Memory-Free Edge LLM Inference via RF Computing",
+      "title": "Why do LLM pelicans look like this?",
       "where": "tech"
     },
     {
-      "title": "Gemini 4 Argon for Robotics",
+      "title": "Better HTTP/1 connection reuse in Go 1.27",
       "where": "tech"
     },
     {
-      "title": "11 year old unsoundness bugs found in Rust borrow checker",
+      "title": "The AI race is back on",
       "where": "tech"
     },
     {
-      "title": "We turned EmbeddingGemma 2 into a speech-to-text model",
+      "title": "CedarDB wants one database to handle both transactions and analytics, as AI agents raise the stakes",
       "where": "tech"
     },
     {
-      "title": "Compiler bootstrapping depends on more than you might think",
+      "title": "Figma announces new features to define how agents work on its platform",
+      "where": "tech"
+    },
+    {
+      "title": "Eight states sue OpenAI, saying ChatGPT isn’t safe for kids",
       "where": "tech"
     }
   ],
   "problems": [],
-  "rejects": [
-    "touches a subject the page never jokes about",
-    "a box runs to 83 characters"
-  ]
+  "rejects": []
 }

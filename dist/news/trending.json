@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-14",
+  "date": "2026-10-15",
   "stories": [
     {
-      "title": "OpenAI engineer arrested in bugging of executive conference room",
+      "title": "Anthropic's Scion is heavily inspired by Mononoke",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Redesigning source control at Anthropic",
+      "title": "LFM2.5-24B-A2B: Built for fast on-device agents",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Gemini 4 Argon",
+      "title": "Why do LLM pelicans look like this?",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "AIR-LLM: Broadcasting AI Weights over Radio for Memory-Free Edge LLM Inference via RF Computing",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Gemini 4 Argon for Robotics",
+      "title": "Better HTTP/1 connection reuse in Go 1.27",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "11 year old unsoundness bugs found in Rust borrow checker",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "The AI race is back on",
+      "publication": "The Verge",
+      "summary": "Last week, Anthropic and OpenAI looked like they had the AI race to themselves, pulling ahead with increasingly powerful models that left their rivals in the dust."
     },
     {
-      "title": "We turned EmbeddingGemma 2 into a speech-to-text model",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "CedarDB wants one database to handle both transactions and analytics, as AI agents raise the stakes",
+      "publication": "TechCrunch",
+      "summary": "Databases have traditionally been designed either for analytical data or for operational data."
     },
     {
-      "title": "Compiler bootstrapping depends on more than you might think",
-      "publication": "Lobsters",
-      "summary": ""
+      "title": "Figma announces new features to define how agents work on its platform",
+      "publication": "TechCrunch",
+      "summary": "Figma is also releasing its code layers feature in open beta."
+    },
+    {
+      "title": "Eight states sue OpenAI, saying ChatGPT isn’t safe for kids",
+      "publication": "The Verge",
+      "summary": "OpenAI is facing a new wave of lawsuits from eight US states that accuse the company of harming children and misleading customers about the safety of ChatGPT, as reported earlier by Reuters."
     }
   ]
 }

@@ -258,5 +258,20 @@
     "date": "2026-10-14",
     "trend": "Redesigning source control at Anthropic",
     "template_id": "217743513"
+  },
+  {
+    "date": "2026-10-15",
+    "trend": "Better HTTP/1 connection reuse in Go 1.27",
+    "template_id": "178591752"
+  },
+  {
+    "date": "2026-10-15",
+    "trend": "CedarDB wants one database to handle both transactions and analytics, as AI agents raise the stakes",
+    "template_id": "77045868"
+  },
+  {
+    "date": "2026-10-15",
+    "trend": "fitness",
+    "template_id": "354700819"
   }
 ]
