@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-16",
   "stories": [
     {
-      "title": "Anthropic's Scion is heavily inspired by Mononoke",
+      "title": "More on Anthropic's Scion ripping off Mononoke",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "LFM2.5-24B-A2B: Built for fast on-device agents",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Why do LLM pelicans look like this?",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Better HTTP/1 connection reuse in Go 1.27",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "The AI race is back on",
+      "title": "ChatGPT can peek at your Chrome tabs now",
       "publication": "The Verge",
-      "summary": "Last week, Anthropic and OpenAI looked like they had the AI race to themselves, pulling ahead with increasingly powerful models that left their rivals in the dust."
+      "summary": "OpenAI's ChatGPT Atlas browser is gone, but now ChatGPT's Google Chrome extension is getting some upgrades that allow it to use the browser tabs you already have open."
     },
     {
-      "title": "CedarDB wants one database to handle both transactions and analytics, as AI agents raise the stakes",
+      "title": "Announcing Rust 1.99.1",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "Meta launches an open-weight AI model that runs on Macs",
       "publication": "TechCrunch",
-      "summary": "Databases have traditionally been designed either for analytical data or for operational data."
+      "summary": "Meta and Apple have teamed up for the launch of the social media giant's newest model, Muse Spark Open, which will run locally on Apple silicon."
     },
     {
-      "title": "Figma announces new features to define how agents work on its platform",
-      "publication": "TechCrunch",
-      "summary": "Figma is also releasing its code layers feature in open beta."
-    },
-    {
-      "title": "Eight states sue OpenAI, saying ChatGPT isn’t safe for kids",
+      "title": "Meta and Apple team up to make Muse AI models run better on Macs",
       "publication": "The Verge",
-      "summary": "OpenAI is facing a new wave of lawsuits from eight US states that accuse the company of harming children and misleading customers about the safety of ChatGPT, as reported earlier by Reuters."
+      "summary": "Meta announced the Muse Spark Open AI model today, claiming that it's the \"most capable US open-weight model to date.\" But the company also says that it's the \"the first model in its class\" that can…"
+    },
+    {
+      "title": "Even Benchmark thinks AI is eroding the venture pact against backing rivals",
+      "publication": "TechCrunch",
+      "summary": "Benchmark says the Valley’s rule against backing rivals is getting harder to keep."
+    },
+    {
+      "title": "Anthropic is letting METR researchers look under the hood with employee-level access",
+      "publication": "TechCrunch",
+      "summary": "METR will publish its own assessments of Anthropic’s risks, incidents, and practices, and the frontier AI model maker has given up the right to block them."
+    },
+    {
+      "title": "Google’s Universal Cart shopping tool launches in the US",
+      "publication": "TechCrunch",
+      "summary": "The new shopping tool is available in the U.S. across Google Search and the Gemini app."
     }
   ]
 }

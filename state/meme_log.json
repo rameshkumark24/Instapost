@@ -273,5 +273,20 @@
     "date": "2026-10-15",
     "trend": "fitness",
     "template_id": "354700819"
+  },
+  {
+    "date": "2026-10-16",
+    "trend": "More on Anthropic's Scion ripping off Mononoke",
+    "template_id": "181913649"
+  },
+  {
+    "date": "2026-10-16",
+    "trend": "Announcing Rust 1.99.1",
+    "template_id": "252600902"
+  },
+  {
+    "date": "2026-10-16",
+    "trend": "flight",
+    "template_id": "129242436"
   }
 ]
