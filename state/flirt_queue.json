@@ -331,8 +331,9 @@
   "terms": [
    "DEBUGGING"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-05T11:17:52+00:00"
+  "status": "sent",
+  "drafted_at": "2026-10-05T11:17:52+00:00",
+  "sent_at": "2026-10-17T08:19:47+00:00"
  },
  {
   "concept": "compile-error",
@@ -421,5 +422,137 @@
   ],
   "status": "pending",
   "drafted_at": "2026-10-05T11:17:52+00:00"
+ },
+ {
+  "concept": "webhook",
+  "term": "WEBHOOK",
+  "domain": "web",
+  "text": "Stop polling me every ten minutes to see if I'm ready. Treat me like a WEBHOOK: I'll call you the second something happens.",
+  "terms": [
+   "WEBHOOK"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "timeout",
+  "term": "TIMEOUT",
+  "domain": "networking",
+  "text": "Sometimes you just need to implement a TIMEOUT on a conversation that's been hanging with no response for three business days.",
+  "terms": [
+   "TIMEOUT"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "replication",
+  "term": "REPLICATION",
+  "domain": "sql",
+  "text": "Long-distance friendship is just REPLICATION with high latency. You think you're in sync until you realize you're two life updates behind.",
+  "terms": [
+   "REPLICATION"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "off-by-one",
+  "term": "OFF-BY-ONE ERROR",
+  "domain": "algorithms",
+  "text": "I stayed one year too long, or maybe walked away one conversation too early. Our ending was an OFF-BY-ONE ERROR.",
+  "terms": [
+   "OFF-BY-ONE ERROR"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "responsive-design",
+  "term": "RESPONSIVE DESIGN",
+  "domain": "web",
+  "text": "My therapist calls it people-pleasing, but I prefer to think of it as RESPONSIVE DESIGN. I just rearrange my entire self to fit the room.",
+  "terms": [
+   "RESPONSIVE DESIGN"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "salt",
+  "term": "SALT",
+  "domain": "security",
+  "text": "We were the exact same password, but adding you as my SALT finally made me unique.",
+  "terms": [
+   "SALT"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "code-freeze",
+  "term": "CODE FREEZE",
+  "domain": "code",
+  "text": "We said everything was final, no more updates. Then came the CODE FREEZE, and she still found one last hotfix to break my heart.",
+  "terms": [
+   "CODE FREEZE"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "cold-start",
+  "term": "COLD START",
+  "domain": "ml",
+  "text": "A first date is a classic COLD START. Without any interaction history, my prediction model defaults to a baseline of generic small talk.",
+  "terms": [
+   "COLD START"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "thread",
+  "term": "THREAD",
+  "domain": "systems",
+  "text": "We run completely separate routines now, but we still share the exact same memory. You're just another THREAD.",
+  "terms": [
+   "THREAD"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "left-join",
+  "term": "LEFT JOIN",
+  "domain": "sql",
+  "text": "We were a LEFT JOIN. I brought everything to the table, even when your side returned NULL.",
+  "terms": [
+   "LEFT JOIN"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "deprecated",
+  "term": "DEPRECATED",
+  "domain": "code",
+  "text": "We didn't fall out, we were just DEPRECATED. It still works for now, but we've both been advised to migrate elsewhere.",
+  "terms": [
+   "DEPRECATED"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "alert-fatigue",
+  "term": "ALERT FATIGUE",
+  "domain": "devops",
+  "text": "My friends kept warning me about every little red flag until I developed ALERT FATIGUE and completely missed the meteor.",
+  "terms": [
+   "ALERT FATIGUE"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-17T08:19:45+00:00"
  }
 ]

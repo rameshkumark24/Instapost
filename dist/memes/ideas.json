@@ -1,122 +1,135 @@
 {
-  "date": "2026-10-16",
-  "built_at": "2026-10-16T08:47:47+00:00",
+  "date": "2026-10-17",
+  "built_at": "2026-10-17T08:20:06+00:00",
   "ideas": [
     {
-      "trend": "More on Anthropic's Scion ripping off Mononoke",
+      "trend": "Postgres 19 delayed after AI reviewers find more bugs than humans can fix",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
+      "template_id": "247113703",
+      "template": "A train hitting a school bus",
+      "maker": "https://imgflip.com/memegenerator/247113703",
       "boxes": [
-        "Anthropic's Scion copying Mononoke features",
-        "Just another release note"
+        "Postgres 19 release schedule",
+        "AI reviewer finding bugs faster than humans can fix them"
       ],
-      "caption": "When the hype train arrives but the cargo is just recycled code.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Drake meme contrasts approval vs disapproval of the copycat claim.",
+      "caption": "When the AI code reviewer is a little too good at its job.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "AI code tools are uncovering more edge-case bugs than human teams can keep up with, delaying major releases.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3lcb2.jpg"
+      "image_url": "https://i.imgflip.com/b3o40y.jpg"
     },
     {
-      "trend": "Announcing Rust 1.99.1",
+      "trend": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
       "where": "tech",
       "pool": "tech",
-      "context": "Lobsters",
-      "template_id": "252600902",
-      "template": "Always Has Been",
-      "maker": "https://imgflip.com/memegenerator/252600902",
+      "context": "Hacker News",
+      "template_id": "284929871",
+      "template": "They don't know",
+      "maker": "https://imgflip.com/memegenerator/284929871",
       "boxes": [
-        "When you think you finally fixed the borrow checker",
-        "It was a memory leak all along"
+        "They don't know AI scores 95% on coding benchmarks",
+        "I spend 90% of my day fixing CSS and re-explaining Jira tickets"
       ],
-      "caption": "Rust 1.99.1 reminds us that some bugs hide in plain sight.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Always Has Been format reveals the hidden truth about the new version.",
+      "caption": "Benchmarks test LeetCode, not real engineering chaos.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "AI benchmarks focus on algorithmic puzzles, missing the messy reality of day-to-day software development.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3lcb5.jpg"
+      "image_url": "https://i.imgflip.com/b3o40z.jpg"
     },
     {
-      "trend": "flight",
+      "trend": "suvarna keralam lottery results",
       "where": "IN",
       "pool": "current",
-      "context": "Air India extends cancellation of Saudi Arabia flights till October 20",
-      "template_id": "129242436",
-      "template": "Change My Mind",
-      "maker": "https://imgflip.com/memegenerator/129242436",
+      "context": "Kerala Karunya Plus KN-645 Lottery Result Today (October 15): First prize of ₹1 crore in 3 PM draw;...",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "My code runs on schedule",
-        "My CI pipeline misses the deadline like Air India flights"
+        "Checking Suvarna Keralam lottery results to quit tech",
+        "Senior Backend Developer",
+        "Fixing legacy PHP code on Sunday night"
       ],
-      "caption": "Some things just can't catch a break, no matter the timezone.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Change My Mind meme compares developer timing issues to flight cancellations.",
+      "caption": "The ultimate career pivot strategy for burnt-out engineers.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developers fantasize about winning the lottery as an escape from maintaining legacy codebases.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3lcb6.jpg"
+      "image_url": "https://i.imgflip.com/b3o410.jpg"
     }
   ],
   "trends": [
     {
-      "title": "flight",
+      "title": "suvarna keralam lottery results",
       "where": "IN"
     },
     {
-      "title": "maja chwalińska",
+      "title": "yeh prem mol liya",
+      "where": "IN"
+    },
+    {
+      "title": "denzel washington",
       "where": "US"
     },
     {
-      "title": "jodar",
+      "title": "indiana state police",
       "where": "US"
     },
     {
-      "title": "morris chestnut",
+      "title": "steve kerr",
       "where": "US"
     },
     {
-      "title": "rhea ripley",
+      "title": "jennifer connelly",
       "where": "US"
     },
     {
-      "title": "artificial intelligence news",
+      "title": "demi moore",
       "where": "US"
     },
     {
-      "title": "charissa thompson",
+      "title": "kia tigers",
       "where": "US"
     },
     {
-      "title": "vct",
+      "title": "deva music director",
       "where": "US"
     },
     {
-      "title": "More on Anthropic's Scion ripping off Mononoke",
+      "title": "ruaridh mollica",
+      "where": "US"
+    },
+    {
+      "title": "plummer",
+      "where": "US"
+    },
+    {
+      "title": "Claude reveals ECDSA curve origins",
       "where": "tech"
     },
     {
-      "title": "ChatGPT can peek at your Chrome tabs now",
+      "title": "How the Claude Code team does code review",
       "where": "tech"
     },
     {
-      "title": "Announcing Rust 1.99.1",
+      "title": "Anthropic assigned highest junk credit rating in June",
       "where": "tech"
     },
     {
-      "title": "Meta launches an open-weight AI model that runs on Macs",
+      "title": "You could have invented transformers from memory",
       "where": "tech"
     },
     {
-      "title": "Meta and Apple team up to make Muse AI models run better on Macs",
+      "title": "Replit is no longer working with Anthropic, CEO says",
       "where": "tech"
     },
     {
-      "title": "Even Benchmark thinks AI is eroding the venture pact against backing rivals",
+      "title": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
       "where": "tech"
     },
     {
-      "title": "Anthropic is letting METR researchers look under the hood with employee-level access",
+      "title": "Postgres 19 delayed after AI reviewers find more bugs than humans can fix",
       "where": "tech"
     },
     {
-      "title": "Google’s Universal Cart shopping tool launches in the US",
+      "title": "Designing more efficient quantum circuits with Claude",
       "where": "tech"
     }
   ],

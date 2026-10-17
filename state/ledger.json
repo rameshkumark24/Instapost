@@ -418,5 +418,12 @@
   "url": "https://arxiv.org/abs/2610.22297v1",
   "source": "arxiv",
   "posted_at": "2026-10-16T08:47:35+00:00"
+ },
+ {
+  "key": "anthropic.com/research/ecdsa-curve-origins",
+  "title": "Claude reveals ECDSA curve origins",
+  "url": "https://www.anthropic.com/research/ecdsa-curve-origins",
+  "source": "hn",
+  "posted_at": "2026-10-17T08:17:53+00:00"
  }
 ]
