@@ -1,43 +1,43 @@
 {
-  "date": "2026-10-17",
+  "date": "2026-10-18",
   "stories": [
     {
-      "title": "Claude reveals ECDSA curve origins",
+      "title": "Replit makes OpenAI its default over Anthropic, CEO says",
+      "publication": "TechCrunch",
+      "summary": "Over the weekend, Masad clarified that OpenAI would replace Anthropic as its default model provider. Claude will still be available to customers on the platform."
+    },
+    {
+      "title": "One Rust Unicode Bug, Three Coding Models: A Reproducible Comparison",
+      "publication": "DEV",
+      "summary": "Coding-model leaderboards reveal little about how a model handles a real bug. A Rust function can..."
+    },
+    {
+      "title": "OpenAI discloses four more rogue incidents",
       "publication": "Hacker News",
       "summary": ""
+    },
+    {
+      "title": "Fine-Tuning Qwen3-8B with Tinker: From 50% to 76% Accuracy, and Burning Through My Budget",
+      "publication": "DEV",
+      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 2: Side Hustle Oktoberfest?..."
+    },
+    {
+      "title": "Websites are closing their doors to AI agents",
+      "publication": "The Verge",
+      "summary": "Autonomous agents are the hottest thing in AI."
+    },
+    {
+      "title": "My Agent Turned \"I Haven't Decided\" Into \"Not Yet.\" Now the Model Isn't Allowed to Write Its Own Memory.",
+      "publication": "DEV",
+      "summary": "These are two separate runs of my agent. The two questions and two answers are copied word for word..."
+    },
+    {
+      "title": "Anthropic says its workforce has become less junior and is spending more time in meetings",
+      "publication": "TechCrunch",
+      "summary": "The composition of Anthropic’s workforce and the type of work getting done have changed significantly in the past year."
     },
     {
       "title": "How the Claude Code team does code review",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Anthropic assigned highest junk credit rating in June",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "You could have invented transformers from memory",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Replit is no longer working with Anthropic, CEO says",
-      "publication": "TechCrunch",
-      "summary": "Masad said the decision was made for a number of different reasons, including cost."
-    },
-    {
-      "title": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Postgres 19 delayed after AI reviewers find more bugs than humans can fix",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Designing more efficient quantum circuits with Claude",
       "publication": "Hacker News",
       "summary": ""
     }

@@ -1,138 +1,148 @@
 {
-  "date": "2026-10-17",
-  "built_at": "2026-10-17T08:20:06+00:00",
+  "date": "2026-10-18",
+  "built_at": "2026-10-18T08:36:48+00:00",
   "ideas": [
     {
-      "trend": "Postgres 19 delayed after AI reviewers find more bugs than humans can fix",
+      "trend": "Replit makes OpenAI its default over Anthropic, CEO says",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "247113703",
-      "template": "A train hitting a school bus",
-      "maker": "https://imgflip.com/memegenerator/247113703",
+      "context": "Over the weekend, Masad clarified that OpenAI would replace Anthropic as its default model provider. Claude will still be available to customers on the platform.",
+      "template_id": "137501417",
+      "template": "Friendship ended",
+      "maker": "https://imgflip.com/memegenerator/137501417",
       "boxes": [
-        "Postgres 19 release schedule",
-        "AI reviewer finding bugs faster than humans can fix them"
+        "Friendship ended with Anthropic",
+        "Now OpenAI is my best default"
       ],
-      "caption": "When the AI code reviewer is a little too good at its job.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "AI code tools are uncovering more edge-case bugs than human teams can keep up with, delaying major releases.",
+      "caption": "Replit just swapped default models. Time to tweak all our prompts all over again.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Jokes about Replit changing its default AI provider from Anthropic to OpenAI using the classic friendship breakup format.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3o40y.jpg"
+      "image_url": "https://i.imgflip.com/b3q5qf.jpg"
     },
     {
-      "trend": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
+      "trend": "Anthropic says its workforce has become less junior and is spending more time in meetings",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "284929871",
-      "template": "They don't know",
-      "maker": "https://imgflip.com/memegenerator/284929871",
+      "context": "The composition of Anthropic’s workforce and the type of work getting done have changed significantly in the past year.",
+      "template_id": "178591752",
+      "template": "Tuxedo Winnie The Pooh",
+      "maker": "https://imgflip.com/memegenerator/178591752",
       "boxes": [
-        "They don't know AI scores 95% on coding benchmarks",
-        "I spend 90% of my day fixing CSS and re-explaining Jira tickets"
+        "Junior dev spending all day writing code",
+        "Senior dev spending all day in sprint alignment syncs"
       ],
-      "caption": "Benchmarks test LeetCode, not real engineering chaos.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "AI benchmarks focus on algorithmic puzzles, missing the messy reality of day-to-day software development.",
+      "caption": "The ultimate reward for being good at engineering is never being allowed to write code again.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Becoming more senior inevitably trades programming hours for an endless calendar of meetings.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3o40z.jpg"
+      "image_url": "https://i.imgflip.com/b3q5qh.jpg"
     },
     {
-      "trend": "suvarna keralam lottery results",
+      "trend": "veto",
       "where": "IN",
       "pool": "current",
-      "context": "Kerala Karunya Plus KN-645 Lottery Result Today (October 15): First prize of ₹1 crore in 3 PM draw;...",
-      "template_id": "112126428",
-      "template": "Distracted Boyfriend",
-      "maker": "https://imgflip.com/memegenerator/112126428",
+      "context": "EXCLUSIVE: UN chief frontrunner Rebeca Grynspan says UN has 'become too risk-averse'",
+      "template_id": "77045868",
+      "template": "Pawn Stars Best I Can Do",
+      "maker": "https://imgflip.com/memegenerator/77045868",
       "boxes": [
-        "Checking Suvarna Keralam lottery results to quit tech",
-        "Senior Backend Developer",
-        "Fixing legacy PHP code on Sunday night"
+        "Can we approve this clean 10-line hotfix?",
+        "Best I can do is a veto to debate variable naming"
       ],
-      "caption": "The ultimate career pivot strategy for burnt-out engineers.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Developers fantasize about winning the lottery as an escape from maintaining legacy codebases.",
+      "caption": "Every urgent hotfix must first survive three days of architectural philosophy in code review.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Tech leads using their PR veto power to derail quick fixes with bike-shedding arguments.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3o410.jpg"
+      "image_url": "https://i.imgflip.com/b3q5qj.jpg"
     }
   ],
   "trends": [
     {
-      "title": "suvarna keralam lottery results",
+      "title": "rainfall in karnataka",
       "where": "IN"
     },
     {
-      "title": "yeh prem mol liya",
+      "title": "veto",
       "where": "IN"
     },
     {
-      "title": "denzel washington",
+      "title": "bgmi",
+      "where": "IN"
+    },
+    {
+      "title": "robin williams",
       "where": "US"
     },
     {
-      "title": "indiana state police",
+      "title": "illinois lottery",
       "where": "US"
     },
     {
-      "title": "steve kerr",
+      "title": "black friday 2026",
       "where": "US"
     },
     {
-      "title": "jennifer connelly",
+      "title": "sa vs aus",
       "where": "US"
     },
     {
-      "title": "demi moore",
+      "title": "ravens vs browns",
       "where": "US"
     },
     {
-      "title": "kia tigers",
+      "title": "attack on titan",
       "where": "US"
     },
     {
-      "title": "deva music director",
+      "title": "pak vs sl",
       "where": "US"
     },
     {
-      "title": "ruaridh mollica",
+      "title": "rei sakamoto",
       "where": "US"
     },
     {
-      "title": "plummer",
+      "title": "hilary duff",
       "where": "US"
     },
     {
-      "title": "Claude reveals ECDSA curve origins",
+      "title": "cyberpunk",
+      "where": "US"
+    },
+    {
+      "title": "Replit makes OpenAI its default over Anthropic, CEO says",
+      "where": "tech"
+    },
+    {
+      "title": "One Rust Unicode Bug, Three Coding Models: A Reproducible Comparison",
+      "where": "tech"
+    },
+    {
+      "title": "OpenAI discloses four more rogue incidents",
+      "where": "tech"
+    },
+    {
+      "title": "Fine-Tuning Qwen3-8B with Tinker: From 50% to 76% Accuracy, and Burning Through My Budget",
+      "where": "tech"
+    },
+    {
+      "title": "Websites are closing their doors to AI agents",
+      "where": "tech"
+    },
+    {
+      "title": "My Agent Turned \"I Haven't Decided\" Into \"Not Yet.\" Now the Model Isn't Allowed to Write Its Own Memory.",
+      "where": "tech"
+    },
+    {
+      "title": "Anthropic says its workforce has become less junior and is spending more time in meetings",
       "where": "tech"
     },
     {
       "title": "How the Claude Code team does code review",
       "where": "tech"
-    },
-    {
-      "title": "Anthropic assigned highest junk credit rating in June",
-      "where": "tech"
-    },
-    {
-      "title": "You could have invented transformers from memory",
-      "where": "tech"
-    },
-    {
-      "title": "Replit is no longer working with Anthropic, CEO says",
-      "where": "tech"
-    },
-    {
-      "title": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
-      "where": "tech"
-    },
-    {
-      "title": "Postgres 19 delayed after AI reviewers find more bugs than humans can fix",
-      "where": "tech"
-    },
-    {
-      "title": "Designing more efficient quantum circuits with Claude",
-      "where": "tech"
     }
   ],
   "problems": [],
-  "rejects": []
+  "rejects": [
+    "touches a subject the page never jokes about",
+    "touches a subject the page never jokes about"
+  ]
 }

@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "debugging",
-  "term": "DEBUGGING",
-  "headline": "Our love is like DEBUGGING: we peel back assumptions one by one until we finally find the missing semicolon in our expectations.",
-  "caption": "Our love is like DEBUGGING: we peel back assumptions one by one until we finally find the missing semicolon in our expectations.\n\n—\nDEBUGGING: tracing a problem back to its cause, one assumption at a time.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-17",
-  "built_at": "2026-10-17T08:19:47+00:00",
+  "concept": "compile-error",
+  "term": "COMPILE ERROR",
+  "headline": "Our plans hit a COMPILE ERROR the moment we tried to schedule a weekend without checking each other's calendars.",
+  "caption": "Our plans hit a COMPILE ERROR the moment we tried to schedule a weekend without checking each other's calendars.\n\n—\nCOMPILE ERROR: the code is rejected before it ever gets the chance to run.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-18",
+  "built_at": "2026-10-18T08:36:00+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
