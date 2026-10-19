@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "compile-error",
-  "term": "COMPILE ERROR",
-  "headline": "Our plans hit a COMPILE ERROR the moment we tried to schedule a weekend without checking each other's calendars.",
-  "caption": "Our plans hit a COMPILE ERROR the moment we tried to schedule a weekend without checking each other's calendars.\n\n—\nCOMPILE ERROR: the code is rejected before it ever gets the chance to run.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-18",
-  "built_at": "2026-10-18T08:36:00+00:00",
+  "concept": "503",
+  "term": "503 UNAVAILABLE",
+  "headline": "When I'm exhausted, I return 503 UNAVAILABLE – my brain's overloaded and needs maintenance before it can process any more requests.",
+  "caption": "When I'm exhausted, I return 503 UNAVAILABLE – my brain's overloaded and needs maintenance before it can process any more requests.\n\n—\n503 UNAVAILABLE: the server cannot handle the request right now, usually because it is overloaded or down for maintenance.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-19",
+  "built_at": "2026-10-19T09:39:27+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

@@ -1,126 +1,106 @@
 {
-  "date": "2026-10-18",
-  "built_at": "2026-10-18T08:36:48+00:00",
+  "date": "2026-10-19",
+  "built_at": "2026-10-19T09:41:14+00:00",
   "ideas": [
     {
-      "trend": "Replit makes OpenAI its default over Anthropic, CEO says",
+      "trend": "If you don't run your own LLM proxy, how do you know whats going on?",
       "where": "tech",
       "pool": "tech",
-      "context": "Over the weekend, Masad clarified that OpenAI would replace Anthropic as its default model provider. Claude will still be available to customers on the platform.",
-      "template_id": "137501417",
-      "template": "Friendship ended",
-      "maker": "https://imgflip.com/memegenerator/137501417",
+      "context": "Hacker News",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Friendship ended with Anthropic",
-        "Now OpenAI is my best default"
+        "Asking the LLM what it did",
+        "Running your own LLM proxy to watch every single token"
       ],
-      "caption": "Replit just swapped default models. Time to tweak all our prompts all over again.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about Replit changing its default AI provider from Anthropic to OpenAI using the classic friendship breakup format.",
+      "caption": "Trust no model, log every request.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Drake template contrasts trusting the LLM versus paranoid proxy logging.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3q5qf.jpg"
+      "image_url": "https://i.imgflip.com/b3sjit.jpg"
     },
     {
-      "trend": "Anthropic says its workforce has become less junior and is spending more time in meetings",
+      "trend": "Websites are closing their doors to AI agents",
       "where": "tech",
       "pool": "tech",
-      "context": "The composition of Anthropic’s workforce and the type of work getting done have changed significantly in the past year.",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
+      "context": "Hacker News",
+      "template_id": "217743513",
+      "template": "UNO Draw 25 Cards",
+      "maker": "https://imgflip.com/memegenerator/217743513",
       "boxes": [
-        "Junior dev spending all day writing code",
-        "Senior dev spending all day in sprint alignment syncs"
+        "Let AI agents scrape your website for free",
+        "Block all unknown user agents and draw 25"
       ],
-      "caption": "The ultimate reward for being good at engineering is never being allowed to write code again.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Becoming more senior inevitably trades programming hours for an endless calendar of meetings.",
+      "caption": "Webmasters are locking down their sites faster than ever.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Jokes about websites turning to aggressive anti-bot measures to block AI agents.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3q5qh.jpg"
+      "image_url": "https://i.imgflip.com/b3sjiw.jpg"
     },
     {
-      "trend": "veto",
-      "where": "IN",
+      "trend": "google play",
+      "where": "US",
       "pool": "current",
-      "context": "EXCLUSIVE: UN chief frontrunner Rebeca Grynspan says UN has 'become too risk-averse'",
-      "template_id": "77045868",
-      "template": "Pawn Stars Best I Can Do",
-      "maker": "https://imgflip.com/memegenerator/77045868",
+      "context": "Google Play hides in-app prices in a range, so I do this instead",
+      "template_id": "177682295",
+      "template": "You Guys are Getting Paid",
+      "maker": "https://imgflip.com/memegenerator/177682295",
       "boxes": [
-        "Can we approve this clean 10-line hotfix?",
-        "Best I can do is a veto to debate variable naming"
+        "You guys are getting clear pricing on app stores?",
+        "Developers hiding pricing in a vague range"
       ],
-      "caption": "Every urgent hotfix must first survive three days of architectural philosophy in code review.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Tech leads using their PR veto power to derail quick fixes with bike-shedding arguments.",
+      "caption": "The mystery box pricing strategy.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "You Guys Are Getting Paid template pokes fun at obscure app store pricing.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3q5qj.jpg"
+      "image_url": "https://i.imgflip.com/b3sjiz.jpg"
     }
   ],
   "trends": [
     {
-      "title": "rainfall in karnataka",
+      "title": "aruna irani",
       "where": "IN"
     },
     {
-      "title": "veto",
-      "where": "IN"
-    },
-    {
-      "title": "bgmi",
-      "where": "IN"
-    },
-    {
-      "title": "robin williams",
+      "title": "google play",
       "where": "US"
     },
     {
-      "title": "illinois lottery",
+      "title": "colman domingo",
       "where": "US"
     },
     {
-      "title": "black friday 2026",
+      "title": "adrian mannarino",
       "where": "US"
     },
     {
-      "title": "sa vs aus",
+      "title": "rj mitte mother interview",
       "where": "US"
     },
     {
-      "title": "ravens vs browns",
+      "title": "spacex falcon 9 rocket launch",
       "where": "US"
     },
     {
-      "title": "attack on titan",
+      "title": "ocarina of time remake switch 2",
       "where": "US"
     },
     {
-      "title": "pak vs sl",
+      "title": "katie boulter",
       "where": "US"
     },
     {
-      "title": "rei sakamoto",
+      "title": "boss",
       "where": "US"
     },
     {
-      "title": "hilary duff",
-      "where": "US"
-    },
-    {
-      "title": "cyberpunk",
-      "where": "US"
-    },
-    {
-      "title": "Replit makes OpenAI its default over Anthropic, CEO says",
+      "title": "Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
       "where": "tech"
     },
     {
-      "title": "One Rust Unicode Bug, Three Coding Models: A Reproducible Comparison",
+      "title": "If you don't run your own LLM proxy, how do you know whats going on?",
       "where": "tech"
     },
     {
-      "title": "OpenAI discloses four more rogue incidents",
-      "where": "tech"
-    },
-    {
-      "title": "Fine-Tuning Qwen3-8B with Tinker: From 50% to 76% Accuracy, and Burning Through My Budget",
+      "title": "Free Pascal compiler now supports dynamic packages",
       "where": "tech"
     },
     {
@@ -128,21 +108,20 @@
       "where": "tech"
     },
     {
-      "title": "My Agent Turned \"I Haven't Decided\" Into \"Not Yet.\" Now the Model Isn't Allowed to Write Its Own Memory.",
+      "title": "From “It Ran” to “Here’s What Happened” in Copilot Studio",
       "where": "tech"
     },
     {
-      "title": "Anthropic says its workforce has become less junior and is spending more time in meetings",
+      "title": "Anthropic says it’s committing 5% of its shares to a ‘public benefit fund’",
       "where": "tech"
     },
     {
-      "title": "How the Claude Code team does code review",
+      "title": "A Savannah police officer gave her Flock login to her ICE agent husband",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "touches a subject the page never jokes about",
     "touches a subject the page never jokes about"
   ]
 }

@@ -318,5 +318,20 @@
     "date": "2026-10-18",
     "trend": "veto",
     "template_id": "77045868"
+  },
+  {
+    "date": "2026-10-19",
+    "trend": "If you don't run your own LLM proxy, how do you know whats going on?",
+    "template_id": "181913649"
+  },
+  {
+    "date": "2026-10-19",
+    "trend": "Websites are closing their doors to AI agents",
+    "template_id": "217743513"
+  },
+  {
+    "date": "2026-10-19",
+    "trend": "google play",
+    "template_id": "177682295"
   }
 ]

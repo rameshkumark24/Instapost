@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-18",
+  "date": "2026-10-19",
   "stories": [
     {
-      "title": "Replit makes OpenAI its default over Anthropic, CEO says",
-      "publication": "TechCrunch",
-      "summary": "Over the weekend, Masad clarified that OpenAI would replace Anthropic as its default model provider. Claude will still be available to customers on the platform."
-    },
-    {
-      "title": "One Rust Unicode Bug, Three Coding Models: A Reproducible Comparison",
-      "publication": "DEV",
-      "summary": "Coding-model leaderboards reveal little about how a model handles a real bug. A Rust function can..."
-    },
-    {
-      "title": "OpenAI discloses four more rogue incidents",
+      "title": "Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Fine-Tuning Qwen3-8B with Tinker: From 50% to 76% Accuracy, and Burning Through My Budget",
-      "publication": "DEV",
-      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 2: Side Hustle Oktoberfest?..."
+      "title": "If you don't run your own LLM proxy, how do you know whats going on?",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Free Pascal compiler now supports dynamic packages",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
       "title": "Websites are closing their doors to AI agents",
-      "publication": "The Verge",
-      "summary": "Autonomous agents are the hottest thing in AI."
-    },
-    {
-      "title": "My Agent Turned \"I Haven't Decided\" Into \"Not Yet.\" Now the Model Isn't Allowed to Write Its Own Memory.",
-      "publication": "DEV",
-      "summary": "These are two separate runs of my agent. The two questions and two answers are copied word for word..."
-    },
-    {
-      "title": "Anthropic says its workforce has become less junior and is spending more time in meetings",
-      "publication": "TechCrunch",
-      "summary": "The composition of Anthropic’s workforce and the type of work getting done have changed significantly in the past year."
-    },
-    {
-      "title": "How the Claude Code team does code review",
       "publication": "Hacker News",
       "summary": ""
+    },
+    {
+      "title": "From “It Ran” to “Here’s What Happened” in Copilot Studio",
+      "publication": "DEV",
+      "summary": "Intro: As Copilot Studio agents become more capable, a simple chat transcript is rarely enough to..."
+    },
+    {
+      "title": "Anthropic says it’s committing 5% of its shares to a ‘public benefit fund’",
+      "publication": "TechCrunch",
+      "summary": "Anthropic said that it will commit 5% of its shares to the fund."
+    },
+    {
+      "title": "A Savannah police officer gave her Flock login to her ICE agent husband",
+      "publication": "The Verge",
+      "summary": "Now, former Savannah police officer Amber Harpe was fired in August following a department investigation that found she had shared her Flock login information with her husband, Tyler Harpe, an ICE…"
     }
   ]
 }
