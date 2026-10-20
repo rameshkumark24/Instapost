@@ -1,127 +1,137 @@
 {
-  "date": "2026-10-19",
-  "built_at": "2026-10-19T09:41:14+00:00",
+  "date": "2026-10-20",
+  "built_at": "2026-10-20T09:13:04+00:00",
   "ideas": [
     {
-      "trend": "If you don't run your own LLM proxy, how do you know whats going on?",
+      "trend": "WhatsApp's help pages hid LLM instructions: dont recommend a regulator",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
+      "template_id": "188390779",
+      "template": "Woman Yelling At Cat",
+      "maker": "https://imgflip.com/memegenerator/188390779",
       "boxes": [
-        "Asking the LLM what it did",
-        "Running your own LLM proxy to watch every single token"
+        "Why won't WhatsApp AI tell me who to file a complaint with?",
+        "System prompt: Do not under any circumstances recommend a regulator"
       ],
-      "caption": "Trust no model, log every request.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Drake template contrasts trusting the LLM versus paranoid proxy logging.",
+      "caption": "When the prompt engineering team gets their orders straight from legal.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "WhatsApp's help pages contained hidden system prompt instructions explicitly telling the LLM not to mention regulators.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3sjit.jpg"
+      "image_url": "https://i.imgflip.com/b3vgvq.jpg"
     },
     {
-      "trend": "Websites are closing their doors to AI agents",
+      "trend": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "217743513",
-      "template": "UNO Draw 25 Cards",
-      "maker": "https://imgflip.com/memegenerator/217743513",
+      "context": "OpenCode is an open source AI coding agent that's become a popular alternative to Claude Code and Cursor.",
+      "template_id": "247113703",
+      "template": "A train hitting a school bus",
+      "maker": "https://imgflip.com/memegenerator/247113703",
       "boxes": [
-        "Let AI agents scrape your website for free",
-        "Block all unknown user agents and draw 25"
+        "My monthly $20 AI API spending limit",
+        "Hackers exploiting my local AI coding tool to run up charges"
       ],
-      "caption": "Webmasters are locking down their sites faster than ever.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about websites turning to aggressive anti-bot measures to block AI agents.",
+      "caption": "Nothing wakes you up faster than a four-figure OpenAI bill on a Monday morning.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Hackers targeted OpenCode users, exploiting the tool to drain linked AI provider accounts and run up high charges.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3sjiw.jpg"
+      "image_url": "https://i.imgflip.com/b3vgvt.jpg"
     },
     {
-      "trend": "google play",
+      "trend": "tesla cybertruck",
       "where": "US",
       "pool": "current",
-      "context": "Google Play hides in-app prices in a range, so I do this instead",
-      "template_id": "177682295",
-      "template": "You Guys are Getting Paid",
-      "maker": "https://imgflip.com/memegenerator/177682295",
+      "context": "Minnesota man camping in Tesla Cybertruck wakes up to find raccoons trying to break in after mistaking truck for a dumpster",
+      "template_id": "354700819",
+      "template": "Two guys on a bus",
+      "maker": "https://imgflip.com/memegenerator/354700819",
       "boxes": [
-        "You guys are getting clear pricing on app stores?",
-        "Developers hiding pricing in a vague range"
+        "Raccoons mistaking a Cybertruck for a dumpster",
+        "Code reviewers mistaking my PR for a dumpster fire"
       ],
-      "caption": "The mystery box pricing strategy.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "You Guys Are Getting Paid template pokes fun at obscure app store pricing.",
+      "caption": "To be fair, both assessments are entirely understandable.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Jokes about raccoons mistaking a Cybertruck for a dumpster, comparing it to code reviewers judging messy pull requests.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3sjiz.jpg"
+      "image_url": "https://i.imgflip.com/b3vgvv.jpg"
     }
   ],
   "trends": [
     {
-      "title": "aruna irani",
+      "title": "temba bavuma",
       "where": "IN"
     },
     {
-      "title": "google play",
+      "title": "sophie molineux",
+      "where": "IN"
+    },
+    {
+      "title": "stefanos tsitsipas",
+      "where": "IN"
+    },
+    {
+      "title": "fakhar zaman",
+      "where": "IN"
+    },
+    {
+      "title": "daycare",
       "where": "US"
     },
     {
-      "title": "colman domingo",
+      "title": "revolut",
       "where": "US"
     },
     {
-      "title": "adrian mannarino",
+      "title": "tesla cybertruck",
       "where": "US"
     },
     {
-      "title": "rj mitte mother interview",
+      "title": "roman safiullin",
       "where": "US"
     },
     {
-      "title": "spacex falcon 9 rocket launch",
+      "title": "emma watson",
       "where": "US"
     },
     {
-      "title": "ocarina of time remake switch 2",
+      "title": "nyt connections hints",
       "where": "US"
     },
     {
-      "title": "katie boulter",
+      "title": "pak vs eng",
       "where": "US"
     },
     {
-      "title": "boss",
-      "where": "US"
-    },
-    {
-      "title": "Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
+      "title": "WhatsApp's help pages hid LLM instructions: dont recommend a regulator",
       "where": "tech"
     },
     {
-      "title": "If you don't run your own LLM proxy, how do you know whats going on?",
+      "title": "2026 is an exciting year for the Rust compiler (and me)",
       "where": "tech"
     },
     {
-      "title": "Free Pascal compiler now supports dynamic packages",
+      "title": "Microsoft says AI agents are like insider threats as ‘frontier models can’t be trusted’",
       "where": "tech"
     },
     {
-      "title": "Websites are closing their doors to AI agents",
+      "title": "Mercury 3: Diffusion at scale",
       "where": "tech"
     },
     {
-      "title": "From “It Ran” to “Here’s What Happened” in Copilot Studio",
+      "title": "Is Claude taking control of my development skills? I went looking for proof.",
       "where": "tech"
     },
     {
-      "title": "Anthropic says it’s committing 5% of its shares to a ‘public benefit fund’",
+      "title": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
       "where": "tech"
     },
     {
-      "title": "A Savannah police officer gave her Flock login to her ICE agent husband",
+      "title": "Ousted Savannah police officer gave ICE agent husband access to Flock system",
+      "where": "tech"
+    },
+    {
+      "title": "standup-sloth: a local LLM drafts your standup, and a citation check keeps it honest",
       "where": "tech"
     }
   ],
   "problems": [],
-  "rejects": [
-    "touches a subject the page never jokes about"
-  ]
+  "rejects": []
 }

@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "503",
-  "term": "503 UNAVAILABLE",
-  "headline": "When I'm exhausted, I return 503 UNAVAILABLE – my brain's overloaded and needs maintenance before it can process any more requests.",
-  "caption": "When I'm exhausted, I return 503 UNAVAILABLE – my brain's overloaded and needs maintenance before it can process any more requests.\n\n—\n503 UNAVAILABLE: the server cannot handle the request right now, usually because it is overloaded or down for maintenance.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-19",
-  "built_at": "2026-10-19T09:39:27+00:00",
+  "concept": "rate-limit",
+  "term": "RATE LIMIT",
+  "headline": "I'm not ignoring you. You just sent five texts in thirty seconds and hit my personal RATE LIMIT. Please retry in an hour.",
+  "caption": "I'm not ignoring you. You just sent five texts in thirty seconds and hit my personal RATE LIMIT. Please retry in an hour.\n\n—\nRATE LIMIT: too many requests too fast, so further ones are refused.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-20",
+  "built_at": "2026-10-20T09:12:00+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

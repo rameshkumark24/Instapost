@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-19",
+  "date": "2026-10-20",
   "stories": [
     {
-      "title": "Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
+      "title": "WhatsApp's help pages hid LLM instructions: dont recommend a regulator",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "If you don't run your own LLM proxy, how do you know whats going on?",
-      "publication": "Hacker News",
+      "title": "2026 is an exciting year for the Rust compiler (and me)",
+      "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Free Pascal compiler now supports dynamic packages",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Websites are closing their doors to AI agents",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "From “It Ran” to “Here’s What Happened” in Copilot Studio",
-      "publication": "DEV",
-      "summary": "Intro: As Copilot Studio agents become more capable, a simple chat transcript is rarely enough to..."
-    },
-    {
-      "title": "Anthropic says it’s committing 5% of its shares to a ‘public benefit fund’",
+      "title": "Microsoft says AI agents are like insider threats as ‘frontier models can’t be trusted’",
       "publication": "TechCrunch",
-      "summary": "Anthropic said that it will commit 5% of its shares to the fund."
+      "summary": "Microsoft wants enterprises to closely watch the agents that employees use with systems not controlled by AI labs like OpenAI and Anthropic."
     },
     {
-      "title": "A Savannah police officer gave her Flock login to her ICE agent husband",
-      "publication": "The Verge",
-      "summary": "Now, former Savannah police officer Amber Harpe was fired in August following a department investigation that found she had shared her Flock login information with her husband, Tyler Harpe, an ICE…"
+      "title": "Mercury 3: Diffusion at scale",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Is Claude taking control of my development skills? I went looking for proof.",
+      "publication": "DEV",
+      "summary": "Last Tuesday I hit a bug. A React component was rendering stale data. Two years ago, I'd have known..."
+    },
+    {
+      "title": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
+      "publication": "TechCrunch",
+      "summary": "OpenCode is an open source AI coding agent that's become a popular alternative to Claude Code and Cursor."
+    },
+    {
+      "title": "Ousted Savannah police officer gave ICE agent husband access to Flock system",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "standup-sloth: a local LLM drafts your standup, and a citation check keeps it honest",
+      "publication": "DEV",
+      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 3: Slow and Steady ..."
     }
   ]
 }
