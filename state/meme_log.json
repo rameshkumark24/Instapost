@@ -348,5 +348,15 @@
     "date": "2026-10-20",
     "trend": "tesla cybertruck",
     "template_id": "354700819"
+  },
+  {
+    "date": "2026-10-21",
+    "trend": "Tsrs: A Port of TypeScript to Rust",
+    "template_id": "112126428"
+  },
+  {
+    "date": "2026-10-21",
+    "trend": "Publish fake stats, get cited in LLMs",
+    "template_id": "89370399"
   }
 ]

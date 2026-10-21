@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-20",
+  "date": "2026-10-21",
   "stories": [
     {
-      "title": "WhatsApp's help pages hid LLM instructions: dont recommend a regulator",
+      "title": "Tsrs: A Port of TypeScript to Rust",
       "publication": "Hacker News",
       "summary": ""
     },
     {
       "title": "2026 is an exciting year for the Rust compiler (and me)",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Microsoft says AI agents are like insider threats as ‘frontier models can’t be trusted’",
-      "publication": "TechCrunch",
-      "summary": "Microsoft wants enterprises to closely watch the agents that employees use with systems not controlled by AI labs like OpenAI and Anthropic."
-    },
-    {
-      "title": "Mercury 3: Diffusion at scale",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Is Claude taking control of my development skills? I went looking for proof.",
-      "publication": "DEV",
-      "summary": "Last Tuesday I hit a bug. A React component was rendering stale data. Two years ago, I'd have known..."
-    },
-    {
-      "title": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
-      "publication": "TechCrunch",
-      "summary": "OpenCode is an open source AI coding agent that's become a popular alternative to Claude Code and Cursor."
-    },
-    {
-      "title": "Ousted Savannah police officer gave ICE agent husband access to Flock system",
+      "title": "Publish fake stats, get cited in LLMs",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "standup-sloth: a local LLM drafts your standup, and a citation check keeps it honest",
+      "title": "Anthropic pitches AI safety bill that may block a model if 50+ people could be killed",
+      "publication": "TechCrunch",
+      "summary": "The proposed policy seems to offer protections against AI running amok but actually forbids federal agencies from blocking a model's release without the permission of a judge."
+    },
+    {
+      "title": "Mistral's Timestral is #1 by 0.003 MASE. I ran it — the model was not the variable.",
       "publication": "DEV",
-      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 3: Slow and Steady ..."
+      "summary": "Mistral released Timestral, four open-weight time-series models that top three benchmarks — by 0.003 MASE on their own table."
+    },
+    {
+      "title": "Qwen3.8-Flash-Next vs Claude Opus 5.5: Six-way benchmark on a real Rust feature",
+      "publication": "DEV",
+      "summary": "A controlled comparison of Qwen3.8-Flash-Next and Claude Opus 5.5 on one LlamaStash feature, across Claude Code and Pi, at medium and xhigh effort"
+    },
+    {
+      "title": "Hugging Face CEO warns that Netflix’s OpenAI hack documentary isn’t accurate",
+      "publication": "TechCrunch",
+      "summary": "Before you share the Netflix documentary \"AI Gone Rogue,\" take note. Clem Delangue, Hugging Face's co-founder who is featured in the film, says it went \"full doomer mode\" and isn't accurate."
+    },
+    {
+      "title": "OpenAI acquires startup Orchestra Bio⁠ to beef up its biotech business",
+      "publication": "TechCrunch",
+      "summary": "OpenAI says it's adding Orchestra's team and technology to work on Rosalind, its AI model for life sciences research, and to its related Rosalind Workbench tool, a harness that aims to help…"
     }
   ]
 }

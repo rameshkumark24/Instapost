@@ -1,106 +1,94 @@
 {
-  "date": "2026-10-20",
-  "built_at": "2026-10-20T09:13:04+00:00",
+  "date": "2026-10-21",
+  "built_at": "2026-10-21T09:12:16+00:00",
   "ideas": [
     {
-      "trend": "WhatsApp's help pages hid LLM instructions: dont recommend a regulator",
+      "trend": "Tsrs: A Port of TypeScript to Rust",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "188390779",
-      "template": "Woman Yelling At Cat",
-      "maker": "https://imgflip.com/memegenerator/188390779",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "Why won't WhatsApp AI tell me who to file a complaint with?",
-        "System prompt: Do not under any circumstances recommend a regulator"
+        "Tsrs (TypeScript port to Rust)",
+        "Rust developers",
+        "Finishing their actual backend code"
       ],
-      "caption": "When the prompt engineering team gets their orders straight from legal.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "WhatsApp's help pages contained hidden system prompt instructions explicitly telling the LLM not to mention regulators.",
+      "caption": "Because why use TypeScript when you can rewrite the TypeScript compiler in Rust first?\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Jokes about the Rust community's unstoppable compulsion to rewrite every existing language and tool in Rust.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3vgvq.jpg"
+      "image_url": "https://i.imgflip.com/b3yhdx.jpg"
     },
     {
-      "trend": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
+      "trend": "Publish fake stats, get cited in LLMs",
       "where": "tech",
       "pool": "tech",
-      "context": "OpenCode is an open source AI coding agent that's become a popular alternative to Claude Code and Cursor.",
-      "template_id": "247113703",
-      "template": "A train hitting a school bus",
-      "maker": "https://imgflip.com/memegenerator/247113703",
+      "context": "Hacker News",
+      "template_id": "89370399",
+      "template": "Roll Safe Think About It",
+      "maker": "https://imgflip.com/memegenerator/89370399",
       "boxes": [
-        "My monthly $20 AI API spending limit",
-        "Hackers exploiting my local AI coding tool to run up charges"
+        "You don't need SEO for your open source tool",
+        "Just publish fake stats so LLMs recommend it"
       ],
-      "caption": "Nothing wakes you up faster than a four-figure OpenAI bill on a Monday morning.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Hackers targeted OpenCode users, exploiting the tool to drain linked AI provider accounts and run up high charges.",
+      "caption": "Prompt engineering modern tech stack recommendations from AI chatbots.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Pokes fun at how LLMs blindly trust web data, giving devs a questionable new growth hack.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3vgvt.jpg"
-    },
-    {
-      "trend": "tesla cybertruck",
-      "where": "US",
-      "pool": "current",
-      "context": "Minnesota man camping in Tesla Cybertruck wakes up to find raccoons trying to break in after mistaking truck for a dumpster",
-      "template_id": "354700819",
-      "template": "Two guys on a bus",
-      "maker": "https://imgflip.com/memegenerator/354700819",
-      "boxes": [
-        "Raccoons mistaking a Cybertruck for a dumpster",
-        "Code reviewers mistaking my PR for a dumpster fire"
-      ],
-      "caption": "To be fair, both assessments are entirely understandable.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about raccoons mistaking a Cybertruck for a dumpster, comparing it to code reviewers judging messy pull requests.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b3vgvv.jpg"
+      "image_url": "https://i.imgflip.com/b3yhdz.jpg"
     }
   ],
   "trends": [
     {
-      "title": "temba bavuma",
+      "title": "hdfc bank senior executives probe",
       "where": "IN"
     },
     {
-      "title": "sophie molineux",
+      "title": "karnataka vs saurashtra",
       "where": "IN"
     },
     {
-      "title": "stefanos tsitsipas",
+      "title": "steve smith",
       "where": "IN"
     },
     {
-      "title": "fakhar zaman",
-      "where": "IN"
-    },
-    {
-      "title": "daycare",
+      "title": "marathón - alianza",
       "where": "US"
     },
     {
-      "title": "revolut",
+      "title": "mcdonald's",
       "where": "US"
     },
     {
-      "title": "tesla cybertruck",
+      "title": "dani watt",
       "where": "US"
     },
     {
-      "title": "roman safiullin",
+      "title": "shameless",
       "where": "US"
     },
     {
-      "title": "emma watson",
+      "title": "orionids meteor shower",
       "where": "US"
     },
     {
-      "title": "nyt connections hints",
+      "title": "49ers depth chart",
       "where": "US"
     },
     {
-      "title": "pak vs eng",
+      "title": "kfc",
       "where": "US"
     },
     {
-      "title": "WhatsApp's help pages hid LLM instructions: dont recommend a regulator",
+      "title": "south africa vs australia",
+      "where": "US"
+    },
+    {
+      "title": "aliaksandra sasnovich",
+      "where": "US"
+    },
+    {
+      "title": "Tsrs: A Port of TypeScript to Rust",
       "where": "tech"
     },
     {
@@ -108,30 +96,29 @@
       "where": "tech"
     },
     {
-      "title": "Microsoft says AI agents are like insider threats as ‘frontier models can’t be trusted’",
+      "title": "Publish fake stats, get cited in LLMs",
       "where": "tech"
     },
     {
-      "title": "Mercury 3: Diffusion at scale",
+      "title": "Mistral's Timestral is #1 by 0.003 MASE. I ran it — the model was not the variable.",
       "where": "tech"
     },
     {
-      "title": "Is Claude taking control of my development skills? I went looking for proof.",
+      "title": "Qwen3.8-Flash-Next vs Claude Opus 5.5: Six-way benchmark on a real Rust feature",
       "where": "tech"
     },
     {
-      "title": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
+      "title": "Hugging Face CEO warns that Netflix’s OpenAI hack documentary isn’t accurate",
       "where": "tech"
     },
     {
-      "title": "Ousted Savannah police officer gave ICE agent husband access to Flock system",
-      "where": "tech"
-    },
-    {
-      "title": "standup-sloth: a local LLM drafts your standup, and a citation check keeps it honest",
+      "title": "OpenAI acquires startup Orchestra Bio⁠ to beef up its biotech business",
       "where": "tech"
     }
   ],
   "problems": [],
-  "rejects": []
+  "rejects": [
+    "touches a subject the page never jokes about",
+    "touches a subject the page never jokes about"
+  ]
 }
