@@ -453,5 +453,12 @@
   "url": "https://github.com/deepseek-ai/DeepInfer",
   "source": "github",
   "posted_at": "2026-10-21T09:10:22+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2610.30116v1",
+  "title": "Environment Duels: A Microcosm of LLM Co-Evolution",
+  "url": "https://arxiv.org/abs/2610.30116v1",
+  "source": "arxiv",
+  "posted_at": "2026-10-22T09:12:37+00:00"
  }
 ]

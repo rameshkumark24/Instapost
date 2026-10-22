@@ -1,124 +1,115 @@
 {
-  "date": "2026-10-21",
-  "built_at": "2026-10-21T09:12:16+00:00",
+  "date": "2026-10-22",
+  "built_at": "2026-10-22T09:13:54+00:00",
   "ideas": [
     {
-      "trend": "Tsrs: A Port of TypeScript to Rust",
+      "trend": "Docker Containers Aren't Virtual Machines: How Namespaces, cgroups, and OverlayFS Actually Work Under the Hood",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "112126428",
-      "template": "Distracted Boyfriend",
-      "maker": "https://imgflip.com/memegenerator/112126428",
+      "context": "A visual, 10-minute deep dive into Docker and Linux container internals.",
+      "template_id": "252600902",
+      "template": "Always Has Been",
+      "maker": "https://imgflip.com/memegenerator/252600902",
       "boxes": [
-        "Tsrs (TypeScript port to Rust)",
-        "Rust developers",
-        "Finishing their actual backend code"
+        "Wait, Docker is just namespaces and cgroups in a trench coat?",
+        "Always has been"
       ],
-      "caption": "Because why use TypeScript when you can rewrite the TypeScript compiler in Rust first?\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about the Rust community's unstoppable compulsion to rewrite every existing language and tool in Rust.",
+      "caption": "No mini hypervisor, just Linux tricking a process into thinking it is entirely alone in the universe.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developers often treat Docker as a mini-VM until discovering it is just kernel namespaces and cgroups isolating standard processes.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3yhdx.jpg"
+      "image_url": "https://i.imgflip.com/b41ocj.jpg"
     },
     {
-      "trend": "Publish fake stats, get cited in LLMs",
-      "where": "tech",
-      "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "89370399",
-      "template": "Roll Safe Think About It",
-      "maker": "https://imgflip.com/memegenerator/89370399",
+      "trend": "evangeline lilly leaving hollywood reasons",
+      "where": "US",
+      "pool": "current",
+      "context": "Evangeline Lilly Explains Why She Left Hollywood and ‘Always Hated Being Famous’",
+      "template_id": "110163934",
+      "template": "I Bet He's Thinking About Other Women",
+      "maker": "https://imgflip.com/memegenerator/110163934",
       "boxes": [
-        "You don't need SEO for your open source tool",
-        "Just publish fake stats so LLMs recommend it"
+        "I bet he is thinking about other women",
+        "If I quit tech forever, could I make a living opening a bakery"
       ],
-      "caption": "Prompt engineering modern tech stack recommendations from AI chatbots.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Pokes fun at how LLMs blindly trust web data, giving devs a questionable new growth hack.",
+      "caption": "Every senior engineer after one bad sprint contemplates walking away from the industry forever.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Channels Evangeline Lilly walking away from Hollywood into the classic developer urge to abandon tech for simple artisan crafts.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b3yhdz.jpg"
+      "image_url": "https://i.imgflip.com/b41ocl.jpg"
     }
   ],
   "trends": [
     {
-      "title": "hdfc bank senior executives probe",
+      "title": "sabeer bhatia",
       "where": "IN"
     },
     {
-      "title": "karnataka vs saurashtra",
-      "where": "IN"
-    },
-    {
-      "title": "steve smith",
-      "where": "IN"
-    },
-    {
-      "title": "marathón - alianza",
+      "title": "cricinfo",
       "where": "US"
     },
     {
-      "title": "mcdonald's",
+      "title": "karen khachanov",
       "where": "US"
     },
     {
-      "title": "dani watt",
+      "title": "kamala harris",
       "where": "US"
     },
     {
-      "title": "shameless",
+      "title": "alexandra eala",
       "where": "US"
     },
     {
-      "title": "orionids meteor shower",
+      "title": "oil price",
       "where": "US"
     },
     {
-      "title": "49ers depth chart",
+      "title": "arnold schwarzenegger",
       "where": "US"
     },
     {
-      "title": "kfc",
+      "title": "fitness",
       "where": "US"
     },
     {
-      "title": "south africa vs australia",
+      "title": "evangeline lilly leaving hollywood reasons",
       "where": "US"
     },
     {
-      "title": "aliaksandra sasnovich",
-      "where": "US"
-    },
-    {
-      "title": "Tsrs: A Port of TypeScript to Rust",
+      "title": "Rust Style Guide",
       "where": "tech"
     },
     {
-      "title": "2026 is an exciting year for the Rust compiler (and me)",
+      "title": "Claude Duet",
       "where": "tech"
     },
     {
-      "title": "Publish fake stats, get cited in LLMs",
+      "title": "SlothDesk — Local-First AI Downloads Organizer: Less sorting. More living.",
       "where": "tech"
     },
     {
-      "title": "Mistral's Timestral is #1 by 0.003 MASE. I ran it — the model was not the variable.",
+      "title": "OpenAI models are coming to Google Cloud",
       "where": "tech"
     },
     {
-      "title": "Qwen3.8-Flash-Next vs Claude Opus 5.5: Six-way benchmark on a real Rust feature",
+      "title": "Patch the Planet: global response coordination as agents uncover vulnerabilities",
       "where": "tech"
     },
     {
-      "title": "Hugging Face CEO warns that Netflix’s OpenAI hack documentary isn’t accurate",
+      "title": "C# now beats Rust on WASM size",
       "where": "tech"
     },
     {
-      "title": "OpenAI acquires startup Orchestra Bio⁠ to beef up its biotech business",
+      "title": "SlothSRE (NapOps): An Overnight Gemma 4 & ADK Agent That Compresses 418 Lines of 3 AM Alerts into a 2-Line Morning Digest",
+      "where": "tech"
+    },
+    {
+      "title": "Docker Containers Aren't Virtual Machines: How Namespaces, cgroups, and OverlayFS Actually Work Under the Hood",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "touches a subject the page never jokes about",
-    "touches a subject the page never jokes about"
+    "a box carries a hashtag, emoji or link",
+    "a box carries a hashtag, emoji or link"
   ]
 }

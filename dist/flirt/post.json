@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "websocket",
-  "term": "WEBSOCKET",
-  "headline": "The best friendships don't poll for updates. You just keep the WEBSOCKET open and push random thoughts the second they happen.",
-  "caption": "The best friendships don't poll for updates. You just keep the WEBSOCKET open and push random thoughts the second they happen.\n\n—\nWEBSOCKET: a connection kept open so either side can send a message at any moment.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-21",
-  "built_at": "2026-10-21T09:10:27+00:00",
+  "concept": "revoked-token",
+  "term": "REVOKED TOKEN",
+  "headline": "Our friendship was a valid token, but after that argument it became a REVOKED TOKEN—no more doors open for me.",
+  "caption": "Our friendship was a valid token, but after that argument it became a REVOKED TOKEN—no more doors open for me.\n\n—\nREVOKED TOKEN: access that was granted and then withdrawn, so it no longer opens anything.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-22",
+  "built_at": "2026-10-22T09:12:43+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

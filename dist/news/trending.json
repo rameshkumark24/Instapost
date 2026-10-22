@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-21",
+  "date": "2026-10-22",
   "stories": [
     {
-      "title": "Tsrs: A Port of TypeScript to Rust",
+      "title": "Rust Style Guide",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "2026 is an exciting year for the Rust compiler (and me)",
+      "title": "Claude Duet",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Publish fake stats, get cited in LLMs",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Anthropic pitches AI safety bill that may block a model if 50+ people could be killed",
-      "publication": "TechCrunch",
-      "summary": "The proposed policy seems to offer protections against AI running amok but actually forbids federal agencies from blocking a model's release without the permission of a judge."
-    },
-    {
-      "title": "Mistral's Timestral is #1 by 0.003 MASE. I ran it — the model was not the variable.",
+      "title": "SlothDesk — Local-First AI Downloads Organizer: Less sorting. More living.",
       "publication": "DEV",
-      "summary": "Mistral released Timestral, four open-weight time-series models that top three benchmarks — by 0.003 MASE on their own table."
+      "summary": "A local-first AI-powered Downloads organizer with two-phase execution, smolagents, LM Studio inference, and zero overwrites."
     },
     {
-      "title": "Qwen3.8-Flash-Next vs Claude Opus 5.5: Six-way benchmark on a real Rust feature",
+      "title": "OpenAI models are coming to Google Cloud",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Patch the Planet: global response coordination as agents uncover vulnerabilities",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "C# now beats Rust on WASM size",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "SlothSRE (NapOps): An Overnight Gemma 4 & ADK Agent That Compresses 418 Lines of 3 AM Alerts into a 2-Line Morning Digest",
       "publication": "DEV",
-      "summary": "A controlled comparison of Qwen3.8-Flash-Next and Claude Opus 5.5 on one LlamaStash feature, across Claude Code and Pi, at medium and xhigh effort"
+      "summary": "How I built a local-first open-weights Gemma 4, Google ADK, and Sentry Agent Tracing pipeline that deduplicates overnight stack traces, verifies git patches in a local pytest sandbox, and lets on-…"
     },
     {
-      "title": "Hugging Face CEO warns that Netflix’s OpenAI hack documentary isn’t accurate",
-      "publication": "TechCrunch",
-      "summary": "Before you share the Netflix documentary \"AI Gone Rogue,\" take note. Clem Delangue, Hugging Face's co-founder who is featured in the film, says it went \"full doomer mode\" and isn't accurate."
-    },
-    {
-      "title": "OpenAI acquires startup Orchestra Bio⁠ to beef up its biotech business",
-      "publication": "TechCrunch",
-      "summary": "OpenAI says it's adding Orchestra's team and technology to work on Rosalind, its AI model for life sciences research, and to its related Rosalind Workbench tool, a harness that aims to help…"
+      "title": "Docker Containers Aren't Virtual Machines: How Namespaces, cgroups, and OverlayFS Actually Work Under the Hood",
+      "publication": "DEV",
+      "summary": "A visual, 10-minute deep dive into Docker and Linux container internals."
     }
   ]
 }

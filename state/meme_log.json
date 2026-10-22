@@ -358,5 +358,15 @@
     "date": "2026-10-21",
     "trend": "Publish fake stats, get cited in LLMs",
     "template_id": "89370399"
+  },
+  {
+    "date": "2026-10-22",
+    "trend": "Docker Containers Aren't Virtual Machines: How Namespaces, cgroups, and OverlayFS Actually Work Under the Hood",
+    "template_id": "252600902"
+  },
+  {
+    "date": "2026-10-22",
+    "trend": "evangeline lilly leaving hollywood reasons",
+    "template_id": "110163934"
   }
 ]
