@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "stories": [
     {
-      "title": "Rust Style Guide",
+      "title": "LLMs are making formal software verification feasible at a much larger scale",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Claude Duet",
+      "title": "OpenShell – A safe, private runtime for fleets of autonomous AI agents",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "SlothDesk — Local-First AI Downloads Organizer: Less sorting. More living.",
+      "title": "Docker is weird",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Debunking \"Faster than Rust\": Malicious Benchmarks in Tov",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "926 Steps, Two Lobotomies, and Zero Nudges: Flight-Testing the Commitment Machine Across Gemini, Claude, and GPT-OSS",
       "publication": "DEV",
-      "summary": "A local-first AI-powered Downloads organizer with two-phase execution, smolagents, LM Studio inference, and zero overwrites."
+      "summary": "A 2026 Harvard study of 718 companies found that AI agents write 30% more code and close zero additional tickets because review times jump 49%."
     },
     {
-      "title": "OpenAI models are coming to Google Cloud",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Patch the Planet: global response coordination as agents uncover vulnerabilities",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "C# now beats Rust on WASM size",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "SlothSRE (NapOps): An Overnight Gemma 4 & ADK Agent That Compresses 418 Lines of 3 AM Alerts into a 2-Line Morning Digest",
+      "title": "Anthropic Runs 30,000 Agents at Once. What Keeps Them Under Control?",
       "publication": "DEV",
-      "summary": "How I built a local-first open-weights Gemma 4, Google ADK, and Sentry Agent Tracing pipeline that deduplicates overnight stack traces, verifies git patches in a local pytest sandbox, and lets on-…"
+      "summary": "In one of Anthropic's internal experiments, a group of Claude agents was supposed to solve math..."
     },
     {
-      "title": "Docker Containers Aren't Virtual Machines: How Namespaces, cgroups, and OverlayFS Actually Work Under the Hood",
+      "title": "Building a Llama.cpp Container Image",
       "publication": "DEV",
-      "summary": "A visual, 10-minute deep dive into Docker and Linux container internals."
+      "summary": "Llama.cpp is a high-performance inference platform designed for Large Language Models (LLMs) like..."
+    },
+    {
+      "title": "How to Use Jira with AI Agents for Free in 2026",
+      "publication": "DEV",
+      "summary": "I’ve been looking at how developers can bring AI coding agents into their existing workflows, and..."
     }
   ]
 }

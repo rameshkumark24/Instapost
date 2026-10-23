@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "revoked-token",
-  "term": "REVOKED TOKEN",
-  "headline": "Our friendship was a valid token, but after that argument it became a REVOKED TOKEN—no more doors open for me.",
-  "caption": "Our friendship was a valid token, but after that argument it became a REVOKED TOKEN—no more doors open for me.\n\n—\nREVOKED TOKEN: access that was granted and then withdrawn, so it no longer opens anything.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-22",
-  "built_at": "2026-10-22T09:12:43+00:00",
+  "concept": "base-case",
+  "term": "BASE CASE",
+  "headline": "We kept arguing about the argument about the argument. 'Let's just get dinner' was our only BASE CASE.",
+  "caption": "We kept arguing about the argument about the argument. 'Let's just get dinner' was our only BASE CASE.\n\n—\nBASE CASE: the condition that finally stops a recursion from going deeper.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-23",
+  "built_at": "2026-10-23T09:08:29+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

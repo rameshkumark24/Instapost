@@ -1,115 +1,141 @@
 {
-  "date": "2026-10-22",
-  "built_at": "2026-10-22T09:13:54+00:00",
+  "date": "2026-10-23",
+  "built_at": "2026-10-23T09:09:15+00:00",
   "ideas": [
     {
-      "trend": "Docker Containers Aren't Virtual Machines: How Namespaces, cgroups, and OverlayFS Actually Work Under the Hood",
+      "trend": "926 Steps, Two Lobotomies, and Zero Nudges: Flight-Testing the Commitment Machine Across Gemini, Claude, and GPT-OSS",
       "where": "tech",
       "pool": "tech",
-      "context": "A visual, 10-minute deep dive into Docker and Linux container internals.",
-      "template_id": "252600902",
-      "template": "Always Has Been",
-      "maker": "https://imgflip.com/memegenerator/252600902",
+      "context": "A 2026 Harvard study of 718 companies found that AI agents write 30% more code and close zero additional tickets because review times jump 49%.",
+      "template_id": "77045868",
+      "template": "Pawn Stars Best I Can Do",
+      "maker": "https://imgflip.com/memegenerator/77045868",
       "boxes": [
-        "Wait, Docker is just namespaces and cgroups in a trench coat?",
-        "Always has been"
+        "AI agents generating 30% more pull requests",
+        "Best I can do is 0 additional tickets closed"
       ],
-      "caption": "No mini hypervisor, just Linux tricking a process into thinking it is entirely alone in the universe.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Developers often treat Docker as a mini-VM until discovering it is just kernel namespaces and cgroups isolating standard processes.",
+      "caption": "Turns out reviewing 800 lines of AI hallucinations takes twice as long as writing it yourself.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "AI code generation created massive review bottlenecks without actually shipping more completed tasks.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b41ocj.jpg"
+      "image_url": "https://i.imgflip.com/b44utd.jpg"
     },
     {
-      "trend": "evangeline lilly leaving hollywood reasons",
-      "where": "US",
-      "pool": "current",
-      "context": "Evangeline Lilly Explains Why She Left Hollywood and ‘Always Hated Being Famous’",
-      "template_id": "110163934",
-      "template": "I Bet He's Thinking About Other Women",
-      "maker": "https://imgflip.com/memegenerator/110163934",
+      "trend": "Docker is weird",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Hacker News",
+      "template_id": "217743513",
+      "template": "UNO Draw 25 Cards",
+      "maker": "https://imgflip.com/memegenerator/217743513",
       "boxes": [
-        "I bet he is thinking about other women",
-        "If I quit tech forever, could I make a living opening a bakery"
+        "Learn how Docker networking and volume permissions actually work",
+        "Draw 25"
       ],
-      "caption": "Every senior engineer after one bad sprint contemplates walking away from the industry forever.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Channels Evangeline Lilly walking away from Hollywood into the classic developer urge to abandon tech for simple artisan crafts.",
+      "caption": "chmod 777 and restarting the daemon will always be my primary debugging method.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Docker's quirks push developers to restart or brute-force permissions rather than understand what went wrong.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b41ocl.jpg"
+      "image_url": "https://i.imgflip.com/b44uti.jpg"
+    },
+    {
+      "trend": "stefanos tsitsipas",
+      "where": "IN",
+      "pool": "current",
+      "context": "Stefanos Tsitsipas offers philosophical answer to whether he could still win Slam",
+      "template_id": "178591752",
+      "template": "Tuxedo Winnie The Pooh",
+      "maker": "https://imgflip.com/memegenerator/178591752",
+      "boxes": [
+        "Admitting the sprint will not finish on time",
+        "Giving a philosophical speech on the illusion of deadlines"
+      ],
+      "caption": "Turning Monday morning standup into an existential philosophy seminar.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developers giving deep, abstract answers to avoid answering direct questions about missed deadlines.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b44utm.jpg"
     }
   ],
   "trends": [
     {
-      "title": "sabeer bhatia",
+      "title": "kranti gaud",
       "where": "IN"
     },
     {
-      "title": "cricinfo",
+      "title": "zimw vs indw",
+      "where": "IN"
+    },
+    {
+      "title": "stefanos tsitsipas",
+      "where": "IN"
+    },
+    {
+      "title": "zimbabwe women's national cricket team vs india women's national cricket team match scorecard",
+      "where": "IN"
+    },
+    {
+      "title": "james duckworth",
       "where": "US"
     },
     {
-      "title": "karen khachanov",
+      "title": "indw vs zimw",
       "where": "US"
     },
     {
-      "title": "kamala harris",
+      "title": "diana shnaider",
       "where": "US"
     },
     {
-      "title": "alexandra eala",
+      "title": "ilhan nur said elmi",
       "where": "US"
     },
     {
-      "title": "oil price",
+      "title": "power outage near me",
       "where": "US"
     },
     {
-      "title": "arnold schwarzenegger",
+      "title": "taylor swift",
       "where": "US"
     },
     {
-      "title": "fitness",
+      "title": "openai",
       "where": "US"
     },
     {
-      "title": "evangeline lilly leaving hollywood reasons",
+      "title": "katie boulter",
       "where": "US"
     },
     {
-      "title": "Rust Style Guide",
+      "title": "LLMs are making formal software verification feasible at a much larger scale",
       "where": "tech"
     },
     {
-      "title": "Claude Duet",
+      "title": "OpenShell – A safe, private runtime for fleets of autonomous AI agents",
       "where": "tech"
     },
     {
-      "title": "SlothDesk — Local-First AI Downloads Organizer: Less sorting. More living.",
+      "title": "Docker is weird",
       "where": "tech"
     },
     {
-      "title": "OpenAI models are coming to Google Cloud",
+      "title": "Debunking \"Faster than Rust\": Malicious Benchmarks in Tov",
       "where": "tech"
     },
     {
-      "title": "Patch the Planet: global response coordination as agents uncover vulnerabilities",
+      "title": "926 Steps, Two Lobotomies, and Zero Nudges: Flight-Testing the Commitment Machine Across Gemini, Claude, and GPT-OSS",
       "where": "tech"
     },
     {
-      "title": "C# now beats Rust on WASM size",
+      "title": "Anthropic Runs 30,000 Agents at Once. What Keeps Them Under Control?",
       "where": "tech"
     },
     {
-      "title": "SlothSRE (NapOps): An Overnight Gemma 4 & ADK Agent That Compresses 418 Lines of 3 AM Alerts into a 2-Line Morning Digest",
+      "title": "Building a Llama.cpp Container Image",
       "where": "tech"
     },
     {
-      "title": "Docker Containers Aren't Virtual Machines: How Namespaces, cgroups, and OverlayFS Actually Work Under the Hood",
+      "title": "How to Use Jira with AI Agents for Free in 2026",
       "where": "tech"
     }
   ],
   "problems": [],
-  "rejects": [
-    "a box carries a hashtag, emoji or link",
-    "a box carries a hashtag, emoji or link"
-  ]
+  "rejects": []
 }

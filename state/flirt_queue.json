@@ -403,8 +403,9 @@
   "terms": [
    "BASE CASE"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-05T11:17:52+00:00"
+  "status": "sent",
+  "drafted_at": "2026-10-05T11:17:52+00:00",
+  "sent_at": "2026-10-23T09:08:29+00:00"
  },
  {
   "concept": "deep-copy",
