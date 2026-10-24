@@ -1,118 +1,106 @@
 {
-  "date": "2026-10-23",
-  "built_at": "2026-10-23T09:09:15+00:00",
+  "date": "2026-10-24",
+  "built_at": "2026-10-24T08:42:47+00:00",
   "ideas": [
     {
-      "trend": "926 Steps, Two Lobotomies, and Zero Nudges: Flight-Testing the Commitment Machine Across Gemini, Claude, and GPT-OSS",
-      "where": "tech",
-      "pool": "tech",
-      "context": "A 2026 Harvard study of 718 companies found that AI agents write 30% more code and close zero additional tickets because review times jump 49%.",
-      "template_id": "77045868",
-      "template": "Pawn Stars Best I Can Do",
-      "maker": "https://imgflip.com/memegenerator/77045868",
-      "boxes": [
-        "AI agents generating 30% more pull requests",
-        "Best I can do is 0 additional tickets closed"
-      ],
-      "caption": "Turns out reviewing 800 lines of AI hallucinations takes twice as long as writing it yourself.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "AI code generation created massive review bottlenecks without actually shipping more completed tasks.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b44utd.jpg"
-    },
-    {
-      "trend": "Docker is weird",
+      "trend": "Swedish government offices to ban ChatGPT and Claude",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "217743513",
-      "template": "UNO Draw 25 Cards",
-      "maker": "https://imgflip.com/memegenerator/217743513",
+      "template_id": "161865971",
+      "template": "Marked Safe From",
+      "maker": "https://imgflip.com/memegenerator/161865971",
       "boxes": [
-        "Learn how Docker networking and volume permissions actually work",
-        "Draw 25"
+        "Swedish government employees",
+        "Getting hallucinated legal citations in official documents"
       ],
-      "caption": "chmod 777 and restarting the daemon will always be my primary debugging method.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Docker's quirks push developers to restart or brute-force permissions rather than understand what went wrong.",
+      "caption": "When government offices ban AI tools, officials are forced to go back to reading real documentation.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Sweden banning ChatGPT and Claude in government offices means no more AI-generated reports.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b44uti.jpg"
+      "image_url": "https://i.imgflip.com/b47n07.jpg"
     },
     {
-      "trend": "stefanos tsitsipas",
-      "where": "IN",
-      "pool": "current",
-      "context": "Stefanos Tsitsipas offers philosophical answer to whether he could still win Slam",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
+      "trend": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
+      "where": "tech",
+      "pool": "tech",
+      "context": "OpenAI will cut frontier models off from the internet weeks after one of its engineers said that solution wouldn't work.",
+      "template_id": "99683372",
+      "template": "Sleeping Shaq",
+      "maker": "https://imgflip.com/memegenerator/99683372",
       "boxes": [
-        "Admitting the sprint will not finish on time",
-        "Giving a philosophical speech on the illusion of deadlines"
+        "Scraping static open source code for model training",
+        "Scraping live internet comments and hitting pure chaos"
       ],
-      "caption": "Turning Monday morning standup into an existential philosophy seminar.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Developers giving deep, abstract answers to avoid answering direct questions about missed deadlines.",
+      "caption": "Scraping code repos was fine until the live web proved too unhinged for frontier models.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "OpenAI announced it will stop training AI on the live internet due to risks.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b44utm.jpg"
+      "image_url": "https://i.imgflip.com/b47n0b.jpg"
+    },
+    {
+      "trend": "barca vs real madrid",
+      "where": "US",
+      "pool": "current",
+      "context": "Barcelona-Real Madrid: Clásico form, team news, combined XI, predictions, odds",
+      "template_id": "354700819",
+      "template": "Two guys on a bus",
+      "maker": "https://imgflip.com/memegenerator/354700819",
+      "boxes": [
+        "Fans enjoying the Barca vs Real Madrid match",
+        "DevOps watching live stream traffic destroy the servers"
+      ],
+      "caption": "El Clasico is pure excitement for football fans and non-stop alerts for streaming infrastructure engineers.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Massive global sporting events create extreme traffic spikes for server engineers.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b47n0c.jpg"
     }
   ],
   "trends": [
     {
-      "title": "kranti gaud",
+      "title": "indian air force",
       "where": "IN"
     },
     {
-      "title": "zimw vs indw",
+      "title": "french open badminton 2026",
       "where": "IN"
     },
     {
-      "title": "stefanos tsitsipas",
-      "where": "IN"
-    },
-    {
-      "title": "zimbabwe women's national cricket team vs india women's national cricket team match scorecard",
-      "where": "IN"
-    },
-    {
-      "title": "james duckworth",
+      "title": "leylah fernandez",
       "where": "US"
     },
     {
-      "title": "indw vs zimw",
+      "title": "cloudflare",
       "where": "US"
     },
     {
-      "title": "diana shnaider",
+      "title": "cher",
       "where": "US"
     },
     {
-      "title": "ilhan nur said elmi",
+      "title": "ufc",
       "where": "US"
     },
     {
-      "title": "power outage near me",
+      "title": "kimi",
       "where": "US"
     },
     {
-      "title": "taylor swift",
+      "title": "barca vs real madrid",
       "where": "US"
     },
     {
-      "title": "openai",
+      "title": "vanities",
       "where": "US"
     },
     {
-      "title": "katie boulter",
-      "where": "US"
-    },
-    {
-      "title": "LLMs are making formal software verification feasible at a much larger scale",
+      "title": "Twelve years of distributed SQLite",
       "where": "tech"
     },
     {
-      "title": "OpenShell – A safe, private runtime for fleets of autonomous AI agents",
+      "title": "Swedish government offices to ban ChatGPT and Claude",
       "where": "tech"
     },
     {
-      "title": "Docker is weird",
+      "title": "Evolving Threat: http2shell is an RCE in Node, Python, and more",
       "where": "tech"
     },
     {
@@ -120,19 +108,19 @@
       "where": "tech"
     },
     {
-      "title": "926 Steps, Two Lobotomies, and Zero Nudges: Flight-Testing the Commitment Machine Across Gemini, Claude, and GPT-OSS",
+      "title": "Best AI Code Review Tools for Claude Code: CodeRabbit vs Greptile vs cubic vs Qodo",
       "where": "tech"
     },
     {
-      "title": "Anthropic Runs 30,000 Agents at Once. What Keeps Them Under Control?",
+      "title": "Claude Code File System Boundaries in 2026: What `--add-dir`, Allowed Paths, and Sandbox Roots Actually Restrict",
       "where": "tech"
     },
     {
-      "title": "Building a Llama.cpp Container Image",
+      "title": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
       "where": "tech"
     },
     {
-      "title": "How to Use Jira with AI Agents for Free in 2026",
+      "title": "OpenShell – A safe, private runtime for fleets of autonomous AI agents",
       "where": "tech"
     }
   ],

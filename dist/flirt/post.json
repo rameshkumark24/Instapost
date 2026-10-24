@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "base-case",
-  "term": "BASE CASE",
-  "headline": "We kept arguing about the argument about the argument. 'Let's just get dinner' was our only BASE CASE.",
-  "caption": "We kept arguing about the argument about the argument. 'Let's just get dinner' was our only BASE CASE.\n\n—\nBASE CASE: the condition that finally stops a recursion from going deeper.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-23",
-  "built_at": "2026-10-23T09:08:29+00:00",
+  "concept": "deep-copy",
+  "term": "DEEP COPY",
+  "headline": "We didn't drift apart; we just became a DEEP COPY. You changed your entire life, and none of it modified mine.",
+  "caption": "We didn't drift apart; we just became a DEEP COPY. You changed your entire life, and none of it modified mine.\n\n—\nDEEP COPY: a fully independent duplicate; changing it never affects the original.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-24",
+  "built_at": "2026-10-24T08:42:24+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

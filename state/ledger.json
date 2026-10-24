@@ -467,5 +467,12 @@
   "url": "https://arxiv.org/abs/2610.31650v1",
   "source": "arxiv",
   "posted_at": "2026-10-23T09:08:25+00:00"
+ },
+ {
+  "key": "philipotoole.com/twelve-years-of-distributed-sqlite",
+  "title": "Twelve years of distributed SQLite",
+  "url": "https://philipotoole.com/twelve-years-of-distributed-sqlite/",
+  "source": "hn",
+  "posted_at": "2026-10-24T08:42:20+00:00"
  }
 ]

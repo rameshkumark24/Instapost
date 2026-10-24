@@ -415,8 +415,9 @@
   "terms": [
    "DEEP COPY"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-05T11:17:52+00:00"
+  "status": "sent",
+  "drafted_at": "2026-10-05T11:17:52+00:00",
+  "sent_at": "2026-10-24T08:42:24+00:00"
  },
  {
   "concept": "hash-collision",

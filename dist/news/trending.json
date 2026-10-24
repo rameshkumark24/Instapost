@@ -1,18 +1,18 @@
 {
-  "date": "2026-10-23",
+  "date": "2026-10-24",
   "stories": [
     {
-      "title": "LLMs are making formal software verification feasible at a much larger scale",
+      "title": "Twelve years of distributed SQLite",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "OpenShell – A safe, private runtime for fleets of autonomous AI agents",
+      "title": "Swedish government offices to ban ChatGPT and Claude",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Docker is weird",
+      "title": "Evolving Threat: http2shell is an RCE in Node, Python, and more",
       "publication": "Hacker News",
       "summary": ""
     },
@@ -22,24 +22,24 @@
       "summary": ""
     },
     {
-      "title": "926 Steps, Two Lobotomies, and Zero Nudges: Flight-Testing the Commitment Machine Across Gemini, Claude, and GPT-OSS",
+      "title": "Best AI Code Review Tools for Claude Code: CodeRabbit vs Greptile vs cubic vs Qodo",
       "publication": "DEV",
-      "summary": "A 2026 Harvard study of 718 companies found that AI agents write 30% more code and close zero additional tickets because review times jump 49%."
+      "summary": "Building on the web these days is as easy as using the next-best AI code generator. AI Agents now..."
     },
     {
-      "title": "Anthropic Runs 30,000 Agents at Once. What Keeps Them Under Control?",
+      "title": "Claude Code File System Boundaries in 2026: What `--add-dir`, Allowed Paths, and Sandbox Roots Actually Restrict",
       "publication": "DEV",
-      "summary": "In one of Anthropic's internal experiments, a group of Claude agents was supposed to solve math..."
+      "summary": "Claude Code's filesystem permissions operate on two distinct layers that most teams conflate."
     },
     {
-      "title": "Building a Llama.cpp Container Image",
-      "publication": "DEV",
-      "summary": "Llama.cpp is a high-performance inference platform designed for Large Language Models (LLMs) like..."
+      "title": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
+      "publication": "TechCrunch",
+      "summary": "OpenAI will cut frontier models off from the internet weeks after one of its engineers said that solution wouldn't work."
     },
     {
-      "title": "How to Use Jira with AI Agents for Free in 2026",
-      "publication": "DEV",
-      "summary": "I’ve been looking at how developers can bring AI coding agents into their existing workflows, and..."
+      "title": "OpenShell – A safe, private runtime for fleets of autonomous AI agents",
+      "publication": "Hacker News",
+      "summary": ""
     }
   ]
 }
