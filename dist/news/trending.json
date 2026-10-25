@@ -1,10 +1,15 @@
 {
-  "date": "2026-10-24",
+  "date": "2026-10-25",
   "stories": [
     {
-      "title": "Twelve years of distributed SQLite",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "Three Times My Test Failed and the LLM Was Right",
+      "publication": "DEV",
+      "summary": "A test fails, and the reflex is: the code is wrong. Debug the code, fix the code, move on. That..."
+    },
+    {
+      "title": "Forced to pick, Grok’s AI model chooses Republicans. OpenAI’s picks Democrats.",
+      "publication": "TechCrunch",
+      "summary": "A new study found Grok's AI overwhelmingly recommends Republican candidates while OpenAI's GPT favors Democrats, with the two AI models disagreeing in more than 90% of nearly 500 election races."
     },
     {
       "title": "Swedish government offices to ban ChatGPT and Claude",
@@ -12,32 +17,27 @@
       "summary": ""
     },
     {
-      "title": "Evolving Threat: http2shell is an RCE in Node, Python, and more",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Debunking \"Faster than Rust\": Malicious Benchmarks in Tov",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Best AI Code Review Tools for Claude Code: CodeRabbit vs Greptile vs cubic vs Qodo",
+      "title": "Let It Die: The Lazy Email Agent on TabPFN, Gemma and Temporal",
       "publication": "DEV",
-      "summary": "Building on the web these days is as easy as using the next-best AI code generator. AI Agents now..."
+      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 3: Slow and Steady ..."
     },
     {
-      "title": "Claude Code File System Boundaries in 2026: What `--add-dir`, Allowed Paths, and Sandbox Roots Actually Restrict",
+      "title": "I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.)",
       "publication": "DEV",
-      "summary": "Claude Code's filesystem permissions operate on two distinct layers that most teams conflate."
+      "summary": "I’m not on the DEV team. I don’t have an admin panel, production database access, or internal Slack...."
     },
     {
-      "title": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
+      "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
       "publication": "TechCrunch",
-      "summary": "OpenAI will cut frontier models off from the internet weeks after one of its engineers said that solution wouldn't work."
+      "summary": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations."
     },
     {
-      "title": "OpenShell – A safe, private runtime for fleets of autonomous AI agents",
+      "title": "Everyone Clicks 'I Agree.' No One Reads Them: I Fine-Tuned a 4B Model with Tinker to Catch Unfair Terms of Service in 30 Seconds",
+      "publication": "DEV",
+      "summary": "A 9,000-word contract scanned in 30 seconds. How I fine-tuned Qwen 4B with Tinker on the LexGLUE UNFAIR-ToS benchmark to catch arbitration waivers, unilateral changes, and liability caps."
+    },
+    {
+      "title": "Evolving Threat: http2shell is an RCE in Node, Python, and more",
       "publication": "Hacker News",
       "summary": ""
     }

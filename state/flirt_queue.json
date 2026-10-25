@@ -427,8 +427,9 @@
   "terms": [
    "HASH COLLISION"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-05T11:17:52+00:00"
+  "status": "sent",
+  "drafted_at": "2026-10-05T11:17:52+00:00",
+  "sent_at": "2026-10-25T08:59:45+00:00"
  },
  {
   "concept": "webhook",

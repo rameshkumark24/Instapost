@@ -1,126 +1,135 @@
 {
-  "date": "2026-10-24",
-  "built_at": "2026-10-24T08:42:47+00:00",
+  "date": "2026-10-25",
+  "built_at": "2026-10-25T09:00:52+00:00",
   "ideas": [
     {
-      "trend": "Swedish government offices to ban ChatGPT and Claude",
+      "trend": "Three Times My Test Failed and the LLM Was Right",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "161865971",
-      "template": "Marked Safe From",
-      "maker": "https://imgflip.com/memegenerator/161865971",
+      "context": "A test fails, and the reflex is: the code is wrong. Debug the code, fix the code, move on. That...",
+      "template_id": "188390779",
+      "template": "Woman Yelling At Cat",
+      "maker": "https://imgflip.com/memegenerator/188390779",
       "boxes": [
-        "Swedish government employees",
-        "Getting hallucinated legal citations in official documents"
+        "Me blaming the LLM for writing broken test cases",
+        "The LLM showing me line 42 where my code was actually wrong"
       ],
-      "caption": "When government offices ban AI tools, officials are forced to go back to reading real documentation.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Sweden banning ChatGPT and Claude in government offices means no more AI-generated reports.",
+      "caption": "That painful moment when you realize the AI was not hallucinating and your code was actually wrong.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developers instinctively blame AI output first when tests fail, only to discover their own logic had the bug.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b47n07.jpg"
+      "image_url": "https://i.imgflip.com/b49ql1.jpg"
     },
     {
-      "trend": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
+      "trend": "The AI graveyard: a running list of projects and startups that didn’t make it",
       "where": "tech",
       "pool": "tech",
-      "context": "OpenAI will cut frontier models off from the internet weeks after one of its engineers said that solution wouldn't work.",
-      "template_id": "99683372",
-      "template": "Sleeping Shaq",
-      "maker": "https://imgflip.com/memegenerator/99683372",
+      "context": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations.",
+      "template_id": "67452763",
+      "template": "Squidward window",
+      "maker": "https://imgflip.com/memegenerator/67452763",
       "boxes": [
-        "Scraping static open source code for model training",
-        "Scraping live internet comments and hitting pure chaos"
+        "New AI wrapper startups launching every single week",
+        "Me watching them all shut down and join the AI graveyard"
       ],
-      "caption": "Scraping code repos was fine until the live web proved too unhinged for frontier models.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "OpenAI announced it will stop training AI on the live internet due to risks.",
+      "caption": "Building a wrapper around an API is fast, but staying out of the AI graveyard is the real challenge.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Pokes fun at the short lifecycle of hype-driven AI startups closing down rapidly.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b47n0b.jpg"
+      "image_url": "https://i.imgflip.com/b49ql3.jpg"
     },
     {
-      "trend": "barca vs real madrid",
-      "where": "US",
+      "trend": "exynos 2700 vs snapdragon performance",
+      "where": "IN",
       "pool": "current",
-      "context": "Barcelona-Real Madrid: Clásico form, team news, combined XI, predictions, odds",
-      "template_id": "354700819",
-      "template": "Two guys on a bus",
-      "maker": "https://imgflip.com/memegenerator/354700819",
+      "context": "Samsung Exynos 2700 Beats Qualcomm's Latest Flagship",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "Fans enjoying the Barca vs Real Madrid match",
-        "DevOps watching live stream traffic destroy the servers"
+        "Flagship mobile processor benchmark scores",
+        "Dev waiting 10 minutes for Docker to build",
+        "Company laptop struggling to run Slack"
       ],
-      "caption": "El Clasico is pure excitement for football fans and non-stop alerts for streaming infrastructure engineers.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Massive global sporting events create extreme traffic spikes for server engineers.",
+      "caption": "When phone chips achieve wild benchmarks while your corporate laptop still freezes on npm install.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Compares cutting-edge hardware benchmark hype to the reality of underpowered developer work laptops.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b47n0c.jpg"
+      "image_url": "https://i.imgflip.com/b49ql6.jpg"
     }
   ],
   "trends": [
     {
-      "title": "indian air force",
+      "title": "indw vs zimw",
       "where": "IN"
     },
     {
-      "title": "french open badminton 2026",
+      "title": "joe root",
       "where": "IN"
     },
     {
-      "title": "leylah fernandez",
+      "title": "exynos 2700 vs snapdragon performance",
+      "where": "IN"
+    },
+    {
+      "title": "india women's national cricket team vs zimbabwe women's national cricket team match scorecard",
+      "where": "IN"
+    },
+    {
+      "title": "shaheen afridi",
+      "where": "IN"
+    },
+    {
+      "title": "the office",
       "where": "US"
     },
     {
-      "title": "cloudflare",
+      "title": "journalist",
       "where": "US"
     },
     {
-      "title": "cher",
+      "title": "stanley",
       "where": "US"
     },
     {
-      "title": "ufc",
+      "title": "england vs pakistan",
       "where": "US"
     },
     {
-      "title": "kimi",
+      "title": "hannibal",
       "where": "US"
     },
     {
-      "title": "barca vs real madrid",
+      "title": "bank",
       "where": "US"
     },
     {
-      "title": "vanities",
+      "title": "corvette",
       "where": "US"
     },
     {
-      "title": "Twelve years of distributed SQLite",
+      "title": "Three Times My Test Failed and the LLM Was Right",
       "where": "tech"
     },
     {
-      "title": "Swedish government offices to ban ChatGPT and Claude",
+      "title": "Forced to pick, Grok’s AI model chooses Republicans. OpenAI’s picks Democrats.",
+      "where": "tech"
+    },
+    {
+      "title": "Let It Die: The Lazy Email Agent on TabPFN, Gemma and Temporal",
+      "where": "tech"
+    },
+    {
+      "title": "I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.)",
+      "where": "tech"
+    },
+    {
+      "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
+      "where": "tech"
+    },
+    {
+      "title": "Everyone Clicks 'I Agree.' No One Reads Them: I Fine-Tuned a 4B Model with Tinker to Catch Unfair Terms of Service in 30 Seconds",
       "where": "tech"
     },
     {
       "title": "Evolving Threat: http2shell is an RCE in Node, Python, and more",
-      "where": "tech"
-    },
-    {
-      "title": "Debunking \"Faster than Rust\": Malicious Benchmarks in Tov",
-      "where": "tech"
-    },
-    {
-      "title": "Best AI Code Review Tools for Claude Code: CodeRabbit vs Greptile vs cubic vs Qodo",
-      "where": "tech"
-    },
-    {
-      "title": "Claude Code File System Boundaries in 2026: What `--add-dir`, Allowed Paths, and Sandbox Roots Actually Restrict",
-      "where": "tech"
-    },
-    {
-      "title": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
-      "where": "tech"
-    },
-    {
-      "title": "OpenShell – A safe, private runtime for fleets of autonomous AI agents",
       "where": "tech"
     }
   ],

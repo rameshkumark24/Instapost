@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "deep-copy",
-  "term": "DEEP COPY",
-  "headline": "We didn't drift apart; we just became a DEEP COPY. You changed your entire life, and none of it modified mine.",
-  "caption": "We didn't drift apart; we just became a DEEP COPY. You changed your entire life, and none of it modified mine.\n\n—\nDEEP COPY: a fully independent duplicate; changing it never affects the original.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-24",
-  "built_at": "2026-10-24T08:42:24+00:00",
+  "concept": "hash-collision",
+  "term": "HASH COLLISION",
+  "headline": "We had completely different intentions, yet we produced the exact same misunderstanding. A textbook HASH COLLISION.",
+  "caption": "We had completely different intentions, yet we produced the exact same misunderstanding. A textbook HASH COLLISION.\n\n—\nHASH COLLISION: two different things end up with the same fingerprint.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-25",
+  "built_at": "2026-10-25T08:59:45+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
