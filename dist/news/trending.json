@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "stories": [
     {
-      "title": "Three Times My Test Failed and the LLM Was Right",
-      "publication": "DEV",
-      "summary": "A test fails, and the reflex is: the code is wrong. Debug the code, fix the code, move on. That..."
-    },
-    {
-      "title": "Forced to pick, Grok’s AI model chooses Republicans. OpenAI’s picks Democrats.",
-      "publication": "TechCrunch",
-      "summary": "A new study found Grok's AI overwhelmingly recommends Republican candidates while OpenAI's GPT favors Democrats, with the two AI models disagreeing in more than 90% of nearly 500 election races."
-    },
-    {
-      "title": "Swedish government offices to ban ChatGPT and Claude",
+      "title": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Let It Die: The Lazy Email Agent on TabPFN, Gemma and Temporal",
+      "title": "PaperPilot – Zero-Cloud, Pure-Rust PDF Engine with WASM and MCP",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Meet NEXI: A Windows Focus Companion Built with Python and AdaL",
+      "publication": "DEV",
+      "summary": "What if your computer could help you understand where your time goes and gently remind you when it's..."
+    },
+    {
+      "title": "Slowth Money: a local AI agent for your financial goals",
       "publication": "DEV",
       "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 3: Slow and Steady ..."
     },
     {
-      "title": "I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.)",
+      "title": "HEXAW: a tiny time machine for WebAssembly",
       "publication": "DEV",
-      "summary": "I’m not on the DEV team. I don’t have an admin panel, production database access, or internal Slack...."
+      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 3: Slow and Steady ..."
     },
     {
-      "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
-      "publication": "TechCrunch",
-      "summary": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations."
-    },
-    {
-      "title": "Everyone Clicks 'I Agree.' No One Reads Them: I Fine-Tuned a 4B Model with Tinker to Catch Unfair Terms of Service in 30 Seconds",
-      "publication": "DEV",
-      "summary": "A 9,000-word contract scanned in 30 seconds. How I fine-tuned Qwen 4B with Tinker on the LexGLUE UNFAIR-ToS benchmark to catch arbitration waivers, unilateral changes, and liability caps."
-    },
-    {
-      "title": "Evolving Threat: http2shell is an RCE in Node, Python, and more",
-      "publication": "Hacker News",
+      "title": "Two musings on the design of compiler warnings (2020)",
+      "publication": "Lobsters",
       "summary": ""
+    },
+    {
+      "title": "TypeScript `Disposable` Protocol in 2026: Structuring Cleanup-Heavy Server Code With `using` and Stacks",
+      "publication": "DEV",
+      "summary": "Learn how TypeScript's Disposable protocol, using declarations, and DisposableStack eliminate resource leaks in Node.js servers through deterministic cleanup that executes at scope exit."
     }
   ]
 }

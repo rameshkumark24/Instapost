@@ -1,135 +1,130 @@
 {
-  "date": "2026-10-25",
-  "built_at": "2026-10-25T09:00:52+00:00",
+  "date": "2026-10-26",
+  "built_at": "2026-10-26T09:47:37+00:00",
   "ideas": [
     {
-      "trend": "Three Times My Test Failed and the LLM Was Right",
+      "trend": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
       "where": "tech",
       "pool": "tech",
-      "context": "A test fails, and the reflex is: the code is wrong. Debug the code, fix the code, move on. That...",
-      "template_id": "188390779",
-      "template": "Woman Yelling At Cat",
-      "maker": "https://imgflip.com/memegenerator/188390779",
+      "context": "Hacker News",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Me blaming the LLM for writing broken test cases",
-        "The LLM showing me line 42 where my code was actually wrong"
+        "Optimizing prompts to save a few LLM tokens",
+        "Waiting for OpenAI and Anthropic to cut API prices by 80%"
       ],
-      "caption": "That painful moment when you realize the AI was not hallucinating and your code was actually wrong.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Developers instinctively blame AI output first when tests fail, only to discover their own logic had the bug.",
+      "caption": "Why spend days refactoring prompts when provider price wars cut your API bill for you?\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Jokes about how rapid LLM price drops reduce the urgency of micro-optimizing token usage.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b49ql1.jpg"
+      "image_url": "https://i.imgflip.com/b4c3e8.jpg"
     },
     {
-      "trend": "The AI graveyard: a running list of projects and startups that didn’t make it",
+      "trend": "TypeScript `Disposable` Protocol in 2026: Structuring Cleanup-Heavy Server Code With `using` and Stacks",
       "where": "tech",
       "pool": "tech",
-      "context": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations.",
-      "template_id": "67452763",
-      "template": "Squidward window",
-      "maker": "https://imgflip.com/memegenerator/67452763",
+      "context": "Learn how TypeScript's Disposable protocol, using declarations, and DisposableStack eliminate resource leaks in Node.js servers through deterministic cleanup that executes at scope exit.",
+      "template_id": "129242436",
+      "template": "Change My Mind",
+      "maker": "https://imgflip.com/memegenerator/129242436",
       "boxes": [
-        "New AI wrapper startups launching every single week",
-        "Me watching them all shut down and join the AI graveyard"
+        "TypeScript using syntax is just try-finally in a top hat",
+        "Change my mind"
       ],
-      "caption": "Building a wrapper around an API is fast, but staying out of the AI graveyard is the real challenge.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Pokes fun at the short lifecycle of hype-driven AI startups closing down rapidly.",
+      "caption": "Explicit resource cleanup is a welcome addition, even if it is syntactic sugar under the hood.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Compares TypeScript's Disposable explicit cleanup protocol to classic try-finally blocks.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b49ql3.jpg"
+      "image_url": "https://i.imgflip.com/b4c3ea.jpg"
     },
     {
-      "trend": "exynos 2700 vs snapdragon performance",
-      "where": "IN",
+      "trend": "daylight saving time halloween 2026",
+      "where": "US",
       "pool": "current",
-      "context": "Samsung Exynos 2700 Beats Qualcomm's Latest Flagship",
-      "template_id": "112126428",
-      "template": "Distracted Boyfriend",
-      "maker": "https://imgflip.com/memegenerator/112126428",
+      "context": "Is it time to set your clock back this weekend? What to know",
+      "template_id": "427308417",
+      "template": "0 days without (Lenny, Simpsons)",
+      "maker": "https://imgflip.com/memegenerator/427308417",
       "boxes": [
-        "Flagship mobile processor benchmark scores",
-        "Dev waiting 10 minutes for Docker to build",
-        "Company laptop struggling to run Slack"
+        "Days without timezone bugs",
+        "0"
       ],
-      "caption": "When phone chips achieve wild benchmarks while your corporate laptop still freezes on npm install.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Compares cutting-edge hardware benchmark hype to the reality of underpowered developer work laptops.",
+      "caption": "Every clock change brings back the classic scheduled job and local timestamp nightmares.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Connects Daylight Saving Time clock shifts to developers struggling with timezone and cron job bugs.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b49ql6.jpg"
+      "image_url": "https://i.imgflip.com/b4c3eb.jpg"
     }
   ],
   "trends": [
     {
-      "title": "indw vs zimw",
+      "title": "apollo",
       "where": "IN"
     },
     {
-      "title": "joe root",
+      "title": "ather energy share price",
       "where": "IN"
     },
     {
-      "title": "exynos 2700 vs snapdragon performance",
+      "title": "live cricket match india new zealand",
       "where": "IN"
     },
     {
-      "title": "india women's national cricket team vs zimbabwe women's national cricket team match scorecard",
+      "title": "matthew lamb",
       "where": "IN"
     },
     {
-      "title": "shaheen afridi",
-      "where": "IN"
-    },
-    {
-      "title": "the office",
+      "title": "cher",
       "where": "US"
     },
     {
-      "title": "journalist",
+      "title": "tokyo disneyland peter pan ride closing",
       "where": "US"
     },
     {
-      "title": "stanley",
+      "title": "sporting",
       "where": "US"
     },
     {
-      "title": "england vs pakistan",
+      "title": "daylight saving time halloween 2026",
       "where": "US"
     },
     {
-      "title": "hannibal",
+      "title": "justin bieber",
       "where": "US"
     },
     {
-      "title": "bank",
+      "title": "beyonce",
       "where": "US"
     },
     {
-      "title": "corvette",
+      "title": "chris brown",
       "where": "US"
     },
     {
-      "title": "Three Times My Test Failed and the LLM Was Right",
+      "title": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
       "where": "tech"
     },
     {
-      "title": "Forced to pick, Grok’s AI model chooses Republicans. OpenAI’s picks Democrats.",
+      "title": "PaperPilot – Zero-Cloud, Pure-Rust PDF Engine with WASM and MCP",
       "where": "tech"
     },
     {
-      "title": "Let It Die: The Lazy Email Agent on TabPFN, Gemma and Temporal",
+      "title": "Meet NEXI: A Windows Focus Companion Built with Python and AdaL",
       "where": "tech"
     },
     {
-      "title": "I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.)",
+      "title": "Slowth Money: a local AI agent for your financial goals",
       "where": "tech"
     },
     {
-      "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
+      "title": "HEXAW: a tiny time machine for WebAssembly",
       "where": "tech"
     },
     {
-      "title": "Everyone Clicks 'I Agree.' No One Reads Them: I Fine-Tuned a 4B Model with Tinker to Catch Unfair Terms of Service in 30 Seconds",
+      "title": "Two musings on the design of compiler warnings (2020)",
       "where": "tech"
     },
     {
-      "title": "Evolving Threat: http2shell is an RCE in Node, Python, and more",
+      "title": "TypeScript `Disposable` Protocol in 2026: Structuring Cleanup-Heavy Server Code With `using` and Stacks",
       "where": "tech"
     }
   ],

@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "hash-collision",
-  "term": "HASH COLLISION",
-  "headline": "We had completely different intentions, yet we produced the exact same misunderstanding. A textbook HASH COLLISION.",
-  "caption": "We had completely different intentions, yet we produced the exact same misunderstanding. A textbook HASH COLLISION.\n\n—\nHASH COLLISION: two different things end up with the same fingerprint.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-25",
-  "built_at": "2026-10-25T08:59:45+00:00",
+  "concept": "webhook",
+  "term": "WEBHOOK",
+  "headline": "Stop polling me every ten minutes to see if I'm ready. Treat me like a WEBHOOK: I'll call you the second something happens.",
+  "caption": "Stop polling me every ten minutes to see if I'm ready. Treat me like a WEBHOOK: I'll call you the second something happens.\n\n—\nWEBHOOK: instead of being asked repeatedly, the server calls you when something happens.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-26",
+  "built_at": "2026-10-26T09:47:14+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
