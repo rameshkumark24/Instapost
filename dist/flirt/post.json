@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "webhook",
-  "term": "WEBHOOK",
-  "headline": "Stop polling me every ten minutes to see if I'm ready. Treat me like a WEBHOOK: I'll call you the second something happens.",
-  "caption": "Stop polling me every ten minutes to see if I'm ready. Treat me like a WEBHOOK: I'll call you the second something happens.\n\n—\nWEBHOOK: instead of being asked repeatedly, the server calls you when something happens.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-26",
-  "built_at": "2026-10-26T09:47:14+00:00",
+  "concept": "timeout",
+  "term": "TIMEOUT",
+  "headline": "Sometimes you just need to implement a TIMEOUT on a conversation that's been hanging with no response for three business days.",
+  "caption": "Sometimes you just need to implement a TIMEOUT on a conversation that's been hanging with no response for three business days.\n\n—\nTIMEOUT: gives up waiting after a set period with no response.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-27",
+  "built_at": "2026-10-27T09:42:24+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

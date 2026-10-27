@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-27",
-    "trend": "OpenAI Feared \"Optics\" of what might appear on Hacker News",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-09-27",
-    "trend": "AI Agents Push Humans Out of the Loop",
-    "template_id": "87743020"
-  },
-  {
-    "date": "2026-09-27",
-    "trend": "andrey rublev",
-    "template_id": "102156234"
-  },
-  {
     "date": "2026-09-28",
     "trend": "7 Best AI Project Management Tools for Software Development Teams in 2026",
     "template_id": "181913649"
@@ -428,5 +413,20 @@
     "date": "2026-10-26",
     "trend": "daylight saving time halloween 2026",
     "template_id": "427308417"
+  },
+  {
+    "date": "2026-10-27",
+    "trend": "Python's experimental JIT to be removed",
+    "template_id": "217743513"
+  },
+  {
+    "date": "2026-10-27",
+    "trend": "ChatGPT Keeps Telling People 404 Media Can Solve Their Tech Support Problems",
+    "template_id": "438680"
+  },
+  {
+    "date": "2026-10-27",
+    "trend": "call of duty skill based matchmaking",
+    "template_id": "247113703"
   }
 ]

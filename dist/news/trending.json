@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "stories": [
     {
-      "title": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "How OpenAI turned its coding tools into dots, an always-on personal assistant",
+      "publication": "TechCrunch",
+      "summary": "Alexander Embiricos, the OpenAI executive responsible for dots, never wants to have a meeting with someone else's AI agent."
     },
     {
-      "title": "PaperPilot – Zero-Cloud, Pure-Rust PDF Engine with WASM and MCP",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Meet NEXI: A Windows Focus Companion Built with Python and AdaL",
-      "publication": "DEV",
-      "summary": "What if your computer could help you understand where your time goes and gently remind you when it's..."
-    },
-    {
-      "title": "Slowth Money: a local AI agent for your financial goals",
-      "publication": "DEV",
-      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 3: Slow and Steady ..."
-    },
-    {
-      "title": "HEXAW: a tiny time machine for WebAssembly",
-      "publication": "DEV",
-      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 3: Slow and Steady ..."
-    },
-    {
-      "title": "Two musings on the design of compiler warnings (2020)",
+      "title": "Python's experimental JIT to be removed",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "TypeScript `Disposable` Protocol in 2026: Structuring Cleanup-Heavy Server Code With `using` and Stacks",
-      "publication": "DEV",
-      "summary": "Learn how TypeScript's Disposable protocol, using declarations, and DisposableStack eliminate resource leaks in Node.js servers through deterministic cleanup that executes at scope exit."
+      "title": "GPT-6.1 Terra",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "OpenAI announces three big science discoveries and a new way to work with academics",
+      "publication": "The Verge",
+      "summary": "Less than a month after its mass release of hundreds of manuscripts that it said contained solutions to long-standing mathematics questions, OpenAI is back with three more \"major\" discoveries in…"
+    },
+    {
+      "title": "Concerning behavior from a popular open-weight AI model",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "ChatGPT Keeps Telling People 404 Media Can Solve Their Tech Support Problems",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Anthropic S-1",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Show HN: Hob - Open-source, on device alternative to Claude Cowork and ChatGPT",
+      "publication": "Hacker News",
+      "summary": ""
     }
   ]
 }

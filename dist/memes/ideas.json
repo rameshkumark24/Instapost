@@ -1,130 +1,146 @@
 {
-  "date": "2026-10-26",
-  "built_at": "2026-10-26T09:47:37+00:00",
+  "date": "2026-10-27",
+  "built_at": "2026-10-27T09:42:45+00:00",
   "ideas": [
     {
-      "trend": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
+      "trend": "Python's experimental JIT to be removed",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Lobsters",
+      "template_id": "217743513",
+      "template": "UNO Draw 25 Cards",
+      "maker": "https://imgflip.com/memegenerator/217743513",
+      "boxes": [
+        "Wait for Python code to run fast with experimental JIT",
+        "Draw 25 cards"
+      ],
+      "caption": "Back to writing C extensions whenever performance actually matters.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Python removing its experimental JIT forces developers back to standard slower execution or native C extensions.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b4eziu.jpg"
+    },
+    {
+      "trend": "ChatGPT Keeps Telling People 404 Media Can Solve Their Tech Support Problems",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
+      "template_id": "438680",
+      "template": "Batman Slapping Robin",
+      "maker": "https://imgflip.com/memegenerator/438680",
       "boxes": [
-        "Optimizing prompts to save a few LLM tokens",
-        "Waiting for OpenAI and Anthropic to cut API prices by 80%"
+        "ChatGPT said 404 Media can fix our broken server...",
+        "Stop relying on AI hallucinations for IT support!"
       ],
-      "caption": "Why spend days refactoring prompts when provider price wars cut your API bill for you?\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about how rapid LLM price drops reduce the urgency of micro-optimizing token usage.",
+      "caption": "When ChatGPT starts pointing confused users toward news outlets for tech support.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "ChatGPT hallucinated a media outlet as a customer support helpline for tech problems.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4c3e8.jpg"
+      "image_url": "https://i.imgflip.com/b4ezj0.jpg"
     },
     {
-      "trend": "TypeScript `Disposable` Protocol in 2026: Structuring Cleanup-Heavy Server Code With `using` and Stacks",
-      "where": "tech",
-      "pool": "tech",
-      "context": "Learn how TypeScript's Disposable protocol, using declarations, and DisposableStack eliminate resource leaks in Node.js servers through deterministic cleanup that executes at scope exit.",
-      "template_id": "129242436",
-      "template": "Change My Mind",
-      "maker": "https://imgflip.com/memegenerator/129242436",
-      "boxes": [
-        "TypeScript using syntax is just try-finally in a top hat",
-        "Change my mind"
-      ],
-      "caption": "Explicit resource cleanup is a welcome addition, even if it is syntactic sugar under the hood.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Compares TypeScript's Disposable explicit cleanup protocol to classic try-finally blocks.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b4c3ea.jpg"
-    },
-    {
-      "trend": "daylight saving time halloween 2026",
+      "trend": "call of duty skill based matchmaking",
       "where": "US",
       "pool": "current",
-      "context": "Is it time to set your clock back this weekend? What to know",
-      "template_id": "427308417",
-      "template": "0 days without (Lenny, Simpsons)",
-      "maker": "https://imgflip.com/memegenerator/427308417",
+      "context": "'I Don't Know if There's Perfecting It' — Call of Duty: Modern Warfare 4 Multiplayer Chief Weighs in on Matchmaking",
+      "template_id": "247113703",
+      "template": "A train hitting a school bus",
+      "maker": "https://imgflip.com/memegenerator/247113703",
       "boxes": [
-        "Days without timezone bugs",
-        "0"
+        "Me closing a 1-point CSS fix in five minutes",
+        "Jira skill-based matchmaking assigning me a P0 memory leak"
       ],
-      "caption": "Every clock change brings back the classic scheduled job and local timestamp nightmares.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Connects Daylight Saving Time clock shifts to developers struggling with timezone and cron job bugs.",
+      "caption": "The reward for clearing your queue quickly is getting assigned the hardest bugs in the backlog.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Comparing gamer frustration with Call of Duty skill-based matchmaking to developers getting harder tickets for being efficient.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4c3eb.jpg"
+      "image_url": "https://i.imgflip.com/b4ezj2.jpg"
     }
   ],
   "trends": [
     {
-      "title": "apollo",
+      "title": "india",
       "where": "IN"
     },
     {
-      "title": "ather energy share price",
+      "title": "michael bracewell",
       "where": "IN"
     },
     {
-      "title": "live cricket match india new zealand",
+      "title": "t20 world cup",
       "where": "IN"
     },
     {
-      "title": "matthew lamb",
+      "title": "sooryavanshi",
       "where": "IN"
     },
     {
-      "title": "cher",
+      "title": "south africa vs australia",
+      "where": "IN"
+    },
+    {
+      "title": "icc",
+      "where": "IN"
+    },
+    {
+      "title": "new zealand vs india",
       "where": "US"
     },
     {
-      "title": "tokyo disneyland peter pan ride closing",
+      "title": "reuters",
       "where": "US"
     },
     {
-      "title": "sporting",
+      "title": "power ball",
       "where": "US"
     },
     {
-      "title": "daylight saving time halloween 2026",
+      "title": "abc high potential season 3",
       "where": "US"
     },
     {
-      "title": "justin bieber",
+      "title": "espncricinfo",
       "where": "US"
     },
     {
-      "title": "beyonce",
+      "title": "call of duty skill based matchmaking",
       "where": "US"
     },
     {
-      "title": "chris brown",
+      "title": "va",
       "where": "US"
     },
     {
-      "title": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
+      "title": "antonia ruzic",
+      "where": "US"
+    },
+    {
+      "title": "How OpenAI turned its coding tools into dots, an always-on personal assistant",
       "where": "tech"
     },
     {
-      "title": "PaperPilot – Zero-Cloud, Pure-Rust PDF Engine with WASM and MCP",
+      "title": "Python's experimental JIT to be removed",
       "where": "tech"
     },
     {
-      "title": "Meet NEXI: A Windows Focus Companion Built with Python and AdaL",
+      "title": "GPT-6.1 Terra",
       "where": "tech"
     },
     {
-      "title": "Slowth Money: a local AI agent for your financial goals",
+      "title": "OpenAI announces three big science discoveries and a new way to work with academics",
       "where": "tech"
     },
     {
-      "title": "HEXAW: a tiny time machine for WebAssembly",
+      "title": "Concerning behavior from a popular open-weight AI model",
       "where": "tech"
     },
     {
-      "title": "Two musings on the design of compiler warnings (2020)",
+      "title": "ChatGPT Keeps Telling People 404 Media Can Solve Their Tech Support Problems",
       "where": "tech"
     },
     {
-      "title": "TypeScript `Disposable` Protocol in 2026: Structuring Cleanup-Heavy Server Code With `using` and Stacks",
+      "title": "Anthropic S-1",
+      "where": "tech"
+    },
+    {
+      "title": "Show HN: Hob - Open-source, on device alternative to Claude Cowork and ChatGPT",
       "where": "tech"
     }
   ],
