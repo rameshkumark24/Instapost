@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "timeout",
-  "term": "TIMEOUT",
-  "headline": "Sometimes you just need to implement a TIMEOUT on a conversation that's been hanging with no response for three business days.",
-  "caption": "Sometimes you just need to implement a TIMEOUT on a conversation that's been hanging with no response for three business days.\n\n—\nTIMEOUT: gives up waiting after a set period with no response.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-27",
-  "built_at": "2026-10-27T09:42:24+00:00",
+  "concept": "replication",
+  "term": "REPLICATION",
+  "headline": "Long-distance friendship is just REPLICATION with high latency. You think you're in sync until you realize you're two life updates behind.",
+  "caption": "Long-distance friendship is just REPLICATION with high latency. You think you're in sync until you realize you're two life updates behind.\n\n—\nREPLICATION: keeping copies of the same data in step across several machines.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-28",
+  "built_at": "2026-10-28T10:23:18+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
