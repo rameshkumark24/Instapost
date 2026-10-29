@@ -1,142 +1,126 @@
 {
-  "date": "2026-10-28",
-  "built_at": "2026-10-28T10:23:56+00:00",
+  "date": "2026-10-29",
+  "built_at": "2026-10-29T10:51:00+00:00",
   "ideas": [
     {
-      "trend": "A fast and secure tar parser for the Rust ecosystem",
+      "trend": "Claude Code regularly sends each background agent’s transcript to its model",
       "where": "tech",
       "pool": "tech",
-      "context": "Lobsters",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
+      "context": "Hacker News",
+      "template_id": "148909805",
+      "template": "Monkey Puppet",
+      "maker": "https://imgflip.com/memegenerator/148909805",
       "boxes": [
-        "Unpacking an archive with tar -xvf",
-        "Rewriting the tar parser in Rust for memory safety"
+        "Me writing profanity in my background debug logs",
+        "Claude Code sending the background agent's full transcript"
       ],
-      "caption": "Why extract archives when you can spend three weeks rewriting the parser in Rust?\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about the developer tendency to rewrite standard Unix tools in Rust.",
+      "caption": "My background agent is sending all my emotional debug comments straight to the API.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Jokes about background agent transcripts capturing all the unhinged developer logging and notes.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4i3zz.jpg"
+      "image_url": "https://i.imgflip.com/b4l9ty.jpg"
     },
     {
-      "trend": "We instrumented 11 production agents with real token accounting. In 9 of them, the most expensive step wasn't the model.",
+      "trend": "No Human Will Ever Write Code Better Than LLMs? Better at What?",
       "where": "tech",
       "pool": "tech",
-      "context": "Last quarter we finally stopped trusting the LLM bill. We wired real per-step token attribution into...",
-      "template_id": "252600902",
-      "template": "Always Has Been",
-      "maker": "https://imgflip.com/memegenerator/252600902",
+      "context": "A tweet went around saying: \"No human will ever write code better than LLMs. Accept this fact, stop...",
+      "template_id": "129242436",
+      "template": "Change My Mind",
+      "maker": "https://imgflip.com/memegenerator/129242436",
       "boxes": [
-        "Wait, the LLM call isn't what inflated our AI bill?",
-        "Always has been infinite retry loops."
+        "LLMs write code better if 'better' means making up fake APIs",
+        "Change my mind"
       ],
-      "caption": "You spend all month prompt engineering only to realize your retry logic was burning the budget.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Highlights the surprise that middleware and retry loops often cost more than the model API.",
+      "caption": "Sure, it wrote 500 lines in two seconds, but none of those methods exist.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Satirizes the claim that LLMs write better code by pointing out hallucinated library functions.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4i400.jpg"
+      "image_url": "https://i.imgflip.com/b4l9tz.jpg"
     },
     {
-      "trend": "mega millions winning numbers",
-      "where": "US",
+      "trend": "kn 647 lottery result",
+      "where": "IN",
       "pool": "current",
-      "context": "Winning Mega Millions numbers for the $443 million jackpot on Oct. 27, 2026: See all the prizes hit in Ohio",
-      "template_id": "354700819",
-      "template": "Two guys on a bus",
-      "maker": "https://imgflip.com/memegenerator/354700819",
+      "context": "Kerala Karunya Plus KN-647 Lottery Result Today (October 29): ₹1 crore jackpot draw begins at 3 PM;...",
+      "template_id": "99683372",
+      "template": "Sleeping Shaq",
+      "maker": "https://imgflip.com/memegenerator/99683372",
       "boxes": [
-        "Checking Mega Millions winning numbers",
-        "Seeing 400 legacy unit tests pass on the first try"
+        "Winning the 1 crore lottery",
+        "Code compiling on the first try with 0 warnings"
       ],
-      "caption": "Winning the lottery is fine, but green CI checkmarks on a Friday hit different.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Compares the statistical miracle of winning the jackpot to a flawless test run.",
+      "caption": "Some jackpots hit way harder than money.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Compares the extreme rarity and joy of winning a lottery to clean code running flawlessly on attempt one.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4i406.jpg"
+      "image_url": "https://i.imgflip.com/b4l9u4.jpg"
     }
   ],
   "trends": [
     {
-      "title": "simon harmer",
+      "title": "kn 647 lottery result",
       "where": "IN"
     },
     {
-      "title": "marnus labuschagne",
+      "title": "low-pressure area",
       "where": "IN"
     },
     {
-      "title": "kaliraj mahesh kumar",
+      "title": "jailer 2 day 15 collection",
       "where": "IN"
     },
     {
-      "title": "india gold price today october 28",
-      "where": "IN"
-    },
-    {
-      "title": "da",
-      "where": "IN"
-    },
-    {
-      "title": "harriet dart",
-      "where": "IN"
-    },
-    {
-      "title": "kyle whittingham",
+      "title": "atlanta braves",
       "where": "US"
     },
     {
-      "title": "alexandra eala",
+      "title": "stocks jim cramer recommends buying",
       "where": "US"
     },
     {
-      "title": "mega millions winning numbers",
+      "title": "el nino us winter forecast",
       "where": "US"
     },
     {
-      "title": "ms now",
+      "title": "who won the rays game last night",
       "where": "US"
     },
     {
-      "title": "emari demercado",
+      "title": "gen x",
       "where": "US"
     },
     {
-      "title": "tracy duhon",
+      "title": "early voting maryland",
       "where": "US"
     },
     {
-      "title": "zimbabwe vs india",
+      "title": "elvis presley",
       "where": "US"
     },
     {
-      "title": "Anthropic trained Claude on illegally obtained Stanford professors' books",
+      "title": "Claude Code regularly sends each background agent’s transcript to its model",
       "where": "tech"
     },
     {
-      "title": "Parents sue OpenAI, alleging GPT-4o coached their daughter off seizure medication",
+      "title": "Google launches Gemini 4 Carbon with a ‘significant leap’ in cybersecurity",
       "where": "tech"
     },
     {
-      "title": "Survival LLM: AI assistant and emergency library that runs on your own computer",
+      "title": "No Human Will Ever Write Code Better Than LLMs? Better at What?",
       "where": "tech"
     },
     {
-      "title": "A fast and secure tar parser for the Rust ecosystem",
+      "title": "Hono on Prisma Postgres and Compute, What Worked and What Broke",
       "where": "tech"
     },
     {
-      "title": "Early progress on accelerating drug development with Claude",
+      "title": "Leak Exposes 41,000 Homeland Security Workers–Including Undercover ICE Agents",
       "where": "tech"
     },
     {
-      "title": "Should our LLM wiki use vector search? We benchmarked it before deciding",
+      "title": "Gemini 4 Carbon",
       "where": "tech"
     },
     {
-      "title": "We instrumented 11 production agents with real token accounting. In 9 of them, the most expensive step wasn't the model.",
-      "where": "tech"
-    },
-    {
-      "title": "The Benchmarking Crisis",
+      "title": "As AI agents reshape the web, Google opens Gemini and Search to more apps",
       "where": "tech"
     }
   ],

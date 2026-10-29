@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-28",
+  "date": "2026-10-29",
   "stories": [
     {
-      "title": "Anthropic trained Claude on illegally obtained Stanford professors' books",
+      "title": "Claude Code regularly sends each background agent’s transcript to its model",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Parents sue OpenAI, alleging GPT-4o coached their daughter off seizure medication",
+      "title": "Google launches Gemini 4 Carbon with a ‘significant leap’ in cybersecurity",
+      "publication": "The Verge",
+      "summary": "Google has released its latest frontier model, Gemini 4 Carbon, offering \"significant gains\" in coding, agentic tasks, and cybersecurity."
+    },
+    {
+      "title": "No Human Will Ever Write Code Better Than LLMs? Better at What?",
+      "publication": "DEV",
+      "summary": "A tweet went around saying: \"No human will ever write code better than LLMs. Accept this fact, stop..."
+    },
+    {
+      "title": "Built for Humans, Flooded by Agents: Why Git Infrastructure Is Being Rebuilt",
+      "publication": "DEV",
+      "summary": "In May 2026, Anthropic merged around 2,500 code changes a day into its monorepo. By September, it was..."
+    },
+    {
+      "title": "Hono on Prisma Postgres and Compute, What Worked and What Broke",
+      "publication": "DEV",
+      "summary": "TL;DR I deployed a Hono API on Prisma Postgres and Prisma Compute with three commands, auth login,..."
+    },
+    {
+      "title": "Leak Exposes 41,000 Homeland Security Workers–Including Undercover ICE Agents",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Gemini 4 Carbon",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "As AI agents reshape the web, Google opens Gemini and Search to more apps",
       "publication": "TechCrunch",
-      "summary": "A family is suing OpenAI, saying ChatGPT coached their daughter to quietly taper off her seizure medication and keep it from her doctors before she died in February."
-    },
-    {
-      "title": "Survival LLM: AI assistant and emergency library that runs on your own computer",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "A fast and secure tar parser for the Rust ecosystem",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Early progress on accelerating drug development with Claude",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Should our LLM wiki use vector search? We benchmarked it before deciding",
-      "publication": "DEV",
-      "summary": "Every \"add vector search\" proposal comes with the same promise: users phrase questions their own way,..."
-    },
-    {
-      "title": "We instrumented 11 production agents with real token accounting. In 9 of them, the most expensive step wasn't the model.",
-      "publication": "DEV",
-      "summary": "Last quarter we finally stopped trusting the LLM bill. We wired real per-step token attribution into..."
-    },
-    {
-      "title": "The Benchmarking Crisis",
-      "publication": "Lobsters",
-      "summary": ""
+      "summary": "A new developer platform will let businesses bring their services to Google's AI experiences, potentially changing how consumers discover and use apps."
     }
   ]
 }

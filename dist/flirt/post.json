@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "replication",
-  "term": "REPLICATION",
-  "headline": "Long-distance friendship is just REPLICATION with high latency. You think you're in sync until you realize you're two life updates behind.",
-  "caption": "Long-distance friendship is just REPLICATION with high latency. You think you're in sync until you realize you're two life updates behind.\n\n—\nREPLICATION: keeping copies of the same data in step across several machines.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-10-28",
-  "built_at": "2026-10-28T10:23:18+00:00",
+  "concept": "off-by-one",
+  "term": "OFF-BY-ONE ERROR",
+  "headline": "I stayed one year too long, or maybe walked away one conversation too early. Our ending was an OFF-BY-ONE ERROR.",
+  "caption": "I stayed one year too long, or maybe walked away one conversation too early. Our ending was an OFF-BY-ONE ERROR.\n\n—\nOFF-BY-ONE ERROR: a loop that runs one time too many or one time too few.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-10-29",
+  "built_at": "2026-10-29T10:50:22+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

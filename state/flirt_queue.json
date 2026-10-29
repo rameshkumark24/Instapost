@@ -475,8 +475,9 @@
   "terms": [
    "OFF-BY-ONE ERROR"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-17T08:19:45+00:00"
+  "status": "sent",
+  "drafted_at": "2026-10-17T08:19:45+00:00",
+  "sent_at": "2026-10-29T10:50:22+00:00"
  },
  {
   "concept": "responsive-design",
@@ -565,5 +566,71 @@
   ],
   "status": "pending",
   "drafted_at": "2026-10-17T08:19:45+00:00"
+ },
+ {
+  "concept": "204",
+  "term": "204 NO CONTENT",
+  "domain": "web",
+  "text": "We sat together in comfortable silence. The check was successful, returning a peaceful 204 NO CONTENT.",
+  "terms": [
+   "204 NO CONTENT"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-29T10:50:20+00:00"
+ },
+ {
+  "concept": "promise",
+  "term": "PROMISE",
+  "domain": "code",
+  "text": "Dating him was like handling a PROMISE. I waited around for a final value, but it only ever resolved into rejection.",
+  "terms": [
+   "PROMISE"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-29T10:50:20+00:00"
+ },
+ {
+  "concept": "udp",
+  "term": "UDP",
+  "domain": "networking",
+  "text": "Dropping hints in a relationship is pure UDP. You fire off the message and never check if it was actually received.",
+  "terms": [
+   "UDP"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-29T10:50:20+00:00"
+ },
+ {
+  "concept": "fine-tuning",
+  "term": "FINE-TUNING",
+  "domain": "ml",
+  "text": "I spent years becoming a general-purpose adult. Living with you was just FINE-TUNING to specialize in finding your missing keys.",
+  "terms": [
+   "FINE-TUNING"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-29T10:50:20+00:00"
+ },
+ {
+  "concept": "type-error",
+  "term": "TYPE ERROR",
+  "domain": "code",
+  "text": "Trying to have an emotional conversation with my plants. Absolute TYPE ERROR.",
+  "terms": [
+   "TYPE ERROR"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-29T10:50:20+00:00"
+ },
+ {
+  "concept": "least-privilege",
+  "term": "LEAST PRIVILEGE",
+  "domain": "security",
+  "text": "You get access to my weekend plans, not administrative rights to my life. I practice LEAST PRIVILEGE in every relationship.",
+  "terms": [
+   "LEAST PRIVILEGE"
+  ],
+  "status": "pending",
+  "drafted_at": "2026-10-29T10:50:20+00:00"
  }
 ]

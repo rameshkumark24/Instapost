@@ -502,5 +502,12 @@
   "url": "https://stanforddaily.com/2026/10/27/professors-books-pirated-to-train-claude/",
   "source": "hn",
   "posted_at": "2026-10-28T10:23:14+00:00"
+ },
+ {
+  "key": "gist.github.com/flamerix-ai/c3905705cc4205e5de3011fa2e74efce",
+  "title": "Claude Code regularly sends each background agent’s transcript to its model",
+  "url": "https://gist.github.com/flamerix-ai/c3905705cc4205e5de3011fa2e74efce",
+  "source": "hn",
+  "posted_at": "2026-10-29T10:44:49+00:00"
  }
 ]
