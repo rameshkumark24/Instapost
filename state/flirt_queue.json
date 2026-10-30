@@ -487,8 +487,9 @@
   "terms": [
    "RESPONSIVE DESIGN"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-17T08:19:45+00:00"
+  "status": "sent",
+  "drafted_at": "2026-10-17T08:19:45+00:00",
+  "sent_at": "2026-10-30T10:45:06+00:00"
  },
  {
   "concept": "salt",

@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-29",
+  "date": "2026-10-30",
   "stories": [
     {
-      "title": "Claude Code regularly sends each background agent’s transcript to its model",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "A trojanized Claude Code extension plants an SSH backdoor: the 7-point audit for your machine",
+      "publication": "DEV",
+      "summary": "anthropic.claude-code@2.1.313 on Open-VSX carried a 66-line loader that SSH-backdoored your machine the moment VS Code loaded it."
     },
     {
-      "title": "Google launches Gemini 4 Carbon with a ‘significant leap’ in cybersecurity",
+      "title": "Wikipedia’s operator says a bad AI copyright ruling could threaten the open web",
       "publication": "The Verge",
-      "summary": "Google has released its latest frontier model, Gemini 4 Carbon, offering \"significant gains\" in coding, agentic tasks, and cybersecurity."
+      "summary": "The Wikimedia Foundation is staking out a middle ground in a group of landmark AI copyright cases, pushing courts to legally protect large language models (LLMs) training on copyrighted work - but…"
     },
     {
-      "title": "No Human Will Ever Write Code Better Than LLMs? Better at What?",
-      "publication": "DEV",
-      "summary": "A tweet went around saying: \"No human will ever write code better than LLMs. Accept this fact, stop..."
-    },
-    {
-      "title": "Built for Humans, Flooded by Agents: Why Git Infrastructure Is Being Rebuilt",
-      "publication": "DEV",
-      "summary": "In May 2026, Anthropic merged around 2,500 code changes a day into its monorepo. By September, it was..."
-    },
-    {
-      "title": "Hono on Prisma Postgres and Compute, What Worked and What Broke",
-      "publication": "DEV",
-      "summary": "TL;DR I deployed a Hono API on Prisma Postgres and Prisma Compute with three commands, auth login,..."
-    },
-    {
-      "title": "Leak Exposes 41,000 Homeland Security Workers–Including Undercover ICE Agents",
+      "title": "We ran AI agent swarms in Minecraft and Mindustry",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Gemini 4 Carbon",
+      "title": "LLM Voice",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "As AI agents reshape the web, Google opens Gemini and Search to more apps",
-      "publication": "TechCrunch",
-      "summary": "A new developer platform will let businesses bring their services to Google's AI experiences, potentially changing how consumers discover and use apps."
+      "title": "Undead Agent - My AI Agent Dies, Comes Back, and Tells Me What It Saw(Gemma + Ollama + Temporal)",
+      "publication": "DEV",
+      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 4: Ghost in the Machine I..."
+    },
+    {
+      "title": "Gemini 4 Carbon and an anti-LLM script: what each one actually says",
+      "publication": "DEV",
+      "summary": "Gemini 4 Carbon's numbers and access, a fingerprinting script with a fake system prompt in invisible characters, AlpineBSD's AI policy and Anthropic's drug development po"
+    },
+    {
+      "title": "Gemini 4 Carbon is the new #1 on the Artificial Analysis Intelligence Index v5",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Microsoft Just Shipped Visual Studio's October Update. Here's What It Actually Changes.",
+      "publication": "DEV",
+      "summary": "Visual Studio used to ship big releases every couple of years. Now it ships something every month,..."
     }
   ]
 }

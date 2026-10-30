@@ -509,5 +509,12 @@
   "url": "https://gist.github.com/flamerix-ai/c3905705cc4205e5de3011fa2e74efce",
   "source": "hn",
   "posted_at": "2026-10-29T10:44:49+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2610.40613v1",
+  "title": "TextSeal2: Distortion-Free LLM Watermarking with Copula Mixing and Memoryless Races",
+  "url": "https://arxiv.org/abs/2610.40613v1",
+  "source": "arxiv",
+  "posted_at": "2026-10-30T10:45:02+00:00"
  }
 ]

@@ -1,129 +1,150 @@
 {
-  "date": "2026-10-29",
-  "built_at": "2026-10-29T10:51:00+00:00",
+  "date": "2026-10-30",
+  "built_at": "2026-10-30T10:46:13+00:00",
   "ideas": [
     {
-      "trend": "Claude Code regularly sends each background agent’s transcript to its model",
+      "trend": "A trojanized Claude Code extension plants an SSH backdoor: the 7-point audit for your machine",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "148909805",
-      "template": "Monkey Puppet",
-      "maker": "https://imgflip.com/memegenerator/148909805",
+      "context": "anthropic.claude-code@2.1.313 on Open-VSX carried a 66-line loader that SSH-backdoored your machine the moment VS Code loaded it.",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Me writing profanity in my background debug logs",
-        "Claude Code sending the background agent's full transcript"
+        "Installing Claude Code from Open-VSX",
+        "Having a 66-line SSH backdoor install itself"
       ],
-      "caption": "My background agent is sending all my emotional debug comments straight to the API.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about background agent transcripts capturing all the unhinged developer logging and notes.",
+      "caption": "Just a standard extension update, nothing to see here.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Drake rejecting a safe install in favor of getting owned by a malicious loader.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4l9ty.jpg"
+      "image_url": "https://i.imgflip.com/b4ogh0.jpg"
     },
     {
-      "trend": "No Human Will Ever Write Code Better Than LLMs? Better at What?",
+      "trend": "Wikipedia’s operator says a bad AI copyright ruling could threaten the open web",
       "where": "tech",
       "pool": "tech",
-      "context": "A tweet went around saying: \"No human will ever write code better than LLMs. Accept this fact, stop...",
-      "template_id": "129242436",
-      "template": "Change My Mind",
-      "maker": "https://imgflip.com/memegenerator/129242436",
+      "context": "The Wikimedia Foundation is staking out a middle ground in a group of landmark AI copyright cases, pushing courts to legally protect large language models (LLMs) training on copyrighted work - but…",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "LLMs write code better if 'better' means making up fake APIs",
-        "Change my mind"
+        "Defending LLM training on copyrighted work",
+        "The Wikimedia Foundation",
+        "The entire open web"
       ],
-      "caption": "Sure, it wrote 500 lines in two seconds, but none of those methods exist.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Satirizes the claim that LLMs write better code by pointing out hallucinated library functions.",
+      "caption": "A bold legal strategy for a very fragile ecosystem.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Distracted Boyfriend template where Wikimedia chases AI copyright protection while neglecting the open web.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4l9tz.jpg"
+      "image_url": "https://i.imgflip.com/b4ogh1.jpg"
     },
     {
-      "trend": "kn 647 lottery result",
+      "trend": "sensex index",
       "where": "IN",
       "pool": "current",
-      "context": "Kerala Karunya Plus KN-647 Lottery Result Today (October 29): ₹1 crore jackpot draw begins at 3 PM;...",
-      "template_id": "99683372",
-      "template": "Sleeping Shaq",
-      "maker": "https://imgflip.com/memegenerator/99683372",
+      "context": "The SENSEX Index Closes 1.16% Higher",
+      "template_id": "188390779",
+      "template": "Woman Yelling At Cat",
+      "maker": "https://imgflip.com/memegenerator/188390779",
       "boxes": [
-        "Winning the 1 crore lottery",
-        "Code compiling on the first try with 0 warnings"
+        "Why is production down while the SENSEX Index is up 1.16%?",
+        "Me explaining release metrics to the stakeholders"
       ],
-      "caption": "Some jackpots hit way harder than money.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Compares the extreme rarity and joy of winning a lottery to clean code running flawlessly on attempt one.",
+      "caption": "The market doesn't care about your null pointer exceptions.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Woman Yelling at Cat where the developer yells at financial reality.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4l9u4.jpg"
+      "image_url": "https://i.imgflip.com/b4ogh5.jpg"
     }
   ],
   "trends": [
     {
-      "title": "kn 647 lottery result",
+      "title": "tilak varma",
       "where": "IN"
     },
     {
-      "title": "low-pressure area",
+      "title": "mumbai indians",
       "where": "IN"
     },
     {
-      "title": "jailer 2 day 15 collection",
+      "title": "bangladesh vs scotland",
       "where": "IN"
     },
     {
-      "title": "atlanta braves",
+      "title": "sensex index",
+      "where": "IN"
+    },
+    {
+      "title": "pakistan vs uae",
+      "where": "IN"
+    },
+    {
+      "title": "nasa",
+      "where": "IN"
+    },
+    {
+      "title": "australia vs england",
+      "where": "IN"
+    },
+    {
+      "title": "pick 3",
       "where": "US"
     },
     {
-      "title": "stocks jim cramer recommends buying",
+      "title": "home depot black friday deals 2026",
       "where": "US"
     },
     {
-      "title": "el nino us winter forecast",
+      "title": "xinran sun",
       "where": "US"
     },
     {
-      "title": "who won the rays game last night",
+      "title": "adam hamilton",
       "where": "US"
     },
     {
-      "title": "gen x",
+      "title": "icc",
       "where": "US"
     },
     {
-      "title": "early voting maryland",
+      "title": "patrick queen trade rumors cowboys",
       "where": "US"
     },
     {
-      "title": "elvis presley",
+      "title": "grand theft auto vi",
       "where": "US"
     },
     {
-      "title": "Claude Code regularly sends each background agent’s transcript to its model",
+      "title": "A trojanized Claude Code extension plants an SSH backdoor: the 7-point audit for your machine",
       "where": "tech"
     },
     {
-      "title": "Google launches Gemini 4 Carbon with a ‘significant leap’ in cybersecurity",
+      "title": "Wikipedia’s operator says a bad AI copyright ruling could threaten the open web",
       "where": "tech"
     },
     {
-      "title": "No Human Will Ever Write Code Better Than LLMs? Better at What?",
+      "title": "We ran AI agent swarms in Minecraft and Mindustry",
       "where": "tech"
     },
     {
-      "title": "Hono on Prisma Postgres and Compute, What Worked and What Broke",
+      "title": "LLM Voice",
       "where": "tech"
     },
     {
-      "title": "Leak Exposes 41,000 Homeland Security Workers–Including Undercover ICE Agents",
+      "title": "Gemini 4 Carbon and an anti-LLM script: what each one actually says",
       "where": "tech"
     },
     {
-      "title": "Gemini 4 Carbon",
+      "title": "Gemini 4 Carbon is the new #1 on the Artificial Analysis Intelligence Index v5",
       "where": "tech"
     },
     {
-      "title": "As AI agents reshape the web, Google opens Gemini and Search to more apps",
+      "title": "Microsoft Just Shipped Visual Studio's October Update. Here's What It Actually Changes.",
       "where": "tech"
     }
   ],
   "problems": [],
-  "rejects": []
+  "rejects": [
+    "one tech idea more than asked for, kept as a spare",
+    "one tech idea more than asked for, kept as a spare",
+    "one tech idea more than asked for, kept as a spare"
+  ]
 }

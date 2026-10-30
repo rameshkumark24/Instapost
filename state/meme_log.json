@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-30",
-    "trend": "How to speed up the Rust compiler in September 2026",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-09-30",
-    "trend": "OpenBSD's ports tree keeps GPL coreutils and rejects uutils (Rust rewrite)",
-    "template_id": "217743513"
-  },
-  {
-    "date": "2026-09-30",
-    "trend": "live cricket score",
-    "template_id": "102156234"
-  },
-  {
     "date": "2026-10-01",
     "trend": "SQLite 3.53's SET NOT NULL replaces a full table rebuild with six writes",
     "template_id": "178591752"
@@ -428,5 +413,20 @@
     "date": "2026-10-29",
     "trend": "kn 647 lottery result",
     "template_id": "99683372"
+  },
+  {
+    "date": "2026-10-30",
+    "trend": "A trojanized Claude Code extension plants an SSH backdoor: the 7-point audit for your machine",
+    "template_id": "181913649"
+  },
+  {
+    "date": "2026-10-30",
+    "trend": "Wikipedia’s operator says a bad AI copyright ruling could threaten the open web",
+    "template_id": "112126428"
+  },
+  {
+    "date": "2026-10-30",
+    "trend": "sensex index",
+    "template_id": "188390779"
   }
 ]
