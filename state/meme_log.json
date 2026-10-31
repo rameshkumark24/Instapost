@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-01",
-    "trend": "SQLite 3.53's SET NOT NULL replaces a full table rebuild with six writes",
-    "template_id": "178591752"
-  },
-  {
-    "date": "2026-10-01",
-    "trend": "Google releases Gemini 4 Argon, called its most powerful model yet",
-    "template_id": "112126428"
-  },
-  {
-    "date": "2026-10-01",
-    "trend": "paramount+ hbo max streaming combination",
-    "template_id": "135256802"
-  },
-  {
     "date": "2026-10-02",
     "trend": "ChatGPT can now virtually try on clothes for you",
     "template_id": "112126428"
@@ -428,5 +413,20 @@
     "date": "2026-10-30",
     "trend": "sensex index",
     "template_id": "188390779"
+  },
+  {
+    "date": "2026-10-31",
+    "trend": "Rewrite Everything in Java: Not Rust",
+    "template_id": "178591752"
+  },
+  {
+    "date": "2026-10-31",
+    "trend": "Claude Code VS Code extension with backdoor released on Cursor marketplace",
+    "template_id": "247113703"
+  },
+  {
+    "date": "2026-10-31",
+    "trend": "mcdonalds pokemon happy meals",
+    "template_id": "110163934"
   }
 ]

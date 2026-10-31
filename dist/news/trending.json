@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-30",
+  "date": "2026-10-31",
   "stories": [
     {
-      "title": "A trojanized Claude Code extension plants an SSH backdoor: the 7-point audit for your machine",
-      "publication": "DEV",
-      "summary": "anthropic.claude-code@2.1.313 on Open-VSX carried a 66-line loader that SSH-backdoored your machine the moment VS Code loaded it."
+      "title": "OpenAI raises less than half of $30B target",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
-      "title": "Wikipedia’s operator says a bad AI copyright ruling could threaten the open web",
+      "title": "Claude Code VS Code extension with backdoor released on Cursor marketplace",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "The biggest names in AI are backing a new way to opt out of scraping",
       "publication": "The Verge",
-      "summary": "The Wikimedia Foundation is staking out a middle ground in a group of landmark AI copyright cases, pushing courts to legally protect large language models (LLMs) training on copyrighted work - but…"
+      "summary": "OpenAI, Google, Microsoft, and Anthropic say they will adopt a new standard that publishers can use to opt out of being scraped by AI, as reported earlier by Search Engine Roundtable."
     },
     {
-      "title": "We ran AI agent swarms in Minecraft and Mindustry",
+      "title": "Backdoors in official Claude Code extensions",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "LLM Voice",
+      "title": "How I stopped re-explaining my repo when switching between Claude Code, Codex, and Cursor",
+      "publication": "DEV",
+      "summary": "If you use multiple AI coding agents daily—say, Claude Code for deep multi-file refactors, OpenAI..."
+    },
+    {
+      "title": "Rewrite Everything in Java: Not Rust",
+      "publication": "DEV",
+      "summary": "A Java word processor built with Codename One beats its Rust twin on startup, typing latency, memory, binary size, code size and CI time, and also runs on phones."
+    },
+    {
+      "title": "Backdoor in Claude Code for VS Code extension on the Cursor Marketplace",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Undead Agent - My AI Agent Dies, Comes Back, and Tells Me What It Saw(Gemma + Ollama + Temporal)",
-      "publication": "DEV",
-      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 4: Ghost in the Machine I..."
-    },
-    {
-      "title": "Gemini 4 Carbon and an anti-LLM script: what each one actually says",
-      "publication": "DEV",
-      "summary": "Gemini 4 Carbon's numbers and access, a fingerprinting script with a fake system prompt in invisible characters, AlpineBSD's AI policy and Anthropic's drug development po"
-    },
-    {
-      "title": "Gemini 4 Carbon is the new #1 on the Artificial Analysis Intelligence Index v5",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Microsoft Just Shipped Visual Studio's October Update. Here's What It Actually Changes.",
-      "publication": "DEV",
-      "summary": "Visual Studio used to ship big releases every couple of years. Now it ships something every month,..."
+      "title": "Sam Altman says it’s better for RAM to be in a data center than on your desk",
+      "publication": "The Verge",
+      "summary": "Asked about supply chain shortages, like the ongoing RAM shortage, OpenAI CEO Sam Altman said in an interview that it's \"terrible\" to have RAM in personal PCs instead of data centers."
     }
   ]
 }
