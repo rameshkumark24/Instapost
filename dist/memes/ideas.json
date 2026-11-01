@@ -1,138 +1,130 @@
 {
-  "date": "2026-10-31",
-  "built_at": "2026-10-31T10:14:16+00:00",
+  "date": "2026-11-01",
+  "built_at": "2026-11-01T11:05:08+00:00",
   "ideas": [
     {
-      "trend": "Rewrite Everything in Java: Not Rust",
-      "where": "tech",
-      "pool": "tech",
-      "context": "A Java word processor built with Codename One beats its Rust twin on startup, typing latency, memory, binary size, code size and CI time, and also runs on phones.",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
-      "boxes": [
-        "Rewriting the entire codebase in Rust for performance",
-        "Rewriting it in Java so it beats Rust in memory and speed"
-      ],
-      "caption": "Who knew public static void main was the ultimate performance optimization.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about recent benchmarks showing a Java app outperforming its Rust twin.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b4r5tm.jpg"
-    },
-    {
-      "trend": "Claude Code VS Code extension with backdoor released on Cursor marketplace",
+      "trend": "Anthropic takes steps to block Claude from reverse-engineering video games",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "247113703",
-      "template": "A train hitting a school bus",
-      "maker": "https://imgflip.com/memegenerator/247113703",
+      "template_id": "148909805",
+      "template": "Monkey Puppet",
+      "maker": "https://imgflip.com/memegenerator/148909805",
       "boxes": [
-        "My pristine dev setup",
-        "Backdoored Claude Code extension from Cursor marketplace"
+        "Me asking Claude to decompile a 20-year-old game binary",
+        "Anthropic's new reverse-engineering safety filters"
       ],
-      "caption": "Downloading an AI plugin inside an AI editor marketplace seemed like a good idea.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Highlights the irony of finding malware in official-looking AI tool marketplaces.",
+      "caption": "Looks like we can't use AI to decompile old game executable files anymore. Back to Ghidra we go.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Anthropic is taking active steps to prevent Claude from reverse-engineering video games and compiled code.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4r5tn.jpg"
+      "image_url": "https://i.imgflip.com/b4t60a.jpg"
     },
     {
-      "trend": "mcdonalds pokemon happy meals",
-      "where": "US",
-      "pool": "current",
-      "context": "Pokémon Happy Meals Are Coming to McDonald’s in an Exciting New Way",
-      "template_id": "110163934",
-      "template": "I Bet He's Thinking About Other Women",
-      "maker": "https://imgflip.com/memegenerator/110163934",
+      "trend": "ChatGPT and Codex usage limits merging",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Hacker News",
+      "template_id": "77045868",
+      "template": "Pawn Stars Best I Can Do",
+      "maker": "https://imgflip.com/memegenerator/77045868",
       "boxes": [
-        "I bet he's thinking about other women",
-        "If I buy 10 Pokemon Happy Meals will it fix my sprint burnout"
+        "I need separate limits for coding assistance and general chat",
+        "Best I can do is one merged limit that runs out by 10 AM"
       ],
-      "caption": "Sometimes a Happy Meal toy is the only thing keeping production online.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Relates the trending Pokemon Happy Meal excitement to software developer burnout.",
+      "caption": "Merging ChatGPT and Codex limits just means burning through your entire daily quota twice as fast.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developers rely on separate quota pools so running out of chat allowance doesn't kill their code autocomplete.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4r5to.jpg"
+      "image_url": "https://i.imgflip.com/b4t60d.jpg"
+    },
+    {
+      "trend": "amul launches high protein cubes",
+      "where": "IN",
+      "pool": "current",
+      "context": "Amul Launches High-Protein Cubes, Offers 25g Protein at Rs 80",
+      "template_id": "89370399",
+      "template": "Roll Safe Think About It",
+      "maker": "https://imgflip.com/memegenerator/89370399",
+      "boxes": [
+        "You don't need lunch breaks during a sprint release",
+        "If you just eat 25g high-protein cubes at your desk"
+      ],
+      "caption": "High-density protein cubes are the ultimate developer fuel for 12-hour debugging sessions.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Jokes about developers optimizing their diet for maximum desk time during intense coding crunches.",
+      "drawn": true,
+      "image_url": "https://i.imgflip.com/b4t60e.jpg"
     }
   ],
   "trends": [
     {
-      "title": "chelsea vs man utd",
+      "title": "como vs venezia",
       "where": "IN"
     },
     {
-      "title": "tv9 marathi",
+      "title": "amul launches high protein cubes",
       "where": "IN"
     },
     {
-      "title": "kusal mendis",
+      "title": "glenn phillips",
       "where": "IN"
     },
     {
-      "title": "mcdonalds pokemon happy meals",
+      "title": "suzlon",
+      "where": "IN"
+    },
+    {
+      "title": "black friday 2026",
       "where": "US"
     },
     {
-      "title": "donny panapada stamford football resignation",
+      "title": "projected top 25",
       "where": "US"
     },
     {
-      "title": "mta",
+      "title": "villanova basketball",
       "where": "US"
     },
     {
-      "title": "bangladesh vs west indies",
+      "title": "patrick kane",
       "where": "US"
     },
     {
-      "title": "midterms",
+      "title": "guy ritchie",
       "where": "US"
     },
     {
-      "title": "express",
+      "title": "when is black friday",
       "where": "US"
     },
     {
-      "title": "tokyo open",
+      "title": "nielsen evening news ratings october 19",
       "where": "US"
     },
     {
-      "title": "all's fair",
-      "where": "US"
-    },
-    {
-      "title": "jason turkish",
-      "where": "US"
-    },
-    {
-      "title": "OpenAI raises less than half of $30B target",
+      "title": "Anthropic takes steps to block Claude from reverse-engineering video games",
       "where": "tech"
     },
     {
-      "title": "Claude Code VS Code extension with backdoor released on Cursor marketplace",
+      "title": "Anthropic blocks users for anything touching training larger models",
       "where": "tech"
     },
     {
-      "title": "The biggest names in AI are backing a new way to opt out of scraping",
+      "title": "ESA's satellite is dead. Its ghost: 2,123 signals. TabPFN beat the published SOTA; 83¢ of Tinker stopped an LLM speaking for it",
       "where": "tech"
     },
     {
-      "title": "Backdoors in official Claude Code extensions",
+      "title": "ChatGPT and Codex usage limits merging",
       "where": "tech"
     },
     {
-      "title": "How I stopped re-explaining my repo when switching between Claude Code, Codex, and Cursor",
+      "title": "GPT-5.6 Sol can beat Factorio on peaceful mode",
       "where": "tech"
     },
     {
-      "title": "Rewrite Everything in Java: Not Rust",
+      "title": "Hidden Objects: an escape room where the narrator would rather you stayed",
       "where": "tech"
     },
     {
-      "title": "Backdoor in Claude Code for VS Code extension on the Cursor Marketplace",
-      "where": "tech"
-    },
-    {
-      "title": "Sam Altman says it’s better for RAM to be in a data center than on your desk",
+      "title": "It's the memory latency, stupid",
       "where": "tech"
     }
   ],

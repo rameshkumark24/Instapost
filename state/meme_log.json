@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-02",
-    "trend": "ChatGPT can now virtually try on clothes for you",
-    "template_id": "112126428"
-  },
-  {
-    "date": "2026-10-02",
-    "trend": "Clef: Open-weight decision models, and new RL fine-tuning platform",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-02",
-    "trend": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
-    "template_id": "112126428"
-  },
-  {
     "date": "2026-10-05",
     "trend": "Claude Says",
     "template_id": "181913649"
@@ -428,5 +413,20 @@
     "date": "2026-10-31",
     "trend": "mcdonalds pokemon happy meals",
     "template_id": "110163934"
+  },
+  {
+    "date": "2026-11-01",
+    "trend": "Anthropic takes steps to block Claude from reverse-engineering video games",
+    "template_id": "148909805"
+  },
+  {
+    "date": "2026-11-01",
+    "trend": "ChatGPT and Codex usage limits merging",
+    "template_id": "77045868"
+  },
+  {
+    "date": "2026-11-01",
+    "trend": "amul launches high protein cubes",
+    "template_id": "89370399"
   }
 ]

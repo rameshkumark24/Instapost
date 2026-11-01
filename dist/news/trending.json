@@ -1,45 +1,45 @@
 {
-  "date": "2026-10-31",
+  "date": "2026-11-01",
   "stories": [
     {
-      "title": "OpenAI raises less than half of $30B target",
+      "title": "Anthropic takes steps to block Claude from reverse-engineering video games",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Claude Code VS Code extension with backdoor released on Cursor marketplace",
+      "title": "Anthropic blocks users for anything touching training larger models",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "The biggest names in AI are backing a new way to opt out of scraping",
-      "publication": "The Verge",
-      "summary": "OpenAI, Google, Microsoft, and Anthropic say they will adopt a new standard that publishers can use to opt out of being scraped by AI, as reported earlier by Search Engine Roundtable."
-    },
-    {
-      "title": "Backdoors in official Claude Code extensions",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "How I stopped re-explaining my repo when switching between Claude Code, Codex, and Cursor",
+      "title": "ESA's satellite is dead. Its ghost: 2,123 signals. TabPFN beat the published SOTA; 83¢ of Tinker stopped an LLM speaking for it",
       "publication": "DEV",
-      "summary": "If you use multiple AI coding agents daily—say, Claude Code for deep multi-file refactors, OpenAI..."
+      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 4: Ghost in the..."
     },
     {
-      "title": "Rewrite Everything in Java: Not Rust",
-      "publication": "DEV",
-      "summary": "A Java word processor built with Codename One beats its Rust twin on startup, typing latency, memory, binary size, code size and CI time, and also runs on phones."
-    },
-    {
-      "title": "Backdoor in Claude Code for VS Code extension on the Cursor Marketplace",
+      "title": "ChatGPT and Codex usage limits merging",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Sam Altman says it’s better for RAM to be in a data center than on your desk",
-      "publication": "The Verge",
-      "summary": "Asked about supply chain shortages, like the ongoing RAM shortage, OpenAI CEO Sam Altman said in an interview that it's \"terrible\" to have RAM in personal PCs instead of data centers."
+      "title": "Malware uses LLMs to rank victims by how much they're worth",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "GPT-5.6 Sol can beat Factorio on peaceful mode",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Hidden Objects: an escape room where the narrator would rather you stayed",
+      "publication": "DEV",
+      "summary": "A browser escape room built on an outliner. The open-weight Gemma model picks what you look for next and rewords the narrator so every play sounds different."
+    },
+    {
+      "title": "It's the memory latency, stupid",
+      "publication": "Hacker News",
+      "summary": ""
     }
   ]
 }
