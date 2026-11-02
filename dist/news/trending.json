@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-01",
+  "date": "2026-11-02",
   "stories": [
     {
-      "title": "Anthropic takes steps to block Claude from reverse-engineering video games",
-      "publication": "Hacker News",
+      "title": "Building a gemini server in python",
+      "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Anthropic blocks users for anything touching training larger models",
-      "publication": "Hacker News",
+      "title": "Postgres 19 is late, and it's AI's fault",
+      "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "ESA's satellite is dead. Its ghost: 2,123 signals. TabPFN beat the published SOTA; 83¢ of Tinker stopped an LLM speaking for it",
+      "title": "gp-grid: A Free, Open-Source TypeScript Data Grid for React, Vue, and Angular (No Paywalled Features)",
       "publication": "DEV",
-      "summary": "This is a submission for the Hacktoberfest Open-Source AI Challenge Week 4: Ghost in the..."
+      "summary": "An open-source data grid can look impressive with 1,000 rows and still struggle when your application..."
     },
     {
-      "title": "ChatGPT and Codex usage limits merging",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Malware uses LLMs to rank victims by how much they're worth",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "GPT-5.6 Sol can beat Factorio on peaceful mode",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Hidden Objects: an escape room where the narrator would rather you stayed",
+      "title": "Does AbortSignal Cancel a Node.js Database Query? 4 Drivers Tested",
       "publication": "DEV",
-      "summary": "A browser escape room built on an outliner. The open-weight Gemma model picks what you look for next and rewords the narrator so every play sounds different."
+      "summary": "I let 12 Node.js clients walk away from their database queries on a 4-connection pool. The abandoned..."
     },
     {
-      "title": "It's the memory latency, stupid",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "Zero Downtime Deploy for Docker Apps, With Rollback",
+      "publication": "DEV",
+      "summary": "How a Docker deploy waits for readiness before cutover, holds the previous release for rollback, rolls back on its own, and how to rehearse it."
+    },
+    {
+      "title": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
+      "publication": "TechCrunch",
+      "summary": "Data centers are deeply unpopular. But what if we called them something else?"
+    },
+    {
+      "title": "I grepped for @ts-ignore and found zero. Then I grepped for the cast nobody bans",
+      "publication": "DEV",
+      "summary": "Every TypeScript team has a rule about @ts-ignore. Ours does too, and it works: zero occurrences..."
+    },
+    {
+      "title": "9 Commands That Leave a Coding Agent Waiting for a Keystroke, and the Fix for Each",
+      "publication": "DEV",
+      "summary": "git commit, npx, apt, ssh, psql, terraform apply, gh auth login: each can stall an AI coding agent on a prompt. The flag or env var that stops each one."
     }
   ]
 }

@@ -1,130 +1,151 @@
 {
-  "date": "2026-11-01",
-  "built_at": "2026-11-01T11:05:08+00:00",
+  "date": "2026-11-02",
+  "built_at": "2026-11-02T12:03:27+00:00",
   "ideas": [
     {
-      "trend": "Anthropic takes steps to block Claude from reverse-engineering video games",
+      "trend": "I grepped for @ts-ignore and found zero. Then I grepped for the cast nobody bans",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "148909805",
-      "template": "Monkey Puppet",
-      "maker": "https://imgflip.com/memegenerator/148909805",
+      "context": "Every TypeScript team has a rule about @ts-ignore. Ours does too, and it works: zero occurrences...",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Me asking Claude to decompile a 20-year-old game binary",
-        "Anthropic's new reverse-engineering safety filters"
+        "Using @ts-ignore to pass type checks",
+        "Casting every variable 'as any'"
       ],
-      "caption": "Looks like we can't use AI to decompile old game executable files anymore. Back to Ghidra we go.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Anthropic is taking active steps to prevent Claude from reverse-engineering video games and compiled code.",
+      "caption": "Strict linter rules against @ts-ignore just mean developers get creative with 'as any'.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Teams ban @ts-ignore only for devs to bypass type safety with 'as any' everywhere.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4t60a.jpg"
+      "image_url": "https://i.imgflip.com/b4vm8t.jpg"
     },
     {
-      "trend": "ChatGPT and Codex usage limits merging",
+      "trend": "9 Commands That Leave a Coding Agent Waiting for a Keystroke, and the Fix for Each",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "77045868",
-      "template": "Pawn Stars Best I Can Do",
-      "maker": "https://imgflip.com/memegenerator/77045868",
+      "context": "git commit, npx, apt, ssh, psql, terraform apply, gh auth login: each can stall an AI coding agent on a prompt. The flag or env var that stops each one.",
+      "template_id": "99683372",
+      "template": "Sleeping Shaq",
+      "maker": "https://imgflip.com/memegenerator/99683372",
       "boxes": [
-        "I need separate limits for coding assistance and general chat",
-        "Best I can do is one merged limit that runs out by 10 AM"
+        "AI coding agent solving complex backend architecture",
+        "AI coding agent waiting 6 hours for someone to press [Y/n]"
       ],
-      "caption": "Merging ChatGPT and Codex limits just means burning through your entire daily quota twice as fast.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Developers rely on separate quota pools so running out of chat allowance doesn't kill their code autocomplete.",
+      "caption": "Nothing stops autonomous AI agents quite like an interactive prompt asking for confirmation.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "AI agents can generate full features but get blocked indefinitely by simple CLI confirmation prompts.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4t60d.jpg"
+      "image_url": "https://i.imgflip.com/b4vm8w.jpg"
     },
     {
-      "trend": "amul launches high protein cubes",
-      "where": "IN",
+      "trend": "zelda",
+      "where": "US",
       "pool": "current",
-      "context": "Amul Launches High-Protein Cubes, Offers 25g Protein at Rs 80",
-      "template_id": "89370399",
-      "template": "Roll Safe Think About It",
-      "maker": "https://imgflip.com/memegenerator/89370399",
+      "context": "Nintendo producer 'nervous' as Zelda classic remake about to hit shelves",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "You don't need lunch breaks during a sprint release",
-        "If you just eat 25g high-protein cubes at your desk"
+        "Rewriting the app in Rust from scratch",
+        "Senior Engineer",
+        "The legacy codebase that handles every edge case"
       ],
-      "caption": "High-density protein cubes are the ultimate developer fuel for 12-hour debugging sessions.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Jokes about developers optimizing their diet for maximum desk time during intense coding crunches.",
+      "caption": "Every classic system rewrite sounds great until you realize why the original code had all those weird checks.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Devs love total rewrites like classic remakes, but underestimate the hidden edge cases in legacy code.",
       "drawn": true,
-      "image_url": "https://i.imgflip.com/b4t60e.jpg"
+      "image_url": "https://i.imgflip.com/b4vm8x.jpg"
     }
   ],
   "trends": [
     {
-      "title": "como vs venezia",
+      "title": "karnali yaks vs kathmandu gorkhas standings",
       "where": "IN"
     },
     {
-      "title": "amul launches high protein cubes",
+      "title": "nothing os 5.0 update",
       "where": "IN"
     },
     {
-      "title": "glenn phillips",
+      "title": "nepal premier league",
       "where": "IN"
     },
     {
-      "title": "suzlon",
+      "title": "rajasthan vs himachal pradesh",
       "where": "IN"
     },
     {
-      "title": "black friday 2026",
+      "title": "television show",
+      "where": "IN"
+    },
+    {
+      "title": "month",
       "where": "US"
     },
     {
-      "title": "projected top 25",
+      "title": "a court of thorns and roses",
       "where": "US"
     },
     {
-      "title": "villanova basketball",
+      "title": "local weather",
       "where": "US"
     },
     {
-      "title": "patrick kane",
+      "title": "zelda",
       "where": "US"
     },
     {
-      "title": "guy ritchie",
+      "title": "weather atlanta",
       "where": "US"
     },
     {
-      "title": "when is black friday",
+      "title": "weather tampa",
       "where": "US"
     },
     {
-      "title": "nielsen evening news ratings october 19",
+      "title": "philadelphia phillies",
       "where": "US"
     },
     {
-      "title": "Anthropic takes steps to block Claude from reverse-engineering video games",
+      "title": "boston weather",
+      "where": "US"
+    },
+    {
+      "title": "noaa",
+      "where": "US"
+    },
+    {
+      "title": "tsm stock",
+      "where": "US"
+    },
+    {
+      "title": "Building a gemini server in python",
       "where": "tech"
     },
     {
-      "title": "Anthropic blocks users for anything touching training larger models",
+      "title": "Postgres 19 is late, and it's AI's fault",
       "where": "tech"
     },
     {
-      "title": "ESA's satellite is dead. Its ghost: 2,123 signals. TabPFN beat the published SOTA; 83¢ of Tinker stopped an LLM speaking for it",
+      "title": "gp-grid: A Free, Open-Source TypeScript Data Grid for React, Vue, and Angular (No Paywalled Features)",
       "where": "tech"
     },
     {
-      "title": "ChatGPT and Codex usage limits merging",
+      "title": "Does AbortSignal Cancel a Node.js Database Query? 4 Drivers Tested",
       "where": "tech"
     },
     {
-      "title": "GPT-5.6 Sol can beat Factorio on peaceful mode",
+      "title": "Zero Downtime Deploy for Docker Apps, With Rollback",
       "where": "tech"
     },
     {
-      "title": "Hidden Objects: an escape room where the narrator would rather you stayed",
+      "title": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
       "where": "tech"
     },
     {
-      "title": "It's the memory latency, stupid",
+      "title": "I grepped for @ts-ignore and found zero. Then I grepped for the cast nobody bans",
+      "where": "tech"
+    },
+    {
+      "title": "9 Commands That Leave a Coding Agent Waiting for a Keystroke, and the Fix for Each",
       "where": "tech"
     }
   ],
