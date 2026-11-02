@@ -1635,6 +1635,9 @@ class MemeIdeas(unittest.TestCase):
         self.assertIn('box 1 (what he refuses: the sensible option): "Fixing the flaky test"', editor)
         self.assertIn('box 3 (who has to choose): "Me at 2am"', editor)
         self.assertIn("retells a headline", editor)
+        # A wrong fact once shipped at 7/10: "1999 hardware" that landed Apollo 11.
+        self.assertIn("gets a fact wrong", editor)
+        self.assertIn("Facts must be true", model.call_args_list[0].args[0])
 
     def test_the_best_memes_are_kept_and_a_weak_trend_joke_gives_way(self):
         answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("T3", CAT), self.idea("G1", BUTTONS)]
@@ -1733,7 +1736,7 @@ class MemeIdeas(unittest.TestCase):
             "format not on offer": {"template_id": "999"},
             "format recently used, so not offered": {"template_id": "112126428"},
             "too few boxes": {"boxes": ["only one"]},
-            "a box past its own limit": {"boxes": ["x" * 46, "fine"]},
+            "a box far past its limit": {"boxes": ["x" * 57, "fine"]},       # Drake's 45, plus a quarter, is 56
             "hashtag in a box": {"boxes": ["#code", "fine"]},
             "emoji in a box": {"boxes": ["fine \U0001F602", "fine"]},
             "link in a box": {"boxes": ["see https://x.dev", "fine"]},
@@ -1743,6 +1746,13 @@ class MemeIdeas(unittest.TestCase):
         for why, change in bad.items():
             with self.subTest(why), self.assertRaises(self.memes.Rejected):
                 self.memes.validate({**good, **change}, self.cat, self.formats)
+
+    def test_a_line_a_little_over_its_target_is_judged_not_thrown_away(self):
+        # Every format draws with every box at 125% of its target.
+        line = "Adding a retry and moving on to the next ticket"            # 47, against Drake's 45
+        idea = self.memes.validate({**self.idea("G1"), "boxes": ["Fixing the flaky test", line]},
+                                   self.cat, self.formats)
+        self.assertEqual(idea["boxes"][1], line)
 
     def test_box_text_gets_punctuation_a_meme_font_can_draw(self):
         idea = self.memes.validate({**self.idea("T1"), "boxes": ["Docker pre‑installed",

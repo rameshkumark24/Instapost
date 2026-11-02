@@ -120,6 +120,7 @@ What makes a developer meme land:
 - A search trend: borrow its shape or its words for a joke about coding life. It must still be
   funny to a developer who missed the trend.
 - Never explain the joke. The caption is a second, smaller laugh, not a summary.
+- Facts must be true: a wrong year, number or name kills the joke for the people who know.
 {sections}
 Formats. Give the id, and fill every box, in order, within its limit:
 {formats}
@@ -180,7 +181,8 @@ _EDITOR = """You edit a meme page for developers with a million followers. Score
 - 8 to 10: instantly funny and specific, the format used exactly right.
 - 5 to 7: a smile.
 - 1 to 4: retells a headline instead of joking about it; uses the format the wrong way round;
-  needs the news or the caption to make sense; wordy; or mean about a real person.
+  needs the news or the caption to make sense; wordy; gets a fact wrong (a date, a number, who
+  did what); or mean about a real person.
 
 {items}
 
@@ -274,7 +276,10 @@ def validate(idea: dict, cat: dict[str, Trend], formats: list[Format]) -> dict:
     if len(boxes) != len(fmt.boxes) or not all(boxes):
         raise Rejected(f"{fmt.name} takes {len(fmt.boxes)} boxes, got {len(boxes)}")
     for box, text in zip(fmt.boxes, boxes):
-        if len(text) > box.max_chars:
+        # The limit the writer is given is a target; the drawing is the real
+        # gate. A line a few characters over still fits, and was a good joke
+        # thrown away three times in the first real run.
+        if len(text) > box.max_chars * cfg.MEME_BOX_SLACK:
             raise Rejected(f"{fmt.name}: '{box.role}' runs to {len(text)} characters, limit {box.max_chars}")
         if "#" in text or _EMOJI.search(text) or _URL.search(text):
             raise Rejected("a box carries a hashtag, emoji or link")

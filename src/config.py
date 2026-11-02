@@ -235,6 +235,10 @@ MEME_GOOD_SCORE = 6
 MEME_FLOOR_SCORE = 4
 
 MEME_CAPTION_MAX = 200              # before hashtags: a second, smaller laugh, not an essay
+# How far past a box's character target a line may run before it is refused
+# unread. Every format was drawn with every box at 125% of its target and all
+# 23 still fitted; the renderer refuses anything that would not.
+MEME_BOX_SLACK = 1.25
 MEME_TREND_COOLDOWN_DAYS = 7        # a trend that runs all week gets one meme
 MEME_TEMPLATE_COOLDOWN_DAYS = 3     # a format used this week is not offered again yet
 MEME_MIN_FORMATS = 10               # ...unless that would leave fewer than this
