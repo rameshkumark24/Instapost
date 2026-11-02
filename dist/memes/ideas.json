@@ -1,119 +1,110 @@
 {
   "date": "2026-11-02",
-  "built_at": "2026-11-02T12:03:27+00:00",
+  "built_at": "2026-11-02T16:58:07+00:00",
   "ideas": [
     {
-      "trend": "I grepped for @ts-ignore and found zero. Then I grepped for the cast nobody bans",
+      "trend": "Does AbortSignal Cancel a Node.js Database Query? 4 Drivers Tested",
       "where": "tech",
       "pool": "tech",
-      "context": "Every TypeScript team has a rule about @ts-ignore. Ours does too, and it works: zero occurrences...",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
+      "context": "I let 12 Node.js clients walk away from their database queries on a 4-connection pool. The abandoned...",
+      "template_id": "226297822",
+      "template": "Panik Kalm Panik",
+      "maker": "https://imgflip.com/memegenerator/226297822",
       "boxes": [
-        "Using @ts-ignore to pass type checks",
-        "Casting every variable 'as any'"
+        "The user closed their browser tab",
+        "Node triggered the AbortSignal",
+        "The DB query is still running"
       ],
-      "caption": "Strict linter rules against @ts-ignore just mean developers get creative with 'as any'.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Teams ban @ts-ignore only for devs to bypass type safety with 'as any' everywhere.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b4vm8t.jpg"
+      "caption": "The connection pool sends its regards.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Canceling a request in Node doesn't always stop the underlying database driver from hogging pool connections.",
+      "score": 9.0,
+      "editor": "Extremely specific and accurate backend pain point; format used perfectly.",
+      "drawn": true
     },
     {
-      "trend": "9 Commands That Leave a Coding Agent Waiting for a Keystroke, and the Fix for Each",
+      "trend": "Zero Downtime Deploy for Docker Apps, With Rollback",
       "where": "tech",
       "pool": "tech",
-      "context": "git commit, npx, apt, ssh, psql, terraform apply, gh auth login: each can stall an AI coding agent on a prompt. The flag or env var that stops each one.",
-      "template_id": "99683372",
-      "template": "Sleeping Shaq",
-      "maker": "https://imgflip.com/memegenerator/99683372",
+      "context": "How a Docker deploy waits for readiness before cutover, holds the previous release for rollback, rolls back on its own, and how to rehearse it.",
+      "template_id": "131940431",
+      "template": "Gru's Plan",
+      "maker": "https://imgflip.com/memegenerator/131940431",
       "boxes": [
-        "AI coding agent solving complex backend architecture",
-        "AI coding agent waiting 6 hours for someone to press [Y/n]"
+        "Set up zero downtime deploys",
+        "Automate rollback on failure",
+        "The bad release broke the DB",
+        "The bad release broke the DB"
       ],
-      "caption": "Nothing stops autonomous AI agents quite like an interactive prompt asking for confirmation.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "AI agents can generate full features but get blocked indefinitely by simple CLI confirmation prompts.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b4vm8w.jpg"
+      "caption": "Rollbacks don't un-drop columns.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Automated application rollbacks fail when the bad deployment ran breaking database migrations.",
+      "score": 9.0,
+      "editor": "Spot-on technical reality where automated rollbacks fail due to DB schema changes.",
+      "drawn": true
     },
     {
-      "trend": "zelda",
+      "trend": "apple new hardware lineup november 6",
       "where": "US",
       "pool": "current",
-      "context": "Nintendo producer 'nervous' as Zelda classic remake about to hit shelves",
-      "template_id": "112126428",
-      "template": "Distracted Boyfriend",
-      "maker": "https://imgflip.com/memegenerator/112126428",
+      "context": "Apple Isn't Done With 2026: Here's What's Still Coming",
+      "template_id": "247375501",
+      "template": "Buff Doge vs. Cheems",
+      "maker": "https://imgflip.com/memegenerator/247375501",
       "boxes": [
-        "Rewriting the app in Rust from scratch",
-        "Senior Engineer",
-        "The legacy codebase that handles every edge case"
+        "1999 hardware",
+        "Landed Apollo 11 with 4 KB RAM",
+        "2026 M4 Max MacBook",
+        "Lags on a select dropdown"
       ],
-      "caption": "Every classic system rewrite sounds great until you realize why the original code had all those weird checks.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Devs love total rewrites like classic remakes, but underestimate the hidden edge cases in legacy code.",
-      "drawn": true,
-      "image_url": "https://i.imgflip.com/b4vm8x.jpg"
+      "caption": "Need 64GB RAM for Electron.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Modern developer hardware has astronomical specs, yet modern local web builds still struggle.",
+      "score": 7.0,
+      "editor": "Relatable Electron bloat joke, though Apollo 11 was 1969 rather than 1999.",
+      "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "karnali yaks vs kathmandu gorkhas standings",
+      "title": "harley-davidson sprint 440",
       "where": "IN"
     },
     {
-      "title": "nothing os 5.0 update",
+      "title": "haiwaan movie",
       "where": "IN"
     },
     {
-      "title": "nepal premier league",
+      "title": "kyrian jacquet",
       "where": "IN"
     },
     {
-      "title": "rajasthan vs himachal pradesh",
+      "title": "netflix sonyliv new shows november",
       "where": "IN"
     },
     {
-      "title": "television show",
+      "title": "f1 esteban ocon",
       "where": "IN"
     },
     {
-      "title": "month",
+      "title": "murray state basketball",
       "where": "US"
     },
     {
-      "title": "a court of thorns and roses",
+      "title": "apple new hardware lineup november 6",
       "where": "US"
     },
     {
-      "title": "local weather",
+      "title": "netflix collision course action movie",
       "where": "US"
     },
     {
-      "title": "zelda",
+      "title": "franklinton high school",
       "where": "US"
     },
     {
-      "title": "weather atlanta",
+      "title": "healthcare marketplace",
       "where": "US"
     },
     {
-      "title": "weather tampa",
-      "where": "US"
-    },
-    {
-      "title": "philadelphia phillies",
-      "where": "US"
-    },
-    {
-      "title": "boston weather",
-      "where": "US"
-    },
-    {
-      "title": "noaa",
-      "where": "US"
-    },
-    {
-      "title": "tsm stock",
+      "title": "willow wind sailboat rescue pacific ocean",
       "where": "US"
     },
     {
@@ -139,16 +130,18 @@
     {
       "title": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
       "where": "tech"
-    },
-    {
-      "title": "I grepped for @ts-ignore and found zero. Then I grepped for the cast nobody bans",
-      "where": "tech"
-    },
-    {
-      "title": "9 Commands That Leave a Coding Agent Waiting for a Keystroke, and the Fix for Each",
-      "where": "tech"
     }
   ],
   "problems": [],
-  "rejects": []
+  "rejects": [
+    "Panik Kalm Panik: 'why it is actually worse' runs to 48 characters, limit 40",
+    "Expanding Brain: 'the most absurd way, presented as enlightenment' runs to 46 characters, limit 40",
+    "Buff Doge vs. Cheems: 'what the strong one did' runs to 58 characters, limit 40",
+    "Gru's Plan: 'step 1: the plan' runs to 38 characters, limit 36",
+    "editor 6/10 (Accurate joke about tech rebrand hype, but pretty tame.): They're The Same Picture, Data Center / AI Compute Campus",
+    "editor 8/10 (Great use of format to target fear of unnecessary AI bloat in core tools.): Anakin Padme 4 Panel, Postgres 19 is delayed for AI / To speed up queries? / To speed up queries, righ",
+    "editor 8/10 (Classic frontend engineering mistake, instant hit on the feed.): Left Exit 12 Off Ramp, Paginate the API / Render 100k rows in DOM / Me",
+    "editor 5/10 (Slightly misuses the handshake format since feature and main branches are conflicting, not uniting.): Epic Handshake, My feature branch / Main branch / 47 merge conflicts",
+    "editor 7/10 (Solid satire of Agile process creep moving towards absurdity.): Expanding Brain, Two week sprint / Four week sprint / 440 story point sprint / Never ending sprin"
+  ]
 }
