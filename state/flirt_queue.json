@@ -646,5 +646,65 @@
   "status": "expired",
   "drafted_at": "2026-10-29T10:50:20+00:00",
   "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
+ },
+ {
+  "concept": "cron-job",
+  "term": "CRON JOB",
+  "domain": "devops",
+  "text": "Thinking about you every night at 2 AM isn't even a choice anymore. It's just a CRON JOB.",
+  "terms": [
+   "CRON JOB"
+  ],
+  "score": 10.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T17:05:13+00:00"
+ },
+ {
+  "concept": "single-point",
+  "term": "SINGLE POINT OF FAILURE",
+  "domain": "systems",
+  "text": "If you walk away, my whole life crashes. You're my SINGLE POINT OF FAILURE.",
+  "terms": [
+   "SINGLE POINT OF FAILURE"
+  ],
+  "score": 10.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T17:05:13+00:00"
+ },
+ {
+  "concept": "localhost",
+  "term": "LOCALHOST",
+  "domain": "networking",
+  "text": "I thought you felt it too, but I was just talking to LOCALHOST.",
+  "terms": [
+   "LOCALHOST"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T17:05:13+00:00"
+ },
+ {
+  "concept": "cache-invalidation",
+  "term": "CACHE INVALIDATION",
+  "domain": "web",
+  "text": "I kept holding onto who you used to be, but that copy is stale. Time for CACHE INVALIDATION.",
+  "terms": [
+   "CACHE INVALIDATION"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T17:05:13+00:00"
+ },
+ {
+  "concept": "304",
+  "term": "304 NOT MODIFIED",
+  "domain": "web",
+  "text": "Checking in on my feelings again? Babe, 304 NOT MODIFIED.",
+  "terms": [
+   "304 NOT MODIFIED"
+  ],
+  "score": 6.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T17:05:13+00:00"
  }
 ]
