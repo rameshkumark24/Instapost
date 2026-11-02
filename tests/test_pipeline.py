@@ -902,13 +902,15 @@ class Timeouts(unittest.TestCase):
         # every Groq model before it gives up.
         models = len(cfg.GEMINI_MODELS) + len(cfg.GROQ_MODELS)
         chain = (cfg.LLM_CONNECT_TIMEOUT_S + cfg.LLM_TIMEOUT_S) * models
-        # install + news build with one timed-out chain + drafting budget
-        # overrun by one more chain + every meme source timing out and every
-        # meme attempt waiting on the whole chain + every meme image timing
-        # out twice, once asking Imgflip and once fetching + commit and verify
-        memes = (len(cfg.MEME_TREND_GEOS) + 1) * cfg.HTTP_TIMEOUT + cfg.MEME_ATTEMPTS * chain
-        memes += cfg.MEME_IDEAS * 2 * cfg.HTTP_TIMEOUT
-        worst = 180 + (120 + chain) + (cfg.FLIRT_DRAFT_BUDGET_S + chain) + memes + 60
+        # install + news build with one timed-out chain + card drafting budget
+        # overrun by one more chain, and the cards' editor waiting on a whole
+        # chain + every meme source timing out, every writer attempt and the
+        # memes' editor waiting on the whole chain, every blank template timing
+        # out, and a minute to draw + commit and verify
+        cards = cfg.FLIRT_DRAFT_BUDGET_S + chain + chain
+        memes = (len(cfg.MEME_TREND_GEOS) + 1) * cfg.HTTP_TIMEOUT + (cfg.MEME_ATTEMPTS + 1) * chain
+        memes += cfg.MEME_IDEAS * cfg.HTTP_TIMEOUT + 60
+        worst = 180 + (120 + chain) + cards + memes + 60
         self.assertLess(worst, job_s)
 
 
@@ -1438,39 +1440,46 @@ TRENDS_XML = b"""<?xml version="1.0" encoding="UTF-8"?>
   <ht:news_item><ht:news_item_title>Bear mauls couple, with tragic consequences</ht:news_item_title></ht:news_item></item>
 </channel></rss>"""
 
+DRAKE, ALWAYS, CAT, BUTTONS, POOH = "181913649", "252600902", "188390779", "87743020", "178591752"
+
 
 class MemeIdeas(unittest.TestCase):
-    """The third segment: every idea a dev joke, two on tech news, one on a trend."""
-
-    DRAKE, BUTTONS, ALWAYS, SKELETON = "181913649", "87743020", "252600902", "4087833"
+    """The third segment: a writer drafts, an editor picks, two on tech news and one on a trend."""
 
     def setUp(self):
         from src import memes, trends
-        self.memes, self.trends = memes, trends
+        from src.meme_formats import BY_ID
+        self.memes, self.trends, self.BY_ID = memes, trends, BY_ID
         self.found = trends.parse_trends(TRENDS_XML, "IN")
         self.tech = [trends.Trend("Postgres 19 ships a new planner", "tech", "Queries plan themselves now."),
                      trends.Trend("GitHub Actions adds ARM runners", "tech", "Cheaper CI minutes."),
                      trends.Trend("Rust 2.0 announced", "tech", "A new edition begins.")]
-        self.templates = [trends.Template(self.DRAKE, "Drake Hotline Bling", 2),
-                          trends.Template(self.BUTTONS, "Two Buttons", 3),
-                          trends.Template(self.ALWAYS, "Always Has Been", 2),
-                          trends.Template(self.SKELETON, "Waiting Skeleton", 2)]
+        self.formats = [BY_ID[i] for i in (DRAKE, ALWAYS, CAT, BUTTONS, POOH)]
         self.pool = memes.usable(self.tech + self.found, set())     # three tech, and naman dhir
         self.cat = memes.catalogue(self.pool)
-        self.good = self.idea("G1")
 
-    def idea(self, tid, template=DRAKE):
-        boxes = ["Fix the flaky test", "Rerun CI", "Me"] if template == self.BUTTONS else \
-                ["Waiting for code review", "Getting picked for the release"]
-        return {"trend": tid, "template_id": template, "boxes": boxes,
-                "caption": "Could not process it for ten minutes either.", "why": "Selection = merge."}
+    def idea(self, tid, fmt=DRAKE):
+        boxes = {BUTTONS: ["Read the error", "Restart and hope", "Me at 2am"]}.get(
+            fmt, ["Fixing the flaky test", "Adding a retry"])
+        return {"trend": tid, "template_id": fmt, "boxes": boxes, "caption": "Every sprint, somehow.",
+                "why": "the lazy fix wins"}
+
+    @staticmethod
+    def scores(*marks):
+        return {"scores": [{"n": n, "score": s, "note": f"note {n}"} for n, s in enumerate(marks, 1)]}
 
     def replies(self, *answers):
-        """The model's answers in order: a list is a reply of ideas, a str is raw text, None is no reply."""
+        """The model's answers in order: a list is the writer's ideas, a dict is JSON as given
+        (the editor's scores), a str is raw text, None is no reply."""
         import json
         Reply = self.memes.llm.Reply
-        queue = iter(Reply(None, "gemini-3.8-flash: HTTP 429") if a is None
-                     else Reply(a if isinstance(a, str) else json.dumps({"ideas": a})) for a in answers)
+        def make(a):
+            if a is None:
+                return Reply(None, "gemini-3.8-flash: HTTP 429")
+            if isinstance(a, list):
+                return Reply(json.dumps({"ideas": a}))
+            return Reply(a if isinstance(a, str) else json.dumps(a))
+        queue = iter(make(a) for a in answers)
         return mock.patch.object(self.memes.llm, "complete", side_effect=lambda *a, **k: next(queue))
 
     # --- sources ---
@@ -1485,54 +1494,15 @@ class MemeIdeas(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.trends.parse_trends(bomb, "IN")
 
-    def test_a_three_box_template_is_offered_only_with_its_box_order(self):
-        # The first real Distracted Boyfriend had its labels on the wrong
-        # people: the model cannot see which box Imgflip puts where.
-        square = {"width": 1200, "height": 1200}
-        payload = {"success": True, "data": {"memes": [
-            {"id": 1, "name": "One", "box_count": 1, **square}, {"id": 2, "name": "Two", "box_count": 2, **square},
-            {"id": 3, "name": "Three, order unknown", "box_count": 3, **square},
-            {"id": 112126428, "name": "Distracted Boyfriend", "box_count": 3, **square},
-            {"id": 5, "name": "Five", "box_count": 5, **square}]}}
-        offered = self.trends.parse_templates(payload)
-        self.assertEqual([t.name for t in offered], ["Two", "Distracted Boyfriend"])
-        self.assertEqual(len(offered[1].roles), 3)
-        text = self.memes.prompt(self.cat, offered, set(), {"tech": 2, "current": 1})
-        self.assertIn("box 1 is the tempting new thing (the woman in red, on the left)", text)
-        self.assertIn("box 2 is who is being tempted (the boyfriend, in the middle)", text)
-        self.assertIn("- id 2: Two (2 boxes)", text)
-
-    def test_every_vetted_box_order_names_three_boxes(self):
-        for template_id, roles in cfg.MEME_BOX_ROLES.items():
-            with self.subTest(template_id):
-                self.assertTrue(template_id.isdigit())
-                self.assertEqual(len(roles), 3)
-
-    def test_only_templates_instagram_shows_whole_are_offered(self):
-        def meme(name, width, height):
-            return {"id": name, "name": name, "box_count": 2, "width": width, "height": height}
-        payload = {"success": True, "data": {"memes": [
-            meme("Drake Hotline Bling", 1200, 1200),
-            meme("Two Buttons", 600, 908),               # too tall: Instagram would crop it
-            meme("This Is Fine", 580, 282),              # too wide
-            meme("Look At Me", 300, 300),                # too small to scale up cleanly
-            meme("George Bush 9/11", 1200, 1200),        # not a subject for a meme page
-            meme("Hide the Pain Harold", 480, 601),      # 0.799: Instagram's own tolerance lets it through
-        ]}}
-        self.assertEqual([t.name for t in self.trends.parse_templates(payload)],
-                         ["Drake Hotline Bling", "Hide the Pain Harold"])
-
     def test_sensitive_and_recently_used_trends_are_left_out(self):
         self.assertEqual([t.title for t in self.memes.usable(self.found, set())], ["naman dhir"])
         self.assertEqual(self.memes.usable(self.found, {"naman dhir"}), [])
 
     def test_a_tech_story_is_screened_on_its_title_not_its_summary(self):
-        # Summaries are long, and ordinary tech news mentions hospitals and victims.
         story = self.trends.Trend("Insurers say AI is raising healthcare costs", "tech",
                                   "Driven by hospital use of AI tools and ransomware victims.")
         grim = self.trends.Trend("Robotaxi crash: two killed", "tech", "The company paused its fleet.")
-        kept = self.memes.usable([story, grim], set())
-        self.assertEqual(kept, [story])
+        self.assertEqual(self.memes.usable([story, grim], set()), [story])
 
     def test_titles_the_page_cannot_use_are_left_out(self):
         latin = self.trends.latin
@@ -1575,25 +1545,18 @@ class MemeIdeas(unittest.TestCase):
                        summary="<p>The planner\n now   rewrites joins, <a href='https://x'>caf&#233;</a> style.</p>"),
             self.story("Rust 2.0 announced", summary="Rust 2.0 announced."),
             self.story("Python 4 lands", summary="Python 4 lands, with free threading on by default"),
-            # left out: a repo, a paper, a busy post that is not tech, a title the page cannot use
             self.story("jev-ultrafast: fastest LLM web agent", source="github", engagement=900),
             self.story("A new LLM inference benchmark", source="arxiv"),
             self.story("I'm the mom in that viral Giants clip", engagement=900),
             self.story("装在手机上的对话副驾 LLM"),
-            self.story("LLM &#x8FD0;&#x884C;&#x65F6;&#x8FD0;&#x884C;&#x65F6;"),   # reads as Latin until decoded
+            self.story("LLM &#x8FD0;&#x884C;&#x65F6;&#x8FD0;&#x884C;&#x65F6;"),
         ])
         self.assertEqual(set(stories), {"Postgres 19 ships a new planner", "Rust 2.0 announced", "Python 4 lands"})
-        # HTML and entities are gone, and the cut is not mid-word.
         self.assertEqual(stories["Postgres 19 ships a new planner"].context, "The planner now rewrites joins, café style.")
-        # A summary that only repeats its title says nothing: the site name stands in.
         self.assertEqual(stories["Rust 2.0 announced"].context, "Hacker News")
-        # One that starts with its title and goes on is kept.
         self.assertEqual(stories["Python 4 lands"].context, "Python 4 lands, with free threading on by default")
-        self.assertTrue(all(s.where == "tech" for s in stories.values()))
 
     def test_a_story_that_only_sounds_technical_is_not_a_tech_hook(self):
-        # "enraged" holds "rag", "released" holds "release": substring matching
-        # scored this as tech news.
         stories = self.saved_stories([self.story(
             "Pokémon card resellers have turned collecting into an online blood sport", source="rss",
             summary="Fans are enraged as new sets are released and resold within minutes.")])
@@ -1603,6 +1566,12 @@ class MemeIdeas(unittest.TestCase):
         from src import pipeline
         with mock.patch.object(pipeline, "rank", side_effect=RuntimeError("boom")):
             pipeline._save_trending([], None, datetime.now(cfg.TZ))     # logs, does not raise
+
+    def test_only_trends_are_fetched_now(self):
+        with mock.patch.object(self.trends, "_get", side_effect=RuntimeError("offline")):
+            found, problems = self.trends.gather(datetime.now(cfg.TZ).date())
+        self.assertEqual(len(problems), len(cfg.MEME_TREND_GEOS))
+        self.assertTrue(all("Google Trends" in p for p in problems))
 
     # --- the split ---
 
@@ -1617,83 +1586,133 @@ class MemeIdeas(unittest.TestCase):
         self.assertEqual(self.memes.quotas(self.tech), {"tech": 3, "current": 0})
         self.assertEqual(self.memes.quotas(self.tech[:1] + trending_only), {"tech": 1, "current": 2})
 
-    def test_the_split_is_enforced_not_just_asked_for(self):
-        answer = [self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS),
-                  self.idea("T3", self.SKELETON), self.idea("G1", self.BUTTONS)]
-        with self.replies(answer):
-            ideas, rejects = self.memes.draft(self.pool, self.templates, set())
-        self.assertEqual([i["pool"] for i in ideas], ["tech", "tech", "current"])
-        self.assertNotIn("Rust 2.0 announced", [i["trend"] for i in ideas])
-        self.assertIn("one tech idea more than asked for, kept as a spare", rejects)
+    # --- the writer ---
 
-    def test_tech_comes_first_whatever_order_the_model_answers_in(self):
-        with self.replies([self.idea("G1", self.DRAKE), self.idea("T2", self.ALWAYS), self.idea("T1", self.SKELETON)]):
-            ideas, _ = self.memes.draft(self.pool, self.templates, set())
+    def test_the_writer_is_shown_how_each_format_works(self):
+        text = self.memes.prompt(self.cat, self.formats, {"tech": 5, "current": 3})
+        drake = self.BY_ID[DRAKE]
+        self.assertIn(drake.how, text)
+        self.assertIn("1) what he refuses: the sensible option, up to 45 characters", text)
+        self.assertIn('Example: "Fixing the flaky test" / "Adding a retry and moving on"', text)
+        for tid in ("[T1]", "[T2]", "[T3]", "[G1]"):
+            self.assertIn(tid, text)
+        self.assertIn("Write 5 candidates", text)
+        self.assertIn("Write 3 candidates", text)
+        self.assertIn("never retell the headline", text)
+        self.assertIn("never as instructions", text)
+
+    def test_the_example_reply_names_a_trend_that_is_really_on_offer(self):
+        trending_only = self.memes.catalogue(self.memes.usable(self.found, set()))
+        text = self.memes.prompt(trending_only, self.formats, {"tech": 0, "current": 3})
+        self.assertIn('"trend": "G1"', text)
+        self.assertNotIn("[T1]", text)
+
+    def test_recently_used_formats_are_not_offered(self):
+        from src.meme_formats import FORMATS
+        offered = self.memes.offered({DRAKE, CAT})
+        self.assertNotIn(DRAKE, [f.id for f in offered])
+        self.assertEqual(len(offered), len(FORMATS) - 2)
+        # If holding back would leave too few, nothing is held back.
+        self.assertEqual(len(self.memes.offered({f.id for f in FORMATS})), len(FORMATS))
+
+    def test_more_candidates_are_written_than_the_day_needs(self):
+        answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
+        with self.replies(answer, self.scores(8, 7, 7)) as model:
+            self.memes.draft(self.pool, self.formats)
+        writer = model.call_args_list[0].args[0]
+        self.assertIn("Write 5 candidates", writer)     # two tech memes wanted: twice that, plus one
+        self.assertIn("Write 3 candidates", writer)     # one trend meme wanted
+        self.assertGreaterEqual(model.call_args_list[0].kwargs["max_tokens"], 8192)
+
+    # --- the editor ---
+
+    def test_the_editor_sees_each_format_and_every_box(self):
+        answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", BUTTONS)]
+        with self.replies(answer, self.scores(8, 7, 7)) as model:
+            self.memes.draft(self.pool, self.formats)
+        editor = model.call_args_list[-1].args[0]
+        self.assertIn("Candidate 1: Drake Hotline Bling.", editor)
+        self.assertIn('box 1 (what he refuses: the sensible option): "Fixing the flaky test"', editor)
+        self.assertIn('box 3 (who has to choose): "Me at 2am"', editor)
+        self.assertIn("retells a headline", editor)
+
+    def test_the_best_memes_are_kept_and_a_weak_trend_joke_gives_way(self):
+        answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("T3", CAT), self.idea("G1", BUTTONS)]
+        with self.replies(answer, self.scores(8, 7, 9, 2)):
+            ideas, rejects = self.memes.draft(self.pool, self.formats)
+        self.assertEqual([i["template_id"] for i in ideas], [CAT, DRAKE, ALWAYS])   # all tech, best first
+        self.assertEqual([i["score"] for i in ideas], [9, 8, 7])
+        self.assertTrue(any(r.startswith("editor 2/10") for r in rejects))
+
+    def test_a_passable_trend_joke_keeps_its_place(self):
+        answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("T3", CAT), self.idea("G1", BUTTONS)]
+        with self.replies(answer, self.scores(8, 7, 9, 5)):
+            ideas, _ = self.memes.draft(self.pool, self.formats)
         self.assertEqual([i["pool"] for i in ideas], ["tech", "tech", "current"])
+        self.assertEqual(ideas[-1]["trend"], "naman dhir")
+
+    def test_each_meme_gets_its_own_trend_and_format(self):
+        answer = [self.idea("T1", DRAKE), self.idea("T2", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
+        with self.replies(answer, self.scores(9, 8, 7, 7)):
+            ideas, _ = self.memes.draft(self.pool, self.formats)
+        self.assertEqual(len({i["template_id"] for i in ideas}), len(ideas))
+        self.assertEqual(len({i["trend"] for i in ideas}), len(ideas))
+        self.assertEqual(len(ideas), 3)
+
+    def test_a_day_with_nothing_good_still_sends_its_best_one(self):
+        answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
+        with self.replies(answer, self.scores(2, 3, 1)):
+            ideas, _ = self.memes.draft(self.pool, self.formats)
+        self.assertEqual([(i["template_id"], i["score"]) for i in ideas], [(ALWAYS, 3)])
+
+    def test_without_an_editor_the_writers_order_stands(self):
+        answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
+        with self.replies(answer, None):
+            ideas, rejects = self.memes.draft(self.pool, self.formats)
+        self.assertEqual([i["template_id"] for i in ideas], [DRAKE, ALWAYS, CAT])
+        self.assertIn("no editor's verdict: kept in the writer's order", rejects)
+
+    def test_an_editor_that_skips_a_candidate_is_not_trusted(self):
+        answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
+        partial = {"scores": [{"n": 1, "score": 9}, {"n": 2, "score": 1}]}
+        with self.replies(answer, partial):
+            ideas, rejects = self.memes.draft(self.pool, self.formats)
+        self.assertEqual(len(ideas), 3)
+        self.assertIn("no editor's verdict: kept in the writer's order", rejects)
+
+    # --- retries and outages ---
 
     def test_the_second_try_asks_only_for_what_is_missing(self):
-        with self.replies([self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS)],
-                          [self.idea("G1", self.SKELETON)]) as model:
-            ideas, _ = self.memes.draft(self.pool, self.templates, set())
+        tech_only = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS)]
+        with self.replies(tech_only, [self.idea("G1", CAT)], self.scores(7, 7, 7)) as model:
+            ideas, _ = self.memes.draft(self.pool, self.formats)
         self.assertEqual(len(ideas), 3)
         second = model.call_args_list[1].args[0]
         self.assertIn("Trending searches today", second)
         self.assertNotIn("Tech news trending today", second)
         self.assertNotIn("Postgres", second)
 
-    def test_a_failed_retry_keeps_the_ideas_already_made(self):
-        with self.replies([self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS)], None):
-            ideas, rejects = self.memes.draft(self.pool, self.templates, set())
+    def test_a_failed_retry_keeps_the_candidates_already_made(self):
+        tech_only = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS)]
+        with self.replies(tech_only, None, self.scores(7, 7)):
+            ideas, rejects = self.memes.draft(self.pool, self.formats)
         self.assertEqual([i["pool"] for i in ideas], ["tech", "tech"])
         self.assertTrue(any("retry" in r for r in rejects))
 
-    def test_a_short_day_uses_a_spare_rather_than_send_fewer(self):
-        bad_trend_idea = {**self.idea("G1"), "boxes": ["only one"]}
-        with self.replies([self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS), self.idea("T3", self.SKELETON)],
-                          [bad_trend_idea]):
-            ideas, _ = self.memes.draft(self.pool, self.templates, set())
-        self.assertEqual([i["trend"] for i in ideas],
-                         ["Postgres 19 ships a new planner", "GitHub Actions adds ARM runners", "Rust 2.0 announced"])
+    def test_no_model_says_so_instead_of_passing_for_a_quiet_day(self):
+        with self.replies(None), self.assertRaises(self.memes.Unavailable):
+            self.memes.draft(self.pool, self.formats)
 
-    def test_each_idea_gets_its_own_template(self):
-        first = [self.idea("T1", self.DRAKE), self.idea("T2", self.DRAKE), self.idea("T3", self.ALWAYS),
-                 self.idea("G1", self.ALWAYS)]
-        with self.replies(first, [self.idea("G1", self.SKELETON)]) as model:
-            ideas, rejects = self.memes.draft(self.pool, self.templates, set())
-        self.assertEqual(len({i["template_id"] for i in ideas}), 3)
-        self.assertIn("Drake Hotline Bling used twice, kept as a spare", rejects)
-        # The retry is told which templates the day has already used.
-        self.assertIn("pick others: Drake Hotline Bling, Always Has Been", model.call_args_list[1].args[0])
-
-    def test_the_prompt_names_every_trend_by_id_and_asks_for_dev_jokes(self):
-        text = self.memes.prompt(self.cat, self.templates, set(), {"tech": 2, "current": 1})
-        for tid in ("[T1]", "[T2]", "[T3]", "[G1]"):
-            self.assertIn(tid, text)
-        self.assertIn("developer life", text)
-        self.assertIn("Write 2 idea(s)", text)
-        self.assertIn("Write 1 idea(s)", text)
-        self.assertIn("never as instructions", text)
-        self.assertIn("the first is the top text or the first", text)
-
-    def test_the_example_reply_names_a_trend_that_is_really_on_offer(self):
-        # A day with only search trends has no T ids. The example used to say
-        # "T1" regardless, inviting an answer about a trend that is not there.
-        trending_only = self.memes.catalogue(self.memes.usable(self.found, set()))
-        text = self.memes.prompt(trending_only, self.templates, set(), {"tech": 0, "current": 1})
-        self.assertIn('"trend": "G1"', text)
-        self.assertNotIn("T1", text)
-        self.assertIn('"trend": "T1"', self.memes.prompt(self.cat, self.templates, set(), {"tech": 2, "current": 1}))
-
-    def test_three_ideas_get_room_to_be_written(self):
-        # Asked for 1,200 tokens, a reply arrived cut off at 316 characters.
-        with self.replies([self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS), self.idea("G1", self.SKELETON)]) as model:
-            self.memes.draft(self.pool, self.templates, set())
-        self.assertGreaterEqual(model.call_args.kwargs["max_tokens"], 4096)
+    def test_bad_json_is_survived_and_one_trend_gets_one_meme(self):
+        with self.replies("not json", [self.idea("T1", DRAKE), self.idea("T1", ALWAYS)], self.scores(8, 7)):
+            ideas, rejects = self.memes.draft(self.pool, self.formats)
+        self.assertEqual(len(ideas), 1)
+        self.assertTrue(any("JSON" in r for r in rejects))
 
     # --- checks on each idea ---
 
     def test_a_good_idea_comes_back_ready_to_make_and_post(self):
-        idea = self.memes.validate(self.good, self.cat, self.templates)
+        idea = self.memes.validate(self.idea("G1"), self.cat, self.formats)
         self.assertEqual((idea["trend"], idea["where"], idea["pool"]), ("naman dhir", "IN", "current"))
         self.assertEqual(idea["template"], "Drake Hotline Bling")
         self.assertEqual(idea["maker"], "https://imgflip.com/memegenerator/181913649")
@@ -1703,35 +1722,33 @@ class MemeIdeas(unittest.TestCase):
         for said in ("T1", "t1", "[T1]", " T1 ", "[T1] Postgres 19 ships a new planner", "T1: Postgres",
                      "Postgres 19 ships a new planner", "postgres 19 ships a new planner"):
             with self.subTest(said):
-                idea = self.memes.validate(self.idea(said), self.cat, self.templates)
+                idea = self.memes.validate(self.idea(said), self.cat, self.formats)
                 self.assertEqual(idea["trend"], "Postgres 19 ships a new planner")
 
     def test_ideas_that_break_a_rule_are_thrown_away(self):
+        good = self.idea("G1")
         bad = {
             "trend not given": {"trend": "G9"},
             "trend not given, as text": {"trend": "some other headline"},
-            "unknown template": {"template_id": "999"},
+            "format not on offer": {"template_id": "999"},
+            "format recently used, so not offered": {"template_id": "112126428"},
             "too few boxes": {"boxes": ["only one"]},
+            "a box past its own limit": {"boxes": ["x" * 46, "fine"]},
             "hashtag in a box": {"boxes": ["#code", "fine"]},
             "emoji in a box": {"boxes": ["fine \U0001F602", "fine"]},
-            "overlong box": {"boxes": ["x" * 71, "fine"]},
+            "link in a box": {"boxes": ["see https://x.dev", "fine"]},
             "hashtag in caption": {"caption": "nice #memes"},
             "sensitive words": {"caption": "Like a train crash, but in prod."},
         }
         for why, change in bad.items():
             with self.subTest(why), self.assertRaises(self.memes.Rejected):
-                self.memes.validate({**self.good, **change}, self.cat, self.templates)
+                self.memes.validate({**good, **change}, self.cat, self.formats)
 
-    def test_no_model_says_so_instead_of_passing_for_a_quiet_day(self):
-        with self.replies(None), self.assertRaises(self.memes.Unavailable):
-            self.memes.draft(self.pool, self.templates, set())
-
-    def test_one_idea_per_trend_and_bad_json_is_survived(self):
-        with self.replies("not json", [self.idea("T1", self.DRAKE), self.idea("T1", self.ALWAYS)]):
-            ideas, rejects = self.memes.draft(self.pool, self.templates, set())
-        self.assertEqual(len(ideas), 1)
-        self.assertTrue(any("JSON" in r for r in rejects))
-        self.assertIn("second idea on the same trend", rejects)
+    def test_box_text_gets_punctuation_a_meme_font_can_draw(self):
+        idea = self.memes.validate({**self.idea("T1"), "boxes": ["Docker pre‑installed",
+                                                                 "It’s “fine”…  really"]},
+                                   self.cat, self.formats)
+        self.assertEqual(idea["boxes"], ["Docker pre-installed", "It's \"fine\"... really"])
 
     # --- the log and the message ---
 
@@ -1746,55 +1763,60 @@ class MemeIdeas(unittest.TestCase):
     def test_everything_in_the_message_is_escaped(self):
         from datetime import date
         from src import notify
-        idea = self.memes.validate({**self.good, "boxes": ["<b>x</b> & y", "fine"]}, self.cat, self.templates)
+        idea = self.memes.validate({**self.idea("G1"), "boxes": ["<b>x</b> & y", "fine"]}, self.cat, self.formats)
         with mock.patch.object(notify, "_post") as post:
             notify.meme_ideas([idea], self.pool, date(2026, 9, 27), [])
         text = post.call_args_list[1].args[1]["text"]
         self.assertIn("&lt;b&gt;x&lt;/b&gt; &amp; y", text)
-        self.assertIn("https://imgflip.com/memegenerator/181913649", text)
         self.assertIn("trending in India", text)
-        self.assertEqual(post.call_count, 2)          # the trends, then one per idea
 
     def test_a_tech_idea_says_it_came_from_the_news(self):
         from datetime import date
         from src import notify
-        idea = self.memes.validate(self.idea("T1"), self.cat, self.templates)
+        idea = self.memes.validate(self.idea("T1"), self.cat, self.formats)
         with mock.patch.object(notify, "_post") as post:
             notify.meme_ideas([idea], self.pool, date(2026, 9, 27), [])
         self.assertIn("(tech news)", post.call_args_list[1].args[1]["text"])
 
-    def test_a_model_outage_still_sends_the_trends(self):
+    # --- the day, end to end ---
+
+    def run_day(self, *answers, draw=None):
         import json, tempfile
         from src import pipeline_memes
         tmp = Path(tempfile.mkdtemp())
-        with mock.patch.object(pipeline_memes.trends, "gather", return_value=(self.pool, self.templates, [])), \
+        with mock.patch.object(pipeline_memes.trends, "gather", return_value=(self.pool, [])), \
                 mock.patch.object(pipeline_memes, "IDEAS_JSON", tmp / "ideas.json"), \
                 mock.patch.object(self.memes, "LOG_FILE", tmp / "log.json"), \
-                self.replies(None), \
+                mock.patch.object(pipeline_memes.meme_render, "draw", side_effect=draw or (lambda ideas, folder: ({}, []))), \
+                self.replies(*answers), \
+                mock.patch.object(pipeline_memes.notify, "_post", return_value=True) as post, \
                 mock.patch.object(pipeline_memes.notify, "notice") as notice:
-            self.assertEqual(pipeline_memes.main(), 0)
+            code = pipeline_memes.main()
+        saved = json.loads((tmp / "ideas.json").read_text(encoding="utf-8"))
+        return code, saved, post, notice
+
+    def test_a_model_outage_still_sends_the_trends(self):
+        code, saved, _, notice = self.run_day(None)
+        self.assertEqual(code, 0)
         title, text = notice.call_args.args
         self.assertEqual(title, "Meme ideas failed")
         self.assertIn("naman dhir", text)
-        self.assertIn("skip", json.loads((tmp / "ideas.json").read_text(encoding="utf-8")))
+        self.assertIn("skip", saved)
 
     def test_a_good_day_end_to_end(self):
-        import json, tempfile
-        from src import pipeline_memes
-        tmp = Path(tempfile.mkdtemp())
-        answer = [self.idea("T1", self.DRAKE), self.idea("T2", self.ALWAYS), self.idea("G1", self.SKELETON)]
-        with mock.patch.object(pipeline_memes.trends, "gather", return_value=(self.pool, self.templates, [])), \
-                mock.patch.object(pipeline_memes, "IDEAS_JSON", tmp / "ideas.json"), \
-                mock.patch.object(self.memes, "LOG_FILE", tmp / "log.json"), \
-                self.replies(answer), \
-                mock.patch.object(pipeline_memes.notify, "_post") as post:
-            self.assertEqual(pipeline_memes.main(), 0)
-        saved = json.loads((tmp / "ideas.json").read_text(encoding="utf-8"))
+        def draw(ideas, folder):
+            images = {}
+            for n in range(1, len(ideas) + 1):
+                images[n] = folder / f"meme-{n}.jpg"
+                images[n].write_bytes(jpeg_bytes(1080, 1080))
+            return images, []
+        answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
+        code, saved, post, _ = self.run_day(answer, self.scores(8, 7, 6), draw=draw)
+        self.assertEqual(code, 0)
         self.assertEqual([i["pool"] for i in saved["ideas"]], ["tech", "tech", "current"])
-        logged = json.loads((tmp / "log.json").read_text(encoding="utf-8"))
-        self.assertEqual({e["trend"] for e in logged},
-                         {"Postgres 19 ships a new planner", "GitHub Actions adds ARM runners", "naman dhir"})
-        self.assertEqual(post.call_count, 4)          # the trends, then three ideas
+        self.assertTrue(all(i["drawn"] and i["score"] >= 6 for i in saved["ideas"]))
+        methods = [c.args[0] for c in post.call_args_list]
+        self.assertEqual(methods, ["sendMessage"] + ["sendDocument", "sendMessage"] * 3)
 
 
 class NicheFit(unittest.TestCase):
@@ -1831,202 +1853,287 @@ def png_bytes(width: int, height: int) -> bytes:
             + width.to_bytes(4, "big") + height.to_bytes(4, "big") + b"\x08\x02\x00\x00\x00")
 
 
-class MemeImages(unittest.TestCase):
-    """Finished memes from Imgflip: optional, checked, and never a reason to lose an idea."""
-
-    KEY = "imgflip-secret-key-123"
+class MemeFormatsLibrary(unittest.TestCase):
+    """Every format is measured, explained and exemplified before the model sees it."""
 
     def setUp(self):
-        from src import imgflip, pipeline_memes
-        self.imgflip, self.pipeline = imgflip, pipeline_memes
-        self.idea = {"trend": "Postgres 19 ships a new planner", "where": "tech", "pool": "tech", "context": "",
-                     "template_id": "181913649", "template": "Drake Hotline Bling",
-                     "maker": "https://imgflip.com/memegenerator/181913649",
-                     "boxes": ["Reading the query plan", "Adding an index and hoping"],
-                     "caption": "Every DBA, eventually.\n\n#programmerhumor #devlife", "why": "We all do it."}
+        from src.meme_formats import DARK, FORMATS, OUTLINE
+        self.formats, self.styles = FORMATS, {DARK, OUTLINE}
 
-    def ask(self, reply=None, image=None, key=KEY):
-        """Run render() against a scripted Imgflip: the API's JSON, then the image bytes."""
-        reply = {"success": True, "data": {"url": "https://i.imgflip.com/abc123.jpg"}} if reply is None else reply
+    def test_every_format_is_whole(self):
+        from urllib.parse import urlsplit
+        self.assertEqual(len({f.id for f in self.formats}), len(self.formats))
+        for f in self.formats:
+            with self.subTest(f.name):
+                self.assertTrue(f.id.isdigit())
+                self.assertEqual(urlsplit(f.image).hostname, "i.imgflip.com")
+                self.assertTrue(f.how and f.width > 0 and f.height > 0)
+                self.assertEqual(len(f.example), len(f.boxes), "one example line per box")
+                for box, line in zip(f.boxes, f.example):
+                    self.assertTrue(0 <= box.x and box.x + box.w <= 100 and 0 <= box.y and box.y + box.h <= 100)
+                    self.assertIn(box.style, self.styles)
+                    self.assertTrue(box.role)
+                    self.assertLessEqual(len(line), box.max_chars, "the example obeys its own limit")
+
+    def test_every_format_comes_out_in_a_shape_instagram_shows_whole(self):
+        from src import meme_render, preflight
+        for f in self.formats:
+            with self.subTest(f.name):
+                geo = meme_render.layout(f)
+                self.assertEqual(geo["cw"], 1080)
+                self.assertTrue(preflight.ratio_ok(geo["cw"], geo["ch"]))
+
+    def test_no_format_is_named_for_an_off_limits_subject(self):
+        for f in self.formats:
+            self.assertIsNone(cfg.MEME_SENSITIVE.search(f.name), f.name)
+
+    def test_the_handle_never_sits_on_a_joke(self):
+        from src import meme_render
+        zw, zh = meme_render.HANDLE_ZONE
+        for f in self.formats:
+            side, end = meme_render.handle_corner(f)
+            geo = meme_render.layout(f)
+            x0 = geo["cw"] - zw if side == "right" else 0
+            y0 = geo["ch"] - zh if end == "bottom" else 0
+            for b in f.boxes:
+                bx0 = geo["ix"] + geo["iw"] * b.x / 100
+                by0 = geo["iy"] + geo["ih"] * b.y / 100
+                bx1, by1 = bx0 + geo["iw"] * b.w / 100, by0 + geo["ih"] * b.h / 100
+                with self.subTest(f.name, box=b.role):
+                    self.assertFalse(x0 < bx1 and bx0 < x0 + zw and y0 < by1 and by0 < y0 + zh)
+
+
+class MemeDrawing(unittest.TestCase):
+    """Drawn here, not by Imgflip: measured boxes, one look, 1080 wide."""
+
+    def setUp(self):
+        from src import meme_render
+        from src.meme_formats import Box, Format, OUTLINE, DARK
+        self.render = meme_render
+        # A real JPEG as the blank: the news card's pinned post, 1080x1350.
+        self.blank = (ROOT / "brand" / "news" / "pinned-post.jpg").read_bytes()
+        self.fmt = Format("1", "Test format", "https://i.imgflip.com/test.jpg", 1080, 1350, "how",
+                          (Box(5, 5, 90, 20, "top", OUTLINE, 40), Box(5, 70, 90, 20, "bottom", DARK, 40)),
+                          ("Top line", "Bottom line"))
+
+    def draw(self, boxes):
+        import tempfile
+        folder = Path(tempfile.mkdtemp())
+        with mock.patch.dict(self.render.BY_ID, {"1": self.fmt}):
+            return self.render.draw([{"template_id": "1", "boxes": boxes}], folder, get=lambda url: self.blank)
+
+    def test_a_meme_is_drawn_1080_wide_with_every_word_inside_its_box(self):
+        from src import preflight
+        images, problems = self.draw(["When the build is green", "Ship it before it changes its mind"])
+        self.assertEqual(problems, [])
+        data = images[1].read_bytes()
+        self.assertEqual(data[:2], b"\xff\xd8")
+        self.assertEqual(preflight.image_size(data), (1080, 1350))
+
+    def test_text_too_long_for_its_box_is_refused_not_shrunk_to_nothing(self):
+        images, problems = self.draw(["word " * 120, "fine"])
+        self.assertEqual(images, {})
+        self.assertIn("too long for the box", problems[0])
+
+    def test_a_template_instagram_would_crop_is_padded_not_cropped(self):
+        from src.meme_formats import Format
+        tall = self.render.layout(Format("2", "t", "https://i.imgflip.com/t.jpg", 600, 908, "", (), ()))
+        self.assertEqual((tall["cw"], tall["ch"], tall["ih"]), (1080, 1350, 1350))
+        self.assertEqual(tall["ix"], (1080 - tall["iw"]) // 2)
+        wide = self.render.layout(Format("3", "w", "https://i.imgflip.com/w.jpg", 580, 282, "", (), ()))
+        self.assertEqual((wide["cw"], wide["iw"]), (1080, 1080))
+        self.assertLess(wide["ih"], wide["ch"])
+
+    def test_every_word_is_escaped_in_the_page(self):
+        html = self.render.page(self.fmt, ["<script>alert(1)</script>", "Tom & Jerry"], self.blank, "@h")
+        self.assertIn("&lt;script&gt;alert(1)&lt;/script&gt;", html)
+        self.assertIn("Tom &amp; Jerry", html)
+        self.assertNotIn("<script>alert(1)", html)
+
+    def test_the_blank_comes_from_imgflips_image_host_and_nowhere_else(self):
+        with mock.patch.object(self.render.requests, "get") as get:
+            for url in ("https://evil.example/x.jpg", "http://i.imgflip.com/x.jpg",
+                        "https://i.imgflip.com.evil.example/x.jpg", "https://i.imgflip.com@evil.example/x.jpg",
+                        "file:///etc/passwd", ""):
+                with self.subTest(url), self.assertRaises(self.render.Failed):
+                    self.render.fetch(url)
+            get.assert_not_called()
+
+    def test_the_blank_is_fetched_without_redirects_and_within_a_size(self):
         download = mock.MagicMock(status_code=200)
         download.__enter__.return_value = download
-        download.iter_content.return_value = [jpeg_bytes(1200, 1200) if image is None else image]
-        api = mock.MagicMock()
-        api.json.return_value = reply
-        self.post = mock.patch.object(self.imgflip.requests, "post", return_value=api).start()
-        self.get = mock.patch.object(self.imgflip.requests, "get", return_value=download).start()
-        self.addCleanup(mock.patch.stopall)
-        with mock.patch.dict(os.environ, {"IMGFLIP_API_KEY": key}):
-            return self.imgflip.render(self.idea)
+        download.iter_content.return_value = [jpeg_bytes(1200, 1200)]
+        with mock.patch.object(self.render.requests, "get", return_value=download) as get:
+            self.assertEqual(self.render.fetch("https://i.imgflip.com/30b1gx.jpg"), jpeg_bytes(1200, 1200))
+        self.assertIs(get.call_args.kwargs["allow_redirects"], False)
+        with mock.patch.object(self.render.requests, "get", return_value=download), \
+                mock.patch.object(self.render.preflight, "IMAGE_MAX_BYTES", 10), \
+                self.assertRaises(self.render.Failed):
+            self.render.fetch("https://i.imgflip.com/30b1gx.jpg")
 
-    # --- off unless asked for ---
-
-    def test_without_a_key_nothing_is_drawn_and_nothing_is_asked(self):
-        problems = []
-        with mock.patch.dict(os.environ, {"IMGFLIP_API_KEY": ""}), \
-                mock.patch.object(self.imgflip.requests, "post") as post:
-            self.assertFalse(self.imgflip.enabled())
-            self.assertEqual(self.pipeline._render([self.idea], problems), {})
-        post.assert_not_called()
-        self.assertEqual(problems, [])              # not a fault: the feature is simply off
-
-    def test_the_build_gives_the_key_to_the_meme_step_and_no_other(self):
-        workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "build.yml").read_text(encoding="utf-8"))
-        holders = [s["name"] for s in workflow["jobs"]["build"]["steps"] if "IMGFLIP_API_KEY" in (s.get("env") or {})]
-        self.assertEqual(holders, ["Build meme ideas"])
-
-    # --- the request ---
-
-    def test_the_key_travels_in_a_header_and_nowhere_else(self):
-        self.ask()
-        url, kwargs = self.post.call_args.args[0], self.post.call_args.kwargs
-        self.assertEqual(kwargs["headers"]["Authorization"], f"Bearer {self.KEY}")
-        self.assertNotIn(self.KEY, url)
-        self.assertNotIn(self.KEY, str(kwargs["data"]))
-        self.assertNotIn("params", kwargs)
-
-    def test_two_boxes_are_top_and_bottom_and_three_go_as_boxes(self):
-        self.assertEqual(self.imgflip._form(self.idea),
-                         {"template_id": "181913649", "text0": "Reading the query plan",
-                          "text1": "Adding an index and hoping"})
-        three = self.imgflip._form({**self.idea, "boxes": ["a", "b", "c"]})
-        self.assertEqual(three, {"template_id": "181913649", "boxes[0][text]": "a",
-                                 "boxes[1][text]": "b", "boxes[2][text]": "c"})
-
-    # --- what comes back ---
-
-    def test_a_good_image_comes_back_with_its_type_and_where_imgflip_keeps_it(self):
-        self.assertEqual(self.ask(), (jpeg_bytes(1200, 1200), "jpg", "https://i.imgflip.com/abc123.jpg"))
-        self.assertEqual(self.ask(image=png_bytes(1024, 1024))[1], "png")
-
-    def test_the_image_is_fetched_without_following_redirects(self):
-        self.ask()
-        self.assertEqual(self.get.call_args.args[0], "https://i.imgflip.com/abc123.jpg")
-        self.assertIs(self.get.call_args.kwargs["allow_redirects"], False)
-
-    def test_an_image_address_anywhere_but_imgflips_host_is_refused(self):
-        for url in ("https://evil.example/x.jpg", "http://i.imgflip.com/x.jpg",
-                    "https://i.imgflip.com.evil.example/x.jpg", "https://i.imgflip.com@evil.example/x.jpg",
-                    "file:///etc/passwd", ""):
-            with self.subTest(url), self.assertRaises(self.imgflip.Failed):
-                self.ask(reply={"success": True, "data": {"url": url}})
-            self.get.assert_not_called()
-
-    def test_what_is_not_a_usable_image_is_refused(self):
-        bad = {
-            "a web page": b"<html>not found</html>",
-            "a shape Instagram would crop": jpeg_bytes(600, 908),
-            "a jpeg with no frame": b"\xff\xd8\xff\xe0\x00\x02",
-        }
-        for why, data in bad.items():
-            with self.subTest(why), self.assertRaises(self.imgflip.Failed):
-                self.ask(image=data)
-
-    def test_an_oversized_image_stops_downloading(self):
-        with mock.patch.object(self.imgflip.preflight, "IMAGE_MAX_BYTES", 10), self.assertRaises(self.imgflip.Failed):
-            self.ask()
-
-    def test_a_refusal_carries_imgflips_reason_and_never_the_key(self):
-        with self.assertRaises(self.imgflip.Failed) as caught:
-            self.ask(reply={"success": False, "error_message": "Invalid API key"})
-        self.assertEqual(str(caught.exception), "Invalid API key")
-        self.assertTrue(caught.exception.fatal)
-        self.assertNotIn(self.KEY, str(caught.exception))
-        with self.assertRaises(self.imgflip.Failed) as caught:
-            self.ask(reply={"success": False, "error_message": "No texts specified"})
-        self.assertFalse(caught.exception.fatal)
-
-    # --- the day ---
-
-    OK = (jpeg_bytes(1200, 1200), "jpg", "https://i.imgflip.com/abc123.jpg")
-
-    def drawn(self, results):
-        problems = []
-        self.ideas = [dict(self.idea) for _ in range(3)]
-        with mock.patch.dict(os.environ, {"IMGFLIP_API_KEY": self.KEY}), \
-                mock.patch.object(self.imgflip, "render", side_effect=results) as render:
-            images = self.pipeline._render(self.ideas, problems)
-        return images, problems, render
-
-    def test_one_idea_that_cannot_be_drawn_does_not_cost_the_others(self):
-        images, problems, _ = self.drawn([self.OK, self.imgflip.Failed("template gone"), self.OK])
-        self.assertEqual(sorted(images), [1, 3])
-        self.assertEqual(problems, ["Imgflip could not draw idea 2 (template gone)"])
-        self.assertEqual(images[1].read_bytes(), self.OK[0])
-        # What was drawn is on record, with where to look at it; what was not, is not.
-        self.assertEqual([i.get("drawn", False) for i in self.ideas], [True, False, True])
-        self.assertEqual(self.ideas[0]["image_url"], "https://i.imgflip.com/abc123.jpg")
-        self.assertNotIn("image_url", self.ideas[1])
-
-    def test_a_bad_key_is_tried_once_not_three_times(self):
-        images, problems, render = self.drawn([self.imgflip.Failed("Invalid API key", fatal=True)])
-        self.assertEqual(images, {})
-        self.assertEqual(render.call_count, 1)
-        self.assertEqual(problems, ["Imgflip drew nothing (Invalid API key)"])
-
-    def test_images_stay_out_of_the_repository(self):
-        images, _, _ = self.drawn([self.OK] * 3)
-        for path in images.values():
-            self.assertNotIn(ROOT, path.resolve().parents)
-
-    # --- what arrives ---
-
-    def sent(self, images, refuse=()):
-        from datetime import date
-        from src import notify
-        ideas = [dict(self.idea), {**self.idea, "template": "Always Has Been"}]
-        with mock.patch.object(notify, "_post", side_effect=lambda m, d, f=None: m not in refuse) as post:
-            notify.meme_ideas(ideas, [], date(2026, 10, 10), [], images)
-        return [(c.args[0], c.args[1]) for c in post.call_args_list]
-
-    def image_file(self):
-        import tempfile
-        path = Path(tempfile.mkdtemp()) / "meme-1.jpg"
-        path.write_bytes(jpeg_bytes(1200, 1200))
-        return path
-
-    def test_a_drawn_meme_arrives_as_a_file_then_its_caption_alone(self):
-        calls = self.sent({1: self.image_file()})
-        self.assertEqual([m for m, _ in calls], ["sendMessage", "sendDocument", "sendMessage", "sendMessage"])
-        _, doc = calls[1]
-        self.assertIn("Reading the query plan", doc["caption"])        # the boxes stay, to remake it
-        self.assertIn("https://imgflip.com/memegenerator/181913649", doc["caption"])
-        self.assertLessEqual(len(doc["caption"]), 1024)
-        _, caption = calls[2]
-        self.assertEqual(caption["text"], self.idea["caption"])
-        self.assertNotIn("parse_mode", caption)                         # what you copy is what Instagram gets
-        # The second idea had no image, and arrives as text as before.
-        self.assertIn("<pre>", calls[3][1]["text"])
-        self.assertIn("Always Has Been", calls[3][1]["text"])
-
-    def test_a_file_telegram_refuses_falls_back_to_the_idea_as_text(self):
-        calls = self.sent({1: self.image_file()}, refuse=("sendDocument",))
-        self.assertEqual([m for m, _ in calls], ["sendMessage", "sendDocument", "sendMessage", "sendMessage"])
-        self.assertIn("<pre>", calls[2][1]["text"])                     # idea 1, as text
-        self.assertIn("Reading the query plan", calls[2][1]["text"])
-
-    def test_a_long_idea_still_fits_a_file_caption(self):
-        from src import notify
-        long_idea = {**self.idea, "trend": "t" * 300, "boxes": ["b" * 70] * 3, "why": "w" * 200}
-        with mock.patch.object(notify, "_post", return_value=True) as post:
-            notify._send_meme(1, long_idea, self.image_file())
-        self.assertLessEqual(len(post.call_args_list[0].args[1]["caption"]), 1024)
-
-    # --- text fit for a picture ---
-
-    def test_box_text_gets_punctuation_a_meme_font_can_draw(self):
-        from src import memes, trends
-        cat = {"T1": trends.Trend("Docker ships an agent wall", "tech")}
-        templates = [trends.Template("181913649", "Drake Hotline Bling", 2)]
-        idea = memes.validate({"trend": "T1", "template_id": "181913649",
-                               "boxes": ["Docker pre‑installed", "It’s “fine”…  really"],
-                               "caption": "A caption.", "why": "w"}, cat, templates)
-        self.assertEqual(idea["boxes"], ["Docker pre-installed", "It's \"fine\"... really"])
+    def test_what_is_not_an_image_is_refused(self):
+        with self.assertRaises(self.render.Failed):
+            self.render._kind(b"<html>not found</html>")
+        self.assertEqual(self.render._kind(png_bytes(10, 10)), "image/png")
 
     def test_png_dimensions_are_read_too(self):
         from src import preflight
         self.assertEqual(preflight.image_size(png_bytes(1024, 768)), (1024, 768))
         self.assertEqual(preflight.image_size(jpeg_bytes(1200, 900)), (1200, 900))
+
+    def test_a_browser_that_will_not_start_costs_only_the_pictures(self):
+        from src import pipeline_memes
+        ideas, problems = [{"template_id": "1", "boxes": ["a", "b"]}], []
+        broken = mock.MagicMock(side_effect=RuntimeError("chromium missing"))
+        self.assertEqual(pipeline_memes._render(ideas, problems, draw=broken), {})
+        self.assertIn("no meme could be drawn", problems[0])
+        self.assertNotIn("drawn", ideas[0])
+
+    def test_drawn_memes_are_marked_and_the_rest_noted(self):
+        from src import pipeline_memes
+        ideas, problems = [{"x": 1}, {"x": 2}], []
+        fake = lambda ideas, folder: ({1: folder / "meme-1.jpg"}, ["could not draw idea 2 (too long)"])
+        images = pipeline_memes._render(ideas, problems, draw=fake)
+        self.assertEqual(list(images), [1])
+        self.assertTrue(ideas[0]["drawn"])
+        self.assertNotIn("drawn", ideas[1])
+        self.assertEqual(problems, ["could not draw idea 2 (too long)"])
+
+    def test_images_stay_out_of_the_repository(self):
+        from src import pipeline_memes
+        seen = {}
+        def fake(ideas, folder):
+            seen["folder"] = folder
+            return {}, []
+        pipeline_memes._render([{"x": 1}], [], draw=fake)
+        self.assertNotIn(ROOT, Path(seen["folder"]).resolve().parents)
+
+    # --- what arrives on Telegram ---
+
+    def sent(self, images, refuse=()):
+        from datetime import date
+        from src import notify
+        idea = {"trend": "Postgres 19 ships a new planner", "where": "tech", "pool": "tech",
+                "template": "Drake Hotline Bling", "maker": "https://imgflip.com/memegenerator/181913649",
+                "boxes": ["Reading the query plan", "Adding an index and hoping"],
+                "caption": "Every DBA, eventually.\n\n#programmerhumor", "why": "We all do it."}
+        ideas = [idea, {**idea, "template": "Always Has Been"}]
+        with mock.patch.object(notify, "_post", side_effect=lambda m, d, f=None: m not in refuse) as post:
+            notify.meme_ideas(ideas, [], date(2026, 11, 2), [], images)
+        return [(c.args[0], c.args[1]) for c in post.call_args_list]
+
+    def image_file(self):
+        import tempfile
+        path = Path(tempfile.mkdtemp()) / "meme-1.jpg"
+        path.write_bytes(jpeg_bytes(1080, 1080))
+        return path
+
+    def test_a_drawn_meme_arrives_as_a_file_then_its_caption_alone(self):
+        calls = self.sent({1: self.image_file()})
+        self.assertEqual([m for m, _ in calls], ["sendMessage", "sendDocument", "sendMessage", "sendMessage"])
+        self.assertIn("Reading the query plan", calls[1][1]["caption"])
+        self.assertEqual(calls[2][1]["text"], "Every DBA, eventually.\n\n#programmerhumor")
+        self.assertNotIn("parse_mode", calls[2][1])
+        self.assertIn("<pre>", calls[3][1]["text"])                     # the undrawn one, as text
+
+    def test_a_file_telegram_refuses_falls_back_to_the_idea_as_text(self):
+        calls = self.sent({1: self.image_file()}, refuse=("sendDocument",))
+        self.assertIn("<pre>", calls[2][1]["text"])
+        self.assertIn("Reading the query plan", calls[2][1]["text"])
+
+
+class FlirtCards(unittest.TestCase):
+    """Tech, but make it personal: a line about love anyone gets, with a tech double meaning."""
+
+    def setUp(self):
+        from src import flirt
+        self.flirt = flirt
+        self.a = {"id": "rate-limit", "term": "RATE LIMIT", "domain": "web", "meaning": "a cap on requests"}
+        self.b = {"id": "timeout", "term": "TIMEOUT", "domain": "networking", "meaning": "giving up after a wait"}
+
+    def replies(self, *answers):
+        import json
+        Reply = self.flirt.llm.Reply
+        queue = iter(Reply(None, "HTTP 429") if a is None else Reply(a if isinstance(a, str) else json.dumps(a))
+                     for a in answers)
+        return mock.patch.object(self.flirt.llm, "complete", side_effect=lambda *a, **k: next(queue))
+
+    def batch(self, *answers, concepts=None):
+        with mock.patch.object(self.flirt, "unused_concepts", return_value=concepts or [self.a, self.b]), \
+                mock.patch.object(self.flirt.random, "shuffle"), self.replies(*answers):
+            return self.flirt.generate_batch(set(), size=12)
+
+    @staticmethod
+    def line(text, term):
+        return {"text": text, "terms": [term]}
+
+    @staticmethod
+    def scores(*marks):
+        return {"scores": [{"n": n, "score": s, "note": f"note {n}"} for n, s in enumerate(marks, 1)]}
+
+    def test_the_brief_asks_for_a_flirty_double_meaning_anyone_gets(self):
+        text = self.flirt._PROMPT.format(term="404", meaning="not found")
+        for words in ("double meaning", "works without knowing what 404 is", "Stay in romance",
+                      "under 120 characters", "404, not found", '{"skip": true}'):
+            self.assertIn(words, text)
+
+    def test_a_short_pickup_line_passes_and_an_essay_does_not(self):
+        concept = {"id": "404", "term": "404", "domain": "web", "meaning": "not found"}
+        self.assertTrue(self.flirt.validate("I've searched everywhere for someone like you. 404, not found.", concept))
+        essay = ("Long-distance friendship is just REPLICATION with high latency. You think you're in sync "
+                 "until you realize you're two life updates behind, and then it is far too late.")
+        with self.assertRaises(self.flirt.Rejected):
+            self.flirt.validate(essay, {**concept, "term": "REPLICATION"})
+
+    def test_the_editor_keeps_the_best_first_and_drops_what_needs_explaining(self):
+        good = self.line("Five texts in thirty seconds? Babe, you've hit my RATE LIMIT.", "RATE LIMIT")
+        weak = self.line("Our love was a TIMEOUT in a distributed consensus protocol, you see.", "TIMEOUT")
+        drafts, rejects = self.batch(good, weak, self.scores(8, 3))
+        self.assertEqual([d["concept"] for d in drafts], ["rate-limit"])
+        self.assertEqual(drafts[0]["score"], 8)
+        self.assertTrue(any("editor 3/10" in r for r in rejects))
+
+    def test_kept_cards_go_out_best_first(self):
+        a = self.line("Five texts in thirty seconds? Babe, you've hit my RATE LIMIT.", "RATE LIMIT")
+        b = self.line("You took three days to reply, so we hit a TIMEOUT. I've moved on.", "TIMEOUT")
+        drafts, _ = self.batch(a, b, self.scores(6, 9))
+        self.assertEqual([d["concept"] for d in drafts], ["timeout", "rate-limit"])
+
+    def test_without_an_editor_the_batch_is_kept_as_drafted(self):
+        a = self.line("Five texts in thirty seconds? Babe, you've hit my RATE LIMIT.", "RATE LIMIT")
+        b = self.line("You took three days to reply, so we hit a TIMEOUT. I've moved on.", "TIMEOUT")
+        drafts, _ = self.batch(a, b, None)
+        self.assertEqual([d["concept"] for d in drafts], ["rate-limit", "timeout"])
+
+    def test_a_concept_the_model_sets_aside_is_never_tried_again(self):
+        from src import queue
+        b = self.line("You took three days to reply, so we hit a TIMEOUT. I've moved on.", "TIMEOUT")
+        drafts, rejects = self.batch({"skip": True}, b, self.scores(9))
+        self.assertEqual([(d["concept"], d.get("status", "pending")) for d in drafts],
+                         [("timeout", "pending"), ("rate-limit", "skipped")])
+        entries = queue.add([], drafts)
+        self.assertEqual(queue.waiting(entries), 1)                       # a set-aside concept never goes out
+        self.assertIn("rate-limit", queue.used_concept_ids(entries))      # nor is it drafted again
+        self.assertEqual(queue.next_card(entries)["concept"], "timeout")
+
+    def test_waiting_cards_can_be_retired_and_their_concepts_go_back(self):
+        from src import queue
+        entries = [{"concept": "a", "status": "pending"}, {"concept": "b", "status": "sent"},
+                   {"concept": "c", "status": "approved"}]
+        self.assertEqual(queue.retire_waiting(entries, "new brief"), 2)
+        self.assertEqual(queue.waiting(entries), 0)
+        self.assertEqual(queue.used_concept_ids(entries), {"b"})
+        self.assertEqual(entries[0]["expired_reason"], "new brief")
+
+    def test_cards_can_be_drafted_on_their_own(self):
+        from src import draft_cards
+        entries = [{"concept": "a", "status": "sent"}]
+        with mock.patch.object(draft_cards.queue, "load", return_value=entries), \
+                mock.patch.object(draft_cards.queue, "save") as save, \
+                mock.patch.object(draft_cards, "_refill_if_low") as refill:
+            self.assertEqual(draft_cards.main(), 0)
+        refill.assert_called_once_with(entries)
+        save.assert_called_once_with(entries)
 
 
 WORKFLOWS = ROOT / ".github" / "workflows"
@@ -2072,9 +2179,40 @@ class MemesOnTheirOwn(unittest.TestCase):
                 run = steps_of(name, job)[step]["run"]
                 self.assertLess(run.index("git pull --rebase origin main"), run.index("git push"))
 
-    def test_asking_for_memes_does_not_run_the_test_suite(self):
+    def test_asking_for_memes_or_cards_does_not_run_the_test_suite(self):
         triggers = workflow("tests.yml").get("on") or workflow("tests.yml").get(True)
         self.assertIn(".github/run-memes", triggers["push"]["paths-ignore"])
+        self.assertIn(".github/run-drafts", triggers["push"]["paths-ignore"])
+
+    def test_the_meme_run_has_a_browser_to_draw_with(self):
+        install = steps_of("memes.yml", "memes")["Install dependencies"]["run"]
+        self.assertIn("playwright install --with-deps chromium", install)
+
+    def test_no_workflow_hands_out_an_imgflip_key(self):
+        # The memes are drawn here now; Imgflip is only where the blank pictures come from.
+        for path in sorted(WORKFLOWS.glob("*.yml")):
+            self.assertNotIn("IMGFLIP_API_KEY", path.read_text(encoding="utf-8"), path.name)
+
+
+class CardsOnTheirOwn(unittest.TestCase):
+    """cards-draft-now: drafting without a build, safe beside the daily build."""
+
+    def test_it_starts_from_the_actions_tab_or_from_a_commit(self):
+        triggers = workflow("cards.yml").get("on") or workflow("cards.yml").get(True)
+        self.assertIn("workflow_dispatch", triggers)
+        self.assertEqual(triggers["push"]["paths"], [".github/run-drafts"])
+        self.assertTrue((ROOT / ".github" / "run-drafts").is_file())
+
+    def test_it_never_runs_at_the_same_time_as_the_daily_build(self):
+        self.assertEqual(workflow("cards.yml")["concurrency"]["group"], workflow("build.yml")["concurrency"]["group"])
+
+    def test_it_commits_the_queue_and_nothing_else(self):
+        steps = steps_of("cards.yml", "cards")
+        commit = steps["Commit the queue"]["run"]
+        self.assertIn("git add state/flirt_queue.json", commit)
+        self.assertLess(commit.index("git pull --rebase origin main"), commit.index("git push"))
+        self.assertEqual(steps["Draft cards"]["run"], "python -m src.draft_cards")
+        self.assertIn("GEMINI_API_KEY", steps["Draft cards"]["env"])
 
 
 class FreeToRun(unittest.TestCase):
@@ -2090,8 +2228,8 @@ class FreeToRun(unittest.TestCase):
     FREE_SERVICES = {
         "generativelanguage.googleapis.com": "Gemini API free tier; models held to FREE_GEMINI",
         "api.groq.com": "Groq free plan, no card; optional; models held to FREE_GROQ",
-        "api.imgflip.com": "top templates and plain captions are free; the paid features are barred below",
-        "imgflip.com": "a link to Imgflip's editor",
+        "i.imgflip.com": "the blank meme templates, from Imgflip's public image host",
+        "imgflip.com": "a link to Imgflip's editor, for remaking a meme by hand",
         "api.telegram.org": "Telegram Bot API",
         "trends.google.com": "public daily RSS feed",
         "hn.algolia.com": "public Hacker News search",
@@ -2137,12 +2275,14 @@ class FreeToRun(unittest.TestCase):
             with self.subTest(file=path.name):
                 self.assertIsNone(re.search(self.PAID_IMGFLIP, path.read_text(encoding="utf-8")))
 
-    def test_imgflip_is_sent_the_template_and_the_text_and_nothing_else(self):
-        from src import imgflip
-        for boxes in (["a", "b"], ["a", "b", "c"]):
-            fields = set(imgflip._form({"template_id": "1", "boxes": boxes}))
-            self.assertTrue(all(f == "template_id" or f in ("text0", "text1") or f.endswith("][text]") for f in fields), fields)
-        self.assertTrue(imgflip.API.endswith("/caption_image"))
+    def test_imgflip_is_only_where_the_blank_pictures_come_from(self):
+        # No account, no key, no API call: the memes are drawn here.
+        from urllib.parse import urlsplit
+        from src import meme_render
+        from src.meme_formats import FORMATS
+        self.assertEqual(meme_render.IMAGE_HOST, "i.imgflip.com")
+        self.assertEqual({urlsplit(f.image).hostname for f in FORMATS}, {"i.imgflip.com"})
+        self.assertFalse((ROOT / "src" / "imgflip.py").exists())
 
     def test_every_job_runs_on_the_free_standard_runner(self):
         # Standard runners are free on a public repository; larger ones never are.

@@ -45,8 +45,14 @@ BANNED = re.compile(
 # The line must read as a metaphor about a person, not as documentation.
 PERSONAL = re.compile(r"\b(she|he|they|her|him|them|you|your|my|me|i|we|us)\b", re.IGNORECASE)
 
-MIN_CHARS, MAX_CHARS = 60, 190
-MAX_LINES = 4
+# A pickup line can be thirty characters; a card that runs past about 140 has
+# stopped being a line and started explaining. The brief asks for under 120.
+MIN_CHARS, MAX_CHARS = 25, 150
+MAX_LINES = 3
+
+# The editor's mark, out of 10, below which a drafted card is dropped and its
+# concept left for another day.
+MIN_SCORE = 6
 
 # A sentence ends at terminal punctuation followed by a space or the end of the
 # line. Counting full stops instead read "...", ".gitignore" and "v1.5" as
@@ -88,6 +94,14 @@ class BudgetSpent(Exception):
     """The drafting time budget ran out. Not a rejection: the concept was never tried."""
 
 
+class Skipped(Rejected):
+    """The model said the concept cannot carry a flirty line anyone would get.
+
+    Taken at its word: the concept is set aside for good, not retried in
+    every batch with the same result.
+    """
+
+
 def load_concepts() -> list[dict]:
     return json.loads(CONCEPTS.read_text(encoding="utf-8"))
 
@@ -96,30 +110,53 @@ def unused_concepts(used_ids: set[str]) -> list[dict]:
     return [c for c in load_concepts() if c["id"] not in used_ids]
 
 
-_PROMPT = """Write a short, clever card for a tech-humour Instagram account.
-
-It uses one real programming concept as a metaphor for an ordinary human
-situation -- a relationship, a friendship, a job, growing up. The joke only
-works if the technical meaning is accurate, so the metaphor must genuinely
-match how the concept behaves.
+# The first brief asked for "a metaphor for an ordinary human situation" and
+# got careful little essays -- about therapy, house plants and DEEP COPY -- that
+# only made sense once the caption had explained the tech. This one asks for a
+# line about love that works without the tech, with the tech as a second layer.
+_PROMPT = """Write one card for @genphile.meme's "tech, but make it personal" series: a flirty, cheeky
+or heartbroken line about love, with a double meaning. Anyone reads it as a relationship line;
+a programmer also gets a second, sharper meaning from the tech term.
 
 CONCEPT: {term}
 WHAT IT ACTUALLY MEANS: {meaning}
 
-RULES:
-- 1 to 3 short sentences. Under 180 characters total.
-- Use the exact term "{term}" once, in capitals.
-- The metaphor must be true to the technical meaning. That is the point.
-- Wry and knowing, never crude, never bitter, never insulting anyone.
-- Never generalise about a gender or group.
-- No emoji, no hashtags, no quotation marks around the whole line.
+What makes it land:
+- The relationship half works without knowing what {term} is. The tech meaning is the bonus
+  layer, and it must be accurate.
+- Stay in romance: crushes, dates, texting, situationships, exes, "what are we". Not friendship,
+  therapy, work, chores, pets or plants.
+- Spoken, like a pickup line, a confession, a 2am text or a breakup line. Say "you" and "me".
+- Short: one or two sentences, under 120 characters. The term lands near the end, like a
+  punchline.
+- Cheeky, never crude: nothing sexual, no body talk, no insults, nothing about a gender or group.
+- Use the exact term "{term}" once, in capitals. No emoji, no hashtags.
 
-GOOD EXAMPLE (for FOREIGN KEY):
-She was my PRIMARY KEY. Unique, irreplaceable. Then she became a FOREIGN KEY in someone else's table.
+EXAMPLES
+404: I've searched everywhere for someone like you. 404, not found.
+RATE LIMIT: Five texts in thirty seconds? Babe, you've hit my RATE LIMIT.
+MERGE CONFLICT: We both rewrote the same line of our story. Classic MERGE CONFLICT.
+TIMEOUT: You took three days to reply, so we hit a TIMEOUT. I've moved on.
+PRIMARY KEY: A million rows in this table, and you're still my PRIMARY KEY.
 
-Return strict JSON, no markdown fence:
+If {term} cannot carry a line like these that anyone would get, reply {{"skip": true}}.
+
+Otherwise return strict JSON, no markdown fence:
 {{"text": "<the line>", "terms": ["{term}"]}}
 """
+
+_EDITOR = """You edit the "tech, but make it personal" cards of a meme page. Each is a flirty or
+heartbroken relationship line with a tech double meaning. Score each from 1 to 10:
+
+- 8 to 10: anyone gets the relationship joke at once, and a developer gets a sharp second meaning.
+- 5 to 7: works, but needs a second read, or the double meaning is weak.
+- 1 to 4: needs the tech explained to make sense; not about romance; reads like documentation;
+  wordy; or the tech is wrong.
+
+{items}
+
+Reply with JSON only, one score for every card, in order:
+{{"scores": [{{"n": 1, "score": 7, "note": "a few words"}}]}}"""
 
 
 def validate(text: str, concept: dict) -> str:
@@ -166,6 +203,8 @@ def generate(concept: dict, attempts: int = 3, deadline: float | None = None) ->
         except json.JSONDecodeError:
             reasons.append("non-JSON reply")
             continue
+        if isinstance(parsed, dict) and parsed.get("skip"):
+            raise Skipped(f"{concept['id']}: no line about love anyone would get")
         try:
             text = validate(parsed.get("text", ""), concept)
         except Rejected as exc:
@@ -203,7 +242,7 @@ def generate_batch(
 
     deadline = time.monotonic() + budget_s if budget_s is not None else None
     random.shuffle(pool)
-    out, rejects = [], []
+    out, skipped, rejects = [], [], []
     for concept in pool:
         if len(out) >= size:
             break
@@ -216,11 +255,54 @@ def generate_batch(
             # The same model would fail every remaining concept the same way.
             rejects.append(str(exc))
             break
+        except Skipped as exc:
+            rejects.append(str(exc))
+            skipped.append({"concept": concept["id"], "term": concept["term"], "domain": concept["domain"],
+                            "text": "", "terms": [], "status": "skipped"})
         except Rejected as exc:
             rejects.append(str(exc))
 
-    log.info("drafted %d candidates, %d concepts gave no usable line", len(out), len(rejects))
-    return out, rejects
+    kept = review(out, rejects)
+    log.info("drafted %d, kept %d after the editor, %d concepts set aside, %d gave no usable line",
+             len(out), len(kept), len(skipped), len(rejects))
+    # Set-aside concepts go in the queue too, marked, so no later batch spends a
+    # call on them again. They never become cards.
+    return kept + skipped, rejects
+
+
+def review(drafts: list[dict], rejects: list[str]) -> list[dict]:
+    """The drafts the editor would publish, scored, best first.
+
+    One call scores the whole batch. A line that needs the tech explained, or
+    is not about love, is dropped, and its concept stays in the bank for a
+    later batch. Without a verdict the batch is kept as drafted: an editor
+    outage must not cost a fortnight of cards.
+    """
+    if not drafts:
+        return []
+    items = "\n".join(f'Card {n}: "{d["text"]}"' for n, d in enumerate(drafts, 1))
+    reply = llm.complete(_EDITOR.format(items=items), temperature=0.2, max_tokens=4096)
+    try:
+        if not reply.text:
+            raise ValueError(reply.error or "no reply")
+        body = reply.text.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+        rows = json.loads(body)["scores"]
+        by_n = {int(r["n"]): (float(r["score"]), str(r.get("note", ""))[:120]) for r in rows}
+        if set(by_n) != set(range(1, len(drafts) + 1)):
+            raise ValueError(f"scored {len(by_n)} of {len(drafts)}")
+    except (ValueError, TypeError, KeyError, AttributeError) as exc:
+        log.warning("no editor's verdict on the cards (%s); keeping them as drafted", exc)
+        return drafts
+
+    kept = []
+    for n, d in enumerate(drafts, 1):
+        score, note = by_n[n]
+        if score >= MIN_SCORE:
+            kept.append({**d, "score": score})
+        else:
+            rejects.append(f"{d['concept']}: editor {score:g}/10 ({note}): {d['text'][:80]}")
+    kept.sort(key=lambda d: -d["score"])        # the queue goes out best first
+    return kept
 
 
 def caption(entry: dict) -> str:

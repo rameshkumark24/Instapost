@@ -196,10 +196,11 @@ FLIRT_HASHTAGS = [
     "#programming", "#softwareengineer", "#codingmemes", "#techhumor",
 ]
 
-# --- meme ideas -------------------------------------------------------------
-# The third segment: ideas, not cards. Every idea is a joke about developer
-# life, hung on something people are talking about today, on a template they
-# already recognise. You make the one you like in Imgflip and post it yourself.
+# --- memes -------------------------------------------------------------------
+# The third segment. Every meme is a joke about developer life, hung on
+# something people are talking about today, on a format they already know --
+# drawn here, ready to post. The formats themselves, and where every word
+# goes on each, are in meme_formats.py.
 
 # How many ideas come from each pool: today's tech news (the stories the news
 # build scored), and searches trending outside tech, turned into a dev joke.
@@ -222,28 +223,21 @@ MEME_TECH_SOURCES = {"hn", "lobsters", "devto", "rss"}
 # 0.20 and under) lift a story that is already on topic; alone they let
 # "cards are released and resold" pass for tech news.
 MEME_MIN_FIT = 0.25
-MEME_ATTEMPTS = 2                   # model calls a day before giving up
-MEME_TEMPLATE_POOL = 40             # Imgflip's most-captioned templates on offer
-MEME_MAX_BOXES = 3                  # past three text boxes the joke gets lost
-# A two-box template reads top then bottom, or first panel then second, and a
-# model gets that right. A three-box one labels people or things, and Imgflip
-# puts the labels on in an order the model cannot see: the first real drawing
-# of Distracted Boyfriend had "Junior devs" on the woman in red and the joke
-# backwards. So a three-box template is offered only once its order has been
-# read off a real drawing, and the prompt spells that order out.
-# Add one by drawing it, looking, and writing down what each box landed on.
-MEME_BOX_ROLES = {
-    "112126428": (                  # Distracted Boyfriend, checked 10 Oct 2026
-        "the tempting new thing (the woman in red, on the left)",
-        "who is being tempted (the boyfriend, in the middle)",
-        "what is being neglected (the girlfriend, on the right)",
-    ),
-}
-MEME_MIN_WIDTH = 400                # narrower templates blur when Instagram scales them up
-MEME_BOX_MAX = 70                   # characters per text box
-MEME_CAPTION_MAX = 300              # before hashtags
+MEME_ATTEMPTS = 2                   # writer calls a day before giving up
+
+# The writer drafts more than the day needs -- twice each pool's share, plus
+# one -- and the editor's scores pick the day's memes from them. GOOD is what
+# fills a pool's share first; below FLOOR a meme goes out only on a day that
+# would otherwise have none, and a weak trend joke gives its place to a strong
+# one on the news.
+MEME_CANDIDATES_PER_IDEA = 2
+MEME_GOOD_SCORE = 6
+MEME_FLOOR_SCORE = 4
+
+MEME_CAPTION_MAX = 200              # before hashtags: a second, smaller laugh, not an essay
 MEME_TREND_COOLDOWN_DAYS = 7        # a trend that runs all week gets one meme
-MEME_TEMPLATE_COOLDOWN_DAYS = 3
+MEME_TEMPLATE_COOLDOWN_DAYS = 3     # a format used this week is not offered again yet
+MEME_MIN_FORMATS = 10               # ...unless that would leave fewer than this
 MEME_LOG_DAYS = 30
 
 MEME_HASHTAGS = ["#programmerhumor", "#techmemes", "#codingmemes", "#devlife", "#memes"]

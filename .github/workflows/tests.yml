@@ -12,6 +12,7 @@ on:
       - "state/**"
       - "*.html"
       - ".github/run-memes"   # only asks for a batch of memes
+      - ".github/run-drafts"  # only asks for a batch of cards
   pull_request:
   workflow_dispatch:
 

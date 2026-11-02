@@ -64,7 +64,7 @@ Open `dist/news/card.jpg` and `dist/flirt/card.jpg`. If they look right, the
 clone is complete and correct.
 
 Run the tests before changing anything:
-`.venv/Scripts/python -m unittest discover -s tests` (224 tests). The publisher's
+`.venv/Scripts/python -m unittest discover -s tests` (239 tests). The publisher's
 own 24 tests need Node 22+: `cd worker` then `node --test`.
 
 **A local run only messages Telegram if you give it the keys.** Without
@@ -105,7 +105,6 @@ else — never into a chat window, a screenshot, a file, or a commit.
 | `TG_CHAT` | Yes | Telegram, [@userinfobot](https://t.me/userinfobot) — send it anything and it replies with your id |
 | `GEMINI_API_KEY` | Optional | [aistudio.google.com](https://aistudio.google.com), Get API key (free tier) |
 | `GROQ_API_KEY` | Optional | [console.groq.com](https://console.groq.com) — an alternative to Gemini |
-| `IMGFLIP_API_KEY` | Optional | [imgflip.com/api-settings](https://imgflip.com/api-settings) — create a new key; the old one cannot be read back. Without it, memes arrive as ideas in text |
 
 Without any AI key the cards are still written, by the built-in composer. That
 is the floor, not a broken state: the build never fails for want of a key.
@@ -145,14 +144,18 @@ Read RECOVER.md, README.md and SETUP.md first.
 Current mode: hand-posting. GitHub Actions builds two 1080x1350 cards a day
 (news + tech-as-romance) and Telegram sends each as a file plus the caption as
 a separate message. I post them myself on @genphile.meme, about 2 minutes a day.
-A third segment sends three meme ideas, all dev jokes: two on the day's tech
-news, one on a Google trend (IN, US), on Imgflip templates. I make and post the
-ones I like. The 2-to-1 split is MEME_MIX in src/config.py. If the secret
-IMGFLIP_API_KEY is set, each idea also arrives as a finished image drawn by
-Imgflip (src/imgflip.py); without it, or when a drawing fails, as text.
+A third segment sends three finished memes, all dev jokes: two on the day's
+tech news, one on a Google trend (IN, US). A writer drafts eight on 23 measured
+formats (src/meme_formats.py), an editor call scores them, and the best are
+drawn here (src/meme_render.py), 1080 wide. No Imgflip key: its image host only
+supplies the blank templates. The 2-to-1 split is MEME_MIX in src/config.py.
+The tech-metaphor cards are flirty double-meaning lines about love, drafted to
+the brief in src/flirt.py and scored by an editor before they join the queue.
 To run only the meme step: Actions -> meme-ideas-now, or change
-.github/run-memes in a commit and push, which needs no GitHub login beyond git.
-dist/memes/ideas.json keeps what was drawn, where, and why any idea was thrown away.
+.github/run-memes in a commit and push. To draft cards: cards-draft-now, or
+.github/run-drafts. Both need no GitHub login beyond git.
+dist/memes/ideas.json keeps the day's memes, the editor's scores, and why any
+candidate was left out.
 
 Deliberate decisions, do not undo without asking me:
 - No Instagram API publishing. Meta's setup wasted an hour and I abandoned it.
@@ -171,7 +174,7 @@ tracks which have gone out; state/ledger.json burns used stories;
 state/meme_log.json keeps a trend to one meme a week. The bot pushes
 dist/ and state/ to main daily, so pull before working.
 
-Tests: 224 Python (python -m unittest discover -s tests) and 24 publisher
+Tests: 239 Python (python -m unittest discover -s tests) and 24 publisher
 (cd worker, then node --test, Node 22+).
 
 Windows notes: never pipe a commit message into git (PowerShell 5.1 adds a BOM)
@@ -188,5 +191,5 @@ Windows notes: never pipe a commit message into git (PowerShell 5.1 adds a BOM)
 - **`state/ledger.json` and `state/flirt_queue.json` are memory, not clutter.**
   Deleting them makes the bot repeat stories and cards it has already used.
 - **The repo stays public.** Private flips Actions onto a metered quota.
-- **No card anywhere.** Not on Imgflip, not on Groq, and no billing on the
-  Google project behind the Gemini key. Each is free until one is added.
+- **No card anywhere.** Not on Groq, and no billing on the Google project
+  behind the Gemini key. Each is free until one is added.

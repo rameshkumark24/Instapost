@@ -15,8 +15,8 @@ laptop, and that file is the clone-and-go guide.
 |---|---|
 | Early afternoon | GitHub Actions builds both cards and Telegram sends each one: the image as a file, then the caption as its own message |
 | Whenever suits you | Save the image, hold the caption to copy it, post on Instagram |
-| Right after | Three meme ideas about developer life: two on today's tech news, one on a trending search. With an Imgflip key each arrives as a finished image and its caption; without one, as text with a link that opens the template in Imgflip |
-| When one makes you laugh | Save the image and post it with the caption. Without a key: open its link, type the boxes, download |
+| Right after | Three finished memes about developer life, the editor's best of eight: two on today's tech news, one on a trending search. Each arrives as an image, then its caption |
+| When one makes you laugh | Save the image and post it with the caption |
 | Every couple of weeks | A batch of tech-metaphor cards is drafted; you see each one on the day it goes out |
 
 Nothing in the repo can post to Instagram on its own.
@@ -81,7 +81,6 @@ python -m unittest discover -s tests -v
 | `TG_CHAT` | yes | Your chat id from [@userinfobot](https://t.me/userinfobot) |
 | `GEMINI_API_KEY` | no | Free tier at [aistudio.google.com](https://aistudio.google.com) |
 | `GROQ_API_KEY` | no | Alternative to Gemini |
-| `IMGFLIP_API_KEY` | no | Turns meme ideas into finished images. Free account at [imgflip.com](https://imgflip.com/signup), then create a key at [imgflip.com/api-settings](https://imgflip.com/api-settings). It is shown once |
 
 Without an LLM key the deterministic composer is used, which always works. It
 is the floor, not a degraded mode.
@@ -116,14 +115,19 @@ Before the day's build has run, all three hang on search trends; after it,
 the usual two on tech news and one on a trend. Changing
 [`.github/run-memes`](.github/run-memes) in a commit and pushing starts the same run.
 
-**See why an idea was thrown away, or look at a drawing again** —
-[`dist/memes/ideas.json`](dist/memes/ideas.json) keeps the day's ideas, each
-drawing's address on Imgflip, and every reason a candidate was rejected.
+**See why a candidate was left out** —
+[`dist/memes/ideas.json`](dist/memes/ideas.json) keeps the day's memes with the
+editor's score for each, and every reason a candidate was rejected. The drawing
+is deterministic: those boxes on that format always draw the same picture.
 
-**Offer another three-box template** — draw it once, look at which box landed
-where, and add its order to `MEME_BOX_ROLES` in [`src/config.py`](src/config.py).
-Until then only two-box templates and the ones listed there are used, because
-labels on the wrong people turn the joke around.
+**Add a meme format** — measure where its boxes go on the blank template, then
+add it to [`src/meme_formats.py`](src/meme_formats.py) with what the format means
+and a worked example. Draw it once and look before trusting it: the tests check
+it is complete, not that the text lands on the right person.
+
+**Draft new tech-metaphor cards now** — Actions → cards-draft-now → Run
+workflow, or change [`.github/run-drafts`](.github/run-drafts) in a commit. It
+drafts only when fewer than ten cards are waiting, through the same editor.
 
 **Re-allow a story the ledger has burned** — delete its entry from
 `state/ledger.json`.
@@ -148,8 +152,8 @@ back to `"status": "pending"`.
 | `Instapost skipped tonight` | No story cleared the bar, or the card queue is empty | Normal on a thin news day. If it repeats, tune the scoring. |
 | `Drafting failed` | The AI model or key is not working | The message names the reason |
 | `Meme ideas failed` | No model answered, or every idea failed a check | The message still lists today's trends, so you can make one yourself |
-| `Missing today: Imgflip …` in the meme message | Imgflip refused the key, or could not draw one idea | The ideas still arrive as text. `Invalid API key` means the secret needs replacing |
-| `Meme ideas skipped` | Google Trends and Imgflip both unreachable, or every trend was off-limits | Nothing; tomorrow is a new list |
+| `Missing today: could not draw idea …` in the meme message | A blank template could not be fetched, or the text was too long for its box | That meme still arrives as text, with a link to make it in Imgflip |
+| `Meme ideas skipped` | Google Trends unreachable and no tech stories, or every trend was off-limits | Nothing; tomorrow is a new list |
 | `webfonts did not load` | Google Fonts unreachable in CI | Re-run. If it recurs, vendor the fonts into `templates/` as base64 `@font-face`. |
 | `headline is N chars, over the limit` | Compose produced over-long copy | Working as designed — it refused rather than ship a bad card. |
 

@@ -1,0 +1,58 @@
+name: cards-draft-now
+
+# Tech-metaphor cards drafted on their own, when the queue is low: the same
+# drafting and editor as the daily build, without building a news card and a
+# meme batch to get there. For after the drafting brief changes, mostly.
+#
+# Two ways to start it:
+#   - Actions tab -> cards-draft-now -> Run workflow;
+#   - change .github/run-drafts in a commit and push.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/run-drafts"]
+
+permissions:
+  contents: write
+
+# The daily build's own lock: both write state/flirt_queue.json to main.
+concurrency:
+  group: nightly-build
+  cancel-in-progress: false
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # No browser: drafting renders nothing.
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Draft cards
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+        run: python -m src.draft_cards
+
+      - name: Commit the queue
+        run: |
+          git config user.name  "instapost-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/flirt_queue.json
+          git diff --staged --quiet && echo "nothing to commit" && exit 0
+          git commit -m "cards: $(TZ=Asia/Kolkata date +%F)"
+          git pull --rebase origin main
+          git push

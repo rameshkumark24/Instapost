@@ -20,21 +20,21 @@ A second card is built the same way for the tech-metaphor account: lines are
 drafted in batches from a bank of 226 programming concepts, and the oldest one
 that has not gone out yet becomes the day's card.
 
-The third segment is ideas, not a card: three memes about developer life. Two
-hang on today's tech news -- the Hacker News, Lobsters, DEV, TechCrunch, Ars
-Technica and The Verge stories the news build has already scored -- and one on
-a search trending in India or the US,
-turned into a dev joke. Each is checked in code: a trend it was given, the
-2-to-1 split, a real Imgflip template with exactly its number of text boxes,
-and nothing about death, disaster, crime, politics or religion. Each arrives
-with its text ready to copy and a link that opens the template in Imgflip.
+The third segment is three finished memes about developer life. Two hang on
+today's tech news -- the Hacker News, Lobsters, DEV, TechCrunch, Ars Technica
+and The Verge stories the news build has already scored -- and one on a search
+trending in India or the US, turned into a dev joke.
 
-With an Imgflip API key set, each idea is also drawn: Imgflip's caption API
-puts the text on the template where its own editor would, and the finished
-image arrives as a file with its caption, like the cards. Only templates
-Instagram shows whole are offered, the image is fetched from Imgflip's image
-host and nowhere else, and an idea that cannot be drawn still arrives as text.
-Free Imgflip accounts carry a small "imgflip.com" mark.
+They are made the way a meme page makes them. A writer drafts eight candidates
+on 23 classic formats, each shown with what the format means, what goes in each
+box and a worked example; an editor, in a second call, scores them as a working
+developer would in their feed, and the best three go out -- a weak joke on a
+trend gives its place to a strong one on the news. Every meme is then drawn
+here, not by Imgflip: each format's boxes were measured on the template, so the
+text lands on the right person or panel, in one bold meme font, 1080 pixels
+wide, with the page's handle in a corner no text uses. Each is checked in code:
+a trend it was given, a real format, every box within its limit, and nothing
+about death, disaster, crime, politics or religion.
 
 **Publishing by API is built and tested but switched off.** Instagram only
 allows it through Meta's developer stack, which cost an hour of broken screens,
@@ -50,25 +50,25 @@ from, and a briefing block for a fresh assistant session.
 Nothing, and the tests hold it there (`FreeToRun` in
 [`tests/test_pipeline.py`](tests/test_pipeline.py)): every host the code
 reaches is a listed free service, every model is one confirmed free, nothing
-Imgflip bills for is ever requested, and every job runs on the standard runner.
+Imgflip bills for is ever named, and every job runs on the standard runner.
 
 | Service | Used for | Why it is free |
 |---|---|---|
 | GitHub Actions | The daily build and the tests | Standard runners on a public repository are not metered |
 | Gemini API | Writing the summary, the cards' lines and the memes | Free tier; `gemini-3.8-flash`, `gemini-3.6-flash` and `gemini-3.5-flash-lite` are "Free of charge" there |
 | Groq (optional) | A second model provider | Free plan, no card |
-| Imgflip (optional) | The template list; drawing a meme | Both are free calls. The image carries Imgflip's small mark |
+| Imgflip | The 23 blank meme templates | Public images on its image host; no account, no key |
 | Telegram | Delivery | The Bot API is free |
 | Google Trends, Hacker News, Lobsters, DEV, arXiv, GitHub search, three RSS feeds | Research | Public feeds and APIs |
-| Google Fonts | The cards' typefaces | Free |
+| Google Fonts | The cards' and memes' typefaces | Free |
 
 Three things would start a bill, and each is something only you can do:
 
 - **Turning on billing for the Google project behind the Gemini key.** The
   free tier ends where Cloud Billing begins. Google AI Studio's API keys page
   shows which plan a key is on; it should say free.
-- **Adding a card, or Premium, on Imgflip or Groq.** With no card on file
-  there is nothing for either to charge.
+- **Adding a card, or a paid plan, on Groq.** With no card on file there is
+  nothing to charge. (Imgflip is no longer an account at all.)
 - **Making the repository private.** Actions minutes are then counted against
   a monthly allowance.
 
@@ -85,10 +85,12 @@ The Cloudflare publisher in `worker/` is not deployed, so it costs nothing eithe
 | [`src/render.py`](src/render.py) | Jinja2 + Playwright → JPEG, with the safety gates |
 | [`src/ledger.py`](src/ledger.py) | Posted-URL memory, committed to git |
 | [`src/pipeline.py`](src/pipeline.py) | Orchestrates the build |
-| [`src/trends.py`](src/trends.py) | Google Trends, Imgflip templates, today's tech stories |
-| [`src/memes.py`](src/memes.py) | Meme ideas: the prompt, and every check on what comes back |
-| [`src/imgflip.py`](src/imgflip.py) | Finished memes: asks Imgflip to draw an idea, and checks what comes back |
-| [`src/pipeline_memes.py`](src/pipeline_memes.py) | Orchestrates the meme ideas |
+| [`src/trends.py`](src/trends.py) | Google Trends and today's tech stories |
+| [`src/meme_formats.py`](src/meme_formats.py) | The 23 meme formats: where every box goes, what it means, a worked example |
+| [`src/memes.py`](src/memes.py) | The writer, the editor, and every check on what comes back |
+| [`src/meme_render.py`](src/meme_render.py) | Draws each meme on its blank template, 1080 wide |
+| [`src/pipeline_memes.py`](src/pipeline_memes.py) | Orchestrates the memes |
+| [`src/draft_cards.py`](src/draft_cards.py) | Drafts tech-metaphor cards outside the daily build |
 | [`templates/card.html`](templates/card.html) | The card design |
 | [`worker/src/index.js`](worker/src/index.js) | The punctual publisher |
 

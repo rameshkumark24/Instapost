@@ -57,10 +57,27 @@ def waiting(entries: list[dict]) -> int:
 
 
 def add(entries: list[dict], drafts: list[dict]) -> list[dict]:
+    """Drafts join the queue as pending; a concept the model set aside joins as
+    "skipped", which keeps it from being drafted again and never goes out."""
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     for d in drafts:
-        entries.append({**d, "status": "pending", "drafted_at": now})
+        entries.append({**d, "status": d.get("status", "pending"), "drafted_at": now})
     return entries
+
+
+def retire_waiting(entries: list[dict], reason: str) -> int:
+    """Take every card still waiting out of the queue, giving its concept back.
+
+    For when the drafting brief changes: cards written to the old one would
+    otherwise keep going out for a fortnight. "expired" returns the concept to
+    the bank, so it can be drafted again to the new brief.
+    """
+    n = 0
+    for e in entries:
+        if e["status"] in WAITING:
+            e["status"], e["expired_reason"] = "expired", reason
+            n += 1
+    return n
 
 
 def next_card(entries: list[dict]) -> dict | None:

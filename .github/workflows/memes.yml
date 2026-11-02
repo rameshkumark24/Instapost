@@ -2,8 +2,7 @@ name: meme-ideas-now
 
 # The meme step on its own: a fresh batch without building the two cards again.
 # The daily build (build.yml) already runs it once a day; this is for "send me
-# another three" and for checking a new Imgflip key without spending a news
-# story and a tech-metaphor card to do it.
+# another three" without spending a news story and a tech-metaphor card.
 #
 # Two ways to start it:
 #   - Actions tab -> meme-ideas-now -> Run workflow;
@@ -41,15 +40,16 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      # No browser: nothing here renders a card.
+      # The browser draws the memes.
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
 
       - name: Build meme ideas
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          IMGFLIP_API_KEY: ${{ secrets.IMGFLIP_API_KEY }}
           TG_TOKEN: ${{ secrets.TG_TOKEN }}
           TG_CHAT: ${{ secrets.TG_CHAT }}
         run: python -m src.pipeline_memes

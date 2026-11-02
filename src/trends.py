@@ -1,15 +1,13 @@
-"""What people are talking about today, for the meme ideas.
+"""What people are talking about today, for the memes.
 
-Three inputs, all official and keyless:
+Two inputs, both official and keyless:
 
   * Google Trends' daily RSS, per country: the searches that spiked today;
-  * Imgflip's /get_memes: the templates captioned most over the last 30 days,
-    which is as close to "the formats people recognise right now" as any
-    public source gets;
   * today's top tech stories, which the news build has already harvested and
     scored, and leaves in dist/news/trending.json.
 
-A source that fails is logged and left out. Ideas from two sources beat none.
+The formats the memes are drawn on are not fetched: they are a fixed, measured
+set in meme_formats.py. A source that fails is logged and left out.
 """
 from __future__ import annotations
 
@@ -24,12 +22,10 @@ from pathlib import Path
 import requests
 
 from . import config as cfg
-from . import preflight
 
 log = logging.getLogger(__name__)
 
 TRENDS_URL = "https://trends.google.com/trending/rss?geo={geo}"
-TEMPLATES_URL = "https://api.imgflip.com/get_memes"
 _HT = "{https://trends.google.com/trending/rss}"
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -42,19 +38,6 @@ class Trend:
     where: str              # "IN", "US", or "tech"
     context: str = ""       # a headline saying why it is trending
     traffic: str = ""       # Google's rough search count, such as "200K+"
-
-
-@dataclass(frozen=True)
-class Template:
-    id: str
-    name: str
-    boxes: int
-    roles: tuple[str, ...] = ()     # what each box lands on, where the order is not obvious
-
-    @property
-    def maker(self) -> str:
-        """Imgflip's editor with this template loaded: type the boxes, download."""
-        return f"https://imgflip.com/memegenerator/{self.id}"
 
 
 def latin(text: str) -> bool:
@@ -90,30 +73,6 @@ def parse_trends(xml: bytes, geo: str) -> list[Trend]:
     return out[: cfg.MEME_TRENDS_PER_GEO]
 
 
-def parse_templates(payload: dict) -> list[Template]:
-    if not payload.get("success"):
-        raise ValueError("imgflip answered without success")
-    out = []
-    for m in payload["data"]["memes"]:
-        boxes, name = int(m.get("box_count", 0)), str(m["name"]).strip()
-        width, height = int(m.get("width", 0)), int(m.get("height", 0))
-        if not 2 <= boxes <= cfg.MEME_MAX_BOXES:
-            continue
-        # The meme comes out the size of its template. One Instagram would
-        # crop, or stretch from 300 pixels, is not a finished meme -- whether
-        # Imgflip draws it or you do.
-        if width < cfg.MEME_MIN_WIDTH or not preflight.ratio_ok(width, height):
-            continue
-        if cfg.MEME_SENSITIVE.search(name):
-            continue
-        # Past two boxes, only templates whose box order has been checked.
-        roles = cfg.MEME_BOX_ROLES.get(str(m["id"]), ())
-        if boxes > 2 and len(roles) != boxes:
-            continue
-        out.append(Template(id=str(m["id"]), name=name, boxes=boxes, roles=roles))
-    return out[: cfg.MEME_TEMPLATE_POOL]
-
-
 def tech_stories(today: date) -> list[Trend]:
     """Today's top tech stories, if the news build ran today and left them."""
     try:
@@ -130,8 +89,8 @@ def tech_stories(today: date) -> list[Trend]:
     ]
 
 
-def gather(today: date) -> tuple[list[Trend], list[Template], list[str]]:
-    """Every trend and template that could be fetched, and what could not."""
+def gather(today: date) -> tuple[list[Trend], list[str]]:
+    """Every trend that could be fetched, and what could not."""
     trends: list[Trend] = []
     problems: list[str] = []
     for geo in cfg.MEME_TREND_GEOS:
@@ -146,12 +105,4 @@ def gather(today: date) -> tuple[list[Trend], list[Template], list[str]]:
     tech = tech_stories(today)
     log.info("tech stories from today's news build: %d", len(tech))
     trends += tech
-
-    templates: list[Template] = []
-    try:
-        templates = parse_templates(_get(TEMPLATES_URL).json())
-        log.info("imgflip templates: %d", len(templates))
-    except Exception as exc:
-        log.warning("imgflip failed: %s", exc)
-        problems.append(f"Imgflip templates unavailable ({type(exc).__name__})")
-    return trends, templates, problems
+    return trends, problems

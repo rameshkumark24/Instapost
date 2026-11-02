@@ -1,9 +1,9 @@
-"""Daily meme ideas: trends in, three checked ideas out to Telegram.
+"""Daily memes: trends in, the editor's best three out to Telegram, drawn.
 
-Runs after the two cards, and never touches Instagram. With an Imgflip key
-each idea arrives as a finished image with its caption; without one, or for
-an idea Imgflip could not draw, it arrives as text with a link that opens the
-template in Imgflip. Either way you post the one you like.
+Runs after the two cards, and never touches Instagram. Each meme arrives as a
+finished image with its caption; one that cannot be drawn to standard arrives
+as text, with a link that opens the template in Imgflip. You post the ones
+you like.
 
 Exit codes: 0 sent, 0 deliberately skipped (and said so), 1 failed.
 """
@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import config as cfg
-from . import imgflip, memes, notify, trends
+from . import meme_render, memes, notify, trends
 
 logging.basicConfig(
     level=logging.INFO,
@@ -37,17 +37,17 @@ def main() -> int:
         log.info("meme ideas for %s", today)
 
         stage = "trends"
-        found, templates, problems = trends.gather(today)
+        found, problems = trends.gather(today)
         entries = memes.load_log()
         fresh = memes.usable(found, memes.recent(entries, "trend", cfg.MEME_TREND_COOLDOWN_DAYS, today))
-        if not fresh or not templates:
+        if not fresh:
             why = "; ".join(problems) or "no trend today was usable: each was off-limits, not in English, or used this week"
             return _skip(today, f"no meme ideas today: {why}")
 
         stage = "draft"
-        avoid = memes.recent(entries, "template_id", cfg.MEME_TEMPLATE_COOLDOWN_DAYS, today)
+        formats = memes.offered(memes.recent(entries, "template_id", cfg.MEME_TEMPLATE_COOLDOWN_DAYS, today))
         try:
-            ideas, rejects = memes.draft(fresh, templates, avoid)
+            ideas, rejects = memes.draft(fresh, formats)
         except memes.Unavailable as exc:
             # The trends are still worth having on a day the model is down.
             notify.notice("Meme ideas failed", f"No model answered ({exc}). Trending today: {_titles(fresh)}")
@@ -86,32 +86,26 @@ def main() -> int:
         return 1
 
 
-def _render(ideas: list[dict], problems: list[str]) -> dict[int, Path]:
-    """Finished images by idea number, for the ideas Imgflip could draw.
+def _render(ideas: list[dict], problems: list[str], draw=None) -> dict[int, Path]:
+    """Finished images by idea number, for the memes that could be drawn.
 
     Kept out of dist/: the images go to Telegram and nowhere else, and three a
-    day committed to git would grow the repo for nothing. Any idea that cannot
-    be drawn still goes out as text, and the day's message says why.
+    day committed to git would grow the repo for nothing. The drawing is
+    deterministic, so ideas.json is enough to draw any of them again. A meme
+    that cannot be drawn -- or a browser that will not start -- costs the day
+    nothing but the picture: the idea still goes out as text, and the day's
+    message says why.
     """
-    if not imgflip.enabled():
-        log.info("no IMGFLIP_API_KEY: ideas go out as text")
-        return {}
     folder = Path(tempfile.mkdtemp(prefix="instapost-memes-"))
-    images: dict[int, Path] = {}
-    for n, idea in enumerate(ideas, 1):
-        try:
-            data, ext, url = imgflip.render(idea)
-        except imgflip.Failed as exc:
-            log.warning("idea %d not drawn: %s", n, exc)
-            if exc.fatal:
-                problems.append(f"Imgflip drew nothing ({exc})")
-                break
-            problems.append(f"Imgflip could not draw idea {n} ({exc})")
-            continue
-        images[n] = folder / f"meme-{n}.{ext}"
-        images[n].write_bytes(data)
-        idea["drawn"] = True
-        idea["image_url"] = url
+    try:
+        images, issues = (draw or meme_render.draw)(ideas, folder)
+    except Exception as exc:
+        log.exception("drawing failed")
+        problems.append(f"no meme could be drawn ({type(exc).__name__}: {str(exc)[:100]})")
+        return {}
+    problems.extend(issues)
+    for n in images:
+        ideas[n - 1]["drawn"] = True
     return images
 
 

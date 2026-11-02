@@ -535,8 +535,9 @@
   "terms": [
    "THREAD"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-17T08:19:45+00:00"
+  "status": "expired",
+  "drafted_at": "2026-10-17T08:19:45+00:00",
+  "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
  },
  {
   "concept": "left-join",
@@ -546,8 +547,9 @@
   "terms": [
    "LEFT JOIN"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-17T08:19:45+00:00"
+  "status": "expired",
+  "drafted_at": "2026-10-17T08:19:45+00:00",
+  "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
  },
  {
   "concept": "deprecated",
@@ -557,8 +559,9 @@
   "terms": [
    "DEPRECATED"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-17T08:19:45+00:00"
+  "status": "expired",
+  "drafted_at": "2026-10-17T08:19:45+00:00",
+  "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
  },
  {
   "concept": "alert-fatigue",
@@ -568,8 +571,9 @@
   "terms": [
    "ALERT FATIGUE"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-17T08:19:45+00:00"
+  "status": "expired",
+  "drafted_at": "2026-10-17T08:19:45+00:00",
+  "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
  },
  {
   "concept": "204",
@@ -579,8 +583,9 @@
   "terms": [
    "204 NO CONTENT"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-29T10:50:20+00:00"
+  "status": "expired",
+  "drafted_at": "2026-10-29T10:50:20+00:00",
+  "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
  },
  {
   "concept": "promise",
@@ -590,8 +595,9 @@
   "terms": [
    "PROMISE"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-29T10:50:20+00:00"
+  "status": "expired",
+  "drafted_at": "2026-10-29T10:50:20+00:00",
+  "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
  },
  {
   "concept": "udp",
@@ -601,8 +607,9 @@
   "terms": [
    "UDP"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-29T10:50:20+00:00"
+  "status": "expired",
+  "drafted_at": "2026-10-29T10:50:20+00:00",
+  "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
  },
  {
   "concept": "fine-tuning",
@@ -612,8 +619,9 @@
   "terms": [
    "FINE-TUNING"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-29T10:50:20+00:00"
+  "status": "expired",
+  "drafted_at": "2026-10-29T10:50:20+00:00",
+  "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
  },
  {
   "concept": "type-error",
@@ -623,8 +631,9 @@
   "terms": [
    "TYPE ERROR"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-29T10:50:20+00:00"
+  "status": "expired",
+  "drafted_at": "2026-10-29T10:50:20+00:00",
+  "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
  },
  {
   "concept": "least-privilege",
@@ -634,7 +643,8 @@
   "terms": [
    "LEAST PRIVILEGE"
   ],
-  "status": "pending",
-  "drafted_at": "2026-10-29T10:50:20+00:00"
+  "status": "expired",
+  "drafted_at": "2026-10-29T10:50:20+00:00",
+  "expired_reason": "written to the old brief; redrafted as flirty double meanings on 2026-11-02"
  }
 ]

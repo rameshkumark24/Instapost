@@ -134,17 +134,19 @@ def _refill_if_low(entries: list[dict]) -> None:
         return
     took = _duration(time.monotonic() - started)
 
-    if not drafts:
+    cards = [d for d in drafts if d.get("status") != "skipped"]
+    queue.add(entries, drafts)          # set-aside concepts too, so they are not tried again
+    if not cards:
         # Say why. An empty queue with no message is how a retired model could
         # go unnoticed: every concept failed and nothing was ever reported.
         notify.notice("Drafting failed", f"flirt drafted nothing in {took}: {rejects[0] if rejects else 'no candidates'}")
         return
 
-    queue.add(entries, drafts)
     notify.notice(
         "New cards drafted",
-        f"{len(drafts)} drafted in {took} ({len(rejects)} concepts gave no usable line). "
-        f"One arrives each day, and you see it before anyone else does.",
+        f"{len(cards)} drafted and passed by the editor in {took} "
+        f"({len(rejects)} lines or concepts left out). "
+        f"One arrives each day, best first.",
     )
 
 

@@ -249,7 +249,7 @@
 <div class="wrap">
 
   <header>
-    <p class="eyebrow">Instapost &middot; how it runs &middot; 10 Oct 2026</p>
+    <p class="eyebrow">Instapost &middot; how it runs &middot; 2 Nov 2026</p>
     <h1>Instapost Daily</h1>
     <p class="standfirst">
       Every day this researches a tech story, writes it up, draws two finished Instagram cards, and
@@ -281,7 +281,7 @@
       </li>
       <li>
         <span class="n">3</span><span class="name">Suggest memes</span><span class="chip done">Automatic</span>
-        <span class="detail">Three memes about developer life on Imgflip's most-used templates: two on today's tech news, one on a search trending in India or the US. Anything about death, disaster, crime, politics or religion is left out before the model writes and checked again after.</span>
+        <span class="detail">A writer drafts eight memes about developer life on 23 classic formats; an editor scores them and the best three are drawn: two on today's tech news, one on a search trending in India or the US. Anything about death, disaster, crime, politics or religion is left out before the model writes and checked again after.</span>
       </li>
       <li>
         <span class="n">4</span><span class="name">Deliver to your phone</span><span class="chip done">Automatic</span>
@@ -307,8 +307,8 @@
         <thead><tr><th>Message</th><th>What it means</th><th>You do</th></tr></thead>
         <tbody>
           <tr><td class="k">A card file, then a caption</td><td>Today's card is ready to post.</td><td>Post it, or skip it</td></tr>
-          <tr><td class="k">Meme ideas, then three ideas</td><td>Today's trends, then each idea. With an Imgflip key: the finished meme as a file, then its caption. Without: the boxes to copy, a caption, and a link that opens the template.</td><td>Post the one you like</td></tr>
-          <tr><td class="k">Missing today: Imgflip &hellip;</td><td>Imgflip refused the key or could not draw an idea. That idea still arrives as text.</td><td>Nothing, unless it says &ldquo;Invalid API key&rdquo;</td></tr>
+          <tr><td class="k">Meme ideas, then three ideas</td><td>Today's trends, then each finished meme as a file, then its caption.</td><td>Post the one you like</td></tr>
+          <tr><td class="k">Missing today: could not draw &hellip;</td><td>A blank template could not be fetched, or a line was too long for its box. That meme still arrives as text.</td><td>Nothing</td></tr>
           <tr><td class="k">Meme ideas failed</td><td>No model answered, or every idea failed a check. The trends are still listed.</td><td>Make one yourself, or nothing</td></tr>
           <tr><td class="k">Instapost skipped tonight</td><td>No story cleared the bar, or the card queue ran dry.</td><td>Nothing</td></tr>
           <tr><td class="k">New cards drafted</td><td>A fresh batch of tech-metaphor lines was written, about a fortnight of cards.</td><td>Nothing</td></tr>
@@ -331,12 +331,12 @@
         <tbody>
           <tr><td class="k">News engine</td><td>Six sources, scoring for freshness, traction, topic and variety; safe fetching of the publisher's own summary; an AI summary checked for invented numbers and copied wording.</td><td>48 builds; a summary traced back to its source tweet</td></tr>
           <tr><td class="k">Tech-metaphor engine</td><td>226 concepts across ten areas of computing. Lines are drafted in batches, and the oldest one that hasn't gone out becomes the day's card.</td><td>12 drafted, delivered in order</td></tr>
-          <tr><td class="k">Meme ideas</td><td>Every idea a dev joke: two on today's tech news from Hacker News, Lobsters, DEV, TechCrunch, Ars Technica and The Verge, one on a Google trend (India, US), on Imgflip's 40 most-used templates. Checked in code: a trend it was given, the two-to-one split, a real template with its exact number of boxes, no off-limits subject, and a week before a trend comes round again.</td><td>All three steps run in order on live sources; automated tests</td></tr>
-          <tr><td class="k">Finished memes</td><td>Optional, on with one free Imgflip key. Imgflip draws each idea on its template; the image is checked for type, size and a shape Instagram shows whole, and any idea it cannot draw still arrives as text. Templates that label three things are used only once their label order has been checked on a real drawing. Free accounts carry a small &ldquo;imgflip.com&rdquo; mark.</td><td>Five real memes drawn with your key on 10 Oct and each one looked at; automated tests</td></tr>
+          <tr><td class="k">Meme ideas</td><td>Every idea a dev joke: two on today's tech news from Hacker News, Lobsters, DEV, TechCrunch, Ars Technica and The Verge, one on a Google trend (India, US), on 23 classic formats, each with its meaning, box roles and a worked example. A writer drafts eight, an editor scores them, the best three go out. Checked in code: a trend it was given, a real format with every box within its limit, no off-limits subject, and a week before a trend comes round again.</td><td>Real runs on live sources; automated tests</td></tr>
+          <tr><td class="k">Finished memes</td><td>Drawn here, not by Imgflip: every format's boxes measured on its template, one bold meme font, 1080 wide, your handle in a corner no text uses. A meme whose text would not fit is refused rather than shrunk, and arrives as text instead. No Imgflip key or account.</td><td>All 23 formats drawn and looked at, with examples and with every box at its limit; automated tests</td></tr>
           <tr><td class="k">Card design</td><td>Your template rebuilt in code: real webfonts, your handle, the technical term bolded inside the line.</td><td>Every card is measured against its own margins before it is sent</td></tr>
           <tr><td class="k">Delivery</td><td>The card as an uncompressed file, then the caption alone so one long-press copies exactly what Instagram needs.</td><td>Automated tests</td></tr>
           <tr><td class="k">Safety</td><td>Instagram's size, ratio, caption and hashtag limits checked before you ever see the card; AI text escaped, never trusted as markup; secrets never printed.</td><td>Automated tests</td></tr>
-          <tr><td class="k">Quality</td><td>224 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
+          <tr><td class="k">Quality</td><td>239 Python and 24 publisher tests on every change.</td><td>Passing on GitHub</td></tr>
           <tr><td class="k">Auto-posting</td><td>A publisher, a Meta setup assistant and a one-command deploy.</td><td>Built and tested, deliberately switched off</td></tr>
         </tbody>
       </table>
@@ -391,7 +391,7 @@
         <tbody>
           <tr><td class="k">Posts</td><td>Up to two finished cards a day, one news and one tech-metaphor, plus three meme ideas to make yourself: two on tech news, one on a trend.</td></tr>
           <tr><td class="k">Your time</td><td>About two minutes a day, and nothing else.</td></tr>
-          <tr><td class="k">Cost</td><td>&#8377;0. Every service is on a free tier, and the tests fail if the code reaches a service or a model not confirmed free. Three things would start a bill, all yours to not do: billing on the Google project behind the Gemini key, a card or Premium on Imgflip or Groq, or making the repository private.</td></tr>
+          <tr><td class="k">Cost</td><td>&#8377;0. Every service is on a free tier, and the tests fail if the code reaches a service or a model not confirmed free. Three things would start a bill, all yours to not do: billing on the Google project behind the Gemini key, a card or paid plan on Groq, or making the repository private.</td></tr>
           <tr><td class="k">Quiet days</td><td>Some days nothing is good enough. The bot says so rather than filling the slot.</td></tr>
           <tr><td class="k">Growth</td><td>This guarantees you post consistently, not that people follow. Treat the first 30 days as a test of the two formats.</td></tr>
           <tr><td class="k">Upkeep</td><td>Top up the concept bank in about seven months. Nothing expires now that no token is involved.</td></tr>
@@ -401,7 +401,7 @@
   </section>
 
   <footer>
-    <div>Instapost Daily &middot; status as of 10 Oct 2026</div>
+    <div>Instapost Daily &middot; status as of 2 Nov 2026</div>
     <div>Times are Asia/Kolkata (UTC+5:30)</div>
     <div><a href="https://github.com/rameshkumark24/Instapost">github.com/rameshkumark24/Instapost</a></div>
   </footer>

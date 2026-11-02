@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: {{ cw }}px; height: {{ ch }}px; overflow: hidden; background: #fff; }
+
+  #canvas { position: relative; width: {{ cw }}px; height: {{ ch }}px; background: #fff; overflow: hidden; }
+
+  /* The template, scaled to the canvas. Boxes are placed in percent of it, so
+     they land on the same person or panel whatever the template's size. */
+  #art { position: absolute; left: {{ ix }}px; top: {{ iy }}px; width: {{ iw }}px; height: {{ ih }}px; }
+  #art img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  .box {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .box span {
+    display: block;
+    max-width: 100%;
+    line-height: 1.08;
+    /* Whole words only: a meme word broken mid-way reads as a typo. A word too
+       long for its box shrinks the text instead, and too small fails the render. */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  /* The classic: white capitals with a black edge, readable on any photo. */
+  .outline span {
+    font-family: "Anton", Impact, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: #fff;
+    text-shadow:
+      -0.05em -0.05em 0 #000, 0 -0.05em 0 #000, 0.05em -0.05em 0 #000,
+      -0.05em 0 0 #000, 0.05em 0 0 #000,
+      -0.05em 0.05em 0 #000, 0 0.05em 0 #000, 0.05em 0.05em 0 #000,
+      0 0 0.14em rgba(0, 0, 0, 0.55);
+  }
+
+  /* On a white panel: plain black sentence case, as these formats are known. */
+  .dark span {
+    font-family: "Archivo", Arial, sans-serif;
+    font-weight: 700;
+    color: #111;
+  }
+
+  /* In whichever corner no text box reaches: the renderer picks it. */
+  .handle {
+    position: absolute;
+    {{ corner[0] }}: 14px;
+    {{ corner[1] }}: 10px;
+    font: 700 22px "Archivo", Arial, sans-serif;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 0 3px #000, 0 0 7px rgba(0, 0, 0, 0.7);
+  }
+</style>
+</head>
+<body>
+<div id="canvas">
+  <div id="art">
+    <img src="{{ image }}" alt="">
+    {% for b in boxes %}
+    <div class="box {{ b.style }}" data-max="{{ b.max_px }}" style="left: {{ b.x }}%; top: {{ b.y }}%; width: {{ b.w }}%; height: {{ b.h }}%;"><span>{{ b.text }}</span></div>
+    {% endfor %}
+  </div>
+  <div class="handle">{{ handle }}</div>
+</div>
+<script>
+  // The largest size at which every word of a box fits inside it, found by
+  // halving. Recorded per box so the renderer can refuse text that had to
+  // shrink past readable.
+  function fit() {
+    const sizes = [];
+    document.querySelectorAll('.box').forEach(box => {
+      const span = box.querySelector('span');
+      const fits = () => span.scrollWidth <= box.clientWidth && span.offsetHeight <= box.clientHeight;
+      let lo = 8, hi = Math.floor(parseFloat(box.dataset.max)), best = lo;
+      while (lo <= hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        span.style.fontSize = mid + 'px';
+        if (fits()) { best = mid; lo = mid + 1; } else { hi = mid - 1; }
+      }
+      span.style.fontSize = best + 'px';
+      sizes.push({ size: best, fits: fits() });
+    });
+    window.__fit = sizes;
+  }
+</script>
+</body>
+</html>
