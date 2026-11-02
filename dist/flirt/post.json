@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "cold-start",
-  "term": "COLD START",
-  "headline": "A first date is a classic COLD START. Without any interaction history, my prediction model defaults to a baseline of generic small talk.",
-  "caption": "A first date is a classic COLD START. Without any interaction history, my prediction model defaults to a baseline of generic small talk.\n\n—\nCOLD START: no history yet, so no useful prediction is possible.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-02",
-  "built_at": "2026-11-02T12:02:55+00:00",
+  "concept": "cron-job",
+  "term": "CRON JOB",
+  "headline": "Thinking about you every night at 2 AM isn't even a choice anymore. It's just a CRON JOB.",
+  "caption": "Thinking about you every night at 2 AM isn't even a choice anymore. It's just a CRON JOB.\n\n—\nCRON JOB: runs on a fixed schedule whether or not anyone is watching.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-03",
+  "built_at": "2026-11-02T19:25:55+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

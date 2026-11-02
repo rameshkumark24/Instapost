@@ -1,10 +1,30 @@
 {
-  "date": "2026-11-02",
+  "date": "2026-11-03",
   "stories": [
+    {
+      "title": "Anthropic clamps down on Claude’s AI video game clones",
+      "publication": "The Verge",
+      "summary": "Anthropic has updated Claude Code's system prompt to prevent the AI tool from being used to recreate existing video games, as reported by Tom's Hardware."
+    },
     {
       "title": "Building a gemini server in python",
       "publication": "Lobsters",
       "summary": ""
+    },
+    {
+      "title": "OpenAI is finally merging ChatGPT’s Chat and Work tabs",
+      "publication": "TechCrunch",
+      "summary": "OpenAI said that ChatGPT and Codex will draw usage from the same allocation pool after this change."
+    },
+    {
+      "title": "Gemma 4 in Rust on TorchTPU: Hands On With Colab",
+      "publication": "DEV",
+      "summary": "A Rust crate reads the checkpoint, runs all 35 layers of Gemma 4 E2B and drives the decode loop on one TPU v5e chip in Colab, with every operation a TorchTPU kernel and the same tokens as compiled…"
+    },
+    {
+      "title": "New York Times and other outlets sue web browser Brave over alleged content scraping",
+      "publication": "TechCrunch",
+      "summary": "The New York Times is suing privacy-focused web browser company Brave for allegedly scraping the outlet’s copyrighted and unlawfully distributing it to its own customers, like Anthropic and…"
     },
     {
       "title": "Postgres 19 is late, and it's AI's fault",
@@ -12,34 +32,14 @@
       "summary": ""
     },
     {
-      "title": "gp-grid: A Free, Open-Source TypeScript Data Grid for React, Vue, and Angular (No Paywalled Features)",
-      "publication": "DEV",
-      "summary": "An open-source data grid can look impressive with 1,000 rows and still struggle when your application..."
+      "title": "Anthropic's internal AI use, at retail prices, now exceeds its employee pay",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
-      "title": "Does AbortSignal Cancel a Node.js Database Query? 4 Drivers Tested",
-      "publication": "DEV",
-      "summary": "I let 12 Node.js clients walk away from their database queries on a 4-connection pool. The abandoned..."
-    },
-    {
-      "title": "Zero Downtime Deploy for Docker Apps, With Rollback",
-      "publication": "DEV",
-      "summary": "How a Docker deploy waits for readiness before cutover, holds the previous release for rollback, rolls back on its own, and how to rehearse it."
-    },
-    {
-      "title": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
-      "publication": "TechCrunch",
-      "summary": "Data centers are deeply unpopular. But what if we called them something else?"
-    },
-    {
-      "title": "I grepped for @ts-ignore and found zero. Then I grepped for the cast nobody bans",
-      "publication": "DEV",
-      "summary": "Every TypeScript team has a rule about @ts-ignore. Ours does too, and it works: zero occurrences..."
-    },
-    {
-      "title": "9 Commands That Leave a Coding Agent Waiting for a Keystroke, and the Fix for Each",
-      "publication": "DEV",
-      "summary": "git commit, npx, apt, ssh, psql, terraform apply, gh auth login: each can stall an AI coding agent on a prompt. The flag or env var that stops each one."
+      "title": "OpenAI pitches data center power plants as a way to protect nearby areas",
+      "publication": "The Verge",
+      "summary": "In an announcement on Monday, OpenAI says it will pilot its \"Grid Protectors Program\" at an upcoming data center in Effingham County, Georgia, where the company promises to free up to 1,000 megawatts…"
     }
   ]
 }

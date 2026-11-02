@@ -458,5 +458,20 @@
     "date": "2026-11-02",
     "trend": "apple new hardware lineup november 6",
     "template_id": "247375501"
+  },
+  {
+    "date": "2026-11-03",
+    "trend": "Anthropic's internal AI use, at retail prices, now exceeds its employee pay",
+    "template_id": "180190441"
+  },
+  {
+    "date": "2026-11-03",
+    "trend": "Building a gemini server in python",
+    "template_id": "188390779"
+  },
+  {
+    "date": "2026-11-03",
+    "trend": "Gemma 4 in Rust on TorchTPU: Hands On With Colab",
+    "template_id": "93895088"
   }
 ]

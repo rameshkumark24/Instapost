@@ -656,8 +656,9 @@
    "CRON JOB"
   ],
   "score": 10.0,
-  "status": "pending",
-  "drafted_at": "2026-11-02T17:05:13+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-02T17:05:13+00:00",
+  "sent_at": "2026-11-02T19:25:55+00:00"
  },
  {
   "concept": "single-point",
@@ -706,5 +707,101 @@
   "score": 6.0,
   "status": "pending",
   "drafted_at": "2026-11-02T17:05:13+00:00"
+ },
+ {
+  "concept": "heartbeat",
+  "term": "HEARTBEAT",
+  "domain": "devops",
+  "text": "You only text 'hey' every few hours to make sure I'm still here. That's not love, that's a HEARTBEAT.",
+  "terms": [
+   "HEARTBEAT"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T19:25:53+00:00"
+ },
+ {
+  "concept": "hard-coded",
+  "term": "HARD-CODED",
+  "domain": "code",
+  "text": "I tried to keep our breakup casual, but your name is HARD-CODED into my future.",
+  "terms": [
+   "HARD-CODED"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T19:25:53+00:00"
+ },
+ {
+  "concept": "500",
+  "term": "500 INTERNAL ERROR",
+  "domain": "web",
+  "text": "You asked why I panicked when you said 'I love you', but I can't explain it. 500 INTERNAL ERROR.",
+  "terms": [
+   "500 INTERNAL ERROR"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T19:25:53+00:00"
+ },
+ {
+  "concept": "local-minimum",
+  "term": "LOCAL MINIMUM",
+  "domain": "ml",
+  "text": "I got so comfortable with you that I stopped looking. Turns out you were just a LOCAL MINIMUM.",
+  "terms": [
+   "LOCAL MINIMUM"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T19:25:53+00:00"
+ },
+ {
+  "concept": "downtime",
+  "term": "DOWNTIME",
+  "domain": "devops",
+  "text": "Whenever I try to get close, you completely shut down. I didn't sign up for this much DOWNTIME.",
+  "terms": [
+   "DOWNTIME"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T19:25:53+00:00"
+ },
+ {
+  "concept": "boot-loop",
+  "term": "BOOT LOOP",
+  "domain": "systems",
+  "text": "Every time we try for a fresh start, we crash and reset. We're stuck in a BOOT LOOP.",
+  "terms": [
+   "BOOT LOOP"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T19:25:53+00:00"
+ },
+ {
+  "concept": "backtracking",
+  "term": "BACKTRACKING",
+  "domain": "algorithms",
+  "text": "You hit a dead end with your new match, so now you're BACKTRACKING to me?",
+  "terms": [
+   "BACKTRACKING"
+  ],
+  "score": 7.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T19:25:53+00:00"
+ },
+ {
+  "concept": "encryption",
+  "term": "ENCRYPTION",
+  "domain": "security",
+  "text": "I'm hard to read, but you're the only one with the key to my ENCRYPTION.",
+  "terms": [
+   "ENCRYPTION"
+  ],
+  "score": 6.0,
+  "status": "pending",
+  "drafted_at": "2026-11-02T19:25:53+00:00"
  }
 ]

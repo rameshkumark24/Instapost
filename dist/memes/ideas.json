@@ -1,114 +1,147 @@
 {
-  "date": "2026-11-02",
-  "built_at": "2026-11-02T16:58:07+00:00",
+  "date": "2026-11-03",
+  "built_at": "2026-11-02T19:26:04+00:00",
   "ideas": [
     {
-      "trend": "Does AbortSignal Cancel a Node.js Database Query? 4 Drivers Tested",
+      "trend": "Anthropic's internal AI use, at retail prices, now exceeds its employee pay",
       "where": "tech",
       "pool": "tech",
-      "context": "I let 12 Node.js clients walk away from their database queries on a 4-connection pool. The abandoned...",
-      "template_id": "226297822",
-      "template": "Panik Kalm Panik",
-      "maker": "https://imgflip.com/memegenerator/226297822",
+      "context": "Hacker News",
+      "template_id": "180190441",
+      "template": "They're The Same Picture",
+      "maker": "https://imgflip.com/memegenerator/180190441",
       "boxes": [
-        "The user closed their browser tab",
-        "Node triggered the AbortSignal",
-        "The DB query is still running"
+        "Running our own AI models",
+        "Paying employee salaries"
       ],
-      "caption": "The connection pool sends its regards.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Canceling a request in Node doesn't always stop the underlying database driver from hogging pool connections.",
-      "score": 9.0,
-      "editor": "Extremely specific and accurate backend pain point; format used perfectly.",
+      "caption": "the math checks out\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "highlights the astronomical costs of running internal AI infrastructure",
+      "score": 8.0,
+      "editor": "Instantly funny and hits close to home for anyone managing AI infrastructure costs.",
       "drawn": true
     },
     {
-      "trend": "Zero Downtime Deploy for Docker Apps, With Rollback",
+      "trend": "Building a gemini server in python",
       "where": "tech",
       "pool": "tech",
-      "context": "How a Docker deploy waits for readiness before cutover, holds the previous release for rollback, rolls back on its own, and how to rehearse it.",
-      "template_id": "131940431",
-      "template": "Gru's Plan",
-      "maker": "https://imgflip.com/memegenerator/131940431",
+      "context": "Lobsters",
+      "template_id": "188390779",
+      "template": "Woman Yelling At Cat",
+      "maker": "https://imgflip.com/memegenerator/188390779",
       "boxes": [
-        "Set up zero downtime deploys",
-        "Automate rollback on failure",
-        "The bad release broke the DB",
-        "The bad release broke the DB"
+        "Why are you writing a server in Python?",
+        "Because the internet told me to"
       ],
-      "caption": "Rollbacks don't un-drop columns.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Automated application rollbacks fail when the bad deployment ran breaking database migrations.",
-      "score": 9.0,
-      "editor": "Spot-on technical reality where automated rollbacks fail due to DB schema changes.",
+      "caption": "lobsters strikes again\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "poking fun at the endless hobby projects discussed on tech forums",
+      "score": 6.0,
+      "editor": "A decent smile, but 'lobsters' in the caption is a typo or obscure reference that doesn't quite land.",
       "drawn": true
     },
     {
-      "trend": "apple new hardware lineup november 6",
-      "where": "US",
-      "pool": "current",
-      "context": "Apple Isn't Done With 2026: Here's What's Still Coming",
-      "template_id": "247375501",
-      "template": "Buff Doge vs. Cheems",
-      "maker": "https://imgflip.com/memegenerator/247375501",
+      "trend": "Gemma 4 in Rust on TorchTPU: Hands On With Colab",
+      "where": "tech",
+      "pool": "tech",
+      "context": "A Rust crate reads the checkpoint, runs all 35 layers of Gemma 4 E2B and drives the decode loop on one TPU v5e chip in Colab, with every operation a TorchTPU kernel and the same tokens as compiled…",
+      "template_id": "93895088",
+      "template": "Expanding Brain",
+      "maker": "https://imgflip.com/memegenerator/93895088",
       "boxes": [
-        "1999 hardware",
-        "Landed Apollo 11 with 4 KB RAM",
-        "2026 M4 Max MacBook",
-        "Lags on a select dropdown"
+        "Running Python scripts",
+        "Writing a custom TPU kernel",
+        "Porting Gemma 4 to Rust",
+        "Running it in Google Colab for fun"
       ],
-      "caption": "Need 64GB RAM for Electron.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Modern developer hardware has astronomical specs, yet modern local web builds still struggle.",
-      "score": 7.0,
-      "editor": "Relatable Electron bloat joke, though Apollo 11 was 1969 rather than 1999.",
+      "caption": "just a simple weekend script\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "escalates from normal coding to absurdly over-engineered hobby projects",
+      "score": 4.0,
+      "editor": "Gets the format wrong. The final panel in Expanding Brain should be the most absurd/deranged option, but 'Running it in ",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "harley-davidson sprint 440",
+      "title": "newcastle vs everton",
       "where": "IN"
     },
     {
-      "title": "haiwaan movie",
+      "title": "martian meteorite",
       "where": "IN"
     },
     {
-      "title": "kyrian jacquet",
+      "title": "karen khachanov",
       "where": "IN"
     },
     {
-      "title": "netflix sonyliv new shows november",
+      "title": "motorola signature 27",
       "where": "IN"
     },
     {
-      "title": "f1 esteban ocon",
+      "title": "atalanta vs parma",
       "where": "IN"
     },
     {
-      "title": "murray state basketball",
+      "title": "monsoon",
+      "where": "IN"
+    },
+    {
+      "title": "al sadd sc vs al-ahli saudi fc standings",
+      "where": "IN"
+    },
+    {
+      "title": "shabana mahmood immigration",
+      "where": "IN"
+    },
+    {
+      "title": "harrison butker",
       "where": "US"
     },
     {
-      "title": "apple new hardware lineup november 6",
+      "title": "russell westbrook",
       "where": "US"
     },
     {
-      "title": "netflix collision course action movie",
+      "title": "deportivo - osasuna",
       "where": "US"
     },
     {
-      "title": "franklinton high school",
+      "title": "okc weather",
       "where": "US"
     },
     {
-      "title": "healthcare marketplace",
+      "title": "rocky barker third birthday celebration",
       "where": "US"
     },
     {
-      "title": "willow wind sailboat rescue pacific ocean",
+      "title": "atlantic low pressure system forecast",
       "where": "US"
+    },
+    {
+      "title": "ella langley toy story outfit",
+      "where": "US"
+    },
+    {
+      "title": "utep basketball",
+      "where": "US"
+    },
+    {
+      "title": "Anthropic clamps down on Claude’s AI video game clones",
+      "where": "tech"
     },
     {
       "title": "Building a gemini server in python",
+      "where": "tech"
+    },
+    {
+      "title": "OpenAI is finally merging ChatGPT’s Chat and Work tabs",
+      "where": "tech"
+    },
+    {
+      "title": "Gemma 4 in Rust on TorchTPU: Hands On With Colab",
+      "where": "tech"
+    },
+    {
+      "title": "New York Times and other outlets sue web browser Brave over alleged content scraping",
       "where": "tech"
     },
     {
@@ -116,32 +149,17 @@
       "where": "tech"
     },
     {
-      "title": "gp-grid: A Free, Open-Source TypeScript Data Grid for React, Vue, and Angular (No Paywalled Features)",
+      "title": "Anthropic's internal AI use, at retail prices, now exceeds its employee pay",
       "where": "tech"
     },
     {
-      "title": "Does AbortSignal Cancel a Node.js Database Query? 4 Drivers Tested",
-      "where": "tech"
-    },
-    {
-      "title": "Zero Downtime Deploy for Docker Apps, With Rollback",
-      "where": "tech"
-    },
-    {
-      "title": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
+      "title": "OpenAI pitches data center power plants as a way to protect nearby areas",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "Panik Kalm Panik: 'why it is actually worse' runs to 48 characters, limit 40",
-    "Expanding Brain: 'the most absurd way, presented as enlightenment' runs to 46 characters, limit 40",
-    "Buff Doge vs. Cheems: 'what the strong one did' runs to 58 characters, limit 40",
-    "Gru's Plan: 'step 1: the plan' runs to 38 characters, limit 36",
-    "editor 6/10 (Accurate joke about tech rebrand hype, but pretty tame.): They're The Same Picture, Data Center / AI Compute Campus",
-    "editor 8/10 (Great use of format to target fear of unnecessary AI bloat in core tools.): Anakin Padme 4 Panel, Postgres 19 is delayed for AI / To speed up queries? / To speed up queries, righ",
-    "editor 8/10 (Classic frontend engineering mistake, instant hit on the feed.): Left Exit 12 Off Ramp, Paginate the API / Render 100k rows in DOM / Me",
-    "editor 5/10 (Slightly misuses the handshake format since feature and main branches are conflicting, not uniting.): Epic Handshake, My feature branch / Main branch / 47 merge conflicts",
-    "editor 7/10 (Solid satire of Agile process creep moving towards absurdity.): Expanding Brain, Two week sprint / Four week sprint / 440 story point sprint / Never ending sprin"
+    "editor 2/10 (Factually weak/confusing—GitHub Copilot/Codex and ChatGPT are largely built on the same underlying infrastructure and sh): Epic Handshake, ChatGPT users / Codex users / Sharing the same rate limit",
+    "editor 3/10 (Retells a random news headline about geology/space instead of joking about a relatable developer experience; needs the n): Always Has Been, Wait, the rock sample is 4.1 billion years old? / Always has been"
   ]
 }
