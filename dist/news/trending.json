@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "stories": [
     {
-      "title": "Anthropic clamps down on Claude’s AI video game clones",
-      "publication": "The Verge",
-      "summary": "Anthropic has updated Claude Code's system prompt to prevent the AI tool from being used to recreate existing video games, as reported by Tom's Hardware."
-    },
-    {
-      "title": "Building a gemini server in python",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "OpenAI is finally merging ChatGPT’s Chat and Work tabs",
-      "publication": "TechCrunch",
-      "summary": "OpenAI said that ChatGPT and Codex will draw usage from the same allocation pool after this change."
-    },
-    {
-      "title": "Gemma 4 in Rust on TorchTPU: Hands On With Colab",
+      "title": "The A2A CLI and Rust: The Same Code, Three Ways to Serve It",
       "publication": "DEV",
-      "summary": "A Rust crate reads the checkpoint, runs all 35 layers of Gemma 4 E2B and drives the decode loop on one TPU v5e chip in Colab, with every operation a TorchTPU kernel and the same tokens as compiled…"
+      "summary": "A tour of the A2A CLI against Rust agents on A2A v1.0: the official Rust SDK, a plain stdin/stdout program wrapped by a2a server --exec, and an ADK coordinator on Gemini, each timed from the CLI and…"
     },
     {
-      "title": "New York Times and other outlets sue web browser Brave over alleged content scraping",
-      "publication": "TechCrunch",
-      "summary": "The New York Times is suing privacy-focused web browser company Brave for allegedly scraping the outlet’s copyrighted and unlawfully distributing it to its own customers, like Anthropic and…"
+      "title": "After 5 years, Wasp 1.0 is coming: a 6-month plan for our full-stack JS framework",
+      "publication": "DEV",
+      "summary": "The time has come: Wasp 1.0 is now officially in the works! ETA: ~6 months. Even though still..."
     },
     {
-      "title": "Postgres 19 is late, and it's AI's fault",
+      "title": "We're Building AI to Replace Ourselves. What's the Plan?",
+      "publication": "DEV",
+      "summary": "Weren't we supposed to be replaced by AI by now? Or at least work less? AI agents were supposed to..."
+    },
+    {
+      "title": "The Ubuntu 26.04 Rust sudo is not compatible with standard sudo",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Anthropic's internal AI use, at retail prices, now exceeds its employee pay",
+      "title": "Are You a Python Developer or a Python Expert? 8 Tests I Failed Hijacking Win+Shift+S in One 7,600-Line File",
+      "publication": "DEV",
+      "summary": "Most Python developers can parse a CSV, write a decorator and pip install their way out of a..."
+    },
+    {
+      "title": "The Internals of PostgreSQL",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "OpenAI pitches data center power plants as a way to protect nearby areas",
-      "publication": "The Verge",
-      "summary": "In an announcement on Monday, OpenAI says it will pilot its \"Grid Protectors Program\" at an upcoming data center in Effingham County, Georgia, where the company promises to free up to 1,000 megawatts…"
+      "title": "PostgreSQL 19's sequence replication only catches up when you tell it to",
+      "publication": "DEV",
+      "summary": "PostgreSQL 19 RC1 can replicate sequence values to a logical subscriber, closing a long-standing failover gap."
+    },
+    {
+      "title": "Postgres 19 REPACK: Built-In Online Table Bloat Cleanup",
+      "publication": "Lobsters",
+      "summary": ""
     }
   ]
 }

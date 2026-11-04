@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-05",
-    "trend": "Claude Says",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-05",
-    "trend": "We Gave AI Agents Real Tools — Then Realized “Just Ask Before Acting” Wasn’t Enough",
-    "template_id": "87743020"
-  },
-  {
-    "date": "2026-10-05",
-    "trend": "monsoon",
-    "template_id": "55311130"
-  },
-  {
     "date": "2026-10-06",
     "trend": "OpenAI \"rogue\" agent activities found on Wikimedia projects",
     "template_id": "181913649"
@@ -473,5 +458,20 @@
     "date": "2026-11-03",
     "trend": "Gemma 4 in Rust on TorchTPU: Hands On With Colab",
     "template_id": "93895088"
+  },
+  {
+    "date": "2026-11-04",
+    "trend": "After 5 years, Wasp 1.0 is coming: a 6-month plan for our full-stack JS framework",
+    "template_id": "322841258"
+  },
+  {
+    "date": "2026-11-04",
+    "trend": "We're Building AI to Replace Ourselves. What's the Plan?",
+    "template_id": "87743020"
+  },
+  {
+    "date": "2026-11-04",
+    "trend": "ramayana movie review",
+    "template_id": "135256802"
   }
 ]

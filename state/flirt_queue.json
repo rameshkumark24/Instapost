@@ -669,8 +669,9 @@
    "SINGLE POINT OF FAILURE"
   ],
   "score": 10.0,
-  "status": "pending",
-  "drafted_at": "2026-11-02T17:05:13+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-02T17:05:13+00:00",
+  "sent_at": "2026-11-04T11:53:21+00:00"
  },
  {
   "concept": "localhost",

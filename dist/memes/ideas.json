@@ -1,165 +1,130 @@
 {
-  "date": "2026-11-03",
-  "built_at": "2026-11-02T19:26:04+00:00",
+  "date": "2026-11-04",
+  "built_at": "2026-11-04T11:53:57+00:00",
   "ideas": [
     {
-      "trend": "Anthropic's internal AI use, at retail prices, now exceeds its employee pay",
+      "trend": "After 5 years, Wasp 1.0 is coming: a 6-month plan for our full-stack JS framework",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "180190441",
-      "template": "They're The Same Picture",
-      "maker": "https://imgflip.com/memegenerator/180190441",
+      "context": "The time has come: Wasp 1.0 is now officially in the works! ETA: ~6 months. Even though still...",
+      "template_id": "322841258",
+      "template": "Anakin Padme 4 Panel",
+      "maker": "https://imgflip.com/memegenerator/322841258",
       "boxes": [
-        "Running our own AI models",
-        "Paying employee salaries"
+        "We are releasing Wasp 1.0",
+        "With a solid upgrade path, right?",
+        "With a solid upgrade path, right?"
       ],
-      "caption": "the math checks out\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "highlights the astronomical costs of running internal AI infrastructure",
+      "caption": "five years of waiting in one release\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "The anxiety of upgrading a framework after half a decade of breaking changes.",
       "score": 8.0,
-      "editor": "Instantly funny and hits close to home for anyone managing AI infrastructure costs.",
+      "editor": "Uses the format twist correctly for the pain of major version bumps and missing upgrade paths.",
       "drawn": true
     },
     {
-      "trend": "Building a gemini server in python",
+      "trend": "We're Building AI to Replace Ourselves. What's the Plan?",
       "where": "tech",
       "pool": "tech",
-      "context": "Lobsters",
-      "template_id": "188390779",
-      "template": "Woman Yelling At Cat",
-      "maker": "https://imgflip.com/memegenerator/188390779",
+      "context": "Weren't we supposed to be replaced by AI by now? Or at least work less? AI agents were supposed to...",
+      "template_id": "87743020",
+      "template": "Two Buttons",
+      "maker": "https://imgflip.com/memegenerator/87743020",
       "boxes": [
-        "Why are you writing a server in Python?",
-        "Because the internet told me to"
+        "Wait for AI to take over",
+        "Write three more wrappers",
+        "Me at 3am"
       ],
-      "caption": "lobsters strikes again\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "poking fun at the endless hobby projects discussed on tech forums",
-      "score": 6.0,
-      "editor": "A decent smile, but 'lobsters' in the caption is a typo or obscure reference that doesn't quite land.",
+      "caption": "the singularity will have to wait for this sprint\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "The gap between AI hype and the reality of writing yet another boilerplate API.",
+      "score": 5.0,
+      "editor": "A bit generic; relies on the caption to add the punchline about the sprint.",
       "drawn": true
     },
     {
-      "trend": "Gemma 4 in Rust on TorchTPU: Hands On With Colab",
-      "where": "tech",
-      "pool": "tech",
-      "context": "A Rust crate reads the checkpoint, runs all 35 layers of Gemma 4 E2B and drives the decode loop on one TPU v5e chip in Colab, with every operation a TorchTPU kernel and the same tokens as compiled…",
-      "template_id": "93895088",
-      "template": "Expanding Brain",
-      "maker": "https://imgflip.com/memegenerator/93895088",
+      "trend": "ramayana movie review",
+      "where": "IN",
+      "pool": "current",
+      "context": "‘Ramayana: Rise of a Legend’ Review: India’s National Epic Gets a Fittingly Massive Cinematic Treatment",
+      "template_id": "135256802",
+      "template": "Epic Handshake",
+      "maker": "https://imgflip.com/memegenerator/135256802",
       "boxes": [
-        "Running Python scripts",
-        "Writing a custom TPU kernel",
-        "Porting Gemma 4 to Rust",
-        "Running it in Google Colab for fun"
+        "Epic cinematic budgets",
+        "Enterprise legacy codebases",
+        "Massive scope creep"
       ],
-      "caption": "just a simple weekend script\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "escalates from normal coding to absurdly over-engineered hobby projects",
-      "score": 4.0,
-      "editor": "Gets the format wrong. The final panel in Expanding Brain should be the most absurd/deranged option, but 'Running it in ",
+      "caption": "coming to a theater near your backlog\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Comparing an over-budget national epic to an endless corporate software rewrite.",
+      "score": 9.0,
+      "editor": "Instantly funny, highly specific, and the comparison to cinematic budgets hits close to home.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "newcastle vs everton",
+      "title": "maria sakkari",
       "where": "IN"
     },
     {
-      "title": "martian meteorite",
+      "title": "ramayana movie review",
       "where": "IN"
     },
     {
-      "title": "karen khachanov",
-      "where": "IN"
-    },
-    {
-      "title": "motorola signature 27",
-      "where": "IN"
-    },
-    {
-      "title": "atalanta vs parma",
-      "where": "IN"
-    },
-    {
-      "title": "monsoon",
-      "where": "IN"
-    },
-    {
-      "title": "al sadd sc vs al-ahli saudi fc standings",
-      "where": "IN"
-    },
-    {
-      "title": "shabana mahmood immigration",
-      "where": "IN"
-    },
-    {
-      "title": "harrison butker",
+      "title": "clima de hoy",
       "where": "US"
     },
     {
-      "title": "russell westbrook",
+      "title": "natalee holloway",
       "where": "US"
     },
     {
-      "title": "deportivo - osasuna",
+      "title": "luke murray",
       "where": "US"
     },
     {
-      "title": "okc weather",
+      "title": "nintendo switch zelda ocarina of time",
       "where": "US"
     },
     {
-      "title": "rocky barker third birthday celebration",
+      "title": "broward county schools",
       "where": "US"
     },
     {
-      "title": "atlantic low pressure system forecast",
-      "where": "US"
-    },
-    {
-      "title": "ella langley toy story outfit",
-      "where": "US"
-    },
-    {
-      "title": "utep basketball",
-      "where": "US"
-    },
-    {
-      "title": "Anthropic clamps down on Claude’s AI video game clones",
+      "title": "The A2A CLI and Rust: The Same Code, Three Ways to Serve It",
       "where": "tech"
     },
     {
-      "title": "Building a gemini server in python",
+      "title": "After 5 years, Wasp 1.0 is coming: a 6-month plan for our full-stack JS framework",
       "where": "tech"
     },
     {
-      "title": "OpenAI is finally merging ChatGPT’s Chat and Work tabs",
+      "title": "We're Building AI to Replace Ourselves. What's the Plan?",
       "where": "tech"
     },
     {
-      "title": "Gemma 4 in Rust on TorchTPU: Hands On With Colab",
+      "title": "The Ubuntu 26.04 Rust sudo is not compatible with standard sudo",
       "where": "tech"
     },
     {
-      "title": "New York Times and other outlets sue web browser Brave over alleged content scraping",
+      "title": "Are You a Python Developer or a Python Expert? 8 Tests I Failed Hijacking Win+Shift+S in One 7,600-Line File",
       "where": "tech"
     },
     {
-      "title": "Postgres 19 is late, and it's AI's fault",
+      "title": "The Internals of PostgreSQL",
       "where": "tech"
     },
     {
-      "title": "Anthropic's internal AI use, at retail prices, now exceeds its employee pay",
+      "title": "PostgreSQL 19's sequence replication only catches up when you tell it to",
       "where": "tech"
     },
     {
-      "title": "OpenAI pitches data center power plants as a way to protect nearby areas",
+      "title": "Postgres 19 REPACK: Built-In Online Table Bloat Cleanup",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "editor 2/10 (Factually weak/confusing—GitHub Copilot/Codex and ChatGPT are largely built on the same underlying infrastructure and sh): Epic Handshake, ChatGPT users / Codex users / Sharing the same rate limit",
-    "editor 3/10 (Retells a random news headline about geology/space instead of joking about a relatable developer experience; needs the n): Always Has Been, Wait, the rock sample is 4.1 billion years old? / Always has been"
+    "Monkey Puppet: 'the awkward situation' runs to 100 characters, limit 70",
+    "editor 4/10 (A bit wordy and feels more like general gaming Twitter than a specific developer joke.): Tuxedo Winnie The Pooh, Playing a classic game remake / Experiencing a culturally significant digital ar"
   ]
 }

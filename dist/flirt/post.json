@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "cron-job",
-  "term": "CRON JOB",
-  "headline": "Thinking about you every night at 2 AM isn't even a choice anymore. It's just a CRON JOB.",
-  "caption": "Thinking about you every night at 2 AM isn't even a choice anymore. It's just a CRON JOB.\n\n—\nCRON JOB: runs on a fixed schedule whether or not anyone is watching.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-03",
-  "built_at": "2026-11-02T19:25:55+00:00",
+  "concept": "single-point",
+  "term": "SINGLE POINT OF FAILURE",
+  "headline": "If you walk away, my whole life crashes. You're my SINGLE POINT OF FAILURE.",
+  "caption": "If you walk away, my whole life crashes. You're my SINGLE POINT OF FAILURE.\n\n—\nSINGLE POINT OF FAILURE: the one component whose loss takes the whole system down.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-04",
+  "built_at": "2026-11-04T11:53:21+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
