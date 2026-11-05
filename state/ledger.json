@@ -551,5 +551,12 @@
   "url": "https://arxiv.org/abs/2611.05278v1",
   "source": "arxiv",
   "posted_at": "2026-11-04T11:53:17+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2611.06841v1",
+  "title": "ServerBench: How can your coding agents design specialized LLM serving systems?",
+  "url": "https://arxiv.org/abs/2611.06841v1",
+  "source": "arxiv",
+  "posted_at": "2026-11-05T11:55:38+00:00"
  }
 ]

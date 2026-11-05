@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-06",
-    "trend": "OpenAI \"rogue\" agent activities found on Wikimedia projects",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-06",
-    "trend": "Async Rust: Where does the scheduler live?",
-    "template_id": "87743020"
-  },
-  {
-    "date": "2026-10-06",
-    "trend": "nfl power rankings week 5",
-    "template_id": "55311130"
-  },
-  {
     "date": "2026-10-07",
     "trend": "ChatGPT for Teens is an ‘unacceptable risk,’ says Common Sense Media",
     "template_id": "181913649"
@@ -473,5 +458,20 @@
     "date": "2026-11-04",
     "trend": "ramayana movie review",
     "template_id": "135256802"
+  },
+  {
+    "date": "2026-11-05",
+    "trend": "Ripple-65B Preview: U.S. Open-Weight SOTA on Agentic Coding",
+    "template_id": "112126428"
+  },
+  {
+    "date": "2026-11-05",
+    "trend": "How to speed up the Rust compiler in November 2026",
+    "template_id": "181913649"
+  },
+  {
+    "date": "2026-11-05",
+    "trend": "portugal",
+    "template_id": "99683372"
   }
 ]

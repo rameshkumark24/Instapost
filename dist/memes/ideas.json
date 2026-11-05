@@ -1,130 +1,155 @@
 {
-  "date": "2026-11-04",
-  "built_at": "2026-11-04T11:53:57+00:00",
+  "date": "2026-11-05",
+  "built_at": "2026-11-05T11:58:09+00:00",
   "ideas": [
     {
-      "trend": "After 5 years, Wasp 1.0 is coming: a 6-month plan for our full-stack JS framework",
+      "trend": "Ripple-65B Preview: U.S. Open-Weight SOTA on Agentic Coding",
       "where": "tech",
       "pool": "tech",
-      "context": "The time has come: Wasp 1.0 is now officially in the works! ETA: ~6 months. Even though still...",
-      "template_id": "322841258",
-      "template": "Anakin Padme 4 Panel",
-      "maker": "https://imgflip.com/memegenerator/322841258",
+      "context": "Hacker News",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "We are releasing Wasp 1.0",
-        "With a solid upgrade path, right?",
-        "With a solid upgrade path, right?"
+        "Agentic coding AI",
+        "Me",
+        "Writing tests for the feature"
       ],
-      "caption": "five years of waiting in one release\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "The anxiety of upgrading a framework after half a decade of breaking changes.",
-      "score": 8.0,
-      "editor": "Uses the format twist correctly for the pain of major version bumps and missing upgrade paths.",
+      "caption": "AI promises magic, I still need tests.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "hype vs testing reality",
+      "score": 7.0,
+      "editor": "Good AI vs testing tension",
       "drawn": true
     },
     {
-      "trend": "We're Building AI to Replace Ourselves. What's the Plan?",
+      "trend": "How to speed up the Rust compiler in November 2026",
       "where": "tech",
       "pool": "tech",
-      "context": "Weren't we supposed to be replaced by AI by now? Or at least work less? AI agents were supposed to...",
-      "template_id": "87743020",
-      "template": "Two Buttons",
-      "maker": "https://imgflip.com/memegenerator/87743020",
+      "context": "Lobsters",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Wait for AI to take over",
-        "Write three more wrappers",
-        "Me at 3am"
+        "Waiting for rustc to finish",
+        "Switch to Go for instant compile"
       ],
-      "caption": "the singularity will have to wait for this sprint\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "The gap between AI hype and the reality of writing yet another boilerplate API.",
-      "score": 5.0,
-      "editor": "A bit generic; relies on the caption to add the punchline about the sprint.",
+      "caption": "When the compile timer is your new coworker.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "rust compile speed pain",
+      "score": 6.0,
+      "editor": "Clear format, relatable compile pain",
       "drawn": true
     },
     {
-      "trend": "ramayana movie review",
+      "trend": "portugal",
       "where": "IN",
       "pool": "current",
-      "context": "‘Ramayana: Rise of a Legend’ Review: India’s National Epic Gets a Fittingly Massive Cinematic Treatment",
-      "template_id": "135256802",
-      "template": "Epic Handshake",
-      "maker": "https://imgflip.com/memegenerator/135256802",
+      "context": "Comunicado Oficial: Obrigado, Capitão!",
+      "template_id": "99683372",
+      "template": "Sleeping Shaq",
+      "maker": "https://imgflip.com/memegenerator/99683372",
       "boxes": [
-        "Epic cinematic budgets",
-        "Enterprise legacy codebases",
-        "Massive scope creep"
+        "Minor lint warnings",
+        "Production outage due to missing semicolon"
       ],
-      "caption": "coming to a theater near your backlog\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Comparing an over-budget national epic to an endless corporate software rewrite.",
-      "score": 9.0,
-      "editor": "Instantly funny, highly specific, and the comparison to cinematic budgets hits close to home.",
+      "caption": "Semicolon strikes back.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "tiny bug causing big outage",
+      "score": 7.0,
+      "editor": "Strong contrast, instantly funny",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "maria sakkari",
+      "title": "alexandra eala",
       "where": "IN"
     },
     {
-      "title": "ramayana movie review",
+      "title": "real madrid football",
       "where": "IN"
     },
     {
-      "title": "clima de hoy",
+      "title": "portugal",
+      "where": "IN"
+    },
+    {
+      "title": "lumbini lions vs janakpur bolts standings",
+      "where": "IN"
+    },
+    {
+      "title": "tommy paul",
+      "where": "IN"
+    },
+    {
+      "title": "shillong teer result today morning",
+      "where": "IN"
+    },
+    {
+      "title": "churchill brothers vs northeast united",
+      "where": "IN"
+    },
+    {
+      "title": "weather",
       "where": "US"
     },
     {
-      "title": "natalee holloway",
+      "title": "national donut day",
       "where": "US"
     },
     {
-      "title": "luke murray",
+      "title": "baltimore weather",
       "where": "US"
     },
     {
-      "title": "nintendo switch zelda ocarina of time",
+      "title": "clima",
       "where": "US"
     },
     {
-      "title": "broward county schools",
+      "title": "arby's",
       "where": "US"
     },
     {
-      "title": "The A2A CLI and Rust: The Same Code, Three Ways to Serve It",
+      "title": "weather nyc",
+      "where": "US"
+    },
+    {
+      "title": "How to speed up the Rust compiler in November 2026",
       "where": "tech"
     },
     {
-      "title": "After 5 years, Wasp 1.0 is coming: a 6-month plan for our full-stack JS framework",
+      "title": "Ripple-65B Preview: U.S. Open-Weight SOTA on Agentic Coding",
       "where": "tech"
     },
     {
-      "title": "We're Building AI to Replace Ourselves. What's the Plan?",
+      "title": "WebMCP Attack Lab: Can an E-Shop Hijack Your AI Agent?",
       "where": "tech"
     },
     {
-      "title": "The Ubuntu 26.04 Rust sudo is not compatible with standard sudo",
+      "title": "Shlemiel the Painter Is Back: How Zig’s libc Rewrite Made SQLite Slower",
       "where": "tech"
     },
     {
-      "title": "Are You a Python Developer or a Python Expert? 8 Tests I Failed Hijacking Win+Shift+S in One 7,600-Line File",
+      "title": "Crows, Moths, and Makefiles: How 300 Megabytes of Crow DNA Explains Why a 20-Kilobyte Scar File Outsmarts a Terabyte LLM",
       "where": "tech"
     },
     {
-      "title": "The Internals of PostgreSQL",
+      "title": "Gemma 4 E2B in JAX on One TPU v5e: bf16 or 4-Bit, Python or Rust, and How It Stands Against vLLM",
       "where": "tech"
     },
     {
-      "title": "PostgreSQL 19's sequence replication only catches up when you tell it to",
+      "title": "PostgreSQL 19's pg_stat_lock only counts waits that cross deadlock_timeout",
       "where": "tech"
     },
     {
-      "title": "Postgres 19 REPACK: Built-In Online Table Bloat Cleanup",
+      "title": "How to Build Your Team's First Shared Agent",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "Monkey Puppet: 'the awkward situation' runs to 100 characters, limit 70",
-    "editor 4/10 (A bit wordy and feels more like general gaming Twitter than a specific developer joke.): Tuxedo Winnie The Pooh, Playing a classic game remake / Experiencing a culturally significant digital ar"
+    "Tuxedo Winnie The Pooh: 'the posh way to say exactly the same thing' runs to 65 characters, limit 50",
+    "editor 5/10 (A bit niche, but fits the meme template): Left Exit 12 Off Ramp, Use Zig's libc as default / Rewrite SQLite in Zig anyway / Me",
+    "editor 6/10 (Classic Gru's Plan, solid punchline): Gru's Plan, Train LLM on 1 trillion tokens / It beats humans on benchmarks / It still fails ",
+    "editor 4/10 (Misfires; the joke feels forced): Is This A Pigeon, Junior dev / A 2-hour sprint / Is this a deadline?",
+    "editor 5/10 (Simple, works if audience knows the meme): Monkey Puppet, When the whole team uses ChatGPT but you forgot to commit the generated code"
   ]
 }

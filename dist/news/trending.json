@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "stories": [
     {
-      "title": "The A2A CLI and Rust: The Same Code, Three Ways to Serve It",
-      "publication": "DEV",
-      "summary": "A tour of the A2A CLI against Rust agents on A2A v1.0: the official Rust SDK, a plain stdin/stdout program wrapped by a2a server --exec, and an ADK coordinator on Gemini, each timed from the CLI and…"
-    },
-    {
-      "title": "After 5 years, Wasp 1.0 is coming: a 6-month plan for our full-stack JS framework",
-      "publication": "DEV",
-      "summary": "The time has come: Wasp 1.0 is now officially in the works! ETA: ~6 months. Even though still..."
-    },
-    {
-      "title": "We're Building AI to Replace Ourselves. What's the Plan?",
-      "publication": "DEV",
-      "summary": "Weren't we supposed to be replaced by AI by now? Or at least work less? AI agents were supposed to..."
-    },
-    {
-      "title": "The Ubuntu 26.04 Rust sudo is not compatible with standard sudo",
+      "title": "How to speed up the Rust compiler in November 2026",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Are You a Python Developer or a Python Expert? 8 Tests I Failed Hijacking Win+Shift+S in One 7,600-Line File",
-      "publication": "DEV",
-      "summary": "Most Python developers can parse a CSV, write a decorator and pip install their way out of a..."
-    },
-    {
-      "title": "The Internals of PostgreSQL",
+      "title": "Ripple-65B Preview: U.S. Open-Weight SOTA on Agentic Coding",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "PostgreSQL 19's sequence replication only catches up when you tell it to",
+      "title": "WebMCP Attack Lab: Can an E-Shop Hijack Your AI Agent?",
       "publication": "DEV",
-      "summary": "PostgreSQL 19 RC1 can replicate sequence values to a logical subscriber, closing a long-standing failover gap."
+      "summary": "WebMCP is a proposed web standard that, at least to me, looks very promising. I already played around..."
     },
     {
-      "title": "Postgres 19 REPACK: Built-In Online Table Bloat Cleanup",
+      "title": "Shlemiel the Painter Is Back: How Zig’s libc Rewrite Made SQLite Slower",
       "publication": "Lobsters",
       "summary": ""
+    },
+    {
+      "title": "Crows, Moths, and Makefiles: How 300 Megabytes of Crow DNA Explains Why a 20-Kilobyte Scar File Outsmarts a Terabyte LLM",
+      "publication": "DEV",
+      "summary": "Why do New Caledonian crows bend wire into hooks with zero training while a trillion-parameter LLM flies straight into the same production bug zapper?"
+    },
+    {
+      "title": "Gemma 4 E2B in JAX on One TPU v5e: bf16 or 4-Bit, Python or Rust, and How It Stands Against vLLM",
+      "publication": "DEV",
+      "summary": "Gemma 4 E2B served three ways on one Cloud TPU v5e chip: a pure-JAX engine in Python, the same graph written in Rust and compiled by the libtpu that JAX loads, and vLLM, all timed by one client."
+    },
+    {
+      "title": "PostgreSQL 19's pg_stat_lock only counts waits that cross deadlock_timeout",
+      "publication": "DEV",
+      "summary": "PostgreSQL 19rc1 adds a cumulative lock-wait view, pg_stat_lock."
+    },
+    {
+      "title": "How to Build Your Team's First Shared Agent",
+      "publication": "DEV",
+      "summary": "Most teams already use AI. The problem is that everyone uses it alone. One developer has a prompt..."
     }
   ]
 }
