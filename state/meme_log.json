@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-07",
-    "trend": "ChatGPT for Teens is an ‘unacceptable risk,’ says Common Sense Media",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-07",
-    "trend": "Penguin Mail – open-source Rust email client for Linux with AI",
-    "template_id": "178591752"
-  },
-  {
-    "date": "2026-10-07",
-    "trend": "travis kelce",
-    "template_id": "55311130"
-  },
-  {
     "date": "2026-10-08",
     "trend": "Docker Agent",
     "template_id": "181913649"
@@ -473,5 +458,20 @@
     "date": "2026-11-05",
     "trend": "portugal",
     "template_id": "99683372"
+  },
+  {
+    "date": "2026-11-06",
+    "trend": "Prisma ORM 7's Rust-free query engine speeds up queries and slows down cold starts",
+    "template_id": "226297822"
+  },
+  {
+    "date": "2026-11-06",
+    "trend": "Perplexity launches its own take on AI agents for work",
+    "template_id": "100777631"
+  },
+  {
+    "date": "2026-11-06",
+    "trend": "crm",
+    "template_id": "178591752"
   }
 ]

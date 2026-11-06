@@ -1,102 +1,103 @@
 {
-  "date": "2026-11-05",
-  "built_at": "2026-11-05T11:58:09+00:00",
+  "date": "2026-11-06",
+  "built_at": "2026-11-06T11:54:30+00:00",
   "ideas": [
     {
-      "trend": "Ripple-65B Preview: U.S. Open-Weight SOTA on Agentic Coding",
+      "trend": "Prisma ORM 7's Rust-free query engine speeds up queries and slows down cold starts",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "112126428",
-      "template": "Distracted Boyfriend",
-      "maker": "https://imgflip.com/memegenerator/112126428",
+      "context": "I measured Prisma ORM 7.10.1's Rust-free client against the old Rust engine on SQLite: roughly 3x faster on repeated single-row lookups, roughly 3x slower from cold start to first query, and…",
+      "template_id": "226297822",
+      "template": "Panik Kalm Panik",
+      "maker": "https://imgflip.com/memegenerator/226297822",
       "boxes": [
-        "Agentic coding AI",
-        "Me",
-        "Writing tests for the feature"
+        "Upgraded to Prisma 7",
+        "Queries run 3x faster",
+        "Cold starts take 30 seconds"
       ],
-      "caption": "AI promises magic, I still need tests.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "hype vs testing reality",
-      "score": 7.0,
-      "editor": "Good AI vs testing tension",
+      "caption": "Engineering trade-offs in full effect.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Prisma ORM 7 dropped its Rust query engine, giving faster query execution at the cost of slower cold starts.",
+      "score": 8.0,
+      "editor": "Spot-on ORM/serverless trade-off pain point; format fits perfectly.",
       "drawn": true
     },
     {
-      "trend": "How to speed up the Rust compiler in November 2026",
+      "trend": "Perplexity launches its own take on AI agents for work",
       "where": "tech",
       "pool": "tech",
-      "context": "Lobsters",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
+      "context": "Perplexity is taking on OpenAI and Anthropic with its own work-focused AI agents.",
+      "template_id": "100777631",
+      "template": "Is This A Pigeon",
+      "maker": "https://imgflip.com/memegenerator/100777631",
       "boxes": [
-        "Waiting for rustc to finish",
-        "Switch to Go for instant compile"
+        "Product Manager",
+        "Perplexity AI agent",
+        "Is this a full stack team?"
       ],
-      "caption": "When the compile timer is your new coworker.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "rust compile speed pain",
-      "score": 6.0,
-      "editor": "Clear format, relatable compile pain",
+      "caption": "Sprint capacity just doubled on paper.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Perplexity launched work-focused AI agents to complete complex task workflows.",
+      "score": 8.0,
+      "editor": "Accurately parodies PMs overestimating AI tools; format used correctly.",
       "drawn": true
     },
     {
-      "trend": "portugal",
+      "trend": "crm",
       "where": "IN",
       "pool": "current",
-      "context": "Comunicado Oficial: Obrigado, Capitão!",
-      "template_id": "99683372",
-      "template": "Sleeping Shaq",
-      "maker": "https://imgflip.com/memegenerator/99683372",
+      "context": "CRM onboarding solutions: 5 kinds of implementation support to fast-track your ROI",
+      "template_id": "178591752",
+      "template": "Tuxedo Winnie The Pooh",
+      "maker": "https://imgflip.com/memegenerator/178591752",
       "boxes": [
-        "Minor lint warnings",
-        "Production outage due to missing semicolon"
+        "Editing prod database manually",
+        "Executing custom CRM data pipelines"
       ],
-      "caption": "Semicolon strikes back.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "tiny bug causing big outage",
-      "score": 7.0,
-      "editor": "Strong contrast, instantly funny",
+      "caption": "Corporate titles make cowboy coding sound legit.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Using enterprise CRM jargon to mask direct SQL edits on production.",
+      "score": 9.0,
+      "editor": "Very relatable dev scenario; Tuxedo Pooh format used flawlessly for corporate spin.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "alexandra eala",
+      "title": "rajasthan royals",
       "where": "IN"
     },
     {
-      "title": "real madrid football",
+      "title": "police",
       "where": "IN"
     },
     {
-      "title": "portugal",
+      "title": "sign",
       "where": "IN"
     },
     {
-      "title": "lumbini lions vs janakpur bolts standings",
+      "title": "crm",
       "where": "IN"
     },
     {
-      "title": "tommy paul",
+      "title": "nisha bhagat",
       "where": "IN"
     },
     {
-      "title": "shillong teer result today morning",
+      "title": "kerala lottery result today",
       "where": "IN"
     },
     {
-      "title": "churchill brothers vs northeast united",
+      "title": "karmabhoomi express",
       "where": "IN"
     },
     {
-      "title": "weather",
+      "title": "nyc weather",
       "where": "US"
     },
     {
-      "title": "national donut day",
+      "title": "premarket",
       "where": "US"
     },
     {
-      "title": "baltimore weather",
+      "title": "chuck grassley",
       "where": "US"
     },
     {
@@ -104,52 +105,56 @@
       "where": "US"
     },
     {
-      "title": "arby's",
+      "title": "edc orlando 2026",
       "where": "US"
     },
     {
-      "title": "weather nyc",
+      "title": "joe scarborough",
       "where": "US"
     },
     {
-      "title": "How to speed up the Rust compiler in November 2026",
+      "title": "price of oil",
+      "where": "US"
+    },
+    {
+      "title": "Claude Code was mailing your email address to every website it visited: the User-Agent leak, the 5-month system-prompt issue, and the 5-point check",
       "where": "tech"
     },
     {
-      "title": "Ripple-65B Preview: U.S. Open-Weight SOTA on Agentic Coding",
+      "title": "Blender's UI and Runtime: Much Faster Than GPUI",
       "where": "tech"
     },
     {
-      "title": "WebMCP Attack Lab: Can an E-Shop Hijack Your AI Agent?",
+      "title": "Perplexity launches its own take on AI agents for work",
       "where": "tech"
     },
     {
-      "title": "Shlemiel the Painter Is Back: How Zig’s libc Rewrite Made SQLite Slower",
+      "title": "Reflections on Rust in the LLM Age — Bryan Cantrill | Rust NYC",
       "where": "tech"
     },
     {
-      "title": "Crows, Moths, and Makefiles: How 300 Megabytes of Crow DNA Explains Why a 20-Kilobyte Scar File Outsmarts a Terabyte LLM",
+      "title": "Prisma ORM 7's Rust-free query engine speeds up queries and slows down cold starts",
       "where": "tech"
     },
     {
-      "title": "Gemma 4 E2B in JAX on One TPU v5e: bf16 or 4-Bit, Python or Rust, and How It Stands Against vLLM",
+      "title": "Claude Code sends your email address to websites",
       "where": "tech"
     },
     {
-      "title": "PostgreSQL 19's pg_stat_lock only counts waits that cross deadlock_timeout",
+      "title": "Hungary: Communist-era files released, up to 60k former agents revealed",
       "where": "tech"
     },
     {
-      "title": "How to Build Your Team's First Shared Agent",
+      "title": "An AI Testing Presentation Became the Final Push for Organizational Change at My Company",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "Tuxedo Winnie The Pooh: 'the posh way to say exactly the same thing' runs to 65 characters, limit 50",
-    "editor 5/10 (A bit niche, but fits the meme template): Left Exit 12 Off Ramp, Use Zig's libc as default / Rewrite SQLite in Zig anyway / Me",
-    "editor 6/10 (Classic Gru's Plan, solid punchline): Gru's Plan, Train LLM on 1 trillion tokens / It beats humans on benchmarks / It still fails ",
-    "editor 4/10 (Misfires; the joke feels forced): Is This A Pigeon, Junior dev / A 2-hour sprint / Is this a deadline?",
-    "editor 5/10 (Simple, works if audience knows the meme): Monkey Puppet, When the whole team uses ChatGPT but you forgot to commit the generated code"
+    "editor 5/10 (Premise is loose since web browsing agents don't fill your inbox with spam; setup doesn't quite connect.): Woman Yelling At Cat, Why is my inbox full of spam?! / I used Claude Code to browse the web",
+    "editor 5/10 (Niche graphics architecture topic; lacks a strong, punchy comedic contrast.): They're The Same Picture, Blender C++ UI engine / Modern GPU UI frameworks",
+    "editor 8/10 (Classic Rust rewrite trope executed cleanly with the exact right format.): Always Has Been, Wait, it's all Rust rewrites? / Always has been",
+    "editor 5/10 ('Server room rain' is a weirdly obscure excuse that distracts from the core CI joke.): Left Exit 12 Off Ramp, Fixing flaky CI tests / Blame server room rain / DevOps team",
+    "editor 7/10 (Funny sports-trade parody of modern Jira/Agile engineering culture.): Buff Doge vs. Cheems, Dev trades in 2016 / Traded salary for early equity / Dev trades in 2026 / Trade"
   ]
 }

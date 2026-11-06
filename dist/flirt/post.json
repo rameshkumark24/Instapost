@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "localhost",
-  "term": "LOCALHOST",
-  "headline": "I thought you felt it too, but I was just talking to LOCALHOST.",
-  "caption": "I thought you felt it too, but I was just talking to LOCALHOST.\n\n—\nLOCALHOST: this machine, talking to itself.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-05",
-  "built_at": "2026-11-05T11:55:43+00:00",
+  "concept": "cache-invalidation",
+  "term": "CACHE INVALIDATION",
+  "headline": "I kept holding onto who you used to be, but that copy is stale. Time for CACHE INVALIDATION.",
+  "caption": "I kept holding onto who you used to be, but that copy is stale. Time for CACHE INVALIDATION.\n\n—\nCACHE INVALIDATION: deciding when a stored copy is out of date and has to be thrown away.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-06",
+  "built_at": "2026-11-06T11:52:21+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

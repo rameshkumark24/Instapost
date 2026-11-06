@@ -558,5 +558,12 @@
   "url": "https://arxiv.org/abs/2611.06841v1",
   "source": "arxiv",
   "posted_at": "2026-11-05T11:55:38+00:00"
+ },
+ {
+  "key": "dev.to/slabb/claude-code-was-mailing-your-email-address-to-every-website-it-visited-the-user-agent-leak-the-12k6",
+  "title": "Claude Code was mailing your email address to every website it visited: the User-Agent leak, the 5-month system-prompt issue, and the 5-point check",
+  "url": "https://dev.to/slabb/claude-code-was-mailing-your-email-address-to-every-website-it-visited-the-user-agent-leak-the-12k6",
+  "source": "devto",
+  "posted_at": "2026-11-06T11:52:17+00:00"
  }
 ]

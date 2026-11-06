@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "stories": [
     {
-      "title": "How to speed up the Rust compiler in November 2026",
-      "publication": "Lobsters",
-      "summary": ""
+      "title": "Claude Code was mailing your email address to every website it visited: the User-Agent leak, the 5-month system-prompt issue, and the 5-point check",
+      "publication": "DEV",
+      "summary": "Claude Code put your account email in the User-Agent header of its web requests, so every server log on the agent's path harvested a scam-ready lead, and the same email ships in the system prompt of…"
     },
     {
-      "title": "Ripple-65B Preview: U.S. Open-Weight SOTA on Agentic Coding",
+      "title": "Blender's UI and Runtime: Much Faster Than GPUI",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "WebMCP Attack Lab: Can an E-Shop Hijack Your AI Agent?",
-      "publication": "DEV",
-      "summary": "WebMCP is a proposed web standard that, at least to me, looks very promising. I already played around..."
+      "title": "Perplexity launches its own take on AI agents for work",
+      "publication": "The Verge",
+      "summary": "Perplexity is taking on OpenAI and Anthropic with its own work-focused AI agents."
     },
     {
-      "title": "Shlemiel the Painter Is Back: How Zig’s libc Rewrite Made SQLite Slower",
+      "title": "Reflections on Rust in the LLM Age — Bryan Cantrill | Rust NYC",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Crows, Moths, and Makefiles: How 300 Megabytes of Crow DNA Explains Why a 20-Kilobyte Scar File Outsmarts a Terabyte LLM",
+      "title": "Prisma ORM 7's Rust-free query engine speeds up queries and slows down cold starts",
       "publication": "DEV",
-      "summary": "Why do New Caledonian crows bend wire into hooks with zero training while a trillion-parameter LLM flies straight into the same production bug zapper?"
+      "summary": "I measured Prisma ORM 7.10.1's Rust-free client against the old Rust engine on SQLite: roughly 3x faster on repeated single-row lookups, roughly 3x slower from cold start to first query, and…"
     },
     {
-      "title": "Gemma 4 E2B in JAX on One TPU v5e: bf16 or 4-Bit, Python or Rust, and How It Stands Against vLLM",
-      "publication": "DEV",
-      "summary": "Gemma 4 E2B served three ways on one Cloud TPU v5e chip: a pure-JAX engine in Python, the same graph written in Rust and compiled by the libtpu that JAX loads, and vLLM, all timed by one client."
+      "title": "Claude Code sends your email address to websites",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
-      "title": "PostgreSQL 19's pg_stat_lock only counts waits that cross deadlock_timeout",
-      "publication": "DEV",
-      "summary": "PostgreSQL 19rc1 adds a cumulative lock-wait view, pg_stat_lock."
+      "title": "Hungary: Communist-era files released, up to 60k former agents revealed",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
-      "title": "How to Build Your Team's First Shared Agent",
+      "title": "An AI Testing Presentation Became the Final Push for Organizational Change at My Company",
       "publication": "DEV",
-      "summary": "Most teams already use AI. The problem is that everyone uses it alone. One developer has a prompt..."
+      "summary": "From a multi-agent testing experiment to a broader discussion about how engineering teams should..."
     }
   ]
 }
