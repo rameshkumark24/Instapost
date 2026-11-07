@@ -565,5 +565,12 @@
   "url": "https://dev.to/slabb/claude-code-was-mailing-your-email-address-to-every-website-it-visited-the-user-agent-leak-the-12k6",
   "source": "devto",
   "posted_at": "2026-11-06T11:52:17+00:00"
+ },
+ {
+  "key": "github.com/heydamir/unslop",
+  "title": "unslop: A Claude skill that turns vibecoded, AI-looking UI into a designed interface",
+  "url": "https://github.com/heydamir/unslop",
+  "source": "github",
+  "posted_at": "2026-11-07T10:54:28+00:00"
  }
 ]

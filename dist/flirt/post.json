@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "cache-invalidation",
-  "term": "CACHE INVALIDATION",
-  "headline": "I kept holding onto who you used to be, but that copy is stale. Time for CACHE INVALIDATION.",
-  "caption": "I kept holding onto who you used to be, but that copy is stale. Time for CACHE INVALIDATION.\n\n—\nCACHE INVALIDATION: deciding when a stored copy is out of date and has to be thrown away.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-06",
-  "built_at": "2026-11-06T11:52:21+00:00",
+  "concept": "304",
+  "term": "304 NOT MODIFIED",
+  "headline": "Checking in on my feelings again? Babe, 304 NOT MODIFIED.",
+  "caption": "Checking in on my feelings again? Babe, 304 NOT MODIFIED.\n\n—\n304 NOT MODIFIED: nothing has changed since your last copy, so keep using the one you have.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-07",
+  "built_at": "2026-11-07T10:56:41+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

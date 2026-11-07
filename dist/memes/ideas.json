@@ -1,160 +1,156 @@
 {
-  "date": "2026-11-06",
-  "built_at": "2026-11-06T11:54:30+00:00",
+  "date": "2026-11-07",
+  "built_at": "2026-11-07T10:57:27+00:00",
   "ideas": [
     {
-      "trend": "Prisma ORM 7's Rust-free query engine speeds up queries and slows down cold starts",
+      "trend": "Claude Code Diff Verification in 2026: How to Make Your Agent Assert Its Own Edits Did Not Break the Build",
       "where": "tech",
       "pool": "tech",
-      "context": "I measured Prisma ORM 7.10.1's Rust-free client against the old Rust engine on SQLite: roughly 3x faster on repeated single-row lookups, roughly 3x slower from cold start to first query, and…",
-      "template_id": "226297822",
-      "template": "Panik Kalm Panik",
-      "maker": "https://imgflip.com/memegenerator/226297822",
+      "context": "Stop trusting AI edits on faith.",
+      "template_id": "322841258",
+      "template": "Anakin Padme 4 Panel",
+      "maker": "https://imgflip.com/memegenerator/322841258",
       "boxes": [
-        "Upgraded to Prisma 7",
-        "Queries run 3x faster",
-        "Cold starts take 30 seconds"
+        "The AI agent verified its own diff",
+        "With actual unit tests?",
+        "With actual unit tests?"
       ],
-      "caption": "Engineering trade-offs in full effect.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Prisma ORM 7 dropped its Rust query engine, giving faster query execution at the cost of slower cold starts.",
-      "score": 8.0,
-      "editor": "Spot-on ORM/serverless trade-off pain point; format fits perfectly.",
-      "drawn": true
-    },
-    {
-      "trend": "Perplexity launches its own take on AI agents for work",
-      "where": "tech",
-      "pool": "tech",
-      "context": "Perplexity is taking on OpenAI and Anthropic with its own work-focused AI agents.",
-      "template_id": "100777631",
-      "template": "Is This A Pigeon",
-      "maker": "https://imgflip.com/memegenerator/100777631",
-      "boxes": [
-        "Product Manager",
-        "Perplexity AI agent",
-        "Is this a full stack team?"
-      ],
-      "caption": "Sprint capacity just doubled on paper.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Perplexity launched work-focused AI agents to complete complex task workflows.",
-      "score": 8.0,
-      "editor": "Accurately parodies PMs overestimating AI tools; format used correctly.",
-      "drawn": true
-    },
-    {
-      "trend": "crm",
-      "where": "IN",
-      "pool": "current",
-      "context": "CRM onboarding solutions: 5 kinds of implementation support to fast-track your ROI",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
-      "boxes": [
-        "Editing prod database manually",
-        "Executing custom CRM data pipelines"
-      ],
-      "caption": "Corporate titles make cowboy coding sound legit.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Using enterprise CRM jargon to mask direct SQL edits on production.",
+      "caption": "Asking the code author if their own code works.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Letting an AI agent assert that its edits did not break the build.",
       "score": 9.0,
-      "editor": "Very relatable dev scenario; Tuxedo Pooh format used flawlessly for corporate spin.",
+      "editor": "Executes the Anakin/Padme format flawlessly for current AI coding workflows.",
+      "drawn": true
+    },
+    {
+      "trend": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Hacker News",
+      "template_id": "252600902",
+      "template": "Always Has Been",
+      "maker": "https://imgflip.com/memegenerator/252600902",
+      "boxes": [
+        "Wait, it's all written in Rust?",
+        "Always has been"
+      ],
+      "caption": "Every native UI framework post on Hacker News.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "The inevitable Rust rewrite of all desktop UI libraries.",
+      "score": 8.0,
+      "editor": "Instantly relatable and specific to Hacker News Rust fanboy tropes.",
+      "drawn": true
+    },
+    {
+      "trend": "zelda ocarina of time remake",
+      "where": "US",
+      "pool": "current",
+      "context": "Ask the Developer Vol. 24, The Legend of Zelda: Ocarina of Time – Chapter 1",
+      "template_id": "135256802",
+      "template": "Epic Handshake",
+      "maker": "https://imgflip.com/memegenerator/135256802",
+      "boxes": [
+        "Gamers",
+        "Senior devs",
+        "Demanding a 1998 rewrite"
+      ],
+      "caption": "Legacy projects deserve modern engines.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Nostalgic demand for completely rewriting classic software from the late 90s.",
+      "score": 5.0,
+      "editor": "Slightly forced connection between gamers and senior devs.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "rajasthan royals",
+      "title": "muhurat trading time 2026",
       "where": "IN"
     },
     {
-      "title": "police",
+      "title": "ghaziabad",
       "where": "IN"
     },
     {
-      "title": "sign",
+      "title": "abu dhabi t10",
       "where": "IN"
     },
     {
-      "title": "crm",
+      "title": "india football",
       "where": "IN"
     },
     {
-      "title": "nisha bhagat",
+      "title": "esteban ocon",
       "where": "IN"
     },
     {
-      "title": "kerala lottery result today",
+      "title": "kerala psc",
       "where": "IN"
     },
     {
-      "title": "karmabhoomi express",
-      "where": "IN"
-    },
-    {
-      "title": "nyc weather",
+      "title": "wind advisory",
       "where": "US"
     },
     {
-      "title": "premarket",
+      "title": "new zealand vs india",
       "where": "US"
     },
     {
-      "title": "chuck grassley",
+      "title": "new",
       "where": "US"
     },
     {
-      "title": "clima",
+      "title": "roku",
       "where": "US"
     },
     {
-      "title": "edc orlando 2026",
+      "title": "wi vs ban",
       "where": "US"
     },
     {
-      "title": "joe scarborough",
+      "title": "saturday night live druski; the strokes",
       "where": "US"
     },
     {
-      "title": "price of oil",
+      "title": "zelda ocarina of time remake",
       "where": "US"
     },
     {
-      "title": "Claude Code was mailing your email address to every website it visited: the User-Agent leak, the 5-month system-prompt issue, and the 5-point check",
+      "title": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
       "where": "tech"
     },
     {
-      "title": "Blender's UI and Runtime: Much Faster Than GPUI",
+      "title": "Windows won't let you own Win+Shift+S. So I hooked the keyboard in Python.",
       "where": "tech"
     },
     {
-      "title": "Perplexity launches its own take on AI agents for work",
+      "title": "The A2A CLI on Azure: One Client for Container Apps, Agent Framework and Localhost",
       "where": "tech"
     },
     {
-      "title": "Reflections on Rust in the LLM Age — Bryan Cantrill | Rust NYC",
+      "title": "Gemini Omni 1.2 Flash",
       "where": "tech"
     },
     {
-      "title": "Prisma ORM 7's Rust-free query engine speeds up queries and slows down cold starts",
+      "title": "Building RailPulse AI: Deploying an Open-Source Railway Dispatch Agent with Gemma and Google Cloud Run",
       "where": "tech"
     },
     {
-      "title": "Claude Code sends your email address to websites",
+      "title": "I Keep a Log of Every Rule My AI Agent Broke. The Patterns Are Uncomfortable.",
       "where": "tech"
     },
     {
-      "title": "Hungary: Communist-era files released, up to 60k former agents revealed",
+      "title": "I ran 3 Claude Code architecture diagram tools on my repo. Here's what each one got right",
       "where": "tech"
     },
     {
-      "title": "An AI Testing Presentation Became the Final Push for Organizational Change at My Company",
+      "title": "Claude Code Diff Verification in 2026: How to Make Your Agent Assert Its Own Edits Did Not Break the Build",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "editor 5/10 (Premise is loose since web browsing agents don't fill your inbox with spam; setup doesn't quite connect.): Woman Yelling At Cat, Why is my inbox full of spam?! / I used Claude Code to browse the web",
-    "editor 5/10 (Niche graphics architecture topic; lacks a strong, punchy comedic contrast.): They're The Same Picture, Blender C++ UI engine / Modern GPU UI frameworks",
-    "editor 8/10 (Classic Rust rewrite trope executed cleanly with the exact right format.): Always Has Been, Wait, it's all Rust rewrites? / Always has been",
-    "editor 5/10 ('Server room rain' is a weirdly obscure excuse that distracts from the core CI joke.): Left Exit 12 Off Ramp, Fixing flaky CI tests / Blame server room rain / DevOps team",
-    "editor 7/10 (Funny sports-trade parody of modern Jira/Agile engineering culture.): Buff Doge vs. Cheems, Dev trades in 2016 / Traded salary for early equity / Dev trades in 2026 / Trade"
+    "editor 7/10 (Funny depiction of developer over-engineering standard OS tasks.): Left Exit 12 Off Ramp, Use Snipping Tool / Write a Python key hook / Windows developers",
+    "editor 6/10 (Relatable AI prompt engineering pain point, gives a solid smile.): Monkey Puppet, When the AI agent swears it strictly followed system prompt rules",
+    "editor 7/10 (Clever use of Roll Safe loophole logic for doc maintenance.): Roll Safe Think About It, Architecture docs are never outdated / If AI generates them fresh on every push",
+    "editor 4/10 (Niche cricket comparison weakens an otherwise good task estimation joke.): Buff Doge vs. Cheems, T10 Cricket / Finish an entire match in 90 minutes / Me estimating tasks / Need ",
+    "editor 3/10 (Requires niche knowledge of Duckworth-Lewis-Stern sports math to make sense.): I Bet He's Thinking About Other Women, I bet he's thinking about other women / How DLS rain math is simpler than our ba"
   ]
 }

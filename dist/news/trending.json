@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-06",
+  "date": "2026-11-07",
   "stories": [
     {
-      "title": "Claude Code was mailing your email address to every website it visited: the User-Agent leak, the 5-month system-prompt issue, and the 5-point check",
-      "publication": "DEV",
-      "summary": "Claude Code put your account email in the User-Agent header of its web requests, so every server log on the agent's path harvested a scam-ready lead, and the same email ships in the system prompt of…"
-    },
-    {
-      "title": "Blender's UI and Runtime: Much Faster Than GPUI",
+      "title": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Perplexity launches its own take on AI agents for work",
-      "publication": "The Verge",
-      "summary": "Perplexity is taking on OpenAI and Anthropic with its own work-focused AI agents."
-    },
-    {
-      "title": "Reflections on Rust in the LLM Age — Bryan Cantrill | Rust NYC",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Prisma ORM 7's Rust-free query engine speeds up queries and slows down cold starts",
+      "title": "Windows won't let you own Win+Shift+S. So I hooked the keyboard in Python.",
       "publication": "DEV",
-      "summary": "I measured Prisma ORM 7.10.1's Rust-free client against the old Rust engine on SQLite: roughly 3x faster on repeated single-row lookups, roughly 3x slower from cold start to first query, and…"
+      "summary": "I wanted one small thing: press Win+Shift+S and get my own screenshot tool instead of Snipping..."
     },
     {
-      "title": "Claude Code sends your email address to websites",
+      "title": "The A2A CLI on Azure: One Client for Container Apps, Agent Framework and Localhost",
+      "publication": "DEV",
+      "summary": "A Rust A2A v1.0 agent and a Microsoft Agent Framework A2A v1.0 coordinator on Azure Container Apps, behind Entra ID, driven by the same A2A CLI commands as their localhost copies."
+    },
+    {
+      "title": "Gemini Omni 1.2 Flash",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Hungary: Communist-era files released, up to 60k former agents revealed",
-      "publication": "Hacker News",
+      "title": "Building RailPulse AI: Deploying an Open-Source Railway Dispatch Agent with Gemma and Google Cloud Run",
+      "publication": "DEV",
+      "summary": "Author: Robina Mirbahar AI/ML Google Developer Expert (GDE) | Google Cloud Champion Innovator GitHub..."
+    },
+    {
+      "title": "I Keep a Log of Every Rule My AI Agent Broke. The Patterns Are Uncomfortable.",
+      "publication": "DEV",
       "summary": ""
     },
     {
-      "title": "An AI Testing Presentation Became the Final Push for Organizational Change at My Company",
+      "title": "I ran 3 Claude Code architecture diagram tools on my repo. Here's what each one got right",
       "publication": "DEV",
-      "summary": "From a multi-agent testing experiment to a broader discussion about how engineering teams should..."
+      "summary": "My project, worklore, is a small app that grew in all directions: a Python backend on AWS Lambda, a..."
+    },
+    {
+      "title": "Claude Code Diff Verification in 2026: How to Make Your Agent Assert Its Own Edits Did Not Break the Build",
+      "publication": "DEV",
+      "summary": "Stop trusting AI edits on faith."
     }
   ]
 }

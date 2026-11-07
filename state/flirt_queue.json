@@ -708,8 +708,9 @@
    "304 NOT MODIFIED"
   ],
   "score": 6.0,
-  "status": "pending",
-  "drafted_at": "2026-11-02T17:05:13+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-02T17:05:13+00:00",
+  "sent_at": "2026-11-07T10:56:41+00:00"
  },
  {
   "concept": "heartbeat",
@@ -806,5 +807,137 @@
   "score": 6.0,
   "status": "pending",
   "drafted_at": "2026-11-02T19:25:53+00:00"
+ },
+ {
+  "concept": "await",
+  "term": "AWAIT",
+  "domain": "code",
+  "text": "I put my whole life on pause until your promise settles. Guess I'm stuck on AWAIT.",
+  "terms": [
+   "AWAIT"
+  ],
+  "score": 10.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "hotfix",
+  "term": "HOTFIX",
+  "domain": "devops",
+  "text": "A 2 AM kiss won't solve what's broken between us, babe. That's just a HOTFIX.",
+  "terms": [
+   "HOTFIX"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "zero-trust",
+  "term": "ZERO TRUST",
+  "domain": "security",
+  "text": "You're already inside my heart, but I still verify every move. My policy is ZERO TRUST.",
+  "terms": [
+   "ZERO TRUST"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "abstraction",
+  "term": "ABSTRACTION",
+  "domain": "code",
+  "text": "You hide all your messy feelings behind a simple 'I'm fine'. Classic ABSTRACTION.",
+  "terms": [
+   "ABSTRACTION"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "recursion",
+  "term": "RECURSION",
+  "domain": "algorithms",
+  "text": "The only way I know to get over you is to call you again. Classic RECURSION.",
+  "terms": [
+   "RECURSION"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "todo",
+  "term": "TODO",
+  "domain": "code",
+  "text": "Are you ever going to make us official, or am I just a TODO?",
+  "terms": [
+   "TODO"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "kernel-panic",
+  "term": "KERNEL PANIC",
+  "domain": "systems",
+  "text": "When you asked 'what are we', my whole system shut down to prevent further damage. Pure KERNEL PANIC.",
+  "terms": [
+   "KERNEL PANIC"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "refactor",
+  "term": "REFACTOR",
+  "domain": "code",
+  "text": "We're saying all the exact same words, but we need to REFACTOR.",
+  "terms": [
+   "REFACTOR"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "rubber-duck",
+  "term": "RUBBER DUCK DEBUGGING",
+  "domain": "code",
+  "text": "I talked through my feelings to you and realized I don't need you. Classic RUBBER DUCK DEBUGGING.",
+  "terms": [
+   "RUBBER DUCK DEBUGGING"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "embedding",
+  "term": "EMBEDDING",
+  "domain": "ml",
+  "text": "We're so alike, no wonder you and I ended up right next to each other. That's just good EMBEDDING.",
+  "terms": [
+   "EMBEDDING"
+  ],
+  "score": 6.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "git-tag",
+  "term": "TAG",
+  "domain": "git",
+  "text": "I marked the exact night you kissed me with a permanent TAG.",
+  "terms": [
+   "TAG"
+  ],
+  "score": 6.0,
+  "status": "pending",
+  "drafted_at": "2026-11-07T10:56:39+00:00"
  }
 ]

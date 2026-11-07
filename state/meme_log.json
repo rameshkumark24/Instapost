@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-08",
-    "trend": "Docker Agent",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-08",
-    "trend": "C for Rust Programmers",
-    "template_id": "87743020"
-  },
-  {
-    "date": "2026-10-08",
-    "trend": "winning powerball numbers",
-    "template_id": "55311130"
-  },
-  {
     "date": "2026-10-09",
     "trend": "Docker just shipped the agent wall I wanted. It's off by default.",
     "template_id": "181913649"
@@ -473,5 +458,20 @@
     "date": "2026-11-06",
     "trend": "crm",
     "template_id": "178591752"
+  },
+  {
+    "date": "2026-11-07",
+    "trend": "Claude Code Diff Verification in 2026: How to Make Your Agent Assert Its Own Edits Did Not Break the Build",
+    "template_id": "322841258"
+  },
+  {
+    "date": "2026-11-07",
+    "trend": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
+    "template_id": "252600902"
+  },
+  {
+    "date": "2026-11-07",
+    "trend": "zelda ocarina of time remake",
+    "template_id": "135256802"
   }
 ]
