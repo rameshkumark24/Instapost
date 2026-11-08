@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-09",
-    "trend": "Docker just shipped the agent wall I wanted. It's off by default.",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-09",
-    "trend": "OpenAI annualised revenues $20B less than previously signalled",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-09",
-    "trend": "top selling cars in india",
-    "template_id": "55311130"
-  },
-  {
     "date": "2026-10-10",
     "trend": "quarterly variable pay tcs",
     "template_id": "181913649"
@@ -473,5 +458,20 @@
     "date": "2026-11-07",
     "trend": "zelda ocarina of time remake",
     "template_id": "135256802"
+  },
+  {
+    "date": "2026-11-08",
+    "trend": "Measuring Gemma & On-Device Latency on 16GB Apple Silicon for Agent Workflows",
+    "template_id": "247113703"
+  },
+  {
+    "date": "2026-11-08",
+    "trend": "Claude Code's \"Don't Ask Again\" exposes passwords in 1,122 public GitHub files",
+    "template_id": "195515965"
+  },
+  {
+    "date": "2026-11-08",
+    "trend": "gas prices",
+    "template_id": "181913649"
   }
 ]

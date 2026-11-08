@@ -1,156 +1,152 @@
 {
-  "date": "2026-11-07",
-  "built_at": "2026-11-07T10:57:27+00:00",
+  "date": "2026-11-08",
+  "built_at": "2026-11-08T11:06:24+00:00",
   "ideas": [
     {
-      "trend": "Claude Code Diff Verification in 2026: How to Make Your Agent Assert Its Own Edits Did Not Break the Build",
+      "trend": "Measuring Gemma & On-Device Latency on 16GB Apple Silicon for Agent Workflows",
       "where": "tech",
       "pool": "tech",
-      "context": "Stop trusting AI edits on faith.",
-      "template_id": "322841258",
-      "template": "Anakin Padme 4 Panel",
-      "maker": "https://imgflip.com/memegenerator/322841258",
+      "context": "Before you wire up a multi-agent workflow, measure how fast your local models actually...",
+      "template_id": "247113703",
+      "template": "A train hitting a school bus",
+      "maker": "https://imgflip.com/memegenerator/247113703",
       "boxes": [
-        "The AI agent verified its own diff",
-        "With actual unit tests?",
-        "With actual unit tests?"
+        "One local agent workflow",
+        "My 16GB RAM"
       ],
-      "caption": "Asking the code author if their own code works.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Letting an AI agent assert that its edits did not break the build.",
+      "caption": "Unified memory was a bold dream.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Running local LLMs on base model MacBooks instantly chokes memory.",
       "score": 9.0,
-      "editor": "Executes the Anakin/Padme format flawlessly for current AI coding workflows.",
+      "editor": "Instantly funny, highly specific, perfect match for the train wreck template.",
       "drawn": true
     },
     {
-      "trend": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
+      "trend": "Claude Code's \"Don't Ask Again\" exposes passwords in 1,122 public GitHub files",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "252600902",
-      "template": "Always Has Been",
-      "maker": "https://imgflip.com/memegenerator/252600902",
+      "template_id": "195515965",
+      "template": "Clown Applying Makeup",
+      "maker": "https://imgflip.com/memegenerator/195515965",
       "boxes": [
-        "Wait, it's all written in Rust?",
-        "Always has been"
+        "Let the AI agent run in terminal",
+        "Click Don't Ask Again",
+        "It commits my .env file",
+        "1,122 repos share my API key"
       ],
-      "caption": "Every native UI framework post on Hacker News.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "The inevitable Rust rewrite of all desktop UI libraries.",
+      "caption": "Security audit complete.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Nodding along to permission prompts until your secret keys end up on GitHub.",
       "score": 8.0,
-      "editor": "Instantly relatable and specific to Hacker News Rust fanboy tropes.",
+      "editor": "Great escalation of clown logic; highly relatable AI CLI security blunder.",
       "drawn": true
     },
     {
-      "trend": "zelda ocarina of time remake",
+      "trend": "gas prices",
       "where": "US",
       "pool": "current",
-      "context": "Ask the Developer Vol. 24, The Legend of Zelda: Ocarina of Time – Chapter 1",
-      "template_id": "135256802",
-      "template": "Epic Handshake",
-      "maker": "https://imgflip.com/memegenerator/135256802",
+      "context": "EU gas prices surge 140% as storage hits a 14-year low ahead of winter",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Gamers",
-        "Senior devs",
-        "Demanding a 1998 rewrite"
+        "Optimizing database queries",
+        "Blaming cloud AWS bills on gas prices"
       ],
-      "caption": "Legacy projects deserve modern engines.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Nostalgic demand for completely rewriting classic software from the late 90s.",
-      "score": 5.0,
-      "editor": "Slightly forced connection between gamers and senior devs.",
+      "caption": "Macroeconomics saved my sprint review.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Using real-world inflation and surge trends as an excuse for expensive unoptimized cloud infrastructure.",
+      "score": 8.0,
+      "editor": "Absurd macroeconomic excuse for bad AWS costs hits Drake format dead-on.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "muhurat trading time 2026",
+      "title": "napoli vs lazio",
       "where": "IN"
     },
     {
-      "title": "ghaziabad",
+      "title": "heerenveen vs feyenoord",
       "where": "IN"
     },
     {
-      "title": "abu dhabi t10",
+      "title": "randhir kapoor",
       "where": "IN"
     },
     {
-      "title": "india football",
+      "title": "under 19 world cup",
       "where": "IN"
     },
     {
-      "title": "esteban ocon",
-      "where": "IN"
-    },
-    {
-      "title": "kerala psc",
-      "where": "IN"
-    },
-    {
-      "title": "wind advisory",
+      "title": "gas prices",
       "where": "US"
     },
     {
-      "title": "new zealand vs india",
+      "title": "caitlin clark",
       "where": "US"
     },
     {
-      "title": "new",
+      "title": "san antonio weather",
       "where": "US"
     },
     {
-      "title": "roku",
+      "title": "sunderland",
       "where": "US"
     },
     {
-      "title": "wi vs ban",
+      "title": "pepsico hormel long term investment",
       "where": "US"
     },
     {
-      "title": "saturday night live druski; the strokes",
+      "title": "actor",
       "where": "US"
     },
     {
-      "title": "zelda ocarina of time remake",
+      "title": "zimbabwe vs afghanistan",
       "where": "US"
     },
     {
-      "title": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
+      "title": "joanna gaines",
+      "where": "US"
+    },
+    {
+      "title": "Goodbye Claude, Hello Pi",
       "where": "tech"
     },
     {
-      "title": "Windows won't let you own Win+Shift+S. So I hooked the keyboard in Python.",
+      "title": "Claude Code's \"Don't Ask Again\" exposes passwords in 1,122 public GitHub files",
       "where": "tech"
     },
     {
-      "title": "The A2A CLI on Azure: One Client for Container Apps, Agent Framework and Localhost",
+      "title": "Nspawn 3.0: A Docker-compatible Engine API for systemd-nspawn containers",
       "where": "tech"
     },
     {
-      "title": "Gemini Omni 1.2 Flash",
+      "title": "Stop Passive AI Rewrites: Agentic Coaching in Google Docs with gdocumentor",
       "where": "tech"
     },
     {
-      "title": "Building RailPulse AI: Deploying an Open-Source Railway Dispatch Agent with Gemma and Google Cloud Run",
+      "title": "Don't Write More Prompts. Install These 10 Trending 'Skills' Instead",
       "where": "tech"
     },
     {
-      "title": "I Keep a Log of Every Rule My AI Agent Broke. The Patterns Are Uncomfortable.",
+      "title": "Agent memory: how Claude repairs wrong notes with dreaming",
       "where": "tech"
     },
     {
-      "title": "I ran 3 Claude Code architecture diagram tools on my repo. Here's what each one got right",
+      "title": "Measuring Gemma & On-Device Latency on 16GB Apple Silicon for Agent Workflows",
       "where": "tech"
     },
     {
-      "title": "Claude Code Diff Verification in 2026: How to Make Your Agent Assert Its Own Edits Did Not Break the Build",
+      "title": "Stop Asking LLMs to Do Math: Client-Side Functions in Flutter GenUI with bloc_signals",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "editor 7/10 (Funny depiction of developer over-engineering standard OS tasks.): Left Exit 12 Off Ramp, Use Snipping Tool / Write a Python key hook / Windows developers",
-    "editor 6/10 (Relatable AI prompt engineering pain point, gives a solid smile.): Monkey Puppet, When the AI agent swears it strictly followed system prompt rules",
-    "editor 7/10 (Clever use of Roll Safe loophole logic for doc maintenance.): Roll Safe Think About It, Architecture docs are never outdated / If AI generates them fresh on every push",
-    "editor 4/10 (Niche cricket comparison weakens an otherwise good task estimation joke.): Buff Doge vs. Cheems, T10 Cricket / Finish an entire match in 90 minutes / Me estimating tasks / Need ",
-    "editor 3/10 (Requires niche knowledge of Duckworth-Lewis-Stern sports math to make sense.): I Bet He's Thinking About Other Women, I bet he's thinking about other women / How DLS rain math is simpler than our ba"
+    "editor 8/10 (Format used perfectly to mock current AI tool fatigue.): Distracted Boyfriend, A new AI tool on Hacker News / Me / The AI tool I adopted yesterday",
+    "editor 8/10 (Sharp observation about AI tools reinventing classic software bloat.): Expanding Brain, Writing code yourself / Writing a good prompt / Installing 10 AI agent skills / ",
+    "editor 5/10 (Concept fits the meme format, but the punchline wording is clunky.): I Bet He's Thinking About Other Women, I bet he's thinking about other women / If the AI dreams to fix memory why can't",
+    "editor 4/10 (Mismashes weather forecast with merge conflicts; format used awkwardly.): Monkey Puppet, When the weekend forecast says 90% chance of rain and merge conflicts",
+    "editor 8/10 (Cat's response perfectly captures rogue dev confidence.): Woman Yelling At Cat, Why did you rewrite the entire backend?! / It had good potential"
   ]
 }

@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-07",
+  "date": "2026-11-08",
   "stories": [
     {
-      "title": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
+      "title": "Goodbye Claude, Hello Pi",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Windows won't let you own Win+Shift+S. So I hooked the keyboard in Python.",
-      "publication": "DEV",
-      "summary": "I wanted one small thing: press Win+Shift+S and get my own screenshot tool instead of Snipping..."
-    },
-    {
-      "title": "The A2A CLI on Azure: One Client for Container Apps, Agent Framework and Localhost",
-      "publication": "DEV",
-      "summary": "A Rust A2A v1.0 agent and a Microsoft Agent Framework A2A v1.0 coordinator on Azure Container Apps, behind Entra ID, driven by the same A2A CLI commands as their localhost copies."
-    },
-    {
-      "title": "Gemini Omni 1.2 Flash",
+      "title": "Claude Code's \"Don't Ask Again\" exposes passwords in 1,122 public GitHub files",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Building RailPulse AI: Deploying an Open-Source Railway Dispatch Agent with Gemma and Google Cloud Run",
-      "publication": "DEV",
-      "summary": "Author: Robina Mirbahar AI/ML Google Developer Expert (GDE) | Google Cloud Champion Innovator GitHub..."
-    },
-    {
-      "title": "I Keep a Log of Every Rule My AI Agent Broke. The Patterns Are Uncomfortable.",
-      "publication": "DEV",
+      "title": "Nspawn 3.0: A Docker-compatible Engine API for systemd-nspawn containers",
+      "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "I ran 3 Claude Code architecture diagram tools on my repo. Here's what each one got right",
+      "title": "Stop Passive AI Rewrites: Agentic Coaching in Google Docs with gdocumentor",
       "publication": "DEV",
-      "summary": "My project, worklore, is a small app that grew in all directions: a Python backend on AWS Lambda, a..."
+      "summary": "A Go CLI and MCP server that turns Gemini and any AI agent into a Socratic writing and code..."
     },
     {
-      "title": "Claude Code Diff Verification in 2026: How to Make Your Agent Assert Its Own Edits Did Not Break the Build",
+      "title": "Don't Write More Prompts. Install These 10 Trending 'Skills' Instead",
       "publication": "DEV",
-      "summary": "Stop trusting AI edits on faith."
+      "summary": "I found 10 trending skills on GitHub that can boost your agent power a lot, and I had to test them..."
+    },
+    {
+      "title": "Agent memory: how Claude repairs wrong notes with dreaming",
+      "publication": "DEV",
+      "summary": "Agent memory can preserve mistakes. Anthropic's transcript-backed dreaming repairs notes, while contract-page ownership and exact quotations protect facts."
+    },
+    {
+      "title": "Measuring Gemma & On-Device Latency on 16GB Apple Silicon for Agent Workflows",
+      "publication": "DEV",
+      "summary": "Before you wire up a multi-agent workflow, measure how fast your local models actually..."
+    },
+    {
+      "title": "Stop Asking LLMs to Do Math: Client-Side Functions in Flutter GenUI with bloc_signals",
+      "publication": "DEV",
+      "summary": "Why Andrew 'Red' Brogdon's insight on client-side functions is critical for Generative UI—and how bloc_signals_genui turns catalog functions into 0ms synchronous reactive signals."
     }
   ]
 }

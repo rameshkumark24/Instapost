@@ -721,8 +721,9 @@
    "HEARTBEAT"
   ],
   "score": 9.0,
-  "status": "pending",
-  "drafted_at": "2026-11-02T19:25:53+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-02T19:25:53+00:00",
+  "sent_at": "2026-11-08T11:05:10+00:00"
  },
  {
   "concept": "hard-coded",
