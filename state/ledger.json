@@ -579,5 +579,12 @@
   "url": "https://caleb.software/posts/claude-to-pi.html",
   "source": "hn",
   "posted_at": "2026-11-08T11:05:06+00:00"
+ },
+ {
+  "key": "github.com/l0ng-ai/openidea",
+  "title": "openidea: The IDE you know, rebuilt in Rust. IntelliJ IDEA–style keymap, tool windows and search-everywhere in a fast native app: editor, code insight, debugger, Git, terminal, database and HTTP clients for 60+ languages.",
+  "url": "https://github.com/l0ng-ai/openidea",
+  "source": "github",
+  "posted_at": "2026-11-09T12:34:54+00:00"
  }
 ]

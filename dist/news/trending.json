@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "stories": [
     {
-      "title": "Goodbye Claude, Hello Pi",
+      "title": "KetchUp – Open-source SketchUp alternative built with Rust and WebGPU",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Claude Code's \"Don't Ask Again\" exposes passwords in 1,122 public GitHub files",
+      "title": "Goldman Sachs is pulling Claude Code from its bankers and traders",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Nspawn 3.0: A Docker-compatible Engine API for systemd-nspawn containers",
+      "title": "systemd loves Rust",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Stop Passive AI Rewrites: Agentic Coaching in Google Docs with gdocumentor",
+      "title": "We Moved to a Bigger Model to Debug the Test. Then We Went Back to the Smaller One.",
       "publication": "DEV",
-      "summary": "A Go CLI and MCP server that turns Gemini and any AI agent into a Socratic writing and code..."
+      "summary": "From the agentpolicy v0.1.0 release: a local-first, Cedar-based policy decision point for AI agents..."
     },
     {
-      "title": "Don't Write More Prompts. Install These 10 Trending 'Skills' Instead",
-      "publication": "DEV",
-      "summary": "I found 10 trending skills on GitHub that can boost your agent power a lot, and I had to test them..."
+      "title": "OpenAI raises $11B at a $1.25T valuation",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
-      "title": "Agent memory: how Claude repairs wrong notes with dreaming",
-      "publication": "DEV",
-      "summary": "Agent memory can preserve mistakes. Anthropic's transcript-backed dreaming repairs notes, while contract-page ownership and exact quotations protect facts."
+      "title": "Apple is racing to make Siri more agentic",
+      "publication": "The Verge",
+      "summary": "Bloomberg's Mark Gurman says CEO John Ternus is pressuring AI czar Craig Federighi to accelerate the Siri roadmap and deliver a powerful AI agent that can compete with OpenAI's Dots or Meta's Muse."
     },
     {
-      "title": "Measuring Gemma & On-Device Latency on 16GB Apple Silicon for Agent Workflows",
+      "title": "Traefik 3.8's tap middleware triples request latency even with an instant local receiver",
       "publication": "DEV",
-      "summary": "Before you wire up a multi-agent workflow, measure how fast your local models actually..."
+      "summary": "I measured Traefik 3.8.0-rc.1's new tap middleware: it roughly triples per-request latency with a zero-delay receiver, and the overhead is strictly additive, confirmed by matching a 50ms receiver…"
     },
     {
-      "title": "Stop Asking LLMs to Do Math: Client-Side Functions in Flutter GenUI with bloc_signals",
+      "title": "computer-use-rs: Open-Source Computer Use for Rust",
       "publication": "DEV",
-      "summary": "Why Andrew 'Red' Brogdon's insight on client-side functions is critical for Generative UI—and how bloc_signals_genui turns catalog functions into 0ms synchronous reactive signals."
+      "summary": "computer-use-rs is a cross-platform Rust crate that lets your code see and control any desktop app. Here's what it does, how it works, and why we open-sourced it."
     }
   ]
 }

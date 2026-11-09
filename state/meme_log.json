@@ -1,45 +1,5 @@
 [
   {
-    "date": "2026-10-10",
-    "trend": "quarterly variable pay tcs",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-10",
-    "trend": "mrbeast",
-    "template_id": "112126428"
-  },
-  {
-    "date": "2026-10-10",
-    "trend": "indiana vs nebraska predictions",
-    "template_id": "222403160"
-  },
-  {
-    "date": "2026-10-10",
-    "trend": "real madrid vs",
-    "template_id": "177682295"
-  },
-  {
-    "date": "2026-10-10",
-    "trend": "snapdragon stadium",
-    "template_id": "110163934"
-  },
-  {
-    "date": "2026-10-10",
-    "trend": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
-    "template_id": "438680"
-  },
-  {
-    "date": "2026-10-10",
-    "trend": "Why Are Coding Agents So Dumb?",
-    "template_id": "188390779"
-  },
-  {
-    "date": "2026-10-10",
-    "trend": "tyson fury",
-    "template_id": "177682295"
-  },
-  {
     "date": "2026-10-11",
     "trend": "Anthropic is cutting off its internal evaluations from the internet",
     "template_id": "252600902"
@@ -473,5 +433,20 @@
     "date": "2026-11-08",
     "trend": "gas prices",
     "template_id": "181913649"
+  },
+  {
+    "date": "2026-11-09",
+    "trend": "We Moved to a Bigger Model to Debug the Test. Then We Went Back to the Smaller One.",
+    "template_id": "131940431"
+  },
+  {
+    "date": "2026-11-09",
+    "trend": "KetchUp – Open-source SketchUp alternative built with Rust and WebGPU",
+    "template_id": "112126428"
+  },
+  {
+    "date": "2026-11-09",
+    "trend": "nintendo zelda ocarina",
+    "template_id": "178591752"
   }
 ]
