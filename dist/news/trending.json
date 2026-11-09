@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "stories": [
+    {
+      "title": "Anthropic launches new Claude Fable and Mythos 5.2 models",
+      "publication": "The Verge",
+      "summary": "Anthropic is announcing two new models today: Claude Fable 5.2 and Claude Mythos 5.2, which it says are designed to take on \"daunting\" technical challenges."
+    },
+    {
+      "title": "Claude Fable 5.2 and Mythos 5.2",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Anthropic releases new Mythos and Fable models amid RSI concerns",
+      "publication": "TechCrunch",
+      "summary": "Anthropic says the new models \"show improvements in areas like coding, reasoning, and vision,\" as well as in communicating more clearly with users."
+    },
+    {
+      "title": "Six Serving Engines on One Cloud TPU v5e Chip: Gemma 4 E2B",
+      "publication": "DEV",
+      "summary": "vLLM, SGLang-JAX, a pure-JAX engine, a Rust model over PJRT, and TorchTPU in Python and Rust serve Gemma 4 E2B on one flex-start v5e-1, with the same prompts, the same 1-to-64-request sweep and the…"
+    },
+    {
+      "title": "Why Developer Experience (DX) Isn't Enough in 2026: You Need Agent Experience (AX)",
+      "publication": "DEV",
+      "summary": "What happens when the hardest-working user on your 16GB Mac and multi-cloud Ubuntu Dev-Box is a fleet of 20+ AI coding agents?"
+    },
+    {
+      "title": "Meta releases Muse Ember, a new lightweight model for agent execution",
+      "publication": "TechCrunch",
+      "summary": "At 10 cents per million input tokens, Ember is significantly cheaper than frontier competitors like Haiku and Luna."
+    },
+    {
+      "title": "Take a Claude Agent SDK agent from install to deploy with Agents CLI",
+      "publication": "DEV",
+      "summary": "How the Claude extension in Agents CLI takes a Claude Agent SDK agent from install to a validated Cloud Run deploy, with sessions, tracing and eval set up for you."
+    },
     {
       "title": "KetchUp – Open-source SketchUp alternative built with Rust and WebGPU",
       "publication": "Hacker News",
       "summary": ""
-    },
-    {
-      "title": "Goldman Sachs is pulling Claude Code from its bankers and traders",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "systemd loves Rust",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "We Moved to a Bigger Model to Debug the Test. Then We Went Back to the Smaller One.",
-      "publication": "DEV",
-      "summary": "From the agentpolicy v0.1.0 release: a local-first, Cedar-based policy decision point for AI agents..."
-    },
-    {
-      "title": "OpenAI raises $11B at a $1.25T valuation",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Apple is racing to make Siri more agentic",
-      "publication": "The Verge",
-      "summary": "Bloomberg's Mark Gurman says CEO John Ternus is pressuring AI czar Craig Federighi to accelerate the Siri roadmap and deliver a powerful AI agent that can compete with OpenAI's Dots or Meta's Muse."
-    },
-    {
-      "title": "Traefik 3.8's tap middleware triples request latency even with an instant local receiver",
-      "publication": "DEV",
-      "summary": "I measured Traefik 3.8.0-rc.1's new tap middleware: it roughly triples per-request latency with a zero-delay receiver, and the overhead is strictly additive, confirmed by matching a 50ms receiver…"
-    },
-    {
-      "title": "computer-use-rs: Open-Source Computer Use for Rust",
-      "publication": "DEV",
-      "summary": "computer-use-rs is a cross-platform Rust crate that lets your code see and control any desktop app. Here's what it does, how it works, and why we open-sourced it."
     }
   ]
 }

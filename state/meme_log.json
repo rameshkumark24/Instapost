@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-11",
-    "trend": "Anthropic is cutting off its internal evaluations from the internet",
-    "template_id": "252600902"
-  },
-  {
-    "date": "2026-10-11",
-    "trend": "What LLMs 'Know' That You Don't Know They Know: Stop Inventing Prompt DSLs and Ride 50 Years of Unix Pre-Training Gravity",
-    "template_id": "178591752"
-  },
-  {
-    "date": "2026-10-11",
-    "trend": "netflix new releases",
-    "template_id": "217743513"
-  },
-  {
     "date": "2026-10-12",
     "trend": "Highlights from \"I spent 6 years developing a game in Rust and it just shipped, AMA\" (2024)",
     "template_id": "247113703"
@@ -448,5 +433,20 @@
     "date": "2026-11-09",
     "trend": "nintendo zelda ocarina",
     "template_id": "178591752"
+  },
+  {
+    "date": "2026-11-10",
+    "trend": "Meta releases Muse Ember, a new lightweight model for agent execution",
+    "template_id": "99683372"
+  },
+  {
+    "date": "2026-11-10",
+    "trend": "Why Developer Experience (DX) Isn't Enough in 2026: You Need Agent Experience (AX)",
+    "template_id": "180190441"
+  },
+  {
+    "date": "2026-11-10",
+    "trend": "robert pattinson",
+    "template_id": "135256802"
   }
 ]

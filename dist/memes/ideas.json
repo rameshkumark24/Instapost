@@ -1,153 +1,155 @@
 {
-  "date": "2026-11-09",
-  "built_at": "2026-11-09T12:37:27+00:00",
+  "date": "2026-11-10",
+  "built_at": "2026-11-09T19:42:03+00:00",
   "ideas": [
     {
-      "trend": "We Moved to a Bigger Model to Debug the Test. Then We Went Back to the Smaller One.",
+      "trend": "Meta releases Muse Ember, a new lightweight model for agent execution",
       "where": "tech",
       "pool": "tech",
-      "context": "From the agentpolicy v0.1.0 release: a local-first, Cedar-based policy decision point for AI agents...",
-      "template_id": "131940431",
-      "template": "Gru's Plan",
-      "maker": "https://imgflip.com/memegenerator/131940431",
+      "context": "At 10 cents per million input tokens, Ember is significantly cheaper than frontier competitors like Haiku and Luna.",
+      "template_id": "99683372",
+      "template": "Sleeping Shaq",
+      "maker": "https://imgflip.com/memegenerator/99683372",
       "boxes": [
-        "Use small AI model for tests",
-        "Test fails so call giant model",
-        "Giant model rewrites test to pass",
-        "Giant model rewrites test to pass"
+        "99 percent accuracy on code benchmarks",
+        "10 cents per million tokens"
       ],
-      "caption": "Problem solved, test pass rate is 100 percent.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "The absurdity of AI agents resolving test failures by altering test assertions instead of fixing bugs.",
+      "caption": "My API budget just breathed a sigh of relief.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developers sleep through benchmark bragging but wake up instantly when model pricing hits rock bottom.",
       "score": 9.0,
-      "editor": "Perfect execution of Gru's Plan highlighting modern AI agent failure modes.",
+      "editor": "Spot-on developer priority joke; cheap API tokens > artificial benchmarks.",
       "drawn": true
     },
     {
-      "trend": "KetchUp – Open-source SketchUp alternative built with Rust and WebGPU",
+      "trend": "Why Developer Experience (DX) Isn't Enough in 2026: You Need Agent Experience (AX)",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "112126428",
-      "template": "Distracted Boyfriend",
-      "maker": "https://imgflip.com/memegenerator/112126428",
+      "context": "What happens when the hardest-working user on your 16GB Mac and multi-cloud Ubuntu Dev-Box is a fleet of 20+ AI coding agents?",
+      "template_id": "180190441",
+      "template": "They're The Same Picture",
+      "maker": "https://imgflip.com/memegenerator/180190441",
       "boxes": [
-        "A 3D CAD tool in Rust",
-        "Me",
-        "My actual backend ticket"
+        "Developer Experience",
+        "Agent Experience"
       ],
-      "caption": "If it exists, someone will rewrite it in Rust.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Devs dropping actual work to obsess over high-performance rewrites of niche desktop tools.",
+      "caption": "AX is just DX when you are too lazy to type.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "The shift from DX to AX just means making tools comfortable for AI agents instead of humans.",
       "score": 8.0,
-      "editor": "Great fit for the template; extremely relatable shiny-object Rust urge vs work tasks.",
+      "editor": "Great callout on current AI buzzword hype cycles using the format cleanly.",
       "drawn": true
     },
     {
-      "trend": "nintendo zelda ocarina",
+      "trend": "robert pattinson",
       "where": "IN",
       "pool": "current",
-      "context": "Zelda: Ocarina of Time Remake Gets a Native PC Port Through Static Recompilation",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
+      "context": "Robert Pattinson and Denzel Washington rob a bank in first look at unconventional heist film The Take (exclusive)",
+      "template_id": "135256802",
+      "template": "Epic Handshake",
+      "maker": "https://imgflip.com/memegenerator/135256802",
       "boxes": [
-        "Emulating old games on PC",
-        "Static recompilation to native C++ binaries"
+        "Bank robbers",
+        "Junior devs",
+        "Bypassing auth in prod"
       ],
-      "caption": "Plain emulation is far too simple.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Making something simple sound overly sophisticated using low-level developer jargon.",
-      "score": 8.0,
-      "editor": "Accurate, sophisticated distinction that uses the posh Pooh template perfectly.",
+      "caption": "Authentication was more of a recommendation anyway.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Connecting movie bank heists to developers bypassing security checks to get things working.",
+      "score": 7.0,
+      "editor": "Solid chuckle comparing junior dev mistakes to literal crimes.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "alex michelsen",
+      "title": "fable 5.2",
       "where": "IN"
     },
     {
-      "title": "nintendo zelda ocarina",
+      "title": "vision quest episode 8 release date",
       "where": "IN"
     },
     {
-      "title": "bhagyathara lottery result today",
+      "title": "ott releases this week",
       "where": "IN"
     },
     {
-      "title": "afghanistan national under-19 cricket team vs sri lanka national under-19 cricket team standings",
+      "title": "robert pattinson",
       "where": "IN"
     },
     {
-      "title": "laura gallacher",
+      "title": "new year",
+      "where": "IN"
+    },
+    {
+      "title": "new year 2026",
+      "where": "IN"
+    },
+    {
+      "title": "ps5 pro",
+      "where": "IN"
+    },
+    {
+      "title": "thomas massie",
       "where": "US"
     },
     {
-      "title": "2027 nfl draft first round order",
+      "title": "gta vi",
       "where": "US"
     },
     {
-      "title": "soxl stock",
+      "title": "fall out boy tour",
       "where": "US"
     },
     {
-      "title": "noaa weather",
+      "title": "supper mario broth",
       "where": "US"
     },
     {
-      "title": "goldman sachs treasury yields outlook",
+      "title": "activision",
       "where": "US"
     },
     {
-      "title": "teddy riner",
+      "title": "mike tomlin dallas cowboys coaching rumors",
       "where": "US"
     },
     {
-      "title": "british airways boeing 787 pittsburgh grounded",
+      "title": "ahmed moor",
       "where": "US"
     },
     {
-      "title": "weather.com",
-      "where": "US"
-    },
-    {
-      "title": "KetchUp – Open-source SketchUp alternative built with Rust and WebGPU",
+      "title": "Anthropic launches new Claude Fable and Mythos 5.2 models",
       "where": "tech"
     },
     {
-      "title": "Goldman Sachs is pulling Claude Code from its bankers and traders",
+      "title": "Claude Fable 5.2 and Mythos 5.2",
       "where": "tech"
     },
     {
-      "title": "systemd loves Rust",
+      "title": "Anthropic releases new Mythos and Fable models amid RSI concerns",
       "where": "tech"
     },
     {
-      "title": "We Moved to a Bigger Model to Debug the Test. Then We Went Back to the Smaller One.",
+      "title": "Six Serving Engines on One Cloud TPU v5e Chip: Gemma 4 E2B",
       "where": "tech"
     },
     {
-      "title": "OpenAI raises $11B at a $1.25T valuation",
+      "title": "Why Developer Experience (DX) Isn't Enough in 2026: You Need Agent Experience (AX)",
       "where": "tech"
     },
     {
-      "title": "Apple is racing to make Siri more agentic",
+      "title": "Meta releases Muse Ember, a new lightweight model for agent execution",
       "where": "tech"
     },
     {
-      "title": "Traefik 3.8's tap middleware triples request latency even with an instant local receiver",
-      "where": "tech"
-    },
-    {
-      "title": "computer-use-rs: Open-Source Computer Use for Rust",
+      "title": "Take a Claude Agent SDK agent from install to deploy with Agents CLI",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "editor 5/10 (Format works, but the joke relies on topical tool news and feels mild.): Is This A Pigeon, Wall Street banker / Claude Code / Is this an automated trader?",
-    "editor 8/10 (Spot-on use of the format targeting real Linux holy war pettiness.): Sleeping Shaq, Rewriting Linux kernel modules / Adding Rust to systemd",
-    "editor 5/10 (Box 1 setup doesn't cleanly represent a panic event, weakening the flow.): Panik Kalm Panik, Enable middleware for metrics / Metrics show zero errors / Latency instantly tri",
-    "editor 8/10 (Classic format, instantly relatable developer pain point about flaky CI pipelines.): I Bet He's Thinking About Other Women, I bet he is thinking about other women / Why CI build times fluctuate like weath",
-    "editor 4/10 (Correct structure, but relies on a tired, cliché 'missing semicolon' punchline.): Buff Doge vs. Cheems, Hardware engineering / Fixed in 2 months with custom parts / Software engineerin"
+    "touches a subject the page never jokes about",
+    "editor 5/10 (AI vs CSS is a tired trope and the format usage is slightly forced.): Is This A Pigeon, Anthropic / Centering a div / Is this a daunting challenge?",
+    "editor 3/10 (Flawed Roll Safe logic: running 6 LLM engines uses way more memory, ruining the joke.): Roll Safe Think About It, Can't run out of memory / If you stack 6 LLM engines on 1 chip",
+    "editor 8/10 (Textbook execution of the template applied to modern AI CLI tooling chaos.): Anakin Padme 4 Panel, I deployed an agent with CLI / You wrote tests right / You wrote tests right",
+    "editor 3/10 (Phrasing is wrong; 'release date of staging' isn't how devs talk about environments.): I Bet He's Thinking About Other Women, I bet he's thinking about other women / When is the next release date of staging"
   ]
 }
