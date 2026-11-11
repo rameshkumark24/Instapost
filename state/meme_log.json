@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-12",
-    "trend": "Highlights from \"I spent 6 years developing a game in Rust and it just shipped, AMA\" (2024)",
-    "template_id": "247113703"
-  },
-  {
-    "date": "2026-10-12",
-    "trend": "If You Never Do Anything Else to Fix Your Prompts, Do This One Thing",
-    "template_id": "77045868"
-  },
-  {
-    "date": "2026-10-12",
-    "trend": "daylight savings",
-    "template_id": "224514655"
-  },
-  {
     "date": "2026-10-13",
     "trend": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
     "template_id": "181913649"
@@ -448,5 +433,20 @@
     "date": "2026-11-10",
     "trend": "robert pattinson",
     "template_id": "135256802"
+  },
+  {
+    "date": "2026-11-11",
+    "trend": "DuckDB 2.0's quack server lets ten writers share one file for under 2ms a query",
+    "template_id": "181913649"
+  },
+  {
+    "date": "2026-11-11",
+    "trend": "Claude Whiteboards, Claude Sheets, and Claude Data",
+    "template_id": "252600902"
+  },
+  {
+    "date": "2026-11-11",
+    "trend": "khloé kardashian",
+    "template_id": "247375501"
   }
 ]

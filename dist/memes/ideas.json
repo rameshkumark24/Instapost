@@ -1,155 +1,149 @@
 {
-  "date": "2026-11-10",
-  "built_at": "2026-11-09T19:42:03+00:00",
+  "date": "2026-11-11",
+  "built_at": "2026-11-11T11:43:34+00:00",
   "ideas": [
     {
-      "trend": "Meta releases Muse Ember, a new lightweight model for agent execution",
+      "trend": "DuckDB 2.0's quack server lets ten writers share one file for under 2ms a query",
       "where": "tech",
       "pool": "tech",
-      "context": "At 10 cents per million input tokens, Ember is significantly cheaper than frontier competitors like Haiku and Luna.",
-      "template_id": "99683372",
-      "template": "Sleeping Shaq",
-      "maker": "https://imgflip.com/memegenerator/99683372",
+      "context": "DuckDB 2.0 ships a built-in server so several processes can finally write to one database file.",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "99 percent accuracy on code benchmarks",
-        "10 cents per million tokens"
+        "Setting up Postgres replication",
+        "DuckDB 2.0 quack server"
       ],
-      "caption": "My API budget just breathed a sigh of relief.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Developers sleep through benchmark bragging but wake up instantly when model pricing hits rock bottom.",
-      "score": 9.0,
-      "editor": "Spot-on developer priority joke; cheap API tokens > artificial benchmarks.",
-      "drawn": true
-    },
-    {
-      "trend": "Why Developer Experience (DX) Isn't Enough in 2026: You Need Agent Experience (AX)",
-      "where": "tech",
-      "pool": "tech",
-      "context": "What happens when the hardest-working user on your 16GB Mac and multi-cloud Ubuntu Dev-Box is a fleet of 20+ AI coding agents?",
-      "template_id": "180190441",
-      "template": "They're The Same Picture",
-      "maker": "https://imgflip.com/memegenerator/180190441",
-      "boxes": [
-        "Developer Experience",
-        "Agent Experience"
-      ],
-      "caption": "AX is just DX when you are too lazy to type.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "The shift from DX to AX just means making tools comfortable for AI agents instead of humans.",
+      "caption": "Ten writers, one file, under 2ms.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Trading complex enterprise database setups for a single shared file.",
       "score": 8.0,
-      "editor": "Great callout on current AI buzzword hype cycles using the format cleanly.",
+      "editor": "Instantly funny and highly specific database engineering humor; format used perfectly.",
       "drawn": true
     },
     {
-      "trend": "robert pattinson",
-      "where": "IN",
-      "pool": "current",
-      "context": "Robert Pattinson and Denzel Washington rob a bank in first look at unconventional heist film The Take (exclusive)",
-      "template_id": "135256802",
-      "template": "Epic Handshake",
-      "maker": "https://imgflip.com/memegenerator/135256802",
+      "trend": "Claude Whiteboards, Claude Sheets, and Claude Data",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Hacker News",
+      "template_id": "252600902",
+      "template": "Always Has Been",
+      "maker": "https://imgflip.com/memegenerator/252600902",
       "boxes": [
-        "Bank robbers",
-        "Junior devs",
-        "Bypassing auth in prod"
+        "Wait, the whole tech stack is just Claude?",
+        "Always has been"
       ],
-      "caption": "Authentication was more of a recommendation anyway.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Connecting movie bank heists to developers bypassing security checks to get things working.",
-      "score": 7.0,
-      "editor": "Solid chuckle comparing junior dev mistakes to literal crimes.",
+      "caption": "Goodbye frontend, goodbye databases.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "The joke is that we have replaced every part of development with one vendor.",
+      "score": 6.0,
+      "editor": "Topical joke about LLM reliance, but the 'always has been' format logic doesn't quite fit since Claude is recent.",
+      "drawn": true
+    },
+    {
+      "trend": "khloé kardashian",
+      "where": "US",
+      "pool": "current",
+      "context": "Khloé Kardashian Gives Her Home a Glow Up with Thousands of ‘Beautiful and Majestic’ Holiday Lights",
+      "template_id": "247375501",
+      "template": "Buff Doge vs. Cheems",
+      "maker": "https://imgflip.com/memegenerator/247375501",
+      "boxes": [
+        "My setup in January",
+        "Clean minimal dark mode workspace",
+        "My setup in December",
+        "Blinding RGB holiday lights across three monitors"
+      ],
+      "caption": "Festive debugging.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "The contrast between minimalist aesthetics and chaotic holiday decoration.",
+      "score": 5.0,
+      "editor": "Relatable seasonal workspace joke, but generic tech/battlestation humor rather than deep dev humor.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "fable 5.2",
+      "title": "boland vs lions",
       "where": "IN"
     },
     {
-      "title": "vision quest episode 8 release date",
+      "title": "jailor 2 movie",
       "where": "IN"
     },
     {
-      "title": "ott releases this week",
+      "title": "netaji subhash chandra bose international airport",
       "where": "IN"
     },
     {
-      "title": "robert pattinson",
+      "title": "assam train derailment",
       "where": "IN"
     },
     {
-      "title": "new year",
-      "where": "IN"
-    },
-    {
-      "title": "new year 2026",
-      "where": "IN"
-    },
-    {
-      "title": "ps5 pro",
-      "where": "IN"
-    },
-    {
-      "title": "thomas massie",
+      "title": "ios 27.2 1",
       "where": "US"
     },
     {
-      "title": "gta vi",
+      "title": "remembrance day",
       "where": "US"
     },
     {
-      "title": "fall out boy tour",
+      "title": "obj vikings",
       "where": "US"
     },
     {
-      "title": "supper mario broth",
+      "title": "alix earle",
       "where": "US"
     },
     {
-      "title": "activision",
+      "title": "india vs maldives",
       "where": "US"
     },
     {
-      "title": "mike tomlin dallas cowboys coaching rumors",
+      "title": "ohio state buckeyes football",
       "where": "US"
     },
     {
-      "title": "ahmed moor",
+      "title": "connor hellebuyck",
       "where": "US"
     },
     {
-      "title": "Anthropic launches new Claude Fable and Mythos 5.2 models",
+      "title": "khloé kardashian",
+      "where": "US"
+    },
+    {
+      "title": "Tracking Anthropic-discovered vulnerabilities",
       "where": "tech"
     },
     {
-      "title": "Claude Fable 5.2 and Mythos 5.2",
+      "title": "Detecting Flaky Tests and Finding Their Root Causes with Strands Agents and Gemini",
       "where": "tech"
     },
     {
-      "title": "Anthropic releases new Mythos and Fable models amid RSI concerns",
+      "title": "Claude Whiteboards, Claude Sheets, and Claude Data",
       "where": "tech"
     },
     {
-      "title": "Six Serving Engines on One Cloud TPU v5e Chip: Gemma 4 E2B",
+      "title": "DuckDB 2.0's quack server lets ten writers share one file for under 2ms a query",
       "where": "tech"
     },
     {
-      "title": "Why Developer Experience (DX) Isn't Enough in 2026: You Need Agent Experience (AX)",
+      "title": "Anthropic launches Claude Meetings to turn workplace discussions into plans and tasks",
       "where": "tech"
     },
     {
-      "title": "Meta releases Muse Ember, a new lightweight model for agent execution",
+      "title": "Gemini 4 Carbon is now available",
       "where": "tech"
     },
     {
-      "title": "Take a Claude Agent SDK agent from install to deploy with Agents CLI",
+      "title": "How to Build an AI Agent That Fixes Bugs Reliably: Practice in Sharkly",
+      "where": "tech"
+    },
+    {
+      "title": "OpenAI, Anthropic face new oversight as New York’s AI safety law takes effect",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "touches a subject the page never jokes about",
-    "editor 5/10 (AI vs CSS is a tired trope and the format usage is slightly forced.): Is This A Pigeon, Anthropic / Centering a div / Is this a daunting challenge?",
-    "editor 3/10 (Flawed Roll Safe logic: running 6 LLM engines uses way more memory, ruining the joke.): Roll Safe Think About It, Can't run out of memory / If you stack 6 LLM engines on 1 chip",
-    "editor 8/10 (Textbook execution of the template applied to modern AI CLI tooling chaos.): Anakin Padme 4 Panel, I deployed an agent with CLI / You wrote tests right / You wrote tests right",
-    "editor 3/10 (Phrasing is wrong; 'release date of staging' isn't how devs talk about environments.): I Bet He's Thinking About Other Women, I bet he's thinking about other women / When is the next release date of staging"
+    "I Bet He's Thinking About Other Women: 'what he is really thinking' runs to 78 characters, limit 55",
+    "editor 3/10 (More of a movie distribution joke than a dev joke; shoehorning an IDE into box 4 feels forced.): Expanding Brain, Theatrical release / OTT streaming next week / Available on mobile instantly / P"
   ]
 }

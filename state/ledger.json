@@ -593,5 +593,12 @@
   "url": "https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2",
   "source": "rss",
   "posted_at": "2026-11-09T19:40:14+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2611.14492v1",
+  "title": "ReTrace: Distilling Tool-Using Agents into Planner-Free Workflows",
+  "url": "https://arxiv.org/abs/2611.14492v1",
+  "source": "arxiv",
+  "posted_at": "2026-11-11T11:42:11+00:00"
  }
 ]
