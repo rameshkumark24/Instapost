@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-13",
-    "trend": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-13",
-    "trend": "Parsing JSON at tens of gigabytes per second… in Python",
-    "template_id": "129242436"
-  },
-  {
-    "date": "2026-10-13",
-    "trend": "al-nassr vs neftchi fergana",
-    "template_id": "112126428"
-  },
-  {
     "date": "2026-10-14",
     "trend": "11 year old unsoundness bugs found in Rust borrow checker",
     "template_id": "252600902"
@@ -448,5 +433,20 @@
     "date": "2026-11-11",
     "trend": "khloé kardashian",
     "template_id": "247375501"
+  },
+  {
+    "date": "2026-11-12",
+    "trend": "Faster Retrieval for Better, More Efficient RAG",
+    "template_id": "93895088"
+  },
+  {
+    "date": "2026-11-12",
+    "trend": "Apache httpd shipped a critical HTTP/2 RCE yesterday, and one of the finders was a machine: CVE-2026-119618 and the three-gate audit",
+    "template_id": "188390779"
+  },
+  {
+    "date": "2026-11-12",
+    "trend": "nbis earnings",
+    "template_id": "112126428"
   }
 ]

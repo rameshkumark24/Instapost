@@ -1,149 +1,166 @@
 {
-  "date": "2026-11-11",
-  "built_at": "2026-11-11T11:43:34+00:00",
+  "date": "2026-11-12",
+  "built_at": "2026-11-12T12:17:55+00:00",
   "ideas": [
     {
-      "trend": "DuckDB 2.0's quack server lets ten writers share one file for under 2ms a query",
-      "where": "tech",
-      "pool": "tech",
-      "context": "DuckDB 2.0 ships a built-in server so several processes can finally write to one database file.",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
-      "boxes": [
-        "Setting up Postgres replication",
-        "DuckDB 2.0 quack server"
-      ],
-      "caption": "Ten writers, one file, under 2ms.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Trading complex enterprise database setups for a single shared file.",
-      "score": 8.0,
-      "editor": "Instantly funny and highly specific database engineering humor; format used perfectly.",
-      "drawn": true
-    },
-    {
-      "trend": "Claude Whiteboards, Claude Sheets, and Claude Data",
+      "trend": "Faster Retrieval for Better, More Efficient RAG",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "252600902",
-      "template": "Always Has Been",
-      "maker": "https://imgflip.com/memegenerator/252600902",
+      "template_id": "93895088",
+      "template": "Expanding Brain",
+      "maker": "https://imgflip.com/memegenerator/93895088",
       "boxes": [
-        "Wait, the whole tech stack is just Claude?",
-        "Always has been"
+        "Adding more vector embeddings",
+        "Tuning chunk sizes",
+        "Rewriting the whole pipeline in Rust",
+        "Hardcoding the answer in an if statement"
       ],
-      "caption": "Goodbye frontend, goodbye databases.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "The joke is that we have replaced every part of development with one vendor.",
-      "score": 6.0,
-      "editor": "Topical joke about LLM reliance, but the 'always has been' format logic doesn't quite fit since Claude is recent.",
+      "caption": "the RAG optimization cycle\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "escalating levels of overengineering for search efficiency",
+      "score": 9.0,
+      "editor": "hits the RAG hype, Rust meme, and ultimate 'hack' punchline with perfect format execution.",
       "drawn": true
     },
     {
-      "trend": "khloé kardashian",
+      "trend": "Apache httpd shipped a critical HTTP/2 RCE yesterday, and one of the finders was a machine: CVE-2026-119618 and the three-gate audit",
+      "where": "tech",
+      "pool": "tech",
+      "context": "mod_http2 race in assign_headers(), heap corruption, RCE: 2.4.55 through 2.4.70 affected, fixed in 2.4.71 released yesterday. Apache's own acknowledgements credit Anthropic's OSS Scanner as finder.",
+      "template_id": "188390779",
+      "template": "Woman Yelling At Cat",
+      "maker": "https://imgflip.com/memegenerator/188390779",
+      "boxes": [
+        "How did you find that obscure HTTP/2 heap corruption bug?",
+        "Anthropic's scanner did it in three seconds."
+      ],
+      "caption": "the machines are doing the code review now\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "AI finding a complex Apache zero-day when humans missed it.",
+      "score": 8.0,
+      "editor": "very relatable anxiety about AI code review tools replacing human debugging heroics.",
+      "drawn": true
+    },
+    {
+      "trend": "nbis earnings",
       "where": "US",
       "pool": "current",
-      "context": "Khloé Kardashian Gives Her Home a Glow Up with Thousands of ‘Beautiful and Majestic’ Holiday Lights",
-      "template_id": "247375501",
-      "template": "Buff Doge vs. Cheems",
-      "maker": "https://imgflip.com/memegenerator/247375501",
+      "context": "Nebius Group (NBIS) is Rocketing 15% Higher — Here’s What Could Move Shares Next",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "My setup in January",
-        "Clean minimal dark mode workspace",
-        "My setup in December",
-        "Blinding RGB holiday lights across three monitors"
+        "Nebius stock surging 15%",
+        "Me",
+        "My portfolio of dead tech startups"
       ],
-      "caption": "Festive debugging.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "The contrast between minimalist aesthetics and chaotic holiday decoration.",
-      "score": 5.0,
-      "editor": "Relatable seasonal workspace joke, but generic tech/battlestation humor rather than deep dev humor.",
+      "caption": "green numbers on the screen are a myth\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "NBIS market spike contrasted with usual developer portfolio performance.",
+      "score": 4.0,
+      "editor": "weak dev relevance—finance/stock market joke rather than a software engineering pain point.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "boland vs lions",
+      "title": "jay puri",
       "where": "IN"
     },
     {
-      "title": "jailor 2 movie",
+      "title": "sompal kami",
       "where": "IN"
     },
     {
-      "title": "netaji subhash chandra bose international airport",
+      "title": "david miller",
       "where": "IN"
     },
     {
-      "title": "assam train derailment",
+      "title": "abhijeet dipke",
       "where": "IN"
     },
     {
-      "title": "ios 27.2 1",
+      "title": "ali ghodsi",
+      "where": "IN"
+    },
+    {
+      "title": "nbis earnings",
       "where": "US"
     },
     {
-      "title": "remembrance day",
+      "title": "south park we be clubbin'",
       "where": "US"
     },
     {
-      "title": "obj vikings",
+      "title": "supplemental nutrition assistance program",
       "where": "US"
     },
     {
-      "title": "alix earle",
+      "title": "secretario de defensa de los estados unidos",
       "where": "US"
     },
     {
-      "title": "india vs maldives",
+      "title": "winter",
       "where": "US"
     },
     {
-      "title": "ohio state buckeyes football",
+      "title": "angie martinez",
       "where": "US"
     },
     {
-      "title": "connor hellebuyck",
+      "title": "bangladesh vs pakistan",
       "where": "US"
     },
     {
-      "title": "khloé kardashian",
+      "title": "eric schmidt",
       "where": "US"
     },
     {
-      "title": "Tracking Anthropic-discovered vulnerabilities",
+      "title": "when is red cup day at starbucks",
+      "where": "US"
+    },
+    {
+      "title": "todays weather",
+      "where": "US"
+    },
+    {
+      "title": "Gemini Decisions API",
       "where": "tech"
     },
     {
-      "title": "Detecting Flaky Tests and Finding Their Root Causes with Strands Agents and Gemini",
+      "title": "United Airlines bans AI agents from booking flights on behalf of travelers",
       "where": "tech"
     },
     {
-      "title": "Claude Whiteboards, Claude Sheets, and Claude Data",
+      "title": "Apache httpd shipped a critical HTTP/2 RCE yesterday, and one of the finders was a machine: CVE-2026-119618 and the three-gate audit",
       "where": "tech"
     },
     {
-      "title": "DuckDB 2.0's quack server lets ten writers share one file for under 2ms a query",
+      "title": "Very Well Written",
       "where": "tech"
     },
     {
-      "title": "Anthropic launches Claude Meetings to turn workplace discussions into plans and tasks",
+      "title": "Faster Retrieval for Better, More Efficient RAG",
       "where": "tech"
     },
     {
-      "title": "Gemini 4 Carbon is now available",
+      "title": "ClickHouse 26.10's string filter during scan cuts a selective LIKE query's memory 25-fold",
       "where": "tech"
     },
     {
-      "title": "How to Build an AI Agent That Fixes Bugs Reliably: Practice in Sharkly",
+      "title": "My AI agents found an unmapped Maya site?",
       "where": "tech"
     },
     {
-      "title": "OpenAI, Anthropic face new oversight as New York’s AI safety law takes effect",
+      "title": "Atuin Threads: All your agent sessions on every machine",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "I Bet He's Thinking About Other Women: 'what he is really thinking' runs to 78 characters, limit 55",
-    "editor 3/10 (More of a movie distribution joke than a dev joke; shoehorning an IDE into box 4 feels forced.): Expanding Brain, Theatrical release / OTT streaming next week / Available on mobile instantly / P"
+    "Woman Yelling At Cat: 'her furious accusation' runs to 78 characters, limit 50",
+    "Left Exit 12 Off Ramp: 'the reckless exit' runs to 45 characters, limit 24",
+    "Tuxedo Winnie The Pooh: 'the posh way to say exactly the same thing' runs to 115 characters, limit 50",
+    "I Bet He's Thinking About Other Women: 'what he is really thinking' runs to 75 characters, limit 55",
+    "Gru's Plan: 'step 2: it goes well' runs to 46 characters, limit 36",
+    "editor 2/10 (confuses the format; doesn't make sense as a developer loop/logic problem.): Roll Safe Think About It, Can't afford the rare Starbucks Bearista glass / If you just collect the bugs yo"
   ]
 }

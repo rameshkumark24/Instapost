@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "stories": [
     {
-      "title": "Tracking Anthropic-discovered vulnerabilities",
+      "title": "Gemini Decisions API",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Detecting Flaky Tests and Finding Their Root Causes with Strands Agents and Gemini",
-      "publication": "DEV",
-      "summary": "A few years ago (three years at most), one of the biggest challenges QA Engineers faced was: how do..."
-    },
-    {
-      "title": "Claude Whiteboards, Claude Sheets, and Claude Data",
+      "title": "United Airlines bans AI agents from booking flights on behalf of travelers",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "DuckDB 2.0's quack server lets ten writers share one file for under 2ms a query",
+      "title": "Apache httpd shipped a critical HTTP/2 RCE yesterday, and one of the finders was a machine: CVE-2026-119618 and the three-gate audit",
       "publication": "DEV",
-      "summary": "DuckDB 2.0 ships a built-in server so several processes can finally write to one database file."
+      "summary": "mod_http2 race in assign_headers(), heap corruption, RCE: 2.4.55 through 2.4.70 affected, fixed in 2.4.71 released yesterday. Apache's own acknowledgements credit Anthropic's OSS Scanner as finder."
     },
     {
-      "title": "Anthropic launches Claude Meetings to turn workplace discussions into plans and tasks",
-      "publication": "TechCrunch",
-      "summary": "As participants talk, Claude can draft the plan being discussed, map out a timeline on a whiteboard, answer questions in the meeting chat, and access connected work apps to retrieve information, such…"
+      "title": "Very Well Written",
+      "publication": "DEV",
+      "summary": "How to Build an AI Agent That Fixes Bugs Reliably: Practice in Sharkly ..."
     },
     {
-      "title": "Gemini 4 Carbon is now available",
+      "title": "Faster Retrieval for Better, More Efficient RAG",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "How to Build an AI Agent That Fixes Bugs Reliably: Practice in Sharkly",
+      "title": "ClickHouse 26.10's string filter during scan cuts a selective LIKE query's memory 25-fold",
       "publication": "DEV",
-      "summary": "At Sharkly, people rarely fix routine bugs by hand. Most bugs go directly to an AI agent. Sharkly is..."
+      "summary": "I benchmarked ClickHouse 26.10's new apply_string_filters_during_scan setting against 26.9: a selective LIKE query's peak memory dropped from 37.6MB to 1.5MB, but a plain WHERE equality got none of…"
     },
     {
-      "title": "OpenAI, Anthropic face new oversight as New York’s AI safety law takes effect",
-      "publication": "TechCrunch",
-      "summary": "New York is preparing to enforce its sweeping AI safety law, requiring major developers like OpenAI and Anthropic to register, disclose safety practices, and report critical incidents or face fines."
+      "title": "My AI agents found an unmapped Maya site?",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Atuin Threads: All your agent sessions on every machine",
+      "publication": "Hacker News",
+      "summary": ""
     }
   ]
 }
