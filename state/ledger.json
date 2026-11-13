@@ -607,5 +607,12 @@
   "url": "https://arxiv.org/abs/2611.14493v1",
   "source": "arxiv",
   "posted_at": "2026-11-12T12:15:34+00:00"
+ },
+ {
+  "key": "status.claude.com/incidents/nn11wk485zfn",
+  "title": "Elevated errors on claude.ai, Claude Code, and platform.claude.com",
+  "url": "https://status.claude.com/incidents/nn11wk485zfn",
+  "source": "hn",
+  "posted_at": "2026-11-13T11:54:29+00:00"
  }
 ]

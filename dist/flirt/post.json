@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "downtime",
-  "term": "DOWNTIME",
-  "headline": "Whenever I try to get close, you completely shut down. I didn't sign up for this much DOWNTIME.",
-  "caption": "Whenever I try to get close, you completely shut down. I didn't sign up for this much DOWNTIME.\n\n—\nDOWNTIME: the period when a system is unavailable.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-12",
-  "built_at": "2026-11-12T12:15:38+00:00",
+  "concept": "boot-loop",
+  "term": "BOOT LOOP",
+  "headline": "Every time we try for a fresh start, we crash and reset. We're stuck in a BOOT LOOP.",
+  "caption": "Every time we try for a fresh start, we crash and reset. We're stuck in a BOOT LOOP.\n\n—\nBOOT LOOP: starts up, fails, and restarts, over and over.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-13",
+  "built_at": "2026-11-13T11:54:34+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

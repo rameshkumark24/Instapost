@@ -1,15 +1,5 @@
 [
   {
-    "date": "2026-10-14",
-    "trend": "11 year old unsoundness bugs found in Rust borrow checker",
-    "template_id": "252600902"
-  },
-  {
-    "date": "2026-10-14",
-    "trend": "Redesigning source control at Anthropic",
-    "template_id": "217743513"
-  },
-  {
     "date": "2026-10-15",
     "trend": "Better HTTP/1 connection reuse in Go 1.27",
     "template_id": "178591752"
@@ -448,5 +438,20 @@
     "date": "2026-11-12",
     "trend": "nbis earnings",
     "template_id": "112126428"
+  },
+  {
+    "date": "2026-11-13",
+    "trend": "Elevated errors on claude.ai, Claude Code, and platform.claude.com",
+    "template_id": "226297822"
+  },
+  {
+    "date": "2026-11-13",
+    "trend": "Rust 1.100",
+    "template_id": "180190441"
+  },
+  {
+    "date": "2026-11-13",
+    "trend": "weather chicago",
+    "template_id": "99683372"
   }
 ]

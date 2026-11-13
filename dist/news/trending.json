@@ -1,44 +1,44 @@
 {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "stories": [
     {
-      "title": "Gemini Decisions API",
+      "title": "Elevated errors on claude.ai, Claude Code, and platform.claude.com",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "United Airlines bans AI agents from booking flights on behalf of travelers",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Apache httpd shipped a critical HTTP/2 RCE yesterday, and one of the finders was a machine: CVE-2026-119618 and the three-gate audit",
+      "title": "Your MCP Servers Are Silently Draining Your Context Window: The Hidden Cost of Tool-Heavy AI Agents",
       "publication": "DEV",
-      "summary": "mod_http2 race in assign_headers(), heap corruption, RCE: 2.4.55 through 2.4.70 affected, fixed in 2.4.71 released yesterday. Apache's own acknowledgements credit Anthropic's OSS Scanner as finder."
+      "summary": "Why attaching dozens of Model Context Protocol (MCP) tools degrades LLM reasoning, inflates API bills, and how small, focused TypeScript micro-tools fix the problem."
     },
     {
-      "title": "Very Well Written",
-      "publication": "DEV",
-      "summary": "How to Build an AI Agent That Fixes Bugs Reliably: Practice in Sharkly ..."
-    },
-    {
-      "title": "Faster Retrieval for Better, More Efficient RAG",
+      "title": "Rust 1.100",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "ClickHouse 26.10's string filter during scan cuts a selective LIKE query's memory 25-fold",
-      "publication": "DEV",
-      "summary": "I benchmarked ClickHouse 26.10's new apply_string_filters_during_scan setting against 26.9: a selective LIKE query's peak memory dropped from 37.6MB to 1.5MB, but a plain WHERE equality got none of…"
-    },
-    {
-      "title": "My AI agents found an unmapped Maya site?",
+      "title": "Gemini 4 Hydrogen",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Atuin Threads: All your agent sessions on every machine",
+      "title": "Gemini 4 Hydrogen and Orchestrator",
       "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "I'm making LLMs work on small and old devices",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Rust 1.100",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "The anti-marketing aspect of the Gemini network",
+      "publication": "Lobsters",
       "summary": ""
     }
   ]
