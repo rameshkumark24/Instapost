@@ -1,151 +1,158 @@
 {
-  "date": "2026-11-13",
-  "built_at": "2026-11-13T11:56:08+00:00",
+  "date": "2026-11-14",
+  "built_at": "2026-11-14T11:17:24+00:00",
   "ideas": [
     {
-      "trend": "Elevated errors on claude.ai, Claude Code, and platform.claude.com",
+      "trend": "How an 8MB MCP Tool Response Crashes Claude Code — And How to Debug Prompt Cache Misses Across Agents",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "226297822",
-      "template": "Panik Kalm Panik",
-      "maker": "https://imgflip.com/memegenerator/226297822",
+      "context": "If you use Claude Code, OpenAI Codex CLI, Cursor, or VS Code Copilot with Model Context Protocol...",
+      "template_id": "247113703",
+      "template": "A train hitting a school bus",
+      "maker": "https://imgflip.com/memegenerator/247113703",
       "boxes": [
-        "Claude Code goes down",
-        "I get to write code myself",
-        "I forgot how to write code"
+        "An 8MB JSON payload",
+        "My local AI agent"
       ],
-      "caption": "Back to basic syntax docs we go.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Outages expose developer dependency on AI coding tools.",
-      "score": 8.0,
-      "editor": "Perfect fit for the format and extremely relatable for modern devs using AI tools.",
+      "caption": "Context window meet brick wall.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Unfiltered MCP responses instantly overflow local AI coding tools.",
+      "score": 9.0,
+      "editor": "Instantly funny, format used perfectly, highly relevant to devs working with local LLMs.",
       "drawn": true
     },
     {
-      "trend": "Rust 1.100",
+      "trend": "TC39 `using` Declarations Land in V8 13: What Node.js 24 Developers Get for Free Without TypeScript",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "180190441",
-      "template": "They're The Same Picture",
-      "maker": "https://imgflip.com/memegenerator/180190441",
+      "context": "V8 13 ships TC39's Explicit Resource Management proposal. Node.js 24 developers get deterministic cleanup without TypeScript, `try`/`finally` blocks, or memory leaks.",
+      "template_id": "178591752",
+      "template": "Tuxedo Winnie The Pooh",
+      "maker": "https://imgflip.com/memegenerator/178591752",
       "boxes": [
-        "Rust compiler errors",
-        "A degree in linguistics"
+        "Using try finally to close db connections",
+        "Explicit Resource Management with using"
       ],
-      "caption": "The borrow checker demands respect.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Rust error messages are famously dense and academic.",
-      "score": 8.0,
-      "editor": "Specific, accurate dev humor targeting Rust borrow checker verbosity; format used perfectly.",
+      "caption": "We fancy now.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "TC39 using keyword gives plain JavaScript developers fancy automatic cleanup.",
+      "score": 9.0,
+      "editor": "Spot-on format usage comparing plain try/finally to modern explicit resource management.",
       "drawn": true
     },
     {
-      "trend": "weather chicago",
+      "trend": "jenny mccarthy",
       "where": "US",
       "pool": "current",
-      "context": "Chicago-area AccuWeather Alert for Winter Weather Advisory, several inches of snow accumulation possible in parts area Friday",
-      "template_id": "99683372",
-      "template": "Sleeping Shaq",
-      "maker": "https://imgflip.com/memegenerator/99683372",
+      "context": "Jenny McCarthy Says She Threw Away All of Husband Donnie Wahlberg’s Clothes amid Mold Poisoning Ordeal",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Blizzard advisory outside",
-        "Someone changed tabs to spaces in main"
+        "Debugging the code to fix the bug",
+        "Deleting node_modules and reinstalling"
       ],
-      "caption": "Real priorities when working from home.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Severe winter weather gets ignored compared to formatting disputes.",
-      "score": 8.0,
-      "editor": "Classic petty dev dispute vs real world logic; format executed cleanly.",
+      "caption": "If in doubt, throw it all out.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developers nuclear-purging entire directories mirrors throwing out a whole wardrobe over a minor problem.",
+      "score": 7.0,
+      "editor": "Relatable and correct format usage, though a fairly well-worn trope.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "felix nmecha",
+      "title": "kar vs ben",
       "where": "IN"
     },
     {
-      "title": "mbappe france",
+      "title": "japan national football team vs brazil national football team timeline",
       "where": "IN"
     },
     {
-      "title": "francesco maestrelli",
+      "title": "vinícius júnior",
       "where": "IN"
     },
     {
-      "title": "beach hazards statement",
+      "title": "ker vs mp",
+      "where": "IN"
+    },
+    {
+      "title": "fatima sana",
+      "where": "IN"
+    },
+    {
+      "title": "jenny mccarthy",
       "where": "US"
     },
     {
-      "title": "stephen miller white house lobbyist rules",
+      "title": "richmond marathon 2026",
       "where": "US"
     },
     {
-      "title": "weather chicago",
+      "title": "east potomac park",
       "where": "US"
     },
     {
-      "title": "samoa",
+      "title": "st. louis cardinals",
       "where": "US"
     },
     {
-      "title": "joshua link jason link conviction",
+      "title": "klarna",
       "where": "US"
     },
     {
-      "title": "wktv",
+      "title": "japão x brasil",
       "where": "US"
     },
     {
-      "title": "espncricinfo",
+      "title": "rory mcilroy",
       "where": "US"
     },
     {
-      "title": "trust",
+      "title": "louisiana high school football scores",
       "where": "US"
     },
     {
-      "title": "la weather",
+      "title": "japon – brésil",
       "where": "US"
     },
     {
-      "title": "mike tomlin steelers retirement reasons",
-      "where": "US"
-    },
-    {
-      "title": "Elevated errors on claude.ai, Claude Code, and platform.claude.com",
+      "title": "Benchmarking the Gemini Decisions API",
       "where": "tech"
     },
     {
-      "title": "Your MCP Servers Are Silently Draining Your Context Window: The Hidden Cost of Tool-Heavy AI Agents",
+      "title": "ChatGPT Wallet lets OpenAI’s Dots agents make purchases for you",
       "where": "tech"
     },
     {
-      "title": "Rust 1.100",
+      "title": "rtk: the Rust proxy that shrinks your coding agent's command output",
       "where": "tech"
     },
     {
-      "title": "Gemini 4 Hydrogen",
+      "title": "Can't Beat Free: Gemma 4 31B on AMD Token Lab, with a Local Chat Page and an ADK Agent",
       "where": "tech"
     },
     {
-      "title": "Gemini 4 Hydrogen and Orchestrator",
+      "title": "10 Lines to Give Your Coding Agent Before It Touches Your Repo",
       "where": "tech"
     },
     {
-      "title": "I'm making LLMs work on small and old devices",
+      "title": "How an 8MB MCP Tool Response Crashes Claude Code — And How to Debug Prompt Cache Misses Across Agents",
       "where": "tech"
     },
     {
-      "title": "The anti-marketing aspect of the Gemini network",
+      "title": "TC39 `using` Declarations Land in V8 13: What Node.js 24 Developers Get for Free Without TypeScript",
+      "where": "tech"
+    },
+    {
+      "title": "Python's strip() Method: The Easiest Way to Clean Up User Input",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "editor 5/10 (Uses Winnie the Pooh for financial cost/consequences rather than posh vs plain phrasing.): Tuxedo Winnie The Pooh, Connecting 20 tools to my AI agent / Paying 40 dollars to send hi to context",
-    "editor 6/10 (A bit news/headline-focused and invented version naming feels slightly clunky.): Anakin Padme 4 Panel, Google announced Gemini 4 Hydrogen / You mastered Gemini 3, right? / You mastere",
-    "editor 7/10 (Good use of the loophole logic format for local LLM quantization.): Roll Safe Think About It, Can't afford cloud LLM API bills / If you quantize 1B params onto a toaster",
-    "editor 5/10 (Phrasing like 'storm train of tickets' is wordy and awkward, though format is correct.): A train hitting a school bus, A storm train of tickets / My relaxed Friday afternoon",
-    "editor 4/10 ('Beach hazard mega PR' is confusing and feels like a typo or nonsensical phrasing.): Left Exit 12 Off Ramp, Safe incremental patch / Beach hazard mega PR / Me at 4:59 PM"
+    "editor 4/10 (Punchline relies on the caption instead of working within the template.): Anakin Padme 4 Panel, I gave my AI agent a credit card / To buy API credits, right? / To buy API credi",
+    "editor 4/10 (Template format is misused grammatically ('Wait, it's all X?' set-up is broken).): Always Has Been, Wait, my agent spent $50 on terminal logs? / Always has been",
+    "editor 8/10 (Classic developer blunder, format executed cleanly and accurately.): Is This A Pigeon, Junior dev / str.strip() / Is this data sanitization?",
+    "editor 7/10 (Good use of the off-ramp format for deadline-driven workarounds.): Left Exit 12 Off Ramp, Use documented API / Bypass main router / Me on a deadline",
+    "editor 6/10 (Solid corporate dev pain point, gets a sympathetic smile.): Monkey Puppet, When leadership restructures the team two weeks before code freeze"
   ]
 }

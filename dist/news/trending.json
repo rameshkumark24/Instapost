@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-13",
+  "date": "2026-11-14",
   "stories": [
     {
-      "title": "Elevated errors on claude.ai, Claude Code, and platform.claude.com",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Your MCP Servers Are Silently Draining Your Context Window: The Hidden Cost of Tool-Heavy AI Agents",
+      "title": "Benchmarking the Gemini Decisions API",
       "publication": "DEV",
-      "summary": "Why attaching dozens of Model Context Protocol (MCP) tools degrades LLM reasoning, inflates API bills, and how small, focused TypeScript micro-tools fix the problem."
+      "summary": "The Gemini Decisions API scores a fixed set of answers in one pass and returns probabilities."
     },
     {
-      "title": "Rust 1.100",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "ChatGPT Wallet lets OpenAI’s Dots agents make purchases for you",
+      "publication": "The Verge",
+      "summary": "After launching its Dots AI agents platform earlier this year, OpenAI is launching a wallet for the agents."
     },
     {
-      "title": "Gemini 4 Hydrogen",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "rtk: the Rust proxy that shrinks your coding agent's command output",
+      "publication": "DEV",
+      "summary": "rtk 1.0 Your coding agent does not burn most of its tokens on thinking. It burns them on..."
     },
     {
-      "title": "Gemini 4 Hydrogen and Orchestrator",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "Can't Beat Free: Gemma 4 31B on AMD Token Lab, with a Local Chat Page and an ADK Agent",
+      "publication": "DEV",
+      "summary": "AMD Token Lab is a free OpenAI-compatible API on AMD GPUs that comes with the AMD AI Developer Program."
     },
     {
-      "title": "I'm making LLMs work on small and old devices",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "10 Lines to Give Your Coding Agent Before It Touches Your Repo",
+      "publication": "DEV",
+      "summary": "Every coding agent reads your repository before it changes it. The only place you get to set defaults..."
     },
     {
-      "title": "Rust 1.100",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "How an 8MB MCP Tool Response Crashes Claude Code — And How to Debug Prompt Cache Misses Across Agents",
+      "publication": "DEV",
+      "summary": "If you use Claude Code, OpenAI Codex CLI, Cursor, or VS Code Copilot with Model Context Protocol..."
     },
     {
-      "title": "The anti-marketing aspect of the Gemini network",
-      "publication": "Lobsters",
-      "summary": ""
+      "title": "TC39 `using` Declarations Land in V8 13: What Node.js 24 Developers Get for Free Without TypeScript",
+      "publication": "DEV",
+      "summary": "V8 13 ships TC39's Explicit Resource Management proposal. Node.js 24 developers get deterministic cleanup without TypeScript, `try`/`finally` blocks, or memory leaks."
+    },
+    {
+      "title": "Python's strip() Method: The Easiest Way to Clean Up User Input",
+      "publication": "DEV",
+      "summary": "Introduction We've all been there. You build a login form, a search bar, or a sign-up..."
     }
   ]
 }

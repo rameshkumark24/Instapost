@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-15",
-    "trend": "Better HTTP/1 connection reuse in Go 1.27",
-    "template_id": "178591752"
-  },
-  {
-    "date": "2026-10-15",
-    "trend": "CedarDB wants one database to handle both transactions and analytics, as AI agents raise the stakes",
-    "template_id": "77045868"
-  },
-  {
-    "date": "2026-10-15",
-    "trend": "fitness",
-    "template_id": "354700819"
-  },
-  {
     "date": "2026-10-16",
     "trend": "More on Anthropic's Scion ripping off Mononoke",
     "template_id": "181913649"
@@ -453,5 +438,20 @@
     "date": "2026-11-13",
     "trend": "weather chicago",
     "template_id": "99683372"
+  },
+  {
+    "date": "2026-11-14",
+    "trend": "How an 8MB MCP Tool Response Crashes Claude Code — And How to Debug Prompt Cache Misses Across Agents",
+    "template_id": "247113703"
+  },
+  {
+    "date": "2026-11-14",
+    "trend": "TC39 `using` Declarations Land in V8 13: What Node.js 24 Developers Get for Free Without TypeScript",
+    "template_id": "178591752"
+  },
+  {
+    "date": "2026-11-14",
+    "trend": "jenny mccarthy",
+    "template_id": "181913649"
   }
 ]
