@@ -812,8 +812,9 @@
    "ENCRYPTION"
   ],
   "score": 6.0,
-  "status": "pending",
-  "drafted_at": "2026-11-02T19:25:53+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-02T19:25:53+00:00",
+  "sent_at": "2026-11-15T11:47:07+00:00"
  },
  {
   "concept": "await",

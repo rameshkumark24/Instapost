@@ -1,105 +1,93 @@
 {
-  "date": "2026-11-14",
-  "built_at": "2026-11-14T11:17:24+00:00",
+  "date": "2026-11-15",
+  "built_at": "2026-11-15T11:48:50+00:00",
   "ideas": [
     {
-      "trend": "How an 8MB MCP Tool Response Crashes Claude Code — And How to Debug Prompt Cache Misses Across Agents",
+      "trend": "The Claude Delusion",
       "where": "tech",
       "pool": "tech",
-      "context": "If you use Claude Code, OpenAI Codex CLI, Cursor, or VS Code Copilot with Model Context Protocol...",
-      "template_id": "247113703",
-      "template": "A train hitting a school bus",
-      "maker": "https://imgflip.com/memegenerator/247113703",
+      "context": "Hacker News",
+      "template_id": "252600902",
+      "template": "Always Has Been",
+      "maker": "https://imgflip.com/memegenerator/252600902",
       "boxes": [
-        "An 8MB JSON payload",
-        "My local AI agent"
+        "Wait, the AGI was just a Python script?",
+        "Always has been"
       ],
-      "caption": "Context window meet brick wall.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Unfiltered MCP responses instantly overflow local AI coding tools.",
-      "score": 9.0,
-      "editor": "Instantly funny, format used perfectly, highly relevant to devs working with local LLMs.",
+      "caption": "The revelation of the century.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Mocks the hype around AI hallucinations and grandeur by reducing it to basic scripting.",
+      "score": 8.0,
+      "editor": "Spot-on use of the format making fun of AI hype; instantly funny to devs.",
       "drawn": true
     },
     {
-      "trend": "TC39 `using` Declarations Land in V8 13: What Node.js 24 Developers Get for Free Without TypeScript",
+      "trend": "ChatGPT Stopped Recommending This App Overnight. The Culprit Was a Domain Move (and One Regex)",
       "where": "tech",
       "pool": "tech",
-      "context": "V8 13 ships TC39's Explicit Resource Management proposal. Node.js 24 developers get deterministic cleanup without TypeScript, `try`/`finally` blocks, or memory leaks.",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
+      "context": "For weeks, ChatGPT was quietly acting as an iOS app's best salesperson, sending roughly a third of...",
+      "template_id": "89370399",
+      "template": "Roll Safe Think About It",
+      "maker": "https://imgflip.com/memegenerator/89370399",
       "boxes": [
-        "Using try finally to close db connections",
-        "Explicit Resource Management with using"
+        "Can't lose 30 percent of your daily traffic",
+        "If you never launch your app in the first place"
       ],
-      "caption": "We fancy now.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "TC39 using keyword gives plain JavaScript developers fancy automatic cleanup.",
-      "score": 9.0,
-      "editor": "Spot-on format usage comparing plain try/finally to modern explicit resource management.",
-      "drawn": true
-    },
-    {
-      "trend": "jenny mccarthy",
-      "where": "US",
-      "pool": "current",
-      "context": "Jenny McCarthy Says She Threw Away All of Husband Donnie Wahlberg’s Clothes amid Mold Poisoning Ordeal",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
-      "boxes": [
-        "Debugging the code to fix the bug",
-        "Deleting node_modules and reinstalling"
-      ],
-      "caption": "If in doubt, throw it all out.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Developers nuclear-purging entire directories mirrors throwing out a whole wardrobe over a minor problem.",
+      "caption": "Bulletproof growth strategy.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Applies Roll Safe logic to catastrophic regex and domain routing failures.",
       "score": 7.0,
-      "editor": "Relatable and correct format usage, though a fairly well-worn trope.",
+      "editor": "Classic, well-executed Roll Safe logic about shipping anxiety that brings a solid smile.",
+      "drawn": true
+    },
+    {
+      "trend": "How to Build an AI Membership and Class Booking Agent for a Gym",
+      "where": "tech",
+      "pool": "tech",
+      "context": "Design a safe AI gym booking agent with live capacity, membership checks, waitlists, cancellations, human escalation and tests.",
+      "template_id": "188390779",
+      "template": "Woman Yelling At Cat",
+      "maker": "https://imgflip.com/memegenerator/188390779",
+      "boxes": [
+        "Your gym booking agent deleted all active memberships!",
+        "It achieved peak mental wellness by going offline"
+      ],
+      "caption": "Fitness through digital detachment.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Translates complex automated gym management failures into a simple, savage cat comeback.",
+      "score": 4.0,
+      "editor": "Feels like a retelling of a specific news headline rather than a natural dev joke.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "kar vs ben",
+      "title": "interest rate",
       "where": "IN"
     },
     {
-      "title": "japan national football team vs brazil national football team timeline",
+      "title": "ravana",
       "where": "IN"
     },
     {
-      "title": "vinícius júnior",
+      "title": "mammootty",
       "where": "IN"
     },
     {
-      "title": "ker vs mp",
+      "title": "icsi cseet result",
       "where": "IN"
     },
     {
-      "title": "fatima sana",
-      "where": "IN"
-    },
-    {
-      "title": "jenny mccarthy",
+      "title": "knock knock",
       "where": "US"
     },
     {
-      "title": "richmond marathon 2026",
+      "title": "uzbekistan",
       "where": "US"
     },
     {
-      "title": "east potomac park",
+      "title": "ron howard",
       "where": "US"
     },
     {
-      "title": "st. louis cardinals",
-      "where": "US"
-    },
-    {
-      "title": "klarna",
-      "where": "US"
-    },
-    {
-      "title": "japão x brasil",
+      "title": "dallas weather",
       "where": "US"
     },
     {
@@ -107,52 +95,53 @@
       "where": "US"
     },
     {
-      "title": "louisiana high school football scores",
+      "title": "espncricinfo",
       "where": "US"
     },
     {
-      "title": "japon – brésil",
+      "title": "the tomb of the unknown soldier",
       "where": "US"
     },
     {
-      "title": "Benchmarking the Gemini Decisions API",
+      "title": "robot",
+      "where": "US"
+    },
+    {
+      "title": "Swizzle Runtime v0.1.0: How We Reached 209 tok/s and 43ms TTFT on a 4GB Laptop GPU in Pure Rust",
       "where": "tech"
     },
     {
-      "title": "ChatGPT Wallet lets OpenAI’s Dots agents make purchases for you",
+      "title": "The Claude Delusion",
       "where": "tech"
     },
     {
-      "title": "rtk: the Rust proxy that shrinks your coding agent's command output",
+      "title": "How to Build an AI Membership and Class Booking Agent for a Gym",
       "where": "tech"
     },
     {
-      "title": "Can't Beat Free: Gemma 4 31B on AMD Token Lab, with a Local Chat Page and an ADK Agent",
+      "title": "I Told My Agent Who Sent the Message. It Mostly Stopped Saying We Were Talking.",
       "where": "tech"
     },
     {
-      "title": "10 Lines to Give Your Coding Agent Before It Touches Your Repo",
+      "title": "Your AI Coding Agent Wrote a 600-Word Summary. What It Skipped Is in the Fine Print.",
       "where": "tech"
     },
     {
-      "title": "How an 8MB MCP Tool Response Crashes Claude Code — And How to Debug Prompt Cache Misses Across Agents",
+      "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
       "where": "tech"
     },
     {
-      "title": "TC39 `using` Declarations Land in V8 13: What Node.js 24 Developers Get for Free Without TypeScript",
+      "title": "ChatGPT Stopped Recommending This App Overnight. The Culprit Was a Domain Move (and One Regex)",
       "where": "tech"
     },
     {
-      "title": "Python's strip() Method: The Easiest Way to Clean Up User Input",
+      "title": "The OpenAI board member who fired Sam Altman says we still can’t trust AI CEOs",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "editor 4/10 (Punchline relies on the caption instead of working within the template.): Anakin Padme 4 Panel, I gave my AI agent a credit card / To buy API credits, right? / To buy API credi",
-    "editor 4/10 (Template format is misused grammatically ('Wait, it's all X?' set-up is broken).): Always Has Been, Wait, my agent spent $50 on terminal logs? / Always has been",
-    "editor 8/10 (Classic developer blunder, format executed cleanly and accurately.): Is This A Pigeon, Junior dev / str.strip() / Is this data sanitization?",
-    "editor 7/10 (Good use of the off-ramp format for deadline-driven workarounds.): Left Exit 12 Off Ramp, Use documented API / Bypass main router / Me on a deadline",
-    "editor 6/10 (Solid corporate dev pain point, gets a sympathetic smile.): Monkey Puppet, When leadership restructures the team two weeks before code freeze"
+    "Left Exit 12 Off Ramp: 'the sensible way, straight on' runs to 35 characters, limit 24",
+    "editor 2/10 (Misuses the format with a confusing non-sequitur about a real celebrity.): Two guys on a bus, Me debugging memory leaks in C++ / Ron Howard realizing his marriage is fine"
   ]
 }

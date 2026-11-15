@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "stories": [
     {
-      "title": "Benchmarking the Gemini Decisions API",
+      "title": "Swizzle Runtime v0.1.0: How We Reached 209 tok/s and 43ms TTFT on a 4GB Laptop GPU in Pure Rust",
       "publication": "DEV",
-      "summary": "The Gemini Decisions API scores a fixed set of answers in one pass and returns probabilities."
+      "summary": "Autonomous coding agents, local developer tools, and edge robotics are bottlenecked by the..."
     },
     {
-      "title": "ChatGPT Wallet lets OpenAI’s Dots agents make purchases for you",
+      "title": "The Claude Delusion",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "How to Build an AI Membership and Class Booking Agent for a Gym",
+      "publication": "DEV",
+      "summary": "Design a safe AI gym booking agent with live capacity, membership checks, waitlists, cancellations, human escalation and tests."
+    },
+    {
+      "title": "I Told My Agent Who Sent the Message. It Mostly Stopped Saying We Were Talking.",
+      "publication": "DEV",
+      "summary": "This is the line: AUTOMATED SCHEDULER CHECK: sender=scheduler, not Keniel; Keniel is not..."
+    },
+    {
+      "title": "Your AI Coding Agent Wrote a 600-Word Summary. What It Skipped Is in the Fine Print.",
+      "publication": "DEV",
+      "summary": ""
+    },
+    {
+      "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
+      "publication": "TechCrunch",
+      "summary": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations."
+    },
+    {
+      "title": "ChatGPT Stopped Recommending This App Overnight. The Culprit Was a Domain Move (and One Regex)",
+      "publication": "DEV",
+      "summary": "For weeks, ChatGPT was quietly acting as an iOS app's best salesperson, sending roughly a third of..."
+    },
+    {
+      "title": "The OpenAI board member who fired Sam Altman says we still can’t trust AI CEOs",
       "publication": "The Verge",
-      "summary": "After launching its Dots AI agents platform earlier this year, OpenAI is launching a wallet for the agents."
-    },
-    {
-      "title": "rtk: the Rust proxy that shrinks your coding agent's command output",
-      "publication": "DEV",
-      "summary": "rtk 1.0 Your coding agent does not burn most of its tokens on thinking. It burns them on..."
-    },
-    {
-      "title": "Can't Beat Free: Gemma 4 31B on AMD Token Lab, with a Local Chat Page and an ADK Agent",
-      "publication": "DEV",
-      "summary": "AMD Token Lab is a free OpenAI-compatible API on AMD GPUs that comes with the AMD AI Developer Program."
-    },
-    {
-      "title": "10 Lines to Give Your Coding Agent Before It Touches Your Repo",
-      "publication": "DEV",
-      "summary": "Every coding agent reads your repository before it changes it. The only place you get to set defaults..."
-    },
-    {
-      "title": "How an 8MB MCP Tool Response Crashes Claude Code — And How to Debug Prompt Cache Misses Across Agents",
-      "publication": "DEV",
-      "summary": "If you use Claude Code, OpenAI Codex CLI, Cursor, or VS Code Copilot with Model Context Protocol..."
-    },
-    {
-      "title": "TC39 `using` Declarations Land in V8 13: What Node.js 24 Developers Get for Free Without TypeScript",
-      "publication": "DEV",
-      "summary": "V8 13 ships TC39's Explicit Resource Management proposal. Node.js 24 developers get deterministic cleanup without TypeScript, `try`/`finally` blocks, or memory leaks."
-    },
-    {
-      "title": "Python's strip() Method: The Easiest Way to Clean Up User Input",
-      "publication": "DEV",
-      "summary": "Introduction We've all been there. You build a login form, a search bar, or a sign-up..."
+      "summary": "Today, I’m talking with Helen Toner, the executive director of the Center for Security and Emerging Technology at Georgetown University. This episode is part two of our series on AI in real life."
     }
   ]
 }
