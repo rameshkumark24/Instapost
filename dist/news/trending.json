@@ -1,14 +1,19 @@
 {
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "stories": [
     {
-      "title": "PostgreSQL 19's pg_plan_advice turned a 28ms query into 264ms under load",
-      "publication": "DEV",
-      "summary": "I tested PostgreSQL 19 RC2's new planner-hint extension, pg_plan_advice: forcing a plan made throughput 9x worse under ten clients, and in every scenario I could construct the planner's own choice…"
+      "title": "OpenAI releases a new image classifier and ChatGPT warnings to combat CSAM",
+      "publication": "TechCrunch",
+      "summary": "ChatGPT will ban an account trying to access CSAM content for 24 hours as a warning"
     },
     {
-      "title": "Understanding Positional Embeddings in Modern LLMs",
+      "title": "Jiff 1.0: A datetime library for Rust",
       "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "funkycache: a Python library to cache functions in SQLite",
+      "publication": "Lobsters",
       "summary": ""
     },
     {
@@ -17,29 +22,24 @@
       "summary": "One LiteLLM per cloud, on Cloud Run and Azure Container Apps. Agents reach Gemini and Azure OpenAI with their own identity: no API keys, no virtual keys, no database password."
     },
     {
-      "title": "A datetime library for Rust",
-      "publication": "Lobsters",
-      "summary": ""
+      "title": "OpenAI wants to stop deepfakes from overwhelming child abuse tiplines",
+      "publication": "The Verge",
+      "summary": "OpenAI is announcing a tool that it says will help child sexual abuse investigators cut through the noise to find harmful material they can act on quickly."
     },
     {
-      "title": "9 Best Agent Gateways",
+      "title": "Sam Altman on Nvidia without Jensen Huang: the industry will be ‘fine’",
+      "publication": "TechCrunch",
+      "summary": "OpenAI CEO Sam Altman acknowledged the special role Nvidia CEO Jensen Huang has played in the AI boom, but ultimately thinks the industry will be “fine” without him at the helm."
+    },
+    {
+      "title": "High or Low Thinking? Gemini 4 and Gemma 4 on Hard Math, Cost First",
       "publication": "DEV",
-      "summary": "AI agents are becoming part of everyday software systems. They call APIs, retrieve information..."
+      "summary": "Seven models on the 15 problems of AIME 2025 I at their lowest and highest thinking settings, under a hard budget."
     },
     {
-      "title": "The Agentic Loop Explained: Step Through the Plan, Build, Judge and Repeat Loop Behind AI Coding Agents",
+      "title": "LLMs are compressors. So I chatted with gzip",
       "publication": "DEV",
-      "summary": "Ask a chat model for a signup endpoint and you get one answer. A coding agent works differently: it..."
-    },
-    {
-      "title": "Please Implement A Quorum Database",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Where to Draw the Boundaries When AI Agents Write Code: Building a Control Layer Around Kiro CLI and Running It for a Month",
-      "publication": "DEV",
-      "summary": "This article is an English version of a post I contributed to the AWS Blog (Japanese). ..."
+      "summary": "I had a conversation with a chatbot this morning: › who is edo? ● a senior developer advocate at..."
     }
   ]
 }

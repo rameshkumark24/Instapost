@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-18",
-    "trend": "Replit makes OpenAI its default over Anthropic, CEO says",
-    "template_id": "137501417"
-  },
-  {
-    "date": "2026-10-18",
-    "trend": "Anthropic says its workforce has become less junior and is spending more time in meetings",
-    "template_id": "178591752"
-  },
-  {
-    "date": "2026-10-18",
-    "trend": "veto",
-    "template_id": "77045868"
-  },
-  {
     "date": "2026-10-19",
     "trend": "If you don't run your own LLM proxy, how do you know whats going on?",
     "template_id": "181913649"
@@ -453,5 +438,20 @@
     "date": "2026-11-16",
     "trend": "gasbuddy",
     "template_id": "112126428"
+  },
+  {
+    "date": "2026-11-17",
+    "trend": "Jiff 1.0: A datetime library for Rust",
+    "template_id": "181913649"
+  },
+  {
+    "date": "2026-11-17",
+    "trend": "funkycache: a Python library to cache functions in SQLite",
+    "template_id": "135256802"
+  },
+  {
+    "date": "2026-11-17",
+    "trend": "LLMs are compressors. So I chatted with gzip",
+    "template_id": "180190441"
   }
 ]

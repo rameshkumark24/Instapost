@@ -838,8 +838,9 @@
    "HOTFIX"
   ],
   "score": 9.0,
-  "status": "pending",
-  "drafted_at": "2026-11-07T10:56:39+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-07T10:56:39+00:00",
+  "sent_at": "2026-11-16T19:26:21+00:00"
  },
  {
   "concept": "zero-trust",

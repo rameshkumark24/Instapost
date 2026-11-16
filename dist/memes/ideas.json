@@ -1,129 +1,142 @@
 {
-  "date": "2026-11-16",
-  "built_at": "2026-11-16T12:29:45+00:00",
+  "date": "2026-11-17",
+  "built_at": "2026-11-16T19:29:04+00:00",
   "ideas": [
     {
-      "trend": "The Agentic Loop Explained: Step Through the Plan, Build, Judge and Repeat Loop Behind AI Coding Agents",
+      "trend": "Jiff 1.0: A datetime library for Rust",
       "where": "tech",
       "pool": "tech",
-      "context": "Ask a chat model for a signup endpoint and you get one answer. A coding agent works differently: it...",
-      "template_id": "195515965",
-      "template": "Clown Applying Makeup",
-      "maker": "https://imgflip.com/memegenerator/195515965",
+      "context": "Hacker News",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "Let AI agent fix the build error",
-        "Agent enters plan and judge loop",
-        "Agent refactors whole codebase",
-        "$50 in API credits to fix a typo"
+        "Using standard chrono",
+        "Writing my own Rust date library"
       ],
-      "caption": "The loop never ends.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Agentic coding loops burn massive tokens trying to self-correct simple errors.",
+      "caption": "Jiff 1.0 is out, time to rewrite time.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Every Rust developer must write a datetime library at least once.",
       "score": 9.0,
-      "editor": "Perfect escalation format; extremely topical and accurate payoff for AI agent loops.",
+      "editor": "Instantly hits the exact neurosis of systems programmers and the Rust ecosystem right as Jiff dropped.",
       "drawn": true
     },
     {
-      "trend": "Please Implement A Quorum Database",
+      "trend": "funkycache: a Python library to cache functions in SQLite",
       "where": "tech",
       "pool": "tech",
       "context": "Lobsters",
-      "template_id": "124822590",
-      "template": "Left Exit 12 Off Ramp",
-      "maker": "https://imgflip.com/memegenerator/124822590",
+      "template_id": "135256802",
+      "template": "Epic Handshake",
+      "maker": "https://imgflip.com/memegenerator/135256802",
       "boxes": [
-        "Use standard Postgres",
-        "Build a quorum database",
-        "Senior dev on weekend"
+        "Python devs",
+        "Embedded devs",
+        "Putting SQLite in everything"
       ],
-      "caption": "Just use Postgres.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Engineers love building custom distributed quorum DBs when standard SQL works.",
-      "score": 9.0,
-      "editor": "Spot-on capture of senior dev weekend over-engineering syndrome.",
+      "caption": "The only database that matters.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "SQLite is secretly the backbone of every random caching tool.",
+      "score": 8.0,
+      "editor": "Spot on. SQLite everywhere is a very real modern developer meme.",
       "drawn": true
     },
     {
-      "trend": "gasbuddy",
-      "where": "US",
-      "pool": "current",
-      "context": "South Carolina gas prices drop 13.9 cents in a week, GasBuddy reports",
-      "template_id": "112126428",
-      "template": "Distracted Boyfriend",
-      "maker": "https://imgflip.com/memegenerator/112126428",
+      "trend": "LLMs are compressors. So I chatted with gzip",
+      "where": "tech",
+      "pool": "tech",
+      "context": "I had a conversation with a chatbot this morning: › who is edo? ● a senior developer advocate at...",
+      "template_id": "180190441",
+      "template": "They're The Same Picture",
+      "maker": "https://imgflip.com/memegenerator/180190441",
       "boxes": [
-        "Saving $0.13 on cloud bill",
-        "Me",
-        "The $4000 recursive Lambda bug"
+        "An LLM hallucinating code",
+        "Compressing logs with gzip"
       ],
-      "caption": "Every penny counts.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Obsessing over tiny cloud savings while ignoring a massive runaway cloud cost.",
-      "score": 9.0,
-      "editor": "Hilarious and painfully specific AWS cloud bill horror scenario.",
+      "caption": "It's all just lossy compression anyway.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Comparing LLMs to gzip is the ultimate hacker realization.",
+      "score": 4.0,
+      "editor": "A bit forced and scientifically loose—doesn't quite land the gut punch of an actual dev workflow pain.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "sudan vs senegal",
+      "title": "greece vs serbia",
       "where": "IN"
     },
     {
-      "title": "punjab state dear diwali bumper 2026",
+      "title": "om movie 2026",
       "where": "IN"
     },
     {
-      "title": "prithvi shaw",
+      "title": "kristen stewart",
       "where": "IN"
     },
     {
-      "title": "sanju samson",
+      "title": "admit card mp police constable",
       "where": "IN"
     },
     {
-      "title": "katy perry new short haircut",
+      "title": "switzerland vs scotland",
+      "where": "IN"
+    },
+    {
+      "title": "ima",
+      "where": "IN"
+    },
+    {
+      "title": "xbox",
+      "where": "IN"
+    },
+    {
+      "title": "sean connery",
+      "where": "IN"
+    },
+    {
+      "title": "world no 1 podcaster",
+      "where": "IN"
+    },
+    {
+      "title": "warren buffett",
       "where": "US"
     },
     {
-      "title": "sec football standings title contenders",
+      "title": "spacex stock price",
       "where": "US"
     },
     {
-      "title": "stock",
+      "title": "ap poll football",
       "where": "US"
     },
     {
-      "title": "theft",
+      "title": "suiza - escocia",
       "where": "US"
     },
     {
-      "title": "brawl",
+      "title": "alemania - países bajos",
       "where": "US"
     },
     {
-      "title": "tarik skubal mlb free agency",
+      "title": "lord morrow dup",
       "where": "US"
     },
     {
-      "title": "nfl mock draft",
+      "title": "tara harding ford bronco purchase",
       "where": "US"
     },
     {
-      "title": "gasbuddy",
+      "title": "uscis prior approval deference removal",
       "where": "US"
     },
     {
-      "title": "nifty 50",
-      "where": "US"
-    },
-    {
-      "title": "zubayr hamza",
-      "where": "US"
-    },
-    {
-      "title": "PostgreSQL 19's pg_plan_advice turned a 28ms query into 264ms under load",
+      "title": "OpenAI releases a new image classifier and ChatGPT warnings to combat CSAM",
       "where": "tech"
     },
     {
-      "title": "Understanding Positional Embeddings in Modern LLMs",
+      "title": "Jiff 1.0: A datetime library for Rust",
+      "where": "tech"
+    },
+    {
+      "title": "funkycache: a Python library to cache functions in SQLite",
       "where": "tech"
     },
     {
@@ -131,32 +144,24 @@
       "where": "tech"
     },
     {
-      "title": "A datetime library for Rust",
+      "title": "Sam Altman on Nvidia without Jensen Huang: the industry will be ‘fine’",
       "where": "tech"
     },
     {
-      "title": "9 Best Agent Gateways",
+      "title": "High or Low Thinking? Gemini 4 and Gemma 4 on Hard Math, Cost First",
       "where": "tech"
     },
     {
-      "title": "The Agentic Loop Explained: Step Through the Plan, Build, Judge and Repeat Loop Behind AI Coding Agents",
-      "where": "tech"
-    },
-    {
-      "title": "Please Implement A Quorum Database",
-      "where": "tech"
-    },
-    {
-      "title": "Where to Draw the Boundaries When AI Agents Write Code: Building a Control Layer Around Kiro CLI and Running It for a Month",
+      "title": "LLMs are compressors. So I chatted with gzip",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "editor 8/10 (Format used correctly; painful DB experience instantly recognizable to backend devs.): Gru's Plan, Force planner hints with pg_plan / Query plan is locked in / Query is 9x slower ",
-    "editor 8/10 (Great escalation; handling custom leap seconds is an immediate datetime nightmare.): Panik Kalm Panik, Need to handle timezones in Rust / There's a brand new datetime crate / It suppo",
-    "editor 8/10 (Format used correctly; punchy joke about bad security masked as convenience.): They're The Same Picture, Zero API key multi-cloud setup / Putting .env files in git",
-    "editor 7/10 (Solid and relatable tech compensation reality, gives a good laugh/smile.): Two guys on a bus, Dev holding stock options / Dev who negotiated higher base salary",
-    "editor 8/10 (Classic developer priorities joke executed perfectly with the template.): Sleeping Shaq, Database deadlocks in production / Tabs vs spaces brawl in PR review"
+    "Is This A Pigeon: 'the thing (the butterfly)' runs to 33 characters, limit 26",
+    "Buff Doge vs. Cheems: 'what the weak one does' runs to 52 characters, limit 40",
+    "editor 2/10 (Generic gamer/consumer joke rather than a specific developer joke; misses the target audience.): Panik Kalm Panik, Pre-load GTA 6 now / I have 4GB of free disk space / The download size is 150 GB",
+    "editor 3/10 (Doesn't quite make sense in the context of coding; feels like random word association.): They're The Same Picture, Writing clean documentation / Making a 3-hour podcast about loops",
+    "editor 2/10 (Warren Buffett is a real person/finance joke, not a developer joke. Weak fit for the page.): Epic Handshake, Open source maintainers / Warren Buffett / Compounding interest"
   ]
 }
