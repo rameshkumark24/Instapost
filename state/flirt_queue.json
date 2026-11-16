@@ -825,8 +825,9 @@
    "AWAIT"
   ],
   "score": 10.0,
-  "status": "pending",
-  "drafted_at": "2026-11-07T10:56:39+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-07T10:56:39+00:00",
+  "sent_at": "2026-11-16T12:29:05+00:00"
  },
  {
   "concept": "hotfix",

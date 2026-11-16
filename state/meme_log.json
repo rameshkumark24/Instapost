@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-17",
-    "trend": "Postgres 19 delayed after AI reviewers find more bugs than humans can fix",
-    "template_id": "247113703"
-  },
-  {
-    "date": "2026-10-17",
-    "trend": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
-    "template_id": "284929871"
-  },
-  {
-    "date": "2026-10-17",
-    "trend": "suvarna keralam lottery results",
-    "template_id": "112126428"
-  },
-  {
     "date": "2026-10-18",
     "trend": "Replit makes OpenAI its default over Anthropic, CEO says",
     "template_id": "137501417"
@@ -453,5 +438,20 @@
     "date": "2026-11-15",
     "trend": "How to Build an AI Membership and Class Booking Agent for a Gym",
     "template_id": "188390779"
+  },
+  {
+    "date": "2026-11-16",
+    "trend": "The Agentic Loop Explained: Step Through the Plan, Build, Judge and Repeat Loop Behind AI Coding Agents",
+    "template_id": "195515965"
+  },
+  {
+    "date": "2026-11-16",
+    "trend": "Please Implement A Quorum Database",
+    "template_id": "124822590"
+  },
+  {
+    "date": "2026-11-16",
+    "trend": "gasbuddy",
+    "template_id": "112126428"
   }
 ]

@@ -628,5 +628,12 @@
   "url": "https://github.com/janestreet/agent_skills",
   "source": "github",
   "posted_at": "2026-11-15T11:47:03+00:00"
+ },
+ {
+  "key": "dev.to/alexgeorgiev17/postgresql-19s-pgplanadvice-turned-a-28ms-query-into-264ms-under-load-46o5",
+  "title": "PostgreSQL 19's pg_plan_advice turned a 28ms query into 264ms under load",
+  "url": "https://dev.to/alexgeorgiev17/postgresql-19s-pgplanadvice-turned-a-28ms-query-into-264ms-under-load-46o5",
+  "source": "devto",
+  "posted_at": "2026-11-16T12:28:59+00:00"
  }
 ]

@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-15",
+  "date": "2026-11-16",
   "stories": [
     {
-      "title": "Swizzle Runtime v0.1.0: How We Reached 209 tok/s and 43ms TTFT on a 4GB Laptop GPU in Pure Rust",
+      "title": "PostgreSQL 19's pg_plan_advice turned a 28ms query into 264ms under load",
       "publication": "DEV",
-      "summary": "Autonomous coding agents, local developer tools, and edge robotics are bottlenecked by the..."
+      "summary": "I tested PostgreSQL 19 RC2's new planner-hint extension, pg_plan_advice: forcing a plan made throughput 9x worse under ten clients, and in every scenario I could construct the planner's own choice…"
     },
     {
-      "title": "The Claude Delusion",
+      "title": "Understanding Positional Embeddings in Modern LLMs",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "How to Build an AI Membership and Class Booking Agent for a Gym",
+      "title": "One model gateway across clouds: LiteLLM on Cloud Run and Azure with zero API keys",
       "publication": "DEV",
-      "summary": "Design a safe AI gym booking agent with live capacity, membership checks, waitlists, cancellations, human escalation and tests."
+      "summary": "One LiteLLM per cloud, on Cloud Run and Azure Container Apps. Agents reach Gemini and Azure OpenAI with their own identity: no API keys, no virtual keys, no database password."
     },
     {
-      "title": "I Told My Agent Who Sent the Message. It Mostly Stopped Saying We Were Talking.",
-      "publication": "DEV",
-      "summary": "This is the line: AUTOMATED SCHEDULER CHECK: sender=scheduler, not Keniel; Keniel is not..."
-    },
-    {
-      "title": "Your AI Coding Agent Wrote a 600-Word Summary. What It Skipped Is in the Fine Print.",
-      "publication": "DEV",
+      "title": "A datetime library for Rust",
+      "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
-      "publication": "TechCrunch",
-      "summary": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations."
-    },
-    {
-      "title": "ChatGPT Stopped Recommending This App Overnight. The Culprit Was a Domain Move (and One Regex)",
+      "title": "9 Best Agent Gateways",
       "publication": "DEV",
-      "summary": "For weeks, ChatGPT was quietly acting as an iOS app's best salesperson, sending roughly a third of..."
+      "summary": "AI agents are becoming part of everyday software systems. They call APIs, retrieve information..."
     },
     {
-      "title": "The OpenAI board member who fired Sam Altman says we still can’t trust AI CEOs",
-      "publication": "The Verge",
-      "summary": "Today, I’m talking with Helen Toner, the executive director of the Center for Security and Emerging Technology at Georgetown University. This episode is part two of our series on AI in real life."
+      "title": "The Agentic Loop Explained: Step Through the Plan, Build, Judge and Repeat Loop Behind AI Coding Agents",
+      "publication": "DEV",
+      "summary": "Ask a chat model for a signup endpoint and you get one answer. A coding agent works differently: it..."
+    },
+    {
+      "title": "Please Implement A Quorum Database",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "Where to Draw the Boundaries When AI Agents Write Code: Building a Control Layer Around Kiro CLI and Running It for a Month",
+      "publication": "DEV",
+      "summary": "This article is an English version of a post I contributed to the AWS Blog (Japanese). ..."
     }
   ]
 }

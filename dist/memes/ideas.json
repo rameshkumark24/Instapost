@@ -1,147 +1,162 @@
 {
-  "date": "2026-11-15",
-  "built_at": "2026-11-15T11:48:50+00:00",
+  "date": "2026-11-16",
+  "built_at": "2026-11-16T12:29:45+00:00",
   "ideas": [
     {
-      "trend": "The Claude Delusion",
+      "trend": "The Agentic Loop Explained: Step Through the Plan, Build, Judge and Repeat Loop Behind AI Coding Agents",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "252600902",
-      "template": "Always Has Been",
-      "maker": "https://imgflip.com/memegenerator/252600902",
+      "context": "Ask a chat model for a signup endpoint and you get one answer. A coding agent works differently: it...",
+      "template_id": "195515965",
+      "template": "Clown Applying Makeup",
+      "maker": "https://imgflip.com/memegenerator/195515965",
       "boxes": [
-        "Wait, the AGI was just a Python script?",
-        "Always has been"
+        "Let AI agent fix the build error",
+        "Agent enters plan and judge loop",
+        "Agent refactors whole codebase",
+        "$50 in API credits to fix a typo"
       ],
-      "caption": "The revelation of the century.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Mocks the hype around AI hallucinations and grandeur by reducing it to basic scripting.",
-      "score": 8.0,
-      "editor": "Spot-on use of the format making fun of AI hype; instantly funny to devs.",
+      "caption": "The loop never ends.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Agentic coding loops burn massive tokens trying to self-correct simple errors.",
+      "score": 9.0,
+      "editor": "Perfect escalation format; extremely topical and accurate payoff for AI agent loops.",
       "drawn": true
     },
     {
-      "trend": "ChatGPT Stopped Recommending This App Overnight. The Culprit Was a Domain Move (and One Regex)",
+      "trend": "Please Implement A Quorum Database",
       "where": "tech",
       "pool": "tech",
-      "context": "For weeks, ChatGPT was quietly acting as an iOS app's best salesperson, sending roughly a third of...",
-      "template_id": "89370399",
-      "template": "Roll Safe Think About It",
-      "maker": "https://imgflip.com/memegenerator/89370399",
+      "context": "Lobsters",
+      "template_id": "124822590",
+      "template": "Left Exit 12 Off Ramp",
+      "maker": "https://imgflip.com/memegenerator/124822590",
       "boxes": [
-        "Can't lose 30 percent of your daily traffic",
-        "If you never launch your app in the first place"
+        "Use standard Postgres",
+        "Build a quorum database",
+        "Senior dev on weekend"
       ],
-      "caption": "Bulletproof growth strategy.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Applies Roll Safe logic to catastrophic regex and domain routing failures.",
-      "score": 7.0,
-      "editor": "Classic, well-executed Roll Safe logic about shipping anxiety that brings a solid smile.",
+      "caption": "Just use Postgres.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Engineers love building custom distributed quorum DBs when standard SQL works.",
+      "score": 9.0,
+      "editor": "Spot-on capture of senior dev weekend over-engineering syndrome.",
       "drawn": true
     },
     {
-      "trend": "How to Build an AI Membership and Class Booking Agent for a Gym",
-      "where": "tech",
-      "pool": "tech",
-      "context": "Design a safe AI gym booking agent with live capacity, membership checks, waitlists, cancellations, human escalation and tests.",
-      "template_id": "188390779",
-      "template": "Woman Yelling At Cat",
-      "maker": "https://imgflip.com/memegenerator/188390779",
+      "trend": "gasbuddy",
+      "where": "US",
+      "pool": "current",
+      "context": "South Carolina gas prices drop 13.9 cents in a week, GasBuddy reports",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "Your gym booking agent deleted all active memberships!",
-        "It achieved peak mental wellness by going offline"
+        "Saving $0.13 on cloud bill",
+        "Me",
+        "The $4000 recursive Lambda bug"
       ],
-      "caption": "Fitness through digital detachment.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Translates complex automated gym management failures into a simple, savage cat comeback.",
-      "score": 4.0,
-      "editor": "Feels like a retelling of a specific news headline rather than a natural dev joke.",
+      "caption": "Every penny counts.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Obsessing over tiny cloud savings while ignoring a massive runaway cloud cost.",
+      "score": 9.0,
+      "editor": "Hilarious and painfully specific AWS cloud bill horror scenario.",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "interest rate",
+      "title": "sudan vs senegal",
       "where": "IN"
     },
     {
-      "title": "ravana",
+      "title": "punjab state dear diwali bumper 2026",
       "where": "IN"
     },
     {
-      "title": "mammootty",
+      "title": "prithvi shaw",
       "where": "IN"
     },
     {
-      "title": "icsi cseet result",
+      "title": "sanju samson",
       "where": "IN"
     },
     {
-      "title": "knock knock",
+      "title": "katy perry new short haircut",
       "where": "US"
     },
     {
-      "title": "uzbekistan",
+      "title": "sec football standings title contenders",
       "where": "US"
     },
     {
-      "title": "ron howard",
+      "title": "stock",
       "where": "US"
     },
     {
-      "title": "dallas weather",
+      "title": "theft",
       "where": "US"
     },
     {
-      "title": "rory mcilroy",
+      "title": "brawl",
       "where": "US"
     },
     {
-      "title": "espncricinfo",
+      "title": "tarik skubal mlb free agency",
       "where": "US"
     },
     {
-      "title": "the tomb of the unknown soldier",
+      "title": "nfl mock draft",
       "where": "US"
     },
     {
-      "title": "robot",
+      "title": "gasbuddy",
       "where": "US"
     },
     {
-      "title": "Swizzle Runtime v0.1.0: How We Reached 209 tok/s and 43ms TTFT on a 4GB Laptop GPU in Pure Rust",
+      "title": "nifty 50",
+      "where": "US"
+    },
+    {
+      "title": "zubayr hamza",
+      "where": "US"
+    },
+    {
+      "title": "PostgreSQL 19's pg_plan_advice turned a 28ms query into 264ms under load",
       "where": "tech"
     },
     {
-      "title": "The Claude Delusion",
+      "title": "Understanding Positional Embeddings in Modern LLMs",
       "where": "tech"
     },
     {
-      "title": "How to Build an AI Membership and Class Booking Agent for a Gym",
+      "title": "One model gateway across clouds: LiteLLM on Cloud Run and Azure with zero API keys",
       "where": "tech"
     },
     {
-      "title": "I Told My Agent Who Sent the Message. It Mostly Stopped Saying We Were Talking.",
+      "title": "A datetime library for Rust",
       "where": "tech"
     },
     {
-      "title": "Your AI Coding Agent Wrote a 600-Word Summary. What It Skipped Is in the Fine Print.",
+      "title": "9 Best Agent Gateways",
       "where": "tech"
     },
     {
-      "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
+      "title": "The Agentic Loop Explained: Step Through the Plan, Build, Judge and Repeat Loop Behind AI Coding Agents",
       "where": "tech"
     },
     {
-      "title": "ChatGPT Stopped Recommending This App Overnight. The Culprit Was a Domain Move (and One Regex)",
+      "title": "Please Implement A Quorum Database",
       "where": "tech"
     },
     {
-      "title": "The OpenAI board member who fired Sam Altman says we still can’t trust AI CEOs",
+      "title": "Where to Draw the Boundaries When AI Agents Write Code: Building a Control Layer Around Kiro CLI and Running It for a Month",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "Left Exit 12 Off Ramp: 'the sensible way, straight on' runs to 35 characters, limit 24",
-    "editor 2/10 (Misuses the format with a confusing non-sequitur about a real celebrity.): Two guys on a bus, Me debugging memory leaks in C++ / Ron Howard realizing his marriage is fine"
+    "editor 8/10 (Format used correctly; painful DB experience instantly recognizable to backend devs.): Gru's Plan, Force planner hints with pg_plan / Query plan is locked in / Query is 9x slower ",
+    "editor 8/10 (Great escalation; handling custom leap seconds is an immediate datetime nightmare.): Panik Kalm Panik, Need to handle timezones in Rust / There's a brand new datetime crate / It suppo",
+    "editor 8/10 (Format used correctly; punchy joke about bad security masked as convenience.): They're The Same Picture, Zero API key multi-cloud setup / Putting .env files in git",
+    "editor 7/10 (Solid and relatable tech compensation reality, gives a good laugh/smile.): Two guys on a bus, Dev holding stock options / Dev who negotiated higher base salary",
+    "editor 8/10 (Classic developer priorities joke executed perfectly with the template.): Sleeping Shaq, Database deadlocks in production / Tabs vs spaces brawl in PR review"
   ]
 }
