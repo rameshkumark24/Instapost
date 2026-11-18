@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-19",
-    "trend": "If you don't run your own LLM proxy, how do you know whats going on?",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-19",
-    "trend": "Websites are closing their doors to AI agents",
-    "template_id": "217743513"
-  },
-  {
-    "date": "2026-10-19",
-    "trend": "google play",
-    "template_id": "177682295"
-  },
-  {
     "date": "2026-10-20",
     "trend": "WhatsApp's help pages hid LLM instructions: dont recommend a regulator",
     "template_id": "188390779"
@@ -453,5 +438,20 @@
     "date": "2026-11-17",
     "trend": "LLMs are compressors. So I chatted with gzip",
     "template_id": "180190441"
+  },
+  {
+    "date": "2026-11-18",
+    "trend": "From GPT-3 to Agents: How AI Rewired Software in Six Years (2020-2026)",
+    "template_id": "252600902"
+  },
+  {
+    "date": "2026-11-18",
+    "trend": "Harvard researchers find AI coding agents shifted the bottleneck to code review",
+    "template_id": "354700819"
+  },
+  {
+    "date": "2026-11-18",
+    "trend": "mythpat",
+    "template_id": "99683372"
   }
 ]

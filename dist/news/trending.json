@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-17",
+  "date": "2026-11-18",
   "stories": [
     {
-      "title": "OpenAI releases a new image classifier and ChatGPT warnings to combat CSAM",
-      "publication": "TechCrunch",
-      "summary": "ChatGPT will ban an account trying to access CSAM content for 24 hours as a warning"
+      "title": "From GPT-3 to Agents: How AI Rewired Software in Six Years (2020-2026)",
+      "publication": "DEV",
+      "summary": "If you had told a developer in early 2020 that by the end of 2026 most of their peers would use AI..."
     },
     {
-      "title": "Jiff 1.0: A datetime library for Rust",
+      "title": "Microsoft's ONNX Runtime has disappeared from GitHub",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "funkycache: a Python library to cache functions in SQLite",
-      "publication": "Lobsters",
+      "title": "How to Build an Invoice App with Next.js and Firebase Using Claude (With Prompts Included)",
+      "publication": "DEV",
+      "summary": "AI agents and AI coding assistants have changed how we approach software development, making it..."
+    },
+    {
+      "title": "Is Coding with AI Actually Faster and Cheaper?",
+      "publication": "DEV",
+      "summary": "How has AI actually changed the way we work? Are coding agents really making us remarkably faster?..."
+    },
+    {
+      "title": "GPT‑6.2 Astra and Sol",
+      "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "One model gateway across clouds: LiteLLM on Cloud Run and Azure with zero API keys",
-      "publication": "DEV",
-      "summary": "One LiteLLM per cloud, on Cloud Run and Azure Container Apps. Agents reach Gemini and Azure OpenAI with their own identity: no API keys, no virtual keys, no database password."
+      "title": "Not Everything Needs an LLM",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
-      "title": "OpenAI wants to stop deepfakes from overwhelming child abuse tiplines",
-      "publication": "The Verge",
-      "summary": "OpenAI is announcing a tool that it says will help child sexual abuse investigators cut through the noise to find harmful material they can act on quickly."
+      "title": "Harvard researchers find AI coding agents shifted the bottleneck to code review",
+      "publication": "Hacker News",
+      "summary": ""
     },
     {
-      "title": "Sam Altman on Nvidia without Jensen Huang: the industry will be ‘fine’",
+      "title": "Felicis leads $7.5M bet on Unsiloed AI to make enterprise documents usable by AI agents",
       "publication": "TechCrunch",
-      "summary": "OpenAI CEO Sam Altman acknowledged the special role Nvidia CEO Jensen Huang has played in the AI boom, but ultimately thinks the industry will be “fine” without him at the helm."
-    },
-    {
-      "title": "High or Low Thinking? Gemini 4 and Gemma 4 on Hard Math, Cost First",
-      "publication": "DEV",
-      "summary": "Seven models on the 15 problems of AIME 2025 I at their lowest and highest thinking settings, under a hard budget."
-    },
-    {
-      "title": "LLMs are compressors. So I chatted with gzip",
-      "publication": "DEV",
-      "summary": "I had a conversation with a chatbot this morning: › who is edo? ● a senior developer advocate at..."
+      "summary": "With a team of just seven, Unsiloed AI plans to compete with tech giants and specialized startups in the crowded AI document-processing market."
     }
   ]
 }

@@ -851,8 +851,9 @@
    "ZERO TRUST"
   ],
   "score": 9.0,
-  "status": "pending",
-  "drafted_at": "2026-11-07T10:56:39+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-07T10:56:39+00:00",
+  "sent_at": "2026-11-18T12:50:35+00:00"
  },
  {
   "concept": "abstraction",
@@ -949,5 +950,65 @@
   "score": 6.0,
   "status": "pending",
   "drafted_at": "2026-11-07T10:56:39+00:00"
+ },
+ {
+  "concept": "flaky-test",
+  "term": "FLAKY TEST",
+  "domain": "code",
+  "text": "One day you are all in, the next you ghost. Our entire relationship is a FLAKY TEST.",
+  "terms": [
+   "FLAKY TEST"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-18T12:50:33+00:00"
+ },
+ {
+  "concept": "deadlock",
+  "term": "DEADLOCK",
+  "domain": "sql",
+  "text": "I won't text first until you do, and you're waiting on me. Classic DEADLOCK.",
+  "terms": [
+   "DEADLOCK"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-18T12:50:33+00:00"
+ },
+ {
+  "concept": "403",
+  "term": "403 FORBIDDEN",
+  "domain": "web",
+  "text": "You know who I am and what I want, but it's still 403 FORBIDDEN.",
+  "terms": [
+   "403 FORBIDDEN"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-18T12:50:33+00:00"
+ },
+ {
+  "concept": "cascade-delete",
+  "term": "ON DELETE CASCADE",
+  "domain": "sql",
+  "text": "You left, and everything we built vanished in an ON DELETE CASCADE.",
+  "terms": [
+   "ON DELETE CASCADE"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-18T12:50:33+00:00"
+ },
+ {
+  "concept": "temperature",
+  "term": "TEMPERATURE",
+  "domain": "ml",
+  "text": "I never know if you're flirting or just being nice, so turn down your TEMPERATURE.",
+  "terms": [
+   "TEMPERATURE"
+  ],
+  "score": 6.0,
+  "status": "pending",
+  "drafted_at": "2026-11-18T12:50:33+00:00"
  }
 ]

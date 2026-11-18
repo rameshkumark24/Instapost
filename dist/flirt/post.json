@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "hotfix",
-  "term": "HOTFIX",
-  "headline": "A 2 AM kiss won't solve what's broken between us, babe. That's just a HOTFIX.",
-  "caption": "A 2 AM kiss won't solve what's broken between us, babe. That's just a HOTFIX.\n\n—\nHOTFIX: an urgent fix applied directly to what is already live.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-17",
-  "built_at": "2026-11-16T19:26:21+00:00",
+  "concept": "zero-trust",
+  "term": "ZERO TRUST",
+  "headline": "You're already inside my heart, but I still verify every move. My policy is ZERO TRUST.",
+  "caption": "You're already inside my heart, but I still verify every move. My policy is ZERO TRUST.\n\n—\nZERO TRUST: nothing is trusted by default, even from inside the network; every request is checked.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-18",
+  "built_at": "2026-11-18T12:50:35+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
