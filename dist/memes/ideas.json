@@ -1,159 +1,151 @@
 {
-  "date": "2026-11-18",
-  "built_at": "2026-11-18T12:51:57+00:00",
+  "date": "2026-11-19",
+  "built_at": "2026-11-19T12:36:50+00:00",
   "ideas": [
     {
-      "trend": "From GPT-3 to Agents: How AI Rewired Software in Six Years (2020-2026)",
+      "trend": "Distributed, high-performance blob storage on SQLite",
       "where": "tech",
       "pool": "tech",
-      "context": "If you had told a developer in early 2020 that by the end of 2026 most of their peers would use AI...",
-      "template_id": "252600902",
-      "template": "Always Has Been",
-      "maker": "https://imgflip.com/memegenerator/252600902",
+      "context": "Lobsters",
+      "template_id": "188390779",
+      "template": "Woman Yelling At Cat",
+      "maker": "https://imgflip.com/memegenerator/188390779",
       "boxes": [
-        "Wait, the whole codebase is just an AI wrapper?",
-        "Always has been"
+        "Put your database in a single SQLite file.",
+        "Where is my distributed high performance blob storage?"
       ],
-      "caption": "Six years of software evolution\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "T1 AI rewriting software hits the classic astronaut realization",
-      "score": 9.0,
-      "editor": "Hits the current AI-hype fatigue perfectly. Format is used natively with zero explanation needed.",
+      "caption": "It scales if you believe hard enough.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Juxtaposing simple SQLite with enterprise buzzwords.",
+      "score": 8.0,
+      "editor": "hits the local-first/SQLite hype cycle perfectly with a smug architecture comeback",
       "drawn": true
     },
     {
-      "trend": "Harvard researchers find AI coding agents shifted the bottleneck to code review",
+      "trend": "Gemini 4 Neon looks like an Opus 5.5 competitor",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "354700819",
-      "template": "Two guys on a bus",
-      "maker": "https://imgflip.com/memegenerator/354700819",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "Writing features",
-        "Reviewing AI agents' 400-file PR"
+        "Gemini 4 Neon",
+        "Me",
+        "Opus 5.5"
       ],
-      "caption": "The new developer bottleneck\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "T7 Harvard AI code review study fits the two guys on a bus",
-      "score": 8.0,
-      "editor": "Extremely relatable to anyone currently drowning in massive LLM-generated pull requests.",
+      "caption": "A new benchmark dropped, abandon ship.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developer infidelity to the current favorite LLM.",
+      "score": 4.0,
+      "editor": "uses made-up version numbers that don't correspond to real models, feeling a bit generic",
       "drawn": true
     },
     {
-      "trend": "mythpat",
-      "where": "IN",
+      "trend": "what does anthropic do",
+      "where": "US",
       "pool": "current",
-      "context": "YouTube celebrates the launch and cultural impact of Grand Theft Auto VI",
-      "template_id": "99683372",
-      "template": "Sleeping Shaq",
-      "maker": "https://imgflip.com/memegenerator/99683372",
+      "context": "Claude solves two open problems in the physics of black holes",
+      "template_id": "110163934",
+      "template": "I Bet He's Thinking About Other Women",
+      "maker": "https://imgflip.com/memegenerator/110163934",
       "boxes": [
-        "GTA VI launch",
-        "Someone left console.log in production"
+        "I bet he's thinking about other women",
+        "Why does it pass locally but fail in CI"
       ],
-      "caption": "Priorities\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "G2 GTA VI launch pairs with Shaq's sleeping priorities",
-      "score": 6.0,
-      "editor": "A bit cliché on the console.log trope, but the format execution is correct.",
+      "caption": "The midnight thoughts.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "The ultimate mismatch between what someone thinks is happening and actual dev paranoia.",
+      "score": 10.0,
+      "editor": "universally relatable developer experience, format used precisely right, instant laugh",
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "bengals",
+      "title": "uditi singh",
       "where": "IN"
     },
     {
-      "title": "mythpat",
+      "title": "fabrizio romano",
       "where": "IN"
     },
     {
-      "title": "ps4",
+      "title": "kane williamson",
       "where": "IN"
     },
     {
-      "title": "voyager 1 light day",
+      "title": "insurer",
       "where": "IN"
     },
     {
-      "title": "samsung",
+      "title": "chitwan rhinos vs kathmandu gurkhas",
       "where": "IN"
     },
     {
-      "title": "gta5",
-      "where": "IN"
-    },
-    {
-      "title": "carrie ann inaba dwts comfort",
+      "title": "ohio powerball winners nov 18 2026",
       "where": "US"
     },
     {
-      "title": "jason eck",
+      "title": "cignetti",
       "where": "US"
     },
     {
-      "title": "gta6 map",
+      "title": "fútbol",
       "where": "US"
     },
     {
-      "title": "gta 6 cheat codes",
+      "title": "dolar hoje",
       "where": "US"
     },
     {
-      "title": "product recall",
+      "title": "noah kahan tour supporting acts 2027",
       "where": "US"
     },
     {
-      "title": "bobby moynihan",
+      "title": "wmt stock",
       "where": "US"
     },
     {
-      "title": "ruby bridges",
+      "title": "what does anthropic do",
       "where": "US"
     },
     {
-      "title": "nifty 50",
-      "where": "US"
-    },
-    {
-      "title": "celebrini",
-      "where": "US"
-    },
-    {
-      "title": "From GPT-3 to Agents: How AI Rewired Software in Six Years (2020-2026)",
+      "title": "Distributed, high-performance blob storage on SQLite",
       "where": "tech"
     },
     {
-      "title": "Microsoft's ONNX Runtime has disappeared from GitHub",
+      "title": "Anthropic prices initial public offering",
       "where": "tech"
     },
     {
-      "title": "How to Build an Invoice App with Next.js and Firebase Using Claude (With Prompts Included)",
+      "title": "Gemini 4 Neon looks like an Opus 5.5 competitor",
       "where": "tech"
     },
     {
-      "title": "Is Coding with AI Actually Faster and Cheaper?",
+      "title": "LLM assisted reverse engineering",
       "where": "tech"
     },
     {
-      "title": "GPT‑6.2 Astra and Sol",
+      "title": "Gemini 4 Neon",
       "where": "tech"
     },
     {
-      "title": "Not Everything Needs an LLM",
+      "title": "Why I Rewrote type-tune from TypeScript to Rust",
       "where": "tech"
     },
     {
-      "title": "Harvard researchers find AI coding agents shifted the bottleneck to code review",
+      "title": "Advancing chip design with OpenAI models",
       "where": "tech"
     },
     {
-      "title": "Felicis leads $7.5M bet on Unsiloed AI to make enterprise documents usable by AI agents",
+      "title": "AI agents ask better questions than KPMG accountants in audit trial",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "editor 7/10 (Solid chuckle, though slightly closer to a headline retelling than a deep architectural truth.): Gru's Plan, Ask Claude to build the invoice app / It generates 4000 lines of clean code / We",
-    "editor 3/10 (Doesn't quite land as a developer joke—feels more like a random sci-fi joke awkwardly forced into a meme template.): Tuxedo Winnie The Pooh, A very long time / One light-day"
+    "Expanding Brain: 'the most absurd way, presented as enlightenment' runs to 52 characters, limit 40",
+    "Left Exit 12 Off Ramp: 'the reckless exit' runs to 32 characters, limit 24",
+    "editor 3/10 (reads more like a general tech business headline than a specific developer joke): Panik Kalm Panik, AI startup IPO prices today / Our valuation is through the roof / We still have ",
+    "editor 5/10 (a bit cliché; indexing suggestions are standard DBA fare rather than a sharp punchline): Woman Yelling At Cat, Why is this query taking three seconds to run? / Have you tried indexing the dat",
+    "editor 9/10 (classic format used brilliantly, especially paired with the Stack Overflow caption): Tuxedo Winnie The Pooh, Reading documentation / Synthesizing authoritative technical monographs"
   ]
 }

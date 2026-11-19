@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-20",
-    "trend": "WhatsApp's help pages hid LLM instructions: dont recommend a regulator",
-    "template_id": "188390779"
-  },
-  {
-    "date": "2026-10-20",
-    "trend": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
-    "template_id": "247113703"
-  },
-  {
-    "date": "2026-10-20",
-    "trend": "tesla cybertruck",
-    "template_id": "354700819"
-  },
-  {
     "date": "2026-10-21",
     "trend": "Tsrs: A Port of TypeScript to Rust",
     "template_id": "112126428"
@@ -453,5 +438,20 @@
     "date": "2026-11-18",
     "trend": "mythpat",
     "template_id": "99683372"
+  },
+  {
+    "date": "2026-11-19",
+    "trend": "Distributed, high-performance blob storage on SQLite",
+    "template_id": "188390779"
+  },
+  {
+    "date": "2026-11-19",
+    "trend": "Gemini 4 Neon looks like an Opus 5.5 competitor",
+    "template_id": "112126428"
+  },
+  {
+    "date": "2026-11-19",
+    "trend": "what does anthropic do",
+    "template_id": "110163934"
   }
 ]

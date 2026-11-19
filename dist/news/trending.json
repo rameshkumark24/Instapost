@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "stories": [
     {
-      "title": "From GPT-3 to Agents: How AI Rewired Software in Six Years (2020-2026)",
+      "title": "Distributed, high-performance blob storage on SQLite",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "Anthropic prices initial public offering",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Gemini 4 Neon looks like an Opus 5.5 competitor",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "LLM assisted reverse engineering",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Gemini 4 Neon",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Why I Rewrote type-tune from TypeScript to Rust",
       "publication": "DEV",
-      "summary": "If you had told a developer in early 2020 that by the end of 2026 most of their peers would use AI..."
+      "summary": "Hoi hoi! I'm @nyaomaru, a frontend engineer who loves TypeScript and gambas, not crabs! And..."
     },
     {
-      "title": "Microsoft's ONNX Runtime has disappeared from GitHub",
+      "title": "Advancing chip design with OpenAI models",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "How to Build an Invoice App with Next.js and Firebase Using Claude (With Prompts Included)",
-      "publication": "DEV",
-      "summary": "AI agents and AI coding assistants have changed how we approach software development, making it..."
-    },
-    {
-      "title": "Is Coding with AI Actually Faster and Cheaper?",
-      "publication": "DEV",
-      "summary": "How has AI actually changed the way we work? Are coding agents really making us remarkably faster?..."
-    },
-    {
-      "title": "GPT‑6.2 Astra and Sol",
+      "title": "AI agents ask better questions than KPMG accountants in audit trial",
       "publication": "Hacker News",
       "summary": ""
-    },
-    {
-      "title": "Not Everything Needs an LLM",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Harvard researchers find AI coding agents shifted the bottleneck to code review",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Felicis leads $7.5M bet on Unsiloed AI to make enterprise documents usable by AI agents",
-      "publication": "TechCrunch",
-      "summary": "With a team of just seven, Unsiloed AI plans to compete with tech giants and specialized startups in the crowded AI document-processing market."
     }
   ]
 }
