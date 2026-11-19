@@ -8,7 +8,7 @@ whether one is free.
 
 **Display name** (pick one): Daily Tech Brief · One Tech Story · The 7:45 Brief
 
-**Handle:** `@genphile.meme`
+**Handle:** `@veralevelnanba.meme`
 
 **Bio** (copy exactly):
 
@@ -27,7 +27,7 @@ account is.
 
 **Display name** (pick one): Commit Issues · Tech, But Personal · Primary Key Feelings
 
-**Handle:** `@genphile.meme`
+**Handle:** `@veralevelnanba.meme`
 
 **Bio** (copy exactly):
 

@@ -161,22 +161,24 @@ HASHTAG_POOL = [
 ]
 
 # --- channels --------------------------------------------------------------
-# Two accounts, one repo, one Meta app. Each channel renders to its own folder
-# under dist/ and is published by its own Worker cron against its own
-# IG_USER_ID. Publish limits are per-account, so they never contend.
+# Each channel renders to its own folder under dist/. Both now post to one
+# account, whose handle is printed on every card and meme and named in the
+# prompts that write them -- so a rename is this one line.
+# Renamed from @genphile.meme on 19 Nov 2026.
+HANDLE = "@veralevelnanba.meme"
 
 CHANNELS = {
     "news": {
         "template": "card.html",
         "dist": "news",
-        "handle": "@genphile.meme",          # one account takes both kinds of card
+        "handle": HANDLE,
         "label": "DAILY TECH BRIEF",
         "accent": "#FF6B35",
     },
     "flirt": {
         "template": "quote.html",
         "dist": "flirt",
-        "handle": "@genphile.meme",         # an existing meme page: these cards join its own posts
+        "handle": HANDLE,
         "label": "// TECH, BUT MAKE IT PERSONAL",
         "accent": "#F0508A",
     },

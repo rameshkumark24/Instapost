@@ -2082,10 +2082,11 @@ class FlirtCards(unittest.TestCase):
         return {"scores": [{"n": n, "score": s, "note": f"note {n}"} for n, s in enumerate(marks, 1)]}
 
     def test_the_brief_asks_for_a_flirty_double_meaning_anyone_gets(self):
-        text = self.flirt._PROMPT.format(term="404", meaning="not found")
+        text = self.flirt.brief({"term": "404", "meaning": "not found"})
         for words in ("double meaning", "works without knowing what 404 is", "Stay in romance",
                       "under 120 characters", "404, not found", '{"skip": true}'):
             self.assertIn(words, text)
+
 
     def test_a_short_pickup_line_passes_and_an_essay_does_not(self):
         concept = {"id": "404", "term": "404", "domain": "web", "meaning": "not found"}
@@ -2144,6 +2145,36 @@ class FlirtCards(unittest.TestCase):
             self.assertEqual(draft_cards.main(), 0)
         refill.assert_called_once_with(entries)
         save.assert_called_once_with(entries)
+
+
+class AccountHandle(unittest.TestCase):
+    """One setting names the account everywhere: cards, memes, both prompts, Telegram."""
+
+    def test_the_handle_is_the_new_one_and_valid(self):
+        self.assertEqual(cfg.HANDLE, "@veralevelnanba.meme")
+        self.assertTrue(cfg._HANDLE.fullmatch(cfg.HANDLE))
+        for channel in cfg.CHANNELS.values():
+            self.assertEqual(channel["handle"], cfg.HANDLE)
+            cfg.assert_branding_ready(channel)
+
+    def test_the_prompts_name_the_account_as_it_is_today(self):
+        from src import flirt, memes
+        self.assertIn(f"{cfg.HANDLE}'s \"tech, but make it personal\"", flirt.brief({"term": "404", "meaning": "x"}))
+        self.assertIn(f"You write for {cfg.HANDLE},", memes.prompt({}, [], {}))
+
+    def test_the_memes_carry_the_handle(self):
+        from src import meme_render
+        from src.meme_formats import BY_ID
+        html = meme_render.page(BY_ID["181913649"], ["a", "b"], jpeg_bytes(1200, 1200), cfg.CHANNELS["flirt"]["handle"])
+        self.assertIn('<div class="handle">@veralevelnanba.meme</div>', html)
+
+    def test_the_old_name_is_gone_from_everything_that_runs(self):
+        for path in [*(ROOT / "src").glob("*.py"), *(ROOT / "templates").glob("*.html")]:
+            text = path.read_text(encoding="utf-8").lower()
+            # The config remembers the rename in a comment; nothing may still use the name.
+            if path.name == "config.py":
+                text = text.replace("renamed from @genphile.meme", "")
+            self.assertNotIn("genphile", text, path.name)
 
 
 WORKFLOWS = ROOT / ".github" / "workflows"

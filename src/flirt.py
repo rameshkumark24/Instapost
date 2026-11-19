@@ -114,7 +114,7 @@ def unused_concepts(used_ids: set[str]) -> list[dict]:
 # got careful little essays -- about therapy, house plants and DEEP COPY -- that
 # only made sense once the caption had explained the tech. This one asks for a
 # line about love that works without the tech, with the tech as a second layer.
-_PROMPT = """Write one card for @genphile.meme's "tech, but make it personal" series: a flirty, cheeky
+_PROMPT = """Write one card for {handle}'s "tech, but make it personal" series: a flirty, cheeky
 or heartbroken line about love, with a double meaning. Anyone reads it as a relationship line;
 a programmer also gets a second, sharper meaning from the tech term.
 
@@ -185,9 +185,14 @@ def validate(text: str, concept: dict) -> str:
     return text
 
 
+def brief(concept: dict) -> str:
+    """The drafting prompt for one concept, naming the account as it is today."""
+    return _PROMPT.format(handle=cfg.HANDLE, term=concept["term"], meaning=concept["meaning"])
+
+
 def generate(concept: dict, attempts: int = 3, deadline: float | None = None) -> dict:
     """One validated candidate for a concept. Raises Rejected, or BudgetSpent past `deadline`."""
-    prompt = _PROMPT.format(term=concept["term"], meaning=concept["meaning"])
+    prompt = brief(concept)
     reasons = []
 
     for i in range(attempts):

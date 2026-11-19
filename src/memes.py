@@ -105,7 +105,7 @@ def offered(recently_used: set[str]) -> list[Format]:
 
 # --- the writer ----------------------------------------------------------------
 
-_WRITER = """You write for @genphile.meme, a meme page for developers. Its memes are the ones developers
+_WRITER = """You write for {handle}, a meme page for developers. Its memes are the ones developers
 screenshot and drop in the team chat: short, specific, a little savage, readable in two seconds.
 
 What makes a developer meme land:
@@ -164,6 +164,7 @@ def prompt(cat: dict[str, Trend], formats: list[Format], ask: dict[str, int]) ->
         for p in (TECH, CURRENT) if ask.get(p)
     )
     return _WRITER.format(
+        handle=cfg.HANDLE,
         sections=sections,
         formats="\n".join(_format_line(f) for f in formats),
         # An id that is really in today's list. On a day with only search

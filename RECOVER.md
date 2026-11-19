@@ -29,7 +29,7 @@ The laptop is only for changing how the cards look or what they say.
 | The daily build | GitHub Actions, workflow `build-nightly-post` | Re-enable it in the Actions tab |
 | Three keys (Telegram bot, chat id, AI key) | GitHub repository secrets, encrypted and unreadable even by you | See [If a key is lost](#if-a-key-is-lost) |
 | Delivery to your phone | Your Telegram bot chat | Re-issue the bot token |
-| Posting | You, by hand, on `@genphile.meme` | — |
+| Posting | You, by hand, on `@veralevelnanba.meme` | — |
 | API auto-posting (`worker/`) | Written and tested, **never deployed** | Irrelevant; nothing depends on it |
 
 There is no server to pay for, no database, and no token that expires.
@@ -64,7 +64,7 @@ Open `dist/news/card.jpg` and `dist/flirt/card.jpg`. If they look right, the
 clone is complete and correct.
 
 Run the tests before changing anything:
-`.venv/Scripts/python -m unittest discover -s tests` (240 tests). The publisher's
+`.venv/Scripts/python -m unittest discover -s tests` (244 tests). The publisher's
 own 24 tests need Node 22+: `cd worker` then `node --test`.
 
 **A local run only messages Telegram if you give it the keys.** Without
@@ -143,7 +143,7 @@ Read RECOVER.md, README.md and SETUP.md first.
 
 Current mode: hand-posting. GitHub Actions builds two 1080x1350 cards a day
 (news + tech-as-romance) and Telegram sends each as a file plus the caption as
-a separate message. I post them myself on @genphile.meme, about 2 minutes a day.
+a separate message. I post them myself on @veralevelnanba.meme, about 2 minutes a day.
 A third segment sends three finished memes, all dev jokes: two on the day's
 tech news, one on a Google trend (IN, US). A writer drafts eight on 23 measured
 formats (src/meme_formats.py), an editor call scores them, and the best are
@@ -163,7 +163,7 @@ Deliberate decisions, do not undo without asking me:
   stays unset as a second lock.
 - No approval step. Every built card is delivered; I just don't post the ones I
   don't like.
-- Both content types go on the one account, @genphile.meme.
+- Both content types go on the one account, @veralevelnanba.meme.
 - Secrets only ever go in GitHub repository secrets. Never in chat, a
   screenshot, or a commit.
 - Everything stays free: no paid tier, no card on file anywhere. README "What
@@ -174,7 +174,7 @@ tracks which have gone out; state/ledger.json burns used stories;
 state/meme_log.json keeps a trend to one meme a week. The bot pushes
 dist/ and state/ to main daily, so pull before working.
 
-Tests: 240 Python (python -m unittest discover -s tests) and 24 publisher
+Tests: 244 Python (python -m unittest discover -s tests) and 24 publisher
 (cd worker, then node --test, Node 22+).
 
 Windows notes: never pipe a commit message into git (PowerShell 5.1 adds a BOM)
