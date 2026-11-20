@@ -260,7 +260,9 @@ MEME_LOG_DAYS = 30
 MEME_HASHTAGS = ["#programmerhumor", "#techmemes", "#codingmemes", "#devlife", "#memes"]
 
 # What a meme page never jokes about, however the model frames it. Checked
-# against each trend, its headline, and every word of every idea. Tech's own
+# against each trend, its headline, and every word of every idea -- and the
+# title of every news story, since the page that posts the card is mostly
+# memes: on 17 Nov 2026 the day's card was about child-abuse imagery. Tech's own
 # vocabulary is left alone on purpose: "dead code", "kill -9" and "prod
 # crashed" are the page's bread and butter. "Accident" is the noun only:
 # "accidentally pushed to main" is a joke, not a tragedy.
@@ -269,7 +271,7 @@ MEME_SENSITIVE = re.compile(
     r"(plane|car|bus|train|helicopter) crash\w*|shooting|gunman|gunfire|stabb\w*|"
     r"terror\w*|bomb\w*|blast|war|earthquake|flood\w*|cyclone|tsunami|disaster|"
     r"victims?|funeral|obituary|rip|hospital\w*|cancer|arrest\w*|abuse\w*|"
-    r"tragic|tragedy|injur\w*|maul\w*|damage\w*|9/11|"
+    r"tragic|tragedy|injur\w*|maul\w*|damage\w*|9/11|csam|porn\w*|"
     r"elections?|minister|parliament|religio\w*|temple|mosque|church|riots?|protest\w*)\b",
     re.I,
 )

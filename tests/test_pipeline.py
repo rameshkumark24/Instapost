@@ -2079,6 +2079,21 @@ class MemeIdeas(unittest.TestCase):
         self.assertEqual(methods, ["sendMessage"] + ["sendDocument", "sendMessage"] * 3)
 
 
+class NewsSelection(unittest.TestCase):
+    """What may become the day's news card, on a page that is mostly memes."""
+
+    ledger = mock.MagicMock(contains=lambda k: False, blocked=lambda t: False,
+                            recent_titles=lambda d: [], recent_sources=lambda n: [])
+
+    def test_a_story_the_page_never_jokes_about_is_never_the_days_card(self):
+        # 17 Nov 2026's card, delivered at 1 AM, was about child-abuse imagery.
+        grim = item(title="OpenAI releases a new image classifier and ChatGPT warnings to combat CSAM",
+                    source="rss", publication="TechCrunch", engagement=None)
+        fine = item(title="Postgres 19 ships a new query planner")
+        self.assertEqual(score.score_item(grim, self.ledger, [], []), 0.0)
+        self.assertGreater(score.score_item(fine, self.ledger, [], []), 0.0)
+
+
 class NicheFit(unittest.TestCase):
     """A niche term has to start a word, on both the positive and negative side."""
 

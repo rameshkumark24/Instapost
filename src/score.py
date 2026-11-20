@@ -88,6 +88,11 @@ def score_item(
     if ledger.blocked(item.title):
         log.info("blocklist rejected: %s", item.title[:70])
         return 0.0
+    # Judged on the title, as a tech story is for the memes: a summary of
+    # "ransomware victims" or "hospital use of AI" is still tech news.
+    if cfg.off_limits(item.title):
+        log.info("off-limits: %s", item.title[:70])
+        return 0.0
 
     parts = {
         "recency": recency(item),
