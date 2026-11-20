@@ -73,16 +73,29 @@ def _clean(text: str) -> str:
 # --- deterministic floor ---------------------------------------------------
 
 
+# Where a phrase can end: just before one of these. Articles are left out on
+# purpose -- cutting before "a" left "...prices by up to 80% within" on the
+# 26 Oct card, and before "an" left "...over Wi-Fi and get" on 25 Oct.
+_CUT_BEFORE = {
+    "and", "or", "but", "nor", "for", "to", "of", "in", "on", "at", "by", "with", "from", "as",
+    "into", "over", "via", "using", "within", "about", "after", "before", "between", "through",
+    "without", "than", "like", "under", "across", "against", "during", "toward", "towards",
+    "per", "vs", "versus", "while", "when", "which", "that", "who", "where",
+}
+
 # Words a headline must never end on -- cutting here reads as a broken feed.
-_DANGLING = {
-    "a", "an", "the", "and", "or", "but", "for", "to", "of", "in", "on", "at",
-    "by", "with", "from", "as", "is", "are", "was", "were", "that", "this",
-    "its", "it", "into", "over", "via", "using", "both", "their",
+_DANGLING = _CUT_BEFORE | {
+    "a", "an", "the", "is", "are", "was", "were", "has", "have", "had", "be", "been", "can",
+    "will", "would", "should", "could", "may", "might", "must", "not", "this", "its", "it",
+    "both", "their", "your", "our", "my", "his", "her", "how", "what", "why", "if", "so", "yet",
 }
 
 # Clause boundaries worth breaking a long headline at. The negative lookarounds
 # keep us out of the middle of "2,500" and "v1.90".
 _CLAUSE_END = re.compile(r"(?<!\d)[,;](?!\d)|[:—(]|\s[-–]\s")
+
+# A sentence ends at terminal punctuation followed by a space.
+_SENTENCE_END = re.compile(r"[.!?](?=\s)")
 
 _MIN_CLAUSE = 30
 
@@ -97,45 +110,63 @@ def _trim_headline(title: str) -> tuple[str, bool]:
     """
     title = _clean(title)
     title = re.sub(r"\s*[|—-]\s*(TechCrunch|Ars Technica|The Verge)\s*$", "", title)
-    if len(title) <= cfg.HEADLINE_MAX_CHARS:
+    limit = cfg.HEADLINE_MAX_CHARS
+    if len(title) <= limit:
         return title, False
 
-    # 1. A natural clause boundary is the cleanest break:
-    # "Marionette: Predicting World States, Rendering Geometry, and Painting..."
-    # becomes "Marionette: Predicting World States".
-    best = ""
-    for m in _CLAUSE_END.finditer(title):
-        candidate = title[: m.start()].strip()
-        if _MIN_CLAUSE <= len(candidate) <= cfg.HEADLINE_MAX_CHARS:
-            best = candidate
-    if best:
-        return best.rstrip(" ,;:-—"), True
+    def fits(cut: str) -> bool:
+        return _MIN_CLAUSE <= len(cut) <= limit
 
-    words = title.split()
+    # 1. A whole sentence, when one fits: "...cut their LLM prices by up to 80%
+    #    within a few months." fits, where the old cut stopped at "within".
+    sentences = [s for s in (_tidy(title[: m.end()]) for m in _SENTENCE_END.finditer(title)) if fits(s)]
+    if sentences:
+        return max(sentences, key=len), True
+
+    # 2. A clause boundary: "Marionette: Predicting World States, Rendering
+    #    Geometry, and Painting..." stops at "Rendering Geometry".
+    clause = max((c for c in (_tidy(title[: m.start()]) for m in _CLAUSE_END.finditer(title)) if fits(c)),
+                 key=len, default="")
+
+    # 3. The words that fit, backed up to before the last preposition or
+    #    conjunction: "...the model-definition framework" rather than
+    #    "...framework for state-of-the-art machine".
+    words = _words_within(title, limit)
+    phrase = next((_tidy(" ".join(words[:i])) for i in range(len(words) - 1, 0, -1)
+                   if words[i].lower().strip(",.;:") in _CUT_BEFORE), "")
+    phrase = phrase if fits(phrase) else ""
+
+    # The clause boundary is the cleaner break, unless the phrase keeps much
+    # more: a comma can sit inside a list, and cut after "turns vibecoded," the
+    # 7 Nov card lost what the skill turns.
+    if clause and len(clause) >= 0.8 * len(phrase):
+        return clause, True
+    if phrase:
+        return phrase, True
+
+    # Nothing ends cleanly: the words that fit, marked as cut.
+    rest = _tidy(" ".join(_words_within(title, limit - 1)))
+    return (rest + "…", True) if rest else (title[:limit], True)
+
+
+def _words_within(title: str, limit: int) -> list[str]:
+    """The title's leading words, as many as fit in `limit` characters."""
     out: list[str] = []
-    for w in words:
-        if len(" ".join(out + [w])) > cfg.HEADLINE_MAX_CHARS - 1:
+    for w in title.split():
+        if len(" ".join(out + [w])) > limit:
             break
         out.append(w)
+    return out
 
-    # Drop trailing connectives first, or the backtrack below stops on them
-    # instead of on the real phrase boundary further left.
-    while out and out[-1].lower().strip(",.;:") in _DANGLING:
-        out.pop()
 
-    # 2. Then back up to the last preposition or conjunction, which ends the
-    # phrase where a human would: "...the model-definition framework" rather
-    # than "...framework for state-of-the-art machine".
-    for i in range(len(out) - 1, 0, -1):
-        if out[i].lower().strip(",.;:") in _DANGLING:
-            candidate = " ".join(out[:i]).rstrip(" ,;:-—")
-            if len(candidate) >= _MIN_CLAUSE:
-                return candidate, True
-            break
-
-    if not out:
-        return title[: cfg.HEADLINE_MAX_CHARS], True
-    return " ".join(out).rstrip(" ,;:-—") + "…", True
+def _tidy(cut: str) -> str:
+    """A cut headline with nothing left hanging: no connective, article or
+    clause mark at the end, and no full stop after a word. "?" and "!" stay."""
+    words = cut.rstrip(" ,;:-—").split()
+    while words and words[-1].lower().strip(",.;:") in _DANGLING:
+        words.pop()
+    out = " ".join(words).rstrip(" ,;:-—")
+    return out[:-1] if re.search(r"[a-z0-9]\.$", out) else out
 
 
 def _metadata_body(item: Item) -> str:

@@ -477,6 +477,44 @@ class ComposeEnrichment(unittest.TestCase):
         self.assertTrue(compose._validate(own, source))
 
 
+class HeadlineTrimming(unittest.TestCase):
+    """The deterministic headline: what the card says when the model's is refused."""
+
+    def test_the_three_headlines_that_shipped_cut_mid_phrase(self):
+        cases = {
+            # 26 Oct 2026 shipped "...by up to 80% within"; the whole sentence fits.
+            "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?":
+                "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months",
+            # 25 Oct 2026 shipped "...over Wi-Fi and get".
+            "cleanyourtv: Debloat any Android or Google TV over Wi-Fi and get an Apple TV-style home.":
+                "cleanyourtv: Debloat any Android or Google TV over Wi-Fi",
+            # 7 Nov 2026 shipped "...that turns vibecoded", cut at a comma inside a list.
+            "unslop: A Claude skill that turns vibecoded, AI-looking UI into a designed interface":
+                "unslop: A Claude skill that turns vibecoded, AI-looking UI",
+        }
+        for title, expected in cases.items():
+            with self.subTest(title[:30]):
+                self.assertEqual(compose._trim_headline(title), (expected, True))
+
+    def test_a_headline_that_fits_is_left_alone(self):
+        title = "Distributed, high-performance blob storage on SQLite"
+        self.assertEqual(compose._trim_headline(title), (title, False))
+
+    def test_a_cut_headline_never_ends_on_a_connective_or_an_article(self):
+        for title in [
+            "Marionette: Predicting World States, Rendering Geometry, and Painting Textures with One Diffusion Model",
+            "Why the new Postgres planner rewrites joins for you and what it means for the queries you already have",
+            "We moved our entire CI pipeline from GitHub Actions to a single Raspberry Pi and saved thousands a month",
+            "Apple announces a new framework for building agents on the Mac with on-device models and private compute",
+            "The developer who maintains the most popular date library in the JavaScript ecosystem is stepping down",
+        ]:
+            with self.subTest(title[:30]):
+                headline, cut = compose._trim_headline(title)
+                self.assertTrue(cut)
+                self.assertLessEqual(len(headline), cfg.HEADLINE_MAX_CHARS)
+                self.assertNotIn(headline.split()[-1].lower().strip(",.;:…"), compose._DANGLING | {"a", "an", "the"})
+
+
 class BrandingGuard(unittest.TestCase):
     """A card carrying a placeholder handle must never reach a live account."""
 
