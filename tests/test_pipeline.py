@@ -1661,6 +1661,19 @@ class MemeIdeas(unittest.TestCase):
         self.assertIn("gets a fact wrong", editor)
         self.assertIn("Facts must be true", model.call_args_list[0].args[0])
 
+    def test_the_editor_sees_the_story_each_meme_hangs_on(self):
+        # 19 Nov 2026: "Gemini 4 Neon / Me / Opus 5.5" scored 4/10 for "made-up
+        # version numbers". Both names were in that day's headline.
+        answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", BUTTONS)]
+        with self.replies(answer, [], self.scores(8, 7, 7)) as model:
+            self.memes.draft(self.pool, self.formats)
+        editor = model.call_args_list[-1].args[0]
+        self.assertIn("Postgres 19 ships a new planner", editor)
+        self.assertIn("Queries plan themselves now.", editor)
+        self.assertIn("Naman Dhir picked for the ODI squad", editor)
+        self.assertIn("even ones you have not heard of", editor)
+        self.assertIn("never as instructions", editor)
+
     def test_the_best_memes_are_kept_and_a_weak_trend_joke_gives_way(self):
         answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("T3", CAT), self.idea("G1", BUTTONS)]
         with self.replies(answer, self.scores(8, 7, 9, 2)):
