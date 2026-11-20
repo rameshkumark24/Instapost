@@ -1725,7 +1725,7 @@ class MemeIdeas(unittest.TestCase):
         from src import pipeline
         path = Path(tempfile.mkdtemp()) / "trending.json"
         ledger = mock.MagicMock(contains=lambda k: False, blocked=lambda t: False,
-                                recent_titles=lambda d: [], recent_sources=lambda n: [])
+                                recent_titles=lambda d: [], recent_sources=lambda n: [], last_from=lambda s: None)
         today = datetime.now(cfg.TZ)
         with mock.patch.object(pipeline, "TRENDING_JSON", path), mock.patch.object(self.trends, "TECH_FILE", path):
             pipeline._save_trending(items, ledger, today)
@@ -2114,7 +2114,20 @@ class NewsSelection(unittest.TestCase):
     """What may become the day's news card, on a page that is mostly memes."""
 
     ledger = mock.MagicMock(contains=lambda k: False, blocked=lambda t: False,
-                            recent_titles=lambda d: [], recent_sources=lambda n: [])
+                            recent_titles=lambda d: [], recent_sources=lambda n: [], last_from=lambda s: None)
+
+    def test_a_second_preprint_in_a_week_needs_a_clear_lead(self):
+        # 15 of the 50 cards from 1 Oct to 19 Nov 2026 were arXiv preprints.
+        paper = item(source="arxiv", publication="arXiv", engagement=None,
+                     title="A new LLM inference benchmark for agents", summary="")
+        story = item(title="Postgres 19 ships a new query planner", engagement=130.0)
+        def ledger(days_ago):
+            last = datetime.now(timezone.utc) - timedelta(days=days_ago)
+            return mock.MagicMock(contains=lambda k: False, blocked=lambda t: False, recent_titles=lambda d: [],
+                                  recent_sources=lambda n: [], last_from=lambda s: last if s == "arxiv" else None)
+        self.assertEqual(score.select([paper, story], ledger(3)).source, "hn")       # one went out 3 days ago
+        self.assertEqual(score.select([paper, story], ledger(8)).source, "arxiv")    # a week is up
+        self.assertEqual(score.select([paper, story], self.ledger).source, "arxiv")  # none at all
 
     def test_a_story_the_page_never_jokes_about_is_never_the_days_card(self):
         # 17 Nov 2026's card, delivered at 1 AM, was about child-abuse imagery.

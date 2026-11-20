@@ -9,7 +9,7 @@ from __future__ import annotations
 import logging
 import math
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from . import config as cfg
 from .harvest import Item
@@ -80,6 +80,18 @@ def diversity(item: Item, recent_sources: list[str]) -> float:
     return 1.0 - cfg.DIVERSITY_MAX_PENALTY * (excess / span if span else 0.0)
 
 
+def cooldown(item: Item, ledger: Ledger) -> float:
+    """Multiplier for a source that has already had its turn this week.
+
+    Not a ban: a preprint still wins a day nothing else can.
+    """
+    days = cfg.SOURCE_COOLDOWN_DAYS.get(item.source)
+    last = ledger.last_from(item.source) if days else None
+    if last is None or datetime.now(timezone.utc) - last > timedelta(days=days):
+        return 1.0
+    return cfg.SOURCE_COOLDOWN_FACTOR
+
+
 def score_item(
     item: Item, ledger: Ledger, recent_titles: list[str], recent_sources: list[str]
 ) -> float:
@@ -102,8 +114,9 @@ def score_item(
     }
     base = sum(cfg.WEIGHTS[k] * v for k, v in parts.items())
     parts["diversity"] = diversity(item, recent_sources)
+    parts["cooldown"] = cooldown(item, ledger)
     item.score_parts = parts
-    item.score = base * parts["diversity"]
+    item.score = base * parts["diversity"] * parts["cooldown"]
     return item.score
 
 
@@ -128,9 +141,9 @@ def select(items: list[Item], ledger: Ledger) -> Item:
     for i, it in enumerate(ranked[:5], 1):
         p = it.score_parts
         log.info(
-            "%d. [%.3f] r=%.2f e=%.2f f=%.2f n=%.2f d=%.2f  %s",
+            "%d. [%.3f] r=%.2f e=%.2f f=%.2f n=%.2f d=%.2f c=%.2f  %s",
             i, it.score, p["recency"], p["engagement"], p["fit"], p["novelty"],
-            p["diversity"], it.title[:60],
+            p["diversity"], p["cooldown"], it.title[:60],
         )
 
     winner = ranked[0]

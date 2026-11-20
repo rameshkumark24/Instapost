@@ -62,6 +62,14 @@ RECENCY_HALFLIFE_BY_SOURCE = {
 DIVERSITY_LOOKBACK = 10
 DIVERSITY_FREE_SHARE = 0.34         # share below which there is no penalty
 DIVERSITY_MAX_PENALTY = 0.35
+# arXiv preprints win on fit alone: an abstract is dense with the lane's terms
+# and carries no engagement number to lose on. 15 of the 50 cards from 1 Oct
+# to 19 Nov 2026 were preprints -- dry fare for a page that is mostly memes.
+# While one has gone out within the week, another scores this much less: it
+# still wins a day that nothing else can.
+SOURCE_COOLDOWN_DAYS = {"arxiv": 7}
+SOURCE_COOLDOWN_FACTOR = 0.6
+
 MIN_SCORE = 0.30                    # below this we publish nothing rather than junk
 NOVELTY_LOOKBACK_DAYS = 30          # how far back the dedup check reaches
 

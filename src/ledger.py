@@ -56,6 +56,16 @@ class Ledger:
         """Sources of the last n picks, newest last. Feeds the diversity check."""
         return [e.get("source", "") for e in self.entries[-n:]]
 
+    def last_from(self, source: str) -> datetime | None:
+        """When a story from this source last went out, or None. Feeds the cooldown."""
+        for e in reversed(self.entries):
+            if e.get("source") == source:
+                try:
+                    return datetime.fromisoformat(e["posted_at"])
+                except (KeyError, ValueError):
+                    return None
+        return None
+
     def record(self, *, key: str, title: str, url: str, source: str) -> None:
         self.entries.append(
             {
