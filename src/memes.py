@@ -231,7 +231,7 @@ def sensitive(trend: Trend) -> bool:
     # likeliest place a tragedy shows. A tech story's context is a summary,
     # and "hospital use of AI tools" or "ransomware victims" is not one.
     text = trend.title if pool(trend) == TECH else f"{trend.title} {trend.context}"
-    return bool(cfg.MEME_SENSITIVE.search(text))
+    return cfg.off_limits(text)
 
 
 def usable(trends: list[Trend], recent: set[str]) -> list[Trend]:
@@ -292,7 +292,7 @@ def validate(idea: dict, cat: dict[str, Trend], formats: list[Format]) -> dict:
         raise Rejected("caption carries a hashtag or link")
     why = str(idea.get("why", "")).strip()[:200]
 
-    if cfg.MEME_SENSITIVE.search(" ".join([*boxes, text, why])):
+    if cfg.off_limits(" ".join([*boxes, text, why])):
         raise Rejected("touches a subject the page never jokes about")
 
     return {

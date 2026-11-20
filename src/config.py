@@ -251,9 +251,10 @@ MEME_HASHTAGS = ["#programmerhumor", "#techmemes", "#codingmemes", "#devlife", "
 # What a meme page never jokes about, however the model frames it. Checked
 # against each trend, its headline, and every word of every idea. Tech's own
 # vocabulary is left alone on purpose: "dead code", "kill -9" and "prod
-# crashed" are the page's bread and butter.
+# crashed" are the page's bread and butter. "Accident" is the noun only:
+# "accidentally pushed to main" is a joke, not a tragedy.
 MEME_SENSITIVE = re.compile(
-    r"\b(dies|died|death|deaths|killed|murder\w*|suicide|rape\w*|accident\w*|"
+    r"\b(dies|died|death|deaths|killed|murder\w*|suicide|rape\w*|accidents?|"
     r"(plane|car|bus|train|helicopter) crash\w*|shooting|gunman|gunfire|stabb\w*|"
     r"terror\w*|bomb\w*|blast|war|earthquake|flood\w*|cyclone|tsunami|disaster|"
     r"victims?|funeral|obituary|rip|hospital\w*|cancer|arrest\w*|abuse\w*|"
@@ -261,6 +262,30 @@ MEME_SENSITIVE = re.compile(
     r"elections?|minister|parliament|religio\w*|temple|mosque|church|riots?|protest\w*)\b",
     re.I,
 )
+
+# Developer phrases built from those same words. They are taken out before the
+# check, so "fork bomb", "the OOM killer" and "my laptop died" stay jokes. The
+# list began with what the check wrongly refused: a dozen everyday phrases,
+# and two real tech stories ("Flooded by Agents", "My AI Agent Dies").
+DEV_PHRASES = re.compile(
+    r"\b(fork|zip|logic) bombs?\b|\b(blue screen|ping) of death\b|\bdeath march\w*|"
+    r"\boom[- ]?kill\w*|"
+    r"\bkill(s|ed|ing)? (the |my |our |a |every )?"
+    r"(build|process|job|pod|container|server|session|tab|branch|test|query|thread)s?\b|"
+    r"\b(process|daemon|server|laptop|build|container|pod|job|agent|test|script|session|connection|"
+    r"battery|disk|drive|pipeline|cluster|node|vm|kernel|app|phone)s? (dies|died)\b|"
+    r"\bdisaster recovery\b|\bleader elections?\b|\bblast radius\b|"
+    r"\b(flame|browser|editor|format|console|tab|holy) wars?\b|\bwar (rooms?|files?)\b|"
+    r"\bsyn flood\w*|\bflood(s|ed|ing)? (by|with) (agents?|bots?|requests?|traffic|prs|pull requests|"
+    r"alerts|issues|spam|tickets|notifications|emails)\b|"
+    r"\brip(s|ped|ping)? out\b",
+    re.I,
+)
+
+
+def off_limits(text: str) -> bool:
+    """Whether the text touches a subject the page never jokes about."""
+    return bool(MEME_SENSITIVE.search(DEV_PHRASES.sub(" ", text)))
 
 # --- language model -----------------------------------------------------------
 # Tried in order. A model that answers "not found" has been retired, so the

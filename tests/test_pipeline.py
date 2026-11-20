@@ -1504,6 +1504,27 @@ class MemeIdeas(unittest.TestCase):
         grim = self.trends.Trend("Robotaxi crash: two killed", "tech", "The company paused its fleet.")
         self.assertEqual(self.memes.usable([story, grim], set()), [story])
 
+    def test_everyday_developer_words_are_not_off_limits(self):
+        # Each of these was refused, and two real stories left the pool.
+        for text in ["I accidentally pushed to main", "Blue screen of death", "Fork bomb in CI",
+                     "The OOM killer killed my build", "My laptop died mid-deploy", "Disaster recovery drill",
+                     "Leader election in Raft", "Deploying the WAR file", "Blast radius of a config change",
+                     "SYN flood", "Rip out the ORM", "Flame war about tabs", "Accidental complexity",
+                     "Built for Humans, Flooded by Agents: Why Git Infrastructure Is Being Rebuilt",
+                     "Undead Agent - My AI Agent Dies, Comes Back, and Tells Me What It Saw"]:
+            with self.subTest(text):
+                self.assertFalse(cfg.off_limits(text))
+        idea = self.memes.validate({**self.idea("T1"), "boxes": ["Reviewing my own PR", "I accidentally pushed to main"]},
+                                   self.cat, self.formats)
+        self.assertEqual(idea["boxes"][1], "I accidentally pushed to main")
+
+    def test_real_tragedies_are_still_off_limits(self):
+        for text in ["Train crash kills 12", "Two killed in robotaxi crash", "Bear mauls couple",
+                     "A factory worker died at the plant", "Car accident on the highway", "Flood warning in Chennai",
+                     "Earthquake hits Japan", "Funeral held for the founder"]:
+            with self.subTest(text):
+                self.assertTrue(cfg.off_limits(text))
+
     def test_titles_the_page_cannot_use_are_left_out(self):
         latin = self.trends.latin
         self.assertTrue(latin("naman dhir"))
