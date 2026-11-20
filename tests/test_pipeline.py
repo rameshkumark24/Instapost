@@ -948,6 +948,27 @@ class Notices(unittest.TestCase):
         self.assertEqual(notice.call_args.args[0], "New cards drafted")
 
 
+class DraftingNotice(unittest.TestCase):
+    """What the drafting message claims about the editor has to be true."""
+
+    def notice_for(self, drafts):
+        from src import pipeline_flirt
+        with mock.patch.object(pipeline_flirt, "generate_batch", return_value=(drafts, [])), \
+                mock.patch.object(pipeline_flirt.notify, "notice") as notice:
+            pipeline_flirt._refill_if_low([])
+        return notice.call_args.args[1]
+
+    def test_a_batch_the_editor_never_saw_is_not_called_passed(self):
+        unscored = [{"concept": "fk", "term": "FOREIGN KEY", "domain": "sql", "text": "x", "terms": []}]
+        text = self.notice_for(unscored)
+        self.assertNotIn("passed by the editor", text)
+        self.assertIn("unscored", text)
+
+    def test_a_batch_the_editor_scored_says_so(self):
+        scored = [{"concept": "fk", "term": "FOREIGN KEY", "domain": "sql", "text": "x", "terms": [], "score": 8.0}]
+        self.assertIn("passed by the editor", self.notice_for(scored))
+
+
 class Handoff(unittest.TestCase):
     """What lands on your phone has to be postable without editing anything."""
 

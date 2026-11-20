@@ -142,11 +142,16 @@ def _refill_if_low(entries: list[dict]) -> None:
         notify.notice("Drafting failed", f"flirt drafted nothing in {took}: {rejects[0] if rejects else 'no candidates'}")
         return
 
+    # Without a verdict the batch goes in as drafted, so the message says the
+    # editor was silent instead of claiming a check that was never made. The
+    # queue sends the oldest batch first, the best of each batch first.
+    judged = ("passed by the editor" if all("score" in c for c in cards)
+              else "the editor did not answer, so they went in unscored")
     notify.notice(
         "New cards drafted",
-        f"{len(cards)} drafted and passed by the editor in {took} "
+        f"{len(cards)} drafted in {took}, {judged} "
         f"({len(rejects)} lines or concepts left out). "
-        f"One arrives each day, best first.",
+        f"One arrives each day, the best of each batch first.",
     )
 
 
