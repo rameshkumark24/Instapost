@@ -103,16 +103,29 @@ def meme_ideas(ideas: list[dict], trends: list, day, problems: list[str],
 
 
 def _idea_lines(n: int, idea: dict, with_why: bool = True) -> list[str]:
+    # The editor's mark leads, so a weak one can be skipped at a glance: a
+    # 4/10 used to arrive looking exactly like a 9/10.
     lines = [
-        f"<b>{n}. {_esc(idea['template'])}</b>",
+        f"<b>{n}. {_esc(idea['template'])}</b> · {_mark(idea)}",
         f"on <i>{_esc(idea['trend'])}</i> "
         f"({'tech news' if idea['pool'] == 'tech' else 'trending in ' + _esc(_WHERE.get(idea['where'], idea['where']))})",
         "",
         *(f"Box {i}: <code>{_esc(b)}</code>" for i, b in enumerate(idea["boxes"], 1)),
     ]
+    notes = []
+    if idea.get("scored") is not False and idea.get("editor"):
+        notes.append(f"Editor: <i>{_esc(idea['editor'])}</i>")
     if with_why and idea.get("why"):
-        lines += ["", f"<i>{_esc(idea['why'])}</i>"]
-    return lines
+        notes.append(f"Why: <i>{_esc(idea['why'])}</i>")
+    return lines + ([""] + notes if notes else [])
+
+
+def _mark(idea: dict) -> str:
+    """The editor's score, or "not scored" when it never answered and the
+    day went on in the writer's order."""
+    if idea.get("scored") is False or "score" not in idea:
+        return "not scored"
+    return f"{idea['score']:g}/10"
 
 
 def _send_meme(n: int, idea: dict, image: Path) -> bool:

@@ -386,11 +386,14 @@ def draft(trends: list[Trend], formats: list[Format]) -> tuple[list[dict], list[
     if not candidates:
         return [], rejects
     verdict = judge(candidates)
-    if verdict is None:
+    scored = verdict is not None
+    if not scored:
         rejects.append("no editor's verdict: kept in the writer's order")
         verdict = [(float(cfg.MEME_GOOD_SCORE), "not scored")] * len(candidates)
+    # "scored" lets the message say the editor was silent, rather than show
+    # the stand-in mark as if it had judged.
     for c, (score, note) in zip(candidates, verdict):
-        c["score"], c["editor"] = score, note
+        c["score"], c["editor"], c["scored"] = score, note, scored
     ideas = choose(candidates, need)
     picked = {id(i) for i in ideas}
     rejects += [f"editor {c['score']:g}/10 ({c['editor']}): {c['template']}, {' / '.join(c['boxes'])[:80]}"

@@ -1861,6 +1861,30 @@ class MemeIdeas(unittest.TestCase):
         self.assertIn("&lt;b&gt;x&lt;/b&gt; &amp; y", text)
         self.assertIn("trending in India", text)
 
+    def test_each_meme_arrives_with_the_editors_score_and_note(self):
+        # A 4/10 used to look exactly like a 9/10 on the phone.
+        from datetime import date
+        from src import notify
+        idea = self.memes.validate(self.idea("T1"), self.cat, self.formats)
+        scored = {**idea, "score": 9.0, "editor": "Format used perfectly", "scored": True}
+        unscored = {**idea, "score": 6.0, "editor": "not scored", "scored": False}
+        with mock.patch.object(notify, "_post") as post:
+            notify.meme_ideas([scored, unscored], self.pool, date(2026, 11, 20), [])
+        first, second = (c.args[1]["text"] for c in post.call_args_list[1:3])
+        self.assertIn("· 9/10", first)
+        self.assertIn("Editor: <i>Format used perfectly</i>", first)
+        self.assertIn("· not scored", second)
+        self.assertNotIn("6/10", second)
+
+    def test_the_editors_silence_is_recorded_on_each_meme(self):
+        answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
+        with self.replies(answer, [], None):
+            ideas, _ = self.memes.draft(self.pool, self.formats)
+        self.assertEqual({i["scored"] for i in ideas}, {False})
+        with self.replies(answer, [], self.scores(8, 7, 7)):
+            ideas, _ = self.memes.draft(self.pool, self.formats)
+        self.assertEqual({i["scored"] for i in ideas}, {True})
+
     def test_a_tech_idea_says_it_came_from_the_news(self):
         from datetime import date
         from src import notify
