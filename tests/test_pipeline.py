@@ -1690,6 +1690,14 @@ class MemeIdeas(unittest.TestCase):
         picked = self.memes.choose(day, {"tech": 2, "current": 1})
         self.assertEqual([(p["pool"], p["score"]) for p in picked], [("tech", 8), ("current", 10), ("current", 9)])
 
+    def test_a_meme_the_editor_calls_bad_stays_home_on_a_day_with_better_ones(self):
+        # 12 Nov 2026 sent a 4/10, "weak dev relevance". The editor's own
+        # rubric puts 1 to 4 in its "bad" band.
+        c = self.candidate
+        day = [c("tech", 9, "Drake", "a"), c("tech", 8, "Cat", "b"), c("current", 4, "Boyfriend", "nbis earnings")]
+        picked = self.memes.choose(day, {"tech": 2, "current": 1})
+        self.assertEqual([p["score"] for p in picked], [9, 8])
+
     def test_a_weak_trend_joke_gives_way_to_strong_ones_on_the_news(self):
         # 7 Nov 2026: a 5/10 trend joke went out, and tech jokes at 7, 7 and 6 did not.
         c = self.candidate

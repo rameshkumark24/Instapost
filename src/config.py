@@ -235,7 +235,11 @@ MEME_ATTEMPTS = 2                   # writer calls a day before giving up
 # on a day that would otherwise have none.
 MEME_CANDIDATES_PER_IDEA = 2
 MEME_GOOD_SCORE = 6
-MEME_FLOOR_SCORE = 4
+# The editor's rubric puts 1 to 4 in its "bad" band: a retold headline, a
+# format used backwards, a fact wrong. Five 4/10 memes went out between 3 and
+# 19 Nov 2026 under a floor of 4; a day now brings two memes rather than one
+# of those.
+MEME_FLOOR_SCORE = 5
 
 MEME_CAPTION_MAX = 200              # before hashtags: a second, smaller laugh, not an essay
 # How far past a box's character target a line may run before it is refused
