@@ -126,9 +126,12 @@ reach you again.
 | A red run, but no message | The failure happened before Telegram was reachable | Read the Actions log. |
 | Actions disabled after 60 days idle | GitHub does this to dormant public repos | One click in the Actions tab re-enables it. |
 
-Two runs are scheduled each day (09:30 and 14:30 IST nominal) precisely so a
-dropped run isn't a missed day. Whichever fires first builds; the other sees
-today is already done and exits.
+Two runs are scheduled each day (09:30 and 14:30 IST nominal; GitHub's free
+scheduler turns that into late afternoon and evening) precisely so a dropped
+run isn't a missed day. Whichever fires first builds; the other makes only what
+the first did not -- a news card that failed is retried without sending a second
+tech-metaphor card or more memes. A day is a UTC day, so a run that drifts past
+midnight in India still counts for the day it was scheduled.
 
 ---
 

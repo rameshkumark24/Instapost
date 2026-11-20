@@ -11,13 +11,14 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import sys
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
 from . import config as cfg
-from . import meme_render, memes, notify, trends
+from . import guard, meme_render, memes, notify, trends
 
 logging.basicConfig(
     level=logging.INFO,
@@ -65,9 +66,11 @@ def main() -> int:
 
         stage = "stage"
         IDEAS_JSON.parent.mkdir(parents=True, exist_ok=True)
+        built_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
         IDEAS_JSON.write_text(json.dumps({
             "date": today.isoformat(),
-            "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "built_at": built_at,
+            "daily_at": _daily_at(built_at),
             "ideas": ideas,
             "trends": [{"title": t.title, "where": t.where} for t in fresh],
             "problems": problems,
@@ -125,13 +128,30 @@ def _skip(today, reason: str, notified: bool = False, rejects: list[str] | None 
     if not notified:
         notify.notice("Meme ideas skipped", reason)
     IDEAS_JSON.parent.mkdir(parents=True, exist_ok=True)
+    built_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     IDEAS_JSON.write_text(json.dumps({
         "date": today.isoformat(),
-        "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "built_at": built_at,
+        "daily_at": _daily_at(built_at),
         "skip": reason,
         "rejects": rejects or [],
     }, indent=2, ensure_ascii=False), encoding="utf-8")
     return 0
+
+
+def _daily_at(built_at: str) -> str | None:
+    """When the daily build last made the day's memes, which its guard reads.
+
+    A batch asked for by hand (meme-ideas-now) keeps the daily build's time
+    rather than its own: before the build it must not pass for the day's
+    memes, and after it, it must not make the backup run send the day's again.
+    """
+    if os.environ.get("GITHUB_WORKFLOW") == guard.DAILY_WORKFLOW:
+        return built_at
+    try:
+        return json.loads(IDEAS_JSON.read_text(encoding="utf-8")).get("daily_at")
+    except (OSError, ValueError, AttributeError):
+        return None
 
 
 if __name__ == "__main__":

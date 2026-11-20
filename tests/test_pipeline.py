@@ -1445,6 +1445,106 @@ class Preflight(unittest.TestCase):
         self.assertTrue(any("JPEG" in p for p in self.pre.check({"caption": ""}, path)))
 
 
+class DailyGuard(unittest.TestCase):
+    """build.yml asks this before installing anything: what is today's build still missing?"""
+
+    def setUp(self):
+        import tempfile
+        from src import guard
+        self.guard = guard
+        self.dir = Path(tempfile.mkdtemp())
+        self.files = {step: (self.dir / f"{step}.json", field) for step, (_, field) in guard.OUTPUTS.items()}
+        patcher = mock.patch.dict(guard.OUTPUTS, self.files)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def made(self, step: str, when: str, **extra) -> None:
+        import json
+        path, field = self.files[step]
+        path.write_text(json.dumps({field: when, **extra}), encoding="utf-8")
+
+    @staticmethod
+    def at(stamp: str) -> datetime:
+        return datetime.fromisoformat(stamp).replace(tzinfo=timezone.utc)
+
+    def test_a_backup_past_midnight_in_india_still_belongs_to_its_own_day(self):
+        # Four Monday nights: the first build, the backup that landed past
+        # midnight IST and built the next day's batch at 1 AM, and the next
+        # day's first run, which then found the day done and skipped.
+        for first, backup, next_day in [("2026-10-12T11:42:02", "2026-10-12T18:47:00", "2026-10-13T11:26:00"),
+                                        ("2026-11-02T12:02:51", "2026-11-02T19:19:00", "2026-11-03T11:39:00"),
+                                        ("2026-11-09T12:34:54", "2026-11-09T19:38:00", "2026-11-10T12:10:00"),
+                                        ("2026-11-16T12:28:59", "2026-11-16T19:25:00", "2026-11-17T12:48:00")]:
+            for step in self.files:
+                self.made(step, f"{first}+00:00")
+            with self.subTest(backup=backup):
+                self.assertEqual(self.guard.plan(self.at(backup), "schedule"),
+                                 {"news": False, "flirt": False, "memes": False})
+                self.assertEqual(self.guard.plan(self.at(next_day), "schedule"),
+                                 {"news": True, "flirt": True, "memes": True})
+
+    def test_each_step_is_judged_on_its_own_output(self):
+        # A news step that failed on the first run is retried alone, without a
+        # second tech-metaphor card or three more memes.
+        self.made("news", "2026-11-19T12:34:00+00:00")
+        self.made("flirt", "2026-11-20T12:35:00+00:00")
+        self.made("memes", "2026-11-20T12:36:00+00:00")
+        self.assertEqual(self.guard.plan(self.at("2026-11-20T17:00:00"), "schedule"),
+                         {"news": True, "flirt": False, "memes": False})
+
+    def test_memes_asked_for_by_hand_are_not_the_days(self):
+        self.made("memes", "2026-11-19T12:36:00+00:00", built_at="2026-11-20T06:00:00+00:00")
+        self.assertTrue(self.guard.plan(self.at("2026-11-20T12:00:00"), "schedule")["memes"])
+
+    def test_memes_written_before_the_mark_existed_count_by_when_they_were_built(self):
+        # The run that goes out the day this ships writes no daily_at; without
+        # this, that evening's backup would send a second batch.
+        import json
+        path, _ = self.files["memes"]
+        path.write_text(json.dumps({"built_at": "2026-11-20T12:36:00+00:00", "ideas": []}), encoding="utf-8")
+        self.assertFalse(self.guard.plan(self.at("2026-11-20T18:00:00"), "schedule")["memes"])
+
+    def test_a_run_started_by_hand_makes_everything(self):
+        for step in self.files:
+            self.made(step, "2026-11-20T12:00:00+00:00")
+        self.assertEqual(set(self.guard.plan(self.at("2026-11-20T13:00:00"), "workflow_dispatch").values()), {True})
+
+    def test_an_output_that_is_missing_or_unreadable_means_make_it(self):
+        news, _ = self.files["news"]
+        for content in (None, "not json", "[1, 2]", '{"built_at": "2026-11-20T12:00:00"}', '{"built_at": 5}'):
+            if content is None:
+                news.unlink(missing_ok=True)
+            else:
+                news.write_text(content, encoding="utf-8")
+            with self.subTest(content=content):
+                self.assertTrue(self.guard.plan(self.at("2026-11-20T13:00:00"), "schedule")["news"])
+
+    def test_the_workflow_asks_before_installing_and_each_step_follows_its_own_answer(self):
+        build = workflow("build.yml")
+        self.assertEqual(build["name"], self.guard.DAILY_WORKFLOW)
+        steps = [s for s in build["jobs"]["build"]["steps"] if s.get("name")]
+        names = [s["name"] for s in steps]
+        by_name = {s["name"]: s for s in steps}
+        guard_step = next(s for s in steps if s.get("run") == "python -m src.guard")
+        self.assertLess(names.index(guard_step["name"]), names.index("Install dependencies"))
+        for step, output in (("Build news card", "news"), ("Build tech-metaphor card", "flirt"),
+                             ("Build meme ideas", "memes")):
+            with self.subTest(step):
+                self.assertIn(f"steps.guard.outputs.{output} != 'done'", by_name[step]["if"])
+                self.assertIn(f"steps.guard.outputs.{output} != 'done'", by_name["Install dependencies"]["if"])
+
+    def test_the_days_memes_are_marked_and_a_batch_by_hand_keeps_the_mark(self):
+        import json
+        from src import pipeline_memes
+        ideas = self.dir / "ideas-now.json"
+        ideas.write_text(json.dumps({"daily_at": "2026-11-20T12:00:00+00:00"}), encoding="utf-8")
+        with mock.patch.object(pipeline_memes, "IDEAS_JSON", ideas):
+            with mock.patch.dict(os.environ, {"GITHUB_WORKFLOW": self.guard.DAILY_WORKFLOW}):
+                self.assertEqual(pipeline_memes._daily_at("2026-11-21T12:00:00+00:00"), "2026-11-21T12:00:00+00:00")
+            with mock.patch.dict(os.environ, {"GITHUB_WORKFLOW": "meme-ideas-now"}):
+                self.assertEqual(pipeline_memes._daily_at("2026-11-21T15:00:00+00:00"), "2026-11-20T12:00:00+00:00")
+
+
 class SkipMarker(unittest.TestCase):
     """Regression: a deliberate skip reached the publisher as a failed build."""
 
@@ -1463,8 +1563,9 @@ class SkipMarker(unittest.TestCase):
                 marker = json.loads(text)
                 self.assertEqual(marker["date"], date)
                 self.assertEqual(marker["skip"], "nothing worth posting")
-                # build.yml's "already built today" guard greps for exactly this.
-                self.assertIn(f'"date": "{date}"', text)
+                # build.yml's guard reads when it was made, by UTC day.
+                from src import guard
+                self.assertEqual(guard.made_on(target, "built_at"), datetime.now(timezone.utc).date())
 
 
 class ConceptBank(unittest.TestCase):

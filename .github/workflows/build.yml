@@ -1,18 +1,14 @@
 name: build-nightly-post
 
 on:
-  # Two crons, both hours before the 14:15 UTC publish.
-  #
-  # 75 minutes of slack was not enough. Measured over the first 18 runs the
-  # scheduler drifted +26m to +590m, and 8 runs landed after the publish window
-  # -- the last six in a row. The publish time cannot move, so the build moves
-  # instead, and a second cron covers the case where the first is dropped
-  # outright (which the free tier does under load).
-  #
-  # The job is idempotent: whichever fires first builds, the other exits early.
+  # Two crons, so a dropped run is not a missed day; the free tier drops them
+  # under load. Both fire hours late -- 7 to 10 in November 2026 -- and
+  # whichever comes first builds. The second makes only what the first did
+  # not, judged by UTC day, so a backup that drifts past midnight in India
+  # still counts for the day it was scheduled (src/guard.py).
   schedule:
-    - cron: "0 4 * * *"     # 09:30 IST, primary   -- 10h15m of slack
-    - cron: "0 9 * * *"     # 14:30 IST, backup    --  5h15m of slack
+    - cron: "0 4 * * *"     # 09:30 IST nominal, primary
+    - cron: "0 9 * * *"     # 14:30 IST nominal, backup
   workflow_dispatch:
     inputs:
       dry_run:
@@ -40,27 +36,25 @@ jobs:
           python-version: "3.12"
           cache: pip
 
+      # A second run must never send a second card, burn a second story from
+      # the ledger, or spend a second batch of memes on the same day -- nor
+      # skip what the first run failed to make. Asked before the install, so
+      # a run with nothing left to make ends in seconds.
+      - name: What today's build still needs
+        id: guard
+        run: python -m src.guard
+
       - name: Install dependencies
+        if: >-
+          steps.guard.outputs.news != 'done'
+          || steps.guard.outputs.flirt != 'done'
+          || steps.guard.outputs.memes != 'done'
         run: |
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
-      # A backup cron must never overwrite a good build, nor burn a second
-      # story from the ledger on the same day.
-      - name: Skip if today is already built
-        id: guard
-        run: |
-          TODAY=$(TZ=Asia/Kolkata date +%F)
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "manual run, building anyway"; exit 0
-          fi
-          if [ -f dist/news/post.json ] && grep -q "\"date\": \"$TODAY\"" dist/news/post.json; then
-            echo "already built for $TODAY"
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Build news card
-        if: steps.guard.outputs.skip != 'true'
+        if: steps.guard.outputs.news != 'done'
         env:
           # Shadow mode unless the repository variable LIVE is exactly "true".
           # Set it at Settings -> Secrets and variables -> Actions -> Variables
@@ -81,7 +75,7 @@ jobs:
       # Runs even when the news build failed: the two accounts are independent,
       # and a dead news feed must not silence the other account.
       - name: Build tech-metaphor card
-        if: steps.guard.outputs.skip != 'true' && !cancelled()
+        if: steps.guard.outputs.flirt != 'done' && !cancelled()
         env:
           DRY_RUN: >-
             ${{ github.event_name == 'workflow_dispatch'
@@ -97,7 +91,7 @@ jobs:
       # above -- it reads the tech stories the news step left, and manages on
       # Google Trends alone when there are none.
       - name: Build meme ideas
-        if: steps.guard.outputs.skip != 'true' && !cancelled()
+        if: steps.guard.outputs.memes != 'done' && !cancelled()
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
@@ -126,9 +120,9 @@ jobs:
 
       - name: Verify the image is publicly reachable
         if: ${{ !cancelled() }}
-        # Meta fetches the image from this URL at 19:45. If it 404s, the run is
-        # already lost -- better to know now, while there is still time to fix
-        # it, than to find out from a failed publish.
+        # The parked publisher would have Meta fetch the image from this URL. If
+        # it 404s, that post is already lost -- better to know now, while there
+        # is still time to fix it, than to find out from a failed publish.
         run: |
           URL="https://raw.githubusercontent.com/${{ github.repository }}/main/dist/news/card.jpg"
           for i in 1 2 3 4 5; do
