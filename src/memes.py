@@ -342,7 +342,12 @@ def draft(trends: list[Trend], formats: list[Format]) -> tuple[list[dict], list[
     rejects: list[str] = []
     for attempt in range(cfg.MEME_ATTEMPTS):
         have = {p: sum(1 for c in candidates if c["pool"] == p) for p in want}
-        ask = {p: want[p] - have[p] if have[p] < need[p] else 0 for p in want}
+        # A pool short of its share asks again for what it is missing, and so
+        # does a thin day: the writer often answers with fewer than it was
+        # asked for, and the editor then picks from what little there is.
+        thin = len(candidates) < cfg.MEME_MIN_CANDIDATES
+        ask = {p: want[p] - have[p] if have[p] < need[p] or (thin and have[p] < want[p]) else 0
+               for p in want}
         if not any(ask.values()):
             break
         used = {c["trend"].casefold() for c in candidates}

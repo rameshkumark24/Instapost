@@ -241,6 +241,12 @@ MEME_GOOD_SCORE = 6
 # of those.
 MEME_FLOOR_SCORE = 5
 
+# Fewer valid candidates than this and the writer is asked once more, for
+# stories it has not used yet: the editor needs a real choice. On the 6 of 18
+# days from 2 to 19 Nov 2026 that came back with five or fewer, the weakest
+# meme sent averaged 4.7/10; on the other 12, 6.75.
+MEME_MIN_CANDIDATES = 6
+
 MEME_CAPTION_MAX = 200              # before hashtags: a second, smaller laugh, not an essay
 # How far past a box's character target a line may run before it is refused
 # unread. Every format was drawn with every box at 125% of its target and all

@@ -1469,8 +1469,9 @@ class MemeIdeas(unittest.TestCase):
         return {"scores": [{"n": n, "score": s, "note": f"note {n}"} for n, s in enumerate(marks, 1)]}
 
     def replies(self, *answers):
-        """The model's answers in order: a list is the writer's ideas, a dict is JSON as given
-        (the editor's scores), a str is raw text, None is no reply."""
+        """The model's answers in order: a list is the writer's ideas ([] when it has nothing
+        more to offer a second time), a dict is JSON as given (the editor's scores), a str is
+        raw text, None is no reply."""
         import json
         Reply = self.memes.llm.Reply
         def make(a):
@@ -1638,7 +1639,7 @@ class MemeIdeas(unittest.TestCase):
 
     def test_more_candidates_are_written_than_the_day_needs(self):
         answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
-        with self.replies(answer, self.scores(8, 7, 7)) as model:
+        with self.replies(answer, [], self.scores(8, 7, 7)) as model:
             self.memes.draft(self.pool, self.formats)
         writer = model.call_args_list[0].args[0]
         self.assertIn("Write 5 candidates", writer)     # two tech memes wanted: twice that, plus one
@@ -1649,7 +1650,7 @@ class MemeIdeas(unittest.TestCase):
 
     def test_the_editor_sees_each_format_and_every_box(self):
         answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", BUTTONS)]
-        with self.replies(answer, self.scores(8, 7, 7)) as model:
+        with self.replies(answer, [], self.scores(8, 7, 7)) as model:
             self.memes.draft(self.pool, self.formats)
         editor = model.call_args_list[-1].args[0]
         self.assertIn("Candidate 1: Drake Hotline Bling.", editor)
@@ -1709,7 +1710,7 @@ class MemeIdeas(unittest.TestCase):
 
     def test_each_meme_gets_its_own_trend_and_format(self):
         answer = [self.idea("T1", DRAKE), self.idea("T2", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
-        with self.replies(answer, self.scores(9, 8, 7, 7)):
+        with self.replies(answer, [], self.scores(9, 8, 7, 7)):
             ideas, _ = self.memes.draft(self.pool, self.formats)
         self.assertEqual(len({i["template_id"] for i in ideas}), len(ideas))
         self.assertEqual(len({i["trend"] for i in ideas}), len(ideas))
@@ -1717,13 +1718,13 @@ class MemeIdeas(unittest.TestCase):
 
     def test_a_day_with_nothing_good_still_sends_its_best_one(self):
         answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
-        with self.replies(answer, self.scores(2, 3, 1)):
+        with self.replies(answer, [], self.scores(2, 3, 1)):
             ideas, _ = self.memes.draft(self.pool, self.formats)
         self.assertEqual([(i["template_id"], i["score"]) for i in ideas], [(ALWAYS, 3)])
 
     def test_without_an_editor_the_writers_order_stands(self):
         answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
-        with self.replies(answer, None):
+        with self.replies(answer, [], None):
             ideas, rejects = self.memes.draft(self.pool, self.formats)
         self.assertEqual([i["template_id"] for i in ideas], [DRAKE, ALWAYS, CAT])
         self.assertIn("no editor's verdict: kept in the writer's order", rejects)
@@ -1731,22 +1732,36 @@ class MemeIdeas(unittest.TestCase):
     def test_an_editor_that_skips_a_candidate_is_not_trusted(self):
         answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
         partial = {"scores": [{"n": 1, "score": 9}, {"n": 2, "score": 1}]}
-        with self.replies(answer, partial):
+        with self.replies(answer, [], partial):
             ideas, rejects = self.memes.draft(self.pool, self.formats)
         self.assertEqual(len(ideas), 3)
         self.assertIn("no editor's verdict: kept in the writer's order", rejects)
 
     # --- retries and outages ---
 
-    def test_the_second_try_asks_only_for_what_is_missing(self):
+    def test_the_second_try_offers_only_what_is_still_unused(self):
         tech_only = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS)]
         with self.replies(tech_only, [self.idea("G1", CAT)], self.scores(7, 7, 7)) as model:
             ideas, _ = self.memes.draft(self.pool, self.formats)
         self.assertEqual(len(ideas), 3)
         second = model.call_args_list[1].args[0]
         self.assertIn("Trending searches today", second)
-        self.assertNotIn("Tech news trending today", second)
-        self.assertNotIn("Postgres", second)
+        self.assertIn("Rust 2.0 announced", second)              # the story still unused
+        self.assertNotIn("Postgres", second)                     # the two already used
+        self.assertNotIn("GitHub Actions adds ARM runners", second)
+
+    def test_a_thin_reply_is_topped_up_before_the_editor_chooses(self):
+        # Six of the 18 days from 2 to 19 Nov came back with five or fewer
+        # valid candidates, and their weakest meme averaged 4.7/10.
+        first = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]   # both shares met, but thin
+        more = [self.idea("T1", BUTTONS)]          # T1 of the second list: the one story not yet used
+        with self.replies(first, more, self.scores(8, 7, 7, 9)) as model:
+            ideas, _ = self.memes.draft(self.pool, self.formats)
+        self.assertEqual(model.call_count, 3)       # the writer, the writer again, the editor
+        second = model.call_args_list[1].args[0]
+        self.assertIn("Rust 2.0 announced", second)
+        self.assertNotIn("Postgres 19", second)     # already used
+        self.assertEqual([i["score"] for i in ideas], [9, 8, 7])
 
     def test_a_failed_retry_keeps_the_candidates_already_made(self):
         tech_only = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS)]
@@ -1874,7 +1889,7 @@ class MemeIdeas(unittest.TestCase):
                 images[n].write_bytes(jpeg_bytes(1080, 1080))
             return images, []
         answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]
-        code, saved, post, _ = self.run_day(answer, self.scores(8, 7, 6), draw=draw)
+        code, saved, post, _ = self.run_day(answer, [], self.scores(8, 7, 6), draw=draw)
         self.assertEqual(code, 0)
         self.assertEqual([i["pool"] for i in saved["ideas"]], ["tech", "tech", "current"])
         self.assertTrue(all(i["drawn"] and i["score"] >= 6 for i in saved["ideas"]))
