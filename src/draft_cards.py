@@ -12,6 +12,7 @@ from __future__ import annotations
 import logging
 import sys
 
+from . import config as cfg
 from . import notify, queue
 from .pipeline_flirt import _refill_if_low
 
@@ -27,7 +28,8 @@ def main() -> int:
     try:
         entries = queue.load()
         before = queue.waiting(entries)
-        _refill_if_low(entries)
+        # A job to itself, so longer than the daily build can spare.
+        _refill_if_low(entries, budget_s=cfg.FLIRT_DRAFT_BUDGET_ALONE_S)
         queue.save(entries)
         log.info("cards waiting: %d before, %d after", before, queue.waiting(entries))
         return 0

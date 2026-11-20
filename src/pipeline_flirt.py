@@ -109,12 +109,13 @@ def main() -> int:
         return 1
 
 
-def _refill_if_low(entries: list[dict]) -> None:
+def _refill_if_low(entries: list[dict], budget_s: float | None = None) -> None:
     """Draft more only when the cards waiting to go out run low.
 
     One card goes out a day, so a batch of twelve is about a fortnight. Drafting
     every night instead would spend the concept bank in a week and hand ten
-    minutes of a fifteen-minute job to the model.
+    minutes of a fifteen-minute job to the model. `budget_s` caps the drafting:
+    the daily build's own unless a caller with more time says otherwise.
     """
     stocked = queue.waiting(entries)
     if stocked >= cfg.FLIRT_REFILL_BELOW:
@@ -126,7 +127,7 @@ def _refill_if_low(entries: list[dict]) -> None:
         drafts, rejects = generate_batch(
             queue.used_concept_ids(entries),
             cfg.FLIRT_BATCH_SIZE,
-            budget_s=cfg.FLIRT_DRAFT_BUDGET_S,
+            budget_s=budget_s if budget_s is not None else cfg.FLIRT_DRAFT_BUDGET_S,
         )
     except Rejected as exc:
         log.warning("could not draft: %s", exc)

@@ -1040,6 +1040,17 @@ class Timeouts(unittest.TestCase):
         worst = 180 + (120 + chain) + cards + memes + 60
         self.assertLess(worst, job_s)
 
+    def test_drafting_on_its_own_has_longer_and_still_fits_its_job(self):
+        # The 2 Nov redraft ran under the daily build's 300s and gave 5 cards of 12.
+        workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "cards.yml").read_text(encoding="utf-8"))
+        job_s = workflow["jobs"]["cards"]["timeout-minutes"] * 60
+        chain = (cfg.LLM_CONNECT_TIMEOUT_S + cfg.LLM_TIMEOUT_S) * (len(cfg.GEMINI_MODELS) + len(cfg.GROQ_MODELS))
+        # install + the budget, overrun by a last draft waiting on a whole chain,
+        # + the editor waiting on another + commit
+        worst = 120 + cfg.FLIRT_DRAFT_BUDGET_ALONE_S + chain + chain + 60
+        self.assertGreater(cfg.FLIRT_DRAFT_BUDGET_ALONE_S, cfg.FLIRT_DRAFT_BUDGET_S)
+        self.assertLess(worst, job_s)
+
 
 class GraphVersion(unittest.TestCase):
     """v21.0 stops working on 21 January 2027; nothing may still pin it."""
@@ -2531,7 +2542,7 @@ class FlirtCards(unittest.TestCase):
                 mock.patch.object(draft_cards.queue, "save") as save, \
                 mock.patch.object(draft_cards, "_refill_if_low") as refill:
             self.assertEqual(draft_cards.main(), 0)
-        refill.assert_called_once_with(entries)
+        refill.assert_called_once_with(entries, budget_s=cfg.FLIRT_DRAFT_BUDGET_ALONE_S)
         save.assert_called_once_with(entries)
 
 

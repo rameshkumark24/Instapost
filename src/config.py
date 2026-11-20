@@ -200,6 +200,11 @@ FLIRT_REFILL_BELOW = 10
 # 15-minute job; whatever is drafted in time is kept and topped up next run.
 FLIRT_DRAFT_BUDGET_S = 300
 
+# Drafting on its own (cards-draft-now) has a job to itself and nothing else to
+# build, so it gets longer: the 2 Nov 2026 redraft, run under the daily
+# build's 300s, gave 5 cards of the 12 asked for.
+FLIRT_DRAFT_BUDGET_ALONE_S = 600
+
 FLIRT_HASHTAGS = [
     "#programmerhumor", "#codinglife", "#devlife", "#sqljokes",
     "#programming", "#softwareengineer", "#codingmemes", "#techhumor",

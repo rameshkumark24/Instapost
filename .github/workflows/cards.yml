@@ -25,7 +25,9 @@ concurrency:
 jobs:
   cards:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Drafting alone gets 600s; the worst case on top of that is checked in
+    # tests (Timeouts).
+    timeout-minutes: 25
 
     steps:
       - uses: actions/checkout@v4
