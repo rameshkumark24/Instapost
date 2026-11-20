@@ -937,8 +937,9 @@
    "EMBEDDING"
   ],
   "score": 6.0,
-  "status": "pending",
-  "drafted_at": "2026-11-07T10:56:39+00:00"
+  "status": "expired",
+  "drafted_at": "2026-11-07T10:56:39+00:00",
+  "expired_reason": "scored 6/10; the editor's threshold rose to 7 on 20 Nov 2026"
  },
  {
   "concept": "git-tag",
@@ -949,8 +950,9 @@
    "TAG"
   ],
   "score": 6.0,
-  "status": "pending",
-  "drafted_at": "2026-11-07T10:56:39+00:00"
+  "status": "expired",
+  "drafted_at": "2026-11-07T10:56:39+00:00",
+  "expired_reason": "scored 6/10; the editor's threshold rose to 7 on 20 Nov 2026"
  },
  {
   "concept": "flaky-test",
@@ -1009,7 +1011,8 @@
    "TEMPERATURE"
   ],
   "score": 6.0,
-  "status": "pending",
-  "drafted_at": "2026-11-18T12:50:33+00:00"
+  "status": "expired",
+  "drafted_at": "2026-11-18T12:50:33+00:00",
+  "expired_reason": "scored 6/10; the editor's threshold rose to 7 on 20 Nov 2026"
  }
 ]

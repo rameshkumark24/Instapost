@@ -51,8 +51,10 @@ MIN_CHARS, MAX_CHARS = 25, 150
 MAX_LINES = 3
 
 # The editor's mark, out of 10, below which a drafted card is dropped and its
-# concept left for another day.
-MIN_SCORE = 6
+# concept left for another day. Its rubric calls 5 to 7 "works, but needs a
+# second read", and a card should land at once: five 6/10 cards went into the
+# queue from 2 to 19 Nov 2026 under a mark of 6.
+MIN_SCORE = 7
 
 # A sentence ends at terminal punctuation followed by a space or the end of the
 # line. Counting full stops instead read "...", ".gitignore" and "v1.5" as

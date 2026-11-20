@@ -2483,10 +2483,19 @@ class FlirtCards(unittest.TestCase):
         drafts, _ = self.batch(line, self.scores(8), concepts=[self.a])
         self.assertEqual(drafts[0]["terms"], ["RATE LIMIT"])
 
+    def test_a_line_that_needs_a_second_read_is_dropped(self):
+        # The rubric's 5 to 7 is "works, but needs a second read"; five 6/10
+        # cards were kept from 2 to 19 Nov 2026.
+        a = self.line("Five texts in thirty seconds? Babe, you've hit my RATE LIMIT.", "RATE LIMIT")
+        b = self.line("You took three days to reply, so we hit a TIMEOUT. I've moved on.", "TIMEOUT")
+        drafts, rejects = self.batch(a, b, self.scores(7, 6))
+        self.assertEqual([d["concept"] for d in drafts], ["rate-limit"])
+        self.assertTrue(any("editor 6/10" in r for r in rejects))
+
     def test_kept_cards_go_out_best_first(self):
         a = self.line("Five texts in thirty seconds? Babe, you've hit my RATE LIMIT.", "RATE LIMIT")
         b = self.line("You took three days to reply, so we hit a TIMEOUT. I've moved on.", "TIMEOUT")
-        drafts, _ = self.batch(a, b, self.scores(6, 9))
+        drafts, _ = self.batch(a, b, self.scores(7, 9))
         self.assertEqual([d["concept"] for d in drafts], ["timeout", "rate-limit"])
 
     def test_without_an_editor_the_batch_is_kept_as_drafted(self):
