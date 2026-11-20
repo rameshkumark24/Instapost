@@ -91,6 +91,9 @@
     font-variation-settings: "opsz" 96;
   }
 
+  /* A hyphenated word stays on one line: "Wi-" / "Fi" read as two words. */
+  #headline .word { white-space: nowrap; }
+
   /* --- body --- */
 
   #body {

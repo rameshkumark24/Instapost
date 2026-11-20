@@ -1084,13 +1084,13 @@ class Rendering(unittest.TestCase):
         channel = {**cfg.CHANNELS["flirt"], "handle": ""}
         self.assertTrue(render.render_quote(entry, channel, self.out / "long-term.jpg").exists())
 
-    def headline_rects(self, headline: str, body: str) -> dict:
-        """Where the card's parts land once fit() has sized the headline."""
+    def headline_rects(self, headline: str, body: str, word: str = "") -> dict:
+        """Where the card's parts land once fit() has sized the headline, and
+        how many lines `word` is spread over."""
         from playwright.sync_api import sync_playwright
         from src import render
-        html = render._env.get_template("card.html").render(
-            headline=headline, body=body, publication="GitHub", date="25 OCT 2026",
-            brand={**cfg.BRAND, **cfg.CHANNELS["news"]}, w=cfg.CARD_W, h=cfg.CARD_H)
+        html = render._card_html({"headline": headline, "body": body, "publication": "GitHub",
+                                  "date_label": "25 OCT 2026"})
         with sync_playwright() as p:
             browser = p.chromium.launch(args=["--font-render-hinting=none"])
             page = browser.new_page(viewport={"width": cfg.CARD_W, "height": cfg.CARD_H}, device_scale_factor=1)
@@ -1098,12 +1098,41 @@ class Rendering(unittest.TestCase):
             page.evaluate("Promise.all(['800 100px \"Bricolage Grotesque\"', '400 27px \"IBM Plex Mono\"']"
                           ".map(s => document.fonts.load(s)))")
             page.evaluate("fit()")
-            rects = page.evaluate("""() => ({
-                headline: document.querySelector('#headline').getBoundingClientRect().toJSON(),
-                rule: document.querySelector('.rule').getBoundingClientRect().toJSON(),
-            })""")
+            rects = page.evaluate("""(word) => {
+                const h = document.querySelector('#headline');
+                const out = {headline: h.getBoundingClientRect().toJSON(),
+                             rule: document.querySelector('.rule').getBoundingClientRect().toJSON()};
+                const at = h.textContent.indexOf(word);
+                if (!word || at < 0) return out;
+                const walk = document.createTreeWalker(h, NodeFilter.SHOW_TEXT), range = document.createRange();
+                let seen = 0, node, started = false;
+                while ((node = walk.nextNode())) {
+                    const end = seen + node.length;
+                    if (!started && at < end) { range.setStart(node, at - seen); started = true; }
+                    if (started && at + word.length <= end) { range.setEnd(node, at + word.length - seen); break; }
+                    seen = end;
+                }
+                out.word_lines = new Set([...range.getClientRects()].map(r => Math.round(r.top))).size;
+                return out;
+            }""", word)
             browser.close()
         return rects
+
+    def test_a_hyphenated_word_stays_on_one_line(self):
+        # 18 Nov 2026 printed "Diffusion-" at the end of one line and "Based" on
+        # the next, as 25 Oct did with "Wi-" and "Fi".
+        rects = self.headline_rects("WoRD: Diffusion-Based Posterior Inference for Online Goal Recognition",
+                                    "x" * 60, word="Diffusion-Based")
+        self.assertEqual(rects["word_lines"], 1)
+
+    def test_every_hyphenated_word_in_a_headline_is_kept_whole_and_still_escaped(self):
+        from src import render
+        html = render._card_html({"headline": "Debloat <any> TV over Wi-Fi & get state-of-the-art GPT-5",
+                                  "body": "b", "publication": "p"})
+        for word in ("Wi-Fi", "state-of-the-art", "GPT-5"):
+            self.assertIn(f'<span class="word">{word}</span>', html)
+        self.assertIn("Debloat &lt;any&gt; TV", html)
+        self.assertIn("&amp; get", html)
 
     def test_a_long_headline_stays_below_the_accent_rule(self):
         # 25 Oct 2026: six lines at 148px rose 27px into the rule above them.

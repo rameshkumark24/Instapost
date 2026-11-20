@@ -48,15 +48,7 @@ def render(post: dict, out: Path | None = None, channel: dict | None = None) -> 
     out.parent.mkdir(parents=True, exist_ok=True)
     _assert_within_contract(post)
 
-    html = _env.get_template("card.html").render(
-        headline=post["headline"],
-        body=post["body"],
-        publication=post["publication"],
-        date=post.get("date_label") or datetime.now(cfg.TZ).strftime("%d %b %Y").upper(),
-        brand={**cfg.BRAND, **(channel or cfg.CHANNELS["news"])},
-        w=cfg.CARD_W,
-        h=cfg.CARD_H,
-    )
+    html = _card_html(post, channel)
 
     with sync_playwright() as p:
         browser = p.chromium.launch(args=["--font-render-hinting=none"])
@@ -89,6 +81,36 @@ def render(post: dict, out: Path | None = None, channel: dict | None = None) -> 
     _assert_file_sane(out)
     log.info("rendered %s (%.0f KB, headline %dpx)", out.name, out.stat().st_size / 1024, fit["headlineSize"])
     return out
+
+
+def _card_html(post: dict, channel: dict | None = None) -> str:
+    """The news card's page, exactly as it is screenshotted."""
+    return _env.get_template("card.html").render(
+        headline=_keep_words_whole(post["headline"]),
+        body=post["body"],
+        publication=post["publication"],
+        date=post.get("date_label") or datetime.now(cfg.TZ).strftime("%d %b %Y").upper(),
+        brand={**cfg.BRAND, **(channel or cfg.CHANNELS["news"])},
+        w=cfg.CARD_W,
+        h=cfg.CARD_H,
+    )
+
+
+# A word with a hyphen inside it: "Wi-Fi", "GPT-5", "state-of-the-art".
+_HYPHENATED = re.compile(r"\S*\w-\w\S*")
+
+
+def _keep_words_whole(text: str) -> Markup:
+    """Escape the headline, then keep each hyphenated word on one line.
+
+    A browser may break a line after any hyphen: the 25 Oct card printed "Wi-"
+    at the end of one line and "Fi" on the next, and 18 Nov split "Diffusion-"
+    from "Based". A word too wide for its line makes fit() shrink the type
+    instead, as any long word does. Escaped first, as the quote card's terms
+    are, so nothing from a feed is ever read as markup.
+    """
+    escaped = _html.escape(text)
+    return Markup(_HYPHENATED.sub(lambda m: f'<span class="word">{m.group(0)}</span>', escaped))
 
 
 AVATAR_PX = 1080
