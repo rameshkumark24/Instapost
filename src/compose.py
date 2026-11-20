@@ -184,7 +184,12 @@ def _metadata_body(item: Item) -> str:
     if item.source == "lobsters" and n:
         return f"{n} points on Lobsters in the last {age_h}h."
     if item.source == "github" and n:
-        return f"{n:,} stars on GitHub, pushed within the last week."
+        # Repos are picked by when they were created, and no push date is ever
+        # read: "pushed within the last week" went out on three cards with
+        # nothing behind it.
+        days = max(1, round(age_h / 24))
+        since = "in its first day" if days == 1 else f"in the {days} days since it was created"
+        return f"{n:,} stars on GitHub {since}."
     if item.source == "devto" and n:
         return f"{n} reactions on DEV in the last {age_h}h."
     if item.source == "arxiv":
@@ -245,11 +250,11 @@ def _body_from(item: Item, headline: str, truncated: bool, quoted: bool = False)
     if quoted:
         # A quotation that only repeats the headline adds nothing, and cutting
         # the repeated words off the front would misquote the publisher.
-        if len(src) < 40 or (stem and src.lower().startswith(stem)):
+        if len(src) < 40 or _repeats(headline, src):
             return _metadata_body(item)
         return f"“{_nest_quotes(_trim_to(src, cfg.BODY_MAX_CHARS - 2))}”"
 
-    if truncated and src.lower().startswith(stem[:40]):
+    if truncated and (src.lower().startswith(stem[:40]) or _repeats(headline, src)):
         return _metadata_body(item)
 
     if stem and src.lower().startswith(stem):
@@ -259,6 +264,20 @@ def _body_from(item: Item, headline: str, truncated: bool, quoted: bool = False)
         return _metadata_body(item)
 
     return _trim_to(src, cfg.BODY_MAX_CHARS)
+
+
+def _repeats(headline: str, text: str) -> bool:
+    """Whether the text says again what the headline already does.
+
+    Matched on words anywhere in the text, not on its first characters: a
+    GitHub title is "name: description" while its summary is the description,
+    and a status page puts "Claude's Status Page -" in front of its own title.
+    Both went out with the headline's words printed twice.
+    """
+    head = _words(re.sub(r"^\S+:\s+", "", headline.rstrip(" .…")))
+    body = _words(text)
+    n = len(head)
+    return n >= 3 and any(body[i:i + n] == head for i in range(len(body) - n + 1))
 
 
 def _enrich(item: Item) -> tuple[Item, Enriched | None]:

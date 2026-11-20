@@ -450,6 +450,33 @@ class ComposeEnrichment(unittest.TestCase):
             with self.subTest(url=url):
                 self.assertEqual(_site_name(found, url), expected)
 
+    def test_a_github_card_does_not_say_its_headline_twice(self):  # 25 Oct 2026
+        repo = item(source="github", publication="GitHub", url="https://github.com/o/cleanyourtv", engagement=900.0,
+                    title="cleanyourtv: Debloat any Android or Google TV over Wi-Fi and get an Apple TV-style home.",
+                    summary="Debloat any Android or Google TV over Wi-Fi and get an Apple TV-style home.",
+                    published=datetime.now(timezone.utc) - timedelta(days=9))
+        with mock.patch.object(compose, "fetch_enrichment"), mock.patch.dict(os.environ, NO_LLM):
+            post = compose.compose(repo)
+        self.assertEqual(post["body"], "900 stars on GitHub in the 9 days since it was created.")
+
+    def test_a_quote_that_repeats_the_headline_behind_a_prefix_is_not_printed(self):  # 13 Nov 2026
+        status = Enriched(description="Claude's Status Page - Elevated errors on claude.ai, Claude Code, "
+                                      "and platform.claude.com.", site_name="Claude Status")
+        with mock.patch.object(compose, "fetch_enrichment", return_value=status), mock.patch.dict(os.environ, NO_LLM):
+            post = compose.compose(item(title="Elevated errors on claude.ai, Claude Code, and platform.claude.com",
+                                        engagement=410.0))
+        self.assertTrue(post["body"].startswith("410 points on Hacker News"), post["body"])
+
+    def test_the_github_line_says_only_what_is_known(self):
+        # Repos are picked by creation date; no push date is ever read. "Pushed
+        # within the last week" went out on 21 Oct, 2 Nov and 15 Nov.
+        for days, expected in ((40, "8,767 stars on GitHub in the 40 days since it was created."),
+                               (1, "8,767 stars on GitHub in its first day.")):
+            repo = item(source="github", publication="GitHub", engagement=8767.0,
+                        published=datetime.now(timezone.utc) - timedelta(days=days, minutes=5))
+            with self.subTest(days=days):
+                self.assertEqual(compose._metadata_body(repo), expected)
+
     def test_llm_is_given_the_enriched_text(self):  # review 9
         prompts: list[str] = []
         with mock.patch.object(compose, "fetch_enrichment", return_value=ENRICHED), \
