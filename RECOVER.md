@@ -64,7 +64,7 @@ Open `dist/news/card.jpg` and `dist/flirt/card.jpg`. If they look right, the
 clone is complete and correct.
 
 Run the tests before changing anything:
-`.venv/Scripts/python -m unittest discover -s tests` (244 tests). The publisher's
+`.venv/Scripts/python -m unittest discover -s tests` (287 tests). The publisher's
 own 24 tests need Node 22+: `cd worker` then `node --test`.
 
 **A local run only messages Telegram if you give it the keys.** Without
@@ -147,11 +147,15 @@ Read RECOVER.md, README.md and SETUP.md first.
 Current mode: hand-posting. GitHub Actions builds two 1080x1350 cards a day
 (news + tech-as-romance) and Telegram sends each as a file plus the caption as
 a separate message. I post them myself on @veralevelnanba.meme, about 2 minutes a day.
-A third segment sends three finished memes, all dev jokes: two on the day's
-tech news, one on a Google trend (IN, US). A writer drafts eight on 23 measured
-formats (src/meme_formats.py), an editor call scores them, and the best are
-drawn here (src/meme_render.py), 1080 wide. No Imgflip key: its image host only
-supplies the blank templates. The 2-to-1 split is MEME_MIX in src/config.py.
+A third segment sends up to three finished memes, all dev jokes: usually two on
+the day's tech news and one on a Google trend (IN, US), though a stronger joke on
+either side takes a weaker one's place and nothing under 5/10 goes out on a day
+with better. A writer drafts eight on 23 measured formats (src/meme_formats.py),
+an editor call scores them with the story in view, and the best are drawn here
+(src/meme_render.py), 1080 wide; Telegram shows each one's mark. No Imgflip
+key: its image host only supplies the blank templates. The 2-to-1 split is
+MEME_MIX in src/config.py. Two crons run daily; a day is a UTC day, and the
+second makes only what the first missed (src/guard.py).
 The tech-metaphor cards are flirty double-meaning lines about love, drafted to
 the brief in src/flirt.py and scored by an editor before they join the queue.
 To run only the meme step: Actions -> meme-ideas-now, or change
@@ -172,12 +176,13 @@ Deliberate decisions, do not undo without asking me:
 - Everything stays free: no paid tier, no card on file anywhere. README "What
   it costs" lists each service, and the FreeToRun tests hold the code to them.
 
-State: state/concepts.json holds 226 concepts (~7 months); state/flirt_queue.json
+State: state/concepts.json holds 226 concepts (153 unused on 20 Nov 2026, about
+five months at one a day); state/flirt_queue.json
 tracks which have gone out; state/ledger.json burns used stories;
 state/meme_log.json keeps a trend to one meme a week. The bot pushes
 dist/ and state/ to main daily, so pull before working.
 
-Tests: 244 Python (python -m unittest discover -s tests) and 24 publisher
+Tests: 287 Python (python -m unittest discover -s tests) and 24 publisher
 (cd worker, then node --test, Node 22+).
 
 Windows notes: never pipe a commit message into git (PowerShell 5.1 adds a BOM)

@@ -9,8 +9,9 @@ worth sharing.
 Humour fails differently from news. It does not fail by being wrong; it fails
 by being crude, mean, or cringe, and one bad line published under your name
 undoes a month of good ones. So nothing generated here reaches Instagram
-directly: every candidate goes into a queue that a human approves in batches.
-The gates below are the second line of defence, not the first.
+directly: every line clears the gates below, then an editor call scores the
+batch, and only then does it join the queue -- and you are the last editor,
+posting by hand and skipping what you would not put your name to.
 """
 from __future__ import annotations
 

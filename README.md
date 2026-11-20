@@ -79,21 +79,30 @@ The Cloudflare publisher in `worker/` is not deployed, so it costs nothing eithe
 
 | Path | What it does |
 |---|---|
-| [`src/config.py`](src/config.py) | Every tunable. Editorial lane, scoring weights, brand, limits. |
+| [`src/config.py`](src/config.py) | Every tunable. Editorial lane, scoring weights, brand, limits, what is off-limits. |
+| [`src/guard.py`](src/guard.py) | What today's build still needs, asked before anything is installed |
 | [`src/harvest.py`](src/harvest.py) | HN, Lobsters, DEV, GitHub, arXiv, RSS → one normalised shape |
+| [`src/enrich.py`](src/enrich.py) | A publisher's own summary for a story that came without one, fetched safely |
 | [`src/score.py`](src/score.py) | Recency × engagement × niche fit × novelty; refuses weak nights |
 | [`src/compose.py`](src/compose.py) | Deterministic copy, optional LLM polish, validated against source |
+| [`src/llm.py`](src/llm.py) | The one place a free-tier model is asked, falling back model by model |
 | [`src/render.py`](src/render.py) | Jinja2 + Playwright → JPEG, with the safety gates |
+| [`src/preflight.py`](src/preflight.py) | Instagram's limits, checked when a card is built |
 | [`src/ledger.py`](src/ledger.py) | Posted-URL memory, committed to git |
-| [`src/pipeline.py`](src/pipeline.py) | Orchestrates the build |
+| [`src/notify.py`](src/notify.py) | Everything that reaches Telegram, escaped |
+| [`src/pipeline.py`](src/pipeline.py) | Orchestrates the news card |
+| [`src/flirt.py`](src/flirt.py) | Drafts tech-metaphor cards to the brief, gates them, and has the editor score them |
+| [`src/queue.py`](src/queue.py) | The queue of drafted cards, oldest batch first |
+| [`src/pipeline_flirt.py`](src/pipeline_flirt.py) | Orchestrates the tech-metaphor card, and tops up the queue |
+| [`src/draft_cards.py`](src/draft_cards.py) | Drafts tech-metaphor cards outside the daily build |
 | [`src/trends.py`](src/trends.py) | Google Trends and today's tech stories |
 | [`src/meme_formats.py`](src/meme_formats.py) | The 23 meme formats: where every box goes, what it means, a worked example |
 | [`src/memes.py`](src/memes.py) | The writer, the editor, and every check on what comes back |
 | [`src/meme_render.py`](src/meme_render.py) | Draws each meme on its blank template, 1080 wide |
 | [`src/pipeline_memes.py`](src/pipeline_memes.py) | Orchestrates the memes |
-| [`src/draft_cards.py`](src/draft_cards.py) | Drafts tech-metaphor cards outside the daily build |
-| [`templates/card.html`](templates/card.html) | The card design |
-| [`worker/src/index.js`](worker/src/index.js) | The punctual publisher |
+| [`src/brand.py`](src/brand.py) | The profile kit: bio, avatar, pinned post |
+| [`templates/`](templates/) | The news card, the tech-metaphor card, the meme page and the avatar |
+| [`worker/src/index.js`](worker/src/index.js) | The publisher, built and tested but parked |
 
 ## Design notes
 

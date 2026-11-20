@@ -13,11 +13,11 @@ laptop, and that file is the clone-and-go guide.
 
 | When | What |
 |---|---|
-| Early afternoon | GitHub Actions builds both cards and Telegram sends each one: the image as a file, then the caption as its own message |
+| Late afternoon (the free scheduler runs hours late) | GitHub Actions builds both cards and Telegram sends each one: the image as a file, then the caption as its own message |
 | Whenever suits you | Save the image, hold the caption to copy it, post on Instagram |
-| Right after | Three finished memes about developer life, the editor's best of eight: two on today's tech news, one on a trending search. Each arrives as an image, then its caption |
+| Right after | Up to three finished memes about developer life, the editor's best: usually two on today's tech news and one on a trending search, though a stronger joke on either side takes a weaker one's place. Each arrives as an image with the editor's mark out of 10, then its caption |
 | When one makes you laugh | Save the image and post it with the caption |
-| Every couple of weeks | A batch of tech-metaphor cards is drafted; you see each one on the day it goes out |
+| When fewer than ten wait | A batch of tech-metaphor cards is drafted and scored by the editor; you see each one on the day it goes out |
 
 Nothing in the repo can post to Instagram on its own.
 
@@ -37,15 +37,16 @@ Nothing in the repo can post to Instagram on its own.
    Actions minutes, better scheduler priority, and free image hosting at
    `raw.githubusercontent.com`. Secrets stay encrypted and unreadable.
 2. Edit [`src/config.py`](src/config.py):
-   - `CHANNELS["news"]["handle"]` and `CHANNELS["flirt"]["handle"]` — the two
-     Instagram handles. **These print on every card**, and a live build now
-     refuses to run while either is still a placeholder.
+   - `HANDLE` — the one Instagram account everything goes on. **It prints on
+     every card and meme** and is named in the prompts that write them, and a
+     live build refuses to run while it is still a placeholder.
    - `CHANNELS[...]["label"]` and `["accent"]`, plus `BRAND` colours, to taste.
    - `NICHE_TERMS` / `NICHE_NEGATIVE` — the editorial lane. This is the one
-     knob that decides what the account is about.
-3. Edit [`worker/wrangler.toml`](worker/wrangler.toml): set `REPO` to
+     knob that decides what the news card is about.
+3. Only if you ever switch on the parked publisher: edit
+   [`worker/wrangler.toml`](worker/wrangler.toml), set `REPO` to
    `youruser/yourrepo`, and pin `GRAPH_VERSION` to the current Graph API
-   version. Note the date somewhere — versions are supported ~2 years.
+   version. Posting by hand needs none of it.
 
 ### Local dry run
 
@@ -159,8 +160,9 @@ back to `"status": "pending"`.
 
 ### Calendar
 
-- **Every seven months or so** — top up `state/concepts.json`; 226 concepts is
-  about that much runway at one card a day.
+- **By spring 2027** — top up `state/concepts.json`. Of its 226 concepts, 153
+  were still unused on 20 Nov 2026: about five months at one card a day, less
+  the ones the editor keeps turning down.
 - **Occasionally** — bump dependencies.
 
 ---
