@@ -12,8 +12,8 @@ split the way a meme page splits it:
   * a writer drafts more candidates than the day needs, on formats whose
     meaning, box roles and a worked example it is shown (meme_formats);
   * an editor, in a second call, scores each one as a working developer would
-    in their feed, and the best are kept -- a weak joke on a trend loses its
-    place to a strong one on the news.
+    in their feed, and the best are kept -- a passable joke on either side
+    gives its place to a stronger one on the other.
 
 What the model could get wrong in a way that matters is still checked here,
 not trusted: the trend must be one it was given, named by its id; the format
@@ -388,10 +388,12 @@ def draft(trends: list[Trend], formats: list[Format]) -> tuple[list[dict], list[
 def choose(candidates: list[dict], need: dict[str, int]) -> list[dict]:
     """The best candidates for the day: each a different trend and format.
 
-    First each pool's share from memes the editor rated good, then from ones
-    that are passable, then the rest of the day from either pool, best first --
-    so a 3/10 joke on a trend gives way to an 8/10 one on the news. A meme below
-    the floor goes out only on a day that would otherwise have none.
+    A pool keeps its share only with memes the editor rated good. Every other
+    place goes to the best of the rest, from either pool -- so a passable joke
+    on one side gives way to a stronger one on the other. Filling each share
+    down to the floor first once sent a 4/10 on the news while a 9/10 on a
+    trend was thrown away (19 Nov 2026). A meme below the floor goes out only
+    on a day that would otherwise have none.
     """
     order = sorted(candidates, key=lambda c: -c["score"])
     chosen: list[dict] = []
@@ -402,11 +404,10 @@ def choose(candidates: list[dict], need: dict[str, int]) -> list[dict]:
                 and c["trend"].casefold() not in {x["trend"].casefold() for x in chosen}
                 and c["template_id"] not in {x["template_id"] for x in chosen})
 
-    for floor in (cfg.MEME_GOOD_SCORE, cfg.MEME_FLOOR_SCORE):
-        for c in order:
-            if c["score"] >= floor and left[c["pool"]] > 0 and fresh(c):
-                chosen.append(c)
-                left[c["pool"]] -= 1
+    for c in order:
+        if c["score"] >= cfg.MEME_GOOD_SCORE and left[c["pool"]] > 0 and fresh(c):
+            chosen.append(c)
+            left[c["pool"]] -= 1
     for c in order:
         if len(chosen) < cfg.MEME_IDEAS and c["score"] >= cfg.MEME_FLOOR_SCORE and fresh(c):
             chosen.append(c)

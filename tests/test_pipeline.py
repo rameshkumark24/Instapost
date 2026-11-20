@@ -1668,12 +1668,36 @@ class MemeIdeas(unittest.TestCase):
         self.assertEqual([i["score"] for i in ideas], [9, 8, 7])
         self.assertTrue(any(r.startswith("editor 2/10") for r in rejects))
 
-    def test_a_passable_trend_joke_keeps_its_place(self):
+    def test_a_passable_trend_joke_gives_way_to_a_better_one_on_the_news(self):
+        # Reversed on 20 Nov 2026: a 5/10 trend joke used to keep its place
+        # over a 7/10 one on the news.
         answer = [self.idea("T1", DRAKE), self.idea("T2", ALWAYS), self.idea("T3", CAT), self.idea("G1", BUTTONS)]
         with self.replies(answer, self.scores(8, 7, 9, 5)):
             ideas, _ = self.memes.draft(self.pool, self.formats)
-        self.assertEqual([i["pool"] for i in ideas], ["tech", "tech", "current"])
-        self.assertEqual(ideas[-1]["trend"], "naman dhir")
+        self.assertEqual([(i["pool"], i["score"]) for i in ideas], [("tech", 9), ("tech", 8), ("tech", 7)])
+
+    @staticmethod
+    def candidate(pool, score, template, trend):
+        return {"pool": pool, "score": float(score), "template_id": template, "template": template,
+                "trend": trend, "boxes": ["x"], "editor": ""}
+
+    def test_a_weak_news_joke_gives_way_to_a_strong_trend_joke(self):
+        # 19 Nov 2026: a 4/10 went out and a 9/10 was thrown away.
+        c = self.candidate
+        day = [c("current", 10, "IBet", "what does anthropic do"), c("current", 9, "Pooh", "another trend"),
+               c("tech", 8, "Cat", "blob storage on SQLite"), c("tech", 5, "Cat", "slow query"),
+               c("tech", 4, "Boyfriend", "Gemini 4 Neon"), c("tech", 3, "Panik", "AI startup IPO")]
+        picked = self.memes.choose(day, {"tech": 2, "current": 1})
+        self.assertEqual([(p["pool"], p["score"]) for p in picked], [("tech", 8), ("current", 10), ("current", 9)])
+
+    def test_a_weak_trend_joke_gives_way_to_strong_ones_on_the_news(self):
+        # 7 Nov 2026: a 5/10 trend joke went out, and tech jokes at 7, 7 and 6 did not.
+        c = self.candidate
+        day = [c("tech", 9, "Anakin", "a"), c("tech", 8, "Always", "b"), c("tech", 7, "Exit", "c"),
+               c("tech", 7, "Roll", "d"), c("tech", 6, "Monkey", "e"), c("current", 5, "Handshake", "zelda"),
+               c("current", 4, "Doge", "t10"), c("current", 3, "IBet", "dls")]
+        picked = self.memes.choose(day, {"tech": 2, "current": 1})
+        self.assertEqual([(p["pool"], p["score"]) for p in picked], [("tech", 9), ("tech", 8), ("tech", 7)])
 
     def test_each_meme_gets_its_own_trend_and_format(self):
         answer = [self.idea("T1", DRAKE), self.idea("T2", DRAKE), self.idea("T2", ALWAYS), self.idea("G1", CAT)]

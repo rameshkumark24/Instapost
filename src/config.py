@@ -228,10 +228,11 @@ MEME_MIN_FIT = 0.25
 MEME_ATTEMPTS = 2                   # writer calls a day before giving up
 
 # The writer drafts more than the day needs -- twice each pool's share, plus
-# one -- and the editor's scores pick the day's memes from them. GOOD is what
-# fills a pool's share first; below FLOOR a meme goes out only on a day that
-# would otherwise have none, and a weak trend joke gives its place to a strong
-# one on the news.
+# one -- and the editor's scores pick the day's memes from them. A pool keeps
+# its share only with memes scored GOOD or better; every other place goes to
+# the best of the rest from either pool, so a passable joke on one side gives
+# its place to a stronger one on the other. Below FLOOR a meme goes out only
+# on a day that would otherwise have none.
 MEME_CANDIDATES_PER_IDEA = 2
 MEME_GOOD_SCORE = 6
 MEME_FLOOR_SCORE = 4

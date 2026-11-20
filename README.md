@@ -28,11 +28,12 @@ trending in India or the US, turned into a dev joke.
 They are made the way a meme page makes them. A writer drafts eight candidates
 on 23 classic formats, each shown with what the format means, what goes in each
 box and a worked example; an editor, in a second call, scores them as a working
-developer would in their feed, and the best three go out -- a weak joke on a
-trend gives its place to a strong one on the news. Every meme is then drawn
-here, not by Imgflip: each format's boxes were measured on the template, so the
-text lands on the right person or panel, in one bold meme font, 1080 pixels
-wide, with the page's handle in a corner no text uses. Each is checked in code:
+developer would in their feed, and the best three go out -- a passable joke on
+the news or on a trend gives its place to a stronger one on the other. Every
+meme is then drawn here, not by Imgflip: each format's boxes were measured on
+the template, so the text lands on the right person or panel, in one bold meme
+font, 1080 pixels wide, with the page's handle in a corner no text uses. Each
+is checked in code:
 a trend it was given, a real format, every box within its limit, and nothing
 about death, disaster, crime, politics or religion.
 
