@@ -1084,6 +1084,47 @@ class Rendering(unittest.TestCase):
         channel = {**cfg.CHANNELS["flirt"], "handle": ""}
         self.assertTrue(render.render_quote(entry, channel, self.out / "long-term.jpg").exists())
 
+    def headline_rects(self, headline: str, body: str) -> dict:
+        """Where the card's parts land once fit() has sized the headline."""
+        from playwright.sync_api import sync_playwright
+        from src import render
+        html = render._env.get_template("card.html").render(
+            headline=headline, body=body, publication="GitHub", date="25 OCT 2026",
+            brand={**cfg.BRAND, **cfg.CHANNELS["news"]}, w=cfg.CARD_W, h=cfg.CARD_H)
+        with sync_playwright() as p:
+            browser = p.chromium.launch(args=["--font-render-hinting=none"])
+            page = browser.new_page(viewport={"width": cfg.CARD_W, "height": cfg.CARD_H}, device_scale_factor=1)
+            page.set_content(html, wait_until="networkidle")
+            page.evaluate("Promise.all(['800 100px \"Bricolage Grotesque\"', '400 27px \"IBM Plex Mono\"']"
+                          ".map(s => document.fonts.load(s)))")
+            page.evaluate("fit()")
+            rects = page.evaluate("""() => ({
+                headline: document.querySelector('#headline').getBoundingClientRect().toJSON(),
+                rule: document.querySelector('.rule').getBoundingClientRect().toJSON(),
+            })""")
+            browser.close()
+        return rects
+
+    def test_a_long_headline_stays_below_the_accent_rule(self):
+        # 25 Oct 2026: six lines at 148px rose 27px into the rule above them.
+        # fit() counted the box's own padding as room for the headline.
+        rects = self.headline_rects("cleanyourtv: Debloat any Android or Google TV over Wi-Fi and get",
+                                    "Debloat any Android or Google TV over Wi-Fi and get an Apple TV-style home.")
+        self.assertGreaterEqual(rects["headline"]["top"], rects["rule"]["bottom"])
+
+    def test_the_render_refuses_a_headline_that_runs_into_the_rule(self):
+        from playwright.sync_api import sync_playwright
+        from src import render
+        html = ('<div class="rule" style="height:3px;margin-top:150px;background:red"></div>'
+                '<h1 id="headline" style="margin-top:-30px;font:80px sans-serif">Headline</h1>')
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page()
+            page.set_content(html)
+            with self.assertRaises(render.RenderError):
+                render._assert_in_order(page, [".rule", "#headline"])
+            browser.close()
+
     def test_news_card_renders_inside_its_margins(self):
         from src import brand, render
         channel = {**cfg.CHANNELS["news"], "handle": ""}

@@ -157,13 +157,19 @@
   // Called by the renderer once the webfonts have loaded, never at parse
   // time. Run while the page was still loading, it measured the fallback
   // face, and the real, wider one then overflowed the card's margin.
+  //
+  // Only the space inside the box's padding is room for the headline.
+  // Counting the padding too let a six-line headline rise 27px past its box
+  // and into the accent rule above it (25 Oct 2026).
   function fit() {
     const el = document.getElementById("headline");
     const box = el.parentElement;
+    const pad = getComputedStyle(box);
+    const room = box.clientHeight - parseFloat(pad.paddingTop) - parseFloat(pad.paddingBottom);
     let size = 148;
     while (size > 44) {
       el.style.fontSize = size + "px";
-      if (el.scrollHeight <= box.clientHeight && el.scrollWidth <= box.clientWidth) break;
+      if (el.scrollHeight <= room && el.scrollWidth <= box.clientWidth) break;
       size -= 2;
     }
     window.__fit = { headlineSize: size };

@@ -81,6 +81,7 @@ def render(post: dict, out: Path | None = None, channel: dict | None = None) -> 
             )
 
         _assert_no_overflow(page)
+        _assert_in_order(page, [".rail", ".rule", "#headline", "#body", ".footer"])
 
         page.screenshot(path=str(out), type="jpeg", quality=cfg.CARD_QUALITY)
         browser.close()
@@ -221,6 +222,7 @@ def render_quote(entry: dict, channel: dict, out: Path | None = None) -> Path:
             )
 
         _assert_no_overflow(page, "#quote, .footer, .label")
+        _assert_in_order(page, [".label", "#quote", ".footer"])
         page.screenshot(path=str(out), type="jpeg", quality=cfg.CARD_QUALITY)
         browser.close()
 
@@ -252,6 +254,28 @@ def _assert_no_overflow(page, selector: str = "#headline, #body, .footer, .rail"
     )
     if overflow:
         raise RenderError(f"content overflows the canvas: {', '.join(overflow)}")
+
+
+def _assert_in_order(page, selectors: list[str]) -> None:
+    """Each part starts below the one before it: nothing runs into its neighbour.
+
+    The overflow check sees only the canvas edges and the side margins, so a
+    headline that rose 27px into the accent rule above it passed every gate,
+    on one card in six.
+    """
+    clash = page.evaluate(
+        """(sels) => {
+            const parts = sels.map(s => [s, document.querySelector(s)]).filter(([, el]) => el);
+            for (let i = 1; i < parts.length; i++) {
+                const above = parts[i - 1][1].getBoundingClientRect(), below = parts[i][1].getBoundingClientRect();
+                if (below.top < above.bottom - 1) return `${parts[i][0]} runs ${Math.round(above.bottom - below.top)}px into ${parts[i - 1][0]}`;
+            }
+            return null;
+        }""",
+        selectors,
+    )
+    if clash:
+        raise RenderError(f"card parts overlap: {clash}")
 
 
 def _assert_file_sane(path: Path) -> None:
