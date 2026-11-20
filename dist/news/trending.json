@@ -1,43 +1,43 @@
 {
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "stories": [
     {
-      "title": "Distributed, high-performance blob storage on SQLite",
+      "title": "Signal is blocking Gemini and Siri AI from reading your screen",
+      "publication": "The Verge",
+      "summary": "Signal is restricting the ability to take screenshots on Android and iOS devices in an effort to prevent AI agents from reading users' messages and other data."
+    },
+    {
+      "title": "Apple may be developing its own AI agent that runs your Mac",
+      "publication": "TechCrunch",
+      "summary": "The iPhone maker appears to be building agents that can compete with the likes of Meta Muse, Instinct, Claude, and OpenAI Dots."
+    },
+    {
+      "title": "PostgreSQL 19",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Gemini 4 Neon is the new #1 on the Models Engineering Index",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Why OpenAI, Anthropic and SpaceX's Cursor Are All Building Their Own GitHub",
+      "publication": "DEV",
+      "summary": "For almost two decades, \"where does the code live?\" had one boring answer: GitHub. In 2026 that..."
+    },
+    {
+      "title": "PostgreSQL 19 Released",
       "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Anthropic prices initial public offering",
-      "publication": "Hacker News",
-      "summary": ""
+      "title": "Anthropic rival says companies can (mostly) skip the pricey models",
+      "publication": "TechCrunch",
+      "summary": "On the day Anthropic went public, Fireworks AI’s co-founder made the case for open source models as a cheaper alternative, and addressed the breaches that have cost the company some customers’ trust."
     },
     {
-      "title": "Gemini 4 Neon looks like an Opus 5.5 competitor",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "LLM assisted reverse engineering",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Gemini 4 Neon",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Why I Rewrote type-tune from TypeScript to Rust",
-      "publication": "DEV",
-      "summary": "Hoi hoi! I'm @nyaomaru, a frontend engineer who loves TypeScript and gambas, not crabs! And..."
-    },
-    {
-      "title": "Advancing chip design with OpenAI models",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "AI agents ask better questions than KPMG accountants in audit trial",
+      "title": "Claude solves two open problems in the physics of black holes",
       "publication": "Hacker News",
       "summary": ""
     }

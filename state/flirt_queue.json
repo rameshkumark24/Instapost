@@ -877,8 +877,9 @@
    "RECURSION"
   ],
   "score": 9.0,
-  "status": "pending",
-  "drafted_at": "2026-11-07T10:56:39+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-07T10:56:39+00:00",
+  "sent_at": "2026-11-20T12:39:59+00:00"
  },
  {
   "concept": "todo",
@@ -1014,5 +1015,65 @@
   "status": "expired",
   "drafted_at": "2026-11-18T12:50:33+00:00",
   "expired_reason": "scored 6/10; the editor's threshold rose to 7 on 20 Nov 2026"
+ },
+ {
+  "concept": "keep-alive",
+  "term": "KEEP-ALIVE",
+  "domain": "networking",
+  "text": "You text me 'hey' every few days just to hold the connection open. That's not love, that's a KEEP-ALIVE.",
+  "terms": [
+   "KEEP-ALIVE"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-20T12:39:58+00:00"
+ },
+ {
+  "concept": "inheritance",
+  "term": "INHERITANCE",
+  "domain": "code",
+  "text": "I got my fear of commitment from my parents, but with you, I'm overriding my INHERITANCE.",
+  "terms": [
+   "INHERITANCE"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-20T12:39:58+00:00"
+ },
+ {
+  "concept": "git-revert",
+  "term": "REVERT",
+  "domain": "git",
+  "text": "You can try to REVERT what you did, but it's still part of our history.",
+  "terms": [
+   "REVERT"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-20T12:39:58+00:00"
+ },
+ {
+  "concept": "zombie-process",
+  "term": "ZOMBIE PROCESS",
+  "domain": "systems",
+  "text": "We're done, but you never acknowledged my exit status. You left me lingering as a ZOMBIE PROCESS.",
+  "terms": [
+   "ZOMBIE PROCESS"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-20T12:39:58+00:00"
+ },
+ {
+  "concept": "canary-release",
+  "term": "CANARY RELEASE",
+  "domain": "devops",
+  "text": "I'm only giving you a tiny piece of my heart first to see if it breaks. Consider this a CANARY RELEASE.",
+  "terms": [
+   "CANARY RELEASE"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-20T12:39:58+00:00"
  }
 ]
