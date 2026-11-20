@@ -121,11 +121,12 @@ HANDLE_ZONE = (240, 46)     # what the handle needs, in pixels on the canvas
 
 
 def handle_corner(fmt: Format) -> tuple[str, str]:
-    """The first corner no text box reaches into, so the handle never sits on a joke."""
+    """The first corner that neither our text nor the template's own printed
+    words reach into, so the handle never sits on a joke or a caption."""
     geo = layout(fmt)
     rects = [(geo["ix"] + geo["iw"] * b.x / 100, geo["iy"] + geo["ih"] * b.y / 100,
               geo["ix"] + geo["iw"] * (b.x + b.w) / 100, geo["iy"] + geo["ih"] * (b.y + b.h) / 100)
-             for b in fmt.boxes]
+             for b in (*fmt.boxes, *fmt.printed)]
     zw, zh = HANDLE_ZONE
     for side, end in CORNERS:
         x0 = geo["cw"] - zw if side == "right" else 0

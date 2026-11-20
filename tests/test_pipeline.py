@@ -2002,7 +2002,7 @@ class MemeFormatsLibrary(unittest.TestCase):
         for f in self.formats:
             self.assertIsNone(cfg.MEME_SENSITIVE.search(f.name), f.name)
 
-    def test_the_handle_never_sits_on_a_joke(self):
+    def test_the_handle_never_sits_on_a_joke_or_on_words_printed_on_the_template(self):
         from src import meme_render
         zw, zh = meme_render.HANDLE_ZONE
         for f in self.formats:
@@ -2010,12 +2010,24 @@ class MemeFormatsLibrary(unittest.TestCase):
             geo = meme_render.layout(f)
             x0 = geo["cw"] - zw if side == "right" else 0
             y0 = geo["ch"] - zh if end == "bottom" else 0
-            for b in f.boxes:
+            for b in (*f.boxes, *f.printed):
                 bx0 = geo["ix"] + geo["iw"] * b.x / 100
                 by0 = geo["iy"] + geo["ih"] * b.y / 100
                 bx1, by1 = bx0 + geo["iw"] * b.w / 100, by0 + geo["ih"] * b.h / 100
                 with self.subTest(f.name, box=b.role):
                     self.assertFalse(x0 < bx1 and bx0 < x0 + zw and y0 < by1 and by0 < y0 + zh)
+
+    def test_the_handle_leaves_the_corners_where_templates_print_their_own_words(self):
+        # Drawn and looked at on 20 Nov 2026: the handle sat on "real shit?", ran
+        # on from "They're the same picture", and covered a signature and a logo.
+        from src import meme_render
+        from src.meme_formats import BY_ID
+        expected = {"99683372": ("right", "top"), "180190441": ("right", "top"),
+                    "87743020": ("left", "bottom"), "222403160": ("left", "top")}
+        for fid, corner in expected.items():
+            with self.subTest(BY_ID[fid].name):
+                self.assertTrue(BY_ID[fid].printed)
+                self.assertEqual(meme_render.handle_corner(BY_ID[fid]), corner)
 
 
 class MemeDrawing(unittest.TestCase):

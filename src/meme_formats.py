@@ -7,6 +7,8 @@ backdoor. Each format here was looked at with a measuring grid and carries:
 
   * where each box sits on the image, as percentages, so the text lands on
     the right person, sign or panel -- drawn by us, not by Imgflip;
+  * where the template prints words of its own, so the page's handle never
+    lands on them: it once sat on Shaq's "real shit?";
   * what each box means and how the joke works, in the words the model reads;
   * a worked developer example, which teaches the format better than rules.
 
@@ -44,6 +46,9 @@ class Format:
     how: str            # how the joke works
     boxes: tuple[Box, ...]
     example: tuple[str, ...]
+    # Words printed on the blank itself, measured like the boxes. A subtitle is
+    # marked as its whole line: a handle on the same line reads as part of it.
+    printed: tuple[Box, ...] = ()
 
     @property
     def maker(self) -> str:
@@ -153,6 +158,7 @@ FORMATS: tuple[Format, ...] = (
          Box(44, 7, 26, 7, "option two (the right button)", DARK, 24),
          Box(5, 84, 90, 12, "who has to choose", OUTLINE, 28)),
         ("Read the error message", "Restart and hope", "Me at 2am"),
+        (Box(64, 95, 34, 5, "printed: the artist's signature"),),
     ),
     Format(
         "148909805", "Monkey Puppet", "https://i.imgflip.com/2gnnjh.jpg", 923, 768,
@@ -169,6 +175,8 @@ FORMATS: tuple[Format, ...] = (
         (Box(2, 3, 46, 45, "what he sleeps through", DARK, 45),
          Box(2, 54, 46, 43, "what wakes him right up", DARK, 45)),
         ("Production is down", "Someone used tabs instead of spaces"),
+        (Box(51, 2, 8, 8, "printed: a close icon"), Box(65, 44, 21, 9, "printed: i sleep"),
+         Box(62, 92, 28, 8, "printed: real shit?")),
     ),
     Format(
         "226297822", "Panik Kalm Panik", "https://i.imgflip.com/3qqcim.png", 640, 881,
@@ -205,6 +213,7 @@ FORMATS: tuple[Format, ...] = (
         "the thing he keeps having to ask for.",
         (Box(5, 87, 90, 12, "how 'I am once again asking...' ends", OUTLINE, 40),),
         ("for you to read the README",),
+        (Box(72, 2, 26, 10, "printed: the Bernie logo"), Box(18, 77, 64, 10, "printed: I am once again asking")),
     ),
     Format(
         "195515965", "Clown Applying Makeup", "https://i.imgflip.com/38el31.jpg", 750, 798,
@@ -225,6 +234,8 @@ FORMATS: tuple[Format, ...] = (
         (Box(10, 8, 30, 20, "one thing", DARK, 30),
          Box(55, 15, 33, 22, "another thing that is secretly the same", DARK, 30)),
         ("It works on my machine", "I didn't test it"),
+        (Box(0, 41, 100, 10, "printed: Corporate needs you to find the differences..."),
+         Box(0, 93, 100, 7, "printed: They're the same picture")),
     ),
     Format(
         "110163934", "I Bet He's Thinking About Other Women", "https://i.imgflip.com/1tl71a.jpg",
