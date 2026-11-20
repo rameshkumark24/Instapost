@@ -2104,6 +2104,20 @@ class FlirtCards(unittest.TestCase):
         self.assertEqual(drafts[0]["score"], 8)
         self.assertTrue(any("editor 3/10" in r for r in rejects))
 
+    def test_a_reply_of_the_wrong_shape_is_a_failed_attempt_not_a_lost_day(self):
+        # A list round the object raised straight out of the batch, and the
+        # day's card step failed with cards still waiting to go out.
+        good = self.line("Five texts in thirty seconds? Babe, you've hit my RATE LIMIT.", "RATE LIMIT")
+        for odd in ([good], '"Five texts in thirty seconds? RATE LIMIT."', {"text": ["RATE LIMIT"], "terms": []}):
+            with self.subTest(odd=str(odd)[:40]):
+                drafts, _ = self.batch(odd, good, self.scores(8), concepts=[self.a])
+                self.assertEqual([d["concept"] for d in drafts], ["rate-limit"])
+
+    def test_terms_sent_as_one_string_bold_the_term_not_every_letter(self):
+        line = {"text": "Five texts in thirty seconds? Babe, you've hit my RATE LIMIT.", "terms": "RATE LIMIT"}
+        drafts, _ = self.batch(line, self.scores(8), concepts=[self.a])
+        self.assertEqual(drafts[0]["terms"], ["RATE LIMIT"])
+
     def test_kept_cards_go_out_best_first(self):
         a = self.line("Five texts in thirty seconds? Babe, you've hit my RATE LIMIT.", "RATE LIMIT")
         b = self.line("You took three days to reply, so we hit a TIMEOUT. I've moved on.", "TIMEOUT")

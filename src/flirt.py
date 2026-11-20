@@ -208,17 +208,30 @@ def generate(concept: dict, attempts: int = 3, deadline: float | None = None) ->
         except json.JSONDecodeError:
             reasons.append("non-JSON reply")
             continue
-        if isinstance(parsed, dict) and parsed.get("skip"):
+        # Valid JSON is not yet an answer. A list round the object raised
+        # straight out of the batch and cost the day its card, with cards
+        # still waiting; a line that was not text did the same.
+        if not isinstance(parsed, dict):
+            reasons.append("reply was not a JSON object")
+            continue
+        if parsed.get("skip"):
             raise Skipped(f"{concept['id']}: no line about love anyone would get")
+        if not isinstance(parsed.get("text"), str):
+            reasons.append("reply carried no line of text")
+            continue
         try:
-            text = validate(parsed.get("text", ""), concept)
+            text = validate(parsed["text"], concept)
         except Rejected as exc:
             reasons.append(str(exc))
             continue
 
-        # The card bolds the term as this line spells it, which can differ from the bank.
+        # The card bolds the term as this line spells it, which can differ from
+        # the bank. Terms sent as one string were read letter by letter, and
+        # every letter on the card came out bold.
         spelled = term_pattern(concept["term"]).search(text).group(0)
-        terms = [t for t in parsed.get("terms", []) if t and t.lower() in text.lower()]
+        offered = parsed.get("terms")
+        terms = [t for t in offered if isinstance(t, str) and t and t.lower() in text.lower()] \
+            if isinstance(offered, list) else []
         return {
             "concept": concept["id"],
             "term": concept["term"],
