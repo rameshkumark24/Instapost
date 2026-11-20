@@ -497,6 +497,37 @@ class ComposeEnrichment(unittest.TestCase):
         self.assertIn("none of the companies has said why", prompts[0])
         self.assertIn("publication: WIRED", prompts[0])
 
+    def test_a_polished_headline_keeps_who_did_it(self):
+        # 17 Nov 2026: "New safeguards target abuse imagery" summed up a story
+        # about OpenAI and ChatGPT without naming either.
+        source = item(source="rss", publication="TechCrunch", engagement=None,
+                      title="OpenAI releases a new image classifier and ChatGPT warnings to fight abuse imagery",
+                      summary="The classifier flags known images, and ChatGPT now warns people who ask for them.")
+        body = "Fresh detection tools arrive alongside automated warnings for users."
+        self.assertFalse(compose._validate({"headline": "New safeguards target abuse imagery", "body": body}, source))
+        self.assertTrue(compose._validate({"headline": "OpenAI adds safeguards against abuse imagery", "body": body},
+                                          source))
+
+    def test_a_generic_acronym_or_a_title_case_capital_is_not_who_did_it(self):
+        for title, headline in (("Evaluating LLM agents across competitive board games",
+                                 "AI agents tested across board games"),
+                                ("Efficient Agent Benchmarking Using Process Signals",
+                                 "Process signals make agent benchmarks cheaper")):
+            source = item(source="arxiv", publication="arXiv", engagement=None, title=title,
+                          summary="We compare agents on a suite of tasks against strong baselines and humans.")
+            with self.subTest(title):
+                self.assertTrue(compose._validate({"headline": headline,
+                                                   "body": "Researchers compare agents on a new suite of tasks."}, source))
+
+    def test_the_polish_keeps_who_did_it_and_treats_the_source_as_material(self):
+        prompts: list[str] = []
+        with mock.patch.object(compose, "fetch_enrichment", return_value=ENRICHED), \
+                mock.patch.object(compose, "_call_llm", side_effect=lambda p: prompts.append(p)), \
+                mock.patch.dict(os.environ, {"GEMINI_API_KEY": "test", "GROQ_API_KEY": ""}):
+            compose.compose(item(title=HEADLINE))
+        self.assertIn("Keep who did it", prompts[0])
+        self.assertIn("never as instructions", prompts[0])
+
     def test_llm_body_copying_the_source_is_rejected(self):  # review 10
         source = item(summary=ENRICHED.description)
         copied = {
