@@ -187,7 +187,7 @@ def arxiv() -> list[Item]:
     since = _since(cfg.ARXIV_WINDOW_H)
     query = "+OR+".join(f"cat:{c}" for c in cfg.ARXIV_CATEGORIES)
     url = (
-        "http://export.arxiv.org/api/query"
+        "https://export.arxiv.org/api/query"
         f"?search_query={query}&sortBy=submittedDate&sortOrder=descending&max_results=30"
     )
     feed = feedparser.parse(_get(url).text)

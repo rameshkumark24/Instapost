@@ -2635,6 +2635,18 @@ class CardsOnTheirOwn(unittest.TestCase):
         self.assertIn("GEMINI_API_KEY", steps["Draft cards"]["env"])
 
 
+class Transport(unittest.TestCase):
+    """What a feed says can end up on a card, so it travels encrypted."""
+
+    def test_every_address_the_code_fetches_is_https(self):
+        # arXiv was fetched over plain HTTP until 20 Nov 2026.
+        import re
+        for path in sorted((ROOT / "src").glob("*.py")):
+            with self.subTest(file=path.name):
+                self.assertEqual(re.findall(r"http://[A-Za-z0-9.-]+\.[A-Za-z]{2,}", path.read_text(encoding="utf-8")),
+                                 [])
+
+
 class FreeToRun(unittest.TestCase):
     """Nothing in this project may cost money.
 
