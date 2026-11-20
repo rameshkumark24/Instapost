@@ -1,8 +1,8 @@
 """Nightly build: harvest -> select -> compose -> render -> stage.
 
-Runs on GitHub Actions at 18:30 IST with 75 minutes of slack before the Worker
-publishes at 19:45. Nothing here talks to Instagram; this job's only output is
-dist/card.jpg and dist/post.json committed to the repo.
+Runs on GitHub Actions twice a day (build.yml), and the first run that day
+builds. Nothing here talks to Instagram: Telegram delivers the card and its
+caption, and dist/news/ keeps them, committed to the repo.
 
 Exit codes: 0 built, 0 deliberately skipped, 1 failed.
 """
@@ -79,8 +79,8 @@ def main() -> int:
                 "dry_run": cfg.DRY_RUN,
             }
         )
-        # Checked before anything is committed: a card Meta would refuse is
-        # caught at 09:30, with hours to fix it, rather than at 19:45.
+        # Checked before anything is committed: a card Instagram would refuse
+        # is caught by the build, not when you come to post it.
         stage = "preflight"
         if problems := preflight.check(post, image):
             raise RuntimeError("Meta would refuse this post: " + "; ".join(problems))
@@ -149,9 +149,9 @@ def _mark_skipped(today: datetime, reason: str) -> None:
     """Record a deliberate skip for today in place of a card.
 
     Deleting post.json made the publisher report a chosen skip as a failed
-    build at 19:45 -- a second, misleading message after the morning's honest
-    one. A dated marker says the skip was deliberate; a missing or stale file
-    still means the build really did not run.
+    build -- a second, misleading message after the build's honest one. A
+    dated marker says the skip was deliberate; a missing or stale file still
+    means the build really did not run.
     """
     POST_JSON.parent.mkdir(parents=True, exist_ok=True)
     marker = {

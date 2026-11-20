@@ -5,7 +5,7 @@ reproduces it every night: real CSS, real webfonts, byte-reproducible output,
 no API tier gate and no vendor in the hot path.
 
 Every assertion here exists because a silently broken card is worse than no
-post at all -- with nobody watching at 19:45, the render must refuse rather
+post at all -- with nobody watching the build, the render must refuse rather
 than degrade.
 """
 from __future__ import annotations

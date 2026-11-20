@@ -64,7 +64,7 @@ def handoff(post: dict, image: Path) -> None:
                      f"{' · llm' if post.get('llm_polished') else ' · template'}")
     if post.get("url"):
         lines.append(_esc(post["url"]))
-    lines.append(f"<code>Post on {_esc(handle)} at {cfg.PUBLISH_AT_LOCAL}. Caption below, hold to copy.</code>")
+    lines.append(f"<code>Post on {_esc(handle)}. Caption below, hold to copy.</code>")
 
     with image.open("rb") as fh:
         _post("sendDocument", {"caption": "\n\n".join(lines), "parse_mode": "HTML"}, {"document": fh})

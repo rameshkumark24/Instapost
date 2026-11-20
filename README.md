@@ -103,7 +103,7 @@ Enterprise organisation. So you design the card in Canva once, then
 `templates/card.html` reproduces it nightly with real CSS and webfonts. Same
 result, no tier gate, no vendor in the hot path.
 
-**It refuses rather than degrades.** With nobody watching at 19:45, every stage
+**It refuses rather than degrades.** With nobody watching the build, every stage
 fails loudly instead of shipping something broken:
 
 - weak candidate field → builds nothing that day, and says so

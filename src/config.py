@@ -12,7 +12,6 @@ from zoneinfo import ZoneInfo
 # --- clock -----------------------------------------------------------------
 
 TZ = ZoneInfo("Asia/Kolkata")
-PUBLISH_AT_LOCAL = "19:45"          # informational; the Worker cron is authoritative
 
 # --- editorial lane --------------------------------------------------------
 # Weighted terms. A story's niche-fit score is the sum of the weights it hits,

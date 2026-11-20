@@ -2,8 +2,9 @@
 
 Without this, the first live night would be the first time Meta sees our
 output. These are the limits Meta documents for single-image posts through the
-Instagram content publishing API. Checking them when the card is built turns a
-19:45 rejection into a 09:30 alert, with hours left to fix it.
+Instagram content publishing API, and the app holds a post made by hand to the
+same ones. Checking them when the card is built turns a refusal at the moment
+you post into an alert from the build, with time left to fix it.
 
 Width is deliberately not checked: Meta scales images outside 320-1440px
 rather than refusing them.

@@ -1,6 +1,6 @@
 """Regression tests for the parts that fail expensively.
 
-Nobody watches this pipeline at 19:45, so a silent regression posts publicly
+Nobody watches this pipeline run, so a silent regression reaches the phone
 before anyone notices. These tests cover the failures that would actually
 reach an audience: the safety gates, the scoring bug that filled the account
 with famous repos, the approval queue, escaping of LLM-written text, and every
@@ -1040,6 +1040,29 @@ class GraphVersion(unittest.TestCase):
         self.assertIn(f'GRAPH_VERSION = "{token_health.DEFAULT_VERSION}"', wrangler)
 
 
+class NoPostingTime(unittest.TestCase):
+    """The account is posted by hand, whenever suits: nothing promises a time of day."""
+
+    CLOCK = __import__("re").compile(r"\b\d{1,2}[:.]\d{2}\b|\b\d{1,2}\s?[AP]M\b|745", __import__("re").I)
+
+    def test_no_brand_copy_names_a_time(self):
+        from src import brand
+        for name, profile in brand.PROFILES.items():
+            texts = [profile["bio"], *profile["display_names"], *profile["handle_ideas"],
+                     *(v for v in profile["intro"].values() if isinstance(v, str))]
+            for text in texts:
+                with self.subTest(account=name, text=text[:30]):
+                    self.assertIsNone(self.CLOCK.search(text))
+
+    def test_the_card_message_names_no_time(self):
+        from src import notify
+        with mock.patch.object(notify, "_post") as post:
+            notify.handoff({"channel": "news", "headline": "h", "caption": "c"},
+                           ROOT / "brand" / "news" / "pinned-post.jpg")
+        self.assertIsNone(self.CLOCK.search(post.call_args_list[0].args[1]["caption"]))
+        self.assertFalse(hasattr(cfg, "PUBLISH_AT_LOCAL"))
+
+
 class ProfileKit(unittest.TestCase):
     """Each account must be sign-up ready: limits Instagram enforces, no placeholders."""
 
@@ -1337,7 +1360,7 @@ class GateAssistant(unittest.TestCase):
 
 
 class Preflight(unittest.TestCase):
-    """Meta's documented limits, checked when the card is built instead of at 19:45."""
+    """Meta's documented limits, checked when the card is built instead of when it is posted."""
 
     def setUp(self):
         import tempfile

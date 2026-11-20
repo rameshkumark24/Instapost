@@ -34,15 +34,17 @@ NAME_MAX = 30     # Instagram's display-name limit
 
 PROFILES = {
     "news": {
-        "display_names": ["Daily Tech Brief", "One Tech Story", "The 7:45 Brief"],
-        "handle_ideas": ["@dailytechbrief", "@techbrief.daily", "@onetechstory", "@the745brief"],
+        # No time of day anywhere: the cards are posted by hand, whenever suits.
+        # "Every day at 7:45 PM" promised followers a time nobody keeps.
+        "display_names": ["Daily Tech Brief", "One Tech Story"],
+        "handle_ideas": ["@dailytechbrief", "@techbrief.daily", "@onetechstory"],
         "bio": (
-            "One tech story that matters, every day at 7:45 PM IST.\n"
+            "One tech story that matters, every day.\n"
             "Summarised in plain words, source credited in the caption."
         ),
         "mark": (">", "_"),
         "intro": {
-            "headline": "One tech story that matters. Every day at 7:45 PM.",
+            "headline": "One tech story that matters. Every day.",
             "body": (
                 "Picked from Hacker News, GitHub, arXiv and the tech press. Summarised in "
                 "plain words, with the source credited in every caption."
@@ -56,7 +58,7 @@ PROFILES = {
         "handle_ideas": ["@commitissues", "@tech.but.personal", "@foreignkeyfeelings", "@mergeconflicts.daily"],
         "bio": (
             "Programming concepts, explained through relationships.\n"
-            "One card a day, 7:45 PM IST. // tech, but make it personal"
+            "One card a day. // tech, but make it personal"
         ),
         "mark": ("<", "3"),
         "intro": {
