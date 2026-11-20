@@ -10,9 +10,10 @@ Whose words reach the card, and who is credited for them, is decided here:
 
   * An LLM body is our own summary. It is checked against the source for
     invented numbers and for runs of copied wording before it is used.
-  * A deterministic body built from a publisher's share text is *their* words,
-    so it is printed as a quotation and credited to them by name -- the way a
-    link preview presents it -- never passed off as ours.
+  * A deterministic body is always someone else's words -- a feed's summary,
+    a paper's abstract, a publisher's share text -- so it is printed as a
+    quotation and credited to them by name, the way a link preview presents
+    it, never passed off as ours.
   * A metadata line ("616 points on Hacker News") is a fact about the story.
 
 Credit goes to whoever wrote the words the reader sees, with the aggregator
@@ -103,10 +104,10 @@ _MIN_CLAUSE = 30
 def _trim_headline(title: str) -> tuple[str, bool]:
     """Shorten to fit the card.
 
-    Returns (headline, truncated). `truncated` tells the body builder that the
-    headline no longer carries the title's full meaning, so it must not try to
-    continue the sentence -- that is what produces cards reading
-    "...state-of-the-art machine" / "learning models in text".
+    Returns (headline, truncated). `truncated` says the headline no longer
+    carries the title's full meaning. The body never continues from a cut
+    headline -- that is what produced cards reading "...state-of-the-art
+    machine" / "learning models in text" -- it is a quotation or a fact.
     """
     title = _clean(title)
     title = re.sub(r"\s*[|—-]\s*(TechCrunch|Ars Technica|The Verge)\s*$", "", title)
@@ -232,38 +233,24 @@ def _nest_quotes(text: str) -> str:
     return "".join(out)
 
 
-def _body_from(item: Item, headline: str, truncated: bool, quoted: bool = False) -> str:
-    """Supporting detail, never a fragment of the headline.
+def _body_from(item: Item, headline: str) -> str:
+    """Supporting detail: the source's own words as a quotation, or a line of fact.
 
-    Many sources (GitHub especially) use one string as both title and summary,
-    so when the headline is complete its words are stripped off the front. When
-    the headline was truncated we never continue from it -- metadata is shorter,
-    truer, and always reads cleanly.
+    A summary is always somebody else's words -- a feed's, a paper's abstract,
+    a repo's description, a publisher's share text -- so it goes on the card in
+    quotation marks, trimmed only at sentence boundaries, never edited into a
+    fragment. Only text from a publisher's page used to be quoted: from 1 Oct to
+    19 Nov eight cards printed an abstract, a feed summary or a description as
+    if the words were ours.
 
-    `quoted` marks the summary as a publisher's own words. Those are never
-    edited into a fragment: they are trimmed only at sentence boundaries and
-    printed inside quotation marks.
+    A quotation that only repeats the headline adds nothing, and cutting the
+    repeated words off the front would misquote it, so a metadata line goes in
+    its place -- shorter, true, and always clean.
     """
     src = _clean(item.summary)
-    stem = headline.rstrip(" .…").lower()
-
-    if quoted:
-        # A quotation that only repeats the headline adds nothing, and cutting
-        # the repeated words off the front would misquote the publisher.
-        if len(src) < 40 or _repeats(headline, src):
-            return _metadata_body(item)
-        return f"“{_nest_quotes(_trim_to(src, cfg.BODY_MAX_CHARS - 2))}”"
-
-    if truncated and (src.lower().startswith(stem[:40]) or _repeats(headline, src)):
+    if len(src) < 40 or _repeats(headline, src):
         return _metadata_body(item)
-
-    if stem and src.lower().startswith(stem):
-        src = src[len(stem):].lstrip(" ,;:—-.")
-
-    if len(src) < 40:
-        return _metadata_body(item)
-
-    return _trim_to(src, cfg.BODY_MAX_CHARS)
+    return f"“{_nest_quotes(_trim_to(src, cfg.BODY_MAX_CHARS - 2))}”"
 
 
 def _repeats(headline: str, text: str) -> bool:
@@ -420,8 +407,8 @@ def compose(item: Item) -> dict:
     publication = enriched.site_name if enriched else found_via
     credit = f"{publication} (found via {found_via})" if enriched else found_via
 
-    headline, truncated = _trim_headline(item.title)
-    body = _body_from(item, headline, truncated, quoted=enriched is not None)
+    headline, _ = _trim_headline(item.title)
+    body = _body_from(item, headline)
     polished = False
 
     if os.environ.get("GEMINI_API_KEY") or os.environ.get("GROQ_API_KEY"):

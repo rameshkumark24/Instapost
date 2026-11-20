@@ -170,9 +170,11 @@ back to `"status": "pending"`.
 Publishing via the official Graph API is permitted; driving the app or website
 with tools like `instagrapi` or Selenium is not, and risks the account. Keep
 this system write-only to your own feed — no auto-follow, auto-like or
-auto-comment. The composer writes original summaries and never copies source
-sentences, which is what keeps the account clear of copyright trouble; the
-attribution line and the source URL in every caption are part of that. Never
+auto-comment. The composer either writes its own summary, checked against the
+source for copied wording, or prints the source's own words as a short
+quotation credited by name; it never passes anyone's sentences off as its own,
+which is what keeps the account clear of copyright trouble. The attribution
+line and the source URL in every caption are part of that. Never
 put a publisher's photo on a card. Use only OFL/Apache-licensed fonts — fonts
 licensed to you *through Canva* are licensed for use *inside Canva* and must
 not be embedded in this renderer. Full analysis in the build plan.

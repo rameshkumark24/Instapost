@@ -450,6 +450,16 @@ class ComposeEnrichment(unittest.TestCase):
             with self.subTest(url=url):
                 self.assertEqual(_site_name(found, url), expected)
 
+    def test_a_feeds_own_words_go_on_the_card_as_a_quotation(self):  # 18 Nov 2026
+        abstract = ("Goal recognition is the task of inferring an agent's intended goal from its observed behavior. "
+                    "Most existing work focuses on high-level symbolic recognition.")
+        paper = item(source="arxiv", publication="arXiv", engagement=None, url="https://arxiv.org/abs/2611.23192v1",
+                     title="WoRD: Diffusion-Based Posterior Inference for Online Goal Recognition", summary=abstract)
+        with mock.patch.object(compose, "fetch_enrichment"), mock.patch.dict(os.environ, NO_LLM):
+            post = compose.compose(paper)
+        self.assertEqual(post["body"], f"“{abstract}”")
+        self.assertIn("Source: arXiv", post["caption"])
+
     def test_a_github_card_does_not_say_its_headline_twice(self):  # 25 Oct 2026
         repo = item(source="github", publication="GitHub", url="https://github.com/o/cleanyourtv", engagement=900.0,
                     title="cleanyourtv: Debloat any Android or Google TV over Wi-Fi and get an Apple TV-style home.",
