@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "recursion",
-  "term": "RECURSION",
-  "headline": "The only way I know to get over you is to call you again. Classic RECURSION.",
-  "caption": "The only way I know to get over you is to call you again. Classic RECURSION.\n\n—\nRECURSION: a function that solves a problem by calling itself on a smaller version of it.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-20",
-  "built_at": "2026-11-20T12:39:59+00:00",
+  "concept": "todo",
+  "term": "TODO",
+  "headline": "Are you ever going to make us official, or am I just a TODO?",
+  "caption": "Are you ever going to make us official, or am I just a TODO?\n\n—\nTODO: a marker left in the code for work that still needs doing.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-21",
+  "built_at": "2026-11-21T12:11:30+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

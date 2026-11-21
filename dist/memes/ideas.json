@@ -1,159 +1,161 @@
 {
-  "date": "2026-11-20",
-  "built_at": "2026-11-20T12:44:06+00:00",
-  "daily_at": "2026-11-20T12:44:06+00:00",
+  "date": "2026-11-21",
+  "built_at": "2026-11-21T12:13:22+00:00",
+  "daily_at": "2026-11-21T12:13:22+00:00",
   "ideas": [
     {
-      "trend": "Anthropic rival says companies can (mostly) skip the pricey models",
+      "trend": "Winedroid – run Android apps without Android (WASM demo)",
       "where": "tech",
       "pool": "tech",
-      "context": "On the day Anthropic went public, Fireworks AI’s co-founder made the case for open source models as a cheaper alternative, and addressed the breaches that have cost the company some customers’ trust.",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
+      "context": "Hacker News",
+      "template_id": "131940431",
+      "template": "Gru's Plan",
+      "maker": "https://imgflip.com/memegenerator/131940431",
       "boxes": [
-        "Paying 500 dollars a month for AI API calls",
-        "Self hosting an open source model on a toaster"
+        "Run Android apps via WASM",
+        "No Android runtime needed",
+        "It runs at 2 frames per second",
+        "It runs at 2 frames per second"
       ],
-      "caption": "FinOps is crying.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Contrasts expensive proprietary APIs with the developer urge to host anything for free.",
+      "caption": "The future of cross-platform is here and it hurts.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Gru's plan captures the descent from brilliant browser tech to unusable frame rates.",
       "score": 9.0,
-      "editor": "Instantly funny, hits current AI FinOps pain points, and uses the Drake format perfectly.",
+      "editor": "Classic Gru format used to perfection, instantly hits home for anyone who has ever tried to run web-assembly or cross-pl",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "Apple may be developing its own AI agent that runs your Mac",
+      "trend": "I'll never buy Framework hardware again",
       "where": "tech",
       "pool": "tech",
-      "context": "The iPhone maker appears to be building agents that can compete with the likes of Meta Muse, Instinct, Claude, and OpenAI Dots.",
-      "template_id": "178591752",
-      "template": "Tuxedo Winnie The Pooh",
-      "maker": "https://imgflip.com/memegenerator/178591752",
+      "context": "Hacker News",
+      "template_id": "100777631",
+      "template": "Is This A Pigeon",
+      "maker": "https://imgflip.com/memegenerator/100777631",
       "boxes": [
-        "Writing a bash script to clear my cache",
-        "Deploying a local Mac OS AI agent to manage temp files"
+        "Me after one hinge breaks",
+        "A modular repairable laptop",
+        "Is this a single-use plastic?"
       ],
-      "caption": "The future is bloated\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Apple building an AI agent just to run a Mac when a simple script works fine.",
+      "caption": "So much for modularity.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Misidentifying a repairable laptop as single-use garbage hits modular hardware buyers.",
       "score": 8.0,
-      "editor": "Spot on format and perfectly captures developer cynicism about over-engineering simple tasks with local AI.",
+      "editor": "Sharp use of the pigeon format, plays directly on the hardware enthusiast pain point of modular promises vs physical rea",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "Why OpenAI, Anthropic and SpaceX's Cursor Are All Building Their Own GitHub",
-      "where": "tech",
-      "pool": "tech",
-      "context": "For almost two decades, \"where does the code live?\" had one boring answer: GitHub. In 2026 that...",
-      "template_id": "93895088",
-      "template": "Expanding Brain",
-      "maker": "https://imgflip.com/memegenerator/93895088",
+      "trend": "home depot black friday 2026",
+      "where": "US",
+      "pool": "current",
+      "context": "The Home Depot early Black Friday deals are live now — save up to 50% on Ryobi, DeWalt, Milwaukee and more",
+      "template_id": "87743020",
+      "template": "Two Buttons",
+      "maker": "https://imgflip.com/memegenerator/87743020",
       "boxes": [
-        "Pushing code to GitHub",
-        "Hosting your own internal git server",
-        "Building a custom enterprise code platform",
-        "Everyone starting their own GitHub because why not"
+        "Buy a new mechanical keyboard",
+        "Pay cloud hosting bill",
+        "Me on Black Friday"
       ],
-      "caption": "The monopoly gets crowded\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Every AI company and its dog building their own GitHub alternative in 2026.",
+      "caption": "Priorities are straight.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Developer spending choices.",
       "score": 7.0,
-      "editor": "Solid use of the expanding brain format for the current fatigue of every tool vendor spinning up their own git host.",
+      "editor": "Classic relatable developer financial anxiety, though the Black Friday hook feels slightly tacked on just to fit the hea",
       "scored": true,
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "gta 5 online",
+      "title": "crime film",
       "where": "IN"
     },
     {
-      "title": "cl",
+      "title": "man city vs fulham",
       "where": "IN"
     },
     {
-      "title": "apec",
+      "title": "uditi singh",
       "where": "IN"
     },
     {
-      "title": "regions",
+      "title": "manipur",
+      "where": "IN"
+    },
+    {
+      "title": "mg",
+      "where": "IN"
+    },
+    {
+      "title": "musadik malik",
+      "where": "IN"
+    },
+    {
+      "title": "lumbini lions vs sudurpaschim royals",
+      "where": "IN"
+    },
+    {
+      "title": "stock market crash",
       "where": "US"
     },
     {
-      "title": "anthony ippolito",
+      "title": "home depot black friday 2026",
       "where": "US"
     },
     {
-      "title": "warren buffett",
+      "title": "sophie cunningham maxim photos",
       "where": "US"
     },
     {
-      "title": "norovirus",
+      "title": "philadelphia marathon 2026",
       "where": "US"
     },
     {
-      "title": "john grisham",
+      "title": "atlanta weather",
       "where": "US"
     },
     {
-      "title": "super el nino weather transition",
+      "title": "toby samuel",
       "where": "US"
     },
     {
-      "title": "rikers island",
-      "where": "US"
-    },
-    {
-      "title": "virginia state police",
-      "where": "US"
-    },
-    {
-      "title": "bo derek",
-      "where": "US"
-    },
-    {
-      "title": "Signal is blocking Gemini and Siri AI from reading your screen",
+      "title": "The Function Factory of Necoz! | Learning Python Functions",
       "where": "tech"
     },
     {
-      "title": "Apple may be developing its own AI agent that runs your Mac",
+      "title": "Winedroid – run Android apps without Android (WASM demo)",
       "where": "tech"
     },
     {
-      "title": "PostgreSQL 19",
+      "title": "I'll never buy Framework hardware again",
       "where": "tech"
     },
     {
-      "title": "Gemini 4 Neon is the new #1 on the Models Engineering Index",
+      "title": "Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day",
       "where": "tech"
     },
     {
-      "title": "Why OpenAI, Anthropic and SpaceX's Cursor Are All Building Their Own GitHub",
+      "title": "JavaScript Promises, Visualized: The Event Loop Behind Node.js",
       "where": "tech"
     },
     {
-      "title": "PostgreSQL 19 Released",
+      "title": "Vibecoding an inference chip",
       "where": "tech"
     },
     {
-      "title": "Anthropic rival says companies can (mostly) skip the pricey models",
+      "title": "Dev Opportunity Radar #26: $85K Claude Corps Fellowship, a16z FDE Fellowship, and Reddit's $35K Game Hackathon",
       "where": "tech"
     },
     {
-      "title": "Claude solves two open problems in the physics of black holes",
+      "title": "Zombie Sweep on Google Cloud: A Daily Waste Report on AlloyDB Express, With a Database Bill You Can Predict",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "Epic Handshake: 'what they agree on (the grip)' runs to 40 characters, limit 30",
-    "Left Exit 12 Off Ramp: 'who swerves, often 'Me'' runs to 34 characters, limit 22",
-    "Monkey Puppet: 'the awkward situation' runs to 88 characters, limit 70",
-    "Left Exit 12 Off Ramp: 'the reckless exit' runs to 35 characters, limit 24",
-    "editor 3/10 (Gets the news wrong: Signal is blocking screenshots, not Gemini/Siri from reading the screen directly; and users hate ap): Drake Hotline Bling, Letting users read their own notifications / Blocking AI bots from reading the s",
-    "editor 2/10 (Weak connection to the news and just recycles standard console vs PC wait jokes without a developer twist.): Roll Safe Think About It, Can't play GTA 6 online with friends / If you just wait for the PC port five yea",
-    "editor 4/10 (Uses the Panik/Kalm format on a generic coding trope completely unrelated to the Warren Buffett headline given.): Panik Kalm Panik, My code is compiling with zero errors / It is cleanly structured and well tested",
-    "editor 5/10 (Funny punchline, but uses the 'Is This A Pigeon' format slightly backward for the usual dev meme structure.): Is This A Pigeon, Astrophysicists / Claude / Is this a senior dev?"
+    "Buff Doge vs. Cheems: 'what the weak one does' runs to 65 characters, limit 40",
+    "Two Buttons: 'option one (the left button)' runs to 33 characters, limit 24",
+    "editor 8/10 (Relatable Kubernetes operational nightmare, the panic-calm-panic rhythm maps precisely to real backend production dread.): Panik Kalm Panik, Kubernetes marks pod as not ready / The liveness probe will fix it / It restarts",
+    "editor 6/10 (A bit wordy and leaning heavily on the current 'vibecoding' buzzword, but the monkey puppet reaction still lands a smile): Monkey Puppet, When the vibecoded inference chip hallucinates its own instruction set"
   ]
 }

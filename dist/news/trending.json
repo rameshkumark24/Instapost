@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-20",
+  "date": "2026-11-21",
   "stories": [
     {
-      "title": "Signal is blocking Gemini and Siri AI from reading your screen",
-      "publication": "The Verge",
-      "summary": "Signal is restricting the ability to take screenshots on Android and iOS devices in an effort to prevent AI agents from reading users' messages and other data."
-    },
-    {
-      "title": "Apple may be developing its own AI agent that runs your Mac",
-      "publication": "TechCrunch",
-      "summary": "The iPhone maker appears to be building agents that can compete with the likes of Meta Muse, Instinct, Claude, and OpenAI Dots."
-    },
-    {
-      "title": "PostgreSQL 19",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Gemini 4 Neon is the new #1 on the Models Engineering Index",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Why OpenAI, Anthropic and SpaceX's Cursor Are All Building Their Own GitHub",
+      "title": "The Function Factory of Necoz! | Learning Python Functions",
       "publication": "DEV",
-      "summary": "For almost two decades, \"where does the code live?\" had one boring answer: GitHub. In 2026 that..."
+      "summary": "Chapter 1: A New Mission from King Nyaomaru! Remember my previous adventures on..."
     },
     {
-      "title": "PostgreSQL 19 Released",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Anthropic rival says companies can (mostly) skip the pricey models",
-      "publication": "TechCrunch",
-      "summary": "On the day Anthropic went public, Fireworks AI’s co-founder made the case for open source models as a cheaper alternative, and addressed the breaches that have cost the company some customers’ trust."
-    },
-    {
-      "title": "Claude solves two open problems in the physics of black holes",
+      "title": "Winedroid – run Android apps without Android (WASM demo)",
       "publication": "Hacker News",
       "summary": ""
+    },
+    {
+      "title": "I'll never buy Framework hardware again",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "JavaScript Promises, Visualized: The Event Loop Behind Node.js",
+      "publication": "DEV",
+      "summary": "Your Node.js API passes every test. In production, Kubernetes marks a Pod as not ready a few times an..."
+    },
+    {
+      "title": "Vibecoding an inference chip",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Dev Opportunity Radar #26: $85K Claude Corps Fellowship, a16z FDE Fellowship, and Reddit's $35K Game Hackathon",
+      "publication": "DEV",
+      "summary": "TL;DR Welcome back to Dev Opportunity Radar! This is a weekly series where I share..."
+    },
+    {
+      "title": "Zombie Sweep on Google Cloud: A Daily Waste Report on AlloyDB Express, With a Database Bill You Can Predict",
+      "publication": "DEV",
+      "summary": "Cloud Scheduler, Workflows and Cloud Run sweep a project every day with zombiescan's 20 checks beside Google's idle-resource recommenders, store the findings in AlloyDB Express, and an ADK agent…"
     }
   ]
 }
