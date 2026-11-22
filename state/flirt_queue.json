@@ -903,8 +903,9 @@
    "KERNEL PANIC"
   ],
   "score": 9.0,
-  "status": "pending",
-  "drafted_at": "2026-11-07T10:56:39+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-07T10:56:39+00:00",
+  "sent_at": "2026-11-22T12:19:39+00:00"
  },
  {
   "concept": "refactor",

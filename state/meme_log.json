@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-23",
-    "trend": "926 Steps, Two Lobotomies, and Zero Nudges: Flight-Testing the Commitment Machine Across Gemini, Claude, and GPT-OSS",
-    "template_id": "77045868"
-  },
-  {
-    "date": "2026-10-23",
-    "trend": "Docker is weird",
-    "template_id": "217743513"
-  },
-  {
-    "date": "2026-10-23",
-    "trend": "stefanos tsitsipas",
-    "template_id": "178591752"
-  },
-  {
     "date": "2026-10-24",
     "trend": "Swedish government offices to ban ChatGPT and Claude",
     "template_id": "161865971"
@@ -463,5 +448,20 @@
     "date": "2026-11-21",
     "trend": "home depot black friday 2026",
     "template_id": "87743020"
+  },
+  {
+    "date": "2026-11-22",
+    "trend": "Advice for the next 100 Rust GUIs",
+    "template_id": "222403160"
+  },
+  {
+    "date": "2026-11-22",
+    "trend": "FastAPI vs Node.js vs Bun: One PostgreSQL Setting Was Worth Up to 31% (No Runtime Changed)",
+    "template_id": "247113703"
+  },
+  {
+    "date": "2026-11-22",
+    "trend": "nyt connections hints today",
+    "template_id": "322841258"
   }
 ]

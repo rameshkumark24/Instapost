@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-21",
+  "date": "2026-11-22",
   "stories": [
     {
-      "title": "The Function Factory of Necoz! | Learning Python Functions",
-      "publication": "DEV",
-      "summary": "Chapter 1: A New Mission from King Nyaomaru! Remember my previous adventures on..."
-    },
-    {
-      "title": "Winedroid – run Android apps without Android (WASM demo)",
+      "title": "87% of the Anthropic power will come from gas and 11% from coal in 2028",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "I'll never buy Framework hardware again",
+      "title": "The Claude Delusion",
+      "publication": "Lobsters",
+      "summary": ""
+    },
+    {
+      "title": "Data Processing Incidents on Inference Providers",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day",
+      "title": "Advice for the next 100 Rust GUIs",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "JavaScript Promises, Visualized: The Event Loop Behind Node.js",
+      "title": "FastAPI vs Node.js vs Bun: One PostgreSQL Setting Was Worth Up to 31% (No Runtime Changed)",
       "publication": "DEV",
-      "summary": "Your Node.js API passes every test. In production, Kubernetes marks a Pod as not ready a few times an..."
+      "summary": "Express beat Bun in one test. Bun nearly doubled Node in another. And one PostgreSQL setting was..."
     },
     {
-      "title": "Vibecoding an inference chip",
+      "title": "PostgreSQL Extensions in Go",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Dev Opportunity Radar #26: $85K Claude Corps Fellowship, a16z FDE Fellowship, and Reddit's $35K Game Hackathon",
+      "title": "I Made My RAG Safer. It Got Worse Under Load",
       "publication": "DEV",
-      "summary": "TL;DR Welcome back to Dev Opportunity Radar! This is a weekly series where I share..."
+      "summary": "RAG isn't dead, but unverified RAG should be. Here's what checking every sentence actually cost me on..."
     },
     {
-      "title": "Zombie Sweep on Google Cloud: A Daily Waste Report on AlloyDB Express, With a Database Bill You Can Predict",
-      "publication": "DEV",
-      "summary": "Cloud Scheduler, Workflows and Cloud Run sweep a project every day with zombiescan's 20 checks beside Google's idle-resource recommenders, store the findings in AlloyDB Express, and an ADK agent…"
+      "title": "How I Got Postgres into a Single Binary",
+      "publication": "Lobsters",
+      "summary": ""
     }
   ]
 }

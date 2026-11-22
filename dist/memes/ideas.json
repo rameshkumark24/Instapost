@@ -1,161 +1,154 @@
 {
-  "date": "2026-11-21",
-  "built_at": "2026-11-21T12:13:22+00:00",
-  "daily_at": "2026-11-21T12:13:22+00:00",
+  "date": "2026-11-22",
+  "built_at": "2026-11-22T12:21:51+00:00",
+  "daily_at": "2026-11-22T12:21:51+00:00",
   "ideas": [
     {
-      "trend": "Winedroid – run Android apps without Android (WASM demo)",
+      "trend": "Advice for the next 100 Rust GUIs",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "131940431",
-      "template": "Gru's Plan",
-      "maker": "https://imgflip.com/memegenerator/131940431",
+      "template_id": "222403160",
+      "template": "Bernie I Am Once Again Asking For Your Support",
+      "maker": "https://imgflip.com/memegenerator/222403160",
       "boxes": [
-        "Run Android apps via WASM",
-        "No Android runtime needed",
-        "It runs at 2 frames per second",
-        "It runs at 2 frames per second"
+        "to stop creating new Rust GUIs"
       ],
-      "caption": "The future of cross-platform is here and it hurts.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Gru's plan captures the descent from brilliant browser tech to unusable frame rates.",
+      "caption": "We have 99 options and not one of them is finished.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Rust devs constantly build new GUI libraries instead of sticking to existing ones.",
       "score": 9.0,
-      "editor": "Classic Gru format used to perfection, instantly hits home for anyone who has ever tried to run web-assembly or cross-pl",
+      "editor": "Extremely funny and accurate callout of the endless unfinished Rust GUI ecosystem.",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "I'll never buy Framework hardware again",
+      "trend": "FastAPI vs Node.js vs Bun: One PostgreSQL Setting Was Worth Up to 31% (No Runtime Changed)",
       "where": "tech",
       "pool": "tech",
-      "context": "Hacker News",
-      "template_id": "100777631",
-      "template": "Is This A Pigeon",
-      "maker": "https://imgflip.com/memegenerator/100777631",
+      "context": "Express beat Bun in one test. Bun nearly doubled Node in another. And one PostgreSQL setting was...",
+      "template_id": "247113703",
+      "template": "A train hitting a school bus",
+      "maker": "https://imgflip.com/memegenerator/247113703",
       "boxes": [
-        "Me after one hinge breaks",
-        "A modular repairable laptop",
-        "Is this a single-use plastic?"
+        "One Postgres config tweak",
+        "Our 4-month Bun rewrite"
       ],
-      "caption": "So much for modularity.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Misidentifying a repairable laptop as single-use garbage hits modular hardware buyers.",
-      "score": 8.0,
-      "editor": "Sharp use of the pigeon format, plays directly on the hardware enthusiast pain point of modular promises vs physical rea",
+      "caption": "Turns out max_connections was set to 10.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Teams spend months rewriting codebases in new runtimes before tuning basic database parameters.",
+      "score": 9.0,
+      "editor": "Hilarious and deeply relatable backend/devops reality; format used perfectly.",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "home depot black friday 2026",
+      "trend": "nyt connections hints today",
       "where": "US",
       "pool": "current",
-      "context": "The Home Depot early Black Friday deals are live now — save up to 50% on Ryobi, DeWalt, Milwaukee and more",
-      "template_id": "87743020",
-      "template": "Two Buttons",
-      "maker": "https://imgflip.com/memegenerator/87743020",
+      "context": "NYT Connections hints today: Meanings for each word for Nov. 22, 2026",
+      "template_id": "322841258",
+      "template": "Anakin Padme 4 Panel",
+      "maker": "https://imgflip.com/memegenerator/322841258",
       "boxes": [
-        "Buy a new mechanical keyboard",
-        "Pay cloud hosting bill",
-        "Me on Black Friday"
+        "I'm naming four variables today",
+        "They'll be clear and distinct?",
+        "They'll be distinct, right?"
       ],
-      "caption": "Priorities are straight.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Developer spending choices.",
-      "score": 7.0,
-      "editor": "Classic relatable developer financial anxiety, though the Black Friday hook feels slightly tacked on just to fit the hea",
+      "caption": "data, temp, item, and final_data.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Grouping four distinct things is hard in NYT Connections, but harder in variable naming.",
+      "score": 8.0,
+      "editor": "Classic variable naming joke executed perfectly with the Anakin/Padme format.",
       "scored": true,
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "crime film",
+      "title": "birmingham city vs man utd",
       "where": "IN"
     },
     {
-      "title": "man city vs fulham",
+      "title": "mathematician",
       "where": "IN"
     },
     {
-      "title": "uditi singh",
+      "title": "thiruparankundram",
       "where": "IN"
     },
     {
-      "title": "manipur",
+      "title": "man city vs tottenham",
       "where": "IN"
     },
     {
-      "title": "mg",
+      "title": "burnley vs blackburn rovers",
       "where": "IN"
     },
     {
-      "title": "musadik malik",
-      "where": "IN"
-    },
-    {
-      "title": "lumbini lions vs sudurpaschim royals",
-      "where": "IN"
-    },
-    {
-      "title": "stock market crash",
+      "title": "gta 6 pc port",
       "where": "US"
     },
     {
-      "title": "home depot black friday 2026",
+      "title": "weather chicago",
       "where": "US"
     },
     {
-      "title": "sophie cunningham maxim photos",
+      "title": "weather",
       "where": "US"
     },
     {
-      "title": "philadelphia marathon 2026",
+      "title": "annie andrews",
       "where": "US"
     },
     {
-      "title": "atlanta weather",
+      "title": "nyt connections hints today",
       "where": "US"
     },
     {
-      "title": "toby samuel",
+      "title": "walmart black friday ad 2026",
       "where": "US"
     },
     {
-      "title": "The Function Factory of Necoz! | Learning Python Functions",
+      "title": "nfl week 11",
+      "where": "US"
+    },
+    {
+      "title": "87% of the Anthropic power will come from gas and 11% from coal in 2028",
       "where": "tech"
     },
     {
-      "title": "Winedroid – run Android apps without Android (WASM demo)",
+      "title": "The Claude Delusion",
       "where": "tech"
     },
     {
-      "title": "I'll never buy Framework hardware again",
+      "title": "Data Processing Incidents on Inference Providers",
       "where": "tech"
     },
     {
-      "title": "Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day",
+      "title": "Advice for the next 100 Rust GUIs",
       "where": "tech"
     },
     {
-      "title": "JavaScript Promises, Visualized: The Event Loop Behind Node.js",
+      "title": "FastAPI vs Node.js vs Bun: One PostgreSQL Setting Was Worth Up to 31% (No Runtime Changed)",
       "where": "tech"
     },
     {
-      "title": "Vibecoding an inference chip",
+      "title": "PostgreSQL Extensions in Go",
       "where": "tech"
     },
     {
-      "title": "Dev Opportunity Radar #26: $85K Claude Corps Fellowship, a16z FDE Fellowship, and Reddit's $35K Game Hackathon",
+      "title": "I Made My RAG Safer. It Got Worse Under Load",
       "where": "tech"
     },
     {
-      "title": "Zombie Sweep on Google Cloud: A Daily Waste Report on AlloyDB Express, With a Database Bill You Can Predict",
+      "title": "How I Got Postgres into a Single Binary",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "Buff Doge vs. Cheems: 'what the weak one does' runs to 65 characters, limit 40",
-    "Two Buttons: 'option one (the left button)' runs to 33 characters, limit 24",
-    "editor 8/10 (Relatable Kubernetes operational nightmare, the panic-calm-panic rhythm maps precisely to real backend production dread.): Panik Kalm Panik, Kubernetes marks pod as not ready / The liveness probe will fix it / It restarts",
-    "editor 6/10 (A bit wordy and leaning heavily on the current 'vibecoding' buzzword, but the monkey puppet reaction still lands a smile): Monkey Puppet, When the vibecoded inference chip hallucinates its own instruction set"
+    "editor 8/10 (Spot-on commentary on AI hype vs power consumption; format fits well.): They're The Same Picture, Eco-friendly AI startup / A coal power plant",
+    "editor 6/10 (Relatable RAG performance issue, but panel 1 doesn't quite fit the Panik setup.): Panik Kalm Panik, RAG system passes all tests / We verify every sentence / Response latency is 40 ",
+    "editor 8/10 (Format used correctly; hits the universal dev hatred of writing docker-compose YAML.): Distracted Boyfriend, Postgres in a single binary / DevOps / A standard Docker setup",
+    "editor 6/10 (Fun crossover comparison between gamer and dev waiting pain; solid smile.): Epic Handshake, GTA fans waiting for PC / Devs waiting for CI/CD / Staring at a progress bar",
+    "editor 8/10 (Timeless laptop-as-space-heater joke; format is used right.): Left Exit 12 Off Ramp, Turn on the heater / Run npm install / Me"
   ]
 }

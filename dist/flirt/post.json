@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "todo",
-  "term": "TODO",
-  "headline": "Are you ever going to make us official, or am I just a TODO?",
-  "caption": "Are you ever going to make us official, or am I just a TODO?\n\n—\nTODO: a marker left in the code for work that still needs doing.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-21",
-  "built_at": "2026-11-21T12:11:30+00:00",
+  "concept": "kernel-panic",
+  "term": "KERNEL PANIC",
+  "headline": "When you asked 'what are we', my whole system shut down to prevent further damage. Pure KERNEL PANIC.",
+  "caption": "When you asked 'what are we', my whole system shut down to prevent further damage. Pure KERNEL PANIC.\n\n—\nKERNEL PANIC: a failure so serious the whole system stops rather than risk carrying on.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-22",
+  "built_at": "2026-11-22T12:19:39+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
