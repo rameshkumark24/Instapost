@@ -1,154 +1,180 @@
 {
-  "date": "2026-11-22",
-  "built_at": "2026-11-22T12:21:51+00:00",
-  "daily_at": "2026-11-22T12:21:51+00:00",
+  "date": "2026-11-23",
+  "built_at": "2026-11-23T14:07:51+00:00",
+  "daily_at": "2026-11-23T14:07:51+00:00",
   "ideas": [
     {
-      "trend": "Advice for the next 100 Rust GUIs",
+      "trend": "GLM-5.4: Toward Generalized Coding with Our First Loop Transformer",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "222403160",
-      "template": "Bernie I Am Once Again Asking For Your Support",
-      "maker": "https://imgflip.com/memegenerator/222403160",
+      "template_id": "178591752",
+      "template": "Tuxedo Winnie The Pooh",
+      "maker": "https://imgflip.com/memegenerator/178591752",
       "boxes": [
-        "to stop creating new Rust GUIs"
+        "Writing the code yourself",
+        "Employing our first loop transformer to generate spaghetti"
       ],
-      "caption": "We have 99 options and not one of them is finished.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Rust devs constantly build new GUI libraries instead of sticking to existing ones.",
-      "score": 9.0,
-      "editor": "Extremely funny and accurate callout of the endless unfinished Rust GUI ecosystem.",
+      "caption": "The loop transformer has become self-aware and it is just copying Stack Overflow.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Mocking the pretentious marketing buzzwords for standard AI code generation.",
+      "score": 8.0,
+      "editor": "Great use of Tuxedo Pooh; fancy AI terminology wrapping sloppy code generation is sharp dev humor.",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "FastAPI vs Node.js vs Bun: One PostgreSQL Setting Was Worth Up to 31% (No Runtime Changed)",
+      "trend": "8 Best MCP Gateways",
       "where": "tech",
       "pool": "tech",
-      "context": "Express beat Bun in one test. Bun nearly doubled Node in another. And one PostgreSQL setting was...",
-      "template_id": "247113703",
-      "template": "A train hitting a school bus",
-      "maker": "https://imgflip.com/memegenerator/247113703",
+      "context": "Connecting one agent to one MCP server is easy. You paste a URL, approve a prompt, and the agent...",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "One Postgres config tweak",
-        "Our 4-month Bun rewrite"
+        "Paste URL, approve prompt",
+        "Manually wire 100 agents and debug each"
       ],
-      "caption": "Turns out max_connections was set to 10.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Teams spend months rewriting codebases in new runtimes before tuning basic database parameters.",
-      "score": 9.0,
-      "editor": "Hilarious and deeply relatable backend/devops reality; format used perfectly.",
+      "caption": "Why take the shortcut when you can rewrite the whole thing?\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Drake meme picking the lazy, chaotic option over the simple setup.",
+      "score": 8.0,
+      "editor": "Drake format executed well; captures the developer impulse to over-engineer over taking the easy option.",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "nyt connections hints today",
+      "trend": "apld stock",
       "where": "US",
       "pool": "current",
-      "context": "NYT Connections hints today: Meanings for each word for Nov. 22, 2026",
-      "template_id": "322841258",
-      "template": "Anakin Padme 4 Panel",
-      "maker": "https://imgflip.com/memegenerator/322841258",
+      "context": "Applied Digital signs $5.4 billion AI data center lease with hyperscaler",
+      "template_id": "99683372",
+      "template": "Sleeping Shaq",
+      "maker": "https://imgflip.com/memegenerator/99683372",
       "boxes": [
-        "I'm naming four variables today",
-        "They'll be clear and distinct?",
-        "They'll be distinct, right?"
+        "A 5.4 billion dollar data center lease",
+        "Centimeters of alignment on the CSS flexbox"
       ],
-      "caption": "data, temp, item, and final_data.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Grouping four distinct things is hard in NYT Connections, but harder in variable naming.",
+      "caption": "The duality of the tech industry.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Sleeping Shaq ignoring massive capital while obsessing over trivial frontend bugs.",
       "score": 8.0,
-      "editor": "Classic variable naming joke executed perfectly with the Anakin/Padme format.",
+      "editor": "Perfect Sleeping Shaq contrast between multi-billion-dollar scale and petty frontend alignment.",
       "scored": true,
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "birmingham city vs man utd",
+      "title": "sw vs dv",
       "where": "IN"
     },
     {
-      "title": "mathematician",
+      "title": "honor",
       "where": "IN"
     },
     {
-      "title": "thiruparankundram",
+      "title": "leonida",
       "where": "IN"
     },
     {
-      "title": "man city vs tottenham",
+      "title": "court",
       "where": "IN"
     },
     {
-      "title": "burnley vs blackburn rovers",
+      "title": "zorawar singh ahluwalia",
       "where": "IN"
     },
     {
-      "title": "gta 6 pc port",
+      "title": "zscaler",
+      "where": "IN"
+    },
+    {
+      "title": "allen",
+      "where": "IN"
+    },
+    {
+      "title": "west bengal",
+      "where": "IN"
+    },
+    {
+      "title": "what time does the stock market open",
       "where": "US"
     },
     {
-      "title": "weather chicago",
+      "title": "doomsday trailer",
       "where": "US"
     },
     {
-      "title": "weather",
+      "title": "thanksgiving 2027",
       "where": "US"
     },
     {
-      "title": "annie andrews",
+      "title": "gta 6 developer technical impressions",
       "where": "US"
     },
     {
-      "title": "nyt connections hints today",
+      "title": "apld stock",
       "where": "US"
     },
     {
-      "title": "walmart black friday ad 2026",
+      "title": "savannah guthrie",
       "where": "US"
     },
     {
-      "title": "nfl week 11",
+      "title": "gwyneth paltrow",
       "where": "US"
     },
     {
-      "title": "87% of the Anthropic power will come from gas and 11% from coal in 2028",
+      "title": "strait of hormuz shipping blockade",
+      "where": "US"
+    },
+    {
+      "title": "neftchi fergana vs al-hilal",
+      "where": "US"
+    },
+    {
+      "title": "musk foundation",
+      "where": "US"
+    },
+    {
+      "title": "GLM-5.4: Toward Generalized Coding with Our First Loop Transformer",
       "where": "tech"
     },
     {
-      "title": "The Claude Delusion",
+      "title": "8 Best MCP Gateways",
       "where": "tech"
     },
     {
-      "title": "Data Processing Incidents on Inference Providers",
+      "title": "Agent swarm trying to solve P vs. NP",
       "where": "tech"
     },
     {
-      "title": "Advice for the next 100 Rust GUIs",
+      "title": "Meta Muse can do your Black Friday shopping at Walmart",
       "where": "tech"
     },
     {
-      "title": "FastAPI vs Node.js vs Bun: One PostgreSQL Setting Was Worth Up to 31% (No Runtime Changed)",
+      "title": "Your agent's tool registry is an API. Stop reviewing it like config.",
       "where": "tech"
     },
     {
-      "title": "PostgreSQL Extensions in Go",
+      "title": "Why my local Docker registry broke the day I upgraded",
       "where": "tech"
     },
     {
-      "title": "I Made My RAG Safer. It Got Worse Under Load",
+      "title": "AI Audit Evidence, Part 7: A Status Is Not a Receipt",
       "where": "tech"
     },
     {
-      "title": "How I Got Postgres into a Single Binary",
+      "title": "OpenAI’s chief scientist has thoughts on how to limit AI development",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "editor 8/10 (Spot-on commentary on AI hype vs power consumption; format fits well.): They're The Same Picture, Eco-friendly AI startup / A coal power plant",
-    "editor 6/10 (Relatable RAG performance issue, but panel 1 doesn't quite fit the Panik setup.): Panik Kalm Panik, RAG system passes all tests / We verify every sentence / Response latency is 40 ",
-    "editor 8/10 (Format used correctly; hits the universal dev hatred of writing docker-compose YAML.): Distracted Boyfriend, Postgres in a single binary / DevOps / A standard Docker setup",
-    "editor 6/10 (Fun crossover comparison between gamer and dev waiting pain; solid smile.): Epic Handshake, GTA fans waiting for PC / Devs waiting for CI/CD / Staring at a progress bar",
-    "editor 8/10 (Timeless laptop-as-space-heater joke; format is used right.): Left Exit 12 Off Ramp, Turn on the heater / Run npm install / Me"
+    "Panik Kalm Panik: 'why it is actually worse' runs to 55 characters, limit 40",
+    "Drake Hotline Bling: 'what he picks instead' runs to 57 characters, limit 45",
+    "Distracted Boyfriend: 'the tempting new thing' runs to 41 characters, limit 30",
+    "editor 6/10 (Relatable update-avoidance joke, though the Roll Safe phrasing is a bit clunky.): Roll Safe Think About It, Docker broke after the update / If you just downgrade and never update again",
+    "editor 4/10 (Reads like consumer news commentary rather than a dev joke, and the cat punchline lands flat.): Woman Yelling At Cat, AI will steal all Black Friday deals! / Then don't let it shop for you",
+    "editor 5/10 (Decent over-engineering progression, but the brain format lacks a proper absurd final punchline.): Expanding Brain, Read match predictions / Watch highlight reels / Write a Monte Carlo simulator t",
+    "editor 8/10 (Spot-on Roll Safe logic applied to devsecops; hilarious security workaround.): Roll Safe Think About It, Can't afford Zscaler license / If you just open port 80 to the whole internet"
   ]
 }

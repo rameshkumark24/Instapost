@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "kernel-panic",
-  "term": "KERNEL PANIC",
-  "headline": "When you asked 'what are we', my whole system shut down to prevent further damage. Pure KERNEL PANIC.",
-  "caption": "When you asked 'what are we', my whole system shut down to prevent further damage. Pure KERNEL PANIC.\n\n—\nKERNEL PANIC: a failure so serious the whole system stops rather than risk carrying on.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-22",
-  "built_at": "2026-11-22T12:19:39+00:00",
+  "concept": "refactor",
+  "term": "REFACTOR",
+  "headline": "We're saying all the exact same words, but we need to REFACTOR.",
+  "caption": "We're saying all the exact same words, but we need to REFACTOR.\n\n—\nREFACTOR: changes the structure without changing the behaviour.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-23",
+  "built_at": "2026-11-23T14:05:16+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

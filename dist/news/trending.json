@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "stories": [
     {
-      "title": "87% of the Anthropic power will come from gas and 11% from coal in 2028",
+      "title": "GLM-5.4: Toward Generalized Coding with Our First Loop Transformer",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "The Claude Delusion",
-      "publication": "Lobsters",
-      "summary": ""
-    },
-    {
-      "title": "Data Processing Incidents on Inference Providers",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Advice for the next 100 Rust GUIs",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "FastAPI vs Node.js vs Bun: One PostgreSQL Setting Was Worth Up to 31% (No Runtime Changed)",
+      "title": "8 Best MCP Gateways",
       "publication": "DEV",
-      "summary": "Express beat Bun in one test. Bun nearly doubled Node in another. And one PostgreSQL setting was..."
+      "summary": "Connecting one agent to one MCP server is easy. You paste a URL, approve a prompt, and the agent..."
     },
     {
-      "title": "PostgreSQL Extensions in Go",
+      "title": "Agent swarm trying to solve P vs. NP",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "I Made My RAG Safer. It Got Worse Under Load",
-      "publication": "DEV",
-      "summary": "RAG isn't dead, but unverified RAG should be. Here's what checking every sentence actually cost me on..."
+      "title": "Meta Muse can do your Black Friday shopping at Walmart",
+      "publication": "The Verge",
+      "summary": "Walmart will let Meta's Muse shop on its website on your behalf, allowing the AI agent to find and purchase Black Friday deals."
     },
     {
-      "title": "How I Got Postgres into a Single Binary",
-      "publication": "Lobsters",
-      "summary": ""
+      "title": "Your agent's tool registry is an API. Stop reviewing it like config.",
+      "publication": "DEV",
+      "summary": "Most agent security conversations start with the model. Can it be jailbroken? Will it follow an..."
+    },
+    {
+      "title": "Why my local Docker registry broke the day I upgraded",
+      "publication": "DEV",
+      "summary": "Docker Engine 29.10 quietly stopped trusting 127.0.0.1 registries once any other insecure registry is configured."
+    },
+    {
+      "title": "AI Audit Evidence, Part 7: A Status Is Not a Receipt",
+      "publication": "DEV",
+      "summary": "We build a runtime that lets AI agents take real write actions inside enterprise systems: create a..."
+    },
+    {
+      "title": "OpenAI’s chief scientist has thoughts on how to limit AI development",
+      "publication": "TechCrunch",
+      "summary": "To establish a speed limit on AI development, you need to agree on how to measure speed."
     }
   ]
 }

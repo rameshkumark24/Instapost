@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-24",
-    "trend": "Swedish government offices to ban ChatGPT and Claude",
-    "template_id": "161865971"
-  },
-  {
-    "date": "2026-10-24",
-    "trend": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
-    "template_id": "99683372"
-  },
-  {
-    "date": "2026-10-24",
-    "trend": "barca vs real madrid",
-    "template_id": "354700819"
-  },
-  {
     "date": "2026-10-25",
     "trend": "Three Times My Test Failed and the LLM Was Right",
     "template_id": "188390779"
@@ -463,5 +448,20 @@
     "date": "2026-11-22",
     "trend": "nyt connections hints today",
     "template_id": "322841258"
+  },
+  {
+    "date": "2026-11-23",
+    "trend": "GLM-5.4: Toward Generalized Coding with Our First Loop Transformer",
+    "template_id": "178591752"
+  },
+  {
+    "date": "2026-11-23",
+    "trend": "8 Best MCP Gateways",
+    "template_id": "181913649"
+  },
+  {
+    "date": "2026-11-23",
+    "trend": "apld stock",
+    "template_id": "99683372"
   }
 ]
