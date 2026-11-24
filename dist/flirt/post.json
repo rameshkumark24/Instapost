@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "refactor",
-  "term": "REFACTOR",
-  "headline": "We're saying all the exact same words, but we need to REFACTOR.",
-  "caption": "We're saying all the exact same words, but we need to REFACTOR.\n\n—\nREFACTOR: changes the structure without changing the behaviour.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-23",
-  "built_at": "2026-11-23T14:05:16+00:00",
+  "concept": "rubber-duck",
+  "term": "RUBBER DUCK DEBUGGING",
+  "headline": "I talked through my feelings to you and realized I don't need you. Classic RUBBER DUCK DEBUGGING.",
+  "caption": "I talked through my feelings to you and realized I don't need you. Classic RUBBER DUCK DEBUGGING.\n\n—\nRUBBER DUCK DEBUGGING: explaining a problem out loud, step by step, until you notice the answer yourself.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-24",
+  "built_at": "2026-11-24T14:36:28+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

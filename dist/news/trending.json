@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "stories": [
     {
-      "title": "GLM-5.4: Toward Generalized Coding with Our First Loop Transformer",
+      "title": "LLM agents work for their parent companies, not for you",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "8 Best MCP Gateways",
+      "title": "Amazon says hackers' AI agents found and exploited 0-day with little human input",
+      "publication": "Ars Technica",
+      "summary": "The Cairn AI framework is proving to be a boon for defenders and attackers."
+    },
+    {
+      "title": "Why Your Android App Drops Frames: The Jetpack Compose Architecture Guide That Fixes Recomposition Forever",
       "publication": "DEV",
-      "summary": "Connecting one agent to one MCP server is easy. You paste a URL, approve a prompt, and the agent..."
+      "summary": "A visual, 10-minute deep dive into modern Android runtime architecture."
     },
     {
-      "title": "Agent swarm trying to solve P vs. NP",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Meta Muse can do your Black Friday shopping at Walmart",
-      "publication": "The Verge",
-      "summary": "Walmart will let Meta's Muse shop on its website on your behalf, allowing the AI agent to find and purchase Black Friday deals."
-    },
-    {
-      "title": "Your agent's tool registry is an API. Stop reviewing it like config.",
-      "publication": "DEV",
-      "summary": "Most agent security conversations start with the model. Can it be jailbroken? Will it follow an..."
-    },
-    {
-      "title": "Why my local Docker registry broke the day I upgraded",
-      "publication": "DEV",
-      "summary": "Docker Engine 29.10 quietly stopped trusting 127.0.0.1 registries once any other insecure registry is configured."
-    },
-    {
-      "title": "AI Audit Evidence, Part 7: A Status Is Not a Receipt",
-      "publication": "DEV",
-      "summary": "We build a runtime that lets AI agents take real write actions inside enterprise systems: create a..."
-    },
-    {
-      "title": "OpenAI’s chief scientist has thoughts on how to limit AI development",
+      "title": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
       "publication": "TechCrunch",
-      "summary": "To establish a speed limit on AI development, you need to agree on how to measure speed."
+      "summary": "As AI-generated code piles up, Anthropic's new developer tools aim to eliminate another bottleneck by letting agents handle routine approvals."
+    },
+    {
+      "title": "Tired of catching Claude, Gemini, and ChatGPT up on the same project?",
+      "publication": "DEV",
+      "summary": "If you pay for more than one AI assistant, you probably keep the same project in each of them. Every..."
+    },
+    {
+      "title": "Your Laptop Is the First Environment: Building on PostgreSQL, Running on AlloyDB",
+      "publication": "DEV",
+      "summary": "Every team I've worked with has a \"dev, test, prod\" diagram somewhere. And almost every one of those..."
+    },
+    {
+      "title": "Turning on Postgres logical replication without a restart",
+      "publication": "DEV",
+      "summary": "PostgreSQL 19 lets you create a logical replication slot while wal_level is still replica."
+    },
+    {
+      "title": "GLM-5.4: Toward generalized coding with our first loop transformer",
+      "publication": "Hacker News",
+      "summary": ""
     }
   ]
 }

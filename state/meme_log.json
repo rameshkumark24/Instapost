@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-25",
-    "trend": "Three Times My Test Failed and the LLM Was Right",
-    "template_id": "188390779"
-  },
-  {
-    "date": "2026-10-25",
-    "trend": "The AI graveyard: a running list of projects and startups that didn’t make it",
-    "template_id": "67452763"
-  },
-  {
-    "date": "2026-10-25",
-    "trend": "exynos 2700 vs snapdragon performance",
-    "template_id": "112126428"
-  },
-  {
     "date": "2026-10-26",
     "trend": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
     "template_id": "181913649"
@@ -463,5 +448,20 @@
     "date": "2026-11-23",
     "trend": "apld stock",
     "template_id": "99683372"
+  },
+  {
+    "date": "2026-11-24",
+    "trend": "LLM agents work for their parent companies, not for you",
+    "template_id": "188390779"
+  },
+  {
+    "date": "2026-11-24",
+    "trend": "Why Your Android App Drops Frames: The Jetpack Compose Architecture Guide That Fixes Recomposition Forever",
+    "template_id": "93895088"
+  },
+  {
+    "date": "2026-11-24",
+    "trend": "sachin tendulkar",
+    "template_id": "252600902"
   }
 ]

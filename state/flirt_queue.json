@@ -929,8 +929,9 @@
    "RUBBER DUCK DEBUGGING"
   ],
   "score": 8.0,
-  "status": "pending",
-  "drafted_at": "2026-11-07T10:56:39+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-07T10:56:39+00:00",
+  "sent_at": "2026-11-24T14:36:28+00:00"
  },
  {
   "concept": "embedding",
