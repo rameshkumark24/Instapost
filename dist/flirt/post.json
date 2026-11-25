@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "rubber-duck",
-  "term": "RUBBER DUCK DEBUGGING",
-  "headline": "I talked through my feelings to you and realized I don't need you. Classic RUBBER DUCK DEBUGGING.",
-  "caption": "I talked through my feelings to you and realized I don't need you. Classic RUBBER DUCK DEBUGGING.\n\n—\nRUBBER DUCK DEBUGGING: explaining a problem out loud, step by step, until you notice the answer yourself.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-24",
-  "built_at": "2026-11-24T14:36:28+00:00",
+  "concept": "flaky-test",
+  "term": "FLAKY TEST",
+  "headline": "One day you are all in, the next you ghost. Our entire relationship is a FLAKY TEST.",
+  "caption": "One day you are all in, the next you ghost. Our entire relationship is a FLAKY TEST.\n\n—\nFLAKY TEST: passes sometimes and fails sometimes, with nothing changed.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-25",
+  "built_at": "2026-11-25T14:01:12+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

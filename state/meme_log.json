@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-26",
-    "trend": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
-    "template_id": "181913649"
-  },
-  {
-    "date": "2026-10-26",
-    "trend": "TypeScript `Disposable` Protocol in 2026: Structuring Cleanup-Heavy Server Code With `using` and Stacks",
-    "template_id": "129242436"
-  },
-  {
-    "date": "2026-10-26",
-    "trend": "daylight saving time halloween 2026",
-    "template_id": "427308417"
-  },
-  {
     "date": "2026-10-27",
     "trend": "Python's experimental JIT to be removed",
     "template_id": "217743513"
@@ -463,5 +448,20 @@
     "date": "2026-11-24",
     "trend": "sachin tendulkar",
     "template_id": "252600902"
+  },
+  {
+    "date": "2026-11-25",
+    "trend": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+    "template_id": "247375501"
+  },
+  {
+    "date": "2026-11-25",
+    "trend": "Has vibe coding made open source the new normal for synths?",
+    "template_id": "112126428"
+  },
+  {
+    "date": "2026-11-25",
+    "trend": "predicting heart attacks decades ahead",
+    "template_id": "131940431"
   }
 ]

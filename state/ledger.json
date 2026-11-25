@@ -691,5 +691,12 @@
   "url": "https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you/",
   "source": "hn",
   "posted_at": "2026-11-24T14:36:23+00:00"
+ },
+ {
+  "key": "arxiv.org/abs/2611.33119v1",
+  "title": "MetaFORGE: A Meta-Learning Framework for Harness Optimization in Automated Code Generation for Parallel Computing",
+  "url": "https://arxiv.org/abs/2611.33119v1",
+  "source": "arxiv",
+  "posted_at": "2026-11-25T13:55:54+00:00"
  }
 ]

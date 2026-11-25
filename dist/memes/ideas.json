@@ -1,167 +1,159 @@
 {
-  "date": "2026-11-24",
-  "built_at": "2026-11-24T14:38:29+00:00",
-  "daily_at": "2026-11-24T14:38:29+00:00",
+  "date": "2026-11-25",
+  "built_at": "2026-11-25T14:01:55+00:00",
+  "daily_at": "2026-11-25T14:01:55+00:00",
   "ideas": [
     {
-      "trend": "LLM agents work for their parent companies, not for you",
+      "trend": "GPT-6 models demonstrate intrinsic protein-design capabilities",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "188390779",
-      "template": "Woman Yelling At Cat",
-      "maker": "https://imgflip.com/memegenerator/188390779",
+      "template_id": "247375501",
+      "template": "Buff Doge vs. Cheems",
+      "maker": "https://imgflip.com/memegenerator/247375501",
       "boxes": [
-        "LLM agents answer my tickets",
-        "They're actually working for the vendor"
+        "GPT-6",
+        "Designs novel proteins from scratch",
+        "Me",
+        "Can't center a div without flexbox"
       ],
-      "caption": "When the “assistant” has a different boss.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Distracted Boyfriend style punchline about agency loyalty",
-      "score": 8.0,
-      "editor": "Great use of the format, hits the agent loyalty joke instantly.",
+      "caption": "Science moves fast, CSS moves faster away from me.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "The contrast between advanced AI protein engineering and basic web dev struggles.",
+      "score": 7.0,
+      "editor": "Good contrast between GPT‑6 and everyday dev frustrations",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "Why Your Android App Drops Frames: The Jetpack Compose Architecture Guide That Fixes Recomposition Forever",
+      "trend": "Has vibe coding made open source the new normal for synths?",
       "where": "tech",
       "pool": "tech",
-      "context": "A visual, 10-minute deep dive into modern Android runtime architecture.",
-      "template_id": "93895088",
-      "template": "Expanding Brain",
-      "maker": "https://imgflip.com/memegenerator/93895088",
+      "context": "The emergence of powerful vibe-coding agents and tools like Reverse Engineer Anything has caused chaos in the music gear world, leaving companies scrambling to figure out how to respond.",
+      "template_id": "112126428",
+      "template": "Distracted Boyfriend",
+      "maker": "https://imgflip.com/memegenerator/112126428",
       "boxes": [
-        "Read the Compose docs",
-        "Profile recomposition with Layout Inspector",
-        "Rewrite UI in Compose-only DSL",
-        "Replace Android with Flutter to avoid frames"
+        "Vibe coding a synth in 5m",
+        "Junior dev",
+        "Learning DSP math and C++"
       ],
-      "caption": "The deeper you go, the stranger it gets.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Expanding Brain escalates fixes to absurdity",
-      "score": 8.0,
-      "editor": "Classic expanding brain progression, hitting a very relatable Android/Compose absurdity.",
+      "caption": "Math is optional when the prompt is good enough.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Vibe-coding tools generate complex audio DSP algorithms in minutes, skipping years of C++ audio math.",
+      "score": 6.0,
+      "editor": "Distracted BF works; vibe‑coding twist is decent",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "sachin tendulkar",
+      "trend": "predicting heart attacks decades ahead",
       "where": "IN",
       "pool": "current",
-      "context": "Ranveer Singh dances to 'Dhurandhar' title track with censored rap lyrics; Shah Rukh Khan says his popula",
-      "template_id": "252600902",
-      "template": "Always Has Been",
-      "maker": "https://imgflip.com/memegenerator/252600902",
+      "context": "Early warning signs predict heart attack and stroke decades ahead",
+      "template_id": "131940431",
+      "template": "Gru's Plan",
+      "maker": "https://imgflip.com/memegenerator/131940431",
       "boxes": [
-        "Wait, the bug disappears when I add a print?",
-        "Always has been"
+        "Predict production bugs 10 years out",
+        "Set up monitoring and alerts",
+        "Mute the alerts channel on Slack",
+        "Mute the alerts channel on Slack"
       ],
-      "caption": "Debugging magic tricks.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Always Has Been reveals hidden truth",
-      "score": 9.0,
-      "editor": "Timeless developer classic, perfectly fits the format with zero setup needed.",
+      "caption": "Early warning systems only work if you look at them.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Medical science predicting health issues decades ahead while devs build early-warning monitoring tools only to mute them.",
+      "score": 7.0,
+      "editor": "Gru’s Plan hits the classic “mute alerts” irony well",
       "scored": true,
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "sachin tendulkar",
+      "title": "us pce data today live",
       "where": "IN"
     },
     {
-      "title": "champions league",
+      "title": "predicting heart attacks decades ahead",
       "where": "IN"
     },
     {
-      "title": "mi emirates vs gulf giants",
+      "title": "forex factory news",
       "where": "IN"
     },
     {
-      "title": "pakistan women's national cricket team",
+      "title": "inji vellam",
       "where": "IN"
     },
     {
-      "title": "kushal bhurtel",
-      "where": "IN"
-    },
-    {
-      "title": "mcx gold futures drop 33 percent",
-      "where": "IN"
-    },
-    {
-      "title": "stock markets futures",
+      "title": "wizards of the coast lawsuit printmtg",
       "where": "US"
     },
     {
-      "title": "what time does the stock market open",
+      "title": "pce report today",
       "where": "US"
     },
     {
-      "title": "federal aviation administration",
+      "title": "pce data",
       "where": "US"
     },
     {
-      "title": "the walking dead",
+      "title": "brooks koepka bryson dechambeau feud",
       "where": "US"
     },
     {
-      "title": "tariffs",
+      "title": "pce",
       "where": "US"
     },
     {
-      "title": "delfina guzmán",
+      "title": "playstation plus december games",
       "where": "US"
     },
     {
-      "title": "turkey",
+      "title": "2028 crv",
       "where": "US"
     },
     {
-      "title": "ryan mccombs",
+      "title": "ecuador u-17 vs south korea u-17",
       "where": "US"
     },
     {
-      "title": "3.5 billion records exposed database leak",
-      "where": "US"
-    },
-    {
-      "title": "LLM agents work for their parent companies, not for you",
+      "title": "Models Can Communicate via Inference Servers Despite Being Sandboxed",
       "where": "tech"
     },
     {
-      "title": "Amazon says hackers' AI agents found and exploited 0-day with little human input",
+      "title": "Stop AI Agents Acting on Bluffs? A Strands Decider 2B Tool Gate Test",
       "where": "tech"
     },
     {
-      "title": "Why Your Android App Drops Frames: The Jetpack Compose Architecture Guide That Fixes Recomposition Forever",
+      "title": "Marginalia Search, Money, C++, Rust, AI, Stuff",
       "where": "tech"
     },
     {
-      "title": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+      "title": "PenGPT: A Generative Transformer for Handwriting and Sketches",
       "where": "tech"
     },
     {
-      "title": "Tired of catching Claude, Gemini, and ChatGPT up on the same project?",
+      "title": "Gemini refused to give me the lyrics to Twinkle Twinkle Little Star",
       "where": "tech"
     },
     {
-      "title": "Your Laptop Is the First Environment: Building on PostgreSQL, Running on AlloyDB",
+      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
       "where": "tech"
     },
     {
-      "title": "Turning on Postgres logical replication without a restart",
+      "title": "Install and Use the Google Workspace CLI: gwscli on Linux, From curl to Agent Skills",
+      "where": "tech"
+    },
+    {
+      "title": "Has vibe coding made open source the new normal for synths?",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "Two Buttons: 'option two (the right button)' runs to 32 characters, limit 24",
-    "Epic Handshake: 'what they agree on (the grip)' runs to 49 characters, limit 30",
-    "format '194315000' is not one on offer",
-    "editor 3/10 (Weak connection to the actual story's nuance; feels like a generic 'I am bad at security' meme.): Left Exit 12 Off Ramp, Run security scan locally / Let AI agents exploit 0-day / Me",
-    "editor 8/10 (Perfect execution of the Gru format for the current AI PR review panic.): Gru's Plan, Let Claude review PRs / It auto-approves everything / Now the code base is AI-on",
-    "editor 7/10 (Solid and relatable multi-LLM fatigue joke.): Distracted Boyfriend, Multiple AI assistants / Me / Single source of truth",
-    "editor 2/10 (Nonsensical mashup with football/Champions League text that has nothing to do with coding.): Expanding Brain, Write a quick script / Copy-paste from StackOverflow / Ask ChatGPT to generate c",
-    "editor 5/10 (A bit forced on the gold futures contrast, but sprint planning makes it semi-work.): Two Buttons, Invest in gold futures / Refactor legacy code / Me at sprint planning"
+    "editor 5/10 (Mildly funny side‑channel gag, but a bit wordy): Anakin Padme 4 Panel, We sandboxed both AI models / They can't talk now right? / They can't talk now r",
+    "editor 4/10 (Relies on specific Gemini story; joke feels forced): Is This A Pigeon, AI safety filter / Twinkle Twinkle lyrics / Is this copyright infringement?",
+    "editor 5/10 (Relatable mouse‑avoidance, but format a bit off): Two Buttons, Click open Google Doc / Learn gwscli in terminal / Backend developer",
+    "editor 3/10 (Too vague and unrelated to dev context): Monkey Puppet, When your pair partner blames you for the failed sprint",
+    "editor 6/10 (Clear dev‑spending analogy, fits the meme template): Left Exit 12 Off Ramp, Refactor slow queries / Double the server specs / Dev team"
   ]
 }

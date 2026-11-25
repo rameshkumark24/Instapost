@@ -968,8 +968,9 @@
    "FLAKY TEST"
   ],
   "score": 9.0,
-  "status": "pending",
-  "drafted_at": "2026-11-18T12:50:33+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-18T12:50:33+00:00",
+  "sent_at": "2026-11-25T14:01:12+00:00"
  },
  {
   "concept": "deadlock",
@@ -1079,5 +1080,137 @@
   "score": 8.0,
   "status": "pending",
   "drafted_at": "2026-11-20T12:39:58+00:00"
+ },
+ {
+  "concept": "redirect-loop",
+  "term": "REDIRECT LOOP",
+  "domain": "web",
+  "text": "You tell me to leave, then text me to come back. Babe, we're stuck in a REDIRECT LOOP.",
+  "terms": [
+   "REDIRECT LOOP"
+  ],
+  "score": 10.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
+ },
+ {
+  "concept": "alert-fatigue",
+  "term": "ALERT FATIGUE",
+  "domain": "devops",
+  "text": "You gave me so many red flags that I stopped noticing the real ones. Classic ALERT FATIGUE.",
+  "terms": [
+   "ALERT FATIGUE"
+  ],
+  "score": 10.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
+ },
+ {
+  "concept": "transaction",
+  "term": "TRANSACTION",
+  "domain": "sql",
+  "text": "Either you commit to me, or we roll back to strangers. It's all or nothing in a TRANSACTION.",
+  "terms": [
+   "TRANSACTION"
+  ],
+  "score": 10.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
+ },
+ {
+  "concept": "stack",
+  "term": "STACK",
+  "domain": "algorithms",
+  "text": "I was the last one you let in, so I shouldn't be surprised I'm the first one out. Classic STACK.",
+  "terms": [
+   "STACK"
+  ],
+  "score": 10.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
+ },
+ {
+  "concept": "cors",
+  "term": "CORS",
+  "domain": "web",
+  "text": "I just wanted a response from you, but you won't allow my origin. Blocked by CORS.",
+  "terms": [
+   "CORS"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
+ },
+ {
+  "concept": "squash",
+  "term": "SQUASH",
+  "domain": "git",
+  "text": "Let's take all our messy little dates and SQUASH them into one clean story.",
+  "terms": [
+   "SQUASH"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
+ },
+ {
+  "concept": "inner-join",
+  "term": "INNER JOIN",
+  "domain": "sql",
+  "text": "I'm tired of one-sided effort. You and I only work if it's an INNER JOIN.",
+  "terms": [
+   "INNER JOIN"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
+ },
+ {
+  "concept": "primary-key",
+  "term": "PRIMARY KEY",
+  "domain": "sql",
+  "text": "Out of eight billion people, you're the one who can't be duplicated. You're my PRIMARY KEY.",
+  "terms": [
+   "PRIMARY KEY"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
+ },
+ {
+  "concept": "priority-queue",
+  "term": "PRIORITY QUEUE",
+  "domain": "algorithms",
+  "text": "You showed up late, but you still cut straight to the front of my PRIORITY QUEUE.",
+  "terms": [
+   "PRIORITY QUEUE"
+  ],
+  "score": 9.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
+ },
+ {
+  "concept": "https",
+  "term": "HTTPS",
+  "domain": "web",
+  "text": "Tell me your deepest secrets. Everything between you and me is strictly HTTPS.",
+  "terms": [
+   "HTTPS"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
+ },
+ {
+  "concept": "race-condition",
+  "term": "RACE CONDITION",
+  "domain": "systems",
+  "text": "If you text me before I move on, we survive. Talk about a RACE CONDITION.",
+  "terms": [
+   "RACE CONDITION"
+  ],
+  "score": 8.0,
+  "status": "pending",
+  "drafted_at": "2026-11-25T14:01:10+00:00"
  }
 ]

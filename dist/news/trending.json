@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "stories": [
     {
-      "title": "LLM agents work for their parent companies, not for you",
+      "title": "Models Can Communicate via Inference Servers Despite Being Sandboxed",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Amazon says hackers' AI agents found and exploited 0-day with little human input",
-      "publication": "Ars Technica",
-      "summary": "The Cairn AI framework is proving to be a boon for defenders and attackers."
-    },
-    {
-      "title": "Why Your Android App Drops Frames: The Jetpack Compose Architecture Guide That Fixes Recomposition Forever",
+      "title": "Stop AI Agents Acting on Bluffs? A Strands Decider 2B Tool Gate Test",
       "publication": "DEV",
-      "summary": "A visual, 10-minute deep dive into modern Android runtime architecture."
+      "summary": "I tested Strands Decider 2B as an AI agent tool gate on 16 refund cases against Nova Pro as a judge: accuracy, thresholds, injection, latency, cost."
     },
     {
-      "title": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
-      "publication": "TechCrunch",
-      "summary": "As AI-generated code piles up, Anthropic's new developer tools aim to eliminate another bottleneck by letting agents handle routine approvals."
-    },
-    {
-      "title": "Tired of catching Claude, Gemini, and ChatGPT up on the same project?",
-      "publication": "DEV",
-      "summary": "If you pay for more than one AI assistant, you probably keep the same project in each of them. Every..."
-    },
-    {
-      "title": "Your Laptop Is the First Environment: Building on PostgreSQL, Running on AlloyDB",
-      "publication": "DEV",
-      "summary": "Every team I've worked with has a \"dev, test, prod\" diagram somewhere. And almost every one of those..."
-    },
-    {
-      "title": "Turning on Postgres logical replication without a restart",
-      "publication": "DEV",
-      "summary": "PostgreSQL 19 lets you create a logical replication slot while wal_level is still replica."
-    },
-    {
-      "title": "GLM-5.4: Toward generalized coding with our first loop transformer",
+      "title": "Marginalia Search, Money, C++, Rust, AI, Stuff",
       "publication": "Hacker News",
       "summary": ""
+    },
+    {
+      "title": "PenGPT: A Generative Transformer for Handwriting and Sketches",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Gemini refused to give me the lyrics to Twinkle Twinkle Little Star",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Install and Use the Google Workspace CLI: gwscli on Linux, From curl to Agent Skills",
+      "publication": "DEV",
+      "summary": "A step by step guide to the generally available Google Workspace CLI: one-line install, command discovery across nine Workspace services, incremental OAuth sign-in, JSON output, and the agent skill…"
+    },
+    {
+      "title": "Has vibe coding made open source the new normal for synths?",
+      "publication": "The Verge",
+      "summary": "The emergence of powerful vibe-coding agents and tools like Reverse Engineer Anything has caused chaos in the music gear world, leaving companies scrambling to figure out how to respond."
     }
   ]
 }
