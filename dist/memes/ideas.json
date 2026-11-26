@@ -1,159 +1,157 @@
 {
-  "date": "2026-11-25",
-  "built_at": "2026-11-25T14:01:55+00:00",
-  "daily_at": "2026-11-25T14:01:55+00:00",
+  "date": "2026-11-26",
+  "built_at": "2026-11-26T13:39:07+00:00",
+  "daily_at": "2026-11-26T13:39:07+00:00",
   "ideas": [
     {
-      "trend": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+      "trend": "Inference Economics: Clearly Explained",
+      "where": "tech",
+      "pool": "tech",
+      "context": "When you chat with a model, you ask once and wait once. Agents don't work like that. An agent...",
+      "template_id": "322841258",
+      "template": "Anakin Padme 4 Panel",
+      "maker": "https://imgflip.com/memegenerator/322841258",
+      "boxes": [
+        "I built a fully autonomous agent",
+        "It makes a few calls, right?",
+        "It makes a few calls, right?"
+      ],
+      "caption": "Inference economics is just a fancy term for infinite loops.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "The Anakin Padme format captures the sudden realization that AI agents burn through API calls unlike simple chat interfaces.",
+      "score": 9.0,
+      "editor": "classic agent API-cost dread, great use of the repeating panel",
+      "scored": true,
+      "drawn": true
+    },
+    {
+      "trend": "Much shorter version of GRH Lean verification from Anthropic",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "247375501",
-      "template": "Buff Doge vs. Cheems",
-      "maker": "https://imgflip.com/memegenerator/247375501",
+      "template_id": "181913649",
+      "template": "Drake Hotline Bling",
+      "maker": "https://imgflip.com/memegenerator/181913649",
       "boxes": [
-        "GPT-6",
-        "Designs novel proteins from scratch",
-        "Me",
-        "Can't center a div without flexbox"
+        "Reading 400 pages of AWS documentation",
+        "Asking Anthropic to check the proof"
       ],
-      "caption": "Science moves fast, CSS moves faster away from me.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "The contrast between advanced AI protein engineering and basic web dev struggles.",
-      "score": 7.0,
-      "editor": "Good contrast between GPT‑6 and everyday dev frustrations",
+      "caption": "The machines are doing the math now.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Using the Drake format to show how developers will instantly outsource complex verification to an LLM rather than read docs.",
+      "score": 8.0,
+      "editor": "hits the lazy developer fantasy spot-on, format used correctly",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "Has vibe coding made open source the new normal for synths?",
-      "where": "tech",
-      "pool": "tech",
-      "context": "The emergence of powerful vibe-coding agents and tools like Reverse Engineer Anything has caused chaos in the music gear world, leaving companies scrambling to figure out how to respond.",
-      "template_id": "112126428",
-      "template": "Distracted Boyfriend",
-      "maker": "https://imgflip.com/memegenerator/112126428",
-      "boxes": [
-        "Vibe coding a synth in 5m",
-        "Junior dev",
-        "Learning DSP math and C++"
-      ],
-      "caption": "Math is optional when the prompt is good enough.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Vibe-coding tools generate complex audio DSP algorithms in minutes, skipping years of C++ audio math.",
-      "score": 6.0,
-      "editor": "Distracted BF works; vibe‑coding twist is decent",
-      "scored": true,
-      "drawn": true
-    },
-    {
-      "trend": "predicting heart attacks decades ahead",
-      "where": "IN",
+      "trend": "houston thanksgiving parade",
+      "where": "US",
       "pool": "current",
-      "context": "Early warning signs predict heart attack and stroke decades ahead",
-      "template_id": "131940431",
-      "template": "Gru's Plan",
-      "maker": "https://imgflip.com/memegenerator/131940431",
+      "context": "From annual Thanksgiving parade to what's open & closed, here's your guide to Turkey Day in Houston",
+      "template_id": "99683372",
+      "template": "Sleeping Shaq",
+      "maker": "https://imgflip.com/memegenerator/99683372",
       "boxes": [
-        "Predict production bugs 10 years out",
-        "Set up monitoring and alerts",
-        "Mute the alerts channel on Slack",
-        "Mute the alerts channel on Slack"
+        "Production cluster running out of memory",
+        "Someone used var instead of const"
       ],
-      "caption": "Early warning systems only work if you look at them.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Medical science predicting health issues decades ahead while devs build early-warning monitoring tools only to mute them.",
-      "score": 7.0,
-      "editor": "Gru’s Plan hits the classic “mute alerts” irony well",
+      "caption": "Priorities are clear.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Sleeping Shaq sleeping through prod down while waking up for a minor style violation.",
+      "score": 8.0,
+      "editor": "classic linter pedantry vs real infra fire format",
       "scored": true,
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "us pce data today live",
+      "title": "kpsc",
       "where": "IN"
     },
     {
-      "title": "predicting heart attacks decades ahead",
+      "title": "voter eci",
       "where": "IN"
     },
     {
-      "title": "forex factory news",
+      "title": "army",
       "where": "IN"
     },
     {
-      "title": "inji vellam",
-      "where": "IN"
-    },
-    {
-      "title": "wizards of the coast lawsuit printmtg",
+      "title": "martha stewart turkey",
       "where": "US"
     },
     {
-      "title": "pce report today",
+      "title": "pact",
       "where": "US"
     },
     {
-      "title": "pce data",
+      "title": "celtics mitchell robinson trade proposal",
       "where": "US"
     },
     {
-      "title": "brooks koepka bryson dechambeau feud",
+      "title": "houston thanksgiving parade",
       "where": "US"
     },
     {
-      "title": "pce",
+      "title": "savannah guthrie",
       "where": "US"
     },
     {
-      "title": "playstation plus december games",
+      "title": "h1b green card perm overhaul",
       "where": "US"
     },
     {
-      "title": "2028 crv",
+      "title": "is it thanksgiving today",
       "where": "US"
     },
     {
-      "title": "ecuador u-17 vs south korea u-17",
+      "title": "manchester road race 2026",
       "where": "US"
     },
     {
-      "title": "Models Can Communicate via Inference Servers Despite Being Sandboxed",
+      "title": "mike collins house ethics report",
+      "where": "US"
+    },
+    {
+      "title": "OpenAI cuts GPT-6.2 usage: Astra hits limits 40% faster, Sol 25% faster",
       "where": "tech"
     },
     {
-      "title": "Stop AI Agents Acting on Bluffs? A Strands Decider 2B Tool Gate Test",
+      "title": "Much shorter version of GRH Lean verification from Anthropic",
       "where": "tech"
     },
     {
-      "title": "Marginalia Search, Money, C++, Rust, AI, Stuff",
+      "title": "Inference Economics: Clearly Explained",
       "where": "tech"
     },
     {
-      "title": "PenGPT: A Generative Transformer for Handwriting and Sketches",
+      "title": "Minipg: PostgreSQL as a Single Executable",
       "where": "tech"
     },
     {
-      "title": "Gemini refused to give me the lyrics to Twinkle Twinkle Little Star",
+      "title": "Entering the Geminispace",
       "where": "tech"
     },
     {
-      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+      "title": "Browser tabs as a container runtime",
       "where": "tech"
     },
     {
-      "title": "Install and Use the Google Workspace CLI: gwscli on Linux, From curl to Agent Skills",
+      "title": "Exit Code 0 Is the Weakest Evidence You Have",
       "where": "tech"
     },
     {
-      "title": "Has vibe coding made open source the new normal for synths?",
+      "title": "Are Blogs Still Worth Writing When Agents Do the Reading?",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "editor 5/10 (Mildly funny side‑channel gag, but a bit wordy): Anakin Padme 4 Panel, We sandboxed both AI models / They can't talk now right? / They can't talk now r",
-    "editor 4/10 (Relies on specific Gemini story; joke feels forced): Is This A Pigeon, AI safety filter / Twinkle Twinkle lyrics / Is this copyright infringement?",
-    "editor 5/10 (Relatable mouse‑avoidance, but format a bit off): Two Buttons, Click open Google Doc / Learn gwscli in terminal / Backend developer",
-    "editor 3/10 (Too vague and unrelated to dev context): Monkey Puppet, When your pair partner blames you for the failed sprint",
-    "editor 6/10 (Clear dev‑spending analogy, fits the meme template): Left Exit 12 Off Ramp, Refactor slow queries / Double the server specs / Dev team"
+    "Tuxedo Winnie The Pooh: 'the posh way to say exactly the same thing' runs to 65 characters, limit 50",
+    "touches a subject the page never jokes about",
+    "They're The Same Picture takes 2 boxes, got 3",
+    "editor 8/10 (frontend dev absurd infrastructure obsession captured perfectly): Is This A Pigeon, Frontend developers / A Chrome tab / Is this a container runtime?",
+    "editor 7/10 (solid monolith nostalgia swing): Left Exit 12 Off Ramp, Microservices / Minipg as single binary / Me",
+    "editor 4/10 (generic Friday force push joke unconnected to the Martha Stewart turkey headline): Panik Kalm Panik, Merge conflict on Friday at 5pm / I will just force push / It was main",
+    "editor 3/10 (generic push-to-prod joke disconnected from the Thanksgiving proclamation headline): Anakin Padme 4 Panel, I am pushing straight to prod today / With staging tests, right? / With staging "
   ]
 }

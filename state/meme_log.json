@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-27",
-    "trend": "Python's experimental JIT to be removed",
-    "template_id": "217743513"
-  },
-  {
-    "date": "2026-10-27",
-    "trend": "ChatGPT Keeps Telling People 404 Media Can Solve Their Tech Support Problems",
-    "template_id": "438680"
-  },
-  {
-    "date": "2026-10-27",
-    "trend": "call of duty skill based matchmaking",
-    "template_id": "247113703"
-  },
-  {
     "date": "2026-10-28",
     "trend": "A fast and secure tar parser for the Rust ecosystem",
     "template_id": "178591752"
@@ -463,5 +448,20 @@
     "date": "2026-11-25",
     "trend": "predicting heart attacks decades ahead",
     "template_id": "131940431"
+  },
+  {
+    "date": "2026-11-26",
+    "trend": "Inference Economics: Clearly Explained",
+    "template_id": "322841258"
+  },
+  {
+    "date": "2026-11-26",
+    "trend": "Much shorter version of GRH Lean verification from Anthropic",
+    "template_id": "181913649"
+  },
+  {
+    "date": "2026-11-26",
+    "trend": "houston thanksgiving parade",
+    "template_id": "99683372"
   }
 ]

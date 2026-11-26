@@ -1,45 +1,45 @@
 {
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "stories": [
     {
-      "title": "Models Can Communicate via Inference Servers Despite Being Sandboxed",
+      "title": "OpenAI cuts GPT-6.2 usage: Astra hits limits 40% faster, Sol 25% faster",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "Stop AI Agents Acting on Bluffs? A Strands Decider 2B Tool Gate Test",
+      "title": "Much shorter version of GRH Lean verification from Anthropic",
+      "publication": "Hacker News",
+      "summary": ""
+    },
+    {
+      "title": "Inference Economics: Clearly Explained",
       "publication": "DEV",
-      "summary": "I tested Strands Decider 2B as an AI agent tool gate on 16 refund cases against Nova Pro as a judge: accuracy, thresholds, injection, latency, cost."
+      "summary": "When you chat with a model, you ask once and wait once. Agents don't work like that. An agent..."
     },
     {
-      "title": "Marginalia Search, Money, C++, Rust, AI, Stuff",
+      "title": "Minipg: PostgreSQL as a Single Executable",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "PenGPT: A Generative Transformer for Handwriting and Sketches",
-      "publication": "Hacker News",
+      "title": "Entering the Geminispace",
+      "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "Gemini refused to give me the lyrics to Twinkle Twinkle Little Star",
-      "publication": "Hacker News",
+      "title": "Browser tabs as a container runtime",
+      "publication": "Lobsters",
       "summary": ""
     },
     {
-      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
-      "publication": "Hacker News",
-      "summary": ""
-    },
-    {
-      "title": "Install and Use the Google Workspace CLI: gwscli on Linux, From curl to Agent Skills",
+      "title": "Exit Code 0 Is the Weakest Evidence You Have",
       "publication": "DEV",
-      "summary": "A step by step guide to the generally available Google Workspace CLI: one-line install, command discovery across nine Workspace services, incremental OAuth sign-in, JSON output, and the agent skill…"
+      "summary": "From the agentkeys v0.1.0 release: a local credential broker for AI agents. Agents hold references,..."
     },
     {
-      "title": "Has vibe coding made open source the new normal for synths?",
-      "publication": "The Verge",
-      "summary": "The emergence of powerful vibe-coding agents and tools like Reverse Engineer Anything has caused chaos in the music gear world, leaving companies scrambling to figure out how to respond."
+      "title": "Are Blogs Still Worth Writing When Agents Do the Reading?",
+      "publication": "DEV",
+      "summary": "I started writing on DEV in 2020 and stayed active in the community for about three years. Then LLMs..."
     }
   ]
 }

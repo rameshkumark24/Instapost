@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "flaky-test",
-  "term": "FLAKY TEST",
-  "headline": "One day you are all in, the next you ghost. Our entire relationship is a FLAKY TEST.",
-  "caption": "One day you are all in, the next you ghost. Our entire relationship is a FLAKY TEST.\n\n—\nFLAKY TEST: passes sometimes and fails sometimes, with nothing changed.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-25",
-  "built_at": "2026-11-25T14:01:12+00:00",
+  "concept": "deadlock",
+  "term": "DEADLOCK",
+  "headline": "I won't text first until you do, and you're waiting on me. Classic DEADLOCK.",
+  "caption": "I won't text first until you do, and you're waiting on me. Classic DEADLOCK.\n\n—\nDEADLOCK: two transactions each holding what the other needs, neither able to proceed.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-26",
+  "built_at": "2026-11-26T13:37:04+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true
