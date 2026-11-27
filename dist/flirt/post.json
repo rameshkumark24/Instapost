@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "deadlock",
-  "term": "DEADLOCK",
-  "headline": "I won't text first until you do, and you're waiting on me. Classic DEADLOCK.",
-  "caption": "I won't text first until you do, and you're waiting on me. Classic DEADLOCK.\n\n—\nDEADLOCK: two transactions each holding what the other needs, neither able to proceed.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-26",
-  "built_at": "2026-11-26T13:37:04+00:00",
+  "concept": "403",
+  "term": "403 FORBIDDEN",
+  "headline": "You know who I am and what I want, but it's still 403 FORBIDDEN.",
+  "caption": "You know who I am and what I want, but it's still 403 FORBIDDEN.\n\n—\n403 FORBIDDEN: the server understands who is asking and still refuses.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-27",
+  "built_at": "2026-11-27T13:32:03+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

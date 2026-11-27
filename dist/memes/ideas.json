@@ -1,157 +1,165 @@
 {
-  "date": "2026-11-26",
-  "built_at": "2026-11-26T13:39:07+00:00",
-  "daily_at": "2026-11-26T13:39:07+00:00",
+  "date": "2026-11-27",
+  "built_at": "2026-11-27T13:33:52+00:00",
+  "daily_at": "2026-11-27T13:33:52+00:00",
   "ideas": [
     {
-      "trend": "Inference Economics: Clearly Explained",
-      "where": "tech",
-      "pool": "tech",
-      "context": "When you chat with a model, you ask once and wait once. Agents don't work like that. An agent...",
-      "template_id": "322841258",
-      "template": "Anakin Padme 4 Panel",
-      "maker": "https://imgflip.com/memegenerator/322841258",
-      "boxes": [
-        "I built a fully autonomous agent",
-        "It makes a few calls, right?",
-        "It makes a few calls, right?"
-      ],
-      "caption": "Inference economics is just a fancy term for infinite loops.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "The Anakin Padme format captures the sudden realization that AI agents burn through API calls unlike simple chat interfaces.",
-      "score": 9.0,
-      "editor": "classic agent API-cost dread, great use of the repeating panel",
-      "scored": true,
-      "drawn": true
-    },
-    {
-      "trend": "Much shorter version of GRH Lean verification from Anthropic",
+      "trend": "Claude sabotaging SOTA ML research tasks",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "181913649",
-      "template": "Drake Hotline Bling",
-      "maker": "https://imgflip.com/memegenerator/181913649",
+      "template_id": "188390779",
+      "template": "Woman Yelling At Cat",
+      "maker": "https://imgflip.com/memegenerator/188390779",
       "boxes": [
-        "Reading 400 pages of AWS documentation",
-        "Asking Anthropic to check the proof"
+        "Why is your SOTA model outputting gibberish?",
+        "I told it to read your code"
       ],
-      "caption": "The machines are doing the math now.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Using the Drake format to show how developers will instantly outsource complex verification to an LLM rather than read docs.",
+      "caption": "The AI chose violence.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Claude sabotaging ML tasks gets a savage cat response.",
       "score": 8.0,
-      "editor": "hits the lazy developer fantasy spot-on, format used correctly",
+      "editor": "Instantly funny roast about messy codebases that doesn't rely on the news item.",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "houston thanksgiving parade",
-      "where": "US",
-      "pool": "current",
-      "context": "From annual Thanksgiving parade to what's open & closed, here's your guide to Turkey Day in Houston",
-      "template_id": "99683372",
-      "template": "Sleeping Shaq",
-      "maker": "https://imgflip.com/memegenerator/99683372",
+      "trend": "I Got Two AI Agents Talking. Then I Found Out They Weren't Hearing Each Other.",
+      "where": "tech",
+      "pool": "tech",
+      "context": "I was checking Discord on my phone at work when I noticed my head agent wasn't tagging the...",
+      "template_id": "180190441",
+      "template": "They're The Same Picture",
+      "maker": "https://imgflip.com/memegenerator/180190441",
       "boxes": [
-        "Production cluster running out of memory",
-        "Someone used var instead of const"
+        "Two AI agents talking",
+        "Two devs in a sync call"
       ],
-      "caption": "Priorities are clear.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Sleeping Shaq sleeping through prod down while waking up for a minor style violation.",
+      "caption": "Neither one is actually listening.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Compares AI agents ignoring each other to typical developer sync meetings.",
       "score": 8.0,
-      "editor": "classic linter pedantry vs real infra fire format",
+      "editor": "Great punchline comparing unlistening AI agents to useless dev sync calls.",
+      "scored": true,
+      "drawn": true
+    },
+    {
+      "trend": "Your Side Project Is Probably Staying in Development Too Long",
+      "where": "tech",
+      "pool": "tech",
+      "context": "There is a strange moment in almost every side project. The core functionality works. The database...",
+      "template_id": "93895088",
+      "template": "Expanding Brain",
+      "maker": "https://imgflip.com/memegenerator/93895088",
+      "boxes": [
+        "Writing the core app",
+        "Adding dark mode",
+        "Refactoring the entire ORM",
+        "Writing the README for a tool nobody asked for"
+      ],
+      "caption": "Never ship.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Expanding brain captures the infinite side project rabbit hole.",
+      "score": 7.0,
+      "editor": "Accurate and relatable side-project procrastination trope using the format well.",
       "scored": true,
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "kpsc",
+      "title": "gate 2027",
       "where": "IN"
     },
     {
-      "title": "voter eci",
+      "title": "movie review yeh prem mol liya",
       "where": "IN"
     },
     {
-      "title": "army",
+      "title": "suvarna keralam lottery results",
       "where": "IN"
     },
     {
-      "title": "martha stewart turkey",
+      "title": "ibps po mains scorecard 2026",
+      "where": "IN"
+    },
+    {
+      "title": "al kholood vs al-khaleej",
+      "where": "IN"
+    },
+    {
+      "title": "kassoum ouattara",
+      "where": "IN"
+    },
+    {
+      "title": "ibps po mains",
+      "where": "IN"
+    },
+    {
+      "title": "cyberattack",
       "where": "US"
     },
     {
-      "title": "pact",
+      "title": "tulsa king episode 7",
       "where": "US"
     },
     {
-      "title": "celtics mitchell robinson trade proposal",
+      "title": "happy black friday",
       "where": "US"
     },
     {
-      "title": "houston thanksgiving parade",
+      "title": "le creuset black friday",
       "where": "US"
     },
     {
-      "title": "savannah guthrie",
+      "title": "erling haaland",
       "where": "US"
     },
     {
-      "title": "h1b green card perm overhaul",
+      "title": "home goods black friday",
       "where": "US"
     },
     {
-      "title": "is it thanksgiving today",
+      "title": "us air force cloud one breach",
       "where": "US"
     },
     {
-      "title": "manchester road race 2026",
-      "where": "US"
-    },
-    {
-      "title": "mike collins house ethics report",
-      "where": "US"
-    },
-    {
-      "title": "OpenAI cuts GPT-6.2 usage: Astra hits limits 40% faster, Sol 25% faster",
+      "title": "Claude sabotaging SOTA ML research tasks",
       "where": "tech"
     },
     {
-      "title": "Much shorter version of GRH Lean verification from Anthropic",
+      "title": "How Do You Get Different AI Tools to Work Together?",
       "where": "tech"
     },
     {
-      "title": "Inference Economics: Clearly Explained",
+      "title": "Rvoip: VoIP stack in Rust",
       "where": "tech"
     },
     {
-      "title": "Minipg: PostgreSQL as a Single Executable",
+      "title": "I Got Two AI Agents Talking. Then I Found Out They Weren't Hearing Each Other.",
       "where": "tech"
     },
     {
-      "title": "Entering the Geminispace",
+      "title": "Your Side Project Is Probably Staying in Development Too Long",
       "where": "tech"
     },
     {
-      "title": "Browser tabs as a container runtime",
+      "title": "OpenAI may be in cost control mode",
       "where": "tech"
     },
     {
-      "title": "Exit Code 0 Is the Weakest Evidence You Have",
+      "title": "In defense of lock poisoning in Rust (2025)",
       "where": "tech"
     },
     {
-      "title": "Are Blogs Still Worth Writing When Agents Do the Reading?",
+      "title": "Google Will Make AI Agents Use Its MCP Servers. The Gmail One Can't Send Email",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "Tuxedo Winnie The Pooh: 'the posh way to say exactly the same thing' runs to 65 characters, limit 50",
-    "touches a subject the page never jokes about",
-    "They're The Same Picture takes 2 boxes, got 3",
-    "editor 8/10 (frontend dev absurd infrastructure obsession captured perfectly): Is This A Pigeon, Frontend developers / A Chrome tab / Is this a container runtime?",
-    "editor 7/10 (solid monolith nostalgia swing): Left Exit 12 Off Ramp, Microservices / Minipg as single binary / Me",
-    "editor 4/10 (generic Friday force push joke unconnected to the Martha Stewart turkey headline): Panik Kalm Panik, Merge conflict on Friday at 5pm / I will just force push / It was main",
-    "editor 3/10 (generic push-to-prod joke disconnected from the Thanksgiving proclamation headline): Anakin Padme 4 Panel, I am pushing straight to prod today / With staging tests, right? / With staging "
+    "Left Exit 12 Off Ramp: 'who swerves, often 'Me'' runs to 44 characters, limit 22",
+    "editor 4/10 (Requires recent specific news about Google's MCP server announcement to make sense.): Is This A Pigeon, Google PM / A read-only MCP server / Is this an agent?",
+    "editor 4/10 (Feels like forced Black Friday shoehorning; doesn't land a strong dev joke.): Epic Handshake, Junior devs / Senior devs / Buying 40% off cursor plugins",
+    "editor 7/10 (Solid use of Tuxedo Pooh to mock corporate euphemisms for infrastructure downgrades.): Tuxedo Winnie The Pooh, Lowering rate limits to save money / Entering cost control mode",
+    "editor 3/10 (Uses a random cookware news headline that isn't inherently a dev joke.): Left Exit 12 Off Ramp, Fix production bugs / Buy Le Creuset on sale / Devs on Black Friday",
+    "editor 8/10 (Classic developer frustration with flaky CI builds, perfectly fitted to the format.): Woman Yelling At Cat, You spent money on lottery tickets! / Still higher odds than CI passing first tr"
   ]
 }

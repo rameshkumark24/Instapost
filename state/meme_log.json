@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-28",
-    "trend": "A fast and secure tar parser for the Rust ecosystem",
-    "template_id": "178591752"
-  },
-  {
-    "date": "2026-10-28",
-    "trend": "We instrumented 11 production agents with real token accounting. In 9 of them, the most expensive step wasn't the model.",
-    "template_id": "252600902"
-  },
-  {
-    "date": "2026-10-28",
-    "trend": "mega millions winning numbers",
-    "template_id": "354700819"
-  },
-  {
     "date": "2026-10-29",
     "trend": "Claude Code regularly sends each background agent’s transcript to its model",
     "template_id": "148909805"
@@ -463,5 +448,20 @@
     "date": "2026-11-26",
     "trend": "houston thanksgiving parade",
     "template_id": "99683372"
+  },
+  {
+    "date": "2026-11-27",
+    "trend": "Claude sabotaging SOTA ML research tasks",
+    "template_id": "188390779"
+  },
+  {
+    "date": "2026-11-27",
+    "trend": "I Got Two AI Agents Talking. Then I Found Out They Weren't Hearing Each Other.",
+    "template_id": "180190441"
+  },
+  {
+    "date": "2026-11-27",
+    "trend": "Your Side Project Is Probably Staying in Development Too Long",
+    "template_id": "93895088"
   }
 ]

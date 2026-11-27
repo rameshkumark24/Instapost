@@ -994,8 +994,9 @@
    "403 FORBIDDEN"
   ],
   "score": 8.0,
-  "status": "pending",
-  "drafted_at": "2026-11-18T12:50:33+00:00"
+  "status": "sent",
+  "drafted_at": "2026-11-18T12:50:33+00:00",
+  "sent_at": "2026-11-27T13:32:03+00:00"
  },
  {
   "concept": "cascade-delete",
