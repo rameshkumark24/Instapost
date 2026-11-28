@@ -1,43 +1,43 @@
 {
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "stories": [
     {
-      "title": "Claude sabotaging SOTA ML research tasks",
+      "title": "What If Every AI Model Was a Pokémon? I Built It.",
+      "publication": "DEV",
+      "summary": "Every week, there's a new AI model. GPT, Claude, Gemini, DeepSeek... and then comes Pro, Flash,..."
+    },
+    {
+      "title": "Unkernel: Real Linux kernel, compiled to WebAssembly",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "How Do You Get Different AI Tools to Work Together?",
-      "publication": "DEV",
-      "summary": "Here's a setup I suspect a lot of you have right now. Claude Code is open in one terminal. Codex is..."
-    },
-    {
-      "title": "Rvoip: VoIP stack in Rust",
+      "title": "Tabernetes: A Kubernetes cluster whose nodes are browser tabs",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "I Got Two AI Agents Talking. Then I Found Out They Weren't Hearing Each Other.",
-      "publication": "DEV",
-      "summary": "I was checking Discord on my phone at work when I noticed my head agent wasn't tagging the..."
-    },
-    {
-      "title": "Your Side Project Is Probably Staying in Development Too Long",
-      "publication": "DEV",
-      "summary": "There is a strange moment in almost every side project. The core functionality works. The database..."
-    },
-    {
-      "title": "OpenAI may be in cost control mode",
+      "title": "GPT 6.2 Astra solves a historical mystery",
       "publication": "Hacker News",
       "summary": ""
     },
     {
-      "title": "In defense of lock poisoning in Rust (2025)",
-      "publication": "Lobsters",
-      "summary": ""
+      "title": "Zero Repeat Regressions: The Golden Metric & The Future of Agentic Trust",
+      "publication": "DEV",
+      "summary": "Why we don't code by majority vote, opening our 375-ticket empirical ledger (including what broke), Barry Boehm's $1 : $500 : $25,000 token defect curve, the 4-Layer Verification Stack that lets you…"
     },
     {
-      "title": "Google Will Make AI Agents Use Its MCP Servers. The Gmail One Can't Send Email",
+      "title": "Build an n8n AI Agent with GMI Cloud's community node",
+      "publication": "DEV",
+      "summary": "I wanted an n8n AI Agent that talks to GMI Cloud without me pasting a custom OpenAI base URL into the..."
+    },
+    {
+      "title": "RAG Explained Simply: How AI Reads a 700-Page Book to Answer Your Question",
+      "publication": "DEV",
+      "summary": "The Problem: A 700-Page Book and One Exam Question Imagine you are a student. Your..."
+    },
+    {
+      "title": "\"What's Claude's fursona?\" and other questions",
       "publication": "Hacker News",
       "summary": ""
     }

@@ -1,165 +1,155 @@
 {
-  "date": "2026-11-27",
-  "built_at": "2026-11-27T13:33:52+00:00",
-  "daily_at": "2026-11-27T13:33:52+00:00",
+  "date": "2026-11-28",
+  "built_at": "2026-11-28T12:45:50+00:00",
+  "daily_at": "2026-11-28T12:45:50+00:00",
   "ideas": [
     {
-      "trend": "Claude sabotaging SOTA ML research tasks",
+      "trend": "RAG Explained Simply: How AI Reads a 700-Page Book to Answer Your Question",
+      "where": "tech",
+      "pool": "tech",
+      "context": "The Problem: A 700-Page Book and One Exam Question Imagine you are a student. Your...",
+      "template_id": "100777631",
+      "template": "Is This A Pigeon",
+      "maker": "https://imgflip.com/memegenerator/100777631",
+      "boxes": [
+        "Devs explaining RAG",
+        "CTRL + F",
+        "Is this advanced AI?"
+      ],
+      "caption": "Semantic search is just glorified text search with extra steps.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "RAG essentially searches through text chunks before giving context to a language model.",
+      "score": 9.0,
+      "editor": "Spot-on dev humor mocking AI buzzwords; format applied accurately.",
+      "scored": true,
+      "drawn": true
+    },
+    {
+      "trend": "Tabernetes: A Kubernetes cluster whose nodes are browser tabs",
       "where": "tech",
       "pool": "tech",
       "context": "Hacker News",
-      "template_id": "188390779",
-      "template": "Woman Yelling At Cat",
-      "maker": "https://imgflip.com/memegenerator/188390779",
+      "template_id": "247113703",
+      "template": "A train hitting a school bus",
+      "maker": "https://imgflip.com/memegenerator/247113703",
       "boxes": [
-        "Why is your SOTA model outputting gibberish?",
-        "I told it to read your code"
+        "Closing Chrome",
+        "My production K8s cluster"
       ],
-      "caption": "The AI chose violence.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Claude sabotaging ML tasks gets a savage cat response.",
+      "caption": "Tabernetes is great until someone hits Ctrl+Q.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Tabernetes hosts Kubernetes nodes inside browser tabs, meaning closing Chrome nukes your whole cluster.",
       "score": 8.0,
-      "editor": "Instantly funny roast about messy codebases that doesn't rely on the news item.",
+      "editor": "Hilarious concept; format is executed perfectly and closing Chrome destroying prod K8s hits instantly.",
       "scored": true,
       "drawn": true
     },
     {
-      "trend": "I Got Two AI Agents Talking. Then I Found Out They Weren't Hearing Each Other.",
+      "trend": "Unkernel: Real Linux kernel, compiled to WebAssembly",
       "where": "tech",
       "pool": "tech",
-      "context": "I was checking Discord on my phone at work when I noticed my head agent wasn't tagging the...",
-      "template_id": "180190441",
-      "template": "They're The Same Picture",
-      "maker": "https://imgflip.com/memegenerator/180190441",
+      "context": "Hacker News",
+      "template_id": "178591752",
+      "template": "Tuxedo Winnie The Pooh",
+      "maker": "https://imgflip.com/memegenerator/178591752",
       "boxes": [
-        "Two AI agents talking",
-        "Two devs in a sync call"
+        "Running Linux in Docker",
+        "Compiling the kernel into WebAssembly"
       ],
-      "caption": "Neither one is actually listening.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Compares AI agents ignoring each other to typical developer sync meetings.",
-      "score": 8.0,
-      "editor": "Great punchline comparing unlistening AI agents to useless dev sync calls.",
-      "scored": true,
-      "drawn": true
-    },
-    {
-      "trend": "Your Side Project Is Probably Staying in Development Too Long",
-      "where": "tech",
-      "pool": "tech",
-      "context": "There is a strange moment in almost every side project. The core functionality works. The database...",
-      "template_id": "93895088",
-      "template": "Expanding Brain",
-      "maker": "https://imgflip.com/memegenerator/93895088",
-      "boxes": [
-        "Writing the core app",
-        "Adding dark mode",
-        "Refactoring the entire ORM",
-        "Writing the README for a tool nobody asked for"
-      ],
-      "caption": "Never ship.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
-      "why": "Expanding brain captures the infinite side project rabbit hole.",
+      "caption": "Because containerization just was not overengineered enough.\n\n#programmerhumor #techmemes #codingmemes #devlife #memes",
+      "why": "Unkernel compiles an entire Linux kernel to WebAssembly for browser/WASM environments.",
       "score": 7.0,
-      "editor": "Accurate and relatable side-project procrastination trope using the format well.",
+      "editor": "Great use of Tuxedo Pooh to mock extreme overengineering in WebAssembly.",
       "scored": true,
       "drawn": true
     }
   ],
   "trends": [
     {
-      "title": "gate 2027",
+      "title": "betis vs rayo",
       "where": "IN"
     },
     {
-      "title": "movie review yeh prem mol liya",
+      "title": "shadab khan",
       "where": "IN"
     },
     {
-      "title": "suvarna keralam lottery results",
+      "title": "cat admit card",
       "where": "IN"
     },
     {
-      "title": "ibps po mains scorecard 2026",
+      "title": "lincoln city vs wolves",
       "where": "IN"
     },
     {
-      "title": "al kholood vs al-khaleej",
+      "title": "syed modi international",
       "where": "IN"
     },
     {
-      "title": "kassoum ouattara",
-      "where": "IN"
-    },
-    {
-      "title": "ibps po mains",
-      "where": "IN"
-    },
-    {
-      "title": "cyberattack",
+      "title": "real betis - rayo vallecano",
       "where": "US"
     },
     {
-      "title": "tulsa king episode 7",
+      "title": "jerry jones brian schottenheimer cowboys",
       "where": "US"
     },
     {
-      "title": "happy black friday",
+      "title": "usaid",
       "where": "US"
     },
     {
-      "title": "le creuset black friday",
+      "title": "delcy rodríguez",
       "where": "US"
     },
     {
-      "title": "erling haaland",
+      "title": "epicentro",
       "where": "US"
     },
     {
-      "title": "home goods black friday",
+      "title": "mega millions",
       "where": "US"
     },
     {
-      "title": "us air force cloud one breach",
+      "title": "candice swanepoel",
       "where": "US"
     },
     {
-      "title": "Claude sabotaging SOTA ML research tasks",
+      "title": "What If Every AI Model Was a Pokémon? I Built It.",
       "where": "tech"
     },
     {
-      "title": "How Do You Get Different AI Tools to Work Together?",
+      "title": "Unkernel: Real Linux kernel, compiled to WebAssembly",
       "where": "tech"
     },
     {
-      "title": "Rvoip: VoIP stack in Rust",
+      "title": "Tabernetes: A Kubernetes cluster whose nodes are browser tabs",
       "where": "tech"
     },
     {
-      "title": "I Got Two AI Agents Talking. Then I Found Out They Weren't Hearing Each Other.",
+      "title": "GPT 6.2 Astra solves a historical mystery",
       "where": "tech"
     },
     {
-      "title": "Your Side Project Is Probably Staying in Development Too Long",
+      "title": "Zero Repeat Regressions: The Golden Metric & The Future of Agentic Trust",
       "where": "tech"
     },
     {
-      "title": "OpenAI may be in cost control mode",
+      "title": "Build an n8n AI Agent with GMI Cloud's community node",
       "where": "tech"
     },
     {
-      "title": "In defense of lock poisoning in Rust (2025)",
+      "title": "RAG Explained Simply: How AI Reads a 700-Page Book to Answer Your Question",
       "where": "tech"
     },
     {
-      "title": "Google Will Make AI Agents Use Its MCP Servers. The Gmail One Can't Send Email",
+      "title": "\"What's Claude's fursona?\" and other questions",
       "where": "tech"
     }
   ],
   "problems": [],
   "rejects": [
-    "Left Exit 12 Off Ramp: 'who swerves, often 'Me'' runs to 44 characters, limit 22",
-    "editor 4/10 (Requires recent specific news about Google's MCP server announcement to make sense.): Is This A Pigeon, Google PM / A read-only MCP server / Is this an agent?",
-    "editor 4/10 (Feels like forced Black Friday shoehorning; doesn't land a strong dev joke.): Epic Handshake, Junior devs / Senior devs / Buying 40% off cursor plugins",
-    "editor 7/10 (Solid use of Tuxedo Pooh to mock corporate euphemisms for infrastructure downgrades.): Tuxedo Winnie The Pooh, Lowering rate limits to save money / Entering cost control mode",
-    "editor 3/10 (Uses a random cookware news headline that isn't inherently a dev joke.): Left Exit 12 Off Ramp, Fix production bugs / Buy Le Creuset on sale / Devs on Black Friday",
-    "editor 8/10 (Classic developer frustration with flaky CI builds, perfectly fitted to the format.): Woman Yelling At Cat, You spent money on lottery tickets! / Still higher odds than CI passing first tr"
+    "editor 6/10 (Relatable comparison, though div centering jokes are a bit cliché.): I Bet He's Thinking About Other Women, I bet he's thinking about other women / AI solving ancient mysteries while I str",
+    "editor 7/10 (Solid use of format reflecting the current fatigue of rapid AI model releases.): Distracted Boyfriend, A new AI model variant / Me / The model I fine-tuned yesterday",
+    "editor 3/10 (Misuses the two buttons format for a forced pun on a trending search term.): Two Buttons, Studying for CAT exam / Typing cat in terminal / Dev seeing CAT trending",
+    "editor 4/10 (Generic lottery joke that just tags 'Dev' on without a real developer hook.): Left Exit 12 Off Ramp, Index funds / Buying Mega Millions / Dev after 1st paycheck",
+    "editor 2/10 (Requires reading the caption to make any sense at all; the meme image itself fails without context.): Always Has Been, Wait, Betis vs Rayo is just a match? / Always has been"
   ]
 }

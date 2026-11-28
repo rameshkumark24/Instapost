@@ -1,11 +1,11 @@
 {
   "channel": "flirt",
-  "concept": "403",
-  "term": "403 FORBIDDEN",
-  "headline": "You know who I am and what I want, but it's still 403 FORBIDDEN.",
-  "caption": "You know who I am and what I want, but it's still 403 FORBIDDEN.\n\n—\n403 FORBIDDEN: the server understands who is asking and still refuses.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
-  "date": "2026-11-27",
-  "built_at": "2026-11-27T13:32:03+00:00",
+  "concept": "cascade-delete",
+  "term": "ON DELETE CASCADE",
+  "headline": "You left, and everything we built vanished in an ON DELETE CASCADE.",
+  "caption": "You left, and everything we built vanished in an ON DELETE CASCADE.\n\n—\nON DELETE CASCADE: deleting the parent row deletes every child row that referenced it.\n\n#programmerhumor #codinglife #devlife #sqljokes #programming #softwareengineer #codingmemes",
+  "date": "2026-11-28",
+  "built_at": "2026-11-28T12:45:05+00:00",
   "image": "card.jpg",
   "hold": false,
   "dry_run": true

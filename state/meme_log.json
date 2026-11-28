@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-10-29",
-    "trend": "Claude Code regularly sends each background agent’s transcript to its model",
-    "template_id": "148909805"
-  },
-  {
-    "date": "2026-10-29",
-    "trend": "No Human Will Ever Write Code Better Than LLMs? Better at What?",
-    "template_id": "129242436"
-  },
-  {
-    "date": "2026-10-29",
-    "trend": "kn 647 lottery result",
-    "template_id": "99683372"
-  },
-  {
     "date": "2026-10-30",
     "trend": "A trojanized Claude Code extension plants an SSH backdoor: the 7-point audit for your machine",
     "template_id": "181913649"
@@ -463,5 +448,20 @@
     "date": "2026-11-27",
     "trend": "Your Side Project Is Probably Staying in Development Too Long",
     "template_id": "93895088"
+  },
+  {
+    "date": "2026-11-28",
+    "trend": "RAG Explained Simply: How AI Reads a 700-Page Book to Answer Your Question",
+    "template_id": "100777631"
+  },
+  {
+    "date": "2026-11-28",
+    "trend": "Tabernetes: A Kubernetes cluster whose nodes are browser tabs",
+    "template_id": "247113703"
+  },
+  {
+    "date": "2026-11-28",
+    "trend": "Unkernel: Real Linux kernel, compiled to WebAssembly",
+    "template_id": "178591752"
   }
 ]
